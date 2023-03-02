@@ -1,0 +1,27 @@
+{
+    "name": "elucidario",
+    "version": "0.1.0",
+    "private": true,
+    "description": "monorepo Elucidário.art",
+    "license": "MIT",
+    "author": "Henrique Godinho <henrique@hgod.in>",
+    "main": "index.js",
+    "workspaces": [
+        "packages/*",
+        "apps/*"
+    ],
+    "scripts": {
+        "commit": "cz",
+        "graph": "yarn nx graph"
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    },
+    "devDependencies": {
+        "commitizen": "^4.3.0",
+        "conventional-changelog": "^3.1.25",
+        "lerna": "^6.5.1"
+    }
+}
