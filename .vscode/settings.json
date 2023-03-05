@@ -21,5 +21,7 @@
     "peacock.color": "#1f447e",
     "files.exclude": {
         "**/.git": false
-    }
+    },
+    "markdownlint.run": "onSave",
+    "markdown.occurrencesHighlight.enabled": true
 }
