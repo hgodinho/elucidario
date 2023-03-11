@@ -1,14 +1,14 @@
-# Lugares
+# Evento
 
 [Início](../../../README.md) | [Glossário](../../glossario.md) | [< Entidades](../entities.md) | [Objeto >](./objeto.md)
 
 ---
 
-- [Lugares](#lugares)
+- [Evento](#evento)
   - [Descrição](#descrição)
   - [Metadados](#metadados)
-    - [`PlacesRef`](#placesref)
-    - [`Places`](#places)
+    - [`EventRef`](#eventref)
+    - [`Event`](#event)
 
 ---
 
@@ -18,19 +18,19 @@ descrever
 
 ## Metadados
 
-### `PlacesRef`
+### `EventRef`
 
-[^topo](#lugares)
+[^topo](#evento)
 
 > tipo [`Ref`](./../../metadados.md#ref) usado em `many`
 
-**Descrição:** Utilizado como lugar embutido em outras entidades.
+**Descrição:** Utilizado como objeto visual embutido em outras entidades.
 
 ---
 
-### `Places`
+### `Event`
 
-[^topo](#lugares)
+[^topo](#evento)
 
 | name         | label            | type                                              | public | required     |
 | ------------ | ---------------- | ------------------------------------------------- | ------ | ------------ |

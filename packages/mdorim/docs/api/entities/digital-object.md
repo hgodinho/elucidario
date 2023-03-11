@@ -1,14 +1,14 @@
-# Lugares
+# Objeto digital
 
 [Início](../../../README.md) | [Glossário](../../glossario.md) | [< Entidades](../entities.md) | [Objeto >](./objeto.md)
 
 ---
 
-- [Lugares](#lugares)
+- [Objeto digital](#objeto-digital)
   - [Descrição](#descrição)
   - [Metadados](#metadados)
-    - [`PlacesRef`](#placesref)
-    - [`Places`](#places)
+    - [`DigitalObjectRef`](#digitalobjectref)
+    - [`DigitalObject`](#digitalobject)
 
 ---
 
@@ -18,19 +18,19 @@ descrever
 
 ## Metadados
 
-### `PlacesRef`
+### `DigitalObjectRef`
 
-[^topo](#lugares)
+[^topo](#objeto-digital)
 
 > tipo [`Ref`](./../../metadados.md#ref) usado em `many`
 
-**Descrição:** Utilizado como lugar embutido em outras entidades.
+**Descrição:** Utilizado como objeto digital embutido em outras entidades.
 
 ---
 
-### `Places`
+### `DigitalObject`
 
-[^topo](#lugares)
+[^topo](#objeto-digital)
 
 | name         | label            | type                                              | public | required     |
 | ------------ | ---------------- | ------------------------------------------------- | ------ | ------------ |

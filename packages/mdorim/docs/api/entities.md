@@ -4,12 +4,13 @@
 
 ## Descrição
 
-1. [Conceito](./entities/concept.md)
-2. [Agente](./entities/agent.md)
-3. [Object](./entities/object.md)
-4. [Set](./entities/set.md)
-5. [Event](./entities/event.md)
-6. [VisualWork](./entities/visual-work.md)
-7. [TextualWork](./entities/textual-work.md)
-8. [DigitalObject](./entities/digital-object.md)
-9. [Places](./entities/places.md)
+1. [User](./entities/user.md)
+2. [Concept](./entities/concept.md)
+3. [Agent](./entities/agent.md)
+4. [Object](./entities/object.md)
+5. [Set](./entities/set.md)
+6. [Event](./entities/event.md)
+7. [VisualObject](./entities/visual-object.md)
+8. [TextualObject](./entities/textual-object.md)
+9. [DigitalObject](./entities/digital-object.md)
+10. [Places](./entities/places.md)

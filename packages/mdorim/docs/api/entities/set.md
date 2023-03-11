@@ -1,14 +1,14 @@
-# Lugares
+# Coleção
 
 [Início](../../../README.md) | [Glossário](../../glossario.md) | [< Entidades](../entities.md) | [Objeto >](./objeto.md)
 
 ---
 
-- [Lugares](#lugares)
+- [Coleção](#coleção)
   - [Descrição](#descrição)
   - [Metadados](#metadados)
-    - [`PlacesRef`](#placesref)
-    - [`Places`](#places)
+    - [`SetRef`](#setref)
+    - [`Set`](#set)
 
 ---
 
@@ -18,19 +18,19 @@ descrever
 
 ## Metadados
 
-### `PlacesRef`
+### `SetRef`
 
-[^topo](#lugares)
+[^topo](#coleção)
 
 > tipo [`Ref`](./../../metadados.md#ref) usado em `many`
 
-**Descrição:** Utilizado como lugar embutido em outras entidades.
+**Descrição:** Utilizado como coleção embutida em outras entidades.
 
 ---
 
-### `Places`
+### `Set`
 
-[^topo](#lugares)
+[^topo](#coleção)
 
 | name         | label            | type                                              | public | required     |
 | ------------ | ---------------- | ------------------------------------------------- | ------ | ------------ |

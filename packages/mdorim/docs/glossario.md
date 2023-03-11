@@ -6,17 +6,54 @@
 
 - [Glossário](#glossário)
   - [Descrição](#descrição)
-  - [RFC2119](#rfc2119)
   - [Tipos de dados](#tipos-de-dados)
   - [WordPress](#wordpress)
   - [MySQL](#mysql)
   - [WEB](#web)
+  - [RFC2119](#rfc2119)
 
 ---
 
 ## Descrição
 
 Lista de termos utilizados no MDORIM e suas definições.
+
+---
+
+## Tipos de dados
+
+- [`null`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - valor nulo
+- [`boolean`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa true/false, 1/0, sim/não
+- [`integer`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um número inteiro (1; 2; 13; 1000...)
+- [`number`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um número com casas decimais (0.3; 1.5; 3.141592653589793238...)
+- [`string`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um fragmento de texto
+- [`object`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - pares de chave e valor
+- [`array`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - lista de valores. Uma outra forma de representar arrays seria utilizando o nome do metadado seguido de colchetes aberto e fechado, por exemplo: [`Denominacao[]`](./metadados.md/#denominacoes), [`Data[]`](./metadados.md#datas), [`Programa[]`](./metadados.md#programas)
+
+---
+
+## WordPress
+
+- [`tax`](https://developer.wordpress.org/reference/functions/register_taxonomy/) Taxonomia WordPress
+- [`cpt`](https://developer.wordpress.org/reference/functions/register_post_type/) Custom-post type WordPress
+
+---
+
+## MySQL
+
+- [`PK`](https://dev.mysql.com/doc/refman/8.0/en/partitioning-limitations-partitioning-keys-unique-keys.html) - Primary Key, utilizado para definir a coluna principal em uma tabela MySQL
+- [`FK`](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html) - Foreign Key, utilizado para definir a coluna que referencia uma linha em outra tabela MySQL (relational database).
+
+---
+
+## WEB
+
+- http - *Hyper Text Transfer Protocol* - Protocolo para transferências de informação hipermídia entre sistemas
+  - https - Versão com criptografia de ponta a ponta, o `s` representa `security`
+- URI - *Uniform Resource Identifer* - Identificado único de um recurso utilizado por sistemas web
+  - URL - *Uniform Resource Locator* - Extensão da URI que além de identificador única também representa um endereço acessível na web
+
+---
 
 ## [RFC2119](https://www.ietf.org/rfc/rfc2119.txt)
 
@@ -47,30 +84,3 @@ Estes termos são frequentemente usados para especificar o comportamento com imp
 > Documento oficial em inglês: <https://www.ietf.org/rfc/rfc2119.txt>
 
 ---
-
-## Tipos de dados
-
-- [`null`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - valor nulo
-- [`boolean`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa true/false, 1/0, sim/não
-- [`integer`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um número inteiro (1; 2; 13; 1000...)
-- [`number`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um número com casas decimais (0.3; 1.5; 3.141592653589793238...)
-- [`string`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um fragmento de texto
-- [`object`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - pares de chave e valor
-- [`array`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - lista de valores. Uma outra forma de representar arrays seria utilizando o nome do metadado seguido de colchetes aberto e fechado, por exemplo: [`Denominacao[]`](./metadados.md/#denominacoes), [`Data[]`](./metadados.md#datas), [`Programa[]`](./metadados.md#programas)
-
-## WordPress
-
-- [`tax`](https://developer.wordpress.org/reference/functions/register_taxonomy/) Taxonomia WordPress
-- [`cpt`](https://developer.wordpress.org/reference/functions/register_post_type/) Custom-post type WordPress
-
-## MySQL
-
-- [`PK`](https://dev.mysql.com/doc/refman/8.0/en/partitioning-limitations-partitioning-keys-unique-keys.html) - Primary Key, utilizado para definir a coluna principal em uma tabela MySQL
-- [`FK`](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html) - Foreign Key, utilizado para definir a coluna que referencia uma linha em outra tabela MySQL (relational database).
-
-## WEB
-
-- http - *Hyper Text Transfer Protocol* - Protocolo para transferências de informação hipermídia entre sistemas
-  - https - Versão com criptografia de ponta a ponta, o `s` representa `security`
-- URI - *Uniform Resource Identifer* - Identificado único de um recurso utilizado por sistemas web
-  - URL - *Uniform Resource Locator* - Extensão da URI que além de identificador única também representa um endereço acessível na web

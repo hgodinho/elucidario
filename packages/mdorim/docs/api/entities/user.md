@@ -1,14 +1,14 @@
-# Lugares
+# Usuário
 
 [Início](../../../README.md) | [Glossário](../../glossario.md) | [< Entidades](../entities.md) | [Objeto >](./objeto.md)
 
 ---
 
-- [Lugares](#lugares)
+- [Usuário](#usuário)
   - [Descrição](#descrição)
   - [Metadados](#metadados)
-    - [`PlacesRef`](#placesref)
-    - [`Places`](#places)
+    - [`UserRef`](#userref)
+    - [`User`](#user)
 
 ---
 
@@ -18,19 +18,19 @@ descrever
 
 ## Metadados
 
-### `PlacesRef`
+### `UserRef`
 
-[^topo](#lugares)
+[^topo](#usuário)
 
 > tipo [`Ref`](./../../metadados.md#ref) usado em `many`
 
-**Descrição:** Utilizado como lugar embutido em outras entidades.
+**Descrição:** Utilizado como usuário embutido em outras entidades.
 
 ---
 
-### `Places`
+### `User`
 
-[^topo](#lugares)
+[^topo](#usuário)
 
 | name         | label            | type                                              | public | required     |
 | ------------ | ---------------- | ------------------------------------------------- | ------ | ------------ |

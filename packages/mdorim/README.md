@@ -16,15 +16,3 @@ Menu
 3. [Taxonomias](./docs/api/taxonomies.md)
 4. [Metadados](./docs/metadados.md)
 5. [Glossário](./docs/glossario.md)
-
-## Representação
-
-- [ ] Agent
-- [ ] Object
-- [ ] Set
-- [ ] Event
-- [ ] VisualWork
-- [ ] TextualWork
-- [ ] DigitalObject
-
----
