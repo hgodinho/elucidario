@@ -1,3 +1,3 @@
 # Elucidário.art monorepo
 
-Gestão e divulgação de acervos museológicos
+Gestão e divulgação de acervos museológicos.

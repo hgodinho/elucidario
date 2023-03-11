@@ -25,10 +25,10 @@
         "scope": "markdown",
         "prefix": "metadata",
         "body": [
-            "## `${1:header}`\n",
+            "### `${1:header}`\n",
             "[^topo](#${2:topo})\n",
-            "> tipo `${3|string,integer,number,array,object|}` usado em `${4:object}`\n",
-            "**Descrição:** ${5:description}\n",
+            "> tipo `${3|string,integer,number,array,object|}` usado em `${4:nome}`\n",
+            "**Descrição:** ${5:descrição}\n",
             "| name | label | type | public | requirement | extra | map: linked-art | map: crm |",
             "| --- | --- | --- | --- | --- | --- | --- | --- |",
             "| ${6:name} | ${7:label} | ${8:type} | ${9|true,false|} | ${10|true,false|} | ${11:extra} | ${12:linked-art} | ${13:crm} |",

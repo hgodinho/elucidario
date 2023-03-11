@@ -23,5 +23,6 @@
         "**/.git": false
     },
     "markdownlint.run": "onSave",
-    "markdown.occurrencesHighlight.enabled": true
+    "markdown.occurrencesHighlight.enabled": true,
+    "markdown.extension.toc.orderedList": false
 }
