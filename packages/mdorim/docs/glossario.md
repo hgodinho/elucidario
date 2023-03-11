@@ -28,7 +28,7 @@ Lista de termos utilizados no MDORIM e suas definições.
 - [`number`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um número com casas decimais (0.3; 1.5; 3.141592653589793238...)
 - [`string`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um fragmento de texto
 - [`object`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - pares de chave e valor
-- [`array`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - lista de valores. Uma outra forma de representar arrays seria utilizando o nome do metadado seguido de colchetes aberto e fechado, por exemplo: [`Denominacao[]`](./metadados.md/#denominacoes), [`Data[]`](./metadados.md#datas), [`Programa[]`](./metadados.md#programas)
+- [`array`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - lista de valores. Uma outra forma de representar arrays seria utilizando o nome do metadado seguido de colchetes aberto e fechado, por exemplo: [ObjectRef[]](./api/entities/object.md#objectref)
 
 ---
 
@@ -50,7 +50,7 @@ Lista de termos utilizados no MDORIM e suas definições.
 
 - http - *Hyper Text Transfer Protocol* - Protocolo para transferências de informação hipermídia entre sistemas
   - https - Versão com criptografia de ponta a ponta, o `s` representa `security`
-- URI - *Uniform Resource Identifer* - Identificado único de um recurso utilizado por sistemas web
+- URI - *Uniform Resource Identifer* - Identificador único de um recurso utilizado por sistemas web
   - URL - *Uniform Resource Locator* - Extensão da URI que além de identificador única também representa um endereço acessível na web
 
 ---
