@@ -24,5 +24,8 @@
     },
     "markdownlint.run": "onSave",
     "markdown.occurrencesHighlight.enabled": true,
+    "markdownlint.config": {
+        "md033": false
+    },
     "markdown.extension.toc.orderedList": false
 }
