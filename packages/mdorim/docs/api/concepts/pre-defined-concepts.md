@@ -45,7 +45,7 @@
 
 ## `AgentsByType`
 
-- Agent
-- Person
-- Organization
-- Group
+- [Agent](http://xmlns.com/foaf/0.1/#term_Agent) | [crm:E39_Actor](https://cidoc-crm.org/html/cidoc_crm_v7.1.2.html#E39)
+- [Person](http://xmlns.com/foaf/0.1/#term_Person) | [crm:E21 Person](https://cidoc-crm.org/html/cidoc_crm_v7.1.2.html#E21)
+- [Organization](http://xmlns.com/foaf/0.1/#term_Organization) | [crm:E74 Group](https://cidoc-crm.org/html/cidoc_crm_v7.1.2.html#E74)
+- [Group](http://xmlns.com/foaf/0.1/#term_Organization) | [crm:E74 Group](https://cidoc-crm.org/html/cidoc_crm_v7.1.2.html#E74)
