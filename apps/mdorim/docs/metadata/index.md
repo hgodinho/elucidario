@@ -17,7 +17,7 @@ status:
 
 :::note
 
-tipo `number` usado em [`Entidades`](../entities).
+tipo `number` usado em [`Entidades`](/entities).
 
 :::
 
@@ -63,15 +63,15 @@ status:
 
 :::note
 
-tipo `string` usado em [`Agente`](../entities/agent)
+tipo `string` usado em [`Agente`](/entities/agent)
 
 :::
 
-**Descrição:** Define o tipo de agente. O tipo de agente DEVE ser um dos conceitos pré-definidos em [`AgentsByType`](../concepts#agentsbytype).
+**Descrição:** Define o tipo de agente. O tipo de agente DEVE ser um dos conceitos pré-definidos em [`AgentsByType`](/concepts#agentsbytype).
 
 | name      | label          | type   | public | requirement | extra                                              |
 | --------- | -------------- | ------ | ------ | ----------- | -------------------------------------------------- |
-| agentType | Tipo de agente | string | true   | REQUER      | oneOf\<[`AgentsByType`](../concepts#agentsbytype)> |
+| agentType | Tipo de agente | string | true   | REQUER      | oneOf\<[`AgentsByType`](/concepts#agentsbytype)> |
 
 ---
 
@@ -86,13 +86,13 @@ status:
 
 :::note
 
-tipo anyOf< [`AgentRef`](../entities/agent#agentref) | [`ConceptRef`](../entities/concept#conceptref) | [`ObjectRef`](../entities/object#objectref) | [`DigitalObjectRef`](../entities/digital-object#digitalobjectref) | [`TextualObjectRef`](../entities/textual-object#textualobjectref) | [`PlaceRef`](../entities/place#placeref) | [`SetRef`](../entities/set#setref) | [`EventRef`](../entities/event#eventref) > usado em [`AttributedBy`](#attributedby).
+tipo anyOf< [`AgentRef`](/entities/agent#agentref) | [`ConceptRef`](/entities/concept#conceptref) | [`ObjectRef`](/entities/object#objectref) | [`DigitalObjectRef`](/entities/digital-object#digitalobjectref) | [`TextualObjectRef`](/entities/textual-object#textualobjectref) | [`PlaceRef`](/entities/place#placeref) | [`SetRef`](/entities/set#setref) | [`EventRef`](/entities/event#eventref) > usado em [`AttributedBy`](#attributedby).
 
 :::
 
 :::
 
-**Descrição:** Define o objeto que foi atribuído. O objeto DEVE ser uma das referências de entidades definidas em [`Entities`](../entities).
+**Descrição:** Define o objeto que foi atribuído. O objeto DEVE ser uma das referências de entidades definidas em [`Entities`](/entities).
 
 ---
 
@@ -107,7 +107,7 @@ status:
 
 :::note
 
-tipo `object` extende [GenericBase](../entities/generic#genericbase), usado em `Entities`
+tipo `object` extende [GenericBase](/entities/generic#genericbase), usado em `Entities`
 
 :::
 
@@ -133,11 +133,11 @@ status:
 
 :::note
 
-tipo [`ConceptRef[]`](../entities/concept#conceptref) usado em [`Concept`](../entities/concept#concept).
+tipo [`ConceptRef[]`](/entities/concept#conceptref) usado em [`Concept`](/entities/concept#concept).
 
 :::
 
-**Descrição:** Define o conceito mais amplo que o conceito atual. Se definido, DEVE ser uma ou mais referências [`ConceptRef`](../entities/concept#conceptref).
+**Descrição:** Define o conceito mais amplo que o conceito atual. Se definido, DEVE ser uma ou mais referências [`ConceptRef`](/entities/concept#conceptref).
 
 ---
 
@@ -152,11 +152,11 @@ status:
 
 :::note
 
-tipo [`AgentRef[]`](../entities/agent#agentref) usado em [`AttributedBy`](#attributedby) e [`Event`](../entities/event#event). Igual a [crm:P14_carried_out_by](http://cidoc-crm.org/cidoc-crm/7.1.2/P14_carried_out_by). Igual a [ld:carried_out_by](https://linked.art/api/1.0/shared/assignment/).
+tipo [`AgentRef[]`](/entities/agent#agentref) usado em [`AttributedBy`](#attributedby) e [`Event`](/entities/event#event). Igual a [crm:P14_carried_out_by](http://cidoc-crm.org/cidoc-crm/7.1.2/P14_carried_out_by). Igual a [ld:carried_out_by](https://linked.art/api/1.0/shared/assignment/).
 
 :::
 
-**Descrição**: Define o agente que realizou a atribuição. Se definido, DEVE ser uma ou mais referências [`AgentRef`](../entities/agent#agentref).
+**Descrição**: Define o agente que realizou a atribuição. Se definido, DEVE ser uma ou mais referências [`AgentRef`](/entities/agent#agentref).
 
 ---
 
@@ -171,11 +171,11 @@ status:
 
 :::note
 
-tipo [`ConceptRef[]`](../entities/concept#conceptref) usado em `All`
+tipo [`ConceptRef[]`](/entities/concept#conceptref) usado em `All`
 
 :::
 
-**Descrição:** Define o conceito que classifica o objeto. Se definido, DEVE ser uma ou mais referências [`ConceptRef`](../entities/concept#conceptref).
+**Descrição:** Define o conceito que classifica o objeto. Se definido, DEVE ser uma ou mais referências [`ConceptRef`](/entities/concept#conceptref).
 
 ---
 
@@ -194,7 +194,7 @@ tipo `object` usado em [Timespan](#timespan)
 
 :::
 
-**Descrição:** Define as dimensões de uma classe. Extende a [`GenericBase`](../entities/generic#genericbase), portanto possui todas suas propriedades e mais as descritas a seguir:
+**Descrição:** Define as dimensões de uma classe. Extende a [`GenericBase`](/entities/generic#genericbase), portanto possui todas suas propriedades e mais as descritas a seguir:
 
 | name        | label         | type                                        | public | requirement | extra                      | map: linked-art | map: crm                                                                |
 | ----------- | ------------- | ------------------------------------------- | ------ | ----------- | -------------------------- | --------------- | ----------------------------------------------------------------------- |
@@ -213,11 +213,11 @@ status:
 
 :::note
 
-tipo [ConceptRef](../entities/concept#conceptref) usado em [Dimension](#dimension)
+tipo [ConceptRef](/entities/concept#conceptref) usado em [Dimension](#dimension)
 
 :::
 
-**Descrição:** Define a unidade de medida de uma dimensão. DEVE ser uma referência [`ConceptRef`](../entities/concept#conceptref) que aponte para um conceito do tipo [`MeasurementUnit`](../entities/concept#measurementunit).
+**Descrição:** Define a unidade de medida de uma dimensão. DEVE ser uma referência [`ConceptRef`](/entities/concept#conceptref) que aponte para um conceito do tipo [`MeasurementUnit`](/entities/concept#measurementunit).
 
 #### `MeasurementActivity`
 
@@ -234,7 +234,7 @@ tipo `object` usado em [Dimension](#dimension)
 
 :::
 
-**Descrição:** Define a atividade de medição de uma dimensão. Extende a [`GenericBase`](../entities/generic#genericbase), portanto possui todas suas propriedades e mais as descritas a seguir:
+**Descrição:** Define a atividade de medição de uma dimensão. Extende a [`GenericBase`](/entities/generic#genericbase), portanto possui todas suas propriedades e mais as descritas a seguir:
 
 | name           | label              | type                          | public | requirement  | extra                      | map: linked-art   | map: crm                                                                          |
 | -------------- | ------------------ | ----------------------------- | ------ | ------------ | -------------------------- | ----------------- | --------------------------------------------------------------------------------- |
@@ -274,7 +274,7 @@ status:
 
 :::note
 
-tipo `object` extende [`GenericBase`](../entities/generic#genericbase) usado em [`Equivalent`](#equivalent) e [`IdentifiedBy`](#identifiedby) mesmo que [ExternalRef](https://linked.art/api/1.0/shared/identifier/)
+tipo `object` extende [`GenericBase`](/entities/generic#genericbase) usado em [`Equivalent`](#equivalent) e [`IdentifiedBy`](#identifiedby) mesmo que [ExternalRef](https://linked.art/api/1.0/shared/identifier/)
 
 :::
 
@@ -293,7 +293,7 @@ status:
 
 :::note
 
-tipo anyOf<[`Name`](#name)|[`Identifier`](#identifier)> usado em [`Entidades`](../entities)
+tipo anyOf<[`Name`](#name)|[`Identifier`](#identifier)> usado em [`Entidades`](/entities)
 
 :::
 
@@ -357,7 +357,7 @@ status:
 
 :::note
 
-tipo `object` usado em [`Criation`](../entities/concept#criation)
+tipo `object` usado em [`Criation`](/entities/concept#criation)
 
 :::
 
@@ -380,11 +380,11 @@ status:
 
 :::note
 
-tipo Array<[`AgentRef`](../entities/agent#agentref)|[`ConceptRef`](../entities/concept#conceptref) > usado em `Entidades`
+tipo Array<[`AgentRef`](/entities/agent#agentref)|[`ConceptRef`](/entities/concept#conceptref) > usado em `Entidades`
 
 :::
 
-**Descrição:** Membro de algum ou alguns [`Agent`](../entities/agent) com a propriedade [`AgentType`](#agenttype) definida como Group ou Organization no contexto de uso do `Agent`. No contexto de uso do `Concept` será membro de algum ou alguns [`ConceptCollection`](../entities/concept#conceptcollection) representado por um `ConceptRef`, uma vez o `ConceptCollection` extende o objeto principal `Concept`, logo também é um `Concept`.
+**Descrição:** Membro de algum ou alguns [`Agent`](/entities/agent) com a propriedade [`AgentType`](#agenttype) definida como Group ou Organization no contexto de uso do `Agent`. No contexto de uso do `Concept` será membro de algum ou alguns [`ConceptCollection`](/entities/concept#conceptcollection) representado por um `ConceptRef`, uma vez o `ConceptCollection` extende o objeto principal `Concept`, logo também é um `Concept`.
 
 ---
 
@@ -399,11 +399,11 @@ status:
 
 :::note
 
-tipo anyOf\< [`Statement`](#statement) | [TextualObjectRef](../entities/textual-object#textualobjectref) > usado em `Entities`
+tipo anyOf\< [`Statement`](#statement) | [TextualObjectRef](/entities/textual-object#textualobjectref) > usado em `Entities`
 
 :::
 
-**Descrição:** Referenciado por algum ou alguns [`Statement`](#statement) ou [`TextualObject`](../entities/textual-object) representado por um [`TextualObjectRef`](../entities/textual-object#textualobjectref).
+**Descrição:** Referenciado por algum ou alguns [`Statement`](#statement) ou [`TextualObject`](/entities/textual-object) representado por um [`TextualObjectRef`](/entities/textual-object#textualobjectref).
 
 #### `Statement`
 
@@ -425,9 +425,9 @@ tipo `object` usado em `object`
 | name          | label             | type                                                                         | public | requirement | extra                  | map: linked-art  | map: crm                                                                            |
 | ------------- | ----------------- | ---------------------------------------------------------------------------- | ------ | ----------- | ---------------------- | ---------------- | ----------------------------------------------------------------------------------- |
 | _type         | Tipo              | [\_type](#_type)                                                             | true   | REQUER      | const:LinguisticObject | ld:type          | [crm:P2_has_type](http://cidoc-crm.org/cidoc-crm/7.1.2/P2_has_type)                 |
-| classified_as | Classificado como | anyOf\<[DescriptionsByTypeConcepts](../concepts#descriptionsbytypeconcepts)> | true   | REQUER      |                        | ld:classified_as | [crm:P2_has_type](http://cidoc-crm.org/cidoc-crm/7.1.2/P2_has_type)                 |
+| classified_as | Classificado como | anyOf\<[DescriptionsByTypeConcepts](/concepts#descriptionsbytypeconcepts)> | true   | REQUER      |                        | ld:classified_as | [crm:P2_has_type](http://cidoc-crm.org/cidoc-crm/7.1.2/P2_has_type)                 |
 | content       | Conteúdo          | string                                                                       | true   | REQUER      |                        | ld:content       | [crm:P1_is_identified_by](http://cidoc-crm.org/cidoc-crm/7.1.2/P1_is_identified_by) |
-| language      | Idioma            | anyOf\<[LanguagesByTypeConcepts](../concepts#languagesbytypeconcepts)>       | true   | REQUER      |                        | ld:language      | [crm:P72_has_language](https://cidoc-crm.org/html/cidoc_crm_v7.1.2.html#P2)         |
+| language      | Idioma            | anyOf\<[LanguagesByTypeConcepts](/concepts#languagesbytypeconcepts)>       | true   | REQUER      |                        | ld:language      | [crm:P72_has_language](https://cidoc-crm.org/html/cidoc_crm_v7.1.2.html#P2)         |
 
 ---
 
@@ -446,7 +446,7 @@ tipo `object` usado em `many`
 
 :::
 
-**Descrição:** Utilizado como classe genérica para ser extendida em outras Refs como [ConceptRef](../entities/concept#conceptref), [AgentRef](../entities/agent#agentref), etc.
+**Descrição:** Utilizado como classe genérica para ser extendida em outras Refs como [ConceptRef](/entities/concept#conceptref), [AgentRef](/entities/agent#agentref), etc.
 
 | name    | label  | type                  | public | requirement | extra                           | map: linked-art | map: crm |
 | ------- | ------ | --------------------- | ------ | ----------- | ------------------------------- | --------------- | -------- |
@@ -490,7 +490,7 @@ status:
 
 :::note
 
-tipo anyOf\<[`TextualObjectRef`](../entities/textual-object#textualobjectref) | [`VisualObjectRef`](../entities/visual-object#visualobjectref)> usado em `Entities`
+tipo anyOf\<[`TextualObjectRef`](/entities/textual-object#textualobjectref) | [`VisualObjectRef`](/entities/visual-object#visualobjectref)> usado em `Entities`
 
 :::
 
@@ -513,7 +513,7 @@ tipo `object` usado em [`AttributedBy`](#attributedby)
 
 :::
 
-**Descrição:** Descreve intervalos de tempos, é RECOMENDÁVEL classificar o intervalo com algum [`Concept`](../entities/concept) criado com base na faceta [Estilos e Períodos](https://www.getty.edu/vow/AATHierarchy?find=period&logic=AND&note=&subjectid=300264088) do Getty AAT ou algum outro vocabulário com faceta temporal. Extende a [`GenericBase`](../entities/generic#genericbase), portanto possui todos suas propriedades e mais as propriedades a seguir:
+**Descrição:** Descreve intervalos de tempos, é RECOMENDÁVEL classificar o intervalo com algum [`Concept`](/entities/concept) criado com base na faceta [Estilos e Períodos](https://www.getty.edu/vow/AATHierarchy?find=period&logic=AND&note=&subjectid=300264088) do Getty AAT ou algum outro vocabulário com faceta temporal. Extende a [`GenericBase`](/entities/generic#genericbase), portanto possui todos suas propriedades e mais as propriedades a seguir:
 
 | name               | label            | type                    | public | requirement  | extra           | map: linked-art       | map: crm                                                                                    |
 | ------------------ | ---------------- | ----------------------- | ------ | ------------ | --------------- | --------------------- | ------------------------------------------------------------------------------------------- |
@@ -539,7 +539,7 @@ status:
 
 :::note
 
-tipo `string|array` usado em [`Entities`](../entities)
+tipo `string|array` usado em [`Entities`](/entities)
 
 :::
 

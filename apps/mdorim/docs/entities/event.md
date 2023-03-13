@@ -8,7 +8,7 @@ descrever
 
 ### `EventRef`
 
-> tipo [`Ref`](/../metadata#ref) usado em `many`
+> tipo [`Ref`](../metadata#ref) usado em `many`
 
 **Descrição:** Utilizado como objeto visual embutido em outras entidades.
 

@@ -18,7 +18,7 @@ Lista de termos utilizados no MDORIM e suas definições.
 - [`number`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um número com casas decimais (0.3; 1.5; 3.141592653589793238...)
 - [`string`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - tipo de dado primitivo, representa um fragmento de texto
 - [`object`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - pares de chave e valor
-- [`array`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - lista de valores. Uma outra forma de representar arrays seria utilizando o nome do metadado seguido de colchetes aberto e fechado, por exemplo: [ObjectRef[]](../entities/object#objectref)
+- [`array`](https://developer.wordpress.org/rest-api/extending-the-rest-api/schema/#primitive-types) - lista de valores. Uma outra forma de representar arrays seria utilizando o nome do metadado seguido de colchetes aberto e fechado, por exemplo: [ObjectRef[]](entities/object#objectref)
 
 ---
 
