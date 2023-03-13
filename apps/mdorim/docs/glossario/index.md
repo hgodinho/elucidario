@@ -4,6 +4,12 @@ id: glossario
 
 # Glossário
 
+:::caution Status da página
+
+- [x] em definição
+
+:::
+
 ## Descrição
 
 Lista de termos utilizados no MDORIM e suas definições.

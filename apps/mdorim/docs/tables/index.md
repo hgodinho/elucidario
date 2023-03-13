@@ -4,6 +4,12 @@ id: tables
 
 # Tabelas
 
+:::caution Status da página
+
+- [x] em definição
+
+:::
+
 ## Descrição
 
 Definição das tabelas

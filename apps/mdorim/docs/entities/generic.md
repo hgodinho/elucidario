@@ -2,6 +2,12 @@
 
 ## Descrição
 
+:::caution Status da página
+
+- [x] em definição
+
+:::
+
 Define uma base genérica para ser extendida pelas outras entidades, útil para definir propriedades iguais em entidades diferentes.
 
 ---
@@ -10,14 +16,11 @@ Define uma base genérica para ser extendida pelas outras entidades, útil para 
 
 ### `GenericBase`
 
-status:
+:::info
 
-- [x] definido
-- [x] revisado
-- [ ] testado
-- [ ] exemplo
-  
-> tipo `object` usado em `Entities`
+tipo `object` usado em `Entities`
+
+:::
 
 **Descrição:** Objeto genérico, define as propriedades comuns a todas as entidades e propriedades complexas.
 
@@ -29,18 +32,24 @@ status:
 | classified_as  | Classificado como | [ClassifiedAs](../metadata#classifiedas) | true   | OPCIONAL    |                                                         | classified_as   | [crm:P2_has_type](http://cidoc-crm.org/cidoc-crm/7.1.2/P2_has_type)                 |
 | referred_to_by | Referenciado por  | [ReferredToBy](../metadata#referredtoby) | true   | OPCIONAL    |                                                         | referred_to_by  | [crm:P67_refers_to](http://cidoc-crm.org/cidoc-crm/7.1.2/P67_refers_to)             |
 
----
-
-### `EntityGenericBase`
-
-status:
+:::caution Status
 
 - [x] definido
 - [x] revisado
 - [ ] testado
 - [ ] exemplo
 
-> tipo `object` usado em `Entities`
+:::
+
+---
+
+### `EntityGenericBase`
+
+:::info
+
+tipo `object` usado em `Entities`
+
+:::
 
 **Descrição:** Objeto genérico de uma entidade, define as propriedades comuns a todas as entidades principais. Extende a `GenericBase`, portanto possui todas suas propriedades e mais as definidas a seguir.
 
@@ -48,3 +57,12 @@ status:
 | ---- | ----- | ---------------------- | ------ | ----------- | ----------------------------------- | ------- |
 | ID   | ID    | [ID](../metadata#ID)   | true   | REQUER      | criado automaticamente pelo sistema | wp:ID   |
 | URI  | URI   | [URI](../metadata#uri) | true   | REQUER      | criado automaticamente pelo sistema | wp:URI  |
+
+:::caution Status
+
+- [x] definido
+- [x] revisado
+- [ ] testado
+- [ ] exemplo
+
+:::

@@ -4,6 +4,12 @@ id: metadata
 
 # Metadata
 
+:::caution Status da página
+
+- [x] em definição
+
+:::
+
 ## MDORIM
 
 ### `ID`

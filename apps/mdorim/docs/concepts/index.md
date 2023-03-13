@@ -4,6 +4,12 @@ id: pre_defined
 
 # Conceitos pré-definidos
 
+:::caution Status da página
+
+- [x] em definição
+
+:::
+
 ## `<nomes por tipo>`
 
 **Descrição:** Tipos de nome

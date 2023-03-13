@@ -34,7 +34,7 @@ Este documento é dividido em 5 partes principais:
 
 Cada parte contém definições de classes e propriedades, além de exemplos de uso. Em cada definição de classe deste documento é possível encontrar um resumo objetivo da classe, uma descrição mais detalhada, além de exemplos de uso.
 
-O resumo objeto de cada classe é apresentado da seguinte forma:
+O resumo objetivo de cada classe é apresentado da seguinte forma:
 
 :::info
 
@@ -57,4 +57,6 @@ Em @to-do listamos o andamento do denvolvimento como um todo.
 
 ### Como contribuir?
 
-Para contribuir com o desenvolvimento do MDORIM, basta abrir um [issue](https://github.com/hgodinho/elucidario/issues)
+Para contribuir com o desenvolvimento do MDORIM, basta abrir uma [issue](https://github.com/hgodinho/elucidario/issues) e selecionar uma das opções disponíveis:
+
+![issues](../static/img/issues.png)
