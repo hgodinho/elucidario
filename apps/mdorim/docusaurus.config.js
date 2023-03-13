@@ -8,7 +8,8 @@ const config = {
     title: 'MDORIM',
     tagline: 'Modelo de Dados para Organização e Representação da Informação Museológica',
     favicon: 'img/favicon.ico',
-
+    trailingSlash: false,
+    deploymentBranch: 'gh-pages',
     // Set the production url of your site here
     url: 'https://your-docusaurus-test-site.com',
     // Set the /<baseUrl>/ pathname under which your site is served
