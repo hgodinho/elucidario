@@ -5,9 +5,7 @@ slug: /
 
 # MDORIM
 
-Modelo de Dados para Organização e Representação da Informação Museológica
-
-Baseado em [Linked-Art](https://linked.art/)
+:::note Observação no desenvolvimento
 
 Precisa separar em dois tipos:
 
@@ -16,59 +14,47 @@ Precisa separar em dois tipos:
 2. Para retorno na API
     > O retorno da API traz consigo todas as referências resolvidas em objetos completos (entidades ou taxonomias).
 
-Menu
+:::
 
-1. [Tabelas](tables)
-2. [Entidades](entities)
-3. [Metadados](metadata)
-4. [Glossário](glossario)
+## Descrição
 
----
+Modelo de Dados para Organização e Representação da Informação Museológica
 
-## A fazer
+Baseado em [Linked-Art](https://linked.art/) e [SPECTRUM](https://collectionstrust.org.uk/spectrum/)
 
-### Definições
+### Como ler este documento?
 
-- [ ] Tabelas
-- [ ] Entidades
-  - [ ] User
-  - [x] Concept
-  - [x] Agent
-  - [ ] Object
-  - [ ] Set
-  - [ ] Event
-  - [ ] VisualObject
-  - [ ] TextualObject
-  - [ ] DigitalObject
-  - [ ] Places
-- [ ] Taxonomias - ver se vamos precisar de fato usar as taxonomias do wp, uma vez que iremos definir nossas próprias tabelas para armazenar as entidades, podemos criar tabelas para armazenar as relações entre as entidades do MDORIM, ao invés de usar o padrão wp
-- [ ] Metadados
-- [ ] Fluxo SPECTRUM
-  - [ ] 9 procedimentos principais
-    - [ ] ObjectEntry
-    - [ ] AquisitionAcessioning
-    - [ ] MovementControl
-    - [ ] Inventory
-    - [ ] Cataloguing
-    - [ ] ObjectExit
-    - [ ] LoansIn
-    - [ ] LoansOut
-    - [ ] DocumentationPlanning
-  - [ ] outros procedimentos?
-    - [ ] conditional checking and technical assessment
-    - [ ] collections care and conservation
-    - [ ] insurance and indemnity
-    - [ ] damage and losss
-    - [ ] deacessioning and disposal
-    - [ ] rights management
-    - [ ] reproduction
-    - [ ] collections review
-    - [ ] audit
+Este documento é dividido em 5 partes principais:
 
-### Revisão
+1. Tabelas - Definição das tabelas criadas no wordpress para funcionamento adequado do Elucidário e do MDORIM;
+2. Entidades - Classes principais de conteúdo, representam as entidades utilizadas no modelo;
+3. Metadata - Classes secundárias, definem os metadados utilizados pelas classes em sua representação;
+4. Conceitos pré-definidos - utilizados pelo modelo;
+5. Glossário - definição de termos utilizados no modelo;
 
-- [ ] Início
-- [ ] Tabelas
-- [ ] Entidades
-- [ ] Fluxo SPECTRUM
-- [ ] Glossário
+Cada parte contém definições de classes e propriedades, além de exemplos de uso. Em cada definição de classe deste documento é possível encontrar um resumo objetivo da classe, uma descrição mais detalhada, além de exemplos de uso.
+
+O resumo objeto de cada classe é apresentado da seguinte forma:
+
+:::info
+
+tipo [`ConceptRef[]`](/entities/concept#conceptref) usado em [`Concept`](/entities/concept#concept).
+
+:::
+
+O documento também conta com informações sobre o status de desenvolvimento de cada classe que auxilia no andamento do desenvolvimento e devem ser removidas ao final, por exemplo:
+
+:::caution Status
+
+- [ ] definido
+- [ ] revisado
+- [ ] testado
+- [ ] exemplo
+
+:::
+
+Em @to-do listamos o andamento do denvolvimento como um todo.
+
+### Como contribuir?
+
+Para contribuir com o desenvolvimento do MDORIM, basta abrir um [issue](https://github.com/hgodinho/elucidario/issues)

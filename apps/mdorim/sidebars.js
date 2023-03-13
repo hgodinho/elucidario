@@ -30,7 +30,8 @@ const sidebars = {
             type: 'doc',
             label: 'Glossário',
             id: 'glossario/glossario'
-        }
+        },
+        'todo/to-do',
     ]
 };
 
