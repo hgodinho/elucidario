@@ -1,45 +1,45 @@
 name: BUG
-description: Descrição e algum bug encontrado
+description: Descrição de algum bug encontrado
 title: "[Bug]: "
 labels: ["bug"]
 assignees:
-  - octocat
+    - hgodinho
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Preencha o formulário abaixo para descrever um bug.
-  - type: input
-    id: contact
-    attributes:
-      label: Contato
-      description: Como podemos entrar em contato para mais informações?
-      placeholder: ex. email@example.com
-    validations:
-      required: true
-  - type: dropdown
-    id: page
-    attributes:
-      label: Página
-      description: Em qual página você encontrou um problema?
-      options:
-        - Tabelas
-        - Entidades
-        - Metadata
-        - Conceitos pré-definidos
-        - Glossário
-    validations:
-      required: true
-  - type: input
-    id: topic
-    attributes:
-      label: Tópico
-      description: Em qual tópico da página você encontrou problemas?
-      placeholder: ex. AgentType
-  - type: textarea
-    id: what-happened
-    attributes:
-      label: O que aconteceu?
-      value: "..."
-    validations:
-      required: true
+    - type: markdown
+        attributes:
+            value: |
+                Preencha o formulário abaixo para descrever um bug.
+    - type: input
+        id: contact
+        attributes:
+            label: Contato
+            description: Como podemos entrar em contato para mais informações?
+            placeholder: ex. email@example.com
+        validations:
+            required: true
+    - type: dropdown
+        id: page
+        attributes:
+            label: Página
+            description: Em qual página você encontrou um problema?
+            options:
+                - Tabelas
+                - Entidades
+                - Metadata
+                - Conceitos pré-definidos
+                - Glossário
+        validations:
+            required: true
+    - type: input
+        id: topic
+        attributes:
+            label: Tópico
+            description: Em qual tópico da página você encontrou problemas?
+            placeholder: ex. AgentType
+    - type: textarea
+        id: what-happened
+        attributes:
+            label: O que aconteceu?
+            value: "..."
+        validations:
+            required: true

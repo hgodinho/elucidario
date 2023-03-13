@@ -21,7 +21,7 @@ jobs:
         steps:
             - uses: actions/checkout@master
             - uses: redkubes/docusaurus-deploy-action@v1.2
-              with:
+            with:
                 source-folder: apps/mdorim
                 git-user: hgodinho
                 git-password: ${{ secrets.GITHUB_TOKEN }}
