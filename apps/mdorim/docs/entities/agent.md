@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Agente criador/modificador de algum [Object](object), [Set](set), [Event](event), [VisualObject](visual-object), [TextualObject](textual-object), [DigitalObject](digital-object), [Place](place). Diferentemente do Linked Art em que são definidas duas entidades para agentes: [`Person`](https://linked.art/api/1.0/schema_docs/person/) e [`Group`](https://linked.art/api/1.0/schema_docs/group/), e a única diferença entre elas são os metadados que representam o nascimento e morte de uma `Person` ou a criação e encerramento de um `Group`, o MDORIM sintetiza esses metadados em somente um para criação `Begin` e um para término `End` que pertencem a somente uma entidade denominada `Agent` que possui uma propriedade `AgentType` que desambígua o tipo de agente classificando-o como um dos [`<AgentsByType>`](../concepts/pre-defined-concepts#agentsbytype) nos conceitos pré-definidos.
+Agente criador/modificador de algum [Object](object), [Set](set), [Event](event), [VisualObject](visual-object), [TextualObject](textual-object), [DigitalObject](digital-object), [Place](place). Diferentemente do Linked Art em que são definidas duas entidades para agentes: [`Person`](https://linked.art/api/1.0/schema_docs/person/) e [`Group`](https://linked.art/api/1.0/schema_docs/group/), e a única diferença entre elas são os metadados que representam o nascimento e morte de uma `Person` ou a criação e encerramento de um `Group`, o MDORIM sintetiza esses metadados em somente um para criação `Begin` e um para término `End` que pertencem a somente uma entidade denominada `Agent` que possui uma propriedade `AgentType` que desambígua o tipo de agente classificando-o como um dos [`<AgentsByType>`](../concepts#agentsbytype) nos conceitos pré-definidos.
 
 ## Classes
 

@@ -67,11 +67,11 @@ tipo `string` usado em [`Agente`](../entities/agent)
 
 :::
 
-**Descrição:** Define o tipo de agente. O tipo de agente DEVE ser um dos conceitos pré-definidos em [`AgentsByType`](../concepts/pre-defined-concepts#agentsbytype).
+**Descrição:** Define o tipo de agente. O tipo de agente DEVE ser um dos conceitos pré-definidos em [`AgentsByType`](../concepts#agentsbytype).
 
-| name      | label          | type   | public | requirement | extra                                                                   |
-| --------- | -------------- | ------ | ------ | ----------- | ----------------------------------------------------------------------- |
-| agentType | Tipo de agente | string | true   | REQUER      | oneOf\<[`AgentsByType`](../concepts/pre-defined-concepts#agentsbytype)> |
+| name      | label          | type   | public | requirement | extra                                              |
+| --------- | -------------- | ------ | ------ | ----------- | -------------------------------------------------- |
+| agentType | Tipo de agente | string | true   | REQUER      | oneOf\<[`AgentsByType`](../concepts#agentsbytype)> |
 
 ---
 
@@ -422,12 +422,12 @@ tipo `object` usado em `object`
 
 **Descrição:** Representa uma declaração de alguma entidade.
 
-| name          | label             | type                                                                                              | public | requirement | extra                  | map: linked-art  | map: crm                                                                            |
-| ------------- | ----------------- | ------------------------------------------------------------------------------------------------- | ------ | ----------- | ---------------------- | ---------------- | ----------------------------------------------------------------------------------- |
-| _type         | Tipo              | [\_type](#_type)                                                                                  | true   | REQUER      | const:LinguisticObject | ld:type          | [crm:P2_has_type](http://cidoc-crm.org/cidoc-crm/7.1.2/P2_has_type)                 |
-| classified_as | Classificado como | anyOf\<[DescriptionsByTypeConcepts](../concepts/pre-defined-concepts#descriptionsbytypeconcepts)> | true   | REQUER      |                        | ld:classified_as | [crm:P2_has_type](http://cidoc-crm.org/cidoc-crm/7.1.2/P2_has_type)                 |
-| content       | Conteúdo          | string                                                                                            | true   | REQUER      |                        | ld:content       | [crm:P1_is_identified_by](http://cidoc-crm.org/cidoc-crm/7.1.2/P1_is_identified_by) |
-| language      | Idioma            | anyOf\<[LanguagesByTypeConcepts](../concepts/pre-defined-concepts#languagesbytypeconcepts)>       | true   | REQUER      |                        | ld:language      | [crm:P72_has_language](https://cidoc-crm.org/html/cidoc_crm_v7.1.2.html#P2)         |
+| name          | label             | type                                                                         | public | requirement | extra                  | map: linked-art  | map: crm                                                                            |
+| ------------- | ----------------- | ---------------------------------------------------------------------------- | ------ | ----------- | ---------------------- | ---------------- | ----------------------------------------------------------------------------------- |
+| _type         | Tipo              | [\_type](#_type)                                                             | true   | REQUER      | const:LinguisticObject | ld:type          | [crm:P2_has_type](http://cidoc-crm.org/cidoc-crm/7.1.2/P2_has_type)                 |
+| classified_as | Classificado como | anyOf\<[DescriptionsByTypeConcepts](../concepts#descriptionsbytypeconcepts)> | true   | REQUER      |                        | ld:classified_as | [crm:P2_has_type](http://cidoc-crm.org/cidoc-crm/7.1.2/P2_has_type)                 |
+| content       | Conteúdo          | string                                                                       | true   | REQUER      |                        | ld:content       | [crm:P1_is_identified_by](http://cidoc-crm.org/cidoc-crm/7.1.2/P1_is_identified_by) |
+| language      | Idioma            | anyOf\<[LanguagesByTypeConcepts](../concepts#languagesbytypeconcepts)>       | true   | REQUER      |                        | ld:language      | [crm:P72_has_language](https://cidoc-crm.org/html/cidoc_crm_v7.1.2.html#P2)         |
 
 ---
 
@@ -490,7 +490,7 @@ status:
 
 :::note
 
-tipo anyOf\<[`TextualObjectRef`](api/entities/textual-object#textualobjectref) | [`VisualObjectRef`](../entities/visual-object#visualobjectref)> usado em `Entities`
+tipo anyOf\<[`TextualObjectRef`](../entities/textual-object#textualobjectref) | [`VisualObjectRef`](../entities/visual-object#visualobjectref)> usado em `Entities`
 
 :::
 

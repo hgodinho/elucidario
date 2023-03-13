@@ -14,4 +14,4 @@ id: entities
 8. [VisualObject](visual-object)
 9. [TextualObject](textual-object)
 10. [DigitalObject](digital-object)
-11. [Places](places)
+11. [Place](place)
