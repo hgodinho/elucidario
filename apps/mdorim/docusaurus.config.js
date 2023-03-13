@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
     title: 'MDORIM',
     tagline: 'Modelo de Dados para Organização e Representação da Informação Museológica',
-    favicon: 'img/favicon.ico',
+    favicon: 'img/elucidario.ico',
     trailingSlash: false,
     deploymentBranch: 'gh-pages',
     // Set the production url of your site here
