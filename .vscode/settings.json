@@ -27,5 +27,15 @@
     "markdownlint.config": {
         "md033": false
     },
-    "markdown.extension.toc.orderedList": false
+    "markdown.extension.toc.orderedList": false,
+    "[json]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace",
+        "gitlens.codeLens.scopes": [
+            "document"
+        ],
+        "editor.wordWrap": "on"
+    }
 }
