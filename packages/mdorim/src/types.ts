@@ -13,11 +13,17 @@ export type Mapping = {
 
 export type BaseSchema<T extends DataTypes> = {
     type: T;
-    title: string;
     description: string;
+    title?: string;
     map?: Mapping;
     [x: string]: unknown;
 };
+
+export type Metadata = {
+    '$schema': string;
+    description: string;
+    definitions: Record<string, BaseSchema<DataTypes>>
+}
 
 export type Schema = BaseSchema<DataTypes>;
 
@@ -41,8 +47,8 @@ export type MainEntity = {
 };
 
 export type Page = {
-    "@type": "WebPage";
+    "@type": "WebPage" extends string ? "WebPage" : string;
     title: string;
     description: string;
-    mainEntity?: MainEntity;
+    mainEntity: MainEntity;
 };

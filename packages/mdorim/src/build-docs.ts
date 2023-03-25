@@ -1,17 +1,20 @@
-const path = require("path");
-const fs = require("fs");
-const mustache = require("mustache");
+import path from "path";
+import fs from "fs";
+import mustache from "mustache";
 
-import type { Page, Schema } from "./types";
-import { pageTemplate } from "./json/templates/entity-page";
+import { merge } from "lodash";
 
-import * as pages from "./json/pages";
-import * as schemas from "./json/schemas";
+import type { Page, Schema, Metadata } from "./types";
+import { metadataTemplate } from "./templates";
+
+import * as definitions from "./metadata";
+import * as pages from "./pages";
+import * as schemas from "./schemas";
 
 export type CreateMardownPageOptions = {
     name: string;
     page: Page;
-    schema: Schema;
+    metadata: Metadata;
     template: string;
     outputDir: string;
 };
@@ -19,17 +22,15 @@ export type CreateMardownPageOptions = {
 function createMarkdownPage({
     name,
     page,
-    schema,
+    metadata,
     template,
     outputDir,
 }: CreateMardownPageOptions) {
-
     // page.mainEntity.ref.definitions = Object.entries(schema).map(([key, schema]) => {
     //     console.log({ key, schema });
     //     return schema;
     // });
     // const markdown = mustache.render(template, pageData);
-
     // console.log({ meta, pageData, schemaData, template, markdown });
     // const outputFile = path.join(outputDir, `${schemaData.title}.md`);
     // fs.writeFileSync(outputFile, markdown);
@@ -39,45 +40,49 @@ const pagesDir = "./json/pages";
 const schemasDir = "./json/schemas";
 const metadataFile = "./json/metadata/definitions.json";
 const templatesDir = "./json/templates";
-const outputDir = "../docs";
+const outputDir = "./docs";
 
-Object.entries(pages).map(([key, page]) => {
-    const schemaRef = page.mainEntity['$ref']
-    const schema = fs.readFileSync(path.join( __dirname, 'json/', schemaRef), 'utf8');
-    console.log({ key, page, schemaRef, schema });
+export const definePage = (page: object, schema: object, metadata: object) => {
+    
+    const newMetadata = metadata as Metadata;
 
-});
+    const newSchema = schema as Schema;
+    
+    const newPage = merge({}, page, {
+        mainEntity: {
+            ref: newSchema,
+        },
+    }) as Page;
 
-// fs.mkdirSync(outputDir, { recursive: true });
+    if ("$ref" in newPage.mainEntity) {
+        delete newPage.mainEntity["$ref"];
+    }
 
-// fs.readdirSync(pagesDir).forEach((filename: string) => {
-//     if (filename.endsWith(".json")) {
-//         console.log({ filename,  })
-//         const page = path.basename(filename, ".json");
-//         const name = path.basename(path.basename(page, ".page"), ".json");
-//         const schemaName = path.join(name + ".schema" + ".json");
-//         const pageFile = path.join(__dirname, pagesDir, filename);
-//         const schemaFile = path.join(__dirname, schemasDir, schemaName);
+    console.log({ newPage, newSchema, newMetadata });
 
-//         createMarkdownPage({
-//             name,
-//             pageFile,
-//             schemaFile,
-//             template: pageTemplate,
-//             outputDir,
-//         });
-//     }
+    return newPage;
+};
+
+console.log({ definitions: definitions.Definitions.definitions.ID})
+const metadataMarkdown = metadataTemplate(definitions.Definitions as Metadata);
+const outputFile = path.join( __dirname, '..', outputDir, `metadata.md`);
+console.log({ metadataMarkdown, outputFile})
+fs.writeFileSync(outputFile, metadataMarkdown);
+
+// Object.entries(pages).map(([key, page]) => {
+//     const schemaRef = page.mainEntity["$ref"];
+//     const schema = JSON.parse(
+//         fs.readFileSync(path.join(__dirname, "json/", schemaRef), "utf8")
+//     );
+
+//     const pageData = definePage(page, schema, definitions.Definitions);
+
+//     // createMarkdownPage({
+//     //     name: key,
+//     //     page: pageData,
+//     //     metadata: definitions.Definitions as Metadata,
+//     //     template: pageTemplate,
+//     //     outputDir,
+//     // });
 // });
 
-// function getPropertyData(schema: Schema, metadata: any): PropertyData[] {
-//     const properties = schema.properties;
-//     if (!properties) {
-//         return [];
-//     }
-//     return Object.entries(properties).map(([name, property]) => {
-//         const type = property.type;
-//         const description = property.description;
-//         const link = metadata.definitions[type].map["schema.org"];
-//         return { name, type, description, link };
-//     });
-// }

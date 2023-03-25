@@ -1,21 +1,28 @@
 {
     "name": "@elucidario/mdorim",
     "version": "0.1.0",
-    "main": "index.js",
+    "main": "index.ts",
     "license": "MIT",
     "author": {
         "name": "Henrique Godinho",
         "email": "ola@hgod.in"
     },
     "dependencies": {
-        "@types/node": "^18.15.5",
-        "mustache": "^4.2.0",
-        "typescript": "^5.0.2"
+        "lodash": "^4.17.21",
+        "mustache": "^4.2.0"
     },
     "scripts": {
         "build": "tsc",
         "clean:docs": "rm -rf docs",
         "clean:dist": "rm -rf dist",
+        "dev": "tsx watch src/build-docs.ts",
         "build:docs": "yarn clean:docs && yarn build && node dist/build-docs.js"
+    },
+    "devDependencies": {
+        "@types/mustache": "^4.2.2",
+        "@types/lodash": "^4.14.191",
+        "@types/node": "^18.15.5",
+        "tsx": "^3.12.6",
+        "typescript": "^5.0.2"
     }
 }
