@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-    paths:
+    paths: 
       - '.github/workflows/deploy-mdorim.yml'
       - 'apps/mdorim-docs/**'
 
@@ -33,6 +33,7 @@ jobs:
           mkdir temp
           mv build/* temp/
           cd ..
+          shopt -s extglob
           rm -rf !(temp)
           cd $GITHUB_WORKSPACE
           mv temp/* .
