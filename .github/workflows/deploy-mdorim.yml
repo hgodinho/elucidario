@@ -8,8 +8,6 @@ on:
         paths: 
             - '.github/workflows/deploy-mdorim.yml'
             - 'apps/mdorim-docs/**'
-            # Review gh actions docs if you want to further define triggers, paths, etc
-            # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 jobs:
     deploy:
@@ -19,9 +17,19 @@ jobs:
             run:
                 working-directory: apps/mdorim-docs
         steps:
-            - uses: actions/checkout@master
-            - uses: redkubes/docusaurus-deploy-action@v1.2
+            - name: Checkout code
+              uses: actions/checkout@master
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
               with:
-                source-folder: apps/mdorim-docs
-                git-user: hgodinho
-                git-password: ${{ secrets.GITHUB_TOKEN }}
+                  node-version: '14.x'
+            - name: Install dependencies
+              run: yarn install
+            - name: Build
+              run: yarn build
+            - name: Create gh-pages branch
+              run: |
+                  git checkout -b gh-pages
+                  git add dist
+                  git commit -m "Build and deploy"
+                  git push --set-upstream origin gh-pages || exit 0
