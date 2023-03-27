@@ -7,7 +7,7 @@ on:
             - main
         paths: 
             - '.github/workflows/deploy-mdorim.yml'
-            - 'apps/mdorim/**'
+            - 'apps/mdorim-docs/**'
             # Review gh actions docs if you want to further define triggers, paths, etc
             # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
@@ -17,11 +17,11 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
             run:
-                working-directory: apps/mdorim
+                working-directory: apps/mdorim-docs
         steps:
             - uses: actions/checkout@master
             - uses: redkubes/docusaurus-deploy-action@v1.2
               with:
-                source-folder: apps/mdorim
+                source-folder: apps/mdorim-docs
                 git-user: hgodinho
                 git-password: ${{ secrets.GITHUB_TOKEN }}
