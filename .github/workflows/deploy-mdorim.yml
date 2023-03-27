@@ -11,33 +11,39 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: apps/mdorim-docs
     steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout main branch
+        uses: actions/checkout@v2
         with:
-          node-version: '16.x'
-      - name: Install dependencies
-        run: yarn install
-      - name: Build
-        run: yarn build
-      - name: Create gh-pages branch
+          ref: main
+      - name: Install Docusaurus dependencies
+        run: yarn install # replace with your package manager
+      - name: Build Docusaurus site
+        run: yarn build # replace with your build command
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: gh-pages
+      - name: Remove existing files
         run: |
-          git checkout -b gh-pages
-          mkdir temp
-          mv build/* temp/
-          cd ..
-          shopt -s extglob
-          rm -rf !(temp)
-          cd $GITHUB_WORKSPACE
-          mv temp/* .
-          rmdir temp
-          git add .
-          git commit -m "Build and deploy"
-          git push --set-upstream origin gh-pages || exit 0
+          cd gh-pages
+          git rm -rf .
+          git clean -fxd
+      - name: Copy files to gh-pages branch
+        run: |
+          cp -r build/* gh-pages/
+      - name: Commit changes
+        run: |
+          cd gh-pages
+          git config --global user.email "henrique@hgod.in"
+          git config --global user.name "hgodinho"
+          git add -A
+          git commit -m "Deploy Docusaurus site to GitHub Pages"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          force: true
