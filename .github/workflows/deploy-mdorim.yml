@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-    paths: 
+    paths:
       - '.github/workflows/deploy-mdorim.yml'
       - 'apps/mdorim-docs/**'
 
@@ -30,10 +30,13 @@ jobs:
       - name: Create gh-pages branch
         run: |
           git checkout -b gh-pages
-          git rm -rf .
-          git clean -ffxd
-          mv build/* .
-          rmdir build
+          mkdir temp
+          mv build/* temp/
+          cd ..
+          rm -rf *  # delete everything in the parent directory
+          cd $GITHUB_WORKSPACE
+          mv temp/* .
+          rmdir temp
           git add .
           git commit -m "Build and deploy"
           git push --set-upstream origin gh-pages || exit 0
