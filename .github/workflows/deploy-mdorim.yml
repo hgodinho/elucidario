@@ -33,7 +33,7 @@ jobs:
           mkdir temp
           mv build/* temp/
           cd ..
-          rm -rf *  # delete everything in the parent directory
+          rm -rf !(temp)
           cd $GITHUB_WORKSPACE
           mv temp/* .
           rmdir temp
