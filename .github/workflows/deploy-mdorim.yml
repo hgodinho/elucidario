@@ -1,35 +1,39 @@
 name: Deploy MDORIM to GitHub Pages
 
 on:
-    workflow_dispatch:
-    push:
-        branches:
-            - main
-        paths: 
-            - '.github/workflows/deploy-mdorim.yml'
-            - 'apps/mdorim-docs/**'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths: 
+      - '.github/workflows/deploy-mdorim.yml'
+      - 'apps/mdorim-docs/**'
 
 jobs:
-    deploy:
-        name: Deploy to GitHub Pages
-        runs-on: ubuntu-latest
-        defaults:
-            run:
-                working-directory: apps/mdorim-docs
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@master
-            - name: Set up Node.js
-              uses: actions/setup-node@v2
-              with:
-                  node-version: '16.x'
-            - name: Install dependencies
-              run: yarn install
-            - name: Build
-              run: yarn build
-            - name: Create gh-pages branch
-              run: |
-                  git checkout -b gh-pages
-                  git add build
-                  git commit -m "Build and deploy"
-                  git push --set-upstream origin gh-pages || exit 0
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/mdorim-docs
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - name: Create gh-pages branch
+        run: |
+          git checkout -b gh-pages
+          git rm -rf .
+          git clean -ffxd
+          mv build/* .
+          rmdir build
+          git add .
+          git commit -m "Build and deploy"
+          git push --set-upstream origin gh-pages || exit 0
