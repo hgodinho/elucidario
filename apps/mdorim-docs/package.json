@@ -1,5 +1,5 @@
 {
-    "name": "mdorim-docs",
+    "name": "@elucidario/mdorim-docs",
     "version": "0.1.0",
     "private": true,
     "scripts": {
