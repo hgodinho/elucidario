@@ -30,6 +30,6 @@ jobs:
             - name: Create gh-pages branch
               run: |
                   git checkout -b gh-pages
-                  git add dist
+                  git add build
                   git commit -m "Build and deploy"
                   git push --set-upstream origin gh-pages || exit 0
