@@ -9,85 +9,110 @@ Definições de metadados utilizados no MDORIM.
 
 ## Definições
 
-### ID
+### `ID`
 
-> Tipo de dado: integer 
+> tipo `integer`
 
-Identificador único do conceito. É um `integer` gesrado automaticamente.
-
+Identificador único do conceito. É um `integer` gerado automaticamente.
 
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----- | --------- |
+| ----------- | ---- |
 | schema.org | <http://schema.org/identifier> |
 | linked.art | <http://linked.art/ns/terms/identifier> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
 
-### URI
+> [Voltar para metadados](#metadados)
 
-> Tipo de dado: string 
+---
+
+### `URI`
+
+> tipo `string`
 
 Identificador único do conceito. É um `string` gerado automaticamente.
 
-
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----- | --------- |
+| ----------- | ---- |
 | schema.org | <http://schema.org/identifier> |
 | linked.art | <http://linked.art/ns/terms/identifier> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
 
-### type
+> [Voltar para metadados](#metadados)
 
-> Tipo de dado: string 
+---
+
+### `type`
+
+> tipo `string`
 
 Tipo do conceito. É um `string` gerado automaticamente baseado no tipo da classe
-
 
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----- | --------- |
+| ----------- | ---- |
 | schema.org | <http://schema.org/type> |
 | linked.art | <_type> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> |
 
-### slug
+> [Voltar para metadados](#metadados)
 
-> Tipo de dado: string 
+---
+
+### `slug`
+
+> tipo `string`
 
 Nome do conceito. É um `string` gerado automaticamente.
-
 
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----- | --------- |
+| ----------- | ---- |
 | schema.org | <http://schema.org/name> |
 | linked.art | <http://www.w3.org/2000/01/rdf-schema#label> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
 
-### identified_by
+> [Voltar para metadados](#metadados)
 
-> Tipo de dado: array 
+---
+
+### `identified_by`
+
+> tipo `array` anyOf<[Name](#name) | [Identifier](#identifier)>
 
 Define o nome ou identificador de uma entidade. Pode ser `Name` ou `Identifier`.
 
+> [Voltar para metadados](#metadados)
 
+---
 
-### Identifier
+### `Identifier`
 
-> Tipo de dado: object 
+> tipo `object` com propriedades
 
 Identificador de uma entidade.
 
+#### Propriedades
+
+| Nome | Tipo | Descrição | Obrigatório? |
+| ---- | ---- | --------- | ------------ |
+| type | string | Tipo do identificador. Valor constante: `Identifier`. | Sim |
+| value | string | Valor do identificador. | Sim |
+| [ConceptRef](./concept.md#conceptref) |  |  | Não |
 
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----- | --------- |
+| ----------- | ---- |
 | schema.org | <http://schema.org/identifier> |
 | linked.art | <http://linked.art/ns/terms/identifier> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
+
+> [Voltar para metadados](#metadados)
+
+---

@@ -1,17 +1,16 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "User",
-    "description": "Usuário do sistema",
+    "title": "Concept",
     "type": "object",
     "definitions": {
-        "UserRef": {
-            "title": "UserRef",
-            "description": "Referência a um usuário",
-            "$ref": "../metadata/metadata#/definitions/UserRef"
+        "ConceptRef": {
+            "title": "ConceptRef",
+            "description": "Referência a um conceito",
+            "$ref": "../metadata/metadata#/definitions/ConceptRef"
         },
-        "User": {
-            "title": "User",
-            "description": "Usuário do sistema",
+        "Concept": {
+            "title": "Concept",
+            "description": "Conceito",
             "type": "object",
             "properties": {
                 "ID": {

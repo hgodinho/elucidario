@@ -1,2 +1,3 @@
-export * from './mapping-table';
+export * from './markdown'
 export * from './metadata';
+export * from './entity-page';

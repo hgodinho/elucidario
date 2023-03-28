@@ -1,0 +1,188 @@
+import type {
+    Mapping,
+    BaseSchema,
+    DataTypes,
+    ArraySchema,
+    OneOfSchema,
+    AnyOfSchema,
+    Status,
+} from "../types";
+
+/**
+ *  Convert array of strings to markdown string
+ * @param values | string[]
+ * @param join | string
+ * @returns string
+ */
+export const toMD = (values: string[], join: string = "\n\n"): string =>
+    values.filter((value) => value !== "").join(join);
+
+/**
+ *  Cria cabeçalho do markdown
+ * @param title | string
+ * @param description | string
+ * @returns | string
+ */
+export const headerTemplate = (title: string, description: string) => {
+    return toMD(
+        [`---`, `title: "${title}"`, `description: ${description}`, `---`],
+        "\n"
+    );
+};
+
+export const status = (status: Status) => {
+    return toMD([
+        `:::${status.type} ${status.title}`,
+        status.description,
+        `:::`,
+    ]);
+};
+
+/**
+ * Cria tabela de mapeamento
+ * @param map | Mapping
+ * @returns | string
+ */
+export const mappingTable = (map: Mapping | undefined) => {
+    if (!map) {
+        return "";
+    }
+    return toMD([
+        "#### Mapeamento",
+        toMD(
+            [
+                "| Vocabulário | Link |",
+                "| ----------- | ---- |",
+                ...Object.entries(map).map(
+                    ([key, value]) => `| ${key} | <${value}> |`
+                ),
+            ],
+            "\n"
+        ),
+    ]);
+};
+
+/**
+ *  Resolve referência de um objeto
+ * @param ref | string
+ * @returns | string
+ */
+export const resolveRef = (ref: string) => {
+    let link = "";
+    let [base, topicBase] = ref.split("#");
+    const [__, path, file] = base.split("/");
+    if (base) {
+        link = `./${file.split(".")[0]}.md`;
+    }
+    if (topicBase.startsWith("/")) {
+        topicBase = topicBase.slice(1);
+    }
+    const [definitions, topic] = topicBase.split("/");
+    link += `#${topic}`;
+    link = `[${topic}](${link.toLocaleLowerCase()})`;
+    
+    console.log({link, base, topicBase, path, file, definitions, topic})
+    
+    return link;
+};
+
+/**
+ *  Define o bloco de documentação de um metadado
+ * @param key | string
+ * @param metadata | BaseSchema<DataTypes>
+ * @returns | string
+ */
+export const metadata = (
+    key: string,
+    metadata: BaseSchema<DataTypes>,
+    top: string
+) => {
+    return toMD([
+        `### \`${key}\``,
+        metaType(metadata),
+        metadata.description,
+        metadataProperties(metadata),
+        mappingTable(metadata.map),
+        top ? `> [Voltar para ${top}](#${top})` : "",
+        "---",
+    ]);
+};
+
+/**
+ *  Cria linha que descreve o tipo do metadado
+ * @param metadata | BaseSchema<DataTypes>
+ * @returns | string
+ */
+export const metaType = (metadata: BaseSchema<DataTypes>) => {
+    const arrayMeta = metadata as ArraySchema;
+    const anyOfMeta = metadata as unknown as AnyOfSchema;
+    const oneOfMeta = metadata as unknown as OneOfSchema;
+    switch (metadata.type) {
+        case "array":
+            if ("anyOf" in arrayMeta.items) {
+                return `> tipo \`${
+                    anyOfMeta.type
+                }\` anyOf<${anyOfMeta.items.anyOf
+                    .map((anyOf) => {
+                        if ("$ref" in anyOf) {
+                            return `${resolveRef(anyOf.$ref)}`;
+                        }
+                    })
+                    .join(" | ")}>`;
+            }
+            if ("oneOf" in arrayMeta.items) {
+                return `> tipo \`${
+                    oneOfMeta.type
+                }\` oneOf<${oneOfMeta.items.oneOf
+                    .map((oneOf) => {
+                        if ("$ref" in oneOf) {
+                            return `${resolveRef(oneOf.$ref)}`;
+                        }
+                    })
+                    .join(" | ")}>`;
+            }
+            return `> tipo \`${arrayMeta.type}\``;
+        case "object":
+            return `> tipo \`${metadata.type}\` com propriedades`;
+        case "null":
+            return `> tipo \`${metadata.type}\` (nulo)`;
+        default:
+            return `> tipo \`${metadata.type}\``;
+    }
+};
+
+/**
+ *  Cria tabela de propriedades
+ * @param metadata | BaseSchema<DataTypes>
+ * @returns | string
+ */
+export const metadataProperties = (metadata: BaseSchema<DataTypes>) => {
+    if (!metadata.properties) {
+        return "";
+    }
+    return toMD([
+        "#### Propriedades",
+        toMD(
+            [
+                "| Nome | Tipo | Descrição | Obrigatório? |",
+                "| ---- | ---- | --------- | ------------ |",
+                ...Object.entries(metadata.properties).map(([key, value]) => {
+                    if ("$ref" in value) {
+                        const link = resolveRef(value.$ref);
+                        return `| ${link} |  |  | ${
+                            metadata.required && metadata.required.includes(key)
+                                ? "Sim"
+                                : "Não"
+                        } |`;
+                    }
+                    return `| ${key} | ${value.type} | ${value.description} | ${
+                        metadata.required && metadata.required.includes(key)
+                            ? "Sim"
+                            : "Não"
+                    } |`;
+                }),
+            ],
+            "\n"
+        ),
+    ]);
+};

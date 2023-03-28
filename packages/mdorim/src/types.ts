@@ -16,19 +16,43 @@ export type BaseSchema<T extends DataTypes> = {
     description: string;
     title?: string;
     map?: Mapping;
+    required?: string[];
     [x: string]: unknown;
 };
 
+export type ArraySchema = BaseSchema<"array"> & {
+    items: BaseSchema<DataTypes>;
+};
+
+export type Ref = {
+    $ref: string;
+};
+
+export type OneOfSchema = Omit<ArraySchema, "type"> & {
+    type: null;
+    items: {
+        oneOf: Ref[];
+    };
+};
+
+export type AnyOfSchema = Omit<ArraySchema, "type"> & {
+    type: null;
+    items: {
+        anyOf: Ref[];
+    };
+};
+
 export type Metadata = {
-    '$schema': string;
+    $schema: string;
+    title?: string;
     description: string;
-    definitions: Record<string, BaseSchema<DataTypes>>
-}
+    definitions: Record<string, BaseSchema<DataTypes>>;
+};
 
 export type Schema = BaseSchema<DataTypes>;
 
 export type Definitions<T> = BaseSchema<
-    T extends DataTypes ? DataTypes : 'object'
+    T extends DataTypes ? DataTypes : "object"
 > & {
     properties?: {
         [x: string]: BaseSchema<DataTypes>;
@@ -38,7 +62,7 @@ export type Definitions<T> = BaseSchema<
 };
 
 export type Entity = BaseSchema<"object"> & {
-    definitions: Definitions<DataTypes>;
+    definitions: Record<string, Definitions<DataTypes>>;
 };
 
 export type MainEntity = {
@@ -46,9 +70,16 @@ export type MainEntity = {
     ref: Entity;
 };
 
+export type Status = {
+    type: "success" | "info" | "warning" | "danger";
+    title: string;
+    description: string;
+};
+
 export type Page = {
     "@type": "WebPage" extends string ? "WebPage" : string;
     title: string;
     description: string;
     mainEntity: MainEntity;
+    status: Status
 };

@@ -1,3 +1,3 @@
-import Definitions from './definitions.json'
+import Definitions from './metadata.json'
 
 export { Definitions }

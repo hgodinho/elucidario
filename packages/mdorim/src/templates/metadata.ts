@@ -1,25 +1,13 @@
 import type { Metadata } from "../types";
-import { mappingTable } from "./mapping-table";
+import { headerTemplate, toMD, metadata } from "./markdown";
 
-export const metadataTemplate = (metadata: Metadata) =>
-    [
-        `---
-title: "Metadata"
-description: ${metadata.description}
----
-
-# Metadados
-
-${metadata.description}
-
-## Definições`,
-        ...Object.entries(metadata.definitions).map(([key, value]) => {
-            return `### ${key}
-
-> Tipo de dado: ${value.type} 
-
-${value.description}
-
-${mappingTable(value.map)}`;
+export const metadataTemplate = (meta: Metadata) =>
+    toMD([
+        headerTemplate("Metadata", meta.description),
+        `# Metadados`,
+        meta.description,
+        `## Definições`,
+        ...Object.entries(meta.definitions).map(([key, value]) => {
+            return metadata(key, value, 'metadados');
         }),
-    ].join("\n\n");
+    ]);

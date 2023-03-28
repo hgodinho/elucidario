@@ -7,6 +7,11 @@
     "@type": "WebPage",
     "title": "User",
     "description": "Definição de um usuário do Elucidário.art",
+    "status": {
+        "type": "warning",
+        "title": "Em desenvolvimento",
+        "description": "página em desenvolvimento"
+    },
     "mainEntity": {
         "@type": "DigitalDocument",
         "$ref": "../schemas/user.schema.json"

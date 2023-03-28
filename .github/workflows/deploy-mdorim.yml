@@ -8,6 +8,7 @@ on:
     paths: 
       - '.github/workflows/deploy-mdorim.yml'
       - 'apps/mdorim-docs/**'
+      - 'packages/mdorim/**'
 
 jobs:
   deploy:
