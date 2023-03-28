@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_elucidario_mdorim_docs=self.webpackChunk_elucidario_mdorim_docs||[]).push([[478],{5091:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"mdorim"}')}}]);
