@@ -1,0 +1,7 @@
+{
+    "name": "@elucidario/tsconfig",
+    "version": "1.0.0",
+    "description": "Configuração typescrit compartilhada",
+    "main": "tsconfig.json",
+    "license": "MIT"
+}
