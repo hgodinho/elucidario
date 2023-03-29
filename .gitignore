@@ -1,3 +1,6 @@
 node_modules
 vendor
 yarn-error.log
+packages/*/dist
+apps/*/dist
+apps/*/build
