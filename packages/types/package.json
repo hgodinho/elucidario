@@ -1,0 +1,17 @@
+{
+    "name": "@elucidario/types",
+    "version": "0.1.0",
+    "description": "Typescript Types for Elucidário's projects",
+    "author": "Henrique Godinho <ola@hgod.in>",
+    "main": "dist/types.d.ts",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc -w"
+    },
+    "devDependencies": {
+        "@types/node": "^18.15.10",
+        "typescript": "^5.0.2",
+        "@elucidario/tsconfig": "^1.0.0"
+    }
+}

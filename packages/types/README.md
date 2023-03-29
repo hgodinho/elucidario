@@ -1,0 +1,1 @@
+# Types para Elucidário.art
