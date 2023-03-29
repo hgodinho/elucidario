@@ -3,5 +3,9 @@
     "version": "1.0.0",
     "description": "Configuração typescrit compartilhada",
     "main": "tsconfig.json",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^18.15.10",
+        "typescript": "^5.0.2"
+    }
 }
