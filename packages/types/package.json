@@ -1,9 +1,9 @@
 {
     "name": "@elucidario/types",
     "version": "0.1.0",
-    "description": "Typescript Types for Elucidário's projects",
+    "description": "Tipagem do Elucidário.art",
     "author": "Henrique Godinho <ola@hgod.in>",
-    "main": "dist/types.d.ts",
+    "types": "dist/index.d.ts",
     "license": "MIT",
     "scripts": {
         "build": "tsc",

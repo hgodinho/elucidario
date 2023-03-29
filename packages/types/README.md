@@ -1,1 +1,1 @@
-# Types para Elucidário.art
+# Tipagem para Elucidário.art
