@@ -1,1 +1,2 @@
-export * from './mdorim';
+export * from './mdorim.types';
+export * from './docusaurus-md.types';

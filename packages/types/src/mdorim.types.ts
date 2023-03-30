@@ -21,7 +21,10 @@ export type BaseSchema<T extends DataTypes> = {
 };
 
 export type ArraySchema = BaseSchema<"array"> & {
-    items: BaseSchema<DataTypes>;
+    items: Pick<BaseSchema<DataTypes>, "type" | "title"> & {
+        anyOf?: BaseSchema<DataTypes>[];
+        oneOf?: BaseSchema<DataTypes>[];
+    };
 };
 
 export type Ref = {
@@ -29,14 +32,13 @@ export type Ref = {
 };
 
 export type OneOfSchema = Omit<ArraySchema, "type"> & {
-    type: null;
+    type: "array";
     items: {
         oneOf: Ref[];
     };
 };
-
 export type AnyOfSchema = Omit<ArraySchema, "type"> & {
-    type: null;
+    type: "array";
     items: {
         anyOf: Ref[];
     };
@@ -81,5 +83,5 @@ export type Page = {
     title: string;
     description: string;
     mainEntity: MainEntity;
-    status: Status
+    status: Status;
 };
