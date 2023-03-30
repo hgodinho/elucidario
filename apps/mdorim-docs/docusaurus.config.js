@@ -49,7 +49,7 @@ const config = {
                     routeBasePath: "/", // Set this value to '/'.
                     sidebarPath: require.resolve("./sidebars.js"),
                     editUrl:
-                        "https://github.com/hgodinho/elucidario/tree/main/apps/mdorim-docs/docs",
+                        "https://github.com/hgodinho/elucidario/tree/main/apps/mdorim-docs",
                 },
                 blog: false,
                 theme: {
@@ -65,6 +65,8 @@ const config = {
                 id: "mdorim",
                 path: "../../packages/mdorim/docs",
                 routeBasePath: "mdorim",
+                editUrl:
+                        "https://github.com/hgodinho/elucidario/tree/main/packages/mdorim",
                 // sidebarPath: require.resolve('../../packages/mdorim/docs/sidebars.js'),
             },
         ],
@@ -76,7 +78,7 @@ const config = {
             // Replace with your project's social card
             image: "img/docusaurus-social-card.jpg",
             navbar: {
-                title: "MDORIM",
+                title: "Elucidário.art",
                 items: [
                     {
                         type: "doc",

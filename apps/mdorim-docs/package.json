@@ -5,7 +5,7 @@
     "scripts": {
         "docusaurus": "docusaurus",
         "start": "docusaurus start",
-        "build": "docusaurus build",
+        "build": "yarn build:prod",
         "build:codespace": "export ENV=codespace && docusaurus build",
         "build:prod": "export ENV=production && docusaurus build",
         "swizzle": "docusaurus swizzle",
