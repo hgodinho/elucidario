@@ -1,42 +1,13 @@
-import type {
+import {
     Mapping,
     BaseSchema,
     DataTypes,
-    ArraySchema,
-    OneOfSchema,
     AnyOfSchema,
-    Status,
-} from "../types";
+    OneOfSchema,
+    ArraySchema,
+} from "@elucidario/types";
 
-/**
- *  Convert array of strings to markdown string
- * @param values | string[]
- * @param join | string
- * @returns string
- */
-export const toMD = (values: string[], join: string = "\n\n"): string =>
-    values.filter((value) => value !== "").join(join);
-
-/**
- *  Cria cabeçalho do markdown
- * @param title | string
- * @param description | string
- * @returns | string
- */
-export const headerTemplate = (title: string, description: string) => {
-    return toMD(
-        [`---`, `title: "${title}"`, `description: ${description}`, `---`],
-        "\n"
-    );
-};
-
-export const status = (status: Status) => {
-    return toMD([
-        `:::${status.type} ${status.title}`,
-        status.description,
-        `:::`,
-    ]);
-};
+import { table, toMD } from "@elucidario/docusaurus-md";
 
 /**
  * Cria tabela de mapeamento
@@ -47,19 +18,12 @@ export const mappingTable = (map: Mapping | undefined) => {
     if (!map) {
         return "";
     }
-    return toMD([
-        "#### Mapeamento",
-        toMD(
-            [
-                "| Vocabulário | Link |",
-                "| ----------- | ---- |",
-                ...Object.entries(map).map(
-                    ([key, value]) => `| ${key} | <${value}> |`
-                ),
-            ],
-            "\n"
-        ),
-    ]);
+    return table({
+        title: "Mapeamento",
+        titleLevel: 4,
+        headers: ["Vocabulário", "Link"],
+        rows: Object.entries(map).map(([key, value]) => [key, `<${value}>`]),
+    });
 };
 
 /**
@@ -80,9 +44,9 @@ export const resolveRef = (ref: string) => {
     const [definitions, topic] = topicBase.split("/");
     link += `#${topic}`;
     link = `[${topic}](${link.toLocaleLowerCase()})`;
-    
-    console.log({link, base, topicBase, path, file, definitions, topic})
-    
+
+    console.log({ link, base, topicBase, path, file, definitions, topic });
+
     return link;
 };
 
@@ -101,7 +65,7 @@ export const metadata = (
         `### \`${key}\``,
         metaType(metadata),
         metadata.description,
-        metadataProperties(metadata),
+        propertiesTable(metadata),
         mappingTable(metadata.map),
         top ? `> [Voltar para ${top}](#${top})` : "",
         "---",
@@ -113,7 +77,9 @@ export const metadata = (
  * @param metadata | BaseSchema<DataTypes>
  * @returns | string
  */
-export const metaType = (metadata: BaseSchema<DataTypes>) => {
+export const metaType = (
+    metadata: BaseSchema<DataTypes> | AnyOfSchema | OneOfSchema
+) => {
     const arrayMeta = metadata as ArraySchema;
     const anyOfMeta = metadata as unknown as AnyOfSchema;
     const oneOfMeta = metadata as unknown as OneOfSchema;
@@ -156,7 +122,7 @@ export const metaType = (metadata: BaseSchema<DataTypes>) => {
  * @param metadata | BaseSchema<DataTypes>
  * @returns | string
  */
-export const metadataProperties = (metadata: BaseSchema<DataTypes>) => {
+export const propertiesTable = (metadata: BaseSchema<DataTypes>) => {
     if (!metadata.properties) {
         return "";
     }

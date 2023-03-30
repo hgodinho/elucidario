@@ -1,5 +1,6 @@
 import { Page } from "../types";
-import { toMD, headerTemplate, status, metaType, metadataProperties, resolveRef } from "./markdown";
+import { toMD, headerTemplate, status } from "@elucidario/docusaurus-md";
+import { resolveRef, metaType, propertiesTable } from "./parts/parts";
 
 export const pageTemplate = (page: Page) => {
     return toMD([
@@ -11,16 +12,18 @@ export const pageTemplate = (page: Page) => {
         "---",
         "## Classes",
         toMD(
-            Object.entries(page.mainEntity.ref.definitions).map(([key, definition]) => {
-                return toMD([
-                    `### \`${definition.title}\``,
-                    definition.type ? metaType(definition) : "",
-                    definition.description,
-                    definition.$ref ? resolveRef(definition.$ref) : "",
-                    metadataProperties(definition),
-                    '---',
-                ]);
-            }
-        )),
+            Object.entries(page.mainEntity.ref.definitions).map(
+                ([key, definition]) => {
+                    return toMD([
+                        `### \`${definition.title}\``,
+                        definition.type ? metaType(definition) : "",
+                        definition.description,
+                        definition.$ref ? resolveRef(definition.$ref) : "",
+                        propertiesTable(definition),
+                        "---",
+                    ]);
+                }
+            )
+        ),
     ]);
 };

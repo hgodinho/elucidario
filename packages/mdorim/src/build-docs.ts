@@ -1,15 +1,18 @@
 import path from "path";
 import fs from "fs";
 
-import { merge } from "lodash";
+import lodash from "lodash";
+const { merge } = lodash;
 
 import type { Page, Schema, Metadata } from "./types";
 import { metadataTemplate, pageTemplate } from "./templates";
 
 import * as definitions from "./metadata";
 import * as pages from "./pages";
+import { fileURLToPath } from "url";
 
 const outputDir = "./docs";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  *  Retorna o schema pelo nome de um arquivo

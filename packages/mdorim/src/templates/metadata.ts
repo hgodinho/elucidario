@@ -1,5 +1,6 @@
 import type { Metadata } from "../types";
-import { headerTemplate, toMD, metadata } from "./markdown";
+import { headerTemplate, toMD, } from "@elucidario/docusaurus-md";
+import { metadata } from "./parts/parts";
 
 export const metadataTemplate = (meta: Metadata) =>
     toMD([

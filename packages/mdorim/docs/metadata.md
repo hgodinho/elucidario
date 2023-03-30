@@ -18,7 +18,7 @@ Identificador único do conceito. É um `integer` gerado automaticamente.
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----------- | ---- |
+| --- | --- |
 | schema.org | <http://schema.org/identifier> |
 | linked.art | <http://linked.art/ns/terms/identifier> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
@@ -36,7 +36,7 @@ Identificador único do conceito. É um `string` gerado automaticamente.
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----------- | ---- |
+| --- | --- |
 | schema.org | <http://schema.org/identifier> |
 | linked.art | <http://linked.art/ns/terms/identifier> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
@@ -54,7 +54,7 @@ Tipo do conceito. É um `string` gerado automaticamente baseado no tipo da class
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----------- | ---- |
+| --- | --- |
 | schema.org | <http://schema.org/type> |
 | linked.art | <_type> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> |
@@ -72,7 +72,7 @@ Nome do conceito. É um `string` gerado automaticamente.
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----------- | ---- |
+| --- | --- |
 | schema.org | <http://schema.org/name> |
 | linked.art | <http://www.w3.org/2000/01/rdf-schema#label> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
@@ -108,7 +108,7 @@ Identificador de uma entidade.
 #### Mapeamento
 
 | Vocabulário | Link |
-| ----------- | ---- |
+| --- | --- |
 | schema.org | <http://schema.org/identifier> |
 | linked.art | <http://linked.art/ns/terms/identifier> |
 | crm | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
