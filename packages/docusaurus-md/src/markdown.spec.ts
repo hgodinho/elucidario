@@ -5,17 +5,18 @@ import {
     status,
     heading,
     table,
+    codeBlock,
+    codeInline,
+    quote,
+    bold,
+    italic,
+    boldItalic,
+    strike,
+    underline,
+    link,
+    image,
 } from "./markdown";
-import type {
-    Status,
-    Table,
-    Mapping,
-    BaseSchema,
-    DataTypes,
-    ArraySchema,
-    AnyOfSchema,
-    OneOfSchema,
-} from "@elucidario/types";
+import type { Status, Table } from "@elucidario/types";
 
 describe("toMD function", () => {
     it("should join array of strings with two new lines by default", () => {
@@ -39,13 +40,20 @@ describe("toMD function", () => {
         const output = toMD(input);
         expect(output).toEqual(expectedOutput);
     });
+
+    it("should remove spaces in the input array", () => {
+        const input = ["first string   ", "    second string"];
+        const expectedOutput = "first string\n\nsecond string";
+        const output = toMD(input);
+        expect(output).toEqual(expectedOutput);
+    });
 });
 
 describe("headerTemplate function", () => {
     it("should create a markdown header", () => {
         const title = "title";
         const description = "description";
-        const expectedOutput = `---\ntitle: "${title}"\ndescription: ${description}\n---`;
+        const expectedOutput = `---\ntitle: '${title}'\ndescription: ${description}\n---`;
         const output = headerTemplate(title, description);
         expect(output).toEqual(expectedOutput);
     });
@@ -97,5 +105,92 @@ describe("table function", () => {
         const output = table(tableData);
         expect(output).toEqual(expectedOutput);
     });
+    it("should create a table without title", () => {
+        const tableData: Table = {
+            headers: ["firstHeader", "secondHeader"],
+            rows: [
+                ["first", "second"],
+                ["third", "fourth"],
+            ],
+        };
+        const expectedOutput = `| firstHeader | secondHeader |\n| --- | --- |\n| first | second |\n| third | fourth |`;
+        const output = table(tableData);
+        expect(output).toEqual(expectedOutput);
+    });
 });
 
+describe("codeBlock function", () => {
+    it("should create a code block", () => {
+        const code = "code";
+        const expectedOutput = `\`\`\`json\ncode\n\`\`\``;
+        const output = codeBlock(code);
+        expect(output).toEqual(expectedOutput);
+    });
+});
+
+describe("typography functions", () => {
+    it("should create an inline code", () => {
+        const code = "code";
+        const expectedOutput = "`code`";
+        const output = codeInline(code);
+        expect(output).toEqual(expectedOutput);
+    });
+    it("should create a quote", () => {
+        const quoteText = "quote";
+        const expectedOutput = `> quote`;
+        const output = quote(quoteText);
+        expect(output).toEqual(expectedOutput);
+    });
+    it("should create bold text", () => {
+        const text = "text";
+        const expectedOutput = "**text**";
+        const output = bold(text);
+        expect(output).toEqual(expectedOutput);
+    });
+
+    it("should create italic text", () => {
+        const text = "text";
+        const expectedOutput = "_text_";
+        const output = italic(text);
+        expect(output).toEqual(expectedOutput);
+    });
+
+    it("should create bold and italic text", () => {
+        const text = "text";
+        const expectedOutput = "***text***";
+        const output = boldItalic(text);
+        expect(output).toEqual(expectedOutput);
+    });
+
+    it("should create strike text", () => {
+        const text = "text";
+        const expectedOutput = "~~text~~";
+        const output = strike(text);
+        expect(output).toEqual(expectedOutput);
+    });
+
+    it("should create underline text", () => {
+        const text = "text";
+        const expectedOutput = "<u>text</u>";
+        const output = underline(text);
+        expect(output).toEqual(expectedOutput);
+    });
+});
+
+describe("link functions", () => {
+    it("should create a link", () => {
+        const text = "text";
+        const url = "link";
+        const expectedOutput = `[text](${url})`;
+        const output = link(text, url);
+        expect(output).toEqual(expectedOutput);
+    });
+
+    it("should create an image", () => {
+        const text = "text";
+        const url = "link";
+        const expectedOutput = `![text](${url})`;
+        const output = image(text, url);
+        expect(output).toEqual(expectedOutput);
+    });
+});
