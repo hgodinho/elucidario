@@ -1,0 +1,12 @@
+{
+    "extends": "@elucidario/tsconfig",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "rootDir": "src",
+        "outDir": "dist",
+    },
+    "include": ["src/index.ts"],
+    "paths": {
+        "@elucidario/types": ["../types/src"],
+    }
+}

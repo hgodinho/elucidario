@@ -1,0 +1,22 @@
+{
+    "name": "@elucidario/docusaurus-md",
+    "version": "0.1.0",
+    "description": "Markdown generator for Docussarus",
+    "license": "MIT",
+    "author": "Henrique Godinho <ola@hgod.in>",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "clear": "rm -rf dist/*",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@elucidario/types": "^0.1.0",
+        "@types/node": "^18.15.10",
+        "jest": "^29.5.0",
+        "ts-jest": "^29.0.5",
+        "typescript": "^5.0.2"
+    }
+}
