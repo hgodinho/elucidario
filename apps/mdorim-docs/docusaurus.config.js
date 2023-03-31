@@ -106,10 +106,11 @@ const config = {
                         ],
                     },
                 ],
-                copyright: `${new Date().getFullYear()} Elucidario.art. Todos os direitos reservados`,
+                copyright: `${new Date().getFullYear()} Elucidario.art.`,
             },
             prism: {
                 theme: darkCodeTheme,
+                darkMode: true,
             },
         }),
 };

@@ -7,7 +7,7 @@ import {
     ArraySchema,
 } from "@elucidario/types";
 
-import { table, toMD } from "@elucidario/docusaurus-md";
+import { table, toMD, backToTop } from "@elucidario/docusaurus-md";
 
 /**
  * Cria tabela de mapeamento
@@ -31,7 +31,7 @@ export const mappingTable = (map: Mapping | undefined) => {
  * @param ref | string
  * @returns | string
  */
-export const resolveRef = (ref: string) => {
+export const resolveRef = (ref: string, code = false) => {
     let link = "";
     let [base, topicBase] = ref.split("#");
     const [__, path, file] = base.split("/");
@@ -41,8 +41,11 @@ export const resolveRef = (ref: string) => {
     if (topicBase.startsWith("/")) {
         topicBase = topicBase.slice(1);
     }
-    const [definitions, topic] = topicBase.split("/");
+    let [definitions, topic] = topicBase.split("/");
     link += `#${topic}`;
+    if (code) {
+        topic = `\`${topic}\``;
+    }
     link = `[${topic}](${link.toLocaleLowerCase()})`;
 
     console.log({ link, base, topicBase, path, file, definitions, topic });
@@ -59,7 +62,7 @@ export const resolveRef = (ref: string) => {
 export const metadata = (
     key: string,
     metadata: BaseSchema<DataTypes>,
-    top: string
+    top: boolean
 ) => {
     return toMD([
         `### \`${key}\``,
@@ -67,7 +70,7 @@ export const metadata = (
         metadata.description,
         propertiesTable(metadata),
         mappingTable(metadata.map),
-        top ? `> [Voltar para ${top}](#${top})` : "",
+        top ? backToTop('Voltar para o topo') : "",
         "---",
     ]);
 };
@@ -91,7 +94,7 @@ export const metaType = (
                 }\` anyOf<${anyOfMeta.items.anyOf
                     .map((anyOf) => {
                         if ("$ref" in anyOf) {
-                            return `${resolveRef(anyOf.$ref)}`;
+                            return `${resolveRef(anyOf.$ref, true)}`;
                         }
                     })
                     .join(" | ")}>`;

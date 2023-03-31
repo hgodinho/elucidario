@@ -15,6 +15,9 @@ import {
     underline,
     link,
     image,
+    comment,
+    list,
+    backToTop,
 } from "./markdown";
 import type { Status, Table } from "@elucidario/types";
 
@@ -191,6 +194,36 @@ describe("link functions", () => {
         const url = "link";
         const expectedOutput = `![text](${url})`;
         const output = image(text, url);
+        expect(output).toEqual(expectedOutput);
+    });
+
+    it("should create a link back to the top", () => {
+        const expectedOutput = `[Voltar ao topo](#)`;
+        const output = backToTop("Voltar ao topo");
+        expect(output).toEqual(expectedOutput);
+    });
+});
+
+describe("comment function", () => {
+    it("should create a comment", () => {
+        const text = "text";
+        const expectedOutput = `<!-- text -->`;
+        const output = comment(text);
+        expect(output).toEqual(expectedOutput);
+    });
+});
+
+describe("list functions", () => {
+    it("should create an unordered list", () => {
+        const items = ["first", "second"];
+        const expectedOutput = `- first\n- second`;
+        const output = list(items);
+        expect(output).toEqual(expectedOutput);
+    });
+    it("should create an ordered list", () => {
+        const items = ["first", "second"];
+        const expectedOutput = `1. first\n2. second`;
+        const output = list(items, true);
         expect(output).toEqual(expectedOutput);
     });
 });

@@ -1,46 +1,35 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Definições de metadados utilizados no MDORIM.",
     "definitions": {
-        "ID": {
+        "_id": {
             "description": "Identificador único do conceito. É um `integer` gerado automaticamente.",
-            "type": "integer",
             "map": {
-                "schema.org": "http://schema.org/identifier",
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
                 "linked.art": "http://linked.art/ns/terms/identifier",
-                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by"
-            }
+                "schema.org": "http://schema.org/identifier"
+            },
+            "type": "integer"
         },
-        "URI": {
-            "description": "Identificador único do conceito. É um `string` gerado automaticamente.",
-            "type": "string",
-            "map": {
-                "schema.org": "http://schema.org/identifier",
-                "linked.art": "http://linked.art/ns/terms/identifier",
-                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by"
-            }
-        },	
-        "type": {
+        "_type": {
             "description": "Tipo do conceito. É um `string` gerado automaticamente baseado no tipo da classe",
-            "type": "string",
             "map": {
-                "schema.org": "http://schema.org/type",
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
                 "linked.art": "_type",
-                "crm": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type"
-            }
+                "schema.org": "http://schema.org/type"
+            },
+            "type": "string"
         },
-        "slug": {
-            "description": "Nome do conceito. É um `string` gerado automaticamente.",
-            "type": "string",
+        "_uri": {
+            "description": "Identificador único do conceito. É um `string` gerado automaticamente.",
             "map": {
-                "schema.org": "http://schema.org/name",
-                "linked.art": "http://www.w3.org/2000/01/rdf-schema#label",
-                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by"
-            }
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://linked.art/ns/terms/identifier",
+                "schema.org": "http://schema.org/identifier"
+            },
+            "type": "string"
         },
         "identified_by": {
             "description": "Define o nome ou identificador de uma entidade. Pode ser `Name` ou `Identifier`.",
-            "type": "array",
             "items": {
                 "anyOf": [
                     {
@@ -50,35 +39,46 @@
                         "$ref": "#/definitions/Identifier"
                     }
                 ]
-            }
+            },
+            "type": "array"
         },
-        "Identifier":{
-            "title": "Identifier",
+        "Identifier": {
             "description": "Identificador de uma entidade.",
-            "type": "object",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://linked.art/ns/terms/identifier",
+                "schema.org": "http://schema.org/identifier"
+            },
             "properties": {
+                "classified_as": {
+                    "$ref": "../schemas/concept.schema.json#/definitions/ConceptRef"
+                },
                 "type": {
+                    "const": "Identifier",
                     "description": "Tipo do identificador. Valor constante: `Identifier`.",
-                    "type": "string",
-                    "const": "Identifier"
+                    "type": "string"
                 },
                 "value": {
                     "description": "Valor do identificador.",
                     "type": "string"
-                },
-                "classified_as": {
-                    "$ref": "../schemas/concept.schema.json#/definitions/ConceptRef"
                 }
             },
             "required": [
                 "type",
                 "value"
             ],
+            "title": "Identifier",
+            "type": "object"
+        },
+        "slug": {
+            "description": "Nome do conceito. É um `string` gerado automaticamente.",
             "map": {
-                "schema.org": "http://schema.org/identifier",
-                "linked.art": "http://linked.art/ns/terms/identifier",
-                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by"
-            }
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://www.w3.org/2000/01/rdf-schema#label",
+                "schema.org": "http://schema.org/name"
+            },
+            "type": "string"
         }
-    }
+    },
+    "description": "Definições de metadados utilizados no MDORIM."
 }

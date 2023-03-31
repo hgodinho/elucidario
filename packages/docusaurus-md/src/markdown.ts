@@ -263,3 +263,46 @@ export const link = (text: string, url: string) => {
 export const image = (text: string, url: string) => {
     return `![${text}](${url})`;
 };
+
+/**
+ * Cria comentário markdown
+ * @param text | string
+ * @returns | string
+ * @example
+ * ```ts
+ * comment("text");
+ * // <!-- text -->
+ * ```
+ */
+export const comment = (text: string) => {
+    return `<!-- ${text} -->`;
+};
+
+/**
+ * Cria lista markdown
+ * @param items | string[]
+ * @param ordered | boolean
+ * @returns | string
+ * @example
+ * ```ts
+ * list(["item1", "item2"]);
+ * // - item1
+ * // - item2
+ * ```
+ */
+export const list = (items: string[], ordered: boolean = false) => {
+    let counter = 1;
+    const prefix = ordered ? () => `${counter++}.` : () => "-";
+    return toMD(
+        items.map((item) => `${prefix()} ${item}`),
+        "\n"
+    );
+};
+
+/**
+ *  Cria link para voltar para o topo da página
+ * @returns | string
+ */
+export const backToTop = (label: string) => {
+    return link(label, "#");
+}

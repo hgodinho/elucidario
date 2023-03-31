@@ -9,6 +9,6 @@ export const metadataTemplate = (meta: Metadata) =>
         meta.description,
         `## Definições`,
         ...Object.entries(meta.definitions).map(([key, value]) => {
-            return metadata(key, value, 'metadados');
+            return metadata(key, value, true);
         }),
     ]);

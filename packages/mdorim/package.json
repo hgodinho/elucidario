@@ -9,11 +9,11 @@
     "type": "module",
     "main": "dist/mdorim.js",
     "scripts": {
-        "build": "yarn clean:dist && rollup -c",
+        "build": "yarn clean:dist && rollup -c && yarn build:docs",
         "build:docs": "yarn clean:docs && tsx src/build-docs.ts",
         "clean:dist": "rm -rf dist/*",
         "clean:docs": "rm -rf docs/*",
-        "dev": "tsx watch src/build-docs.ts",
+        "watch": "tsx watch src/build-docs.ts",
         "test": "jest"
     },
     "devDependencies": {
