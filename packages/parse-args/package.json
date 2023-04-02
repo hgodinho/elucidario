@@ -1,0 +1,10 @@
+{
+    "name": "@elucidario/parse-args",
+    "version": "0.1.0",
+    "main": "src/parse-args.ts",
+    "type": "module",
+    "license": "MIT",
+    "devDependencies": {
+        "@elucidario/tsconfig": "^1.0.0"
+    }
+}
