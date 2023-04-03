@@ -7,6 +7,7 @@
     "author": "Henrique Godinho <henrique@hgod.in>",
     "main": "index.js",
     "workspaces": [
+        "publications/*",
         "packages/*",
         "apps/*"
     ],
@@ -18,8 +19,10 @@
         "build": "lerna run build",
         "swizzle": "lerna run swizzle",
         "deploy": "lerna run deploy",
-        "clear": "lerna run clear",
         "serve": "lerna run serve",
+        "clean": "lerna clean",
+        "link": "lerna link",
+        "pub-gen": "tsx packages/pub-gen/src/pub-gen.ts",
         "write-translations": "lerna run write-translations",
         "write-heading-ids": "lerna run write-heading-ids",
         "typecheck": "tsc"
