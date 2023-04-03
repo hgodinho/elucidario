@@ -96,9 +96,19 @@ export class GoogleDocs {
     }
 
     public async updateDocument(
-        documentId: string,
-        content: string
+        content: string,
+        documentId: string | undefined = undefined,
     ): Promise<Document> {
+        
+        try {
+            if (!documentId) {
+                documentId = this.document.id;
+            }
+        } catch (err) {
+            throw new Error("No document found");
+        }
+
+        
         const requests = [
             {
                 replaceAllText: {
@@ -111,23 +121,25 @@ export class GoogleDocs {
             },
         ];
 
-        const { data } = await this.docs.documents.batchUpdate({
-            documentId,
-            requestBody: {
-                requests,
-            },
-        });
+        console.log("Updating document: ", {documentId, doc: this.document, });
 
-        const documentUrl = `https://docs.google.com/document/d/${documentId}/edit`;
+        // const { data } = await this.docs.documents.batchUpdate({
+        //     documentId,
+        //     requestBody: {
+        //         requests,
+        //     },
+        // });
 
-        const documentInfo: Document = {
-            id: documentId,
-            url: documentUrl,
-            title: data.title,
-            createdTime: data.createdTime,
-        };
+        // const documentUrl = `https://docs.google.com/document/d/${documentId}/edit`;
 
-        fs.writeFileSync("document.json", JSON.stringify(documentInfo));
+        // const documentInfo: Document = {
+        //     id: documentId,
+        //     url: documentUrl,
+        //     title: data.title,
+        //     createdTime: data.createdTime,
+        // };
+
+        // fs.writeFileSync("document.json", JSON.stringify(documentInfo));
 
         return documentInfo;
     }

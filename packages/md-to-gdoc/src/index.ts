@@ -1,3 +1,3 @@
 export * from './enums'
-export * from './parseArgs'
+export * from './functions/parseArgs'
 export * from './authenticate'

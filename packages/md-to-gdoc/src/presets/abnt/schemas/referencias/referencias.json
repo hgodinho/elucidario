@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Conjunto de referências bibliográficas",
+    "description": "Conjunto de referências bibliográficas",
+    "type": "object",
+    "properties": {
+        "bibliogrfia": {
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "./evento.json"
+                    },
+                    {
+                        "$ref": "./livro.json"
+                    },
+                    {
+                        "$ref": "./periodico.json"
+                    },
+                    {
+                        "$ref": "./teses.json"
+                    },
+                    {
+                        "$ref": "./webpage.json"
+                    }
+                ]
+            }
+        }
+    }
+}

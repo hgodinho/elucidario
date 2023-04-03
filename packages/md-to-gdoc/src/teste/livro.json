@@ -1,0 +1,30 @@
+{
+    "$schema": "../presets/abnt/livro.json",
+    "title": "Livro",
+    "type": "schema:Book",
+    "authors": [
+        {
+            "type": "schema:Person",
+            "name": "Henrique",
+            "familyName": "Godinho Lopes",
+            "additionalName": "Costa"
+        },
+        {
+            "type": "schema:Person",
+            "name": "Vânia",
+            "familyName": "Mara Alves",
+            "additionalName": "Lima"
+        }
+    ],
+    "publisher": {
+        "type": "schema:Organization",
+        "name": "Editora",
+        "url": "http://www.editora.com.br"
+    },
+    "datePublished": "2017-01-01",
+    "isbn": "978-85-00-00000-0",
+    "name": "Título do livro",
+    "numberOfPages": 100,
+    "inLanguage": "pt-BR",
+    "url": "http://www.editora.com.br/livro"
+}

@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Schema para referência bibliográfica de um periódico",
+    "description": "Schema para que descreve uma referência bibliográfica de um periódico, podendo ser revista ou jornal.",
+    "type": "object",
+    "properties": {
+        "titulo": {
+            "description": "Título do artigo",
+            "type": "string"
+        },
+        "autores": {
+            "$ref": "./referencias/autor.json/#definitions/autores"
+        },
+        "ano": {
+            "description": "Ano de publicação do artigo",
+            "type": "integer"
+        },
+        "nome_periodico": {
+            "description": "Nome do periódico",
+            "type": "string"
+        },
+        "volume": {
+            "description": "Volume do periódico",
+            "type": "integer"
+        },
+        "numero": {
+            "description": "Número do periódico",
+            "type": "integer"
+        },
+        "paginas": {
+            "description": "Número de páginas do artigo",
+            "type": "object",
+            "properties": {
+                "inicio": {
+                    "description": "Página inicial do artigo",
+                    "type": "integer"
+                },
+                "fim": {
+                    "description": "Página final do artigo",
+                    "type": "integer"
+                }
+            }
+        },
+        "issn": {
+            "description": "ISSN do periódico",
+            "type": "string"
+        },
+        "url": {
+            "description": "URL do artigo",
+            "type": "string"
+        },
+        "doi": {
+            "description": "DOI do artigo",
+            "type": "string"
+        },
+        "tipo": {
+            "description": "Tipo de referência bibliográfica",
+            "type": "string",
+            "const": "periódico"
+        }
+    },
+    "required": [
+        "titulo",
+        "autores",
+        "ano",
+        "nome_periodico",
+        "volume",
+        "numero",
+        "paginas",
+        "tipo"
+    ]
+}

@@ -1,20 +1,16 @@
 import { GoogleDocs } from "./classes/GoogleDocs";
 import { Credentials } from "./classes/Auth";
+import parseArgs from "./functions/parseArgs";
+import readContent from "./functions/readContent";
 import fs from "fs";
 import type { SCOPES } from "./classes/Auth";
 
-import parseArgs from "@elucidario/parse-args";
-
-const createDoc = async (
-    title: string | undefined = undefined,
+const sync = async (
     credentials: Credentials | undefined = undefined,
     scopes: SCOPES | undefined = undefined,
     path: fs.PathOrFileDescriptor | undefined = undefined
 ) => {
     const options = parseArgs();
-    if (!options.title) {
-        throw new Error("No title provided");
-    }
 
     if (!credentials) {
         credentials = JSON.parse(
@@ -26,23 +22,18 @@ const createDoc = async (
         path = options.path as string;
     }
 
-    if (!title) {
-        title = options.title as string;
-    }
+    const content = readContent(options.path + 'content')
 
-    if (!title) {
-        throw new Error("No title provided");
-    }
+    console.log("Syncing document: ", {options, content});
+    
 
-    const googleDocs = new GoogleDocs(credentials, scopes, path);
-    try {
-        googleDocs.createDocument(title);
-    } catch (err) {
-        await googleDocs.authenticate();
-        googleDocs.createDocument(title);
-    }
+    // const googleDocs = new GoogleDocs(credentials, scopes, path);
+    // try {
+    //     googleDocs.updateDocument();
+    // } catch (err) {
+    //     await googleDocs.authenticate();
+    //     googleDocs.createDocument(title);
+    // }
 };
 
-createDoc();
-
-export default createDoc;
+sync();

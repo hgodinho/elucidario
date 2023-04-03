@@ -2,8 +2,7 @@ import { Auth, Credentials } from "./classes/Auth";
 import { SCOPES as EnumScopes } from "./enums";
 import type { SCOPES } from "./classes/Auth";
 import fs, { PathOrFileDescriptor } from "fs";
-
-import parseArgs from "./parseArgs";
+import parseArgs from "@elucidario/parse-args";
 
 export const authenticate = async (
     credentials: Credentials | undefined = undefined,
