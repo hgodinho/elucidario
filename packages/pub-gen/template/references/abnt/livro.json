@@ -1,0 +1,20 @@
+{
+    "titulo": "Aprendendo a programar em C",
+    "autores": [
+        {
+            "nome": "Paulo",
+            "sobrenome": "Silva"
+        },
+        {
+            "nome": "João",
+            "sobrenome": "Santos"
+        }
+    ],
+    "ano": 2015,
+    "editora": "Editora do Brasil",
+    "edicao": 1,
+    "isbn": "978-85-12345-67-8",
+    "paginas": 300,
+    "cidade": "São Paulo",
+    "tipo": "livro"
+}

@@ -1,0 +1,10 @@
+{
+    "extends": "@elucidario/tsconfig",
+    "compilerOptions": {
+        "paths": {
+            "@elucidario/parse-args": [
+                "../parse-args/src/index.ts"
+            ],
+        }
+    }
+}

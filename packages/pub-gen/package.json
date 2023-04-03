@@ -1,0 +1,32 @@
+{
+    "name": "@elucidario/pub-gen",
+    "version": "0.1.0",
+    "description": "Gerador de publicações para o Elucidário.art",
+    "homepage": "https://github.com/hgodinho/elucidario/packages/pub-gen#readme",
+    "bugs": {
+        "url": "https://github.com/hgodinho/elucidario/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hgodinho/elucidario.git"
+    },
+    "license": "MIT",
+    "author": "hgodinho <henrique@hgod.in>",
+    "type": "module",
+    "scripts": {
+        "test": "node ./__tests__/pub-gen.test.js",
+        "pub-gen": "tsx src/pub-gen"
+    },
+    "devDependencies": {
+        "@elucidario/parse-args": "^0.1.0",
+        "@elucidario/tsconfig": "^1.0.0",
+        "@types/inquirer": "^9.0.3",
+        "@types/node": "^18.15.11",
+        "lodash": "^4.17.21",
+        "tsx": "^3.12.6",
+        "typescript": "^5.0.3"
+    },
+    "dependencies": {
+        "inquirer": "^9.1.5"
+    }
+}
