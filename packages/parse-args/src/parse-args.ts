@@ -3,7 +3,7 @@ interface ParsedArgs {
     [key: string]: string | boolean;
 }
 
-const parseArgs = (): ParsedArgs => {
+export const parseArgs = (): ParsedArgs => {
     const parsedArgs: ParsedArgs = {
         path: "",
     };
@@ -25,5 +25,3 @@ const parseArgs = (): ParsedArgs => {
 
     return parsedArgs;
 };
-
-export default parseArgs;

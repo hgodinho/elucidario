@@ -1,5 +1,9 @@
 {
-    "extends": [
-        "@elucidario/tsconfig",
-    ],
+    "extends": ["@elucidario/tsconfig"],
+    "compilerOptions": {
+        "outDir": "dist",
+        "rootDir": "src",
+        "declaration": true
+    },
+    "include": ["src/index.ts"]
 }

@@ -1,10 +1,17 @@
 {
     "name": "@elucidario/parse-args",
     "version": "0.1.0",
-    "main": "src/parse-args.ts",
+    "main": "dist/index.js",
     "type": "module",
+    "types": "dist/index.d.ts",
     "license": "MIT",
+    "scripts": {
+        "build": "tsc",
+        "clean": "rm -rf dist/*"
+    },
     "devDependencies": {
-        "@elucidario/tsconfig": "^1.0.0"
+        "@elucidario/tsconfig": "^1.0.0",
+        "@types/node": "^18.15.11",
+        "typescript": "^5.0.3"
     }
 }
