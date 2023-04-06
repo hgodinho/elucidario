@@ -1,0 +1,4 @@
+{
+    "extends": "@elucidario/tsconfig",
+    "include": ["src/index.ts"]
+}

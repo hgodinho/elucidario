@@ -1,0 +1,14 @@
+{
+    "name": "@elucidario/rollup",
+    "version": "1.0.0",
+    "main": "rollup.config.js",
+    "license": "MIT",
+    "type": "module",
+    "devDependencies": {
+        "@elucidario/tsconfig": "^1.0.0",
+        "@rollup/plugin-json": "^6.0.0",
+        "@rollup/plugin-terser": "^0.4.0",
+        "@rollup/plugin-typescript": "^11.1.0",
+        "rollup": "^3.20.2"
+    }
+}
