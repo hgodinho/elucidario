@@ -14,7 +14,6 @@ export const createPublication = async (args: any) => {
     args = parseArgs();
     console.log("Criando publicação...");
     const rootPath = path.resolve(args.path, "..", "..");
-    console.log({ rootPath, args });
     inquirer.prompt(pubGenPrompt(args)).then(async (answers) => {
         const pubPath = path.resolve(rootPath, "publications");
         const name = kebabCase(answers.titulo);
@@ -214,7 +213,7 @@ const createPackageJson = (name: string, answers: any, rootPath: any) => {
             sync: "tsx ./node_modules/@elucidario/md-to-gdoc/src/sync.ts",
         },
         devDependencies: {
-            "@elucidario/md-to-gdoc": `^${toGdocVersion}`,
+            "@elucidario/md-to-gdoc": `${toGdocVersion}`,
             tsx: "^3.12.6",
             typescript: "^5.0.3",
         },
