@@ -17,8 +17,8 @@ export const parseArgs = (): ParsedArgs => {
         } else {
             if (arg.includes("node_modules")) {
                 parsedArgs["path"] = arg.split("node_modules")[0];
-            } else {
-                parsedArgs["path"] = arg.split("src")[0];
+            } else if (arg.includes("dist")) {
+                parsedArgs["path"] = arg.split("dist")[0];
             }
         }
     });

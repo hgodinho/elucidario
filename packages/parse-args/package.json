@@ -1,17 +1,19 @@
 {
     "name": "@elucidario/parse-args",
     "version": "0.1.0",
-    "main": "dist/index.js",
-    "type": "module",
-    "types": "dist/index.d.ts",
     "license": "MIT",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
-        "build": "tsc",
+        "build": "yarn clean && rollup -c",
         "clean": "rm -rf dist/*"
     },
     "devDependencies": {
+        "@elucidario/rollup": "^1.0.0",
         "@elucidario/tsconfig": "^1.0.0",
         "@types/node": "^18.15.11",
+        "rollup": "^3.20.2",
         "typescript": "^5.0.3"
     }
 }
