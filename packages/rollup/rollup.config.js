@@ -14,7 +14,11 @@ const lcdrRollupConfig = (config = null) => {
             typescript({
                 tsconfig: "tsconfig.json",
             }),
-            terser(),
+            terser({
+                output: {
+                    comments: /^!/,
+                },
+            }),
         ],
         external: [
             "@elucidario/parse-args",
