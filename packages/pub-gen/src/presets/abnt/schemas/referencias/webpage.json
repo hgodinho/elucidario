@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Schema para referência bibliográfica de uma página na web",
+    "description": "Schema para que descreve uma referência bibliográfica de uma página na web.",
+    "type": "object",
+    "properties": {
+        "titulo": {
+            "description": "Título da página",
+            "type": "string"
+        },
+        "autores": {
+            "$ref": "./referencias/autor.json/#definitions/autores"
+        },
+        "data": {
+            "description": "Data de publicação da página",
+            "type": "string",
+            "format": "date-time"
+        },
+        "url": {
+            "description": "URL da página",
+            "type": "string"
+        },
+        "acesso": {
+            "description": "Data de acesso à página",
+            "type": "string",
+            "format": "date-time"
+        },
+        "tipo": {
+            "description": "Tipo de referência bibliográfica",
+            "type": "string",
+            "const": "webpage"
+        }
+    }
+}

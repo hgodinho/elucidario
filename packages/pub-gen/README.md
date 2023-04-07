@@ -96,3 +96,4 @@ Os presets configuram o google-docs para usar o padrão de referências correto 
 
 - [ ] Criar um preset para o padrão de publicação da APA
 - [ ] Estabelecer um meio para que gere arquivos google-docs para diferentes presets.
+- [ ] Possibilidade de  permitir o uso de pastas ou arquivos com extensão `.md` para determinar seções do texto na pasta `content`.

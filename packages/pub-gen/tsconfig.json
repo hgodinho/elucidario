@@ -1,10 +1,17 @@
 {
     "extends": "@elucidario/tsconfig",
     "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "dist",
+        "declaration": false,
+        "target": "ESNext",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "paths": {
-            "@elucidario/parse-args": [
-                "../parse-args/src/index.ts"
-            ],
-        }
-    }
+            "@elucidario/parse-args": ["../parse-args/dist"]
+        },
+        "rootDir": "src"
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"]
 }

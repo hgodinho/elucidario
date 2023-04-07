@@ -13,20 +13,30 @@
     "license": "MIT",
     "author": "hgodinho <henrique@hgod.in>",
     "type": "module",
+    "main": "./dist/pub-gen.js",
+    "bin": "./dist/pub-gen.js",
     "scripts": {
-        "test": "node ./__tests__/pub-gen.test.js",
-        "pub-gen": "tsx src/pub-gen"
+        "build": "yarn clean && rollup -c",
+        "clean": "rm -rf dist/*",
+        "dev": "yarn build && tsc -w ",
+        "test": "node ./__tests__/pub-gen.test.js"
+    },
+    "dependencies": {
+        "commander": "^10.0.0",
+        "inquirer": "^9.1.5"
     },
     "devDependencies": {
+        "@elucidario/md-to-gdoc": "^0.1.0",
         "@elucidario/parse-args": "^0.1.0",
+        "@elucidario/rollup": "^1.0.0",
         "@elucidario/tsconfig": "^1.0.0",
+        "@rollup/plugin-terser": "^0.4.0",
+        "@rollup/plugin-typescript": "^11.1.0",
         "@types/inquirer": "^9.0.3",
         "@types/node": "^18.15.11",
         "lodash": "^4.17.21",
+        "rollup": "^3.20.2",
         "tsx": "^3.12.6",
         "typescript": "^5.0.3"
-    },
-    "dependencies": {
-        "inquirer": "^9.1.5"
     }
 }

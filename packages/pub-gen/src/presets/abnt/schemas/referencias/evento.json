@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Schema para referência bibliográfica de trabalhos apresentados em eventos",
+    "description": "Schema para que descreve uma referência bibliográfica de trabalhos apresentados em eventos (congressos, simpósios, entre outros).",
+    "type": "object",
+    "properties": {
+        "titulo": {
+            "description": "Título do trabalho",
+            "type": "string"
+        },
+        "autores": {
+            "$ref": "referencias/autor.json#definitions/autores"
+        },
+        "ano": {
+            "description": "Ano de apresentação do trabalho",
+            "type": "integer"
+        },
+        "evento": {
+            "description": "Nome do evento",
+            "type": "string"
+        },
+        "cidade": {
+            "description": "Cidade onde o evento foi realizado",
+            "type": "string"
+        },
+        "pais": {
+            "description": "País onde o evento foi realizado",
+            "type": "string"
+        },
+        "paginas": {
+            "description": "Número de páginas do trabalho",
+            "type": "integer"
+        },
+        "isbn": {
+            "description": "ISBN do trabalho",
+            "type": "string"
+        },
+        "url": {
+            "description": "URL do trabalho",
+            "type": "string"
+        },
+        "doi": {
+            "description": "DOI do trabalho",
+            "type": "string"
+        },
+        "tipo": {
+            "description": "Tipo de referência bibliográfica",
+            "type": "string",
+            "const": "trabalho apresentado em evento"
+        }
+    },
+    "required": [
+        "titulo",
+        "autores",
+        "ano",
+        "evento",
+        "cidade",
+        "pais",
+        "paginas",
+        "tipo"
+    ]
+}
