@@ -9,6 +9,7 @@
     "scripts": {
         "authenticate": "tsx src/authenticate",
         "build": "pnpm clean && rollup -c",
+        "dev": "pnpm build && pnpm build --watch",
         "clean": "rm -rf dist/*",
         "create": "tsx src/create-doc"
     },
@@ -16,6 +17,7 @@
         "@elucidario/parse-args": "workspace:^",
         "@googleapis/docs": "^2.0.1",
         "@googleapis/drive": "^5.0.2",
+        "chalk": "^5.2.0",
         "google-auth-library": "^8.7.0",
         "googleapis": "^114.0.0"
     },
@@ -24,6 +26,7 @@
         "@elucidario/tsconfig": "workspace:^",
         "@types/node": "^18.15.11",
         "rollup": "^3.20.2",
+        "tslib": "^2.5.0",
         "tsx": "^3.12.6",
         "typescript": "^5.0.4"
     }

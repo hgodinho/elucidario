@@ -17,7 +17,6 @@ export interface Document {
  */
 export class GoogleDocs {
     private auth: Auth | undefined;
-    private document: Document | undefined;
     private docs: any;
 
     /**
@@ -28,20 +27,11 @@ export class GoogleDocs {
      */
     constructor(
         private readonly credentials: Credentials,
-        private scopes: SCOPES | undefined,
-        private path: fs.PathOrFileDescriptor | undefined = undefined
+        private tokenPath: fs.PathOrFileDescriptor,
+        private scopes: SCOPES | undefined
     ) {
         if (!scopes) {
             this.scopes = EnumScopes as SCOPES;
-        }
-        try {
-            const documentPath = this.path
-                ? this.path + "document.json"
-                : "document.json";
-            const document = JSON.parse(fs.readFileSync(documentPath, "utf8"));
-            this.document = document;
-        } catch (err) {
-            return;
         }
     }
 
@@ -53,7 +43,7 @@ export class GoogleDocs {
         this.auth = new Auth(
             this.credentials,
             this.scopes as SCOPES,
-            this.path
+            this.tokenPath
         );
         if (this.auth) {
             await this.auth
@@ -76,20 +66,11 @@ export class GoogleDocs {
      * @returns | Document object
      */
     public async createDocument(title: string): Promise<Document> {
-        const path = this.path ? this.path + "document.json" : "document.json";
-
-        if (this.document) {
-            console.log("Document found: ", this.document.url);
-            return this.document;
-        }
-
         try {
-            console.log("No document found, creating new document");
             const newDocument = await this.docs.documents.create({
                 title,
             });
             const docInfo = this.parseDocument(newDocument, true);
-            fs.writeFileSync(path, JSON.stringify(docInfo));
             return docInfo;
         } catch (err) {
             await this.authenticate();
@@ -161,11 +142,7 @@ export class GoogleDocs {
             id: documentId,
             url: documentUrl,
             title: document.data.title,
-            createdTime: newDocument
-                ? document.headers.date
-                : this.document
-                ? this.document.createdTime
-                : "",
+            createdTime: newDocument ? document.headers.date : "",
             updatedTime: document.headers.date,
         };
         return documentInfo;

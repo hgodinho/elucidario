@@ -2,6 +2,8 @@ import * as fs from "fs";
 import * as readline from "readline";
 import { google, Auth as AuthType } from "googleapis";
 import * as http from "http";
+import path from "path";
+import chalk from "chalk";
 
 export interface Credentials {
     client_secret: string;
@@ -34,17 +36,24 @@ export class Auth {
             `http://localhost:${PORT}/oauth2callback`
         );
 
-        const tokenPath = this.path ? this.path + TOKEN_PATH : TOKEN_PATH;
+        const tokenPath = this.path
+            ? path.resolve(this.path as string, TOKEN_PATH)
+            : path.resolve(TOKEN_PATH);
 
         try {
             const token = fs.readFileSync(tokenPath);
             oAuth2Client.setCredentials(JSON.parse(token as unknown as string));
             this.auth = oAuth2Client;
-            console.log("Token json file found");
+            console.log(chalk.green("Token json file found"));
         } catch (err) {
             const authUrl = oAuth2Client.generateAuthUrl({
                 access_type: "offline",
                 scope: this.SCOPES,
+            });
+
+            const rl = readline.createInterface({
+                input: process.stdin,
+                output: process.stdout,
             });
 
             const server = http.createServer(async (req, res) => {
@@ -63,44 +72,52 @@ export class Auth {
                                 tokenPath as fs.PathOrFileDescriptor,
                                 JSON.stringify(tokens)
                             );
-                            console.log("Token stored to", tokenPath);
+                            console.log(
+                                chalk.cyan("Token stored to", tokenPath)
+                            );
                             this.auth = oAuth2Client;
                             res.end(
                                 "Authentication successful. You can close this window now."
                             );
+                            server.close();
+                            rl.close();
                         } catch (err) {
-                            console.error("Error retrieving access token", err);
+                            console.error(
+                                chalk.red("Error retrieving access token", err)
+                            );
                             res.end("Authentication failed. Please try again.");
+                            server.close();
+                            rl.close();
                         }
                     } else {
                         res.end("Authentication failed. Please try again.");
+                        server.close();
+                        rl.close();
                     }
                 } else {
                     res.end("Google Drive and Docs Authentication");
+                    server.close();
+                    rl.close();
                 }
             });
 
             server.listen(PORT, () => {
-                console.log(
-                    `Server running at http://localhost:${PORT} and waiting for authentication...`
-                );
-            });
-
-            const rl = readline.createInterface({
-                input: process.stdin,
-                output: process.stdout,
+                console.log(chalk.yellow("Waiting for authentication..."));
             });
 
             console.log(
-                `Please visit the following URL to authenticate: ${authUrl}`
+                chalk.yellow("Please visit the following URL to authenticate"),
+                chalk.green(chalk.underline(authUrl))
             );
 
             await new Promise<void>((resolve) => {
                 rl.question(
-                    "Press Enter to close server and stop authentication process",
+                    chalk.redBright(
+                        "Press Enter to close server and stop authentication process\n"
+                    ),
                     () => {
-                        rl.close();
                         server.close();
+                        rl.close();
                         resolve();
                     }
                 );
