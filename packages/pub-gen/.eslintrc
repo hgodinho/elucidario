@@ -1,6 +1,9 @@
 {
+    "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module"
+        "ecmaVersion": 2017,
+        "sourceType": "module",
+        "arrowParens": "always"
     }
 }

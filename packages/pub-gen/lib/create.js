@@ -9,29 +9,44 @@ import { execSync } from "child_process";
 import lodash from "lodash";
 const kebabCase = lodash.kebabCase;
 
+import packageJson from "../package.json" assert { type: "json" };
+const { version } = packageJson;
+
 export const createPublication = async (args) => {
-    args = parseArgs();
-    const rootPath = path.resolve(args.path, "..", "..");
-    inquirer.prompt(pubGenPrompt(args)).then(async (answers) => {
-        const pubPath = path.resolve(rootPath, "publications");
-        const name = kebabCase(answers.titulo);
-        const dirName = path.resolve(pubPath, name);
+    const options = parseArgs();
+    const rootPath = path.resolve(options.path);
+
+    inquirer.prompt(pubGenPrompt("create", args)).then(async (answers) => {
+        const name = kebabCase(answers.name);
         const packageName = `@elucidario/${name}`;
+
+        const pubPath = path.resolve(rootPath, "publications");
+        const dirName = path.resolve(pubPath, name);
+        const templatePath = path.resolve(
+            rootPath,
+            "packages",
+            "pub-gen",
+            "template"
+        );
+
+        console.log("Criando publicação...", {
+            "Publication name": name,
+            "Publication path": dirName,
+            "Package name": packageName,
+        });
 
         try {
             fs.readdirSync(dirName);
             console.error(`A publicação ${name} já existe`);
         } catch (error) {
             try {
-                const packageJson = createPackageJson(
-                    packageName,
-                    answers,
-                    args.path
-                );
+                const packageJson = createPackageJson(name, packageName);
                 const pubGenJson = createPubGenJson(name, answers);
 
+                /**
+                 * Create publication directory and copy template files
+                 */
                 fs.mkdirSync(path.resolve(pubPath, name), { recursive: true });
-
                 fs.writeFileSync(
                     path.resolve(dirName, "package.json"),
                     JSON.stringify(packageJson, null, 4)
@@ -41,7 +56,7 @@ export const createPublication = async (args) => {
                     JSON.stringify(pubGenJson, null, 4)
                 );
                 fs.copyFileSync(
-                    path.resolve(args.path, "template", ".gitignore"),
+                    path.resolve(templatePath, ".gitignore"),
                     path.resolve(dirName, ".gitignore")
                 );
                 fs.writeFileSync(
@@ -49,119 +64,17 @@ export const createPublication = async (args) => {
                     createREADME(packageName)
                 );
 
-                const demoContent = fs.readdirSync(
-                    path.resolve(args.path, "template", "content")
-                );
-
-                if (answers.multiIdioma) {
-                    const idiomas = answers.idiomas
-                        .split(",")
-                        .map((x) => x.trim());
-                    idiomas.forEach((idioma) => {
-                        fs.mkdirSync(path.resolve(dirName, "content", idioma), {
-                            recursive: true,
-                        });
-                        demoContent.forEach((file) => {
-                            fs.copyFileSync(
-                                path.resolve(
-                                    args.path,
-                                    "template",
-                                    "content",
-                                    file
-                                ),
-                                path.resolve(dirName, "content", idioma, file)
-                            );
-                        });
-                    });
-                } else {
-                    fs.mkdirSync(
-                        path.resolve(dirName, "content", answers.idiomaPadrao),
-                        {
-                            recursive: true,
-                        }
-                    );
-                    demoContent.forEach((file) => {
-                        fs.copyFileSync(
-                            path.resolve(
-                                args.path,
-                                "template",
-                                "content",
-                                file
-                            ),
-                            path.resolve(
-                                dirName,
-                                "content",
-                                answers.idiomaPadrao,
-                                file
-                            )
-                        );
-                    });
-                }
-
-                let demoRefs = [];
-                switch (answers.preset) {
-                    case "abnt":
-                        demoRefs = fs.readdirSync(
-                            path.resolve(
-                                args.path,
-                                "template",
-                                "references",
-                                "abnt"
-                            )
-                        );
-                        break;
-                    case "apa":
-                        demoRefs = fs.readdirSync(
-                            path.resolve(
-                                args.path,
-                                "template",
-                                "references",
-                                "apa"
-                            )
-                        );
-                        break;
-                }
-                if (demoRefs.length > 0) {
-                    fs.mkdirSync(
-                        path.resolve(dirName, "references", answers.preset),
-                        {
-                            recursive: true,
-                        }
-                    );
-
-                    demoRefs.forEach((file) => {
-                        fs.copyFileSync(
-                            path.resolve(
-                                args.path,
-                                "template",
-                                "references",
-                                answers.preset,
-                                file
-                            ),
-                            path.resolve(
-                                dirName,
-                                "references",
-                                answers.preset,
-                                file
-                            )
-                        );
-                    });
-                }
-
                 console.log("Publicação criada com sucesso!");
-                if (answers.instalarDependencias) {
-                    console.log("Instalando dependências...");
-                    const deps = ["tsx", "typescript"];
-                    execSync(
-                        `cd ${dirName} && pnpm add -D ${deps.join(
-                            " "
-                        )} && pnpm lerna link`,
-                        {
-                            stdio: "inherit",
-                        }
-                    );
-                    console.log("Dependências instaladas com sucesso.");
-                }
+
+                /**
+                 * Install dependencies
+                 */
+                console.log("Instalando dependências...");
+                execSync(`cd ${dirName} && pnpm install`, {
+                    stdio: "inherit",
+                });
+                console.log("Dependências instaladas com sucesso.");
+
                 console.log("Boa escrita!");
             } catch (error) {
                 console.error(error);
@@ -170,51 +83,51 @@ export const createPublication = async (args) => {
     });
 };
 
-const createREADME = (name) => {
-    return `# \`${name}\`\n`;
+/**
+ *  Creates the README.md file for the publication
+ * @param {string} packageName | Name of the publication package
+ * @returns | README.md
+ */
+const createREADME = (packageName) => {
+    return `# \`${packageName}\`\n`;
 };
 
+/**
+ *  Creates the pub-gen.json file for the publication
+ * @param {string} name | name of the publication
+ * @param {*} answers | answers from the prompt
+ * @returns | pub-gen.json
+ */
 const createPubGenJson = (name, answers) => {
     return {
-        nome: name,
-        titulo: answers.titulo,
-        tipo: answers.tipo,
-        instituicaoAfiliada: answers.instituicaoAfiliada,
-        instituicaoPublicacao: answers.instituicaoPublicacao,
-        ano: answers.ano,
-        palavrasChave: answers.palavrasChave
-            .split(",")
-            .map((x) => x.trim()),
-        preset: answers.preset,
-        multiIdioma: answers.multiIdioma,
-        idioma: answers.idiomaPadrao,
-        idiomas: answers.idiomas,
-        dataCriacao: new Date().toISOString(),
+        "$schema": "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
+        version: "1.0.0",
+        name,
+        ...answers,
+        creationDate: new Date().toISOString(),
     };
 };
 
-const createPackageJson = (name, answers, rootPath) => {
-    const toGdocVersion = JSON.parse(
-        fs.readFileSync(path.resolve(rootPath, "package.json")).toString()
-    ).devDependencies["@elucidario/md-to-gdoc"];
-
+/**
+ * Creates the package.json file for the publication
+ * @param {string} name | name of the publication
+ * @param {string} packageName | name of the publication package
+ * @returns | package.json
+ */
+const createPackageJson = (name, packageName) => {
     return {
-        name,
+        name: packageName,
         version: "0.1.0",
         main: "README.md",
         private: true,
         scripts: {
-            authenticate:
-                "tsx ./node_modules/@elucidario/md-to-gdoc/src/authenticate.ts",
-            "create-doc":
-                "tsx ./node_modules/@elucidario/md-to-gdoc/src/create-doc.ts",
-            sync: "tsx ./node_modules/@elucidario/md-to-gdoc/src/sync.ts",
+            authenticate: `pub-gen authenticate -p ${name}`,
+            "add-author": `pub-gen add-author -p ${name}`,
+            "add-doc": `pub-gen add-doc -p ${name}`,
+            sync: `pub-gen sync -p ${name}`,
         },
         devDependencies: {
-            "@elucidario/md-to-gdoc": `${toGdocVersion}`,
-            tsx: "^3.12.6",
-            typescript: "^5.0.3",
+            "@elucidario/pub-gen": `^${version}`
         },
-        keywords: answers.palavrasChave.split(",").map((x) => x.trim()),
     };
 };

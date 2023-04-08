@@ -1,74 +1,95 @@
-export const pubGenPrompt = (args) => [
-    {
-        type: "input",
-        name: "titulo",
-        message: "Qual o título da publicação?",
-        default: args.titulo,
-    },
-    {
-        type: "list",
-        name: "tipo",
-        message: "Qual o tipo da publicação?",
-        default: args.tipo,
-        choices: ["artigo", "livro", "capítulo", "periódico", "outro"],
-    },
-    {
-        type: "input",
-        name: "instituicaoAfiliada",
-        message: "Qual a instituição afiliada?",
-        default: args.instituicaoAfiliada,
-    },
-    {
-        type: "input",
-        name: "instituicaoPublicacao",
-        message: "Qual a instituição da publicação?",
-        default: args.instituicaoPublicacao,
-    },
-    {
-        type: "input",
-        name: "ano",
-        message: "Qual o ano?",
-        default: args.ano,
-    },
-    {
-        type: "input",
-        name: "palavrasChave",
-        message: "Palavras chave separadas por vírgula",
-        default: args.palavrasChave,
-    },
-    {
-        type: "list",
-        name: "preset",
-        message: "Qual preset deseja usar?",
-        default: args.preset,
-        choices: ["abnt"],
-    },
-    {
+import schema from "./schema/pub-gen-schema.json" assert { type: "json" };
+
+export const pubGenPrompt = (callback, defaults = undefined) => {
+    const createPromptType = ["name", "type", "year"];
+    const syncInputs = ["type", "title", "preset", "language", "keywords"];
+
+    const createPrompt = Object.entries(schema.properties)
+        .map(([key, value]) => {
+            if (createPromptType.includes(key)) {
+                return createInput(
+                    key,
+                    value,
+                    defaults
+                        ? defaults[key]
+                            ? defaults[key]
+                            : undefined
+                        : undefined
+                );
+            }
+        })
+        .filter((x) => x);
+
+    const authorPrompt = Object.entries(
+        schema.properties.authors.items.properties
+    ).map(([key, value]) => {
+        return createInput(
+            `authors.${key}`,
+            value,
+            defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
+        );
+    });
+    authorPrompt.push({
         type: "confirm",
-        name: "multiIdioma",
-        message: "A publicação será em mais de um idioma?",
-        default: args.multiIdioma,
-    },
-    {
-        type: "input",
-        name: "idiomas",
-        message:
-            "Quais os idiomas? Utilize a ISO 639-1, por exemplo: pt, en, es. Separe por vírgula",
-        default: args.idiomas,
-        when: (answers) => answers.multiIdioma,
-    },
-    {
-        type: "input",
-        name: "idiomaPadrao",
-        message:
-            "Qual o idioma padrão? Utilize a ISO 639-1, por exemplo: pt, en, es",
-        default: args.idiomaPrincipal,
-        when: (answers) => !answers.multiIdioma,
-    },
-    {
+        name: "addAuthor",
+        message: "Do you want to add another author?",
+        default: false,
+    });
+
+    const documentPrompt = Object.entries(
+        schema.properties.documents.items.properties
+    )
+        .map(([key, value]) => {
+            if (syncInputs.includes(key)) {
+                return createInput(
+                    `document.${key}`,
+                    value,
+                    defaults
+                        ? defaults[key]
+                            ? defaults[key]
+                            : undefined
+                        : undefined
+                );
+            }
+        })
+        .filter((x) => x);
+    documentPrompt.push({
         type: "confirm",
-        name: "instalarDependencias",
-        message: "Instalar dependências?",
-        default: args.instalarDependencias,
-    },
-];
+        name: "anotherDocument",
+        message: "Do you want to add another document?",
+        default: false,
+    });
+
+    switch (callback) {
+        case "create":
+            return createPrompt;
+
+        case "addAuthor":
+            return authorPrompt;
+
+        case "addDocument":
+            return documentPrompt;
+    }
+};
+
+const createInput = (name, value, defaultValue) => {
+    switch (value.type) {
+        case "string":
+            if (value.enum) {
+                return {
+                    type: "list",
+                    name,
+                    message: value.description,
+                    choices: value.enum,
+                    default: defaultValue,
+                };
+            } else {
+                return {
+                    type: value.type,
+                    name,
+                    message: value.description,
+                    default: defaultValue,
+                };
+            }
+    }
+};

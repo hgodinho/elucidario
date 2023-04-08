@@ -24,11 +24,13 @@
     "dependencies": {
         "@elucidario/md-to-gdoc": "workspace:^",
         "@elucidario/parse-args": "workspace:^",
+        "chalk": "^5.2.0",
         "commander": "^10.0.0",
         "inquirer": "^9.1.5",
         "json-schema": "^0.4.0"
     },
     "devDependencies": {
+        "@babel/eslint-parser": "^7.21.3",
         "lodash": "^4.17.21"
     }
 }
