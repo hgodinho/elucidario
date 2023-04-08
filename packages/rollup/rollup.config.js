@@ -16,7 +16,8 @@ const lcdrRollupConfig = (config = null) => {
             }),
             terser({
                 output: {
-                    comments: /^!/,
+                    comments: "all",
+                    shebang: true,
                 },
             }),
         ],
@@ -28,11 +29,17 @@ const lcdrRollupConfig = (config = null) => {
             "child_process",
             "lodash",
             "json-schema-to-typescript",
-            "commander"
+            "commander",
         ]
     }
 
-    return merge({}, defaultConfig, config);
+    const external = [];
+    external.push(...defaultConfig.external);
+    if (config && config.external) {
+        external.push(...config.external);
+    }
+
+    return merge({}, defaultConfig, config, { external });
 };
 
 export default lcdrRollupConfig;

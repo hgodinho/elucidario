@@ -6,25 +6,18 @@
     "license": "MIT",
     "author": "Henrique Godinho <henrique@hgod.in>",
     "main": "index.js",
-    "workspaces": [
-        "publications/*",
-        "packages/*",
-        "apps/*"
-    ],
     "scripts": {
         "commit": "cz",
-        "graph": "yarn nx graph",
+        "graph": "pnpm nx graph",
         "docusaurus": "lerna run docusaurus",
         "start": "lerna run start",
-        "build": "lerna run build",
+        "build": "lerna run build --stream",
         "swizzle": "lerna run swizzle",
         "deploy": "lerna run deploy",
         "serve": "lerna run serve",
         "clean": "lerna clean",
         "link": "lerna link",
-        "pub-gen": "tsx packages/pub-gen/src/pub-gen.ts",
-        "write-translations": "lerna run write-translations",
-        "write-heading-ids": "lerna run write-heading-ids",
+        "pub-gen": "pub-gen",
         "typecheck": "tsc"
     },
     "config": {
@@ -33,8 +26,12 @@
         }
     },
     "devDependencies": {
+        "@elucidario/pub-gen": "^0.1.0",
         "commitizen": "^4.3.0",
         "conventional-changelog": "^3.1.25",
-        "lerna": "^6.5.1"
+        "eslint": "^8.38.0",
+        "lerna": "^6.6.1",
+        "prettier": "^2.8.7",
+        "typescript": "^5.0.4"
     }
 }

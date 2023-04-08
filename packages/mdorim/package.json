@@ -9,32 +9,32 @@
     "type": "module",
     "main": "dist/mdorim.js",
     "scripts": {
-        "build": "yarn clean:dist && rollup -c && yarn build:docs",
-        "build:docs": "yarn clean:docs && tsx src/build-docs.ts",
+        "build": "pnpm clean:dist && rollup -c && pnpm build:docs",
+        "build:docs": "pnpm clean:docs && tsx src/build-docs.ts",
         "clean:dist": "rm -rf dist/*",
         "clean:docs": "rm -rf docs/*",
         "watch": "tsx watch src/build-docs.ts",
         "test": "jest"
     },
     "devDependencies": {
-        "@elucidario/docusaurus-md": "^0.1.0",
-        "@elucidario/tsconfig": "^1.0.0",
-        "@elucidario/types": "^0.1.0",
+        "@elucidario/docusaurus-md": "workspace:^",
+        "@elucidario/tsconfig": "workspace:^",
+        "@elucidario/types": "workspace:^",
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-run": "^3.0.1",
         "@rollup/plugin-terser": "^0.4.0",
-        "@rollup/plugin-typescript": "^11.0.0",
-        "@types/lodash": "^4.14.191",
+        "@rollup/plugin-typescript": "^11.1.0",
+        "@types/lodash": "^4.14.192",
         "@types/mustache": "^4.2.2",
-        "@types/node": "^18.15.5",
-        "babel-eslint": "^10.1.0",
+        "@types/node": "^18.15.11",
+        "eslint": "^8.38.0",
         "jest": "^29.5.0",
         "lodash": "^4.17.21",
         "rollup": "^3.20.2",
         "rollup-plugin-copy": "^3.4.0",
-        "ts-jest": "^29.0.5",
+        "ts-jest": "^29.1.0",
         "ts-node": "^10.9.1",
         "tsx": "^3.12.6",
-        "typescript": "^5.0.2"
+        "typescript": "^5.0.4"
     }
 }

@@ -5,7 +5,7 @@
     "main": "tsconfig.json",
     "license": "MIT",
     "devDependencies": {
-        "@types/node": "^18.15.10",
-        "typescript": "^5.0.2"
+        "@types/node": "^18.15.11",
+        "typescript": "^5.0.4"
     }
 }

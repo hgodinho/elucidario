@@ -16,9 +16,9 @@ export interface Document {
  * GoogleDocs class
  */
 export class GoogleDocs {
-    private auth: Auth;
+    private auth: Auth | undefined;
+    private document: Document | undefined;
     private docs: any;
-    private document: Document;
 
     /**
      * GoogleDocs class
@@ -55,17 +55,19 @@ export class GoogleDocs {
             this.scopes as SCOPES,
             this.path
         );
-        await this.auth
-            .authenticate()
-            .then((response) => {
-                this.docs = google.docs({
-                    version: "v1",
-                    auth: this.auth.getAuth(),
+        if (this.auth) {
+            await this.auth
+                .authenticate()
+                .then((response) => {
+                    this.docs = google.docs({
+                        version: "v1",
+                        auth: this.auth ? this.auth.getAuth() : undefined,
+                    });
+                })
+                .catch((error) => {
+                    throw new Error(error);
                 });
-            })
-            .catch((error) => {
-                throw new Error(error);
-            });
+        }
     }
 
     /**
@@ -95,54 +97,53 @@ export class GoogleDocs {
         }
     }
 
-    public async updateDocument(
-        content: string,
-        documentId: string | undefined = undefined,
-    ): Promise<Document> {
-        
-        try {
-            if (!documentId) {
-                documentId = this.document.id;
-            }
-        } catch (err) {
-            throw new Error("No document found");
-        }
+    // public async updateDocument(
+    //     content: string,
+    //     documentId: string | undefined = undefined
+    // ): Promise<Document> {
+    //     try {
+    //         if (!documentId && this.document) {
+    //             documentId = this.document.id;
+    //         }
+    //     } catch (err) {
+    //         throw new Error("No document found");
+    //     }
 
-        
-        const requests = [
-            {
-                replaceAllText: {
-                    containsText: {
-                        text: "{{content}}",
-                        matchCase: true,
-                    },
-                    replaceText: content,
-                },
-            },
-        ];
+    //     const requests = [
+    //         {
+    //             replaceAllText: {
+    //                 containsText: {
+    //                     text: "{{content}}",
+    //                     matchCase: true,
+    //                 },
+    //                 replaceText: content,
+    //             },
+    //         },
+    //     ];
 
-        console.log("Updating document: ", {documentId, doc: this.document, });
+    //     console.log("Updating document: ", { documentId, doc: this.document });
 
-        // const { data } = await this.docs.documents.batchUpdate({
-        //     documentId,
-        //     requestBody: {
-        //         requests,
-        //     },
-        // });
+    //     // const { data } = await this.docs.documents.batchUpdate({
+    //     //     documentId,
+    //     //     requestBody: {
+    //     //         requests,
+    //     //     },
+    //     // });
 
-        // const documentUrl = `https://docs.google.com/document/d/${documentId}/edit`;
+    //     // const documentUrl = `https://docs.google.com/document/d/${documentId}/edit`;
 
-        // const documentInfo: Document = {
-        //     id: documentId,
-        //     url: documentUrl,
-        //     title: data.title,
-        //     createdTime: data.createdTime,
-        // };
+    //     // const documentInfo: Document = {
+    //     //     id: documentId,
+    //     //     url: documentUrl,
+    //     //     title: data.title,
+    //     //     createdTime: data.createdTime,
+    //     // };
 
-        // fs.writeFileSync("document.json", JSON.stringify(documentInfo));
+    //     // fs.writeFileSync("document.json", JSON.stringify(documentInfo));
 
-        return documentInfo;
-    }
+    //     const documentInfo = {};
+    //     return documentInfo;
+    // }
 
     /**
      * Parse the document received from the API
@@ -162,7 +163,9 @@ export class GoogleDocs {
             title: document.data.title,
             createdTime: newDocument
                 ? document.headers.date
-                : this.document.createdTime,
+                : this.document
+                ? this.document.createdTime
+                : "",
             updatedTime: document.headers.date,
         };
         return documentInfo;

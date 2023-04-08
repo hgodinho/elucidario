@@ -3,9 +3,9 @@ import { Credentials } from "./classes/Auth";
 import fs from "fs";
 import type { SCOPES } from "./classes/Auth";
 
-import parseArgs from "@elucidario/parse-args";
+import { parseArgs } from "@elucidario/parse-args";
 
-const createDoc = async (
+export const createDoc = async (
     title: string | undefined = undefined,
     credentials: Credentials | undefined = undefined,
     scopes: SCOPES | undefined = undefined,
@@ -42,7 +42,3 @@ const createDoc = async (
         googleDocs.createDocument(title);
     }
 };
-
-createDoc();
-
-export default createDoc;

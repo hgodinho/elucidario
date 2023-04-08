@@ -48,8 +48,6 @@ export const resolveRef = (ref: string, code = false) => {
     }
     link = `[${topic}](${link.toLocaleLowerCase()})`;
 
-    console.log({ link, base, topicBase, path, file, definitions, topic });
-
     return link;
 };
 
@@ -70,7 +68,7 @@ export const metadata = (
         metadata.description,
         propertiesTable(metadata),
         mappingTable(metadata.map),
-        top ? backToTop('Voltar para o topo') : "",
+        top ? backToTop("Voltar para o topo") : "",
         "---",
     ]);
 };

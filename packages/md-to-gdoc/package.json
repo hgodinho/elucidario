@@ -3,30 +3,28 @@
     "version": "0.1.0",
     "description": "Converte md para google docs",
     "license": "MIT",
-    "author": "henrique godinho ola@hgod.in",
+    "author": "Henrique Godinho ola@hgod.in",
     "type": "module",
-    "main": "src/index.ts",
+    "main": "dist/index.js",
     "scripts": {
         "authenticate": "tsx src/authenticate",
-        "create": "tsx src/create-doc",
+        "build": "pnpm clean && rollup -c",
         "clean": "rm -rf dist/*",
-        "build": "yarn clean && tsc",
-        "build:types": "tsx src/build-preset-types"
+        "create": "tsx src/create-doc"
     },
     "dependencies": {
+        "@elucidario/parse-args": "workspace:^",
         "@googleapis/docs": "^2.0.1",
         "@googleapis/drive": "^5.0.2",
         "google-auth-library": "^8.7.0",
         "googleapis": "^114.0.0"
     },
     "devDependencies": {
-        "@elucidario/parse-args": "^0.1.0",
-        "@apidevtools/json-schema-ref-parser": "^10.1.0",
-        "@elucidario/tsconfig": "^1.0.0",
-        "@types/json-schema": "^7.0.11",
+        "@elucidario/rollup": "workspace:^",
+        "@elucidario/tsconfig": "workspace:^",
         "@types/node": "^18.15.11",
-        "json-schema-to-typescript": "^12.0.0",
+        "rollup": "^3.20.2",
         "tsx": "^3.12.6",
-        "typescript": "^5.0.3"
+        "typescript": "^5.0.4"
     }
 }

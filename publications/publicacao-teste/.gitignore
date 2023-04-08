@@ -1,0 +1,3 @@
+# ensure no credentials or tokens are accidentally committed to git
+credentials.json
+token.json

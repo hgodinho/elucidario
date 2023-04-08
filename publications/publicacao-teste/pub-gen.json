@@ -1,0 +1,16 @@
+{
+    "nome": "publicacao-teste",
+    "titulo": "Publicação teste",
+    "tipo": "artigo",
+    "instituicaoAfiliada": "USP",
+    "instituicaoPublicacao": "CIDOC",
+    "ano": "2023",
+    "palavrasChave": [
+        "teste",
+        "testador"
+    ],
+    "preset": "abnt",
+    "multiIdioma": true,
+    "idiomas": "pt",
+    "dataCriacao": "2023-04-07T17:07:39.260Z"
+}

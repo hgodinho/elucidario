@@ -5,9 +5,8 @@
     "scripts": {
         "docusaurus": "docusaurus",
         "start": "docusaurus start",
-        "build": "yarn build:prod",
+        "build": "docusaurus build",
         "build:codespace": "export ENV=codespace && docusaurus build",
-        "build:prod": "export ENV=production && docusaurus build",
         "swizzle": "docusaurus swizzle",
         "deploy": "docusaurus deploy",
         "clear": "docusaurus clear",
@@ -28,8 +27,8 @@
         "react-dom": "^17.0.2"
     },
     "devDependencies": {
-        "@tsconfig/docusaurus": "^1.0.5",
-        "typescript": "^4.7.4"
+        "@tsconfig/docusaurus": "^1.0.7",
+        "typescript": "^5.0.4"
     },
     "browserslist": {
         "production": [

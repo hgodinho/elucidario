@@ -11,7 +11,7 @@ O pub-gen usa o [`md-to-gdoc`](../md-to-gdoc/README.md) para converter a publica
 Na raiz do `elucidario` execute:
 
 ```bash
-yarn pub-gen
+pnpm pub-gen
 ```
 
 Responda as perguntas do prompt e o pub-gen irá criar uma pasta com o nome e os arquivos necessários para a publicação na pasta `publications`.
@@ -59,21 +59,21 @@ Para sincronizar com o google-docs é necessário criar um novo app no google cl
 
 O arquivo `credentials.json` deve ser colocado na raiz da pasta `<nome-da-publicacao>`. Certifique-se de que o arquivo não está sendo versionado pelo git.
 
-Depois execute o comando `yarn authenticate` para autenticar o app com o google ou `yarn create-doc` autenticar e criar um novo doc.
+Depois execute o comando `pnpm authenticate` para autenticar o app com o google ou `pnpm create-doc` autenticar e criar um novo doc.
 
 O arquivo `token.json` será gerado com as credenciais do usuário. Esse arquivo não deve ser versionado pelo git.
 
 ### Comandos
 
-### `yarn authenticate`
+### `pnpm authenticate`
 
 Autentica o app com o google e gera um arquivo `token.json` com as credenciais do usuário.
 
-### `yarn create-doc`
+### `pnpm create-doc`
 
 Autentica o app com o google, gera um arquivo `token.json` com as credenciais do usuário e cria um novo documento no google-docs.
 
-### `yarn sync`
+### `pnpm sync`
 
 Sincroniza o conteúdo da pasta `content` e `references` com o google-docs.
 

@@ -12,11 +12,12 @@
             "strings": true
         },
         "editor.suggest.insertMode": "replace",
-        "gitlens.codeLens.scopes": [
-            "document"
-        ],
+        "gitlens.codeLens.scopes": ["document"],
         "editor.wordWrap": "on"
     },
     "editor.formatOnSave": true,
     "cSpell.language": "en, pt-br",
+    "cSpell.words": ["lcdr"],
+    "eslint.packageManager": "pnpm",
+    "npm.packageManager": "pnpm"
 }

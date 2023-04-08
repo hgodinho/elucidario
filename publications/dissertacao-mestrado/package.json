@@ -9,9 +9,9 @@
         "sync": "tsx ./node_modules/@elucidario/md-to-gdoc/src/sync.ts"
     },
     "devDependencies": {
-        "@elucidario/md-to-gdoc": "^0.1.0",
+        "@elucidario/md-to-gdoc": "workspace:^",
         "tsx": "^3.12.6",
-        "typescript": "^5.0.3"
+        "typescript": "^5.0.4"
     },
     "keywords": [
         ""
