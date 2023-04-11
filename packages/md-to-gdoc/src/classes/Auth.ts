@@ -22,7 +22,7 @@ export class Auth {
         private readonly credentials: Credentials,
         private readonly SCOPES: SCOPES,
         private path: fs.PathOrFileDescriptor | undefined = undefined
-    ) {}
+    ) { }
 
     /**
      * Create an OAuth2 client with the given credentials
@@ -45,6 +45,7 @@ export class Auth {
             oAuth2Client.setCredentials(JSON.parse(token as unknown as string));
             this.auth = oAuth2Client;
             console.log(chalk.green("Token json file found"));
+            return Promise.resolve();
         } catch (err) {
             const authUrl = oAuth2Client.generateAuthUrl({
                 access_type: "offline",

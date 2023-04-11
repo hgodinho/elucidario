@@ -3,8 +3,9 @@ import { Credentials } from "./classes/Auth";
 import { PathOrFileDescriptor } from "fs";
 import type { SCOPES } from "./classes/Auth";
 
-export const createDoc = async (
-    title: string,
+export const updateDoc = async (
+    id: string,
+    content: string | null = null,
     credentials: Credentials,
     tokenPath: PathOrFileDescriptor,
     scopes: SCOPES | undefined = undefined
@@ -12,10 +13,11 @@ export const createDoc = async (
     const googleDocs = new GoogleDocs(credentials, tokenPath, scopes);
 
     try {
-        return await googleDocs.createDocument(title);
-    } catch (err) {
-        console.log("createDoc: catch", err);
+        console.log("updateDoc: try");
         await googleDocs.authenticate();
-        return await googleDocs.createDocument(title);
+        return await googleDocs.updateDocument(id, content);
+    } catch (err) {
+        console.log("updateDoc: catch");
+        return err;
     }
 };

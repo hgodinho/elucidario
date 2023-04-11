@@ -78,53 +78,44 @@ export class GoogleDocs {
         }
     }
 
-    // public async updateDocument(
-    //     content: string,
-    //     documentId: string | undefined = undefined
-    // ): Promise<Document> {
-    //     try {
-    //         if (!documentId && this.document) {
-    //             documentId = this.document.id;
-    //         }
-    //     } catch (err) {
-    //         throw new Error("No document found");
-    //     }
+    public async updateDocument(
+        id: string,
+        content: string | null = null
+    ): Promise<Document | unknown> {
+        try {
+            const requests = [];
 
-    //     const requests = [
-    //         {
-    //             replaceAllText: {
-    //                 containsText: {
-    //                     text: "{{content}}",
-    //                     matchCase: true,
-    //                 },
-    //                 replaceText: content,
-    //             },
-    //         },
-    //     ];
+            if (content) {
+                requests.push({
+                    insertText: {
+                        text: content,
+                        location: {
+                            index: 1
+                        },
+                    },
+                });
+            }
 
-    //     console.log("Updating document: ", { documentId, doc: this.document });
-
-    //     // const { data } = await this.docs.documents.batchUpdate({
-    //     //     documentId,
-    //     //     requestBody: {
-    //     //         requests,
-    //     //     },
-    //     // });
-
-    //     // const documentUrl = `https://docs.google.com/document/d/${documentId}/edit`;
-
-    //     // const documentInfo: Document = {
-    //     //     id: documentId,
-    //     //     url: documentUrl,
-    //     //     title: data.title,
-    //     //     createdTime: data.createdTime,
-    //     // };
-
-    //     // fs.writeFileSync("document.json", JSON.stringify(documentInfo));
-
-    //     const documentInfo = {};
-    //     return documentInfo;
-    // }
+            console.log({ requests, docs: this.docs });
+            try {
+                const updateDocument = await this.docs.documents.batchUpdate({
+                    documentId: id,
+                    resource: {
+                        requests,
+                    },
+                });
+                const docInfo = this.parseDocument(updateDocument);
+                return docInfo;
+            } catch (err) {
+                console.log("updateDocument: catch");
+                console.log(err);
+                return err;
+            }
+        } catch (err) {
+            await this.authenticate();
+            return this.updateDocument(id, content);
+        }
+    }
 
     /**
      * Parse the document received from the API
