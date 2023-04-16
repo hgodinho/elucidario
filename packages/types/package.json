@@ -7,7 +7,7 @@
     "license": "MIT",
     "scripts": {
         "clear": "rm -rf dist/*",
-        "build": "tsc",
+        "build": "pnpm clear && tsc",
         "watch": "tsc -w"
     },
     "devDependencies": {
