@@ -17,7 +17,8 @@
     },
     "editor.formatOnSave": true,
     "cSpell.language": "en, pt-br",
-    "cSpell.words": ["lcdr"],
+    "cSpell.words": ["colspan", "lcdr"],
     "eslint.packageManager": "pnpm",
-    "npm.packageManager": "pnpm"
+    "npm.packageManager": "pnpm",
+    "prettier.tabWidth": 4
 }

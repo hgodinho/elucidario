@@ -40,11 +40,13 @@
                 "strings": true
             },
             "editor.suggest.insertMode": "replace",
-            "gitlens.codeLens.scopes": [
-                "document"
-            ],
+            "gitlens.codeLens.scopes": ["document"],
             "editor.wordWrap": "on"
         },
-        "files.autoSave": "onWindowChange"
+        "files.autoSave": "onWindowChange",
+        "editor.formatOnSave": true,
+        "eslint.packageManager": "pnpm",
+        "prettier.tabWidth": 4,
+        "prettier.useTabs": true
     }
 }

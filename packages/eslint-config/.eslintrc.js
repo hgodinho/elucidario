@@ -1,4 +1,5 @@
-{
+
+export default () => ({
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "./tsconfig.json",
@@ -41,4 +42,4 @@
         "browser": true,
         "es6": true
     }
-}
+})

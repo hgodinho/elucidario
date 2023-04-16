@@ -6,6 +6,7 @@
     "license": "MIT",
     "author": "Henrique Godinho <henrique@hgod.in>",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "commit": "cz",
         "graph": "pnpm nx graph",
@@ -26,7 +27,8 @@
         }
     },
     "devDependencies": {
-        "@elucidario/pub-gen": "^0.1.0",
+        "@elucidario/pub-gen": "workspace:^",
+        "@elucidario/eslint-config": "workspace:^",
         "commitizen": "^4.3.0",
         "conventional-changelog": "^3.1.25",
         "eslint": "^8.38.0",

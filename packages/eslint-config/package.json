@@ -2,7 +2,7 @@
     "name": "@elucidario/eslint-config",
     "version": "0.1.0",
     "description": "Configurações eslint compartilhadas",
-    "main": "./.eslintrc.json",
+    "main": ".eslintrc.js",
     "author": "Henrique Godinho <henrique@hgod.in>",
     "license": "MIT",
     "dependencies": {
