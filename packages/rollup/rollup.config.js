@@ -4,7 +4,7 @@ import merge from "lodash.merge";
 
 const lcdrRollupConfig = (config = null) => {
     const defaultConfig = {
-        input: 'src/index.ts',
+        input: "src/index.ts",
         output: {
             dir: "dist",
             format: "es",
@@ -30,8 +30,9 @@ const lcdrRollupConfig = (config = null) => {
             "lodash",
             "json-schema-to-typescript",
             "commander",
-        ]
-    }
+            "chalk",
+        ],
+    };
 
     const external = [];
     external.push(...defaultConfig.external);
