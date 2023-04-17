@@ -5,10 +5,10 @@ on:
   push:
     branches:
       - main
-    paths: 
-      - '.github/workflows/deploy-mdorim.yml'
-      - 'apps/mdorim-docs/**'
-      - 'packages/mdorim/**'
+    paths:
+      - ".github/workflows/deploy-mdorim.yml"
+      - "apps/mdorim-docs/**"
+      - "packages/mdorim/**"
 
 jobs:
   deploy:
@@ -19,9 +19,9 @@ jobs:
         with:
           ref: main
       - name: Install Docusaurus dependencies
-        run: yarn install # replace with your package manager
+        run: pnpm install # replace with your package manager
       - name: Build Docusaurus site
-        run: yarn build # replace with your build command
+        run: pnpm build # replace with your build command
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
