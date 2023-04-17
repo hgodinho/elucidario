@@ -13,11 +13,14 @@
         "build:docs": "pnpm clean:docs && tsx src/build-docs.ts",
         "clean:dist": "rm -rf dist/*",
         "clean:docs": "rm -rf docs/*",
-        "watch": "tsx watch src/build-docs.ts",
+        "dev": "tsx watch src/build-docs.ts",
+        "dev:docs": "pnpm build:docs -w",
         "test": "jest"
     },
     "devDependencies": {
         "@elucidario/docusaurus-md": "workspace:^",
+        "@elucidario/pub-gen": "workspace:^",
+        "@elucidario/schema-doc": "workspace:^",
         "@elucidario/tsconfig": "workspace:^",
         "@elucidario/types": "workspace:^",
         "@rollup/plugin-json": "^6.0.0",
@@ -27,14 +30,19 @@
         "@types/lodash": "^4.14.192",
         "@types/mustache": "^4.2.2",
         "@types/node": "^18.15.11",
+        "chalk": "^5.2.0",
+        "commander": "^10.0.0",
         "eslint": "^8.38.0",
+        "fs": "0.0.1-security",
         "jest": "^29.5.0",
         "lodash": "^4.17.21",
+        "path": "^0.12.7",
         "rollup": "^3.20.2",
         "rollup-plugin-copy": "^3.4.0",
         "ts-jest": "^29.1.0",
         "ts-node": "^10.9.1",
         "tsx": "^3.12.6",
-        "typescript": "^5.0.4"
+        "typescript": "^5.0.4",
+        "url": "^0.11.0"
     }
 }

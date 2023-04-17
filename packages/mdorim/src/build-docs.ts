@@ -1,69 +1,71 @@
 import path from "path";
 import fs from "fs";
+import { Command } from "commander";
+import chalk from "chalk";
 
-import lodash from "lodash";
-const { merge } = lodash;
+import { readContents } from "@elucidario/schema-doc";
 
-import type { Page, Schema, Metadata } from "./types";
-import { metadataTemplate, pageTemplate } from "./templates";
-
-import * as definitions from "./metadata";
-import * as pages from "./pages";
 import { fileURLToPath } from "url";
+import { pubGenRemarkProcessor } from "@elucidario/pub-gen/lib/remark/processor.js";
 
-const outputDir = "./docs";
+const outputDir = "docs";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-/**
- *  Retorna o schema pelo nome de um arquivo
- * @param ref | string | Schema
- * @returns | Schema
- */
-export const getSchema = (ref: string): Schema => {
-    const schema = JSON.parse(
-        fs.readFileSync(path.join(__dirname, "json/", ref), "utf8")
-    );
-    return schema;
-};
+const pages = readContents(path.join(__dirname, "pages"), ["md"]);
 
-/**
- *  Define a página
- * @param page | object
- * @returns | Page
- */
-export const definePage = (page: object) => {
-    if ("mainEntity" in page) {
-        const entity = page.mainEntity as {
-            $ref: string;
-            "@type": string;
-        };
-        const schema = getSchema(entity.$ref);
-        const newPage = merge({}, page, {
-            mainEntity: {
-                ref: schema,
+export const processPages = async () => {
+    Object.entries(pages).map(async ([name, page]) => {
+        const newFile = await pubGenRemarkProcessor(page, {
+            pubGen: {
+                path: __dirname,
             },
-        }) as Page;
-        if ("$ref" in newPage.mainEntity) {
-            delete newPage.mainEntity["$ref"];
-        }
-        return newPage;
-    }
-    return null;
+        });
+        fs.writeFileSync(
+            path.resolve(outputDir, `${name}.md`),
+            newFile.toString()
+        );
+    });
+    console.log(chalk.green("Done!"));
 };
 
-const home = fs.readFileSync(path.join(__dirname, "pages", "home.md"), "utf8");
-const homeFile = path.join(__dirname, "..", outputDir, `home.md`);
-fs.writeFileSync(homeFile, home);
+export const buildDocs = async () => {
+    const program = new Command("build-docs");
 
-const metadataMarkdown = metadataTemplate(definitions.Definitions as Metadata);
-const outputFile = path.join(__dirname, "..", outputDir, `metadata.md`);
-fs.writeFileSync(outputFile, metadataMarkdown);
+    program.option("-w, --watch", "Watch for changes", false);
 
-Object.entries(pages).map(([key, page]) => {
-    const newPage = definePage(page);
-    if (newPage) {
-        const pageMarkdown = pageTemplate(newPage);
-        const outputFile = path.join(__dirname, "..", outputDir, `${key}.md`);
-        fs.writeFileSync(outputFile, pageMarkdown);
+    program.parse();
+
+    const options = program.opts();
+
+    if (options.watch) {
+        await processPages();
+        fs.watch(path.join(__dirname, "pages"), async (eventType, filename) => {
+            if (filename) {
+                console.log(
+                    chalk.cyan(
+                        `event of type ${chalk.bgCyan(
+                            chalk.bold(chalk.black(eventType))
+                        )} at markdown file ${chalk.bgCyan(chalk.bold(chalk.black(filename)))}`
+                    )
+                );
+                await processPages();
+            }
+        });
+        fs.watch(path.join(__dirname, "schemas"), async (eventType, filename) => {
+            if (filename) {
+                console.log(
+                    chalk.blue(
+                        `event of type ${chalk.bgBlue(
+                            chalk.bold(chalk.black(eventType))
+                        )} at schema file ${chalk.bgBlue(chalk.bold(chalk.black(filename)))}`
+                    )
+                );
+                await processPages();
+            }
+        });
+    } else {
+        processPages();
     }
-});
+};
+
+buildDocs();

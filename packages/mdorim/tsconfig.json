@@ -5,12 +5,15 @@
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "declarationMap": true,
+        "allowJs": true,
         "rootDir": "src",
-        "outDir": "dist",
+        "outDir": "dist"
     },
     "include": ["src/index.ts"],
     "paths": {
         "@elucidario/types": ["../types/src"],
         "@elucidario/docusaurus-md": ["../docusaurus-md/dist"],
+        "@elucidario/schema-doc": ["../schema-doc/dist"],
+        "@elucidario/pub-gen": ["../pub-gen/dist"]
     }
 }

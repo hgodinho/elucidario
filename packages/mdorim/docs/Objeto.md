@@ -1,34 +1,33 @@
 ---
-title: User
-description: User
+title: Object
+description: Object
 ---
 
-# User
+# Objeto
 
 :::warning Em desenvolvimento
 
--   [ ] Criar endpoint para criação de usuários
--   [ ] Sei la mil coisas
+-   [ ] Criar a página
 
 :::
 
 ## Descrição
 
-Usuário do sistema
+Objeto
 
 ## Classes
 
-### `UserRef`
+### `ObjectRef`
 
-> tipo $ref([`UserRef`](./metadata#userref))
+> tipo $ref([`ObjectRef`](./metadata#objectref))
 
-**_Descrição:_** Referência a um usuário
+**_Descrição:_** Referência a um conceito
 
-### `User`
+### `Object`
 
 > tipo `object` com propriedades
 
-**_Descrição:_** Usuário do sistema
+**_Descrição:_** Objeto
 
 | Nome | Tipo                          | Descrição | Obrigatório |
 | ---- | ----------------------------- | --------- | ----------- |

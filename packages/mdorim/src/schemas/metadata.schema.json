@@ -1,0 +1,92 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Metadata",
+    "description": "Definições de metadados utilizados no MDORIM ",
+    "definitions": {
+        "_id": {
+            "title": "_id",
+            "description": "Identificador único do conceito. É um `integer` gerado automaticamente.",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://linked.art/ns/terms/identifier",
+                "schema.org": "http://schema.org/identifier"
+            },
+            "type": "integer"
+        },
+        "_type": {
+            "title": "_type",
+            "description": "Tipo do conceito. É um `string` gerado automaticamente baseado no tipo da classe",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                "linked.art": "_type",
+                "schema.org": "http://schema.org/type"
+            },
+            "type": "string"
+        },
+        "_uri": {
+            "title": "_uri",
+            "description": "Identificador único do conceito. É um `string` gerado automaticamente.",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://linked.art/ns/terms/identifier",
+                "schema.org": "http://schema.org/identifier"
+            },
+            "type": "string"
+        },
+        "identified_by": {
+            "title": "identified_by",
+            "description": "Define o nome ou identificador de uma entidade. Pode ser `Name` ou `Identifier`.",
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/definitions/Name"
+                    },
+                    {
+                        "$ref": "#/definitions/Identifier"
+                    }
+                ]
+            },
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://www.w3.org/2000/01/rdf-schema#label",
+                "schema.org": "http://schema.org/name"
+            }
+        },
+        "Identifier": {
+            "description": "Identificador de uma entidade.",
+            "title": "Identifier",
+            "type": "object",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://linked.art/ns/terms/identifier",
+                "schema.org": "http://schema.org/identifier"
+            },
+            "properties": {
+                "classified_as": {
+                    "$ref": "../schemas/concept.schema.json#/definitions/ConceptRef"
+                },
+                "type": {
+                    "const": "Identifier",
+                    "description": "Tipo do identificador. Valor constante: `Identifier`.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Valor do identificador.",
+                    "type": "string"
+                }
+            },
+            "required": ["type", "value"]
+        },
+        "slug": {
+            "title": "slug",
+            "description": "Nome do conceito. É um `string` gerado automaticamente.",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://www.w3.org/2000/01/rdf-schema#label",
+                "schema.org": "http://schema.org/name"
+            },
+            "type": "string"
+        }
+    }
+}

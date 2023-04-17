@@ -5,11 +5,9 @@ description: Concept
 
 # Concept
 
-:::warning Em desenvolvimento
-
--   [ ] Revisão geral
-
-:::
+{{status:warning,"Em desenvolvimento","
+    - [ ] Revisão geral
+"}}
 
 ## Descrição
 
@@ -21,23 +19,4 @@ Por padrão o MDORIM vem com alguns conceitos pré-definidos baseados inteiramen
 
 ## Classes
 
-### `ConceptRef`
-
-> tipo $ref([`ConceptRef`](./metadata#conceptref))
-
-**_Descrição:_** Referência a um conceito
-
-### `Concept`
-
-> tipo `object` com propriedades
-
-**_Descrição:_** Conceito
-
-| Nome | Tipo                          | Descrição | Obrigatório |
-| ---- | ----------------------------- | --------- | ----------- |
-| ID   | $ref([`ID`](./metadata#id))   |           | Sim         |
-| URI  | $ref([`URI`](./metadata#uri)) |           | Sim         |
-
-[Voltar para o topo](#)
-
----
+{{json-schema:schemas/concept.schema.json}}
