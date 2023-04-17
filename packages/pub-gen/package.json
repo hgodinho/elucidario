@@ -18,16 +18,31 @@
         "pub-gen": "./index.js"
     },
     "scripts": {
-        "test": "node ./__tests__/pub-gen.test.js",
-        "pub-gen": "node ./index.js"
+        "clean:docs": "rm -rf ./docs/*",
+        "build:docs": "pnpm clean:docs && node bin/build.js",
+        "pub-gen": "node ./index.js",
+        "test": "node ./__tests__/pub-gen.test.js"
     },
     "dependencies": {
         "@elucidario/md-to-gdoc": "workspace:^",
         "@elucidario/parse-args": "workspace:^",
+        "@elucidario/schema-doc": "workspace:^",
+        "ajv": "^8.12.0",
         "chalk": "^5.2.0",
         "commander": "^10.0.0",
         "inquirer": "^9.1.5",
-        "json-schema": "^0.4.0"
+        "jsdom": "^21.1.1",
+        "json-schema": "^0.4.0",
+        "prettier": "^2.8.7",
+        "remark": "^14.0.2",
+        "remark-frontmatter": "^4.0.1",
+        "remark-gfm": "^3.0.1",
+        "remark-parse": "^10.0.1",
+        "remark-prettier": "^2.0.0",
+        "remark-stringify": "^10.0.2",
+        "unified": "^10.1.2",
+        "unified-stream": "^2.0.0",
+        "unist-util-visit": "^4.1.2"
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.21.3",

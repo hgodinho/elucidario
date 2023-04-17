@@ -1,5 +1,5 @@
 export type Table = {
-    title?: string;
+    title?: string | false;
     titleLevel?: number;
     headers: string[];
     rows: string[][];

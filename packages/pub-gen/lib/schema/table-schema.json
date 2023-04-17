@@ -1,0 +1,130 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://elucidario.art/pub-gen/schema/table-schema.json",
+    "title": "Tabela",
+    "description": "Schema to represent a table of data",
+    "type": "object",
+    "properties": {
+        "title": {
+            "title": "Title",
+            "description": "The title of the table",
+            "type": "string"
+        },
+        "description": {
+            "title": "Description",
+            "description": "A description of the table",
+            "type": "string"
+        },
+        "header": {
+            "title": "Header",
+            "description": "The header of the table",
+            "type": "array",
+            "items": {
+                "title": "HeaderCell",
+                "type": "object",
+                "properties": {
+                    "text": {
+                        "description": "The value of the cell",
+                        "type": "string"
+                    },
+                    "colspan": {
+                        "description": "The number of columns the cell spans",
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "rowspan": {
+                        "description": "The number of rows the cell spans",
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                },
+                "required": ["text"]
+            }
+        },
+        "data": {
+            "title": "Data",
+            "description": "The data of the table",
+            "oneOf": [
+                {
+                    "title": "DataCells",
+                    "type": "array",
+                    "description": "The data of the table",
+                    "items": {
+                        "title": "DataCell",
+                        "type": "object",
+                        "description": "The cell data of the table",
+                        "properties": {
+                            "text": {
+                                "description": "The value of the cell",
+                                "type": "string"
+                            },
+                            "colspan": {
+                                "description": "The number of columns the cell spans",
+                                "type": "integer",
+                                "minimum": 1
+                            },
+                            "rowspan": {
+                                "description": "The number of rows the cell spans",
+                                "type": "integer",
+                                "minimum": 1
+                            }
+                        },
+                        "required": ["text"]
+                    }
+                },
+                {
+                    "title": "DataFiles",
+                    "type": "array",
+                    "items": {
+                        "title": "DataFile",
+                        "type": "string",
+                        "description": "The path to a file containing the data of the table"
+                    }
+                },
+                {
+                    "title": "DataFile",
+                    "type": "string",
+                    "description": "The path to a file containing the data of the table"
+                }
+            ]
+        },
+        "rows": {
+            "title": "Rows",
+            "description": "The rows of the table",
+            "type": "array",
+            "items": {
+                "title": "Row",
+                "type": "array",
+                "description": "The cells of the row",
+                "items": {
+                    "title": "RowCell",
+                    "type": "object",
+                    "description": "The cell of the row",
+                    "properties": {
+                        "text": {
+                            "description": "The value of the cell",
+                            "type": "string"
+                        },
+                        "colspan": {
+                            "description": "The number of columns the cell spans",
+                            "type": "integer",
+                            "minimum": 1
+                        },
+                        "rowspan": {
+                            "description": "The number of rows the cell spans",
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    },
+                    "required": ["text"]
+                }
+            }
+        },
+        "note": {
+            "title": "Note",
+            "description": "A note about the table",
+            "type": "string"
+        }
+    },
+    "required": ["title", "rows"]
+}

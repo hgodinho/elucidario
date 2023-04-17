@@ -1,7 +1,7 @@
 import { unified } from "unified";
 import markdown from "remark-parse";
 import remarkGfm from "remark-gfm";
-import remarkStringify from "remark-stringify";
+import remarkPrettier from "remark-prettier";
 import remarkFrontmatter from "remark-frontmatter";
 
 import remarkPubGen from "./remark-pub-gen.js";
@@ -15,8 +15,8 @@ export const pubGenRemarkProcessor = async (
         .use(markdown, options?.markdown)
         .use(remarkFrontmatter, options?.frontmatter)
         .use(remarkGfm, options?.gfm)
-        .use(remarkPubGen, options?.pubGen)
-        .use(remarkStringify, options?.stringify);
+        .use(remarkPubGen, options?.pubGen);
+    // .use(remarkStringify, options?.stringify);
 
     if (plugins) {
         plugins.map((plugin) => {
@@ -25,6 +25,8 @@ export const pubGenRemarkProcessor = async (
     }
 
     processor.Compiler = remarkPubGen;
+
+    processor.use(remarkPrettier, options?.prettier);
 
     try {
         const result = await processor.process(content);
