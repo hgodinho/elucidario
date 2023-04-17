@@ -5,6 +5,7 @@ import {
     AnyOfSchema,
     OneOfSchema,
     ArraySchema,
+    Entity,
 } from "@elucidario/types";
 
 import {
@@ -42,7 +43,7 @@ export const resolveRef = (ref: string, code = false) => {
     let [base, topicBase] = ref.split("#");
     const [__, path, file] = base.split("/");
     if (base) {
-        link = `./${file.split(".")[0]}.md`;
+        link = `./${file.split(".")[0]}`;
     }
     if (topicBase.startsWith("/")) {
         topicBase = topicBase.slice(1);
@@ -59,22 +60,19 @@ export const resolveRef = (ref: string, code = false) => {
 
 /**
  *  Define o bloco de documentação de um metadado
- * @param key | string
+ * @param title | string
  * @param metadata | BaseSchema<DataTypes>
  * @returns | string
  */
 export const metadata = (
-    key: string,
-    metadata: BaseSchema<DataTypes>,
+    title: string,
+    metadata: Entity | BaseSchema<DataTypes>,
     top: boolean = false,
     headingLevel = 3
 ) => {
     return toMD([
-        heading(headingLevel, `\`${key}\``),
-        metaType(metadata),
-        metadata.description,
-        propertiesTable(metadata),
-        mappingTable(metadata.map),
+        entityTable(metadata as Entity),
+        mappingTable((metadata as BaseSchema<DataTypes>).map),
         top ? backToTop("Voltar para o topo") : "",
         "---",
     ]);
@@ -91,6 +89,11 @@ export const metaType = (
     const arrayMeta = metadata as ArraySchema;
     const anyOfMeta = metadata as unknown as AnyOfSchema;
     const oneOfMeta = metadata as unknown as OneOfSchema;
+
+    if ("$ref" in metadata) {
+        const link = resolveRef(metadata.$ref as string, true);
+        return `> tipo $ref(${link})`;
+    }
 
     switch (metadata.type) {
         case "array":
@@ -114,7 +117,8 @@ export const metaType = (
                         })
                         .join(" | ")}>`;
             }
-            return `> tipo array\\<[\`${arrayMeta.items.title}\`](#${arrayMeta.items.title?.toLocaleLowerCase()})\\>`;
+            return `> tipo array<[\`${arrayMeta.items.title
+                }\`](#${arrayMeta.items.title?.toLocaleLowerCase()})>`;
         case "object":
             return `> tipo \`${metadata.type}\` com propriedades`;
         case "null":
@@ -122,6 +126,15 @@ export const metaType = (
         default:
             return `> tipo \`${metadata.type}\``;
     }
+};
+
+/**
+ * Cria string que descreve o metadado
+ * @param metadata | BaseSchema<DataTypes>
+ * @returns | string
+ */
+export const description = (metadata: BaseSchema<DataTypes>) => {
+    return `${boldItalic("Descrição:")} ${metadata.description}`;
 };
 
 /**
@@ -134,12 +147,40 @@ export const propertiesTable = (
     title: false | string | undefined = false,
     headingLevel = 4
 ): string => {
-
     if (!metadata.properties) {
+        if (metadata.$ref) {
+            return toMD([
+                heading(
+                    headingLevel,
+                    metadata.title ? `\`${metadata.title}\`` : ""
+                ),
+                metaType(metadata),
+                description(metadata),
+            ]);
+        }
+
         switch (metadata.type) {
             case "array":
                 const items = metadata.items as BaseSchema<DataTypes>;
-                return propertiesTable(items, `\`${items.title}\``, 4);
+
+                if ("anyOf" in items || "oneOf" in items) {
+                    return toMD([
+                        heading(
+                            headingLevel,
+                            metadata.title ? `\`${metadata.title}\`` : ""
+                        ),
+                        metaType(metadata),
+                        description(metadata),
+                        mappingTable((metadata as BaseSchema<DataTypes>).map),
+                    ]);
+                }
+
+                return propertiesTable(
+                    items,
+                    `\`${items.title}\``,
+                    headingLevel
+                );
+
             case "string":
                 return toMD([
                     heading(
@@ -147,9 +188,23 @@ export const propertiesTable = (
                         metadata.title ? `\`${metadata.title}\`` : ""
                     ),
                     metaType(metadata),
-                    `${boldItalic("Descrição:")} ${metadata.description}`,
+                    description(metadata),
+                    mappingTable((metadata as BaseSchema<DataTypes>).map),
                 ]);
+
+            case "integer":
+                return toMD([
+                    heading(
+                        headingLevel,
+                        metadata.title ? `\`${metadata.title}\`` : ""
+                    ),
+                    metaType(metadata),
+                    description(metadata),
+                    mappingTable((metadata as BaseSchema<DataTypes>).map),
+                ]);
+
             default:
+                console.log("default", { metadata });
                 return "";
         }
     }
@@ -169,9 +224,10 @@ export const propertiesTable = (
                 metadata.required && metadata.required.includes(key)
                     ? "Sim"
                     : "Não";
+
             if ("$ref" in value) {
-                const link = resolveRef(value.$ref);
-                return [link, "", "", "", required];
+                const link = resolveRef(value.$ref, true);
+                return [key, `$ref(${link})`, "", required];
             }
 
             if (value.oneOf) {
@@ -249,7 +305,7 @@ export const propertiesTable = (
                     const nestedArray = toMD([
                         heading(4, `\`${value.title}\``),
                         metaType(value as BaseSchema<DataTypes>),
-                        `${boldItalic("Descrição:")} ${value.description}`,
+                        description(value.description),
                     ]);
                     const nestedArrayItem = propertiesTable(
                         value as BaseSchema<DataTypes>,
@@ -263,7 +319,7 @@ export const propertiesTable = (
                         const nestedNestedArray = toMD([
                             heading(4, `\`${value.items.title}\``),
                             metaType(value.items as BaseSchema<DataTypes>),
-                            `${boldItalic("Descrição:")} ${value.items.description}`,
+                            description(value.items.description),
                         ]);
                         pushExtraData(nestedNestedArray);
                     }
@@ -272,7 +328,8 @@ export const propertiesTable = (
 
                     return [
                         key,
-                        `[\`${value.title}\`](#${value.title.toLocaleLowerCase()})`,
+                        `[\`${value.title
+                        }\`](#${value.title.toLocaleLowerCase()})`,
                         value.description,
                         required,
                     ];
@@ -287,7 +344,8 @@ export const propertiesTable = (
 
                     return [
                         key,
-                        `[\`${value.title}\`](#${value.title.toLocaleLowerCase()})`,
+                        `[\`${value.title
+                        }\`](#${value.title.toLocaleLowerCase()})`,
                         value.description,
                         required,
                     ];
@@ -301,9 +359,24 @@ export const propertiesTable = (
     return toMD([
         heading(headingLevel, title ? `\`${title}\`` : ""),
         metaType(metadata),
-        `${boldItalic("Descrição:")} ${metadata.description}`,
+        description(metadata),
         tableData,
+        mappingTable((metadata as BaseSchema<DataTypes>).map),
         extraData.length > 0 ? "---" : "",
         toMD(extraData),
     ]);
+};
+
+/**
+ * Cria tabela de entidades
+ * @param entity | Entity
+ * @returns | string
+ */
+export const entityTable = (entity: Entity): string => {
+    return toMD(
+        Object.entries(entity.definitions).map(([key, value]) => {
+            const definition = value as BaseSchema<DataTypes>;
+            return propertiesTable(definition, `\`${key}\``, 3);
+        })
+    );
 };

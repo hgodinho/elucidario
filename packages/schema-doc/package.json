@@ -21,8 +21,12 @@
         "@elucidario/types": "workspace:^",
         "@jest/globals": "^29.5.0",
         "@rollup/plugin-typescript": "^11.1.0",
+        "@types/node": "^18.15.11",
         "babel-jest": "^29.5.0",
+        "chalk": "^5.2.0",
+        "fs": "0.0.1-security",
         "jest": "^29.5.0",
+        "path": "^0.12.7",
         "rollup": "^3.20.2",
         "ts-jest": "^29.1.0"
     }
