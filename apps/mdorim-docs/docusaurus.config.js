@@ -4,8 +4,8 @@ const url =
     env === "codespace"
         ? "https://hgodinho-refactored-space-garbanzo-q4qq76v9rvc9px7-3000.preview.app.github.dev"
         : env === "production"
-            ? "https://hgodinho.github.io"
-            : "http://localhost:3000";
+        ? "https://hgodinho.github.io"
+        : "http://localhost:3000";
 
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
@@ -66,7 +66,18 @@ const config = {
                 path: "../../packages/mdorim/docs",
                 routeBasePath: "mdorim",
                 editUrl:
-                        "https://github.com/hgodinho/elucidario/tree/main/packages/mdorim",
+                    "https://github.com/hgodinho/elucidario/tree/main/packages/mdorim",
+                // sidebarPath: require.resolve('../../packages/mdorim/docs/sidebars.js'),
+            },
+        ],
+        [
+            "@docusaurus/plugin-content-docs",
+            {
+                id: "pub-gen",
+                path: "../../packages/pub-gen/docs",
+                routeBasePath: "pub-gen",
+                editUrl:
+                    "https://github.com/hgodinho/elucidario/tree/main/packages/pub-gen",
                 // sidebarPath: require.resolve('../../packages/mdorim/docs/sidebars.js'),
             },
         ],

@@ -28,6 +28,11 @@ const sidebars = {
             label: "MDORIM",
             href: `/elucidario/mdorim`,
         },
+        {
+            type: "link",
+            label: "pub-gen",
+            href: `/elucidario/pub-gen`,
+        },
     ],
 };
 
