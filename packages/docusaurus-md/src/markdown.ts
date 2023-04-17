@@ -120,6 +120,8 @@ export const table = ({ title, titleLevel, headers, rows }: Table) => {
  * ```ts
  * codeBlock("code", "json");
  * // ```json
+ * // code
+ * // ```
  * ```
  * @see https://www.markdownguide.org/basic-syntax/#code-blocks
  */
