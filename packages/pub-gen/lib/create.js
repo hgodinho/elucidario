@@ -47,6 +47,9 @@ export const createPublication = async (args) => {
                  * Create publication directory and copy template files
                  */
                 fs.mkdirSync(path.resolve(pubPath, name), { recursive: true });
+                fs.mkdirSync(path.resolve(pubPath, name, "files"), {
+                    recursive: true,
+                });
                 fs.writeFileSync(
                     path.resolve(dirName, "package.json"),
                     JSON.stringify(packageJson, null, 4)
@@ -100,7 +103,7 @@ const createREADME = (packageName) => {
  */
 const createPubGenJson = (name, answers) => {
     return {
-        "$schema": "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
+        $schema: "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
         version: "1.0.0",
         name,
         ...answers,
@@ -121,13 +124,14 @@ const createPackageJson = (name, packageName) => {
         main: "README.md",
         private: true,
         scripts: {
-            authenticate: `pub-gen authenticate -p ${name}`,
             "add-author": `pub-gen add-author -p ${name}`,
             "add-doc": `pub-gen add-doc -p ${name}`,
-            sync: `pub-gen sync -p ${name}`,
+            authenticate: `pub-gen authenticate -p ${name}`,
+            build: `pnpm clean && pub-gen build -m -g -c -p ${name}`,
+            clean: "rm -rf dist/*",
         },
         devDependencies: {
-            "@elucidario/pub-gen": `^${version}`
+            "@elucidario/pub-gen": `^${version}`,
         },
     };
 };

@@ -2,38 +2,38 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://elucidario.art/pub-gen/schema/table-schema.json",
     "title": "Tabela",
-    "description": "Schema to represent a table of data",
+    "description": "Schema para a representação de tabelas",
     "type": "object",
     "properties": {
         "title": {
             "title": "Title",
-            "description": "The title of the table",
+            "description": "O título da tabela",
             "type": "string"
         },
         "description": {
             "title": "Description",
-            "description": "A description of the table",
+            "description": "A descrição da tabela",
             "type": "string"
         },
         "header": {
             "title": "Header",
-            "description": "The header of the table",
+            "description": "O cabeçalho da tabela",
             "type": "array",
             "items": {
                 "title": "HeaderCell",
                 "type": "object",
                 "properties": {
                     "text": {
-                        "description": "The value of the cell",
+                        "description": "O valor da célula",
                         "type": "string"
                     },
                     "colspan": {
-                        "description": "The number of columns the cell spans",
+                        "description": "O número de colunas que a célula ocupa",
                         "type": "integer",
                         "minimum": 1
                     },
                     "rowspan": {
-                        "description": "The number of rows the cell spans",
+                        "description": "O número de linhas que a célula ocupa",
                         "type": "integer",
                         "minimum": 1
                     }
@@ -43,28 +43,28 @@
         },
         "data": {
             "title": "Data",
-            "description": "The data of the table",
+            "description": "Os dados da tabela",
             "oneOf": [
                 {
-                    "title": "DataCells",
+                    "title": "DataRow",
                     "type": "array",
-                    "description": "The data of the table",
+                    "description": "A linha de células de dados da tabela",
                     "items": {
                         "title": "DataCell",
                         "type": "object",
-                        "description": "The cell data of the table",
+                        "description": "A célula de dados da tabela",
                         "properties": {
                             "text": {
-                                "description": "The value of the cell",
+                                "description": "O valor da célula",
                                 "type": "string"
                             },
                             "colspan": {
-                                "description": "The number of columns the cell spans",
+                                "description": "O número de colunas que a célula ocupa",
                                 "type": "integer",
                                 "minimum": 1
                             },
                             "rowspan": {
-                                "description": "The number of rows the cell spans",
+                                "description": "O número de linhas que a célula ocupa",
                                 "type": "integer",
                                 "minimum": 1
                             }
@@ -78,40 +78,40 @@
                     "items": {
                         "title": "DataFile",
                         "type": "string",
-                        "description": "The path to a file containing the data of the table"
+                        "description": "O caminho para um arquivo contendo os dados da tabela"
                     }
                 },
                 {
                     "title": "DataFile",
                     "type": "string",
-                    "description": "The path to a file containing the data of the table"
+                    "description": "O caminho para um arquivo contendo os dados da tabela"
                 }
             ]
         },
         "rows": {
             "title": "Rows",
-            "description": "The rows of the table",
+            "description": "As linhas da tabela",
             "type": "array",
             "items": {
                 "title": "Row",
                 "type": "array",
-                "description": "The cells of the row",
+                "description": "A linha de células da tabela",
                 "items": {
                     "title": "RowCell",
                     "type": "object",
-                    "description": "The cell of the row",
+                    "description": "A célula da tabela",
                     "properties": {
                         "text": {
-                            "description": "The value of the cell",
+                            "description": "O valor da célula",
                             "type": "string"
                         },
                         "colspan": {
-                            "description": "The number of columns the cell spans",
+                            "description": "O número de colunas que a célula ocupa",
                             "type": "integer",
                             "minimum": 1
                         },
                         "rowspan": {
-                            "description": "The number of rows the cell spans",
+                            "description": "O número de linhas que a célula ocupa",
                             "type": "integer",
                             "minimum": 1
                         }
@@ -122,7 +122,7 @@
         },
         "note": {
             "title": "Note",
-            "description": "A note about the table",
+            "description": "A nota da tabela",
             "type": "string"
         }
     },

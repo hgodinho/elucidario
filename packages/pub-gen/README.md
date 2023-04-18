@@ -92,8 +92,13 @@ Possui um sistema de presets para definição de qual padrão de publicação de
 
 Os presets configuram o google-docs para usar o padrão de referências correto além de configurar a página com o formato adequado para cada preset. Define configurações como margens, tamanhos de fonte, espaçamento entre linhas, etc.
 
+## Tabelas
+
+<!-- Tabelas são definidas em  -->
+
 ## todo
 
+- [ ] revisar documentação
 - [ ] Criar um preset para o padrão de publicação da APA
 - [ ] Estabelecer um meio para que gere arquivos google-docs para diferentes presets.
 - [ ] Possibilidade de  permitir o uso de pastas ou arquivos com extensão `.md` para determinar seções do texto na pasta `content`.

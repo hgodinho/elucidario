@@ -3,14 +3,14 @@
     "$id": "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
     "version": "1.0.0",
     "$ref": "https://specs.frictionlessdata.io/schemas/data-package.json",
-    "title": "pub-gen config file",
-    "description": "Configuration file for pub-gen",
+    "title": "PubGen",
+    "description": "Arquivo de configuração para o pub-gen",
     "type": "object",
     "required": ["version", "type", "year"],
     "properties": {
         "version": {
             "title": "Version",
-            "description": "Version of the config file",
+            "description": "Versão do arquivo de configuração",
             "type": "string"
         },
         "type": {
@@ -30,68 +30,69 @@
         },
         "year": {
             "title": "Year",
-            "description": "Year of publication",
+            "description": "Ano da publicação",
             "type": "string"
         },
         "folder": {
             "title": "Folder",
-            "description": "Folder where the publications will be generated",
+            "description": "Pasta do drive onde os documentos serão salvos",
             "type": "object",
             "properties": {
                 "url": {
-                    "description": "URL of the folder",
+                    "description": "URL da pasta",
                     "type": "string"
                 },
                 "id": {
-                    "description": "ID of the folder",
+                    "description": "ID da pasta",
                     "type": "string"
                 }
             }
         },
         "documents": {
             "title": "Documents",
-            "description": "List of generated documents for pub-gen",
+            "description": "Lista de documentos gerados pelo pub-gen",
             "type": "array",
             "items": {
                 "title": "Document",
+                "description": "Documento gerado pelo pub-gen",
                 "type": "object",
                 "properties": {
                     "id": {
-                        "description": "ID of the document",
+                        "description": "ID do documento",
                         "type": "string"
                     },
                     "url": {
-                        "description": "URL of the document",
+                        "description": "URL do documento",
                         "type": "string"
                     },
                     "type": {
-                        "description": "Type of the document",
+                        "description": "Tipo do documento",
                         "type": "string",
                         "enum": ["doc", "sheet", "slide"]
                     },
                     "title": {
-                        "description": "Title of the document",
+                        "description": "Título do documento",
                         "type": "string"
                     },
                     "preset": {
-                        "description": "Preset of the document",
+                        "description": "Preset do documento",
                         "type": "string",
                         "enum": ["abnt", "apa"]
                     },
                     "language": {
-                        "description": "Language of the document. Use the ISO 639-1 code.",
+                        "description": "Idioma do documento. Use código ISO 639-1.",
                         "type": "string"
                     },
                     "keywords": {
-                        "description": "Keywords of the document",
+                        "description": "Palavras-chave do documento",
                         "type": "string"
                     },
                     "createdTime": {
-                        "description": "Creation date of the document. ",
+                        "description": "Data de criação do documento",
                         "type": "string"
                     },
                     "updatedTime": {
-                        "description": "Last update date of the document. ",
+                        "description": "Data de atualização do documento",
                         "type": "string"
                     }
                 }

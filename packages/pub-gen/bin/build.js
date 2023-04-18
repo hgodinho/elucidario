@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 
-import { readContent } from "../lib/readContent.js";
 import path from "path";
 import fs from "fs";
 import { pubGenRemarkProcessor } from "../lib/remark/processor.js";
+import { readContents } from "@elucidario/schema-doc";
 
 const srcPath = path.resolve("src");
 const libPath = path.resolve("lib");
 const docsPath = path.resolve("docs");
 
-const docs = readContent(srcPath, ["md"]);
+console.log({ srcPath, libPath, docsPath });
+const docs = readContents(srcPath, ["md"]);
 
 Object.entries(docs).map(async ([name, content]) => {
     const newFile = await pubGenRemarkProcessor(content, {
@@ -20,6 +21,4 @@ Object.entries(docs).map(async ([name, content]) => {
     });
 
     fs.writeFileSync(path.resolve(docsPath, `${name}.md`), newFile.toString());
-
-    // console.log("newFile", newFile);
 });

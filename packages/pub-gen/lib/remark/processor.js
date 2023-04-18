@@ -6,11 +6,7 @@ import remarkFrontmatter from "remark-frontmatter";
 
 import remarkPubGen from "./remark-pub-gen.js";
 
-export const pubGenRemarkProcessor = async (
-    content,
-    options = undefined,
-    plugins = undefined
-) => {
+export const pubGenRemarkProcessor = async (content, options, plugins) => {
     const processor = unified()
         .use(markdown, options?.markdown)
         .use(remarkFrontmatter, options?.frontmatter)
