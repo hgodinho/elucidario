@@ -16,4 +16,4 @@ Usuário do sistema
 
 ## Classes
 
-{{json-schema:schemas/user.schema.json}}
+{{json-schema:schemas/User.json}}

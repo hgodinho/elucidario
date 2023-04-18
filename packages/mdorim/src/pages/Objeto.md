@@ -15,4 +15,4 @@ Objeto
 
 ## Classes
 
-{{json-schema:schemas/object.schema.json}}
+{{json-schema:schemas/Object.json}}

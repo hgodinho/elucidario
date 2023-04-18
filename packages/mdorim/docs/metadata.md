@@ -80,11 +80,11 @@ Metadados do modelo
 
 **_Descrição:_** Identificador de uma entidade.
 
-| Nome          | Tipo                                       | Descrição                                             | Obrigatório |
-| ------------- | ------------------------------------------ | ----------------------------------------------------- | ----------- |
-| classified_as | $ref([`ConceptRef`](./concept#conceptref)) |                                                       | Não         |
-| type          | string                                     | Tipo do identificador. Valor constante: `Identifier`. | Sim         |
-| value         | string                                     | Valor do identificador.                               | Sim         |
+| Nome          | Tipo                                            | Descrição                                             | Obrigatório |
+| ------------- | ----------------------------------------------- | ----------------------------------------------------- | ----------- |
+| classified_as | $ref([`ConceptRef`](concept.schema#conceptref)) |                                                       | Não         |
+| type          | string                                          | Tipo do identificador. Valor constante: `Identifier`. | Sim         |
+| value         | string                                          | Valor do identificador.                               | Sim         |
 
 #### Mapeamento
 

@@ -19,4 +19,4 @@ Por padrão o MDORIM vem com alguns conceitos pré-definidos baseados inteiramen
 
 ## Classes
 
-{{json-schema:schemas/concept.schema.json}}
+{{json-schema:schemas/Concept.json}}

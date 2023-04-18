@@ -16,4 +16,4 @@ Metadados do modelo
 
 ## Classes
 
-{{json-schema:schemas/metadata.schema.json}}
+{{json-schema:schemas/metadata.json}}

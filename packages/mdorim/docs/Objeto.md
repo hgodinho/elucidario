@@ -19,7 +19,7 @@ Objeto
 
 ### `ObjectRef`
 
-> tipo $ref([`ObjectRef`](./metadata#objectref))
+> tipo $ref([`ObjectRef`](metadata#objectref))
 
 **_Descrição:_** Referência a um conceito
 
@@ -29,10 +29,10 @@ Objeto
 
 **_Descrição:_** Objeto
 
-| Nome | Tipo                          | Descrição | Obrigatório |
-| ---- | ----------------------------- | --------- | ----------- |
-| ID   | $ref([`ID`](./metadata#id))   |           | Sim         |
-| URI  | $ref([`URI`](./metadata#uri)) |           | Sim         |
+| Nome | Tipo                        | Descrição | Obrigatório |
+| ---- | --------------------------- | --------- | ----------- |
+| ID   | $ref([`ID`](metadata#id))   |           | Sim         |
+| URI  | $ref([`URI`](metadata#uri)) |           | Sim         |
 
 [Voltar para o topo](#)
 

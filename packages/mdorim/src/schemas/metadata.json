@@ -64,7 +64,7 @@
             },
             "properties": {
                 "classified_as": {
-                    "$ref": "../schemas/concept.schema.json#/definitions/ConceptRef"
+                    "$ref": "concept.schema.json#/definitions/ConceptRef"
                 },
                 "type": {
                     "const": "Identifier",

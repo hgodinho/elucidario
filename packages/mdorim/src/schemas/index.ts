@@ -1,4 +1,4 @@
-import User from './user.schema.json'
-import Concept from './concept.schema.json'
+import User from './User.json'
+import Concept from './Concept.json'
 
 export { User, Concept }

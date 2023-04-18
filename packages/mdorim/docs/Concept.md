@@ -23,7 +23,7 @@ Por padrão o MDORIM vem com alguns conceitos pré-definidos baseados inteiramen
 
 ### `ConceptRef`
 
-> tipo $ref([`ConceptRef`](./metadata#conceptref))
+> tipo $ref([`ConceptRef`](metadata#conceptref))
 
 **_Descrição:_** Referência a um conceito
 
@@ -33,10 +33,10 @@ Por padrão o MDORIM vem com alguns conceitos pré-definidos baseados inteiramen
 
 **_Descrição:_** Conceito
 
-| Nome | Tipo                          | Descrição | Obrigatório |
-| ---- | ----------------------------- | --------- | ----------- |
-| ID   | $ref([`ID`](./metadata#id))   |           | Sim         |
-| URI  | $ref([`URI`](./metadata#uri)) |           | Sim         |
+| Nome | Tipo                        | Descrição | Obrigatório |
+| ---- | --------------------------- | --------- | ----------- |
+| ID   | $ref([`ID`](metadata#id))   |           | Sim         |
+| URI  | $ref([`URI`](metadata#uri)) |           | Sim         |
 
 [Voltar para o topo](#)
 
