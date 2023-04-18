@@ -1,18 +1,17 @@
 {
     "name": "@elucidario/publicacao-teste",
     "version": "0.1.0",
-    "main": "README.md",
     "private": true,
+    "main": "README.md",
     "scripts": {
-        "sync": "pub-gen sync"
+        "add-author": "pub-gen add-author -p publicacao-teste",
+        "add-doc": "pub-gen add-doc -p publicacao-teste",
+        "authenticate": "pub-gen authenticate -p publicacao-teste",
+        "convert": "pub-gen convert -p publicacao-teste",
+        "build": "pnpm clean && pub-gen build -m -g -c -p publicacao-teste",
+        "clean": "find dist -mindepth 1 -delete"
     },
     "devDependencies": {
-        "@elucidario/pub-gen": "workspace:^",
-        "tsx": "^3.12.6",
-        "typescript": "^5.0.4"
-    },
-    "keywords": [
-        "teste",
-        "testador"
-    ]
+        "@elucidario/pub-gen": "^0.1.0"
+    }
 }

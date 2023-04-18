@@ -1,0 +1,25 @@
+{
+    "title": "Table with Colspan and Rowspan",
+    "description": "This is a table with colspan and rowspan",
+    "header": [
+        { "text": "Name", "colspan": 1 },
+        { "text": "Address", "colspan": 2 },
+        { "text": "Phone", "colspan": 1 }
+    ],
+    "rows": [
+        [
+            { "text": "John Doe", "rowspan": 2 },
+            { "text": "123 Main St" },
+            { "text": "Anytown, USA" },
+            { "text": "555-1234" }
+        ],
+        [{ "text": "Apt 4B" }, { "text": "" }, { "text": "" }, { "text": "" }],
+        [
+            { "text": "Jane Smith" },
+            { "text": "456 Elm St" },
+            { "text": "Anytown, USA" },
+            { "text": "555-5678" }
+        ]
+    ],
+    "note": "This is a note"
+}
