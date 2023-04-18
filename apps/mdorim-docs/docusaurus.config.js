@@ -1,3 +1,5 @@
+const path = require("path");
+
 const env = process.env.ENV || "localhost";
 
 const url =
@@ -29,8 +31,8 @@ const config = {
     organizationName: "hgodinho", // Usually your GitHub org/user name.
     projectName: "elucidario", // Usually your repo name.
 
-    onBrokenLinks: "warn",
-    onBrokenMarkdownLinks: "warn",
+    onBrokenLinks: "log",
+    onBrokenMarkdownLinks: "log",
 
     // Even if you don't use internalization, you can use this field to set useful
     // metadata like html lang. For example, if your site is Chinese, you may want
@@ -39,6 +41,12 @@ const config = {
         defaultLocale: "pt-br",
         locales: ["pt-br"],
     },
+
+    staticDirectories: [
+        "static",
+        path.resolve(__dirname, "../../packages/mdorim/static"),
+        path.resolve(__dirname, "../../packages/pub-gen/static"),
+    ],
 
     presets: [
         [
