@@ -4,3 +4,7 @@ packages/*/dist
 apps/*/dist
 apps/*/build
 coverage
+
+# ensure no secrets are committed
+credentials.json
+token.json

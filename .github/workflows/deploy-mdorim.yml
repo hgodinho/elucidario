@@ -9,6 +9,7 @@ on:
       - ".github/workflows/deploy-mdorim.yml"
       - "apps/mdorim-docs/**"
       - "packages/mdorim/**"
+      - "packages/pub-gen/**"
 
 jobs:
   deploy:
@@ -22,10 +23,10 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 6.14.1
-      - name: Install Docusaurus dependencies
-        run: pnpm install # replace with your package manager
-      - name: Build Docusaurus site
-        run: pnpm build # replace with your build command
+      - name: Install monorepo dependencies
+        run: pnpm install
+      - name: Build monorepo packages
+        run: pnpm build --scope "@elucidario/mdorim" --scope "@elucidario/pub-gen" --scope "@elucidario/mdorim-docs"
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
