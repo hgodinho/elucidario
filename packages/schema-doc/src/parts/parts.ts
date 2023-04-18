@@ -14,6 +14,7 @@ import {
     backToTop,
     heading,
     boldItalic,
+    codeInline,
 } from "@elucidario/docusaurus-md";
 
 /**
@@ -25,12 +26,16 @@ export const mappingTable = (map: Mapping | undefined) => {
     if (!map) {
         return "";
     }
-    return table({
-        title: "Mapeamento",
-        titleLevel: 4,
-        headers: ["Vocabulário", "Link"],
-        rows: Object.entries(map).map(([key, value]) => [key, `<${value}>`]),
-    });
+    try {
+        return table({
+            title: "Mapeamento",
+            titleLevel: 4,
+            headers: ["Vocabulário", "Link"],
+            rows: Object.entries(map).map(([key, value]) => [key, `<${value}>`]),
+        });
+    } catch {
+        throw new Error("Erro ao criar tabela de mapeamento");
+    }
 };
 
 /**
@@ -39,23 +44,29 @@ export const mappingTable = (map: Mapping | undefined) => {
  * @returns | string
  */
 export const resolveRef = (ref: string, code = false) => {
-    let link = "";
-    let [base, topicBase] = ref.split("#");
-    const [__, path, file] = base.split("/");
-    if (base) {
-        link = `./${file.split(".")[0]}`;
-    }
-    if (topicBase.startsWith("/")) {
-        topicBase = topicBase.slice(1);
-    }
-    let [definitions, topic] = topicBase.split("/");
-    link += `#${topic}`;
-    if (code) {
-        topic = `\`${topic}\``;
-    }
-    link = `[${topic}](${link.toLocaleLowerCase()})`;
+    try {
+        if (ref.startsWith('http')) {
+            return `[${ref}](${ref})`;
+        }
 
-    return link;
+        let link = "";
+        let [file, part] = ref.split("#");
+
+        if (file) {
+            link = `${file.replace(".json", "")}`;
+        }
+
+        const [__, path, section] = part.split("/");
+
+        link += `#${section}`;
+
+        link = `[${code ? codeInline(section) : section}](${link.toLocaleLowerCase()})`;
+
+        return link;
+    } catch (error) {
+        console.error(error);
+        throw new Error("Erro ao resolver referência");
+    }
 };
 
 /**
@@ -148,6 +159,7 @@ export const propertiesTable = (
     headingLevel = 4
 ): string => {
     if (!metadata.properties) {
+
         if (metadata.$ref) {
             return toMD([
                 heading(

@@ -1,2 +1,2 @@
 export * from './parts'
-export * from './readContents.js'
+export * from './readContents'

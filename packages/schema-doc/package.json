@@ -14,8 +14,13 @@
         "dev": "pnpm build -w",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
     },
-    "devDependencies": {
+    "dependencies": {
         "@elucidario/docusaurus-md": "workspace:^",
+        "chalk": "^5.2.0",
+        "fs": "0.0.1-security",
+        "path": "^0.12.7"
+    },
+    "devDependencies": {
         "@elucidario/rollup": "workspace:^",
         "@elucidario/tsconfig": "workspace:^",
         "@elucidario/types": "workspace:^",
@@ -23,10 +28,7 @@
         "@rollup/plugin-typescript": "^11.1.0",
         "@types/node": "^18.15.11",
         "babel-jest": "^29.5.0",
-        "chalk": "^5.2.0",
-        "fs": "0.0.1-security",
         "jest": "^29.5.0",
-        "path": "^0.12.7",
         "rollup": "^3.20.2",
         "ts-jest": "^29.1.0"
     }

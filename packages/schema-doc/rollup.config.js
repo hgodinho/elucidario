@@ -1,7 +1,7 @@
 import lcdrRollupConfig from "@elucidario/rollup";
 
 const config = lcdrRollupConfig({
-    external: ["@elucidario/docusaurus-md"],
+    external: ["@apidevtools/json-schema-ref-parser"],
 });
 
 export default config;
