@@ -23,6 +23,9 @@ const lcdrRollupConfig = (config = null) => {
         ],
         external: [
             "@elucidario/parse-args",
+            "@elucidario/docusaurus-md",
+            "@elucidario/schema-doc",
+            "@elucidario/pub-gen",
             "fs",
             "path",
             "inquirer",
