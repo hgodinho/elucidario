@@ -1,1 +1,1 @@
-# `@elucidario/schema-doc`
+# `@elucidario/pkg-schema-doc`

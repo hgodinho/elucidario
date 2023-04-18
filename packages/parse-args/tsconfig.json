@@ -1,5 +1,5 @@
 {
-    "extends": ["@elucidario/tsconfig"],
+    "extends": ["@elucidario/pkg-tsconfig"],
     "compilerOptions": {
         "outDir": "dist",
         "rootDir": "src",

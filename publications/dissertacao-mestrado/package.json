@@ -1,15 +1,15 @@
 {
-    "name": "@elucidario/dissertacao-mestrado",
+    "name": "@elucidario/pub-dissertacao-mestrado",
     "version": "0.1.0",
     "main": "README.md",
     "private": true,
     "scripts": {
-        "authenticate": "tsx ./node_modules/@elucidario/md-to-gdoc/src/authenticate.ts",
-        "create-doc": "tsx ./node_modules/@elucidario/md-to-gdoc/src/create-doc.ts",
-        "sync": "tsx ./node_modules/@elucidario/md-to-gdoc/src/sync.ts"
+        "authenticate": "tsx ./node_modules/@elucidario/pkg-md-to-gdoc/src/authenticate.ts",
+        "create-doc": "tsx ./node_modules/@elucidario/pkg-md-to-gdoc/src/create-doc.ts",
+        "sync": "tsx ./node_modules/@elucidario/pkg-md-to-gdoc/src/sync.ts"
     },
     "devDependencies": {
-        "@elucidario/md-to-gdoc": "workspace:^",
+        "@elucidario/pkg-md-to-gdoc": "workspace:^",
         "tsx": "^3.12.6",
         "typescript": "^5.0.4"
     },

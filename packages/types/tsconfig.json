@@ -1,9 +1,9 @@
 {
-    "extends": "@elucidario/tsconfig",
+    "extends": "@elucidario/pkg-tsconfig",
     "compilerOptions": {
         "emitDeclarationOnly": true,
         "rootDir": "src",
-        "outDir": "dist",
+        "outDir": "dist"
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "**/*.test.ts"]

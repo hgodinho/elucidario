@@ -1,5 +1,5 @@
 {
-    "name": "@elucidario/eslint-config",
+    "name": "@elucidario/pkg-eslint-config",
     "version": "0.1.0",
     "description": "Configurações eslint compartilhadas",
     "main": ".eslintrc.js",

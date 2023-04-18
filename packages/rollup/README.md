@@ -1,1 +1,1 @@
-# `@elucidario/rollup`
+# `@elucidario/pkg-rollup`

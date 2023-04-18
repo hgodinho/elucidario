@@ -15,7 +15,7 @@ import {
     heading,
     boldItalic,
     codeInline,
-} from "@elucidario/docusaurus-md";
+} from "@elucidario/pkg-docusaurus-md";
 
 /**
  * Cria tabela de mapeamento

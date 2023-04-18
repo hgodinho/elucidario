@@ -7,9 +7,13 @@ import {
     mdGridTableFromJSON,
 } from "./htmlTableFromJson.js";
 
-import { propertiesTable, entityTable, metadata } from "@elucidario/schema-doc";
+import {
+    propertiesTable,
+    entityTable,
+    metadata,
+} from "@elucidario/pkg-schema-doc";
 
-import { toMD } from "@elucidario/docusaurus-md";
+import { toMD } from "@elucidario/pkg-docusaurus-md";
 
 export default function remarkPubGen(options) {
     return function transformer(tree, file) {

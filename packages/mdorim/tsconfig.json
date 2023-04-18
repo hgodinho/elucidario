@@ -1,5 +1,5 @@
 {
-    "extends": "@elucidario/tsconfig",
+    "extends": "@elucidario/pkg-tsconfig",
     "compilerOptions": {
         "sourceMap": true,
         "moduleResolution": "node",
@@ -12,8 +12,8 @@
     "include": ["src/index.ts"],
     "paths": {
         "@elucidario/types": ["../types/src"],
-        "@elucidario/docusaurus-md": ["../docusaurus-md/dist"],
-        "@elucidario/schema-doc": ["../schema-doc/dist"],
-        "@elucidario/pub-gen": ["../pub-gen/dist"]
+        "@elucidario/pkg-docusaurus-md": ["../docusaurus-md/dist"],
+        "@elucidario/pkg-schema-doc": ["../schema-doc/dist"],
+        "@elucidario/pkg-pub-gen": ["../pub-gen/dist"]
     }
 }

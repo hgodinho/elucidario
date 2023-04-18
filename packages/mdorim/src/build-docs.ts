@@ -3,10 +3,10 @@ import fs from "fs";
 import { Command } from "commander";
 import chalk from "chalk";
 
-import { readContents } from "@elucidario/schema-doc";
+import { readContents } from "@elucidario/pkg-schema-doc";
 
 import { fileURLToPath } from "url";
-import { pubGenRemarkProcessor } from "@elucidario/pub-gen/lib/remark/processor.js";
+import { pubGenRemarkProcessor } from "@elucidario/pkg-pub-gen/lib/remark/processor.js";
 
 const outputDir = "docs";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

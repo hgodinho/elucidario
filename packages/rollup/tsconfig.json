@@ -1,4 +1,4 @@
 {
-    "extends": "@elucidario/tsconfig",
+    "extends": "@elucidario/pkg-tsconfig",
     "include": ["src/index.ts"]
 }

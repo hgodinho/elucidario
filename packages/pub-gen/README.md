@@ -1,4 +1,4 @@
-# `@elucidario/pub-gen`
+# `@elucidario/pkg-pub-gen`
 
 Gerador de publicações para o Elucidário.art.
 

@@ -6,8 +6,8 @@ import chalk from "chalk";
 
 import { pubGenRemarkProcessor } from "./remark/processor.js";
 
-import { readContents } from "@elucidario/schema-doc";
-import { updateDoc } from "@elucidario/md-to-gdoc";
+import { readContents } from "@elucidario/pkg-schema-doc";
+import { updateDoc } from "@elucidario/pkg-md-to-gdoc";
 import { getCredentials } from "./getCredentials.js";
 
 const __dirname = path.resolve();

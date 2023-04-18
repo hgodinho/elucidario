@@ -1,12 +1,12 @@
 {
-    "extends": "@elucidario/tsconfig",
+    "extends": "@elucidario/pkg-tsconfig",
     "compilerOptions": {
         "outDir": "dist",
         "target": "ESNext",
         "module": "ESNext",
         "paths": {
             "@elucidario/types": ["../types/dist"],
-            "@elucidario/docusaurus-md": ["../docusaurus-md/dist"]
+            "@elucidario/pkg-docusaurus-md": ["../docusaurus-md/dist"]
         }
     },
     "include": ["src/index.ts"],

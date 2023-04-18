@@ -13,6 +13,7 @@
         "docusaurus": "lerna run docusaurus",
         "start": "lerna run start",
         "build": "lerna run build --stream",
+        "build:pkg-app": "pnpm build --scope '{@elucidario/pkg-*,@elucidario/app-*}'",
         "swizzle": "lerna run swizzle",
         "deploy": "lerna run deploy",
         "serve": "lerna run serve",
@@ -27,13 +28,16 @@
         }
     },
     "devDependencies": {
-        "@elucidario/pub-gen": "workspace:^",
-        "@elucidario/eslint-config": "workspace:^",
+        "@elucidario/pkg-eslint-config": "workspace:^",
+        "@elucidario/pkg-pub-gen": "workspace:^",
         "commitizen": "^4.3.0",
         "conventional-changelog": "^3.1.25",
         "eslint": "^8.38.0",
         "lerna": "^6.6.1",
         "prettier": "^2.8.7",
         "typescript": "^5.0.4"
+    },
+    "dependencies": {
+        "nx": "^15.9.2"
     }
 }

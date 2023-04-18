@@ -1,5 +1,5 @@
 {
-    "name": "@elucidario/publicacao-teste",
+    "name": "@elucidario/pub-publicacao-teste",
     "version": "0.1.0",
     "private": true,
     "main": "README.md",
@@ -12,6 +12,6 @@
         "clean": "find dist -mindepth 1 -delete"
     },
     "devDependencies": {
-        "@elucidario/pub-gen": "^0.1.0"
+        "@elucidario/pkg-pub-gen": "workspace:^"
     }
 }

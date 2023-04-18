@@ -1,5 +1,5 @@
 {
-    "name": "@elucidario/schema-doc",
+    "name": "@elucidario/pkg-schema-doc",
     "version": "0.1.0",
     "description": "",
     "keywords": [],
@@ -15,14 +15,14 @@
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
     },
     "dependencies": {
-        "@elucidario/docusaurus-md": "workspace:^",
+        "@elucidario/pkg-docusaurus-md": "workspace:^",
         "chalk": "^5.2.0",
         "fs": "0.0.1-security",
         "path": "^0.12.7"
     },
     "devDependencies": {
-        "@elucidario/rollup": "workspace:^",
-        "@elucidario/tsconfig": "workspace:^",
+        "@elucidario/pkg-rollup": "workspace:^",
+        "@elucidario/pkg-tsconfig": "workspace:^",
         "@elucidario/types": "workspace:^",
         "@jest/globals": "^29.5.0",
         "@rollup/plugin-typescript": "^11.1.0",

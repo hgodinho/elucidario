@@ -25,8 +25,8 @@ jobs:
           version: 6.14.1
       - name: Install monorepo dependencies
         run: pnpm install
-      - name: Build monorepo packages
-        run: pnpm build --scope "@elucidario/mdorim" --scope "@elucidario/pub-gen" --scope "@elucidario/mdorim-docs"
+      - name: Build monorepo packages and apps
+        run: pnpm build:pkg-app"
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:

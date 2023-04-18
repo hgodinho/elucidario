@@ -1,5 +1,5 @@
-import lcdrRollupConfig from '@elucidario/rollup';
+import lcdrRollupConfig from "@elucidario/pkg-rollup";
 
 export default lcdrRollupConfig({
-    input: 'src/index.ts',
+    input: "src/index.ts",
 });

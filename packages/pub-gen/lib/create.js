@@ -1,7 +1,7 @@
 "use strict";
 
 import fs from "fs";
-import { parseArgs } from "@elucidario/parse-args";
+import { parseArgs } from "@elucidario/pkg-parse-args";
 import path from "path";
 import inquirer from "inquirer";
 import { pubGenPrompt } from "./prompt.js";
@@ -131,7 +131,7 @@ const createPackageJson = (name, packageName) => {
             clean: "rm -rf dist/*",
         },
         devDependencies: {
-            "@elucidario/pub-gen": `^${version}`,
+            "@elucidario/pkg-pub-gen": `^${version}`,
         },
     };
 };

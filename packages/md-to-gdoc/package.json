@@ -1,5 +1,5 @@
 {
-    "name": "@elucidario/md-to-gdoc",
+    "name": "@elucidario/pkg-md-to-gdoc",
     "version": "0.1.0",
     "description": "Converte md para google docs",
     "license": "MIT",
@@ -14,7 +14,7 @@
         "create": "tsx src/create-doc"
     },
     "dependencies": {
-        "@elucidario/parse-args": "workspace:^",
+        "@elucidario/pkg-parse-args": "workspace:^",
         "@googleapis/docs": "^2.0.1",
         "@googleapis/drive": "^5.0.2",
         "chalk": "^5.2.0",
@@ -22,8 +22,8 @@
         "googleapis": "^114.0.0"
     },
     "devDependencies": {
-        "@elucidario/rollup": "workspace:^",
-        "@elucidario/tsconfig": "workspace:^",
+        "@elucidario/pkg-rollup": "workspace:^",
+        "@elucidario/pkg-tsconfig": "workspace:^",
         "@types/node": "^18.15.11",
         "rollup": "^3.20.2",
         "tslib": "^2.5.0",

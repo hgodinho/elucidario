@@ -3,4 +3,4 @@ id: pub-gen
 slug: /
 ---
 
-# `@elucidario/pub-gen`
+# `@elucidario/pkg-pub-gen`

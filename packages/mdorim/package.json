@@ -1,5 +1,5 @@
 {
-    "name": "@elucidario/mdorim",
+    "name": "@elucidario/pkg-mdorim",
     "version": "0.1.0",
     "license": "MIT",
     "author": {
@@ -18,10 +18,10 @@
         "test": "jest"
     },
     "devDependencies": {
-        "@elucidario/docusaurus-md": "workspace:^",
-        "@elucidario/pub-gen": "workspace:^",
-        "@elucidario/schema-doc": "workspace:^",
-        "@elucidario/tsconfig": "workspace:^",
+        "@elucidario/pkg-docusaurus-md": "workspace:^",
+        "@elucidario/pkg-pub-gen": "workspace:^",
+        "@elucidario/pkg-schema-doc": "workspace:^",
+        "@elucidario/pkg-tsconfig": "workspace:^",
         "@elucidario/types": "workspace:^",
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-run": "^3.0.1",
