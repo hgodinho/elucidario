@@ -13,7 +13,7 @@
         "docusaurus": "lerna run docusaurus",
         "start": "lerna run start",
         "build": "lerna run build --stream",
-        "build:pkg-app": "pnpm build --scope '{@elucidario/pkg-*,@elucidario/app-*}'",
+        "build:pkg-app": "pnpm build --scope='{@elucidario/pkg-*,@elucidario/app-*}'",
         "swizzle": "lerna run swizzle",
         "deploy": "lerna run deploy",
         "serve": "lerna run serve",
