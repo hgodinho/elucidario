@@ -26,7 +26,7 @@ jobs:
       - name: Install monorepo dependencies
         run: pnpm install
       - name: Build monorepo packages and apps
-        run: pnpm build:pkg-app"
+        run: pnpm build:pkg-app
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
