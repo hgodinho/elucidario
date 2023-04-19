@@ -24,12 +24,12 @@ const sidebars = {
         {
             type: "link",
             label: "MDORIM",
-            href: `/elucidario/mdorim`,
+            href: `/mdorim`,
         },
         {
             type: "link",
             label: "pub-gen",
-            href: `/elucidario/pub-gen`,
+            href: `/pub-gen`,
         },
     ],
 };
