@@ -45,24 +45,31 @@ export const buildDocs = async () => {
                     chalk.cyan(
                         `event of type ${chalk.bgCyan(
                             chalk.bold(chalk.black(eventType))
-                        )} at markdown file ${chalk.bgCyan(chalk.bold(chalk.black(filename)))}`
+                        )} at markdown file ${chalk.bgCyan(
+                            chalk.bold(chalk.black(filename))
+                        )}`
                     )
                 );
                 await processPages();
             }
         });
-        fs.watch(path.join(__dirname, "schemas"), async (eventType, filename) => {
-            if (filename) {
-                console.log(
-                    chalk.blue(
-                        `event of type ${chalk.bgBlue(
-                            chalk.bold(chalk.black(eventType))
-                        )} at schema file ${chalk.bgBlue(chalk.bold(chalk.black(filename)))}`
-                    )
-                );
-                await processPages();
+        fs.watch(
+            path.join(__dirname, "schemas"),
+            async (eventType, filename) => {
+                if (filename) {
+                    console.log(
+                        chalk.blue(
+                            `event of type ${chalk.bgBlue(
+                                chalk.bold(chalk.black(eventType))
+                            )} at schema file ${chalk.bgBlue(
+                                chalk.bold(chalk.black(filename))
+                            )}`
+                        )
+                    );
+                    await processPages();
+                }
             }
-        });
+        );
     } else {
         processPages();
     }

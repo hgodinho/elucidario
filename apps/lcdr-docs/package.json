@@ -45,5 +45,18 @@
     },
     "engines": {
         "node": ">=16.14"
+    },
+    "nx": {
+        "targets": {
+            "build": {
+                "dependsOn": [
+                    "^build"
+                ]
+            }
+        },
+        "implicitDependencies": [
+            "@elucidario/pkg-mdorim",
+            "@elucidario/pkg-pub-gen"
+        ]
     }
 }
