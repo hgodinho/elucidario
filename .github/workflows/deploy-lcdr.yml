@@ -1,0 +1,34 @@
+name: "Deploy Elucidário.art to GitHub Pages"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/deploy-lcdr.yml"
+      - "apps/lcdr-docs/**"
+      - "packages/mdorim/**"
+      - "packages/pub-gen/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6.14.1
+      - name: Install monorepo dependencies
+        run: pnpm install
+      - name: Build monorepo packages and apps
+        run: pnpm build:pkg-app"
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{secrets.GH_PAGES_TOKEN}}
+          publish_dir: apps/lcdr-docs/build
