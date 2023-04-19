@@ -13,7 +13,7 @@
         "docusaurus": "lerna run docusaurus",
         "start": "lerna run start",
         "build": "lerna run build",
-        "build:pkg-app": "pnpm build --ignore '@elucidario/pub-*'",
+        "build:pkg-app": "lerna run build --ignore '@elucidario/pub-*'",
         "swizzle": "lerna run swizzle",
         "deploy": "lerna run deploy",
         "serve": "lerna run serve",
