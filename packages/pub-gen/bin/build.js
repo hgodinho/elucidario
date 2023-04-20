@@ -13,6 +13,11 @@ const docsPath = path.resolve("docs");
 const docs = readContents(srcPath, ["md"]);
 
 console.log(chalk.green("[pub-gen] Building docs..."));
+
+if (!fs.existsSync(docsPath)) {
+    fs.mkdirSync(docsPath);
+}
+
 const build = Object.entries(docs).map(async ([name, content]) => {
     const newFile = await pubGenRemarkProcessor(content, {
         pubGen: {
