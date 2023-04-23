@@ -31,9 +31,11 @@ const lcdrRollupConfig = (config = null) => {
             "inquirer",
             "child_process",
             "lodash",
+            "lodash-es",
             "json-schema-to-typescript",
             "commander",
             "chalk",
+            "i18n",
         ],
     };
 
