@@ -1,0 +1,12 @@
+{
+	"extends": "@elucidario/pkg-tsconfig",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"outDir": "dist",
+		"jsx": "react",
+		"paths": {
+			"ink": ["node_modules/ink/build/index.d.ts"]
+		}
+	},
+	"include": ["src/index.ts"]
+}
