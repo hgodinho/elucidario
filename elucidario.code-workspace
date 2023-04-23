@@ -47,6 +47,7 @@
         "editor.formatOnSave": true,
         "eslint.packageManager": "pnpm",
         "prettier.tabWidth": 4,
-        "prettier.useTabs": true
+        "prettier.useTabs": true,
+        "eslint.format.enable": true
     }
 }

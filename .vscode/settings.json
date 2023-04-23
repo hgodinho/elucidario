@@ -20,5 +20,6 @@
     "cSpell.words": ["colspan", "lcdr"],
     "eslint.packageManager": "pnpm",
     "npm.packageManager": "pnpm",
-    "prettier.tabWidth": 4
+    "prettier.tabWidth": 4,
+    "eslint.format.enable": true
 }
