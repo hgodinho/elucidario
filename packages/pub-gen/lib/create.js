@@ -1,24 +1,28 @@
 "use strict";
 
 import fs from "fs";
-import { parseArgs } from "@elucidario/pkg-parse-args";
 import path from "path";
 import inquirer from "inquirer";
-import { pubGenPrompt } from "./prompt.js";
 import { execSync } from "child_process";
-import lodash from "lodash";
-const kebabCase = lodash.kebabCase;
+import lodash from "lodash-es";
 
+import { parseArgs } from "@elucidario/pkg-parse-args";
+import { toMD } from "@elucidario/pkg-docusaurus-md";
+import { Console } from "@elucidario/pkg-console";
+
+import { pubGenPrompt } from "./prompt.js";
 import packageJson from "../package.json" assert { type: "json" };
-const { version } = packageJson;
+
+const kebabCase = lodash.kebabCase;
+const console = new Console(packageJson);
 
 export const createPublication = async (args) => {
     const options = parseArgs();
     const rootPath = path.resolve(options.path);
 
     inquirer.prompt(pubGenPrompt("create", args)).then(async (answers) => {
-        const name = kebabCase(answers.name);
-        const packageName = `@elucidario/${name}`;
+        const name = answers.name;
+        const packageName = `@elucidario/pub-${kebabCase(name)}`;
 
         const pubPath = path.resolve(rootPath, "publications");
         const dirName = path.resolve(pubPath, name);
@@ -28,12 +32,6 @@ export const createPublication = async (args) => {
             "pub-gen",
             "template"
         );
-
-        console.log("Criando publicação...", {
-            "Publication name": name,
-            "Publication path": dirName,
-            "Package name": packageName,
-        });
 
         try {
             fs.readdirSync(dirName);
@@ -64,21 +62,21 @@ export const createPublication = async (args) => {
                 );
                 fs.writeFileSync(
                     path.resolve(dirName, "README.md"),
-                    createREADME(packageName)
+                    createREADME(packageName, answers)
                 );
 
-                console.log("Publicação criada com sucesso!");
+                console.success("Publicação criada com sucesso!");
 
                 /**
                  * Install dependencies
                  */
-                console.log("Instalando dependências...");
+                console.info("Instalando dependências...");
                 execSync(`cd ${dirName} && pnpm install`, {
                     stdio: "inherit",
                 });
-                console.log("Dependências instaladas com sucesso.");
+                console.success("Dependências instaladas com sucesso.");
 
-                console.log("Boa escrita!");
+                console.success("Boa escrita!");
             } catch (error) {
                 console.error(error);
             }
@@ -89,10 +87,15 @@ export const createPublication = async (args) => {
 /**
  *  Creates the README.md file for the publication
  * @param {string} packageName | Name of the publication package
+ * @param {*} answers | package.json of the publication
  * @returns | README.md
  */
-const createREADME = (packageName) => {
-    return `# \`${packageName}\`\n`;
+const createREADME = (packageName, answers) => {
+    return toMD([
+        `# \`${packageName}\`\n`,
+        `> Publicação gerada com [pub-gen](https://elucidario.art/pub-gen)`,
+        answers.description,
+    ]);
 };
 
 /**
@@ -105,9 +108,11 @@ const createPubGenJson = (name, answers) => {
     return {
         $schema: "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
         version: "1.0.0",
-        name,
+        profile: "data-package",
+        id: `https://elucidario.art/publicacoes/${name}`,
         ...answers,
-        creationDate: new Date().toISOString(),
+        keywords: answers.keywords.split(","),
+        creation: new Date().toISOString(),
     };
 };
 
@@ -131,7 +136,7 @@ const createPackageJson = (name, packageName) => {
             clean: "rm -rf dist/*",
         },
         devDependencies: {
-            "@elucidario/pkg-pub-gen": `^${version}`,
+            "@elucidario/pkg-pub-gen": "workspace:^",
         },
     };
 };

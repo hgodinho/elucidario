@@ -11,12 +11,13 @@ import {
     propertiesTable,
     entityTable,
     metadata,
+    // resolveSchema,
 } from "@elucidario/pkg-schema-doc";
 
 import { toMD } from "@elucidario/pkg-docusaurus-md";
 
 export default function remarkPubGen(options) {
-    return function transformer(tree, file) {
+    return async function transformer(tree) {
         visit(tree, "text", (node) => {
             if (node.value.startsWith("{{") && node.value.endsWith("}}")) {
                 const value = node.value.replace("{{", "").replace("}}", "");
@@ -46,11 +47,13 @@ export default function remarkPubGen(options) {
                         fs.readFileSync(path.resolve(options.path, schemaName))
                     );
                     let schemaTable = {};
+
                     if (schemaData.properties) {
                         schemaTable = propertiesTable(
                             schemaData,
                             schemaData.title,
-                            3
+                            options.startLevel || 3,
+                            options.language
                         );
                     }
                     if (schemaData.definitions) {
@@ -58,7 +61,8 @@ export default function remarkPubGen(options) {
                             schemaData.title,
                             schemaData,
                             true,
-                            3
+                            options.startLevel || 3,
+                            options.language
                         );
                     }
                     node.value = schemaTable;
@@ -82,5 +86,40 @@ export default function remarkPubGen(options) {
                 }
             }
         });
+
+        // /** @type {Array<Promise<import("@apidevtools/json-schema-ref-parser/dist/lib/types/index.js").JSONSchema>>} */
+        // const promises = [];
+        // for (const node of nodes) {
+        //     const value = node.value.replace("{{", "").replace("}}", "");
+        //     const schemaName = value.replace("json-schema:", "");
+        //     const schemaData = JSON.parse(
+        //         fs.readFileSync(path.resolve(options.path, schemaName))
+        //     );
+        //     promises.push(await resolveSchema(schemaData));
+        // }
+
+        // const resolved = await Promise.all(promises);
+        // for (const [index, node] of resolved.entries()) {
+        //     let schemaTable = {};
+
+        //     if (resolved[index].properties) {
+        //         schemaTable = propertiesTable(
+        //             resolved[index],
+        //             resolved[index].title,
+        //             3
+        //         );
+        //     }
+        //     if (resolved[index].definitions) {
+        //         schemaTable = metadata(
+        //             resolved[index].title,
+        //             resolved[index],
+        //             true,
+        //             3
+        //         );
+        //     }
+        //     node.value = schemaTable;
+        //     node.type = "html";
+        //     console.log({ node });
+        // }
     };
 }

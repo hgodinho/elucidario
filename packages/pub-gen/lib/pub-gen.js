@@ -7,15 +7,21 @@ import { buildPublication } from "./build.js";
 import { addAuthor } from "./addAuthor.js";
 import { addDocument } from "./addDocument.js";
 import { convert } from "./pandoc/convert.js";
+import { Console } from "@elucidario/pkg-console";
+
+import packageJson from "../package.json" assert { type: "json" };
 
 const PubGen = () => {
     const program = new Command();
+
+    const console = new Console(packageJson);
+    console.banner();
 
     program
         .command("create")
         .description("Create new publication")
         .action((argv) => {
-            console.log("Creating new publication...");
+            console.info("Creating new publication");
             createPublication(argv);
         });
 
@@ -24,7 +30,7 @@ const PubGen = () => {
         .description("Add new author")
         .option("-p, --publication <publication>")
         .action((argv) => {
-            console.log("Adding new author...", { argv });
+            console.info("Adding new author to", argv.publication);
             addAuthor(argv);
         });
 
@@ -33,7 +39,7 @@ const PubGen = () => {
         .description("Add new document")
         .option("-p, --publication <publication>")
         .action((argv) => {
-            console.log("Adding new document...");
+            console.info("Adding new document to", argv.publication);
             addDocument(argv);
         });
 
@@ -45,7 +51,7 @@ const PubGen = () => {
         .option("-g, --gdoc", "build only to Google Docs")
         .option("-c, --clean-dist", "Clean dist folder before building")
         .action((argv) => {
-            console.log("Building publication...");
+            console.info("Building publication:", argv.publication);
             buildPublication(argv);
         });
 
@@ -57,7 +63,7 @@ const PubGen = () => {
         .option("-e, --ext <ext>")
         .option("-t, --title <title>")
         .action((argv) => {
-            console.log("Converting publication...");
+            console.info("Converting publication:", argv.publication);
             convert(argv);
         });
 

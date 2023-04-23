@@ -1,27 +1,29 @@
-import schema from "./schema/pub-gen-schema.json" assert { type: "json" };
+import schema from "../dist/pub-gen-schema.json" assert { type: "json" };
 
 export const pubGenPrompt = (callback, defaults = undefined) => {
-    const createPromptType = ["name", "type", "year"];
     const syncInputs = ["type", "title", "preset", "language", "keywords"];
 
-    const createPrompt = Object.entries(schema.properties)
-        .map(([key, value]) => {
-            if (createPromptType.includes(key)) {
-                return createInput(
-                    key,
-                    value,
-                    defaults
-                        ? defaults[key]
-                            ? defaults[key]
-                            : undefined
-                        : undefined
-                );
-            }
-        })
-        .filter((x) => x);
+    const createPromptType = [
+        "name",
+        "title",
+        "type",
+        "year",
+        "description",
+        "language",
+        "homepage",
+        "keywords",
+        "image",
+    ];
+    const createPrompt = createPromptType.map((key) => {
+        return createInput(
+            key,
+            schema.properties[key],
+            defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
+        );
+    });
 
     const authorPrompt = Object.entries(
-        schema.properties.authors.items.properties
+        schema.properties.contributors.items.properties
     ).map(([key, value]) => {
         return createInput(
             `authors.${key}`,
@@ -91,5 +93,12 @@ const createInput = (name, value, defaultValue) => {
                     default: defaultValue,
                 };
             }
+        default:
+            return {
+                type: "string",
+                name,
+                message: value.description,
+                default: defaultValue,
+            };
     }
 };

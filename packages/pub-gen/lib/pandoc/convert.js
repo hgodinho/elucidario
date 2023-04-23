@@ -1,9 +1,10 @@
 import { exec } from "child_process";
 import path from "path";
-import lodash from "lodash";
+import lodash from "lodash-es";
 import fs from "fs";
-import { readContent } from "../readContent.js";
+import { readContents } from "@elucidario/pkg-schema-doc";
 const { kebabCase } = lodash;
+import chalk from "chalk";
 
 const __dirname = path.resolve();
 
@@ -23,18 +24,28 @@ export const convert = async (args) => {
     );
 
     const { documents } = pubGenJson;
-
+    console.log(documents);
     const pandocs = documents.map((doc) => {
         let { preset, language } = doc;
         preset = kebabCase(preset);
         language = kebabCase(language);
 
-        const files = readContent(
-            path.resolve(pubPath, "dist", language),
-            ["md"],
-            true
-        );
-        console.log("files", files);
+        let files = [];
+        try {
+            files = readContents(
+                path.resolve(pubPath, "dist", language),
+                ["md"],
+                true
+            );
+            console.log("files", files);
+        } catch (error) {
+            console.error(
+                chalk.red(
+                    '[pub-gen] No files found at dist folder! Try running "pub-gen build" first.'
+                )
+            );
+            return error;
+        }
 
         const docTitle =
             title ?? `${language}-${preset}-${kebabCase(doc.title)}`;

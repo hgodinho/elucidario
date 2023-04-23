@@ -5,7 +5,7 @@ import path, { dirname } from "path";
 import inquirer from "inquirer";
 import chalk from "chalk";
 
-import lodash from "lodash";
+import lodash from "lodash-es";
 
 import { createDoc } from "@elucidario/pkg-md-to-gdoc";
 

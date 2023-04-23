@@ -9,8 +9,8 @@ import remarkPubGen from "./remark-pub-gen.js";
 export const pubGenRemarkProcessor = async (content, options, plugins) => {
     const processor = unified()
         .use(markdown, options?.markdown)
-        .use(remarkFrontmatter, options?.frontmatter)
         .use(remarkGfm, options?.gfm)
+        .use(remarkFrontmatter, options?.frontmatter)
         .use(remarkPubGen, options?.pubGen);
     // .use(remarkStringify, options?.stringify);
 
