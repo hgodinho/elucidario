@@ -37,6 +37,7 @@ export const Author = ({name, email, url}: Author) => {
 					<Text color="cyan">{url}</Text>
 				</Text>
 			) : null}
+			<Newline />
 		</Text>
 	);
 };
@@ -84,6 +85,7 @@ export const Package = ({
 						))}
 					</Text>
 				) : null}
+				<Newline />
 			</Text>
 		</Box>
 	);

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, render} from 'ink';
+import {Text, Newline, render} from 'ink';
 
 type LogProps = {
 	message: string;
@@ -16,29 +16,27 @@ export class Console {
 	}
 
 	banner = () => {
-		return render(<Package {...this.schema} />);
+		render(<Package {...this.schema} />);
 	};
 
 	info = (message: string) => {
-		return render(
-			<Log message={message} prefix={this.schema.name} type="info" />,
-		);
+		render(<Log message={message} prefix={this.schema.name} type="info" />);
 	};
 
 	success = (message: string) => {
-		return render(
+		render(
 			<Log message={message} prefix={this.schema.name} type="success" />,
 		);
 	};
 
 	warning = (message: string) => {
-		return render(
+		render(
 			<Log message={message} prefix={this.schema.name} type="warning" />,
 		);
 	};
 
 	error = (message: string) => {
-		return render(
+		render(
 			<Log message={message} prefix={this.schema.name} type="error" />,
 		);
 	};
@@ -72,6 +70,7 @@ export const Log = ({message, type, prefix}: LogProps) => {
 				</Text>
 			)}{' '}
 			{message}
+			<Newline />
 		</Text>
 	);
 };
