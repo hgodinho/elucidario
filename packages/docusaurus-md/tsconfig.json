@@ -7,6 +7,6 @@
     },
     "include": ["src/index.ts"],
     "paths": {
-        "@elucidario/types": ["../types/src"]
+        "@elucidario/pkg-types": ["../types/src"]
     }
 }
