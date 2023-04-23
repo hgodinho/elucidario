@@ -1,5 +1,5 @@
 {
-    "name": "@elucidario/types",
+    "name": "@elucidario/pkg-types",
     "version": "0.1.0",
     "description": "Tipagem do Elucidário.art",
     "author": "Henrique Godinho <ola@hgod.in>",
