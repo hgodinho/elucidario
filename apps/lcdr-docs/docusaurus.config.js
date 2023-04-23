@@ -76,6 +76,8 @@ const config = {
                 editUrl:
                     "https://github.com/hgodinho/elucidario/tree/main/packages/mdorim",
                 // sidebarPath: require.resolve('../../packages/mdorim/docs/sidebars.js'),
+                showLastUpdateTime: true,
+                showLastUpdateAuthor: true,
             },
         ],
         [
@@ -87,6 +89,8 @@ const config = {
                 editUrl:
                     "https://github.com/hgodinho/elucidario/tree/main/packages/pub-gen",
                 // sidebarPath: require.resolve('../../packages/mdorim/docs/sidebars.js'),
+                showLastUpdateTime: true,
+                showLastUpdateAuthor: true,
             },
         ],
     ],
