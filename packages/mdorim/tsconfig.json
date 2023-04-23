@@ -11,7 +11,7 @@
     },
     "include": ["src/index.ts"],
     "paths": {
-        "@elucidario/types": ["../types/src"],
+        "@elucidario/pkg-types": ["../types/src"],
         "@elucidario/pkg-docusaurus-md": ["../docusaurus-md/dist"],
         "@elucidario/pkg-schema-doc": ["../schema-doc/dist"],
         "@elucidario/pkg-pub-gen": ["../pub-gen/dist"]

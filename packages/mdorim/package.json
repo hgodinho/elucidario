@@ -22,7 +22,7 @@
         "@elucidario/pkg-pub-gen": "workspace:^",
         "@elucidario/pkg-schema-doc": "workspace:^",
         "@elucidario/pkg-tsconfig": "workspace:^",
-        "@elucidario/types": "workspace:^",
+        "@elucidario/pkg-types": "workspace:^",
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-run": "^3.0.1",
         "@rollup/plugin-terser": "^0.4.0",
