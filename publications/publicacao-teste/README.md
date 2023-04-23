@@ -1,1 +1,0 @@
-# `@elucidario/publicacao-teste`
