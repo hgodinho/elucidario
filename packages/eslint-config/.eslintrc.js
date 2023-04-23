@@ -1,27 +1,23 @@
-
 export default () => ({
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "project": "./tsconfig.json",
-        "ecmaFeatures": {
-            "jsx": true
+    parser: "@typescript-eslint/parser",
+    parserOptions: {
+        project: "./tsconfig.json",
+        ecmaFeatures: {
+            jsx: true,
         },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
+        ecmaVersion: 2018,
+        sourceType: "module",
     },
-    "plugins": [
-        // "@typescript-eslint",
-        "simple-import-sort"
-    ],
-    "extends": [
+    plugins: ["simple-import-sort"],
+    extends: [
         "prettier",
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:react-hooks/recommended"
+        "plugin:react-hooks/recommended",
     ],
-    "rules": {
+    rules: {
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/explicit-member-accessibility": "off",
         "@typescript-eslint/no-explicit-any": "off",
@@ -33,13 +29,13 @@ export default () => ({
         "@typescript-eslint/prefer-interface": "off",
         "@typescript-eslint/interface-name-prefix": "off",
         "@typescript-eslint/camelcase": "off",
-        "simple-import-sort/sort": "warn",
+        "simple-import-sort/imports": "warn",
         "no-console": "off",
         "sort-keys": "off",
-        "sort-imports": "off"
+        "sort-imports": "off",
     },
-    "env": {
-        "browser": true,
-        "es6": true
-    }
-})
+    env: {
+        browser: true,
+        es6: true,
+    },
+});
