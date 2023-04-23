@@ -1,5 +1,13 @@
 {
 	"type array<%s>": "type array<%s>",
 	"type": "type",
-	"with properties": "with properties"
+	"with properties": "with properties",
+	"Vocabulary": "Vocabulary",
+	"Link": "Link",
+	"type %s<%s>": "type %s<%s>",
+	"null": "null",
+	"Name": "Name",
+	"Type": "Type",
+	"Description": "Description",
+	"Required": "Required"
 }

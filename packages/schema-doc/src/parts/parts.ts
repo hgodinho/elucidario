@@ -36,7 +36,7 @@ export const mappingTable = (map: Mapping | undefined, lang?: SupportedLanguages
     }
     try {
         return table({
-            title: "Mapeamento",
+            title: i18n.__("Mapping"),
             titleLevel: 4,
             headers: [i18n.__("Vocabulary"), i18n.__("Link")],
             rows: Object.entries(map).map(([key, value]) => [
@@ -158,7 +158,8 @@ export const metaType = (
             }
             if ("title" in arrayMeta.items) {
                 const type = i18n.__("type array<%s>", `[\`${arrayMeta.items.title
-                    }\`](#${arrayMeta.items.title?.toLocaleLowerCase()})`);
+                    }\`](#${arrayMeta.items.title ? arrayMeta.items.title.toLocaleLowerCase() : arrayMeta.items.type})`);
+                console.log(type)
                 return `> ${type}`;
             } else {
                 return `> ${i18n.__("type")} array<\`${arrayMeta.items.type}\`>`;
@@ -197,6 +198,7 @@ export const propertiesTable = (
     headingLevel = 4,
     lang?: SupportedLanguages
 ): string => {
+
     i18n.setLocale(lang || 'en');
     if (!metadata.properties) {
         if (metadata.$ref) {
@@ -224,6 +226,8 @@ export const propertiesTable = (
                         mappingTable((metadata as BaseSchema<DataTypes>).map),
                     ]);
                 }
+
+                console.log("items", { metadata });
 
                 return propertiesTable(
                     items,
@@ -408,7 +412,7 @@ export const propertiesTable = (
                     return [
                         key,
                         `[\`${value.title
-                        }\`](#${value.title.toLocaleLowerCase()})`,
+                        }\`](#${value.title?.toLocaleLowerCase()})`,
                         value.description,
                         required,
                     ];

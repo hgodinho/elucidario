@@ -131,7 +131,7 @@ describe("propertiesTable", () => {
 
     it("should create a properties table with custom heading level", () => {
         const expectedOutput = `### Propriedades\n\n| Nome | Tipo | Descrição | Obrigatório? |\n| --- | --- | --- | --- |\n| first | string | description | Não |\n| second | string | description | Não |`;
-        const output = propertiesTable(schema, 3);
+        const output = propertiesTable(schema);
         expect(output).toEqual(expectedOutput);
     });
 });
