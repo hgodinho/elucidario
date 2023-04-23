@@ -6,7 +6,7 @@ import {
     DataTypes,
     AnyOfSchema,
     OneOfSchema,
-} from "@elucidario/types";
+} from "@elucidario/pkg-types";
 
 describe("mappingTable function", () => {
     it("should create a mapping table", () => {
