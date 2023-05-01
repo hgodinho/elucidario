@@ -43,7 +43,7 @@ export const buildInit = async (path, def) => {
             path,
             JSON.stringify(
                 {
-                    reference: "references",
+                    references: "references",
                     publications: "publications",
                 },
                 null,
@@ -57,7 +57,7 @@ export const buildInit = async (path, def) => {
         .prompt([
             {
                 type: "input",
-                name: "reference",
+                name: "references",
                 message: "What is the path to the references folder?",
                 default: "references",
             },
