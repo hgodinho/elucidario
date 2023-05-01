@@ -43,6 +43,7 @@ export const buildInit = async (path, def) => {
             path,
             JSON.stringify(
                 {
+                    root: ".",
                     references: "references",
                     publications: "publications",
                 },
@@ -55,6 +56,12 @@ export const buildInit = async (path, def) => {
     }
     inquirer
         .prompt([
+            {
+                type: "input",
+                name: "root",
+                message: "What is the path to the root folder?",
+                default: ".",
+            },
             {
                 type: "input",
                 name: "references",
