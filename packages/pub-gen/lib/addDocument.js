@@ -1,32 +1,27 @@
-"use strict";
-
 import fs from "fs";
-import path, { dirname } from "path";
+import path from "path";
 import inquirer from "inquirer";
 import chalk from "chalk";
 
-import lodash from "lodash-es";
+import { merge } from "lodash-es";
 
 import { createDoc } from "@elucidario/pkg-md-to-gdoc";
 
-import { pubGenPrompt } from "./prompt.js";
+import { pubGenPrompt } from "./prompt/pubGenPrompt.js";
 import { getCredentials } from "./getCredentials.js";
 
-const { merge } = lodash;
-
-const __dirname = path.resolve();
+import { getPaths } from "./getPaths.mjs";
+const paths = getPaths();
+const packageJson = JSON.parse(
+    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
+);
+const console = new Console(packageJson);
 
 export const addDocument = async (args) => {
-    const rootPath = path.resolve(__dirname, "..", "..");
-    const templatePath = path.resolve(
-        rootPath,
-        "packages",
-        "pub-gen",
-        "template"
-    );
-    const publication = args.publication;
-    const pubPath = path.resolve(rootPath, "publications");
-    const dirName = path.resolve(pubPath, publication);
+    const { publication } = args;
+
+    const templatePath = path.resolve(paths.pubGen, "template");
+    const dirName = path.resolve(paths.publication, publication);
 
     inquirer.prompt(pubGenPrompt("addDocument", args)).then(async (answers) => {
         const { anotherDocument, document } = answers;

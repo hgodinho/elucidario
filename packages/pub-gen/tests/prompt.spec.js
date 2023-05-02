@@ -8,13 +8,6 @@ describe("prompt", () => {
         expect(prompt).toEqual([
             {
                 type: "string",
-                name: "name",
-                message:
-                    "An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed.",
-                default: "test",
-            },
-            {
-                type: "string",
                 name: "title",
                 message: "A human-readable title.",
                 default: undefined,

@@ -1,48 +1,146 @@
-"use strict";
-
 import { Command } from "commander";
+import path from "path";
+import fs from "fs";
 
+import { Console } from "@elucidario/pkg-console";
+
+import { init } from "./init.js";
 import { createPublication } from "./create.js";
 import { buildPublication } from "./build.js";
 import { addAuthor } from "./addAuthor.js";
-import { addDocument } from "./addDocument.js";
+import { reference } from "./reference/reference.js";
+import { search } from "./reference/search.js";
+import { version } from "./version.js";
+import { generateSearchIndex } from "./reference/generateSearchIndex.js";
 import { convert } from "./pandoc/convert.js";
-import { Console } from "@elucidario/pkg-console";
+import { getPaths } from "./getPaths.js";
 
-import packageJson from "../package.json" assert { type: "json" };
+const paths = getPaths();
+const packageJson = JSON.parse(
+    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
+);
+const console = new Console(packageJson);
 
 const PubGen = () => {
     const program = new Command();
+    program.version(packageJson.version);
 
-    const console = new Console(packageJson);
-    console.banner();
+    /**
+     * @command <init> - Inicializa pub-gen-config.json
+     *
+     * @param {boolean} force - Força a inicialização
+     * @param {boolean} default - Inicializa com configuração padrão
+     */
+    program
+        .command("init")
+        .description("Initialize pub-gen config")
+        .option("-f, --force", "force initialization")
+        .option("-d, --default", "default configuration")
+        .action((argv) => {
+            console.log("Initializing pub-gen config");
+            init(argv);
+        });
 
+    /**
+     * @command <create> - Cria nova publicação
+     */
     program
         .command("create")
         .description("Create new publication")
         .action((argv) => {
-            console.info("Creating new publication");
+            console.log("Creating new publication");
             createPublication(argv);
         });
 
+    /**
+     * @command <version> - Faz o update da versão da publicação
+     *
+     * @param {string} publication - Nome da publicação
+     */
+    program
+        .command("version")
+        .description("Update version")
+        .option("-p, --publication <publication>")
+        .action((argv) => {
+            console.log("Updating version");
+            version(argv);
+        });
+
+    /**
+     * @command <add-author> - Adiciona novo autor
+     *
+     * @param {string} publication - Nome da publicação
+     */
     program
         .command("add-author")
         .description("Add new author")
         .option("-p, --publication <publication>")
         .action((argv) => {
-            console.info("Adding new author to", argv.publication);
             addAuthor(argv);
         });
 
-    program
-        .command("add-doc")
-        .description("Add new document")
-        .option("-p, --publication <publication>")
+    /**
+     * @command <reference> Referência
+     *
+     * @command <index> - Gera índice de busca
+     * @command <add> - Adiciona nova publicação
+     * @command <search> - Busca referência
+     */
+    const ref = program.command("reference").description("Reference");
+
+    /**
+     * @command <reference> <index> - Gera índice de busca
+     */
+    ref.command("index")
+        .description("Search index")
         .action((argv) => {
-            console.info("Adding new document to", argv.publication);
-            addDocument(argv);
+            generateSearchIndex();
         });
 
+    /**
+     * @command <reference> <add> - Adiciona nova referência
+     *
+     * @param {string} publication - Nome da publicação
+     */
+    ref.command("add")
+        .description("Add new reference")
+        .option("-p, --publication <publication>")
+        .action((argv) => {
+            console.log(
+                `Adding new reference to: ${
+                    argv.publication ? argv.publication : "monorepo"
+                }`
+            );
+            reference(argv);
+        });
+
+    /**
+     * @command <reference> <search> - Busca referência
+     *
+     * @param {string} publication - Nome da publicação
+     */
+    ref.command("search")
+        .description("Search reference")
+        .option("-p, --publication <publication>")
+        .option("-t, --type <type>")
+        .option("-v, --value <value>")
+        .action((argv) => {
+            console.log(
+                `Searching reference in: ${
+                    argv.publication ? argv.publication : "monorepo"
+                }`
+            );
+            search(argv);
+        });
+
+    /**
+     * @command <build> - Build
+     *
+     * @param {string} publication - Nome da publicação
+     * @param {boolean} md - Build only markdown files
+     * @param {boolean} gdoc - Build only to Google Docs
+     * @param {boolean} clean-dist - Clean dist folder before building
+     */
     program
         .command("build")
         .description("Build publication")
@@ -51,10 +149,18 @@ const PubGen = () => {
         .option("-g, --gdoc", "build only to Google Docs")
         .option("-c, --clean-dist", "Clean dist folder before building")
         .action((argv) => {
-            console.info("Building publication:", argv.publication);
+            console.log("Building publication:", argv.publication);
             buildPublication(argv);
         });
 
+    /**
+     * @command <convert> - Convert
+     *
+     * @param {string} publication - Nome da publicação
+     * @param {string} output - Diretório de saída do arquivo convertido
+     * @param {string} ext - Extensão do arquivo de saída
+     * @param {string} title - Título do documento
+     */
     program
         .command("convert")
         .description("Convert publication")
@@ -63,7 +169,7 @@ const PubGen = () => {
         .option("-e, --ext <ext>")
         .option("-t, --title <title>")
         .action((argv) => {
-            console.info("Converting publication:", argv.publication);
+            console.log("Converting publication:", argv.publication);
             convert(argv);
         });
 

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "@jest/globals";
 
-import pubGenJson from "../dist/pub-gen-schema.json";
+import pubGenJson from "../static/pub-gen/schema/pub-gen-schema.json";
 
 describe("pub-gen-schema", () => {
     it("should have a valid draft07 $schema", () => {

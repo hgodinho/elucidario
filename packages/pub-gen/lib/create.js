@@ -1,41 +1,34 @@
-"use strict";
-
 import fs from "fs";
 import path from "path";
 import inquirer from "inquirer";
 import { execSync } from "child_process";
-import lodash from "lodash-es";
+import { kebabCase } from "lodash-es";
 
-import { parseArgs } from "@elucidario/pkg-parse-args";
 import { toMD } from "@elucidario/pkg-docusaurus-md";
 import { Console } from "@elucidario/pkg-console";
+import { readContents } from "@elucidario/pkg-schema-doc";
 
-import { pubGenPrompt } from "./prompt.js";
-import packageJson from "../package.json" assert { type: "json" };
+import { pubGenPrompt } from "./prompt/pubGenPrompt.js";
 
-const kebabCase = lodash.kebabCase;
+import { getPaths } from "./getPaths.js";
+const paths = getPaths();
+const packageJson = JSON.parse(
+    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
+);
 const console = new Console(packageJson);
 
 export const createPublication = async (args) => {
-    const options = parseArgs();
-    const rootPath = path.resolve(options.path);
-
     inquirer.prompt(pubGenPrompt("create", args)).then(async (answers) => {
-        const name = answers.name;
-        const packageName = `@elucidario/pub-${kebabCase(name)}`;
+        const name = kebabCase(answers.title);
+        const packageName = `@elucidario/pub-${name}`;
 
-        const pubPath = path.resolve(rootPath, "publications");
-        const dirName = path.resolve(pubPath, name);
-        const templatePath = path.resolve(
-            rootPath,
-            "packages",
-            "pub-gen",
-            "template"
-        );
+        // const pubPath = path.resolve(rootPath, "publications");
+        const dirName = path.resolve(paths.publications, name);
+        const templatePath = path.resolve(paths.pubGen, "template");
 
         try {
             fs.readdirSync(dirName);
-            console.error(`A publicação ${name} já existe`);
+            console.log(`A publicação ${name} já existe`, { type: "error" });
         } catch (error) {
             try {
                 const packageJson = createPackageJson(name, packageName);
@@ -44,10 +37,7 @@ export const createPublication = async (args) => {
                 /**
                  * Create publication directory and copy template files
                  */
-                fs.mkdirSync(path.resolve(pubPath, name), { recursive: true });
-                fs.mkdirSync(path.resolve(pubPath, name, "files"), {
-                    recursive: true,
-                });
+                fs.mkdirSync(dirName, { recursive: true });
                 fs.writeFileSync(
                     path.resolve(dirName, "package.json"),
                     JSON.stringify(packageJson, null, 4)
@@ -64,21 +54,50 @@ export const createPublication = async (args) => {
                     path.resolve(dirName, "README.md"),
                     createREADME(packageName, answers)
                 );
+                fs.mkdirSync(path.resolve(dirName, "files"), {
+                    recursive: true,
+                });
+                fs.mkdirSync(path.resolve(dirName, "dist"), {
+                    recursive: true,
+                });
+                fs.mkdirSync(path.resolve(dirName, "references"), {
+                    recursive: true,
+                });
+                fs.mkdirSync(path.resolve(dirName, "content"), {
+                    recursive: true,
+                });
+                const content = readContents(
+                    path.resolve(templatePath, "content"),
+                    ["md"]
+                );
+                console.log(content);
+                Object.entries(content).forEach(([key, value]) => {
+                    fs.writeFileSync(
+                        path.resolve(dirName, "content", `${key}.md`),
+                        value
+                    );
+                });
 
-                console.success("Publicação criada com sucesso!");
+                console.log(pubGenJson, {
+                    title: "Publicação criada com sucesso!",
+                    type: "success",
+                    defaultLog: true,
+                });
 
                 /**
                  * Install dependencies
                  */
-                console.info("Instalando dependências...");
+                console.log("Instalando dependências...");
                 execSync(`cd ${dirName} && pnpm install`, {
                     stdio: "inherit",
                 });
-                console.success("Dependências instaladas com sucesso.");
+                console.log("Dependências instaladas com sucesso.", {
+                    type: "success",
+                });
 
-                console.success("Boa escrita!");
+                console.log("Boa escrita!");
             } catch (error) {
-                console.error(error);
+                console.log(error, { type: "error" });
             }
         }
     });
@@ -131,9 +150,11 @@ const createPackageJson = (name, packageName) => {
         scripts: {
             "add-author": `pub-gen add-author -p ${name}`,
             "add-doc": `pub-gen add-doc -p ${name}`,
+            "ref-add": `pub-gen reference add -p ${name}`,
+            "ref-search": `pub-gen reference search -p ${name}`,
             authenticate: `pub-gen authenticate -p ${name}`,
             build: `pnpm clean && pub-gen build -m -g -c -p ${name}`,
-            clean: "rm -rf dist/*",
+            clean: "rm -rf dist/* && rm -rf files/*",
         },
         devDependencies: {
             "@elucidario/pkg-pub-gen": "workspace:^",

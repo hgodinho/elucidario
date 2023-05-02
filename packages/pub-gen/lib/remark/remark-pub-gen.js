@@ -7,12 +7,7 @@ import {
     mdGridTableFromJSON,
 } from "./htmlTableFromJson.js";
 
-import {
-    propertiesTable,
-    entityTable,
-    metadata,
-    // resolveSchema,
-} from "@elucidario/pkg-schema-doc";
+import { entityPage } from "@elucidario/pkg-schema-doc";
 
 import { toMD } from "@elucidario/pkg-docusaurus-md";
 
@@ -48,23 +43,25 @@ export default function remarkPubGen(options) {
                     );
                     let schemaTable = {};
 
-                    if (schemaData.properties) {
-                        schemaTable = propertiesTable(
-                            schemaData,
-                            schemaData.title,
-                            options.startLevel || 3,
-                            options.language
-                        );
-                    }
-                    if (schemaData.definitions) {
-                        schemaTable = metadata(
-                            schemaData.title,
-                            schemaData,
-                            true,
-                            options.startLevel || 3,
-                            options.language
-                        );
-                    }
+                    // if (schemaData.properties) {
+                    //     schemaTable = propertiesTable(
+                    //         schemaData,
+                    //         schemaData.title,
+                    //         options.startLevel || 3,
+                    //         options.language
+                    //     );
+                    // }
+                    // if (schemaData.definitions) {
+                    //     schemaTable = metadata(
+                    //         schemaData.title,
+                    //         schemaData,
+                    //         true,
+                    //         options.startLevel || 3,
+                    //         options.language
+                    //     );
+                    // }
+                    schemaTable = entityPage(schemaData, "pt-BR");
+
                     node.value = schemaTable;
                     node.type = "html";
                 }
