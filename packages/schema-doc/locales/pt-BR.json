@@ -2,5 +2,11 @@
 	"Name": "Name",
 	"Type": "Type",
 	"Description": "Description",
-	"Required": "Required"
+	"Required": "Required",
+	"No": "No",
+	"Yes": "Yes",
+	"Examples": "Examples",
+	"type": "type",
+	"with `anyOf` properties": "with `anyOf` properties",
+	"Properties": "Properties"
 }

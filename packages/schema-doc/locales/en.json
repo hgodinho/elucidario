@@ -9,5 +9,11 @@
 	"Name": "Name",
 	"Type": "Type",
 	"Description": "Description",
-	"Required": "Required"
+	"Required": "Required",
+	"Back to top": "Back to top",
+	"type $ref(%s)": "type $ref(%s)",
+	"Definitions": "Definitions",
+	"No": "No",
+	"Yes": "Yes",
+	"Mapping": "Mapping"
 }

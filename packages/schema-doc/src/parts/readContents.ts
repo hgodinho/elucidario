@@ -14,9 +14,9 @@ type ObjectOrArray = { [key: string]: any } | any[];
 export const readContents = (
     directoryPath: string,
     extensions = ["json", "md"],
-    names = false
+    names = false,
+    exclude?: string[]
 ): ObjectOrArray => {
-
     const result: ObjectOrArray = names ? [] : {};
 
     // ler todos os arquivos na pasta atual
@@ -26,6 +26,12 @@ export const readContents = (
     const ignored: string[] = [];
     files.forEach((file) => {
         const filePath = path.join(directoryPath, file);
+
+        if (exclude && exclude.includes(file)) {
+            ignored.push(filePath)
+            return;
+        }
+
         // se o arquivo for um diretório, ler seu conteúdo recursivamente
         if (fs.statSync(filePath).isDirectory()) {
             if (names) {
@@ -45,11 +51,11 @@ export const readContents = (
                     const fileContent = JSON.parse(
                         fs.readFileSync(filePath, "utf-8")
                     );
-                    const fileName = path.parse(filePath).name;
+                    const fileName = path.parse(filePath).base;
+
                     (result as { [key: string]: any })[fileName] = fileContent;
                 }
-            }
-            if (extensions.includes(ext) && ext === "md") {
+            } else if (extensions.includes(ext) && ext === "md") {
                 if (names) {
                     result.push(filePath);
                 } else {

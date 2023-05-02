@@ -1,21 +1,23 @@
 import {
-    Mapping,
+    AnyOfSchema,
+    ArraySchema,
     BaseSchema,
     DataTypes,
-    AnyOfSchema,
-    OneOfSchema,
-    ArraySchema,
     Entity,
+    Mapping,
+    ObjectSchema,
+    OneOfSchema,
+    Schema,
 } from "@elucidario/pkg-types";
 
 import {
+    backToTop,
+    bold,
+    codeBlock,
+    codeInline,
+    heading,
     table,
     toMD,
-    backToTop,
-    heading,
-    boldItalic,
-    bold,
-    codeInline,
 } from "@elucidario/pkg-docusaurus-md";
 
 import { kebabCase } from "lodash-es";
@@ -27,10 +29,14 @@ export type SupportedLanguages = "en" | "pt-BR";
 /**
  * Cria tabela de mapeamento
  * @param map | Mapping
+ * @param lang | SupportedLanguages
  * @returns | string
  */
-export const mappingTable = (map: Mapping | undefined, lang?: SupportedLanguages) => {
-    i18n.setLocale(lang || 'en');
+export const mappingTable = (
+    map: Mapping | undefined,
+    lang?: SupportedLanguages
+) => {
+    i18n.setLocale(lang || "en");
     if (!map) {
         return "";
     }
@@ -50,12 +56,18 @@ export const mappingTable = (map: Mapping | undefined, lang?: SupportedLanguages
 };
 
 /**
- *  Resolve referência de um objeto
+ * Resolve referência de um metadado
  * @param ref | string
+ * @param code | boolean
+ * @param lang | SupportedLanguages
  * @returns | string
  */
-export const resolveRef = (ref: string, code = false, lang?: SupportedLanguages) => {
-    i18n.setLocale(lang || 'en');
+export const resolveRef = (
+    ref: string,
+    code = false,
+    lang?: SupportedLanguages
+) => {
+    i18n.setLocale(lang || "en");
     try {
         if (ref.startsWith("http")) {
             return `[${ref}](${ref})`;
@@ -77,48 +89,30 @@ export const resolveRef = (ref: string, code = false, lang?: SupportedLanguages)
 
         return link;
     } catch (error) {
-        console.error(error);
         throw new Error(i18n.__("Error at resolving reference"));
     }
 };
 
 /**
- *  Define o bloco de documentação de um metadado
- * @param title | string
- * @param metadata | BaseSchema<DataTypes>
- * @returns | string
- */
-export const metadata = (
-    title: string,
-    metadata: Entity | BaseSchema<DataTypes>,
-    top: boolean = false,
-    headingLevel = 3,
-    lang?: SupportedLanguages
-) => {
-    i18n.setLocale(lang || 'en');
-
-    return toMD([
-        entityTable(metadata as Entity),
-        mappingTable((metadata as BaseSchema<DataTypes>).map),
-        top ? backToTop(i18n.__("Back to top")) : "",
-        "---",
-    ]);
-};
-
-/**
- *  Cria linha que descreve o tipo do metadado
- * @param metadata | BaseSchema<DataTypes>
+ * Cria linha que descreve o tipo do metadado
+ * @param metadata | BaseSchema<DataTypes> | AnyOfSchema | OneOfSchema
+ * @param lang | SupportedLanguages
  * @returns | string
  */
 export const metaType = (
     metadata: BaseSchema<DataTypes> | AnyOfSchema | OneOfSchema,
-    lang?: SupportedLanguages
+    lang?: SupportedLanguages,
+    custom?: (metadata: BaseSchema<DataTypes> | AnyOfSchema | OneOfSchema) => string
 ) => {
-    i18n.setLocale(lang || 'en');
+    i18n.setLocale(lang || "en");
 
     const arrayMeta = metadata as ArraySchema;
     const anyOfMeta = metadata as unknown as AnyOfSchema;
     const oneOfMeta = metadata as unknown as OneOfSchema;
+
+    if (custom) {
+        return custom(metadata);
+    }
 
     if ("$ref" in metadata) {
         const link = resolveRef(metadata.$ref as string, true);
@@ -129,13 +123,17 @@ export const metaType = (
     switch (metadata.type) {
         case "array":
             if ("anyOf" in arrayMeta.items) {
-                const type = i18n.__("type %s<%s>", anyOfMeta.type, `anyOf<${anyOfMeta.items.anyOf
-                    .map((anyOf) => {
-                        if ("$ref" in anyOf) {
-                            return `${resolveRef(anyOf.$ref, true)}`;
-                        }
-                    })
-                    .join(" | ")}>`);
+                const type = i18n.__(
+                    "type %s<%s>",
+                    anyOfMeta.type,
+                    `anyOf<${anyOfMeta.items.anyOf
+                        .map((anyOf) => {
+                            if ("$ref" in anyOf) {
+                                return `${resolveRef(anyOf.$ref, true)}`;
+                            }
+                        })
+                        .join(" | ")}>`
+                );
                 return `> ${type}`;
                 // return `> tipo \`${anyOfMeta.type
                 //     }\` anyOf<${anyOfMeta.items.anyOf
@@ -157,19 +155,30 @@ export const metaType = (
                         .join(" | ")}>`;
             }
             if ("title" in arrayMeta.items) {
-                const type = i18n.__("type array<%s>", `[\`${arrayMeta.items.title
-                    }\`](#${arrayMeta.items.title ? arrayMeta.items.title.toLocaleLowerCase() : arrayMeta.items.type})`);
-                console.log(type)
+                const type = i18n.__(
+                    "type array<%s>",
+                    `[\`${arrayMeta.items.title}\`](#${arrayMeta.items.title
+                        ? (
+                            arrayMeta.items.title as string
+                        ).toLocaleLowerCase()
+                        : arrayMeta.items.type
+                    })`
+                );
                 return `> ${type}`;
             } else {
-                return `> ${i18n.__("type")} array<\`${arrayMeta.items.type}\`>`;
+                return `> ${i18n.__("type")} array<\`${arrayMeta.items.type
+                    }\`>`;
             }
         case "object":
             return `> ${i18n.__("type")} \`${metadata.type}\` ${i18n.__(
                 "with properties"
             )}`;
         case "null":
-            return `> ${i18n.__("type")} \`${metadata.type}\` ({${i18n.__("null")}})`;
+            return `> ${i18n.__("type")} \`${metadata.type}\` ({${i18n.__(
+                "null"
+            )}})`;
+        case undefined:
+            return '';
         default:
             return `> ${i18n.__("type")} \`${metadata.type}\``;
     }
@@ -177,91 +186,160 @@ export const metaType = (
 
 /**
  * Cria string que descreve o metadado
- * @param metadata | BaseSchema<DataTypes>
+ * @param metadata | Schema
+ * @param label | string
  * @returns | string
  */
-export const description = (
-    metadata: BaseSchema<DataTypes>,
-    label = "Description"
-) => {
-    return metadata.description ? `${bold(label)}: ${metadata.description}` : "";
+export const description = (metadata: Schema, label = "Description") => {
+    return metadata.description
+        ? `${bold(label)}: ${metadata.description}`
+        : "";
 };
 
 /**
- *  Cria tabela de propriedades
- * @param metadata | BaseSchema<DataTypes>
+ * Cria linha que descreve a descrição do metadado
+ * @param metadata | Schema
+ * @param headingLevel | number
+ * @param lang | SupportedLanguages
  * @returns | string
  */
-export const propertiesTable = (
-    metadata: BaseSchema<DataTypes>,
-    title: false | string | undefined = false,
+export const baseMetadata = (
+    metadata: Schema,
+    headingLevel = 3,
+    lang?: SupportedLanguages
+) => {
+    i18n.setLocale(lang || "en");
+    return toMD([
+        heading(headingLevel, metadata.title ? `\`${metadata.title}\`` : ""),
+        metaType(metadata),
+        description(metadata),
+        mappingTable((metadata as BaseSchema<DataTypes>).map),
+        backToTop(i18n.__("Back to top")),
+        "---",
+    ]);
+};
+
+/**
+ * Cria linha que descreve a descrição do metadado do tipo array
+ * @param metadata | ArraySchema
+ * @param headingLevel | number
+ * @param lang | SupportedLanguages
+ * @returns | string
+ */
+export const arrayMetadata = (
+    metadata: ArraySchema,
+    headingLevel = 3,
+    lang?: SupportedLanguages
+) => {
+    i18n.setLocale(lang || "en");
+    return toMD([
+        heading(headingLevel, metadata.title ? `\`${metadata.title}\`` : ""),
+        metaType(metadata),
+        description(metadata),
+        mappingTable(metadata.map),
+        backToTop(i18n.__("Back to top")),
+        "---",
+    ]);
+};
+
+export const examples = (metadata: BaseSchema<DataTypes>, headingLevel: number, lang?: SupportedLanguages) => {
+    i18n.setLocale(lang || "en");
+    if (metadata.examples) {
+        const examples = metadata.examples.map((example) => {
+            return codeBlock(JSON.stringify(example, null, 2), 'json');
+        });
+        return toMD([
+            heading(headingLevel, i18n.__("Examples")),
+            ...examples,
+        ]);
+    }
+    return "";
+};
+
+/**
+ * Cria linha que descreve um metadado do tipo object
+ * @param schema | ObjectSchema
+ * @returns | string
+ */
+export const objectMetadata = (
+    schema: ObjectSchema,
     headingLevel = 4,
     lang?: SupportedLanguages
 ): string => {
+    i18n.setLocale(lang || "en");
 
-    i18n.setLocale(lang || 'en');
-    if (!metadata.properties) {
-        if (metadata.$ref) {
+    if (!schema.properties) {
+        if (schema.$ref) {
             return toMD([
                 heading(
                     headingLevel,
-                    metadata.title ? `\`${metadata.title}\`` : ""
+                    schema.title ? `\`${schema.title}\`` : ""
                 ),
-                metaType(metadata),
-                description(metadata),
+                metaType(schema),
+                description(schema),
             ]);
         }
 
-        switch (metadata.type) {
-            case "array":
-                const items = metadata.items as BaseSchema<DataTypes>;
-                if ("anyOf" in items || "oneOf" in items) {
-                    return toMD([
-                        heading(
-                            headingLevel,
-                            metadata.title ? `\`${metadata.title}\`` : ""
-                        ),
-                        metaType(metadata),
-                        description(metadata),
-                        mappingTable((metadata as BaseSchema<DataTypes>).map),
-                    ]);
-                }
-
-                console.log("items", { metadata });
-
-                return propertiesTable(
-                    items,
-                    `\`${items.title}\``,
+        if ('anyOf' in schema || 'oneOf' in schema) {
+            const subSchema = (schema.anyOf || schema.oneOf) as ObjectSchema[];
+            return toMD([
+                heading(
                     headingLevel,
-                    lang
-                );
-
-            case "string":
-                return toMD([
-                    heading(
-                        headingLevel,
-                        metadata.title ? `\`${metadata.title}\`` : ""
-                    ),
-                    metaType(metadata),
-                    description(metadata),
-                    mappingTable((metadata as BaseSchema<DataTypes>).map),
-                ]);
-
-            case "integer":
-                return toMD([
-                    heading(
-                        headingLevel,
-                        metadata.title ? `\`${metadata.title}\`` : ""
-                    ),
-                    metaType(metadata),
-                    description(metadata),
-                    mappingTable((metadata as BaseSchema<DataTypes>).map),
-                ]);
-
-            default:
-                console.log("default", { metadata });
-                return "";
+                    schema.title ? `\`${schema.title}\`` : ""
+                ),
+                metaType(schema, lang, (metadata) => {
+                    if ("anyOf" in metadata) {
+                        return `> ${i18n.__("type")} \`${metadata.type}\` ${i18n.__(
+                            "with `anyOf` properties"
+                        )}`;
+                    } else {
+                        return `> ${i18n.__("type")} \`${metadata.type}\` ${i18n.__(
+                            "with `oneOf` properties"
+                        )}`;
+                    }
+                }),
+                description(schema),
+                heading(headingLevel + 2, i18n.__("Properties")),
+                toMD((subSchema).map((subSchema) => {
+                    return objectMetadata(subSchema, headingLevel + 3, lang);
+                })),
+                mappingTable((schema as BaseSchema<DataTypes>).map),
+                '---',
+            ]);
         }
+
+        return toMD([
+            heading(headingLevel, schema.title ? `\`${schema.title}\`` : ""),
+            metaType(schema),
+            description(schema),
+            examples(schema, headingLevel + 1, lang),
+            mappingTable((schema as BaseSchema<DataTypes>).map),
+            '---',
+        ]);
+
+        // switch (schema.type) {
+        //     case "array":
+        //         const items = schema.items as BaseSchema<DataTypes>;
+
+        //         if ("anyOf" in items || "oneOf" in items) {
+        //             return toMD([
+        //                 heading(
+        //                     headingLevel,
+        //                     schema.title ? `\`${schema.title}\`` : ""
+        //                 ),
+        //                 metaType(schema),
+        //                 description(schema),
+        //                 mappingTable((schema as BaseSchema<DataTypes>).map),
+        //             ]);
+        //         }
+
+        //         return objectMetadata(
+        //             items,
+        //             `\`${items.title}\``,
+        //             headingLevel,
+        //             lang
+        //         );
+        // }
     }
 
     const extraData: string[] = [];
@@ -272,183 +350,234 @@ export const propertiesTable = (
         }
     };
 
+    const headers = [
+        i18n.__("Name"),
+        i18n.__("Type"),
+        i18n.__("Description"),
+        i18n.__("Required"),
+    ];
+
     const tableData = table({
-        headers: [i18n.__("Name"), i18n.__("Type"), i18n.__("Description"), i18n.__("Required")],
-        rows: Object.entries(metadata.properties).map(([key, value]) => {
-            const required =
-                metadata.required && metadata.required.includes(key)
-                    ? "Sim"
-                    : "Não";
+        headers,
+        rows: Object.entries(schema.properties ? schema.properties : {}).map(
+            ([key, value]) => {
+                const required =
+                    schema.required && schema.required.includes(key)
+                        ? i18n.__("Yes")
+                        : i18n.__("No");
 
-            if ("$ref" in value) {
-                const link = resolveRef(value.$ref, true);
-                return [key, `$ref(${link})`, "", required];
-            }
+                if ("$ref" in value) {
+                    const link = resolveRef(value.$ref as string, true);
+                    return [key, `$ref(${link})`, "", required];
+                }
 
-            if (value.oneOf) {
-                const oneOf = value.oneOf
-                    .map((oneOf: any) => {
-                        if ("$ref" in oneOf) {
-                            return `${resolveRef(oneOf.$ref, true)}`;
-                        }
-                        switch (oneOf.type) {
-                            case "array":
-                                const nestedDescription = oneOf.description
-                                    ? description(oneOf.description)
-                                    : null;
-                                const nestedOneOf = propertiesTable(
-                                    oneOf as BaseSchema<DataTypes>,
-                                    `\`${oneOf.title}\``,
-                                    headingLevel + 1,
-                                    lang
-                                );
-                                pushExtraData(nestedOneOf);
+                if (value.oneOf) {
+                    const oneOf = value as OneOfSchema;
 
-                                if (nestedDescription)
+                    const type = oneOf.items.oneOf
+                        .map((oneOf: any) => {
+                            if ("$ref" in oneOf) {
+                                return `${resolveRef(oneOf.$ref, true)}`;
+                            }
+                            switch (oneOf.type) {
+                                case "array":
+                                    const nestedDescription =
+                                        description(oneOf);
+
+                                    const nestedOneOf = objectMetadata(
+                                        oneOf,
+                                        headingLevel + 1,
+                                        lang
+                                    );
+                                    pushExtraData(nestedOneOf);
                                     pushExtraData(nestedDescription);
 
-                                return `array<[\`${oneOf.items.title
-                                    }\`](#${oneOf.items.title.toLocaleLowerCase()})>`;
+                                    return `array<[\`${oneOf.items.title
+                                        }\`](#${oneOf.items.title.toLocaleLowerCase()})>`;
 
-                            default:
-                                return `[\`${oneOf.title
-                                    }\`](#${oneOf.title.toLocaleLowerCase()})`;
+                                default:
+                                    return `[\`${oneOf.title
+                                        }\`](#${oneOf.title.toLocaleLowerCase()})`;
+                            }
+                        })
+                        .join(" \\| ");
+
+                    return [key, `oneOf<${type}>`, value.description, required];
+                }
+
+                const arrayMeta = value as ArraySchema;
+                const objectMeta = value as ObjectSchema;
+
+                switch (value.type) {
+                    case "array":
+                        if (
+                            "type" in arrayMeta.items &&
+                            arrayMeta.items.type === "object"
+                        ) {
+                            // if ("$ref"! in arrayMeta.items) {
+                            //     const nestedProperties = objectMetadata(
+                            //         arrayMeta.items as unknown as ObjectSchema,
+                            //         headingLevel + 1,
+                            //         lang
+                            //     );
+                            //     pushExtraData(nestedProperties);
+                            // }
+                            return [
+                                key,
+                                `array<[\`${arrayMeta.items.title
+                                }\`](#${kebabCase(
+                                    (
+                                        arrayMeta.items.title as string
+                                    )?.toLocaleLowerCase()
+                                )})>`,
+                                arrayMeta.description,
+                                required,
+                            ];
                         }
-                    })
-                    .join(" \\| ");
 
-                return [key, `oneOf<${oneOf}>`, value.description, required];
-            }
+                        if ("anyOf" in arrayMeta.items) {
+                            return [
+                                key,
+                                `anyOf<${arrayMeta.items.anyOf
+                                    ? arrayMeta.items.anyOf
+                                        .map((anyOf: any) => {
+                                            if ("$ref" in anyOf) {
+                                                return `${resolveRef(
+                                                    anyOf.$ref,
+                                                    true
+                                                )}`;
+                                            } else {
+                                                return `\`${JSON.stringify(
+                                                    anyOf
+                                                )}\``;
+                                            }
+                                        })
+                                        .join(" - ")
+                                    : ""
+                                }>`,
+                                arrayMeta.description,
+                                required,
+                            ];
+                        }
+                        if ("oneOf" in arrayMeta.items) {
+                            return [
+                                key,
+                                `oneOf<${arrayMeta.items.oneOf
+                                    ? arrayMeta.items.oneOf
+                                        .map((oneOf: any) => {
+                                            if ("$ref" in oneOf) {
+                                                return `${resolveRef(
+                                                    oneOf.$ref,
+                                                    true
+                                                )}`;
+                                            }
+                                        })
+                                        .join(" | ")
+                                    : ""
+                                }>`,
+                                arrayMeta.description,
+                                required,
+                            ];
+                        }
 
-            switch (value.type) {
-                case "array":
-                    if (
-                        "type" in value.items &&
-                        value.items.type === "object"
-                    ) {
-                        const nestedProperties = propertiesTable(
-                            value.items as BaseSchema<DataTypes>,
-                            `\`${value.items.title}\``,
+                        if (arrayMeta.items.type !== "string" && arrayMeta.items.type !== "number" && arrayMeta.items.type !== "boolean") {
+                            const nestedArray = arrayMetadata(
+                                arrayMeta,
+                                headingLevel + 1,
+                                lang
+                            );
+
+                            pushExtraData(nestedArray);
+                            const nestedArrayItem = objectMetadata(
+                                value as ObjectSchema,
+                                headingLevel + 1,
+                                lang
+                            );
+                            if (arrayMeta.items.type === "array") {
+                                const nestedNestedArray = toMD([
+                                    heading(
+                                        headingLevel + 2,
+                                        `\`${arrayMeta.items.title}\``
+                                    ),
+                                    metaType(
+                                        arrayMeta.items as BaseSchema<DataTypes>
+                                    ),
+                                    description(arrayMeta),
+                                ]);
+                                pushExtraData(nestedNestedArray);
+                            }
+                            pushExtraData(nestedArrayItem);
+                        } else {
+                            return [
+                                key,
+                                `array<\`${arrayMeta.items.type}\`>`,
+                                arrayMeta.description,
+                                required,
+                            ];
+                        }
+
+                        return [
+                            key,
+                            `[\`${arrayMeta.title
+                            }\`](#${arrayMeta.title?.toLocaleLowerCase()})`,
+                            arrayMeta.description,
+                            required,
+                        ];
+
+                    case "object":
+                        const nestedObject = objectMetadata(
+                            objectMeta,
                             headingLevel + 1,
                             lang
                         );
-                        pushExtraData(nestedProperties);
+                        pushExtraData(nestedObject);
+
                         return [
                             key,
-                            `array<[\`${value.items.title}\`](#${kebabCase(
-                                value.items.title.toLocaleLowerCase()
-                            )})>`,
-                            value.description,
+                            `[\`${objectMeta.title
+                            }\`](#${objectMeta.title?.toLocaleLowerCase()})`,
+                            objectMeta.description,
                             required,
                         ];
-                    }
 
-                    if ("anyOf" in value.items) {
-                        return [
-                            key,
-                            `anyOf<${value.items.anyOf
-                                .map((anyOf: any) => {
-                                    if ("$ref" in anyOf) {
-                                        return `${resolveRef(
-                                            anyOf.$ref,
-                                            true
-                                        )}`;
-                                    } else {
-                                        return `\`${JSON.stringify(anyOf)}\``;
-                                    }
-                                })
-                                .join(" - ")}>`,
-                            value.description,
-                            required,
-                        ];
-                    }
-                    if ("oneOf" in value.items) {
-                        return [
-                            key,
-                            `oneOf<${value.items.oneOf
-                                .map((oneOf: any) => {
-                                    if ("$ref" in oneOf) {
-                                        return `${resolveRef(
-                                            oneOf.$ref,
-                                            true
-                                        )}`;
-                                    }
-                                })
-                                .join(" | ")}>`,
-                            value.description,
-                            required,
-                        ];
-                    }
-
-                    const nestedArray = toMD([
-                        heading(headingLevel + 1, `\`${value.title}\``),
-                        metaType(value as BaseSchema<DataTypes>),
-                        description(value.description),
-                    ]);
-
-                    pushExtraData(nestedArray);
-
-                    const nestedArrayItem = propertiesTable(
-                        value as BaseSchema<DataTypes>,
-                        `\`${value.title}\``,
-                        headingLevel + 1,
-                        lang
-                    );
-                    if (value.items.type !== "string") {
-                        if (value.items.type === "array") {
-                            const nestedNestedArray = toMD([
-                                heading(
-                                    headingLevel + 2,
-                                    `\`${value.items.title}\``
-                                ),
-                                metaType(value.items as BaseSchema<DataTypes>),
-                                description(value.items.description),
-                            ]);
-                            pushExtraData(nestedNestedArray);
-                        }
-                        pushExtraData(nestedArrayItem);
-                    }
-
-                    return [
-                        key,
-                        `[\`${value.title
-                        }\`](#${value.title?.toLocaleLowerCase()})`,
-                        value.description,
-                        required,
-                    ];
-
-                case "object":
-                    const nestedObject = propertiesTable(
-                        value,
-                        `\`${value.title}\``,
-                        headingLevel + 1,
-                        lang
-                    );
-                    pushExtraData(nestedObject);
-
-                    return [
-                        key,
-                        `[\`${value.title
-                        }\`](#${value.title.toLocaleLowerCase()})`,
-                        value.description,
-                        required,
-                    ];
-
-                default:
-                    return [key, value.type, value.description, required];
+                    default:
+                        return [key, value.type, value.description, required];
+                }
             }
-        }),
+        ),
     });
 
     return toMD([
-        heading(headingLevel, title ? `\`${title}\`` : ""),
-        metaType(metadata),
-        description(metadata),
+        heading(headingLevel, schema.title ? `\`${schema.title}\`` : ""),
+        metaType(schema),
+        description(schema),
         tableData,
-        mappingTable((metadata as BaseSchema<DataTypes>).map),
+        examples(schema, headingLevel + 1, lang),
+        mappingTable((schema as BaseSchema<DataTypes>).map),
         extraData.length > 0 ? "---" : "",
         toMD(extraData),
     ]);
+};
+
+/**
+ * Define o bloco de documentação de um metadado
+ * @param title | string
+ * @param metadata | BaseSchema<DataTypes>
+ * @returns | string
+ */
+export const metadata = (
+    schema: BaseSchema<DataTypes>,
+    headingLevel = 4,
+    lang?: SupportedLanguages
+) => {
+    switch (schema.type) {
+        case "array":
+            return arrayMetadata(schema as ArraySchema, headingLevel, lang);
+        case "object":
+            return objectMetadata(schema as ObjectSchema, headingLevel, lang);
+        default:
+            return baseMetadata(schema, headingLevel, lang);
+    }
 };
 
 /**
@@ -456,11 +585,39 @@ export const propertiesTable = (
  * @param entity | Entity
  * @returns | string
  */
-export const entityTable = (entity: Entity): string => {
-    return toMD(
-        Object.entries(entity.definitions).map(([key, value]) => {
-            const definition = value as BaseSchema<DataTypes>;
-            return propertiesTable(definition, `\`${key}\``, 3);
-        })
-    );
+export const entityTable = (
+    entity: Entity & { definitions: Record<string, BaseSchema<DataTypes>> },
+    lang?: SupportedLanguages
+): string => {
+    return toMD([
+        heading(2, i18n.__("Definitions")),
+        ...Object.entries(entity.definitions).map(([key, value]) => {
+            return metadata(value, 3, lang);
+        }),
+    ]);
+};
+
+/**
+ * Cria página de entidade
+ * @param entity | Entity
+ * @param lang | SupportedLanguages
+ * @returns | string
+ */
+export const entityPage = (
+    entity: Entity,
+    lang?: SupportedLanguages
+): string => {
+    return toMD([
+        entity.properties
+            ? objectMetadata(entity as ObjectSchema, 2, lang)
+            : "",
+        entity.definitions
+            ? entityTable(
+                entity as Entity & {
+                    definitions: Record<string, BaseSchema<DataTypes>>;
+                },
+                lang
+            )
+            : "",
+    ]);
 };
