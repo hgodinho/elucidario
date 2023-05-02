@@ -17,13 +17,19 @@ export type BaseSchema<T extends DataTypes> = {
     title?: string;
     map?: Mapping;
     required?: string[];
+    examples?: any[];
     [x: string]: unknown;
 };
 
+export type ObjectSchema = BaseSchema<"object"> & {
+    properties?: Record<string, Schema>;
+    additionalProperties?: boolean;
+};
+
 export type ArraySchema = BaseSchema<"array"> & {
-    items: Pick<BaseSchema<DataTypes>, "type" | "title"> & {
-        anyOf?: BaseSchema<DataTypes>[];
-        oneOf?: BaseSchema<DataTypes>[];
+    items: Pick<Schema, "type" | "title"> & {
+        anyOf?: Schema[];
+        oneOf?: Schema[];
     };
 };
 
@@ -37,6 +43,7 @@ export type OneOfSchema = Omit<ArraySchema, "type"> & {
         oneOf: Ref[];
     };
 };
+
 export type AnyOfSchema = Omit<ArraySchema, "type"> & {
     type: "array";
     items: {
@@ -44,44 +51,14 @@ export type AnyOfSchema = Omit<ArraySchema, "type"> & {
     };
 };
 
-export type Metadata = {
-    $schema: string;
-    title?: string;
-    description: string;
-    definitions: Record<string, BaseSchema<DataTypes>>;
-};
+export type Schema = BaseSchema<DataTypes> | ObjectSchema | ArraySchema | OneOfSchema | AnyOfSchema;
 
-export type Schema = BaseSchema<DataTypes>;
-
-export type Definitions<T> = BaseSchema<
-    T extends DataTypes ? DataTypes : "object"
-> & {
-    properties?: {
-        [x: string]: BaseSchema<DataTypes>;
-    };
-    $ref?: string;
-    required?: string[];
-};
-
-export type Entity = BaseSchema<"object"> & {
-    definitions: Record<string, Definitions<DataTypes>>;
-};
-
-export type MainEntity = {
-    "@type": "DigitalDocument";
-    ref: Entity;
+export type Entity = BaseSchema<DataTypes> & {
+    definitions?: Record<string, Schema>;
 };
 
 export type Status = {
     type: "success" | "info" | "warning" | "danger";
     title: string;
     description: string;
-};
-
-export type Page = {
-    "@type": "WebPage" extends string ? "WebPage" : string;
-    title: string;
-    description: string;
-    mainEntity: MainEntity;
-    status: Status;
 };

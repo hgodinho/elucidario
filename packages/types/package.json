@@ -8,7 +8,7 @@
     "scripts": {
         "clear": "rm -rf dist/*",
         "build": "pnpm clear && tsc",
-        "watch": "tsc -w"
+        "dev": "pnpm clear && tsc -w"
     },
     "devDependencies": {
         "@elucidario/pkg-tsconfig": "workspace:^",
