@@ -270,12 +270,19 @@ export const addReference = async (args, paths) => {
                             referencePath,
                             JSON.stringify(reference, null, 4)
                         );
-                        insertIndex(
-                            paths.references,
-                            _id,
-                            _slug,
-                            `references/${filename}`
-                        );
+                        insertIndex(paths.references, _id, _slug, filename);
+                        if (publication) {
+                            insertIndex(
+                                path.resolve(
+                                    paths.publications,
+                                    publication,
+                                    "references"
+                                ),
+                                _id,
+                                _slug,
+                                filename
+                            );
+                        }
                         console.log(
                             { referencePath, reference },
                             {
@@ -418,11 +425,11 @@ export const date = async (type, options) => {
     return dateNames;
 };
 
-export const insertIndex = async (indexPath, id, slug, destPath) => {
+export const insertIndex = async (indexPath, id, slug, filename) => {
     const index = {
         id,
         slug,
-        path: destPath,
+        path: `<references>/${filename}`,
     };
 
     if (!fs.existsSync(path.resolve(indexPath, "index.json"))) {

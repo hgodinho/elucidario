@@ -4,12 +4,8 @@ import path from "path";
 export const getPaths = () => {
     if (process.cwd().includes("publications")) {
         // estamos em algum diretório filho do diretório publications
-        console.log(process.cwd(), {
-            defaultLog: true,
-            type: "warning",
-            title: "Diretório de publicação detectado, verificar implementação.",
-        });
         const rootPath = path.resolve(process.cwd().split("publications")[0]);
+        console.log(rootPath);
         return generatePaths(rootPath);
     } else if (process.cwd().includes("pub-gen")) {
         // estamos em algum diretório filho do diretório pub-gen

@@ -20,11 +20,26 @@ export const prepareData = async (referencesPath) => {
             indexJson = JSON.parse(
                 fs.readFileSync(path.resolve(referencesPath, "index.json"))
             );
+            console.log(indexJson, { defaultLog: true });
             indexJson = {
                 items: indexJson.items.map((item) => {
                     try {
+                        let itemPath = item.path;
+                        if (item.path.includes("<references>")) {
+                            itemPath = item.path.replace(
+                                "<references>",
+                                paths.references
+                            );
+                        }
+                        console.log(
+                            { itemPath, paths },
+                            {
+                                defaultLog: true,
+                                title: "itemPath",
+                            }
+                        );
                         return JSON.parse(
-                            fs.readFileSync(path.resolve(item.path), "utf8")
+                            fs.readFileSync(path.resolve(itemPath), "utf8")
                         );
                     } catch (err) {
                         console.log(err, "error", true);

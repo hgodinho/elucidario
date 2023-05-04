@@ -149,12 +149,12 @@ const createPackageJson = (name, packageName) => {
         private: true,
         scripts: {
             "add-author": `pub-gen add-author -p ${name}`,
-            "add-doc": `pub-gen add-doc -p ${name}`,
             "ref-add": `pub-gen reference add -p ${name}`,
             "ref-search": `pub-gen reference search -p ${name}`,
+            "version-up": `pub-gen version -p ${name}`,
             authenticate: `pub-gen authenticate -p ${name}`,
             build: `pnpm clean && pub-gen build -m -g -c -p ${name}`,
-            clean: "rm -rf dist/* && rm -rf files/*",
+            clean: "rm -rf dist/*",
         },
         devDependencies: {
             "@elucidario/pkg-pub-gen": "workspace:^",

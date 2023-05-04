@@ -22,29 +22,26 @@ export const reference = async (args) => {
         const { publication } = args;
 
         if (publication) {
-            if (!fs.existsSync(path.resolve(paths.references, publication))) {
+            if (!fs.existsSync(path.resolve(paths.publications, publication))) {
                 throw new Error(
                     `The publication "${publication}" doesn't exists.`
                 );
             } else {
-                console.log(
-                    `Adding reference to publication "${publication}"`,
-                    {
-                        type: "warning",
-                        title: "ainda não implementado",
-                        defaultLog: true,
-                    }
-                );
-                throw new Error("ainda não implementado");
+                console.log(publication, {
+                    type: "info",
+                    title: "Adding reference to publication",
+                    defaultLog: true,
+                });
+                addReference(args, paths);
             }
         } else {
             try {
                 addReference(args, paths);
             } catch (error) {
-                console.log(error, { type: "error" });
+                throw new Error(error);
             }
         }
     } catch (error) {
-        console.log(error, { type: "error" });
+        console.log(error, { type: "error", defaultLog: true });
     }
 };
