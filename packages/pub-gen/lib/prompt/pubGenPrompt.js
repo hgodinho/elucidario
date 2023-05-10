@@ -11,7 +11,7 @@ const schema = JSON.parse(
             paths.pubGen,
             "static",
             "pub-gen",
-            "schema",
+            "schemas",
             "pub-gen-schema.json"
         )
     )

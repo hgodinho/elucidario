@@ -60,7 +60,11 @@ export default function remarkPubGen(options) {
                     //         options.language
                     //     );
                     // }
-                    schemaTable = entityPage(schemaData, "pt-BR");
+                    try {
+                        schemaTable = entityPage(schemaData, "pt-BR");
+                    } catch (error) {
+                        console.log(error);
+                    }
 
                     node.value = schemaTable;
                     node.type = "html";

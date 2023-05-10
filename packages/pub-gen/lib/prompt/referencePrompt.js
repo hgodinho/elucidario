@@ -8,7 +8,7 @@ const schema = JSON.parse(
             paths.pubGen,
             "static",
             "pub-gen",
-            "schema",
+            "schemas",
             "reference-schema.json"
         )
     )

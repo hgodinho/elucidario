@@ -1,6 +1,23 @@
 import { describe, it, expect } from "@jest/globals";
+import fs from "fs";
+import path from "path";
 
-import pubGenJson from "../static/pub-gen/schema/pub-gen-schema.json";
+import { getPaths } from "../lib/getPaths";
+
+const paths = getPaths();
+const pubGenJson = JSON.parse(
+    fs.readFileSync(
+        path.resolve(
+            paths.pubGen,
+            "static",
+            "pub-gen",
+            "schemas",
+            "pub-gen-schema.json"
+        )
+    )
+);
+
+// ("../static/pub-gen/schema/pub-gen-schema.json");
 
 describe("pub-gen-schema", () => {
     it("should have a valid draft07 $schema", () => {
