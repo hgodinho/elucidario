@@ -26,6 +26,7 @@ const lcdrRollupConfig = (config = null) => {
             "@elucidario/pkg-parse-args",
             "@elucidario/pkg-pub-gen",
             "@elucidario/pkg-schema-doc",
+            "@elucidario/pkg-console",
             "chalk",
             "child_process",
             "commander",
