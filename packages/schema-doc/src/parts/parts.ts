@@ -129,10 +129,6 @@ export const metaType = (
 ) => {
     i18n.setLocale(lang || "en");
 
-    const arrayMeta = metadata as ArraySchema;
-    const anyOfMeta = metadata as unknown as AnyOfSchema;
-    const oneOfMeta = metadata as unknown as OneOfSchema;
-
     if (custom) {
         return custom(metadata);
     }
@@ -145,11 +141,11 @@ export const metaType = (
 
     switch (metadata.type) {
         case "array":
-            if ("anyOf" in arrayMeta.items) {
+            if ("anyOf" in (metadata as ArraySchema).items) {
                 const type = i18n.__(
                     "type %s<%s>",
-                    anyOfMeta.type,
-                    `anyOf<${anyOfMeta.items.anyOf
+                    metadata.type,
+                    `anyOf<${(metadata as AnyOfSchema).items.anyOf
                         .map((anyOf) => {
                             if ("$ref" in anyOf) {
                                 return `${resolveRef(anyOf.$ref, true)}`;
@@ -158,8 +154,8 @@ export const metaType = (
                         .join(" | ")}>`
                 );
                 return `> ${type}`;
-                // return `> tipo \`${anyOfMeta.type
-                //     }\` anyOf<${anyOfMeta.items.anyOf
+                // return `> tipo \`${metadata.type
+                //     }\` anyOf<${metadata.items.anyOf
                 //         .map((anyOf) => {
                 //             if ("$ref" in anyOf) {
                 //                 return `${resolveRef(anyOf.$ref, true)}`;
@@ -167,9 +163,9 @@ export const metaType = (
                 //         })
                 //         .join(" | ")}>`;
             }
-            if ("oneOf" in arrayMeta.items) {
-                return `> ${i18n.__("type")} \`${oneOfMeta.type
-                    }\` oneOf<${oneOfMeta.items.oneOf
+            if ("oneOf" in (metadata as ArraySchema).items) {
+                return `> ${i18n.__("type")} \`${metadata.type
+                    }\` oneOf<${(metadata as OneOfSchema).items.oneOf
                         .map((oneOf) => {
                             if ("$ref" in oneOf) {
                                 return `${resolveRef(oneOf.$ref, true)}`;
@@ -177,19 +173,19 @@ export const metaType = (
                         })
                         .join(" | ")}>`;
             }
-            if ("title" in arrayMeta.items) {
+            if ("title" in (metadata as ArraySchema).items) {
                 const type = i18n.__(
                     "type array<%s>",
-                    `[\`${arrayMeta.items.title}\`](#${arrayMeta.items.title
+                    `[\`${(metadata as ArraySchema).items.title}\`](#${(metadata as ArraySchema).items.title
                         ? (
-                            arrayMeta.items.title as string
+                            (metadata as ArraySchema).items.title as string
                         ).toLocaleLowerCase()
-                        : arrayMeta.items.type
+                        : (metadata as ArraySchema).items.type
                     })`
                 );
                 return `> ${type}`;
             } else {
-                return `> ${i18n.__("type")} array<\`${arrayMeta.items.type
+                return `> ${i18n.__("type")} array<\`${(metadata as ArraySchema).items.type
                     }\`>`;
             }
         case "object":
@@ -567,7 +563,7 @@ export const objectMetadata = (
                         return [key, value.type, value.description, required];
                 }
             }
-        ),
+        ) as string[][],
     });
 
     return toMD([
@@ -609,12 +605,12 @@ export const metadata = (
  * @returns | string
  */
 export const entityTable = (
-    entity: Entity & { definitions: Record<string, BaseSchema<DataTypes>> },
+    entity: Entity & { definitions?: Record<string, BaseSchema<DataTypes>> },
     lang?: SupportedLanguages
 ): string => {
     return toMD([
         heading(2, i18n.__("Definitions")),
-        ...Object.entries(entity.definitions).map(([key, value]) => {
+        ...Object.entries(entity.definitions || []).map(([key, value]) => {
             return metadata(value, 3, lang);
         }),
     ]);

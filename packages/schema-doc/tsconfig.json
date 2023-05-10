@@ -8,7 +8,8 @@
         "paths": {
             "@elucidario/pkg-types": ["../types/dist"],
             "@elucidario/pkg-docusaurus-md": ["../docusaurus-md/dist"],
-            "@elucidario/pkg-schema-doc": ["../schema-doc/dist"]
+            "@elucidario/pkg-schema-doc": ["../schema-doc/dist"],
+            "@elucidario/pkg-console": ["../console/dist"]
         }
     },
     "include": ["src/index.ts"],
