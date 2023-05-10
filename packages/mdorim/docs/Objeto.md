@@ -17,23 +17,25 @@ Objeto
 
 ## Classes
 
-### `ObjectRef`
+## Definitions
 
-> tipo $ref([`ObjectRef`](metadata#objectref))
+### `object_ref`
 
-**_Descrição:_** Referência a um conceito
+> type $ref([`ref`](https://elucidario.art/mdorim/metadata.json#/definitions))
+
+**Description**: Referência a um conceito
+
+[Back to top](#)
+
+---
 
 ### `Object`
 
-> tipo `object` com propriedades
+> type `object` with properties
 
-**_Descrição:_** Objeto
+**Description**: Objeto
 
-| Nome | Tipo                        | Descrição | Obrigatório |
-| ---- | --------------------------- | --------- | ----------- |
-| ID   | $ref([`ID`](metadata#id))   |           | Sim         |
-| URI  | $ref([`URI`](metadata#uri)) |           | Sim         |
-
-[Voltar para o topo](#)
-
----
+| Name | Type                                                                    | Description | Required |
+| ---- | ----------------------------------------------------------------------- | ----------- | -------- |
+| \_id | $ref([`_id`](https://elucidario.art/mdorim/metadata.json#/definitions)) |             | Yes      |
+| uri  | $ref([`uri`](https://elucidario.art/mdorim/metadata.json#/definitions)) |             | Yes      |

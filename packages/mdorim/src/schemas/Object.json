@@ -4,24 +4,24 @@
     "title": "Object",
     "type": "object",
     "definitions": {
-        "ObjectRef": {
-            "title": "ObjectRef",
+        "object_ref": {
+            "title": "object_ref",
             "description": "Referência a um conceito",
-            "$ref": "metadata.json#/definitions/ObjectRef"
+            "$ref": "<local>/metadata.json#/definitions/ref"
         },
         "Object": {
             "title": "Object",
             "description": "Objeto",
             "type": "object",
             "properties": {
-                "ID": {
-                    "$ref": "metadata.json#/definitions/ID"
+                "_id": {
+                    "$ref": "<local>/metadata.json#/definitions/_id"
                 },
-                "URI": {
-                    "$ref": "metadata.json#/definitions/URI"
+                "uri": {
+                    "$ref": "<local>/metadata.json#/definitions/uri"
                 }
             },
-            "required": ["ID", "URI"]
+            "required": ["_id", "uri"]
         }
     }
 }

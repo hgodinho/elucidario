@@ -21,23 +21,25 @@ Por padrão o MDORIM vem com alguns conceitos pré-definidos baseados inteiramen
 
 ## Classes
 
-### `ConceptRef`
+## Definitions
 
-> tipo $ref([`ConceptRef`](metadata#conceptref))
+### `concept_ref`
 
-**_Descrição:_** Referência a um conceito
+> type $ref([`ref`](https://elucidario.art/mdorim/metadata.json#/definitions))
+
+**Description**: Referência a um conceito
+
+[Back to top](#)
+
+---
 
 ### `Concept`
 
-> tipo `object` com propriedades
+> type `object` with properties
 
-**_Descrição:_** Conceito
+**Description**: Conceito
 
-| Nome | Tipo                        | Descrição | Obrigatório |
-| ---- | --------------------------- | --------- | ----------- |
-| ID   | $ref([`ID`](metadata#id))   |           | Sim         |
-| URI  | $ref([`URI`](metadata#uri)) |           | Sim         |
-
-[Voltar para o topo](#)
-
----
+| Name | Type                                                                    | Description | Required |
+| ---- | ----------------------------------------------------------------------- | ----------- | -------- |
+| \_id | $ref([`_id`](https://elucidario.art/mdorim/metadata.json#/definitions)) |             | Yes      |
+| uri  | $ref([`uri`](https://elucidario.art/mdorim/metadata.json#/definitions)) |             | Yes      |

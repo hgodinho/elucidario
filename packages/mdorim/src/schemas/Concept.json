@@ -1,27 +1,27 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://elucidario.art/mdorim/concept.schema.json",
+    "$id": "https://elucidario.art/mdorim/Concept.json",
     "title": "Concept",
     "type": "object",
     "definitions": {
-        "ConceptRef": {
-            "title": "ConceptRef",
+        "concept_ref": {
+            "title": "concept_ref",
             "description": "Referência a um conceito",
-            "$ref": "metadata.json#/definitions/ConceptRef"
+            "$ref": "<local>/metadata.json#/definitions/ref"
         },
         "Concept": {
             "title": "Concept",
             "description": "Conceito",
             "type": "object",
             "properties": {
-                "ID": {
-                    "$ref": "metadata.json#/definitions/ID"
+                "_id": {
+                    "$ref": "<local>/metadata.json#/definitions/_id"
                 },
-                "URI": {
-                    "$ref": "metadata.json#/definitions/URI"
+                "uri": {
+                    "$ref": "<local>/metadata.json#/definitions/uri"
                 }
             },
-            "required": ["ID", "URI"]
+            "required": ["_id", "uri"]
         }
     }
 }

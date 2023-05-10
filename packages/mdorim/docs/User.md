@@ -18,23 +18,25 @@ Usuário do sistema
 
 ## Classes
 
-### `UserRef`
+## Definitions
 
-> tipo $ref([`UserRef`](metadata#userref))
+### `user_ref`
 
-**_Descrição:_** Referência a um usuário
+> type $ref([`ref`](https://elucidario.art/mdorim/metadata.json#/definitions))
+
+**Description**: Referência a um usuário
+
+[Back to top](#)
+
+---
 
 ### `User`
 
-> tipo `object` com propriedades
+> type `object` with properties
 
-**_Descrição:_** Usuário do sistema
+**Description**: Usuário do sistema
 
-| Nome | Tipo                        | Descrição | Obrigatório |
-| ---- | --------------------------- | --------- | ----------- |
-| ID   | $ref([`ID`](metadata#id))   |           | Sim         |
-| URI  | $ref([`URI`](metadata#uri)) |           | Sim         |
-
-[Voltar para o topo](#)
-
----
+| Name | Type                                                                    | Description | Required |
+| ---- | ----------------------------------------------------------------------- | ----------- | -------- |
+| \_id | $ref([`_id`](https://elucidario.art/mdorim/metadata.json#/definitions)) |             | No       |
+| uri  | $ref([`uri`](https://elucidario.art/mdorim/metadata.json#/definitions)) |             | Yes      |

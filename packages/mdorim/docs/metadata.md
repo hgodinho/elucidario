@@ -18,96 +18,142 @@ Metadados do modelo
 
 ## Classes
 
+## Definitions
+
 ### `_id`
 
-> tipo `integer`
+> type `integer`
 
-**_Descrição:_** Identificador único do conceito. É um `integer` gerado automaticamente.
+**Description**: Identificador único de uma entidade. É um `integer` gerado automaticamente.
 
-#### Mapeamento
+#### Mapping
 
-| Vocabulário | Link                                                     |
-| ----------- | -------------------------------------------------------- |
-| crm         | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
-| linked.art  | <http://linked.art/ns/terms/identifier>                  |
-| schema.org  | <http://schema.org/identifier>                           |
+| Vocabulary | Link                                                     |
+| ---------- | -------------------------------------------------------- |
+| crm        | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
+| linked.art | <http://linked.art/ns/terms/identifier>                  |
+| schema.org | <http://schema.org/identifier>                           |
+
+[Back to top](#)
+
+---
 
 ### `_type`
 
-> tipo `string`
+> type `string`
 
-**_Descrição:_** Tipo do conceito. É um `string` gerado automaticamente baseado no tipo da classe
+**Description**: Tipo de classe.
 
-#### Mapeamento
+#### Mapping
 
-| Vocabulário | Link                                             |
-| ----------- | ------------------------------------------------ |
-| crm         | <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> |
-| linked.art  | <\_type>                                         |
-| schema.org  | <http://schema.org/type>                         |
+| Vocabulary | Link                                             |
+| ---------- | ------------------------------------------------ |
+| crm        | <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> |
+| linked.art | <https://linked.art/ns/v1/linked-art.json#type>  |
+| schema.org | <http://schema.org/type>                         |
 
-### `_uri`
+[Back to top](#)
 
-> tipo `string`
+---
 
-**_Descrição:_** Identificador único do conceito. É um `string` gerado automaticamente.
+### `uri`
 
-#### Mapeamento
+> type `string`
 
-| Vocabulário | Link                                                     |
-| ----------- | -------------------------------------------------------- |
-| crm         | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
-| linked.art  | <http://linked.art/ns/terms/identifier>                  |
-| schema.org  | <http://schema.org/identifier>                           |
+**Description**: Uniform Resource Identifier (URI) de um recurso.
+
+#### Mapping
+
+| Vocabulary | Link                                                     |
+| ---------- | -------------------------------------------------------- |
+| crm        | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
+| linked.art | <http://linked.art/ns/terms/identifier>                  |
+| schema.org | <http://schema.org/identifier>                           |
+
+[Back to top](#)
+
+---
+
+### `ref`
+
+> type $ref([`uri`](#uri))
+
+**Description**: Referência genérica a uma entidade.
+
+[Back to top](#)
+
+---
 
 ### `identified_by`
 
-> tipo `array` anyOf<[`Name`](#name) | [`Identifier`](#identifier)>
+> type array<anyOf<[`Identifier`](#identifier) | [`Name`](#name)>>
 
-**_Descrição:_** Define o nome ou identificador de uma entidade. Pode ser `Name` ou `Identifier`.
+**Description**: Define o nome ou identificador de uma entidade. Pode ser `Name` ou `Identifier`.
 
-#### Mapeamento
+#### Mapping
 
-| Vocabulário | Link                                                     |
-| ----------- | -------------------------------------------------------- |
-| crm         | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
-| linked.art  | <http://www.w3.org/2000/01/rdf-schema#label>             |
-| schema.org  | <http://schema.org/name>                                 |
+| Vocabulary | Link                                                     |
+| ---------- | -------------------------------------------------------- |
+| crm        | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
+| linked.art | <http://www.w3.org/2000/01/rdf-schema#label>             |
+| schema.org | <http://schema.org/name>                                 |
+
+[Back to top](#)
+
+---
 
 ### `Identifier`
 
-> tipo `object` com propriedades
+> type `object` with properties
 
-**_Descrição:_** Identificador de uma entidade.
+**Description**: Identificador de uma entidade.
 
-| Nome          | Tipo                                            | Descrição                                             | Obrigatório |
-| ------------- | ----------------------------------------------- | ----------------------------------------------------- | ----------- |
-| classified_as | $ref([`ConceptRef`](concept.schema#conceptref)) |                                                       | Não         |
-| type          | string                                          | Tipo do identificador. Valor constante: `Identifier`. | Sim         |
-| value         | string                                          | Valor do identificador.                               | Sim         |
+| Name  | Type   | Description                                           | Required |
+| ----- | ------ | ----------------------------------------------------- | -------- |
+| type  | string | Tipo do identificador. Valor constante: `Identifier`. | Yes      |
+| value | string | Valor do identificador.                               | Yes      |
 
-#### Mapeamento
+#### Mapping
 
-| Vocabulário | Link                                                     |
-| ----------- | -------------------------------------------------------- |
-| crm         | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
-| linked.art  | <http://linked.art/ns/terms/identifier>                  |
-| schema.org  | <http://schema.org/identifier>                           |
+| Vocabulary | Link                                                     |
+| ---------- | -------------------------------------------------------- |
+| crm        | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
+| linked.art | <http://linked.art/ns/terms/identifier>                  |
+| schema.org | <http://schema.org/identifier>                           |
+
+### `Name`
+
+> type `object` with properties
+
+**Description**: Nome de uma entidade.
+
+| Name  | Type   | Description                            | Required |
+| ----- | ------ | -------------------------------------- | -------- |
+| type  | string | Tipo do nome. Valor constante: `Name`. | Yes      |
+| value | string | Valor do nome.                         | Yes      |
+
+#### Mapping
+
+| Vocabulary | Link                                                     |
+| ---------- | -------------------------------------------------------- |
+| crm        | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
+| linked.art | <http://www.w3.org/2000/01/rdf-schema#label>             |
+| schema.org | <http://schema.org/name>                                 |
 
 ### `slug`
 
-> tipo `string`
+> type `string`
 
-**_Descrição:_** Nome do conceito. É um `string` gerado automaticamente.
+**Description**: Nome do conceito. É um `string` gerado automaticamente.
 
-#### Mapeamento
+#### Mapping
 
-| Vocabulário | Link                                                     |
-| ----------- | -------------------------------------------------------- |
-| crm         | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
-| linked.art  | <http://www.w3.org/2000/01/rdf-schema#label>             |
-| schema.org  | <http://schema.org/name>                                 |
+| Vocabulary | Link                                                     |
+| ---------- | -------------------------------------------------------- |
+| crm        | <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> |
+| linked.art | <http://www.w3.org/2000/01/rdf-schema#label>             |
+| schema.org | <http://schema.org/name>                                 |
 
-[Voltar para o topo](#)
+[Back to top](#)
 
 ---

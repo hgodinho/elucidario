@@ -3,24 +3,24 @@
     "title": "User",
     "type": "object",
     "definitions": {
-        "UserRef": {
-            "title": "UserRef",
+        "user_ref": {
+            "title": "user_ref",
             "description": "Referência a um usuário",
-            "$ref": "metadata.json#/definitions/UserRef"
+            "$ref": "<local>/metadata.json#/definitions/ref"
         },
         "User": {
             "title": "User",
             "description": "Usuário do sistema",
             "type": "object",
             "properties": {
-                "ID": {
-                    "$ref": "metadata.json#/definitions/ID"
+                "_id": {
+                    "$ref": "<local>/metadata.json#/definitions/_id"
                 },
-                "URI": {
-                    "$ref": "metadata.json#/definitions/URI"
+                "uri": {
+                    "$ref": "<local>/metadata.json#/definitions/uri"
                 }
             },
-            "required": ["ID", "URI"]
+            "required": ["_ir", "uri"]
         }
     }
 }
