@@ -23,7 +23,7 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         "type",
         "year",
         "description",
-        "language",
+        "languages",
         "homepage",
         "keywords",
         "image",
@@ -35,19 +35,49 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
             defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
         );
     });
+    createPrompt.push(
+        {
+            type: "confirm",
+            name: "addLicense",
+            message: "Do you want to add a license?",
+            default: true,
+        },
+        {
+            type: "confirm",
+            name: "addAuthor",
+            message: "Do you want to add an author?",
+            default: true,
+        }
+    );
+
+    const licensePrompt = Object.entries(
+        schema.properties.licenses.items.properties
+    ).map(([key, value]) => {
+        return createInput(
+            `license.${key}`,
+            value,
+            defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
+        );
+    });
+    licensePrompt.push({
+        type: "confirm",
+        name: "addMoreLicense",
+        message: "Do you want to add another license?",
+        default: false,
+    });
 
     const authorPrompt = Object.entries(
         schema.properties.contributors.items.properties
     ).map(([key, value]) => {
         return createInput(
-            `authors.${key}`,
+            `contributor.${key}`,
             value,
             defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
         );
     });
     authorPrompt.push({
         type: "confirm",
-        name: "addAuthor",
+        name: "addMoreAuthor",
         message: "Do you want to add another author?",
         default: false,
     });
@@ -58,5 +88,8 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
 
         case "addAuthor":
             return authorPrompt;
+
+        case "addLicense":
+            return licensePrompt;
     }
 };

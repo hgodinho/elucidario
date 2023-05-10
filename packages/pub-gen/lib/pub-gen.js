@@ -47,6 +47,8 @@ const PubGen = () => {
     program
         .command("create")
         .description("Create new publication")
+        .option("-n, --no-install")
+        .option("-d, --debug")
         .action((argv) => {
             console.log("Creating new publication");
             createPublication(argv);

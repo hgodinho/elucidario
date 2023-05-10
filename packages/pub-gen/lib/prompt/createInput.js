@@ -12,7 +12,9 @@ export const createInput = (name, schema, defaultValue) => {
                 return {
                     type: "list",
                     name,
-                    message: schema.description,
+                    message: schema.title
+                        ? `${schema.title} (${schema.description})`
+                        : schema.description,
                     choices: schema.enum,
                     default: defaultValue,
                 };
@@ -20,7 +22,9 @@ export const createInput = (name, schema, defaultValue) => {
                 return {
                     type: schema.type,
                     name,
-                    message: schema.description,
+                    message: schema.title
+                        ? `${schema.title} (${schema.description})`
+                        : schema.description,
                     default: defaultValue,
                 };
             }
@@ -28,7 +32,9 @@ export const createInput = (name, schema, defaultValue) => {
             return {
                 type: schema.type,
                 name,
-                message: schema.description,
+                message: schema.title
+                    ? `${schema.title} (${schema.description})`
+                    : schema.description,
                 choices: schema.enum,
                 default: defaultValue,
             };
@@ -36,14 +42,18 @@ export const createInput = (name, schema, defaultValue) => {
             return {
                 type: "confirm",
                 name,
-                message: schema.description,
+                message: schema.title
+                    ? `${schema.title} (${schema.description})`
+                    : schema.description,
                 default: defaultValue,
             };
         default:
             return {
                 type: "string",
                 name,
-                message: schema.description,
+                message: schema.title
+                    ? `${schema.title} (${schema.description})`
+                    : schema.description,
                 default: defaultValue,
             };
     }

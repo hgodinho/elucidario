@@ -15,7 +15,7 @@ const console = new Console(packageJson);
 const srcPath = path.resolve("src");
 const libPath = path.resolve("lib");
 const docsPath = path.resolve("docs");
-const distPath = path.resolve("static", "pub-gen", "schema");
+const distPath = path.resolve("static", "pub-gen", "schemas");
 
 const docs = readContents(srcPath, ["md"], false);
 

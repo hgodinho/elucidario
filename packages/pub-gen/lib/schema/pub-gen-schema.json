@@ -40,7 +40,7 @@
             "description": "Publication year.",
             "type": "string"
         },
-        "language": {
+        "languages": {
             "title": "Languages",
             "description": "The languages of the publication. Use ISO 639-1 code.",
             "type": "array",

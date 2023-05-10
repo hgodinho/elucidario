@@ -17,90 +17,197 @@ const packageJson = JSON.parse(
 );
 const console = new Console(packageJson);
 
+const addLicenseInquirer = async () => {
+    console.log("Adding licenses...");
+    return await inquirer
+        .prompt(pubGenPrompt("addLicense"))
+        .then(async (answers) => {
+            return answers;
+        });
+};
+
+const addAuthorInquirer = async () => {
+    console.log("Adding authors...");
+    return await inquirer
+        .prompt(pubGenPrompt("addAuthor"))
+        .then(async (answers) => {
+            return answers;
+        });
+};
+
 export const createPublication = async (args) => {
-    inquirer.prompt(pubGenPrompt("create", args)).then(async (answers) => {
-        const name = kebabCase(answers.title);
-        const packageName = `@elucidario/pub-${name}`;
+    const { noInstall, debug } = args;
 
-        // const pubPath = path.resolve(rootPath, "publications");
-        const dirName = path.resolve(paths.publications, name);
-        const templatePath = path.resolve(paths.pubGen, "template");
+    if (debug) {
+        console.log(
+            { args },
+            { type: "warning", defaultLog: true, title: "Debug mode" }
+        );
+    }
 
-        try {
-            fs.readdirSync(dirName);
-            console.log(`A publicação ${name} já existe`, { type: "error" });
-        } catch (error) {
-            try {
-                const packageJson = createPackageJson(name, packageName);
-                const pubGenJson = createPubGenJson(name, answers);
+    await inquirer
+        .prompt(pubGenPrompt("create", args))
+        .then(async (answers) => {
+            let { addLicense, addAuthor, languages, ...options } = answers;
+            const PubGen = {
+                ...options,
+                languages: languages.includes(",")
+                    ? languages.split(",")
+                    : [languages],
+                licenses: [],
+                authors: [],
+            };
+            const name = kebabCase(PubGen.title);
+            const packageName = `@elucidario/pub-${name}`;
 
-                /**
-                 * Create publication directory and copy template files
-                 */
-                fs.mkdirSync(dirName, { recursive: true });
-                fs.writeFileSync(
-                    path.resolve(dirName, "package.json"),
-                    JSON.stringify(packageJson, null, 4)
-                );
-                fs.writeFileSync(
-                    path.resolve(dirName, "pub-gen.json"),
-                    JSON.stringify(pubGenJson, null, 4)
-                );
-                fs.copyFileSync(
-                    path.resolve(templatePath, ".gitignore"),
-                    path.resolve(dirName, ".gitignore")
-                );
-                fs.writeFileSync(
-                    path.resolve(dirName, "README.md"),
-                    createREADME(packageName, answers)
-                );
-                fs.mkdirSync(path.resolve(dirName, "files"), {
-                    recursive: true,
-                });
-                fs.mkdirSync(path.resolve(dirName, "dist"), {
-                    recursive: true,
-                });
-                fs.mkdirSync(path.resolve(dirName, "references"), {
-                    recursive: true,
-                });
-                fs.mkdirSync(path.resolve(dirName, "content"), {
-                    recursive: true,
-                });
-                const content = readContents(
-                    path.resolve(templatePath, "content"),
-                    ["md"]
-                );
-                console.log(content);
-                Object.entries(content).forEach(([key, value]) => {
-                    fs.writeFileSync(
-                        path.resolve(dirName, "content", `${key}.md`),
-                        value
+            const dirName = path.resolve(paths.publications, name);
+            const templatePath = path.resolve(paths.pubGen, "template");
+
+            while (addLicense) {
+                const { addMoreLicense, ...license } =
+                    await addLicenseInquirer();
+
+                PubGen.licenses.push(license.license);
+                addLicense = addMoreLicense;
+                if (debug) {
+                    console.log(
+                        { license: license.license, addMoreLicense },
+                        {
+                            type: "warning",
+                            defaultLog: true,
+                            title: "Debug mode",
+                        }
                     );
-                });
-
-                console.log(pubGenJson, {
-                    title: "Publicação criada com sucesso!",
-                    type: "success",
-                    defaultLog: true,
-                });
-
-                /**
-                 * Install dependencies
-                 */
-                console.log("Instalando dependências...");
-                execSync(`cd ${dirName} && pnpm install`, {
-                    stdio: "inherit",
-                });
-                console.log("Dependências instaladas com sucesso.", {
-                    type: "success",
-                });
-
-                console.log("Boa escrita!");
-            } catch (error) {
-                console.log(error, { type: "error" });
+                }
             }
-        }
-    });
+
+            while (addAuthor) {
+                const { addMoreAuthor, ...contributor } =
+                    await addAuthorInquirer();
+
+                PubGen.authors.push(contributor.contributor);
+                addAuthor = addMoreAuthor;
+                if (debug) {
+                    console.log(
+                        { author: contributor.contributor, addMoreAuthor },
+                        {
+                            type: "warning",
+                            defaultLog: true,
+                            title: "Debug mode",
+                        }
+                    );
+                }
+            }
+
+            try {
+                fs.readdirSync(dirName);
+                console.log(`A publicação ${name} já existe`, {
+                    type: "error",
+                });
+            } catch (error) {
+                try {
+                    const packageJson = createPackageJson(name, packageName);
+                    const pubGenJson = createPubGenJson(name, PubGen);
+                    const readme = createREADME(packageName, PubGen);
+
+                    if (debug) {
+                        console.log(
+                            {
+                                pubGenJson,
+                                packageJson,
+                                readme,
+                            },
+                            {
+                                type: "info",
+                                defaultLog: true,
+                                title: "Debug mode",
+                            }
+                        );
+                    } else {
+                        /**
+                         * Create publication directory and copy template files
+                         */
+                        fs.mkdirSync(dirName, { recursive: true });
+                        fs.writeFileSync(
+                            path.resolve(dirName, "package.json"),
+                            JSON.stringify(packageJson, null, 4)
+                        );
+                        fs.writeFileSync(
+                            path.resolve(dirName, "pub-gen.json"),
+                            JSON.stringify(pubGenJson, null, 4)
+                        );
+                        fs.copyFileSync(
+                            path.resolve(templatePath, ".gitignore"),
+                            path.resolve(dirName, ".gitignore")
+                        );
+                        fs.writeFileSync(
+                            path.resolve(dirName, "README.md"),
+                            readme
+                        );
+                        fs.mkdirSync(path.resolve(dirName, "files"), {
+                            recursive: true,
+                        });
+                        fs.mkdirSync(path.resolve(dirName, "dist"), {
+                            recursive: true,
+                        });
+                        fs.mkdirSync(path.resolve(dirName, "references"), {
+                            recursive: true,
+                        });
+                        fs.mkdirSync(path.resolve(dirName, "content"), {
+                            recursive: true,
+                        });
+                        PubGen.languages.forEach((lang) => {
+                            const content = readContents(
+                                path.resolve(templatePath, "content"),
+                                ["md"]
+                            );
+                            Object.entries(content).forEach(([key, value]) => {
+                                fs.mkdirSync(
+                                    path.resolve(dirName, "content", lang),
+                                    {
+                                        recursive: true,
+                                    }
+                                );
+                                fs.writeFileSync(
+                                    path.resolve(
+                                        dirName,
+                                        "content",
+                                        lang,
+                                        `${key}.md`
+                                    ),
+                                    value
+                                );
+                            });
+                        });
+
+                        console.log(pubGenJson, {
+                            title: "Publicação criada com sucesso!",
+                            type: "success",
+                            defaultLog: true,
+                        });
+
+                        /**
+                         * Install dependencies
+                         */
+                        if (!noInstall) {
+                            console.log("Instalando dependências...");
+                            execSync(`cd ${dirName} && pnpm install`, {
+                                stdio: "inherit",
+                            });
+                            console.log(
+                                "Dependências instaladas com sucesso.",
+                                {
+                                    type: "success",
+                                }
+                            );
+                        }
+                        console.log("Boa escrita!");
+                    }
+                } catch (error) {
+                    console.log(error, { type: "error" });
+                }
+            }
+        });
 };
 
 /**
@@ -131,7 +238,7 @@ const createPubGenJson = (name, answers) => {
         id: `https://elucidario.art/publicacoes/${name}`,
         ...answers,
         keywords: answers.keywords.split(","),
-        creation: new Date().toISOString(),
+        created: new Date().toISOString(),
     };
 };
 
