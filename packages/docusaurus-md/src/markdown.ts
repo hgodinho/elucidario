@@ -1,4 +1,4 @@
-import type { Status, Table } from "@elucidario/types";
+import type { Status, Table } from "@elucidario/pkg-types";
 
 /**
  *  Convert array of strings to markdown string
