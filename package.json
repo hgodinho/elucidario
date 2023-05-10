@@ -19,7 +19,7 @@
         "serve": "lerna run serve",
         "clean": "lerna clean",
         "link": "lerna link",
-        "version": "lerna version --no-private --conventional-commits --create-release github",
+        "versionUp": "lerna version --no-private --conventional-commits --create-release github",
         "pub-gen": "pub-gen",
         "typecheck": "tsc"
     },
