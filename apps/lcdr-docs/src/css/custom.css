@@ -1,4 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Baskervville&family=Inter&display=swap");
+
 :root {
+    --lcdr-base-font: 'Inter', sans-serif;
+    --lcdr-heading-font: 'Baskervville', serif;
+
+    --ifm-font-family-base: var(--lcdr-base-font);
+    --ifm-heading-font-family: var(--lcdr-heading-font);
+
+    --lcdr-color-black: #000000;
+    --lcdr-color-primary: #3c9aee;
+    --lcdr-color-primary-dark: #0771a4;
+    --lcdr-color-primary-darker: #0771a4;
+    --lcdr-color-primary-darkest: #002433;
+    --lcdr-color-primary-light: #fffafa;
+    --lcdr-color-primary-lighter: #e7edf3;
+    --lcdr-color-primary-lightest: #e7edf3;
+    --lcdr-color-secondary: #e7b7fe;
+}
+
+html[data-theme="dark"] {
+    --ifm-background-color: var(--lcdr-color-black);
+    --ifm-background-surface-color: var(--lcdr-color-black);
+
+    --ifm-color-primary: var(--lcdr-color-primary);
+    --ifm-color-primary-dark: #b2c5fb;
+    --ifm-color-primary-darker: #648af7;
+    --ifm-color-primary-darkest: #3f6ef4;
+    --ifm-color-primary-light: #c6c8fb;
+    --ifm-color-primary-lighter: #d7e1fd;
+    --ifm-color-primary-lightest: #e7edf3;
+    --ifm-code-background: var(--ifm-background-surface-color);
+    --ifm-toc-border-color: #00000e;
+
+    --ifm-alert-background-color: #00000e;
+
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="light"] {
     --ifm-color-primary: #171edf;
     --ifm-color-primary-dark: #161dd4;
     --ifm-color-primary-darker: #151bc9;
@@ -10,19 +49,15 @@
     --ifm-background-surface-color: #bdcfeb;
     --ifm-code-font-size: 95%;
     --ifm-code-background: var(--ifm-background-surface-color);
+
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-html[data-theme="dark"] {
-    --ifm-background-color: #000033;
-    --ifm-background-surface-color: #1a1a7f;
-    --ifm-color-primary: #b6c8fb;
-    --ifm-color-primary-dark: #b2c5fb;
-    --ifm-color-primary-darker: #648af7;
-    --ifm-color-primary-darkest: #3f6ef4;
-    --ifm-color-primary-light: #c6c8fb;
-    --ifm-color-primary-lighter: #d7e1fd;
-    --ifm-color-primary-lightest: #e7edf3;
-    --ifm-code-background: var(--ifm-background-surface-color);
-    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+.footer--dark {
+    background-color: var(--lcdr-color-primary-dark);
+}
+
+.navbar__title {
+    font-family: var(--lcdr-heading-font);
+    font-size: xx-large;
 }

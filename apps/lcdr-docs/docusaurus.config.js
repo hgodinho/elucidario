@@ -75,7 +75,7 @@ const config = {
                 routeBasePath: "mdorim",
                 editUrl:
                     "https://github.com/hgodinho/elucidario/tree/main/packages/mdorim",
-                // sidebarPath: require.resolve('../../packages/mdorim/docs/sidebars.js'),
+                sidebarPath: "../../packages/mdorim/docs/localSidebars.cjs",
                 showLastUpdateTime: true,
                 showLastUpdateAuthor: true,
             },
@@ -88,54 +88,47 @@ const config = {
                 routeBasePath: "pub-gen",
                 editUrl:
                     "https://github.com/hgodinho/elucidario/tree/main/packages/pub-gen",
-                // sidebarPath: require.resolve('../../packages/mdorim/docs/sidebars.js'),
+                sidebarPath: "../../packages/pub-gen/lib/sidebars/local.cjs",
                 showLastUpdateTime: true,
                 showLastUpdateAuthor: true,
             },
         ],
     ],
 
-    themeConfig:
-        /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-        ({
-            // Replace with your project's social card
-            image: "img/docusaurus-social-card.jpg",
-            navbar: {
-                title: "Elucidário.art",
-                items: [
-                    {
-                        type: "doc",
-                        docId: "doc",
-                        position: "left",
-                        label: "Documentação",
-                    },
-                    {
-                        href: "https://github.com/hgodinho/elucidario",
-                        label: "GitHub",
-                        position: "right",
-                    },
-                ],
-            },
-            footer: {
-                style: "dark",
-                links: [
-                    {
-                        title: "Docs",
-                        items: [
-                            {
-                                label: "Home",
-                                to: "/",
-                            },
-                        ],
-                    },
-                ],
-                copyright: `${new Date().getFullYear()} Elucidario.art.`,
-            },
-            prism: {
-                theme: darkCodeTheme,
-                darkMode: true,
-            },
-        }),
+    themeConfig: {
+        colorMode: {
+            defaultMode: "dark",
+            disableSwitch: false,
+            respectPrefersColorScheme: true,
+        },
+        // Replace with your project's social card
+        image: "img/docusaurus-social-card.jpg",
+        navbar: {
+            title: "Elucidário.art",
+            items: [
+                {
+                    href: "https://github.com/hgodinho/elucidario",
+                    label: "GitHub",
+                    position: "right",
+                },
+            ],
+        },
+        footer: {
+            style: "dark",
+            links: [
+                {
+                    title: "Docs",
+                    items: [
+                        {
+                            label: "Home",
+                            to: "/",
+                        },
+                    ],
+                },
+            ],
+            copyright: `${new Date().getFullYear()} Elucidario.art.`,
+        },
+    },
 };
 
 module.exports = config;
