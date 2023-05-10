@@ -20,7 +20,17 @@ import {
     toMD,
 } from "@elucidario/pkg-docusaurus-md";
 
+import path from "path";
+import { fileURLToPath } from "url";
+import fs from "fs";
 import { kebabCase } from "lodash-es";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+import { Console } from "@elucidario/pkg-console";
+const packageJson = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, '..', "package.json"), "utf8")
+);
+const console = new Console(packageJson);
 
 import i18n from "../i18n";
 
@@ -72,24 +82,37 @@ export const resolveRef = (
         if (ref.startsWith("http")) {
             return `[${ref}](${ref})`;
         }
-
         let link = "";
-        let [file, part] = ref.split("#");
-
-        if (file) {
-            link = `${file.replace(".json", "")}`;
+        const pathObject = path.parse(ref);
+        if (pathObject.dir && pathObject.dir.includes("<local>")) {
+            const homepage = JSON.parse(fs.readFileSync(
+                path.join(process.cwd(), "package.json"),
+                "utf8"
+            )).homepage;
+            if (!homepage) {
+                throw new Error(i18n.__("Error at resolving reference", { ref, homepage }));
+            }
+            link = `[${code ? codeInline(pathObject.name) : pathObject.name}](${pathObject.dir.replace("<local>", homepage)})`;
+        } else {
+            link = `[${code ? codeInline(pathObject.name) : pathObject.name}](#${pathObject.name.toLocaleLowerCase()})`;
         }
+        // let [file, part] = ref.split("#");
 
-        const [__, path, section] = part.split("/");
+        // if (file) {
+        //     link = `${file.replace(".json", "")}`;
+        // }
 
-        link += `#${section}`;
+        // const [__, path, section] = part.split("/");
 
-        link = `[${code ? codeInline(section) : section
-            }](${link.toLocaleLowerCase()})`;
+        // link += `#${section}`;
+
+        // link = `[${code ? codeInline(section) : section
+        //     }](${link.toLocaleLowerCase()})`;
 
         return link;
     } catch (error) {
-        throw new Error(i18n.__("Error at resolving reference"));
+        console.log(error, { type: "error", defaultLog: true, title: "Error at resolving reference" })
+        throw new Error(error as string);
     }
 };
 

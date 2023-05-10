@@ -3,11 +3,21 @@ import { JSONSchema7 } from 'json-schema';
 import { merge } from 'lodash-es';
 import $RefParser from '@apidevtools/json-schema-ref-parser';
 import type $RefParserOptions from '@apidevtools/json-schema-ref-parser/dist/lib/options';
+import { Console } from '@elucidario/pkg-console';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-export const mergeSubSchema = async (schema: JSONSchema7, options?: $RefParserOptions): Promise<JSONSchema7 | Error> => {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'package.json'), 'utf8'));
+const console = new Console(packageJson);
+
+export const mergeSubSchema = async (schema: JSONSchema7, options?: $RefParserOptions, method?: 'dereference' | 'bundle'): Promise<JSONSchema7 | Error> => {
     try {
-        schema = await $RefParser.dereference(schema, options as $RefParserOptions) as JSONSchema7;
-        console.log('mergeSubSchema', { schema, options })
+        method = method || 'dereference';
+        const parser = $RefParser[method];
+        schema = await parser(schema, options as $RefParserOptions) as JSONSchema7;
+
         let keyOf: string = '';
         if ('allOf' in schema) {
             keyOf = 'allOf';
@@ -18,6 +28,9 @@ export const mergeSubSchema = async (schema: JSONSchema7, options?: $RefParserOp
         }
 
         const schemasToBeReduced = (schema as JSONSchema7 & { [key: string]: any })[keyOf] as JSONSchema7[];
+        if (!schemasToBeReduced) {
+            return schema;
+        }
 
         let newSchema = merge({}, schema, schemasToBeReduced.reduce((acc, curr) => {
             return merge(curr, acc);
@@ -28,6 +41,7 @@ export const mergeSubSchema = async (schema: JSONSchema7, options?: $RefParserOp
 
         return newSchema;
     } catch (e: unknown) {
-        return new Error(e as string);
+        console.log(e, { type: 'error', defaultLog: true, title: "Error" });
+        throw new Error(e as string);
     }
 }
