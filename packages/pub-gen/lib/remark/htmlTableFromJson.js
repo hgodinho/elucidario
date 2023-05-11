@@ -1,6 +1,5 @@
 import Ajv from "ajv";
 import { JSDOM } from "jsdom";
-import tableSchema from "../schema/table-schema.json" assert { type: "json" };
 import prettier from "prettier";
 import { Table } from "./Table.js";
 

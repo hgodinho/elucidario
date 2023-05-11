@@ -8,8 +8,11 @@ import { readContents, mergeSubSchema } from "@elucidario/pkg-schema-doc";
 import { Command } from "commander";
 
 import { Console } from "@elucidario/pkg-console";
-
-import packageJson from "../package.json" assert { type: "json" };
+import { getPaths } from "../lib/getPaths.js";
+const paths = getPaths();
+const packageJson = JSON.parse(
+    fs.readFileSync(path.resolve(paths.pubGen, "package.json"), "utf-8")
+);
 const console = new Console(packageJson);
 
 const srcPath = path.resolve("src");

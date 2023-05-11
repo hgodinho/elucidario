@@ -3,8 +3,11 @@ import fs from "fs";
 import path from "path";
 import { Console } from "@elucidario/pkg-console";
 
-import packageJson from "../package.json" assert { type: "json" };
-
+import { getPaths } from "./getPaths";
+const paths = getPaths();
+const packageJson = JSON.parse(
+    fs.readFileSync(path.resolve(paths.pubGen, "package.json"), "utf-8")
+);
 const console = new Console(packageJson);
 
 export const init = async (options) => {
