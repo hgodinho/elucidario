@@ -5,7 +5,7 @@ export type DataTypes =
     | "boolean"
     | "array"
     | "object"
-    | "null";
+    | null;
 
 export type Mapping = {
     [x: string]: string;
