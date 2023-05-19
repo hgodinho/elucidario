@@ -15,7 +15,7 @@
             "type": "string",
             "description": "Schema used to validate the reference"
         },
-        "_id": {
+        "id": {
             "type": "string",
             "description": "Unique identifier for the reference"
         },

@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { Console } from "@elucidario/pkg-console";
 
-import { getPaths } from "./getPaths";
+import { getPaths } from "./getPaths.js";
 const paths = getPaths();
 const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(paths.pubGen, "package.json"), "utf-8")

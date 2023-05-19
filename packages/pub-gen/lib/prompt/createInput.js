@@ -5,7 +5,7 @@
  * @param {any} defaultValue
  * @returns
  */
-export const createInput = (name, schema, defaultValue) => {
+export const createInput = (name, schema, defaultValue, validate) => {
     switch (schema.type) {
         case "string":
             if (schema.enum) {
@@ -17,6 +17,7 @@ export const createInput = (name, schema, defaultValue) => {
                         : schema.description,
                     choices: schema.enum,
                     default: defaultValue,
+                    validate,
                 };
             } else {
                 return {
@@ -26,6 +27,7 @@ export const createInput = (name, schema, defaultValue) => {
                         ? `${schema.title} (${schema.description})`
                         : schema.description,
                     default: defaultValue,
+                    validate,
                 };
             }
         case "checkbox":
@@ -37,6 +39,7 @@ export const createInput = (name, schema, defaultValue) => {
                     : schema.description,
                 choices: schema.enum,
                 default: defaultValue,
+                validate,
             };
         case "boolean":
             return {
@@ -46,6 +49,7 @@ export const createInput = (name, schema, defaultValue) => {
                     ? `${schema.title} (${schema.description})`
                     : schema.description,
                 default: defaultValue,
+                validate,
             };
         default:
             return {
@@ -55,6 +59,7 @@ export const createInput = (name, schema, defaultValue) => {
                     ? `${schema.title} (${schema.description})`
                     : schema.description,
                 default: defaultValue,
+                validate,
             };
     }
 };

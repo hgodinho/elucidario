@@ -52,7 +52,7 @@ export const createPublication = async (args) => {
             const PubGen = {
                 ...options,
                 languages: languages.includes(",")
-                    ? languages.split(",")
+                    ? languages.split(",").map((lang) => lang.trim())
                     : [languages],
                 licenses: [],
                 authors: [],
@@ -260,7 +260,7 @@ const createPackageJson = (name, packageName) => {
             "ref-search": `pub-gen reference search -p ${name}`,
             "version-up": `pub-gen version -p ${name}`,
             authenticate: `pub-gen authenticate -p ${name}`,
-            build: `pnpm clean && pub-gen build -m -g -c -p ${name}`,
+            build: `pnpm clean && pub-gen build -p ${name}`,
             clean: "rm -rf dist/*",
         },
         devDependencies: {

@@ -5,7 +5,6 @@ export const getPaths = () => {
     if (process.cwd().includes("publications")) {
         // estamos em algum diretório filho do diretório publications
         const rootPath = path.resolve(process.cwd().split("publications")[0]);
-        console.log(rootPath);
         return generatePaths(rootPath);
     } else if (process.cwd().includes("pub-gen")) {
         // estamos em algum diretório filho do diretório pub-gen

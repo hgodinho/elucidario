@@ -30,7 +30,7 @@ const console = new Console(packageJson);
 
 export const addReference = async (args, paths) => {
     inquirer.prompt(referencePrompt("create")).then(async (answers) => {
-        const { type } = answers;
+        const { type, year } = answers;
         const { publication } = args;
         try {
             console.log(`Adding new reference of type "${type}"`);
@@ -66,14 +66,11 @@ export const addReference = async (args, paths) => {
                     }
 
                     // remove propriedades que deverão ser atualizadas e cria um novo objeto ref
-                    let { _id, _slug, _create, _update, ...ref } = reference;
+                    let { id, _slug, _create, _update, ...ref } = reference;
 
                     // verifica se o slug e o id já existem, se não existirem, cria um novo
                     if (!_slug) {
                         _slug = kebabCase(answers[type].title);
-                    }
-                    if (!_id) {
-                        _id = Math.random().toString(36).substring(2, 9);
                     }
 
                     // remove propriedades que devem ser sobrescritas
@@ -84,7 +81,6 @@ export const addReference = async (args, paths) => {
 
                     // cria um novo objeto reference
                     reference = merge({}, schemaDefault, ref, {
-                        _id,
                         _slug,
                         _create: !_create ? new Date().toISOString() : _create,
                         _update: new Date().toISOString(),
@@ -127,8 +123,14 @@ export const addReference = async (args, paths) => {
                                                 }, {});
                                             }
                                         );
+                                        const firstAuthor = [
+                                            ...authors[Object.keys(authors)[0]],
+                                        ].pop();
+
+                                        id = `${firstAuthor.family.toLocaleLowerCase()}${year}`;
 
                                         reference = {
+                                            id,
                                             ...reference,
                                             ...authors,
                                         };
@@ -196,7 +198,7 @@ export const addReference = async (args, paths) => {
 
                         // configura as propriedades comuns
                         try {
-                            console.log("Selecione as propriedades comuns:");
+                            console.log("Define common properties:");
                             await inquirer
                                 .prompt(referencePrompt("common"))
                                 .then(async (answers) => {
@@ -224,9 +226,7 @@ export const addReference = async (args, paths) => {
 
                         // configura as propriedades de arquivo
                         try {
-                            console.log(
-                                "Selecione as propriedades de arquivo:"
-                            );
+                            console.log("Define archive properties:");
                             await inquirer
                                 .prompt(referencePrompt("archive"))
                                 .then(async (answers) => {
@@ -261,7 +261,7 @@ export const addReference = async (args, paths) => {
                         if (!fs.existsSync(paths.references)) {
                             fs.mkdirSync(paths.references);
                         }
-                        const filename = `${_id}_${_slug}.json`;
+                        const filename = `${id}_${_slug}.json`;
                         const referencePath = path.resolve(
                             paths.references,
                             filename
@@ -270,7 +270,7 @@ export const addReference = async (args, paths) => {
                             referencePath,
                             JSON.stringify(reference, null, 4)
                         );
-                        insertIndex(paths.references, _id, _slug, filename);
+                        insertIndex(paths.references, id, _slug, filename);
                         if (publication) {
                             insertIndex(
                                 path.resolve(
@@ -278,7 +278,7 @@ export const addReference = async (args, paths) => {
                                     publication,
                                     "references"
                                 ),
-                                _id,
+                                id,
                                 _slug,
                                 filename
                             );
@@ -309,15 +309,15 @@ const refAlreadyExists = async (title, refs) => {
             {
                 type: "confirm",
                 name: "reuse",
-                message: `Foram encontradas ${refs.length} referências com o título "${title}". Deseja reutilizar alguma delas?`,
+                message: `Found ${refs.length} references with title "${title}". Do you want to reuse one of them?`,
                 default: true,
             },
             {
                 type: "list",
                 name: "refs",
-                message: "Selecione a referência que deseja reutilizar:",
+                message: "Select a reference to reuse:",
                 choices: refs.map(
-                    (ref) => `${ref._id}: ${ref.title} (${ref.type})`
+                    (ref) => `${ref.id}: ${ref.title} (${ref.type})`
                 ),
                 when: (answers) => answers.reuse,
             },
@@ -325,7 +325,7 @@ const refAlreadyExists = async (title, refs) => {
         .then((answers) => {
             if (answers.reuse) {
                 const refId = answers.refs.split(":")[0];
-                const ref = refs.find((ref) => ref._id === refId);
+                const ref = refs.find((ref) => ref.id === refId);
                 selected = ref;
             }
         });
@@ -339,7 +339,7 @@ const authorNames = authorProperties.reduce((acc, cur) => {
 }, {});
 
 export const author = async (type, options) => {
-    console.log(`Adicionando novo autor do tipo ${type}`);
+    console.log(`Adding new author of type ${type}`);
     await inquirer
         .prompt(
             authorPrompt("names", {
@@ -383,7 +383,7 @@ const dateNames = dateProperties.reduce((acc, cur) => {
 }, {});
 
 export const date = async (type, options) => {
-    console.log(`Adicionando nova data do tipo ${type}`);
+    console.log(`Adding new date of type ${type}`);
     await inquirer
         .prompt(
             datePrompt("date", {

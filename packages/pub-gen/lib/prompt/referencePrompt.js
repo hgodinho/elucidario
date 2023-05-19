@@ -129,11 +129,33 @@ const othersPromptType = Object.keys(schema.properties).filter(
 export const allProperties = Object.keys(schema.properties);
 
 export const referencePrompt = (name, defaults = undefined) => {
-    const createPrompt = createInput(
-        "type",
-        schema.properties.type,
-        defaults ? (defaults.type ? defaults.type : undefined) : undefined
-    );
+    const createPrompt = [
+        createInput(
+            "year",
+            {
+                type: "number",
+                title: "year",
+                description: "The year of publication.",
+            },
+            defaults ? (defaults.year ? defaults.year : undefined) : undefined,
+            (input) => {
+                const year = parseInt(input);
+                const error = "Please enter a valid year with 4 digits.";
+                if (isNaN(year)) {
+                    return error;
+                }
+                if (year.toString().length !== 4) {
+                    return error;
+                }
+                return true;
+            }
+        ),
+        createInput(
+            "type",
+            schema.properties.type,
+            defaults ? (defaults.type ? defaults.type : undefined) : undefined
+        ),
+    ];
 
     const mapProperties = (type, props) =>
         props.map((key) => {
@@ -144,6 +166,9 @@ export const referencePrompt = (name, defaults = undefined) => {
                     ? defaults[key]
                         ? defaults[key]
                         : undefined
+                    : undefined,
+                key === "title"
+                    ? (input) => (input ? true : "Required")
                     : undefined
             );
         });
@@ -200,6 +225,9 @@ export const authorPrompt = (name, args = undefined) => {
                 ? args?.defaults[key]
                     ? args?.defaults[key]
                     : undefined
+                : undefined,
+            key === "family"
+                ? (input) => (input ? true : "Required")
                 : undefined
         );
     });

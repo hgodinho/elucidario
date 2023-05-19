@@ -62,7 +62,6 @@ export const build = async (language, exclude) => {
                 const options = {
                     dereference: {
                         excludedPathMatcher: (path) => {
-                            // console.console(path);
                             let isExcluded = false;
                             excluded.forEach((item) => {
                                 if (path.includes(item)) {
@@ -73,18 +72,14 @@ export const build = async (language, exclude) => {
                         },
                     },
                 };
-                let newSchema = await mergeSubSchema(
-                    schema,
-                    options
-                    // jsonExclude?.includes(name) ? options : undefined
-                );
+                let newSchema = await mergeSubSchema(schema, options);
 
                 fs.writeFileSync(
                     path.resolve(distPath, name),
                     JSON.stringify(newSchema, null, 4)
                 );
 
-                Promise.resolve(`${name}.json`);
+                return Promise.resolve(`${name}.json`);
             })
         );
 
@@ -93,7 +88,7 @@ export const build = async (language, exclude) => {
             Object.entries(docs).map(async ([name, content]) => {
                 const newFile = await pubGenRemarkProcessor(content, {
                     pubGen: {
-                        publication: "test",
+                        // publication: "test",
                         path: distPath,
                         startLevel: 2,
                         language,
@@ -115,17 +110,25 @@ export const build = async (language, exclude) => {
                     );
                 }
 
-                Promise.resolve(`${name}.md`);
+                return Promise.resolve(`${name}.md`);
             })
         );
 
     console.log("Building schemas...");
     const builtSchemas = await buildSchemas();
-    console.log(`Built ${builtSchemas.length} schemas`, "success");
+    console.log(builtSchemas, {
+        type: "success",
+        title: `Built ${builtSchemas.length} schemas!`,
+        defaultLog: true,
+    });
 
     console.log("Building docs...");
     const builtDocs = await buildDocs();
-    console.log(`Built ${builtDocs.length} docs`, "success");
+    console.log(builtDocs, {
+        type: "success",
+        title: `Built ${builtDocs.length} docs!`,
+        defaultLog: true,
+    });
 };
 
 export const buildProcess = async () => {

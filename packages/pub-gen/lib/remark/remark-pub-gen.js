@@ -1,6 +1,7 @@
 import { visit } from "unist-util-visit";
 import path from "path";
 import fs from "fs";
+import axios from "axios";
 
 import {
     // htmlTableFromJSON,
@@ -10,6 +11,11 @@ import {
 import { entityPage } from "@elucidario/pkg-schema-doc";
 
 import { toMD } from "@elucidario/pkg-docusaurus-md";
+
+import { getPaths } from "../getPaths.js";
+const paths = getPaths();
+
+import { engine } from "../reference/csl-engine.js";
 
 export default function remarkPubGen(options) {
     return async function transformer(tree) {
@@ -85,6 +91,60 @@ export default function remarkPubGen(options) {
                     node.value = statusTable;
                     node.type = "html";
                 }
+            }
+        });
+
+        if (!options.publication) return;
+
+        const references = JSON.parse(
+            fs.readFileSync(
+                path.resolve(
+                    paths.publications,
+                    options.publication,
+                    "references",
+                    "index.json"
+                )
+            )
+        )
+            .items.map((item) => {
+                let refPath = item.path.replace("<references>/", "");
+                refPath = path.resolve(paths.references, refPath);
+                return JSON.parse(fs.readFileSync(refPath));
+            })
+            .filter((item) => item);
+
+        const citeproc = await engine(references);
+
+        visit(tree, "cite", (node) => {
+            try {
+                const ids = node.data.citeItems.map((item) => item.key);
+
+                const citations = citeproc.previewCitationCluster(
+                    {
+                        properties: {
+                            noteIndex: 1,
+                        },
+                        citationItems: references.filter((ref) => {
+                            return ids.includes(ref.id);
+                        }),
+                        citeItems: node.data.citeItems.map((item) => {
+                            const citeItem = {
+                                id: item.key,
+                                ...item,
+                            };
+                            delete citeItem.key;
+                            return citeItem;
+                        }),
+                    },
+                    [],
+                    [],
+                    "html"
+                );
+
+                node.type = "text";
+                node.value = citations;
+            } catch (error) {
+                console.log(error);
             }
         });
 

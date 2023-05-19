@@ -147,11 +147,7 @@ const PubGen = () => {
         .command("build")
         .description("Build publication")
         .option("-p, --publication <publication>")
-        .option("-m, --md", "build only markdown files")
-        .option("-g, --gdoc", "build only to Google Docs")
-        .option("-c, --clean-dist", "Clean dist folder before building")
         .action((argv) => {
-            console.log("Building publication:", argv.publication);
             buildPublication(argv);
         });
 
