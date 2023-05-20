@@ -1,0 +1,25 @@
+{
+    "id": "bernes-lee2006",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-data",
+    "_create": "2023-05-19T23:14:37.998Z",
+    "_update": "2023-05-19T23:14:37.998Z",
+    "type": "webpage",
+    "title": "Linked Data",
+    "publisher": "W3",
+    "author": [
+        {
+            "family": "Bernes-Lee",
+            "given": "Tim"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-08-03"
+    },
+    "issued": {
+        "raw": "2022"
+    },
+    "language": "en",
+    "URL": "https://www.w3.org/DesignIssues/LinkedData.html"
+}

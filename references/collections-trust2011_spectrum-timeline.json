@@ -1,0 +1,23 @@
+{
+    "id": "collections-trust2011",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "spectrum-timeline",
+    "_create": "2023-05-20T03:33:06.958Z",
+    "_update": "2023-05-20T03:33:06.958Z",
+    "type": "webpage",
+    "title": "Spectrum Timeline",
+    "container-title": "Spectrum - Collections Trust",
+    "publisher": "Collections Trust",
+    "publisher-place": "Reino Unido",
+    "author": [
+        {
+            "family": "Collections Trust"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-20"
+    },
+    "language": "en",
+    "URL": "https://collectionstrust.org.uk/resource/spectrum-timeline/"
+}

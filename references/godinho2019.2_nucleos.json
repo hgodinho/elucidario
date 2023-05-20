@@ -1,0 +1,25 @@
+{
+    "id": "godinho2019.2",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "nucleos",
+    "_create": "2023-05-20T00:18:23.746Z",
+    "_update": "2023-05-20T00:18:23.746Z",
+    "type": "webpage",
+    "title": "Núcleos (Explore a Coleção! - Casa Museu Ema Klabin)",
+    "publisher-place": "São Paulo",
+    "author": [
+        {
+            "family": "Godinho",
+            "given": "Henrique"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-07-05"
+    },
+    "issued": {
+        "raw": "01-10-2019"
+    },
+    "language": "pt-br",
+    "URL": "https://emaklabin.org.br/explore/nucleos"
+}

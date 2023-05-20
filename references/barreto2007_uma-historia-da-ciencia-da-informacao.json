@@ -1,0 +1,27 @@
+{
+    "id": "barreto2007",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "uma-historia-da-ciencia-da-informacao",
+    "_create": "2023-05-19T23:10:22.067Z",
+    "_update": "2023-05-19T23:10:22.067Z",
+    "type": "chapter",
+    "title": "Uma história da Ciência da Informação",
+    "container-title": "Para entender a Ciência da Informação",
+    "publisher": "EDUFBA",
+    "publisher-place": "Salvador",
+    "author": [
+        {
+            "family": "Barreto",
+            "given": "Aldo de Albuquerque"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-07-15"
+    },
+    "issued": {
+        "raw": "2007"
+    },
+    "language": "pt-br",
+    "URL": "https://repositorio.ufba.br/bitstream/ufba/145/1/Para%20entender%20a%20ciencia%20da%20informacao.pdf"
+}

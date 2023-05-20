@@ -1,0 +1,44 @@
+{
+    "id": "baca2006",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "cataloging-cultural-objects-a-guide-to-describing-cultural-works-and-their-images",
+    "_create": "2023-05-19T23:01:08.512Z",
+    "_update": "2023-05-19T23:01:08.512Z",
+    "type": "book",
+    "title": "Cataloging Cultural Objects: A Guide to Describing Cultural Works and Their Images",
+    "publisher": "American Library Association",
+    "publisher-place": "Chicago",
+    "number-of-pages": "407",
+    "ISBN": "978-0-8389-3564-4",
+    "author": [
+        {
+            "family": "Baca",
+            "given": "Murtha"
+        },
+        {
+            "family": "Harpring",
+            "given": "Patricia"
+        },
+        {
+            "family": "Lanzi",
+            "given": "Elisa"
+        },
+        {
+            "family": "McRae",
+            "given": "Linda"
+        },
+        {
+            "family": "Whiteside",
+            "given": "Ann"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-07-29"
+    },
+    "issued": {
+        "raw": "2006"
+    },
+    "language": "en",
+    "URL": "https://vraweb.org/wp-content/uploads/2020/04/CatalogingCulturalObjectsFullv2.pdf"
+}

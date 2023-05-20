@@ -1,0 +1,29 @@
+{
+    "id": "bevilacqua2014",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "spectrum-4-0-o-padrao-para-gestao-de-colecoes-de-museus-do-reino-unido",
+    "_create": "2023-05-20T03:12:05.009Z",
+    "_update": "2023-05-20T03:12:05.010Z",
+    "type": "book",
+    "title": "SPECTRUM 4.0: O padrão para gestão de coleções de museus do Reino Unido",
+    "container-title": "Coleção Gestão e Documentação de Acervos: Textos de Referência",
+    "publisher": "Secretaria de Estado de Cultura; Associação de Amigos do Museu do Café; Pinacoteca do Estado de São Paulo",
+    "publisher-place": "São Paulo",
+    "volume": "2",
+    "ISBN": "9788582560389",
+    "author": [
+        {
+            "family": "Bevilacqua",
+            "given": "Gabriel Moore Forell"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-20"
+    },
+    "issued": {
+        "raw": "2014"
+    },
+    "language": "pt-br",
+    "URL": "https://spectrum-pt.org/wp-content/uploads/2021/03/Spectrum_PT_NET.pdf"
+}

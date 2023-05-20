@@ -1,0 +1,24 @@
+{
+    "id": "brasil2009",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "lei-no-11-904-de-14-de-janeiro-de-2009",
+    "_create": "2023-05-19T23:28:20.123Z",
+    "_update": "2023-05-19T23:28:20.123Z",
+    "type": "legislation",
+    "container-title": "Lei no 11.904 de 14 de janeiro de 2009. Regulamenta dispositivos da Lei no 11.904, de 14 de janeiro de 2009, que institui o Estatuto de Museus, e da Lei no 11.906, de 20 de janeiro de 2009, que cria o Instituto Brasileiro de Museus - IBRAM",
+    "publisher": "Brasil",
+    "author": [
+        {
+            "family": "Brasil"
+        }
+    ],
+    "accessed": {
+        "raw": "2021-03-10"
+    },
+    "issued": {
+        "raw": "2009-01-14"
+    },
+    "language": "pt-br",
+    "URL": "http://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/lei/l11904.htm"
+}

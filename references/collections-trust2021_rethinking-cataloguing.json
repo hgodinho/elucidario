@@ -1,0 +1,22 @@
+{
+    "id": "collections-trust2021",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "rethinking-cataloguing",
+    "_create": "2023-05-20T04:40:52.243Z",
+    "_update": "2023-05-20T04:40:52.243Z",
+    "type": "webpage",
+    "title": "#RethinkingCataloguing",
+    "container-title": "Blog - Collections Trust",
+    "publisher-place": "Reino Unido",
+    "author": [
+        {
+            "family": "Collections Trust"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-20"
+    },
+    "language": "en",
+    "URL": "https://collectionstrust.org.uk/blog/rethinkingcataloguing/"
+}

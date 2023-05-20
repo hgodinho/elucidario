@@ -1,0 +1,26 @@
+{
+    "id": "cetic.br2018",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2018",
+    "_create": "2023-05-20T00:34:14.225Z",
+    "_update": "2023-05-20T00:34:14.226Z",
+    "type": "webpage",
+    "title": "Pesquisa sobre o uso das tecnologias de informação e comunicação nos equipamentos culturais brasileiros: TIC Cultura 2018",
+    "container-title": "Núcleo de Informação e Coordenação do Ponto BR",
+    "publisher": "Comitê Gestor da Internet no Brasil",
+    "publisher-place": "São Paulo",
+    "issue": "1",
+    "author": [
+        {
+            "literal": "CETIC.BR"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-07-18"
+    },
+    "issued": {
+        "raw": "2018"
+    },
+    "URL": "https://www.cetic.br/pt/tics/cultura/2018/geral/"
+}

@@ -1,0 +1,35 @@
+{
+    "id": "hjorland2007",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "o-conceito-de-informacao",
+    "_create": "2023-05-19T23:37:43.502Z",
+    "_update": "2023-05-19T23:37:43.502Z",
+    "type": "article-magazine",
+    "title": "O conceito de informação",
+    "container-title": "Perspectivas em Ciência da Informação",
+    "publisher": "Escola de Ciência da Informação da UFMG",
+    "publisher-place": "Belo Horizonte",
+    "volume": "12",
+    "number": "1",
+    "page": "148-207",
+    "DOI": "https://doi.org/10.1590/S1413-99362007000100012",
+    "ISSN": "1981-5344",
+    "author": [
+        {
+            "family": "Capurro",
+            "given": "Rafael"
+        },
+        {
+            "family": "Hjorland",
+            "given": "Birger"
+        }
+    ],
+    "issued": {
+        "raw": "2007"
+    },
+    "accessed": {
+        "raw": "2022-07-22"
+    },
+    "language": "pt-br"
+}

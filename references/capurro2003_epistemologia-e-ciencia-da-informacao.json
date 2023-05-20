@@ -1,0 +1,52 @@
+{
+    "id": "capurro2003",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "epistemologia-e-ciencia-da-informacao",
+    "_create": "2023-05-19T23:45:30.838Z",
+    "_update": "2023-05-19T23:45:30.838Z",
+    "type": "article-magazine",
+    "title": "Epistemologia e Ciência da Informação",
+    "container-title": "V Encontro Nacional de Pesquisa em Ciência da Informação",
+    "publisher-place": "Belo Horizonte",
+    "author": [
+        {
+            "family": "Capurro",
+            "given": "Rafael"
+        }
+    ],
+    "translator": [
+        {
+            "family": "Cabral",
+            "given": "Ana Maria Rezende"
+        },
+        {
+            "family": "Dias",
+            "given": "Eduardo Wense"
+        },
+        {
+            "family": "Paim",
+            "given": "Isis"
+        },
+        {
+            "family": "Dumont",
+            "given": "Ligia Maria Moreira"
+        },
+        {
+            "family": "Aun",
+            "given": "Marta Pinheiro"
+        },
+        {
+            "family": "Borges",
+            "given": "Mônica Erichsen Nassif"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-07-22"
+    },
+    "issued": {
+        "raw": "2003-11-10"
+    },
+    "language": "pt-br",
+    "URL": "http://www.capurro.de/enancib_p.htm"
+}

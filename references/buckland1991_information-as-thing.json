@@ -1,0 +1,25 @@
+{
+    "id": "buckland1991",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "information-as-thing",
+    "_create": "2023-05-19T23:31:24.889Z",
+    "_update": "2023-05-19T23:31:24.889Z",
+    "type": "article-journal",
+    "title": "Information as Thing",
+    "container-title": "Journal of the American Society for Information Science (1986-1998)",
+    "publisher": "John Wiley & Sons, Inc",
+    "publisher-place": "New Jersey",
+    "volume": "42",
+    "number": "5",
+    "author": [
+        {
+            "family": "Buckland",
+            "given": "Michael K"
+        }
+    ],
+    "issued": {
+        "raw": "1991"
+    },
+    "language": "en"
+}

@@ -1,0 +1,25 @@
+{
+    "id": "cetic.br2016",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2016",
+    "_create": "2023-05-20T01:16:17.633Z",
+    "_update": "2023-05-20T01:16:17.634Z",
+    "type": "webpage",
+    "title": "Pesquisa sobre o uso das tecnologias de informação e comunicação nos equipamentos culturais brasileiros: TIC Cultura 2016",
+    "publisher": "Comitê Gestor da Internet no Brasil",
+    "publisher-place": "São Paulo",
+    "author": [
+        {
+            "literal": "CETIC.BR"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-07-18"
+    },
+    "issued": {
+        "raw": "2016"
+    },
+    "language": "pt-br",
+    "URL": "https://www.cetic.br/pt/tics/cultura/2016/geral/."
+}

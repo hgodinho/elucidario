@@ -1,0 +1,26 @@
+{
+    "id": "collections-trust2022.2",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "primary-procedures",
+    "_create": "2023-05-20T04:02:54.294Z",
+    "_update": "2023-05-20T04:02:54.295Z",
+    "type": "webpage",
+    "title": "Primary procedures",
+    "container-title": "Spectrum - Collections Trust",
+    "publisher": "Collections Trust",
+    "publisher-place": "Reino Unido",
+    "author": [
+        {
+            "family": "Collections Trust"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-20"
+    },
+    "issued": {
+        "raw": "2023"
+    },
+    "language": "en",
+    "URL": "https://collectionstrust.org.uk/spectrum/primary-procedures/"
+}
