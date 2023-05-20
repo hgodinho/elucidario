@@ -4,14 +4,16 @@
     "main": "README.md",
     "private": true,
     "scripts": {
-        "authenticate": "tsx ./node_modules/@elucidario/pkg-md-to-gdoc/src/authenticate.ts",
-        "create-doc": "tsx ./node_modules/@elucidario/pkg-md-to-gdoc/src/create-doc.ts",
-        "sync": "tsx ./node_modules/@elucidario/pkg-md-to-gdoc/src/sync.ts"
+        "add-author": "pub-gen add-author -p dissertacao-mestrado",
+        "ref-add": "pub-gen reference add -p dissertacao-mestrado",
+        "ref-search": "pub-gen reference search -p dissertacao-mestrado",
+        "version-up": "pub-gen version -p dissertacao-mestrado",
+        "authenticate": "pub-gen authenticate -p dissertacao-mestrado",
+        "build": "pnpm clean && pub-gen build -p dissertacao-mestrado",
+        "clean": "rm -rf dist/*"
     },
     "devDependencies": {
-        "@elucidario/pkg-md-to-gdoc": "workspace:^",
-        "tsx": "^3.12.6",
-        "typescript": "^5.0.4"
+        "@elucidario/pkg-pub-gen": "workspace:^"
     },
     "keywords": [
         ""

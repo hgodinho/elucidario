@@ -1,0 +1,18 @@
+{
+    "name": "@elucidario/pub-interseccoes-entre-linked-art-e-spectrum",
+    "version": "0.1.0",
+    "main": "README.md",
+    "private": true,
+    "scripts": {
+        "add-author": "pub-gen add-author -p interseccoes-entre-linked-art-e-spectrum",
+        "ref-add": "pub-gen reference add -p interseccoes-entre-linked-art-e-spectrum",
+        "ref-search": "pub-gen reference search -p interseccoes-entre-linked-art-e-spectrum",
+        "version-up": "pub-gen version -p interseccoes-entre-linked-art-e-spectrum",
+        "authenticate": "pub-gen authenticate -p interseccoes-entre-linked-art-e-spectrum",
+        "build": "pnpm clean && pub-gen build -p interseccoes-entre-linked-art-e-spectrum",
+        "clean": "rm -rf dist/*"
+    },
+    "devDependencies": {
+        "@elucidario/pkg-pub-gen": "workspace:^"
+    }
+}

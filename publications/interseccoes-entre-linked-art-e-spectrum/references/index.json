@@ -1,0 +1,34 @@
+{
+    "items": [
+        {
+            "id": "collections-trust2022.1",
+            "slug": "introduction-do-spectrum",
+            "path": "<references>/collections-trust2022.1_introduction-do-spectrum.json"
+        },
+        {
+            "id": "matos2014",
+            "slug": "nota-sobre-a-traducao-do-spectrum-em-portugal",
+            "path": "<references>/matos2014_nota-sobre-a-traducao-do-spectrum-em-portugal.json"
+        },
+        {
+            "id": "bevilacqua2014",
+            "slug": "spectrum-4-0-o-padrao-para-gestao-de-colecoes-de-museus-do-reino-unido",
+            "path": "<references>/bevilacqua2014_spectrum-4-0-o-padrao-para-gestao-de-colecoes-de-museus-do-reino-unido.json"
+        },
+        {
+            "id": "collections-trust2011",
+            "slug": "spectrum-timeline",
+            "path": "<references>/collections-trust2011_spectrum-timeline.json"
+        },
+        {
+            "id": "collections-trust2022.2",
+            "slug": "primary-procedures",
+            "path": "<references>/collections-trust2022.2_primary-procedures.json"
+        },
+        {
+            "id": "collections-trust2021",
+            "slug": "rethinking-cataloguing",
+            "path": "<references>/collections-trust2021_rethinking-cataloguing.json"
+        }
+    ]
+}

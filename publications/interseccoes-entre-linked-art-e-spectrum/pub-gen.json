@@ -2,20 +2,26 @@
     "$schema": "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
     "version": "1.0.0",
     "profile": "data-package",
-    "id": "https://elucidario.art/publicacoes/dissertacao-mestrado",
-    "title": "Dissertação mestrado",
-    "type": "dissertation",
+    "id": "https://elucidario.art/publicacoes/interseccoes-entre-linked-art-e-spectrum",
+    "title": "Intersecções entre Linked-art e SPECTRUM",
+    "type": "article",
     "year": "2023",
     "description": "Adicionar descrição",
     "homepage": "https://elucidario.art",
     "keywords": ["adicionar", "palavras", "chaves"],
     "image": "",
-    "languages": ["pt-br"],
+    "languages": ["pt-br", "en"],
     "licenses": [],
     "contributors": [
         {
             "title": "Henrique Godinho Lopes Costa",
             "email": "henrique@hgod.in",
+            "organization": "Programa de Pós-graduação em Ciência da Informação da Escola de Comunicação e Artes da Universidade de São Paulo",
+            "role": "author"
+        },
+        {
+            "title": "Vânia Mara Alves Lima",
+            "email": "vamal@usp.br",
             "organization": "Programa de Pós-graduação em Ciência da Informação da Escola de Comunicação e Artes da Universidade de São Paulo",
             "role": "author"
         }

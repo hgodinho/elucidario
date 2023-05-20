@@ -1,0 +1,84 @@
+{
+    "items": [
+        {
+            "id": "baca2006",
+            "slug": "cataloging-cultural-objects-a-guide-to-describing-cultural-works-and-their-images",
+            "path": "<references>/baca2006_cataloging-cultural-objects-a-guide-to-describing-cultural-works-and-their-images.json"
+        },
+        {
+            "id": "barreto2007",
+            "slug": "uma-historia-da-ciencia-da-informacao",
+            "path": "<references>/barreto2007_uma-historia-da-ciencia-da-informacao.json"
+        },
+        {
+            "id": "bernes-lee2006",
+            "slug": "linked-data",
+            "path": "<references>/bernes-lee2006_linked-data.json"
+        },
+        {
+            "id": "brasil2013",
+            "slug": "decreto-no-8-124-de-17-de-outubro-de-2013",
+            "path": "<references>/brasil2013_decreto-no-8-124-de-17-de-outubro-de-2013.json"
+        },
+        {
+            "id": "brasil2009",
+            "slug": "lei-no-11-904-de-14-de-janeiro-de-2009",
+            "path": "<references>/brasil2009_lei-no-11-904-de-14-de-janeiro-de-2009.json"
+        },
+        {
+            "id": "buckland1991",
+            "slug": "information-as-thing",
+            "path": "<references>/buckland1991_information-as-thing.json"
+        },
+        {
+            "id": "hjorland2007",
+            "slug": "o-conceito-de-informacao",
+            "path": "<references>/hjorland2007_o-conceito-de-informacao.json"
+        },
+        {
+            "id": "capurro2003",
+            "slug": "epistemologia-e-ciencia-da-informacao",
+            "path": "<references>/capurro2003_epistemologia-e-ciencia-da-informacao.json"
+        },
+        {
+            "id": "caro-castro2011",
+            "slug": "vocabularios-estructurados-web-semantica-y-linked-data-oportunidades-y-retos-para-los-profesionales-de-la-documentacion",
+            "path": "<references>/caro-castro2011_vocabularios-estructurados-web-semantica-y-linked-data-oportunidades-y-retos-para-los-profesionales-de-la-documentacion.json"
+        },
+        {
+            "id": "godinho2019.1",
+            "slug": "explore-a-colecao",
+            "path": "<references>/godinho2019.1_explore-a-colecao.json"
+        },
+        {
+            "id": "godinho2019.2",
+            "slug": "nucleos",
+            "path": "<references>/godinho2019.2_nucleos.json"
+        },
+        {
+            "id": "cetic.br2018",
+            "slug": "pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2018",
+            "path": "<references>/cetic.br2018_pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2018.json"
+        },
+        {
+            "id": "cetic.br2016",
+            "slug": "pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2016",
+            "path": "<references>/cetic.br2016_pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2016.json"
+        },
+        {
+            "id": "cetic.br2020",
+            "slug": "pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2020",
+            "path": "<references>/cetic.br2020_pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2020.json"
+        },
+        {
+            "id": "botallo2014",
+            "slug": "declaracao-de-principios-de-documentacao-em-museus-e-diretrizes-internacionais-de-informacao-sobre-objetos-de-museus-categorias-de-informacao-do-comite-internacional-de-documentacao",
+            "path": "<references>/botallo2014_declaracao-de-principios-de-documentacao-em-museus-e-diretrizes-internacionais-de-informacao-sobre-objetos-de-museus-categorias-de-informacao-do-comite-internacional-de-documentacao.json"
+        },
+        {
+            "id": "collections-trust2017",
+            "slug": "standard-procedures-for-collections-recording-used-in-museums-spectrum",
+            "path": "<references>/collections-trust2017_standard-procedures-for-collections-recording-used-in-museums-spectrum.json"
+        }
+    ]
+}
