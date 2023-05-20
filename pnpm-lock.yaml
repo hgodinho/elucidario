@@ -529,29 +529,17 @@ importers:
 
   publications/dissertacao-mestrado:
     devDependencies:
-      '@elucidario/pkg-md-to-gdoc':
+      '@elucidario/pkg-pub-gen':
         specifier: workspace:^
-        version: link:../../packages/md-to-gdoc
-      tsx:
-        specifier: ^3.12.6
-        version: 3.12.6
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
-
-  publications/interseccoes-em-linked-art-e-spectrum:
-    devDependencies:
-      '@elucidario/pkg-md-to-gdoc':
-        specifier: workspace:^
-        version: link:../../packages/md-to-gdoc
-      tsx:
-        specifier: ^3.12.6
-        version: 3.12.6
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
+        version: link:../../packages/pub-gen
 
   publications/interseccoes-entre-linked-art-e-spectrum:
+    devDependencies:
+      '@elucidario/pkg-pub-gen':
+        specifier: workspace:^
+        version: link:../../packages/pub-gen
+
+  publications/teste-123-vamos-dar-as-maos:
     devDependencies:
       '@elucidario/pkg-pub-gen':
         specifier: workspace:^

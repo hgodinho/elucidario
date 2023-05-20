@@ -6,6 +6,8 @@ apps/*/dist
 apps/*/build
 coverage
 
+publications/teste
+
 lerna-debug.log
 
 # ensure no secrets are committed
