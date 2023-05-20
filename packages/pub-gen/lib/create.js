@@ -7,7 +7,7 @@ import { kebabCase } from "lodash-es";
 import { toMD } from "@elucidario/pkg-docusaurus-md";
 import { Console } from "@elucidario/pkg-console";
 import { readContents } from "@elucidario/pkg-schema-doc";
-
+import { fetchLocales } from "./reference/fetchLocales.js";
 import { pubGenPrompt } from "./prompt/pubGenPrompt.js";
 
 import { getPaths } from "./getPaths.js";
@@ -156,6 +156,9 @@ export const createPublication = async (args) => {
                         fs.mkdirSync(path.resolve(dirName, "content"), {
                             recursive: true,
                         });
+
+                        await fetchLocales(PubGen.languages);
+
                         PubGen.languages.forEach((lang) => {
                             const content = readContents(
                                 path.resolve(templatePath, "content"),

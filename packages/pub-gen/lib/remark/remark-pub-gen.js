@@ -1,7 +1,6 @@
 import { visit } from "unist-util-visit";
 import path from "path";
 import fs from "fs";
-import axios from "axios";
 
 import {
     // htmlTableFromJSON,
@@ -113,7 +112,7 @@ export default function remarkPubGen(options) {
             })
             .filter((item) => item);
 
-        const citeproc = await engine(references);
+        const citeproc = engine(references, options.lang, options.style);
 
         visit(tree, "cite", (node) => {
             try {

@@ -147,6 +147,7 @@ const PubGen = () => {
         .command("build")
         .description("Build publication")
         .option("-p, --publication <publication>")
+        .option("-w, --watch")
         .action((argv) => {
             buildPublication(argv);
         });
