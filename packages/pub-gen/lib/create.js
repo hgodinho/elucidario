@@ -27,7 +27,7 @@ const addLicenseInquirer = async () => {
 };
 
 const addAuthorInquirer = async () => {
-    console.log("Adding authors...");
+    console.log("Adding contributors...");
     return await inquirer
         .prompt(pubGenPrompt("addAuthor"))
         .then(async (answers) => {
@@ -55,7 +55,7 @@ export const createPublication = async (args) => {
                     ? languages.split(",").map((lang) => lang.trim())
                     : [languages],
                 licenses: [],
-                authors: [],
+                contributors: [],
             };
             const name = kebabCase(PubGen.title);
             const packageName = `@elucidario/pub-${name}`;
@@ -85,7 +85,7 @@ export const createPublication = async (args) => {
                 const { addMoreAuthor, ...contributor } =
                     await addAuthorInquirer();
 
-                PubGen.authors.push(contributor.contributor);
+                PubGen.contributors.push(contributor.contributor);
                 addAuthor = addMoreAuthor;
                 if (debug) {
                     console.log(
