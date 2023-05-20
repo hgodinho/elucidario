@@ -88,6 +88,7 @@ const buildReferences = async (distPath, lang, publication, console) => {
         refPath = path.resolve(paths.references, refPath);
         return JSON.parse(fs.readFileSync(refPath, { encoding: "utf-8" }));
     });
+
     const citeproc = await engine(references);
     citeproc.processCitationCluster(
         {
@@ -101,10 +102,11 @@ const buildReferences = async (distPath, lang, publication, console) => {
     );
     const bibliography = citeproc.makeBibliography();
     const bibliographyMD = NodeHtmlMarkdown.translate(bibliography[1].join(""));
-    console.log({ bibliography, bibliographyMD }, { defaultLog: true });
+
     fs.writeFileSync(
         path.resolve(distPath, lang, "references.md"),
         bibliographyMD,
         "utf-8"
     );
+    console.log("References built");
 };

@@ -127,7 +127,9 @@ export const addReference = async (args, paths) => {
                                             ...authors[Object.keys(authors)[0]],
                                         ].pop();
 
-                                        id = `${firstAuthor.family.toLocaleLowerCase()}${year}`;
+                                        id = `${kebabCase(
+                                            firstAuthor.family
+                                        )}${year}`;
 
                                         reference = {
                                             id,
