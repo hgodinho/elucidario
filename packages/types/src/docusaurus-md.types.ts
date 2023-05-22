@@ -3,4 +3,8 @@ export type Table = {
     titleLevel?: number;
     headers: string[];
     rows: string[][];
+    note?: {
+        label?: string;
+        content: string;
+    };
 };
