@@ -86,6 +86,7 @@ export const heading = (level: number, title: string): string => {
  * @param titleLevel | number
  * @param headers | string[]
  * @param rows | string[][]
+ * @param note | string
  * @returns | string
  * @example
  * ```ts
@@ -103,12 +104,16 @@ export const heading = (level: number, title: string): string => {
  * ```
  * @see https://www.markdownguide.org/extended-syntax/#tables
  */
-export const table = ({ title, titleLevel, headers, rows }: Table) => {
+export const table = ({ title, titleLevel, headers, rows, note }: Table) => {
     const tableRows = rows.map((row) => `| ${row.join(" | ")} |`).join("\n");
     const headerRow = `| ${headers.join(" | ")} |`;
     const dividerRow = `| ${headers.map(() => "---").join(" | ")} |`;
-    const header = title && titleLevel ? `${heading(titleLevel, title)}\n` : "";
-    return toMD([header, `${headerRow}\n${dividerRow}\n${tableRows}`]);
+    const header = title && titleLevel ? `${heading(titleLevel, title)}\n` : title && !titleLevel ? `${bold(title)}\n` : "";
+    let tableNote = "";
+    if (note) {
+        tableNote = `${note.label ? `${bold(note.label)}: ` : ""}${note.content}`;
+    }
+    return toMD([header, `${headerRow}\n${dividerRow}\n${tableRows}`, tableNote]);
 };
 
 /**
