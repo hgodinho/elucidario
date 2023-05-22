@@ -1,17 +1,15 @@
 import path from "path";
 import fs from "fs";
+import { NodeHtmlMarkdown } from "node-html-markdown";
 
-import { pubGenRemarkProcessor } from "./remark/processor.js";
-
-import { readContents } from "@elucidario/pkg-schema-doc";
-import { updateDoc } from "@elucidario/pkg-md-to-gdoc";
-import { getCredentials } from "./getCredentials.js";
-import { getPaths } from "./getPaths.js";
 import { Console } from "@elucidario/pkg-console";
-const paths = getPaths();
+import { readContents } from "@elucidario/pkg-schema-doc";
+
+import { getPaths } from "./getPaths.js";
+import { pubGenRemarkProcessor } from "./remark/processor.js";
 import { engine } from "./reference/csl-engine.js";
 
-import { NodeHtmlMarkdown } from "node-html-markdown";
+const paths = getPaths();
 
 const build = async (publication, console) => {
     const pubGenJson = JSON.parse(

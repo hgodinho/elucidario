@@ -1,40 +1,81 @@
-export class Table {
-    constructor(tableData) {
-        this.tableData = tableData;
-        this.rows = tableData.rows;
-        this.header = tableData.header;
-        this.description = tableData.description;
-        this.title = tableData.title;
-        this.note = tableData.note;
+import path from "path";
+import fs from "fs";
+import Ajv from "ajv";
+import * as tableschema from "tableschema";
 
-        this.totalColumns = this.countColumns();
-        this.totalRows = this.countRows();
-        console.log("count", {
-            columns: this.totalColumns,
-            rows: this.totalRows,
-        });
-    }
+import { Console } from "@elucidario/pkg-console";
+import { getPaths } from "../getPaths.js";
+import { table as mdTable } from "@elucidario/pkg-docusaurus-md";
 
-    countColumns() {
-        let count = 0;
-        Object.values(this.header).forEach((head) => {
-            count += head.colspan || 1;
-        });
-        return count;
-    }
+const paths = getPaths();
+const packageJson = JSON.parse(
+    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
+);
+const console = new Console(packageJson);
 
-    countRows() {
-        return this.rows.length;
-    }
+let schema = {};
 
-    getTable() {
-        return this.tableData;
-    }
-
-    toString() {
-        const header = this.header.map((cell) => {
-            // console.log("cell", cell);
-            return cell.text || "";
-        });
-    }
+if (
+    fs.existsSync(
+        path.resolve(
+            paths.pubGen,
+            "static",
+            "pub-gen",
+            "schemas",
+            "table-schema.json"
+        )
+    )
+) {
+    schema = JSON.parse(
+        fs.readFileSync(
+            path.resolve(
+                paths.pubGen,
+                "static",
+                "pub-gen",
+                "schemas",
+                "table-schema.json"
+            )
+        )
+    );
 }
+
+const ajv = new Ajv();
+ajv.addVocabulary(["context", "notes"]);
+
+const validate = ajv.compile(schema);
+
+export const table = async (json) => {
+    try {
+        const valid = validate(json);
+        if (!valid) {
+            throw validate.errors;
+        }
+        const { data, title, note, ...schema } = json;
+
+        const schemaData = await tableschema.Schema.load(schema);
+
+        if (!schemaData.valid) throw schemaData.errors;
+
+        const tableData = await tableschema.Table.load(data, {
+            schema: schemaData.descriptor,
+        });
+        const rows = await tableData.read({ keyed: false });
+        const headers = tableData.headers;
+
+        return mdTable({
+            title,
+            headers,
+            rows,
+            note,
+        });
+    } catch (error) {
+        console.log(
+            { title: json.title, error },
+            {
+                defaultLog: true,
+                title: "Table error!",
+                type: "error",
+            }
+        );
+    }
+};

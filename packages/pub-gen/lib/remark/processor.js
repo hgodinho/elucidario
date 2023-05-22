@@ -3,14 +3,9 @@ import markdown from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkPrettier from "remark-prettier";
 import remarkFrontmatter from "remark-frontmatter";
-import remarkStringify from "remark-stringify";
 import { citePlugin } from "@benrbray/remark-cite";
 
 import remarkPubGen from "./remark-pub-gen.js";
-
-// import docx from "remark-docx";
-
-// console.log(docx);
 
 export const pubGenRemarkProcessor = async (content, options, plugins) => {
     const processor = unified()
@@ -25,11 +20,9 @@ export const pubGenRemarkProcessor = async (content, options, plugins) => {
         // Use the remark-pub-gen plugin to generate a publication
         .use(remarkPubGen, options?.pubGen);
 
-    // .use(remarkStringify, options?.stringify);
-
     if (plugins) {
         plugins.map((plugin) => {
-            processor.use(plugin);
+            processor.use(plugin.plugin, plugin.options);
         });
     }
 

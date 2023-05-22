@@ -14,6 +14,7 @@ import { version } from "./version.js";
 import { generateSearchIndex } from "./reference/generateSearchIndex.js";
 import { convert } from "./pandoc/convert.js";
 import { getPaths } from "./getPaths.js";
+import { toDocx } from "./to-docx.js";
 
 const paths = getPaths();
 const packageJson = JSON.parse(
@@ -150,6 +151,14 @@ const PubGen = () => {
         .option("-w, --watch")
         .action((argv) => {
             buildPublication(argv);
+        });
+
+    program
+        .command("to-docx")
+        .description("Convert to docx")
+        .option("-p, --publication <publication>")
+        .action((argv) => {
+            toDocx(argv);
         });
 
     /**

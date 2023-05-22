@@ -14,11 +14,6 @@ const console = new Console(packageJson);
 
 export const reference = async (args) => {
     try {
-        console.log(paths, {
-            title: "Paths",
-            type: "success",
-            defaultLog: true,
-        });
         const { publication } = args;
 
         if (publication) {

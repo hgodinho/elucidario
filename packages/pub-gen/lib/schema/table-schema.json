@@ -1,130 +1,62 @@
 {
-    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://elucidario.art/pub-gen/schema/table-schema.json",
     "title": "Tabela",
-    "description": "Schema para a representação de tabelas",
+    "description": "Table schema",
     "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://specs.frictionlessdata.io/schemas/table-schema.json"
+        }
+    ],
     "properties": {
         "title": {
             "title": "Title",
-            "description": "O título da tabela",
+            "description": "Table title",
             "type": "string"
         },
         "description": {
             "title": "Description",
-            "description": "A descrição da tabela",
+            "description": "Table description",
             "type": "string"
-        },
-        "header": {
-            "title": "Header",
-            "description": "O cabeçalho da tabela",
-            "type": "array",
-            "items": {
-                "title": "HeaderCell",
-                "type": "object",
-                "properties": {
-                    "text": {
-                        "description": "O valor da célula",
-                        "type": "string"
-                    },
-                    "colspan": {
-                        "description": "O número de colunas que a célula ocupa",
-                        "type": "integer",
-                        "minimum": 1
-                    },
-                    "rowspan": {
-                        "description": "O número de linhas que a célula ocupa",
-                        "type": "integer",
-                        "minimum": 1
-                    }
-                },
-                "required": ["text"]
-            }
-        },
-        "data": {
-            "title": "Data",
-            "description": "Os dados da tabela",
-            "oneOf": [
-                {
-                    "title": "DataRow",
-                    "type": "array",
-                    "description": "A linha de células de dados da tabela",
-                    "items": {
-                        "title": "DataCell",
-                        "type": "object",
-                        "description": "A célula de dados da tabela",
-                        "properties": {
-                            "text": {
-                                "description": "O valor da célula",
-                                "type": "string"
-                            },
-                            "colspan": {
-                                "description": "O número de colunas que a célula ocupa",
-                                "type": "integer",
-                                "minimum": 1
-                            },
-                            "rowspan": {
-                                "description": "O número de linhas que a célula ocupa",
-                                "type": "integer",
-                                "minimum": 1
-                            }
-                        },
-                        "required": ["text"]
-                    }
-                },
-                {
-                    "title": "DataFiles",
-                    "type": "array",
-                    "items": {
-                        "title": "DataFile",
-                        "type": "string",
-                        "description": "O caminho para um arquivo contendo os dados da tabela"
-                    }
-                },
-                {
-                    "title": "DataFile",
-                    "type": "string",
-                    "description": "O caminho para um arquivo contendo os dados da tabela"
-                }
-            ]
-        },
-        "rows": {
-            "title": "Rows",
-            "description": "As linhas da tabela",
-            "type": "array",
-            "items": {
-                "title": "Row",
-                "type": "array",
-                "description": "A linha de células da tabela",
-                "items": {
-                    "title": "RowCell",
-                    "type": "object",
-                    "description": "A célula da tabela",
-                    "properties": {
-                        "text": {
-                            "description": "O valor da célula",
-                            "type": "string"
-                        },
-                        "colspan": {
-                            "description": "O número de colunas que a célula ocupa",
-                            "type": "integer",
-                            "minimum": 1
-                        },
-                        "rowspan": {
-                            "description": "O número de linhas que a célula ocupa",
-                            "type": "integer",
-                            "minimum": 1
-                        }
-                    },
-                    "required": ["text"]
-                }
-            }
         },
         "note": {
             "title": "Note",
-            "description": "A nota da tabela",
-            "type": "string"
+            "description": "Table footnote",
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "title": "Footnote label"
+                },
+                "content": {
+                    "type": "string",
+                    "title": "Footnote content"
+                }
+            },
+            "required": ["content"],
+            "additionalProperties": false
+        },
+        "data": {
+            "title": "Data",
+            "description": "Table data",
+            "oneOf": [
+                {
+                    "title": "Rows",
+                    "description": "Table rows",
+                    "type": "array",
+                    "items": {
+                        "title": "Row",
+                        "type": "array"
+                    }
+                },
+                {
+                    "title": "Path",
+                    "description": "Path to data file",
+                    "type": "string"
+                }
+            ]
         }
     },
-    "required": ["title", "rows"]
+    "required": ["fields", "title", "data"]
 }
