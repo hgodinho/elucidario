@@ -4,6 +4,7 @@ import { kebabCase } from "lodash-es";
 
 import { Console } from "@elucidario/pkg-console";
 
+import { searchId } from "./search.js";
 import {
     authorPrompt,
     datePrompt,
@@ -127,28 +128,51 @@ export const addReference = async (args, paths) => {
                                             ...authors[Object.keys(authors)[0]],
                                         ].pop();
 
-                                        id = `${kebabCase(
+                                        let newId = `${kebabCase(
                                             firstAuthor.family
                                         )}${year}`;
 
+                                        await searchId(
+                                            paths.references,
+                                            newId
+                                        ).then((found) => {
+                                            if (found.length > 0) {
+                                                // loop through the found, split the id by ".", get the last element, then find the highest number and add 1
+                                                const idNumber = Math.max(
+                                                    ...found.map((f) => {
+                                                        console.log(
+                                                            { f },
+                                                            { defaultLog: true }
+                                                        );
+                                                        if (
+                                                            f.id.includes(".")
+                                                        ) {
+                                                            return parseInt(
+                                                                f.id
+                                                                    .split(".")
+                                                                    .pop()
+                                                            );
+                                                        } else {
+                                                            return 0;
+                                                        }
+                                                    })
+                                                );
+                                                newId = `${newId}.${
+                                                    idNumber + 1
+                                                }`;
+                                            }
+                                        });
+
                                         reference = {
-                                            id,
+                                            id: newId,
                                             ...reference,
                                             ...authors,
                                         };
                                     } catch (error) {
-                                        console.log(error, {
-                                            type: "error",
-                                            defaultLog: true,
-                                        });
                                         throw new Error(error);
                                     }
                                 });
                         } catch (error) {
-                            console.log(error, {
-                                type: "error",
-                                defaultLog: true,
-                            });
                             throw new Error(error);
                         }
 
@@ -191,10 +215,6 @@ export const addReference = async (args, paths) => {
                                     }
                                 });
                         } catch (error) {
-                            console.log(error, {
-                                type: "error",
-                                defaultLog: true,
-                            });
                             throw new Error(error);
                         }
 
@@ -219,10 +239,6 @@ export const addReference = async (args, paths) => {
                                     };
                                 });
                         } catch (error) {
-                            console.log(error, {
-                                type: "error",
-                                defaultLog: true,
-                            });
                             throw new Error(error);
                         }
 
@@ -247,14 +263,9 @@ export const addReference = async (args, paths) => {
                                     };
                                 });
                         } catch (error) {
-                            console.log(error, {
-                                type: "error",
-                                defaultLog: true,
-                            });
                             throw new Error(error);
                         }
                     } catch (error) {
-                        console.log(error, { type: "error", defaultLog: true });
                         throw new Error(error);
                     }
 
@@ -294,12 +305,15 @@ export const addReference = async (args, paths) => {
                             }
                         );
                     } catch (error) {
-                        console.log(error, { type: "error", defaultLog: true });
                         throw new Error(error);
                     }
                 });
         } catch (error) {
-            throw new Error(error);
+            console.log(error, {
+                type: "error",
+                defaultLog: true,
+                title: "Erro ao criar referência",
+            });
         }
     });
 };

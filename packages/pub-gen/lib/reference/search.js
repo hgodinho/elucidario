@@ -20,7 +20,6 @@ export const prepareData = async (referencesPath) => {
             indexJson = JSON.parse(
                 fs.readFileSync(path.resolve(referencesPath, "index.json"))
             );
-            // console.log(indexJson, { defaultLog: true });
             indexJson = {
                 items: indexJson.items.map((item) => {
                     try {
@@ -31,13 +30,6 @@ export const prepareData = async (referencesPath) => {
                                 paths.references
                             );
                         }
-                        // console.log(
-                        //     { itemPath, paths },
-                        //     {
-                        //         defaultLog: true,
-                        //         title: "itemPath",
-                        //     }
-                        // );
                         return JSON.parse(
                             fs.readFileSync(path.resolve(itemPath), "utf8")
                         );
@@ -57,8 +49,25 @@ export const prepareData = async (referencesPath) => {
     }
 };
 
+export const searchId = async (referencesPath, searchValue) => {
+    const search = new JsSearch.Search("id");
+
+    const references = await prepareData(referencesPath);
+
+    search.addIndex("id");
+    if (!references) {
+        console.log("No references yet.", { type: "warning" });
+        return;
+    }
+
+    search.addDocuments(references);
+    const result = search.search(searchValue);
+
+    return result;
+};
+
 export const searchAll = async (referencesPath, searchValue) => {
-    const search = new JsSearch.Search("_id");
+    const search = new JsSearch.Search("id");
 
     const references = await prepareData(referencesPath);
 
@@ -70,7 +79,7 @@ export const searchAll = async (referencesPath, searchValue) => {
     search.addDocuments(references);
 
     search.addIndex("@schema");
-    search.addIndex("_id");
+    search.addIndex("id");
     search.addIndex("_slug");
     search.addIndex([
         "author",
@@ -536,8 +545,8 @@ export const searchAll = async (referencesPath, searchValue) => {
 };
 
 export const searchTitle = async (referencesPath, searchValue) => {
-    const search = new JsSearch.Search("_id");
-    search.addIndex("_id");
+    const search = new JsSearch.Search("id");
+    search.addIndex("id");
     search.addIndex("title");
 
     const references = await prepareData(referencesPath);
@@ -557,7 +566,9 @@ export const search = (args) => {
     switch (type) {
         case "title":
             return searchTitle(paths.references, value);
-        default:
+        case "all":
             return searchAll(paths.references, value);
+        default:
+            return searchType(paths.references, value);
     }
 };
