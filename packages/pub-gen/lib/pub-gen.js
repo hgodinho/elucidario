@@ -15,6 +15,7 @@ import { generateSearchIndex } from "./reference/generateSearchIndex.js";
 import { convert } from "./pandoc/convert.js";
 import { getPaths } from "./getPaths.js";
 import { toDocx } from "./to-docx.js";
+import { validateReferences } from "./reference/validateReferences.js";
 
 const paths = getPaths();
 const packageJson = JSON.parse(
@@ -88,6 +89,7 @@ const PubGen = () => {
      * @command <index> - Gera índice de busca
      * @command <add> - Adiciona nova publicação
      * @command <search> - Busca referência
+     * @command <validate> - Valida referências
      */
     const ref = program.command("reference").description("Reference");
 
@@ -134,6 +136,22 @@ const PubGen = () => {
                 }`
             );
             search(argv);
+        });
+
+    /**
+     * @command <reference> <validate> - Valida referências
+     * @param {string} publication - Nome da publicação
+     */
+    ref.command("validate")
+        .description("Validate references")
+        .option("-p, --publication <publication>")
+        .action(async (argv) => {
+            console.log(
+                `Validating references in: ${
+                    argv.publication ? argv.publication : "monorepo"
+                }`
+            );
+            await validateReferences(argv);
         });
 
     /**
