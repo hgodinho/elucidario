@@ -20,6 +20,17 @@ export const prepareData = async (referencesPath) => {
             indexJson = JSON.parse(
                 fs.readFileSync(path.resolve(referencesPath, "index.json"))
             );
+            if (
+                typeof indexJson.items === "undefined" ||
+                indexJson.items.length == 0
+            ) {
+                throw new Error("No items in index.json.", {
+                    cause: {
+                        title: "No items in index.json.",
+                        indexJson,
+                    },
+                });
+            }
             indexJson = {
                 items: indexJson.items.map((item) => {
                     try {
@@ -34,18 +45,35 @@ export const prepareData = async (referencesPath) => {
                             fs.readFileSync(path.resolve(itemPath), "utf8")
                         );
                     } catch (err) {
-                        console.log(err, "error", true);
-                        throw new Error(err);
+                        return new Error(err.message);
                     }
                 }),
             };
+
+            // find errors
+            const errors = indexJson.items
+                .filter((item) => {
+                    if (item instanceof Error) {
+                        return true;
+                    }
+                    return false;
+                })
+                .map((err) => err.message);
+            if (errors.length > 0) {
+                throw new Error(
+                    `There are ${errors.length} errors in the references.`,
+                    {
+                        cause: errors,
+                    }
+                );
+            }
+
             return indexJson.items;
         } else {
             return false;
         }
     } catch (err) {
-        console.log(err, { type: "error", defaultLog: true });
-        throw new Error(err);
+        throw err;
     }
 };
 
@@ -63,6 +91,22 @@ export const searchId = async (referencesPath, searchValue) => {
     search.addDocuments(references);
     const result = search.search(searchValue);
 
+    return result;
+};
+
+export const searchTitle = async (referencesPath, searchValue) => {
+    const search = new JsSearch.Search("id");
+    search.addIndex("id");
+    search.addIndex("title");
+
+    const references = await prepareData(referencesPath);
+    if (!references) {
+        console.log("No references yet.", { type: "warning" });
+        return;
+    }
+
+    search.addDocuments(references);
+    const result = search.search(searchValue);
     return result;
 };
 
@@ -541,22 +585,6 @@ export const searchAll = async (referencesPath, searchValue) => {
 
     const result = search.search(searchValue);
     console.log(result, { type: "info", defaultLog: true, title: "Search" });
-    return result;
-};
-
-export const searchTitle = async (referencesPath, searchValue) => {
-    const search = new JsSearch.Search("id");
-    search.addIndex("id");
-    search.addIndex("title");
-
-    const references = await prepareData(referencesPath);
-    if (!references) {
-        console.log("No references yet.", { type: "warning" });
-        return;
-    }
-
-    search.addDocuments(references);
-    const result = search.search(searchValue);
     return result;
 };
 

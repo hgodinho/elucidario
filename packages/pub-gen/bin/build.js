@@ -9,6 +9,8 @@ import { Command } from "commander";
 
 import { Console } from "@elucidario/pkg-console";
 import { getPaths } from "../lib/getPaths.js";
+import { debounce } from "../lib/debounce.js";
+
 const paths = getPaths();
 const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(paths.pubGen, "package.json"), "utf-8")
@@ -38,16 +40,6 @@ const baseDocs = [
     "google-drive",
     "versionamento",
 ];
-
-const debounce = async (func, delay) => {
-    let timeoutId;
-    return async (...args) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(async () => {
-            await func(...args);
-        }, delay);
-    };
-};
 
 export const build = async (language, exclude) => {
     const jsonExclude = exclude?.filter((item) => item.endsWith(".json"));

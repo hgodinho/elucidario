@@ -45,6 +45,7 @@ export const generateSearchIndex = async () => {
                         )}]);`;
                     }
                 }
+
             case "object":
                 if ("$ref" in value) {
                     if (value.$ref.includes("date-variable")) {
@@ -53,6 +54,7 @@ export const generateSearchIndex = async () => {
                         )}]);`;
                     }
                 }
+
             default:
                 return `search.addIndex("${key}");`;
         }

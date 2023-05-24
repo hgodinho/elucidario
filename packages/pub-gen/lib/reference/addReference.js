@@ -33,6 +33,7 @@ export const addReference = async (args, paths) => {
     inquirer.prompt(referencePrompt("create")).then(async (answers) => {
         const { type, year } = answers;
         const { publication } = args;
+
         try {
             console.log(`Adding new reference of type "${type}"`);
             await inquirer
@@ -46,27 +47,24 @@ export const addReference = async (args, paths) => {
                     // verifica se já existe uma referencia com o mesmo título
                     const found = await searchTitle(paths.references, title);
                     if (found && found.length > 0) {
+                        console.log(found, {
+                            title: `Found existent reference with title "${title}".`,
+                            type: "info",
+                            defaultLog: true,
+                        });
+
                         const selected = await refAlreadyExists(title, found);
+
                         if (selected) {
-                            console.log(selected, {
-                                title: `Selected reference with title "${title}".`,
-                                type: "info",
-                                defaultLog: true,
-                            });
                             reference = selected;
                         } else {
-                            console.log(found, {
-                                title: `Reference with title "${title}" already exists.`,
-                                type: "error",
-                                defaultLog: true,
-                            });
-                            throw new Error(
-                                `Reference with title "${title}" already exists.`
+                            console.log(
+                                `None reference selected. Creating new reference with title "${title}".`
                             );
                         }
                     }
 
-                    // remove propriedades que deverão ser atualizadas e cria um novo objeto ref
+                    // isola propriedades que deverão ser atualizadas e isola o restante em um novo objeto "ref"
                     let { id, _slug, _create, _update, ...ref } = reference;
 
                     // verifica se o slug e o id já existem, se não existirem, cria um novo
@@ -99,177 +97,33 @@ export const addReference = async (args, paths) => {
                     // configura a referencia
                     try {
                         // configura os autores
-                        try {
-                            console.log("Select author type:");
-                            await inquirer
-                                .prompt(authorPrompt("type"))
-                                .then(async (answers) => {
-                                    const { type } = answers;
-
-                                    // configura os nomes dos autores
-                                    try {
-                                        const authors = await author(type).then(
-                                            (authorNames) => {
-                                                // parse authorNames and return a new object with only the non-empty values
-                                                return Object.keys(
-                                                    authorNames
-                                                ).reduce((acc, cur) => {
-                                                    if (
-                                                        authorNames[cur].length
-                                                    ) {
-                                                        acc[cur] =
-                                                            authorNames[cur];
-                                                    }
-                                                    return acc;
-                                                }, {});
-                                            }
-                                        );
-                                        const firstAuthor = [
-                                            ...authors[Object.keys(authors)[0]],
-                                        ].pop();
-
-                                        let newId = `${kebabCase(
-                                            firstAuthor.family
-                                        )}${year}`;
-
-                                        await searchId(
-                                            paths.references,
-                                            newId
-                                        ).then((found) => {
-                                            if (found.length > 0) {
-                                                // loop through the found, split the id by ".", get the last element, then find the highest number and add 1
-                                                const idNumber = Math.max(
-                                                    ...found.map((f) => {
-                                                        console.log(
-                                                            { f },
-                                                            { defaultLog: true }
-                                                        );
-                                                        if (
-                                                            f.id.includes(".")
-                                                        ) {
-                                                            return parseInt(
-                                                                f.id
-                                                                    .split(".")
-                                                                    .pop()
-                                                            );
-                                                        } else {
-                                                            return 0;
-                                                        }
-                                                    })
-                                                );
-                                                newId = `${newId}.${
-                                                    idNumber + 1
-                                                }`;
-                                            }
-                                        });
-
-                                        reference = {
-                                            id: newId,
-                                            ...reference,
-                                            ...authors,
-                                        };
-                                    } catch (error) {
-                                        throw new Error(error);
-                                    }
-                                });
-                        } catch (error) {
-                            throw new Error(error);
-                        }
+                        const { newId, authors } = await contributorsProps(
+                            year
+                        );
+                        id = newId;
 
                         // configura as datas
-                        try {
-                            console.log("Select date type:");
-                            await inquirer
-                                .prompt(datePrompt("type"))
-                                .then(async (answers) => {
-                                    const { type } = answers;
-
-                                    // configura os tipos de datas
-                                    try {
-                                        const dates = await date(type).then(
-                                            (dateNames) => {
-                                                // parse authorNames and return a new object with only the non-empty values
-                                                return Object.keys(
-                                                    dateNames
-                                                ).reduce((acc, cur) => {
-                                                    if (
-                                                        Object.keys(
-                                                            dateNames[cur]
-                                                        ).length
-                                                    ) {
-                                                        acc[cur] =
-                                                            dateNames[cur];
-                                                    }
-                                                    return acc;
-                                                }, {});
-                                            }
-                                        );
-
-                                        reference = { ...reference, ...dates };
-                                    } catch (error) {
-                                        console.log(error, {
-                                            type: "error",
-                                            defaultLog: true,
-                                        });
-                                        throw new Error(error);
-                                    }
-                                });
-                        } catch (error) {
-                            throw new Error(error);
-                        }
+                        const dates = await dateProps();
 
                         // configura as propriedades comuns
-                        try {
-                            console.log("Define common properties:");
-                            await inquirer
-                                .prompt(referencePrompt("common"))
-                                .then(async (answers) => {
-                                    const cleanAnswers = Object.keys(
-                                        answers
-                                    ).reduce((acc, cur) => {
-                                        if (answers[cur].length) {
-                                            acc[cur] = answers[cur];
-                                        }
-                                        return acc;
-                                    }, {});
-
-                                    reference = {
-                                        ...reference,
-                                        ...cleanAnswers,
-                                    };
-                                });
-                        } catch (error) {
-                            throw new Error(error);
-                        }
+                        const common = await commonProps();
 
                         // configura as propriedades de arquivo
-                        try {
-                            console.log("Define archive properties:");
-                            await inquirer
-                                .prompt(referencePrompt("archive"))
-                                .then(async (answers) => {
-                                    const cleanAnswers = Object.keys(
-                                        answers
-                                    ).reduce((acc, cur) => {
-                                        if (answers[cur].length) {
-                                            acc[cur] = answers[cur];
-                                        }
-                                        return acc;
-                                    }, {});
+                        const archive = await archiveProps();
 
-                                    reference = {
-                                        ...reference,
-                                        ...cleanAnswers,
-                                    };
-                                });
-                        } catch (error) {
-                            throw new Error(error);
-                        }
+                        reference = {
+                            id,
+                            ...reference,
+                            ...authors,
+                            ...dates,
+                            ...common,
+                            ...archive,
+                        };
                     } catch (error) {
                         throw new Error(error);
                     }
 
-                    // escreve o arquivo da referencia
+                    // salva o arquivo da referencia
                     try {
                         if (!fs.existsSync(paths.references)) {
                             fs.mkdirSync(paths.references);
@@ -318,6 +172,12 @@ export const addReference = async (args, paths) => {
     });
 };
 
+/**
+ * Verifica se a referência já existe no registro de referências
+ * @param {string} title Titulo da referencia
+ * @param {array} refs Array de referencias encontradas
+ * @returns {object} Referencia selecionada
+ */
 const refAlreadyExists = async (title, refs) => {
     let selected = false;
     await inquirer
@@ -325,21 +185,26 @@ const refAlreadyExists = async (title, refs) => {
             {
                 type: "confirm",
                 name: "reuse",
-                message: `Found ${refs.length} references with title "${title}". Do you want to reuse one of them?`,
+                message: `Found ${refs.length} reference(s) with title "${title}". Do you want to reuse one of them?`,
                 default: true,
             },
             {
                 type: "list",
                 name: "refs",
                 message: "Select a reference to reuse:",
-                choices: refs.map(
-                    (ref) => `${ref.id}: ${ref.title} (${ref.type})`
-                ),
+                choices: [
+                    ...refs.map(
+                        (ref) => `${ref.id}: ${ref.title} (${ref.type})`
+                    ),
+                    "None",
+                ],
                 when: (answers) => answers.reuse,
             },
         ])
         .then((answers) => {
             if (answers.reuse) {
+                if (answers.refs === "None") return;
+
                 const refId = answers.refs.split(":")[0];
                 const ref = refs.find((ref) => ref.id === refId);
                 selected = ref;
@@ -348,13 +213,98 @@ const refAlreadyExists = async (title, refs) => {
     return selected;
 };
 
+/**
+ * Configura as propriedades de autores
+ * @param {string|integer} year Ano da publicação
+ * @returns {object} Objeto com as propriedades de autores
+ */
+const contributorsProps = async (year) => {
+    console.log("Select author type:");
+    return await inquirer.prompt(authorPrompt("type")).then(async (answers) => {
+        const { type } = answers;
+
+        // configura os nomes dos autores
+        try {
+            const authors = await authorQuery(type).then((authorNames) => {
+                // parse authorNames and return a new object with only the non-empty values
+                return Object.keys(authorNames).reduce((acc, cur) => {
+                    if (authorNames[cur].length) {
+                        acc[cur] = authorNames[cur];
+                    }
+                    return acc;
+                }, {});
+            });
+
+            // create a list of choices for inquirer based on the authors
+            let choices = [];
+            Object.keys(authors).map((contributor) => {
+                authors[contributor].map((author) => {
+                    choices.push({
+                        name: `${author.family} (${author.given})`,
+                        value: author.family,
+                    });
+                });
+            });
+
+            let chosenOne = "";
+            if (choices.length > 1) {
+                chosenOne = await inquirer
+                    .prompt([
+                        {
+                            type: "list",
+                            name: "chosenOne",
+                            message: "Select the author to use for id:",
+                            choices,
+                        },
+                    ])
+                    .then((answers) => answers.chosenOne);
+            } else {
+                chosenOne = choices[0].value;
+            }
+
+            let newId = `${kebabCase(chosenOne)}${year}`;
+
+            await searchId(paths.references, newId).then((found) => {
+                if (found.length > 0) {
+                    // loop through the found, split the id by ".", get the last element, then find the highest number and add 1
+                    const idNumber = Math.max(
+                        ...found.map((f) => {
+                            if (f.id.includes(".")) {
+                                return parseInt(f.id.split(".").pop());
+                            } else {
+                                return 0;
+                            }
+                        })
+                    );
+                    newId = `${newId}.${idNumber + 1}`;
+                }
+            });
+
+            return { authors, newId };
+        } catch (error) {
+            console.log(error, {
+                type: "error",
+                defaultLog: true,
+                title: "Erro ao configurar autores",
+            });
+            throw new Error(error);
+        }
+    });
+};
+
 // cria um objeto em que cada propriedade é um item do array authorProperties
 const authorNames = authorProperties.reduce((acc, cur) => {
     acc[cur] = [];
     return acc;
 }, {});
 
-export const author = async (type, options) => {
+/**
+ * Query para adicionar autores
+ * @param {string} type Tipo de autor
+ * @param {object} options Opções para a query
+ * @returns {object} Objeto com os nomes dos autores
+ */
+const authorQuery = async (type, options) => {
     console.log(`Adding new author of type ${type}`);
     await inquirer
         .prompt(
@@ -384,12 +334,44 @@ export const author = async (type, options) => {
                     )
                     .then(async (answers) => {
                         const { type } = answers;
-                        await author(type, { defaults: options?.defaults });
+                        await authorQuery(type, {
+                            defaults: options?.defaults,
+                        });
                     });
             }
         });
 
     return authorNames;
+};
+
+/**
+ * Configura as propriedades de datas
+ * @returns {object} Objeto com as propriedades de datas
+ */
+const dateProps = async () => {
+    console.log("Select date type:");
+    return await inquirer.prompt(datePrompt("type")).then(async (answers) => {
+        const { type } = answers;
+
+        // configura os tipos de datas
+        try {
+            return await dateQuery(type).then((dateNames) => {
+                // parse authorNames and return a new object with only the non-empty values
+                return Object.keys(dateNames).reduce((acc, cur) => {
+                    if (Object.keys(dateNames[cur]).length) {
+                        acc[cur] = dateNames[cur];
+                    }
+                    return acc;
+                }, {});
+            });
+        } catch (error) {
+            console.log(error, {
+                type: "error",
+                defaultLog: true,
+            });
+            throw new Error(error);
+        }
+    });
 };
 
 // cria um objeto em que cada propriedade é um item do array dateProperties
@@ -398,7 +380,13 @@ const dateNames = dateProperties.reduce((acc, cur) => {
     return acc;
 }, {});
 
-export const date = async (type, options) => {
+/**
+ * Query para adicionar datas
+ * @param {string} type Tipo de data
+ * @param {object} options Opções para a query
+ * @returns {object} Objeto com os nomes das datas
+ */
+const dateQuery = async (type, options) => {
     console.log(`Adding new date of type ${type}`);
     await inquirer
         .prompt(
@@ -430,7 +418,7 @@ export const date = async (type, options) => {
                     )
                     .then(async (answers) => {
                         const { type } = answers;
-                        await date(type, {
+                        await dateQuery(type, {
                             defaults: options?.defaults,
                             name: type,
                         });
@@ -441,6 +429,47 @@ export const date = async (type, options) => {
     return dateNames;
 };
 
+/**
+ * Configura as propriedades comuns das referências
+ * @returns {object} Objeto com as propriedades comuns das referências
+ */
+const commonProps = async () => {
+    return await inquirer
+        .prompt(referencePrompt("common"))
+        .then(async (answers) => {
+            return Object.keys(answers).reduce((acc, cur) => {
+                if (answers[cur].length) {
+                    acc[cur] = answers[cur];
+                }
+                return acc;
+            }, {});
+        });
+};
+
+/**
+ * Configura as propriedades de arquivo das referências
+ * @returns {object} Objeto com as propriedades de arquivo das referências
+ */
+const archiveProps = async () => {
+    return await inquirer
+        .prompt(referencePrompt("archive"))
+        .then(async (answers) => {
+            return Object.keys(answers).reduce((acc, cur) => {
+                if (answers[cur].length) {
+                    acc[cur] = answers[cur];
+                }
+                return acc;
+            }, {});
+        });
+};
+
+/**
+ * Adiciona referência no index.json
+ * @param {string} indexPath Caminho para o index.json de referências
+ * @param {string} id ID da referência
+ * @param {string} slug Slug da referência
+ * @param {string} filename Nome do arquivo da referência
+ */
 export const insertIndex = async (indexPath, id, slug, filename) => {
     const index = {
         id,

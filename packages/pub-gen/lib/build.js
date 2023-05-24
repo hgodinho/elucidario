@@ -8,6 +8,7 @@ import { readContents } from "@elucidario/pkg-schema-doc";
 import { getPaths } from "./getPaths.js";
 import { pubGenRemarkProcessor } from "./remark/processor.js";
 import { engine } from "./reference/csl-engine.js";
+import { debounce } from "./debounce.js";
 
 const paths = getPaths();
 
@@ -29,7 +30,13 @@ const build = async (publication, console) => {
 
     pubGenJson.languages.map(async (lang) => {
         const languageContentPath = path.resolve(contentPath, lang);
-        const mdContent = readContents(languageContentPath, "md");
+        const mdContent = readContents(
+            languageContentPath,
+            "md",
+            false,
+            undefined,
+            false
+        );
 
         fs.existsSync(path.resolve(distPath, lang)) ||
             fs.mkdirSync(path.resolve(distPath, lang));
@@ -81,7 +88,7 @@ export const buildPublication = async (args) => {
                 { recursive: true },
                 async (eventType, filename) => {
                     console.log(`${eventType}: ${filename}`);
-                    await build(publication, console);
+                    await debounce(build(publication, console), 500);
                 }
             );
             fs.watch(
@@ -89,7 +96,7 @@ export const buildPublication = async (args) => {
                 { recursive: true },
                 async (eventType, filename) => {
                     console.log(`${eventType}: ${filename}`);
-                    await build(publication, console);
+                    await debounce(build(publication, console), 500);
                 }
             );
         }

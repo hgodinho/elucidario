@@ -22,11 +22,6 @@ export const reference = async (args) => {
                     `The publication "${publication}" doesn't exists.`
                 );
             } else {
-                console.log(publication, {
-                    type: "info",
-                    title: "Adding reference to publication",
-                    defaultLog: true,
-                });
                 addReference(args, paths);
             }
         } else {
