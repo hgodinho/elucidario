@@ -9,9 +9,9 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "clear-build": "pnpm clear && rollup -c",
         "build": "pnpm clear-build && pnpm test",
         "clear": "rm -rf dist/*",
+        "clear-build": "pnpm clear && rollup -c",
         "dev": "pnpm clear-build -w --environment BUILD:development",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
     },
@@ -19,6 +19,7 @@
         "@apidevtools/json-schema-ref-parser": "^10.1.0",
         "@elucidario/pkg-console": "workspace:^",
         "@elucidario/pkg-docusaurus-md": "workspace:^",
+        "@elucidario/pkg-paths": "workspace:^",
         "chalk": "^5.2.0",
         "esm": "^3.2.25",
         "fs": "0.0.1-security",
