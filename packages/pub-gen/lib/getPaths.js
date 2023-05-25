@@ -16,6 +16,9 @@ export const getPaths = () => {
         if (pathObject.name === "elucidario") {
             // estamos na raiz do monorepo elucidario
             return generatePaths(process.cwd());
+        } else if (pathObject.name === "mdorim") {
+            // estamos no mdorim
+            return generatePaths(path.resolve(process.cwd(), "..", ".."));
         } else {
             // estamos sei la onde
             console.log(pathObject, {
