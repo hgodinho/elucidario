@@ -5,7 +5,8 @@
 		"outDir": "dist",
 		"jsx": "react",
 		"paths": {
-			"ink": ["node_modules/ink/build/index.d.ts"]
+			"ink": ["node_modules/ink/build/index.d.ts"],
+			"@elucidario/pkg-types": ["../types/dist/index.d.ts"]
 		}
 	},
 	"include": ["src/index.ts"]

@@ -2,20 +2,8 @@ import React from 'react';
 import {Text, Newline, render} from 'ink';
 import chalk from 'chalk';
 
-type LogType = 'error' | 'warning' | 'info' | 'success';
-
-type LogProps = {
-	message: string;
-	type: string;
-	prefix?: string;
-};
-import {PackageProps, Package} from './package-json.js';
-
-export type LogOptions = {
-	type?: LogType;
-	title?: string;
-	defaultLog?: boolean;
-};
+import type {PackageProps, LogOptions, LogProps} from '@elucidario/pkg-types';
+import {Package} from './package-json.js';
 
 export class Console {
 	schema: PackageProps;

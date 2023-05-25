@@ -1,27 +1,13 @@
 import React from 'react';
 import {Text, Box, Newline, render} from 'ink';
 
-export type Author = {
-	name: string;
-	email: string;
-	url: string;
-};
-
-export type PackageProps = {
-	name: string;
-	version: string;
-	license: string;
-	description: string | undefined;
-	homepage: string | undefined;
-	author: Author | undefined;
-	contributors: Author[] | undefined;
-};
+import type {PackageProps, PackageContributor} from '@elucidario/pkg-types';
 
 export const renderPackage = (packageJson: PackageProps) => {
 	render(<Package {...packageJson} />);
 };
 
-export const Author = ({name, email, url}: Author) => {
+export const Author = ({name, email, url}: PackageContributor) => {
 	return (
 		<Text>
 			<Text color="green">{name}</Text>
