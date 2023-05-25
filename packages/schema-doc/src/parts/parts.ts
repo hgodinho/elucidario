@@ -43,26 +43,22 @@ export type SupportedLanguages = "en" | "pt-BR";
  * @returns | string
  */
 export const mappingTable = (
-    map: Mapping | undefined,
+    map?: Mapping | undefined,
     lang?: SupportedLanguages
 ) => {
     i18n.setLocale(lang || "en");
     if (!map) {
         return "";
     }
-    try {
-        return table({
-            title: i18n.__("Mapping"),
-            titleLevel: 4,
-            headers: [i18n.__("Vocabulary"), i18n.__("Link")],
-            rows: Object.entries(map).map(([key, value]) => [
-                key,
-                `<${value}>`,
-            ]),
-        });
-    } catch {
-        throw new Error(i18n.__("Error at creating mapping table"));
-    }
+    return table({
+        title: i18n.__("Mapping"),
+        titleLevel: 4,
+        headers: [i18n.__("Vocabulary"), i18n.__("Link")],
+        rows: Object.entries(map).map(([key, value]) => [
+            key,
+            `<${value}>`,
+        ]),
+    });
 };
 
 /**
@@ -75,44 +71,29 @@ export const mappingTable = (
 export const resolveRef = (
     ref: string,
     code = false,
+    base?: string,
     lang?: SupportedLanguages
 ) => {
     i18n.setLocale(lang || "en");
     try {
         if (ref.startsWith("http")) {
-            return `[${ref}](${ref})`;
+            return `[${code ? codeInline(ref) : ref}](${ref})`;
         }
         let link = "";
         const pathObject = path.parse(ref);
+
         if (pathObject.dir && pathObject.dir.includes("<local>")) {
-            const homepage = JSON.parse(fs.readFileSync(
-                path.join(process.cwd(), "package.json"),
-                "utf8"
-            )).homepage;
-            if (!homepage) {
-                throw new Error(i18n.__("Error at resolving reference", { ref, homepage }));
+            if (!base) {
+                throw new Error(i18n.__(`Found <local> definition but no base parameter. ref: %s`, ref));
             }
-            link = `[${code ? codeInline(pathObject.name) : pathObject.name}](${pathObject.dir.replace("<local>", homepage)})`;
+            link = `[${code ? codeInline(pathObject.name) : pathObject.name}](${pathObject.dir.replace("<local>", base)}/${pathObject.name ? pathObject.name.toLocaleLowerCase() : ""})`;
         } else {
             link = `[${code ? codeInline(pathObject.name) : pathObject.name}](#${pathObject.name.toLocaleLowerCase()})`;
         }
-        // let [file, part] = ref.split("#");
-
-        // if (file) {
-        //     link = `${file.replace(".json", "")}`;
-        // }
-
-        // const [__, path, section] = part.split("/");
-
-        // link += `#${section}`;
-
-        // link = `[${code ? codeInline(section) : section
-        //     }](${link.toLocaleLowerCase()})`;
 
         return link;
     } catch (error) {
-        console.log(error, { type: "error", defaultLog: true, title: "Error at resolving reference" })
-        throw new Error(error as string);
+        throw error;
     }
 };
 
@@ -125,7 +106,8 @@ export const resolveRef = (
 export const metaType = (
     metadata: BaseSchema<DataTypes> | AnyOfSchema | OneOfSchema,
     lang?: SupportedLanguages,
-    custom?: (metadata: BaseSchema<DataTypes> | AnyOfSchema | OneOfSchema) => string
+    custom?: (metadata: BaseSchema<DataTypes> | AnyOfSchema | OneOfSchema) => string,
+    base?: string
 ) => {
     i18n.setLocale(lang || "en");
 
@@ -134,7 +116,7 @@ export const metaType = (
     }
 
     if ("$ref" in metadata) {
-        const link = resolveRef(metadata.$ref as string, true);
+        const link = resolveRef(metadata.$ref as string, true, base);
         const type = i18n.__("type $ref(%s)", link);
         return `> ${type}`;
     }
@@ -148,7 +130,7 @@ export const metaType = (
                     `anyOf<${(metadata as AnyOfSchema).items.anyOf
                         .map((anyOf) => {
                             if ("$ref" in anyOf) {
-                                return `${resolveRef(anyOf.$ref, true)}`;
+                                return `${resolveRef(anyOf.$ref, true, base)}`;
                             }
                         })
                         .join(" | ")}>`
@@ -158,7 +140,7 @@ export const metaType = (
                 //     }\` anyOf<${metadata.items.anyOf
                 //         .map((anyOf) => {
                 //             if ("$ref" in anyOf) {
-                //                 return `${resolveRef(anyOf.$ref, true)}`;
+                //                 return `${resolveRef(anyOf.$ref, true, base)}`;
                 //             }
                 //         })
                 //         .join(" | ")}>`;
@@ -168,7 +150,7 @@ export const metaType = (
                     }\` oneOf<${(metadata as OneOfSchema).items.oneOf
                         .map((oneOf) => {
                             if ("$ref" in oneOf) {
-                                return `${resolveRef(oneOf.$ref, true)}`;
+                                return `${resolveRef(oneOf.$ref, true, base)}`;
                             }
                         })
                         .join(" | ")}>`;
@@ -192,10 +174,8 @@ export const metaType = (
             return `> ${i18n.__("type")} \`${metadata.type}\` ${i18n.__(
                 "with properties"
             )}`;
-        case "null":
-            return `> ${i18n.__("type")} \`${metadata.type}\` ({${i18n.__(
-                "null"
-            )}})`;
+        case null:
+            return `> ${i18n.__("type")} \`${metadata.type}\``;
         case undefined:
             return '';
         default:
@@ -225,7 +205,8 @@ export const description = (metadata: Schema, label = "Description") => {
 export const baseMetadata = (
     metadata: Schema,
     headingLevel = 3,
-    lang?: SupportedLanguages
+    lang?: SupportedLanguages,
+    base?: string
 ) => {
     i18n.setLocale(lang || "en");
     return toMD([
@@ -248,7 +229,8 @@ export const baseMetadata = (
 export const arrayMetadata = (
     metadata: ArraySchema,
     headingLevel = 3,
-    lang?: SupportedLanguages
+    lang?: SupportedLanguages,
+    base?: string
 ) => {
     i18n.setLocale(lang || "en");
     return toMD([
@@ -283,7 +265,8 @@ export const examples = (metadata: BaseSchema<DataTypes>, headingLevel: number, 
 export const objectMetadata = (
     schema: ObjectSchema,
     headingLevel = 4,
-    lang?: SupportedLanguages
+    lang?: SupportedLanguages,
+    base?: string
 ): string => {
     i18n.setLocale(lang || "en");
 
@@ -320,7 +303,7 @@ export const objectMetadata = (
                 description(schema),
                 heading(headingLevel + 2, i18n.__("Properties")),
                 toMD((subSchema).map((subSchema) => {
-                    return objectMetadata(subSchema, headingLevel + 3, lang);
+                    return objectMetadata(subSchema, headingLevel + 3, lang, base);
                 })),
                 mappingTable((schema as BaseSchema<DataTypes>).map),
                 '---',
@@ -356,7 +339,8 @@ export const objectMetadata = (
         //             items,
         //             `\`${items.title}\``,
         //             headingLevel,
-        //             lang
+        //             lang,
+        // base
         //         );
         // }
     }
@@ -386,7 +370,7 @@ export const objectMetadata = (
                         : i18n.__("No");
 
                 if ("$ref" in value) {
-                    const link = resolveRef(value.$ref as string, true);
+                    const link = resolveRef(value.$ref as string, true, base);
                     return [key, `$ref(${link})`, "", required];
                 }
 
@@ -396,7 +380,7 @@ export const objectMetadata = (
                     const type = oneOf.items.oneOf
                         .map((oneOf: any) => {
                             if ("$ref" in oneOf) {
-                                return `${resolveRef(oneOf.$ref, true)}`;
+                                return `${resolveRef(oneOf.$ref, true, base)}`;
                             }
                             switch (oneOf.type) {
                                 case "array":
@@ -406,7 +390,8 @@ export const objectMetadata = (
                                     const nestedOneOf = objectMetadata(
                                         oneOf,
                                         headingLevel + 1,
-                                        lang
+                                        lang,
+                                        base
                                     );
                                     pushExtraData(nestedOneOf);
                                     pushExtraData(nestedDescription);
@@ -463,7 +448,8 @@ export const objectMetadata = (
                                             if ("$ref" in anyOf) {
                                                 return `${resolveRef(
                                                     anyOf.$ref,
-                                                    true
+                                                    true,
+                                                    base
                                                 )}`;
                                             } else {
                                                 return `\`${JSON.stringify(
@@ -487,7 +473,8 @@ export const objectMetadata = (
                                             if ("$ref" in oneOf) {
                                                 return `${resolveRef(
                                                     oneOf.$ref,
-                                                    true
+                                                    true,
+                                                    base
                                                 )}`;
                                             }
                                         })
@@ -510,7 +497,8 @@ export const objectMetadata = (
                             const nestedArrayItem = objectMetadata(
                                 value as ObjectSchema,
                                 headingLevel + 1,
-                                lang
+                                lang,
+                                base
                             );
                             if (arrayMeta.items.type === "array") {
                                 const nestedNestedArray = toMD([
@@ -547,7 +535,8 @@ export const objectMetadata = (
                         const nestedObject = objectMetadata(
                             objectMeta,
                             headingLevel + 1,
-                            lang
+                            lang,
+                            base
                         );
                         pushExtraData(nestedObject);
 
@@ -587,15 +576,16 @@ export const objectMetadata = (
 export const metadata = (
     schema: BaseSchema<DataTypes>,
     headingLevel = 4,
-    lang?: SupportedLanguages
+    lang?: SupportedLanguages,
+    base?: string
 ) => {
     switch (schema.type) {
         case "array":
-            return arrayMetadata(schema as ArraySchema, headingLevel, lang);
+            return arrayMetadata(schema as ArraySchema, headingLevel, lang, base);
         case "object":
-            return objectMetadata(schema as ObjectSchema, headingLevel, lang);
+            return objectMetadata(schema as ObjectSchema, headingLevel, lang, base);
         default:
-            return baseMetadata(schema, headingLevel, lang);
+            return baseMetadata(schema, headingLevel, lang, base);
     }
 };
 
@@ -606,12 +596,13 @@ export const metadata = (
  */
 export const entityTable = (
     entity: Entity & { definitions?: Record<string, BaseSchema<DataTypes>> },
-    lang?: SupportedLanguages
+    lang?: SupportedLanguages,
+    base?: string
 ): string => {
     return toMD([
         heading(2, i18n.__("Definitions")),
         ...Object.entries(entity.definitions || []).map(([key, value]) => {
-            return metadata(value, 3, lang);
+            return metadata(value, 3, lang, base);
         }),
     ]);
 };
@@ -624,18 +615,20 @@ export const entityTable = (
  */
 export const entityPage = (
     entity: Entity,
-    lang?: SupportedLanguages
+    lang?: SupportedLanguages,
+    base?: string
 ): string => {
     return toMD([
         entity.properties
-            ? objectMetadata(entity as ObjectSchema, 2, lang)
+            ? objectMetadata(entity as ObjectSchema, 2, lang, base)
             : "",
         entity.definitions
             ? entityTable(
                 entity as Entity & {
                     definitions: Record<string, BaseSchema<DataTypes>>;
                 },
-                lang
+                lang,
+                base
             )
             : "",
     ]);

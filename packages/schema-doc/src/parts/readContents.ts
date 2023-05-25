@@ -1,21 +1,25 @@
 import fs from "fs";
 import path from "path";
 import chalk from "chalk";
+import { log } from "console";
 
 type ObjectOrArray = { [key: string]: any } | any[];
 
 /**
  * Lê o conteúdo de um diretório e retorna um objeto com o conteúdo dos arquivos ou um array com os nomes dos arquivos
- * @param {string} directoryPath | Caminho do diretório
- * @param {string[]} extensions | Extensões dos arquivos a serem lidos
- * @param {boolean} names | Se true, retorna apenas os nomes dos arquivos
- * @returns {object|Array} | Objeto com o conteúdo dos arquivos
+ * @param {string} directoryPath Caminho do diretório
+ * @param {string[]} extensions Extensões dos arquivos a serem lidos
+ * @param {boolean} names Se true, retorna apenas os nomes dos arquivos
+ * @param {string[]} exclude Lista de arquivos a serem ignorados
+ * @param {boolean} log Se true, exibe no console os arquivos ignorados
+ * @returns {object|Array} Objeto com o conteúdo dos arquivos
  */
 export const readContents = (
     directoryPath: string,
     extensions = ["json", "md"],
     names = false,
-    exclude?: string[]
+    exclude?: string[],
+    log?: boolean,
 ): ObjectOrArray => {
     const result: ObjectOrArray = names ? [] : {};
 
@@ -69,8 +73,13 @@ export const readContents = (
             }
         }
     });
-    if (ignored.length > 0) {
-        console.log(chalk.bgMagenta("Ignored files:"), ignored);
+    if (typeof log === "undefined") {
+        log = true;
+    }
+    if (log) {
+        if (ignored.length > 0) {
+            console.log(chalk.bgMagenta("Ignored files:"), ignored);
+        }
     }
     return result;
 };

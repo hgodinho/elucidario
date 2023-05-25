@@ -15,5 +15,7 @@
 	"Definitions": "Definitions",
 	"No": "No",
 	"Yes": "Yes",
-	"Mapping": "Mapping"
+	"Mapping": "Mapping",
+	"Found <local> definition but no base parameter.": "Found <local> definition but no base parameter.",
+	"Found <local> definition but no base parameter. ref: %s": "Found <local> definition but no base parameter. ref: %s"
 }

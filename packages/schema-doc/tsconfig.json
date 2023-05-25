@@ -4,7 +4,6 @@
         "outDir": "dist",
         "target": "ESNext",
         "module": "ESNext",
-        "esModuleInterop": true,
         "paths": {
             "@elucidario/pkg-types": ["../types/dist"],
             "@elucidario/pkg-docusaurus-md": ["../docusaurus-md/dist"],

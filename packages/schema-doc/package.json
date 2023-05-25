@@ -9,10 +9,11 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "pnpm clear && rollup -c",
+        "clear-build": "pnpm clear && rollup -c",
+        "build": "pnpm clear-build && pnpm test",
         "clear": "rm -rf dist/*",
-        "dev": "pnpm build -w",
-        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+        "dev": "pnpm clear-build -w --environment BUILD:development",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
     },
     "dependencies": {
         "@apidevtools/json-schema-ref-parser": "^10.1.0",
