@@ -6,7 +6,7 @@
         "user_ref": {
             "title": "user_ref",
             "description": "Referência a um usuário",
-            "$ref": "<local>/metadata.json#/definitions/ref"
+            "$ref": "metadata.json#/definitions/ref"
         },
         "User": {
             "title": "User",
@@ -14,10 +14,10 @@
             "type": "object",
             "properties": {
                 "_id": {
-                    "$ref": "<local>/metadata.json#/definitions/_id"
+                    "$ref": "metadata.json#/definitions/_id"
                 },
                 "uri": {
-                    "$ref": "<local>/metadata.json#/definitions/uri"
+                    "$ref": "metadata.json#/definitions/uri"
                 }
             },
             "required": ["_ir", "uri"]

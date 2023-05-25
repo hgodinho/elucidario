@@ -7,7 +7,7 @@
         "object_ref": {
             "title": "object_ref",
             "description": "Referência a um conceito",
-            "$ref": "<local>/metadata.json#/definitions/ref"
+            "$ref": "metadata.json#/definitions/ref"
         },
         "Object": {
             "title": "Object",
@@ -15,10 +15,10 @@
             "type": "object",
             "properties": {
                 "_id": {
-                    "$ref": "<local>/metadata.json#/definitions/_id"
+                    "$ref": "metadata.json#/definitions/_id"
                 },
                 "uri": {
-                    "$ref": "<local>/metadata.json#/definitions/uri"
+                    "$ref": "metadata.json#/definitions/uri"
                 }
             },
             "required": ["_id", "uri"]

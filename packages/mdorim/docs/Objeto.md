@@ -21,7 +21,7 @@ Objeto
 
 ### `object_ref`
 
-> type $ref([`ref`](https://elucidario.art/mdorim/metadata.json#/definitions))
+> type $ref([`ref`](#ref))
 
 **Description**: Referência a um conceito
 
@@ -35,7 +35,7 @@ Objeto
 
 **Description**: Objeto
 
-| Name | Type                                                                    | Description | Required |
-| ---- | ----------------------------------------------------------------------- | ----------- | -------- |
-| \_id | $ref([`_id`](https://elucidario.art/mdorim/metadata.json#/definitions)) |             | Yes      |
-| uri  | $ref([`uri`](https://elucidario.art/mdorim/metadata.json#/definitions)) |             | Yes      |
+| Name | Type                | Description | Required |
+| ---- | ------------------- | ----------- | -------- |
+| \_id | $ref([`_id`](#_id)) |             | Yes      |
+| uri  | $ref([`uri`](#uri)) |             | Yes      |
