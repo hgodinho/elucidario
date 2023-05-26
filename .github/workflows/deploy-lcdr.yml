@@ -10,6 +10,8 @@ on:
       - "apps/lcdr-docs/**"
       - "packages/mdorim/**"
       - "packages/pub-gen/**"
+      - "packages/schema-doc/**"
+      - "packages/docusaurus-md/**"
 
 jobs:
   deploy:
