@@ -45,7 +45,9 @@ const lcdrRollupConfig = (config = null) => {
         externals.push(...config.external);
     }
 
-    return merge({}, defaultConfig, config, { external: externals });
+    return merge({}, defaultConfig, config, {
+        external: (id) => externals.some((d) => id.startsWith(d)),
+    });
 };
 
 export default lcdrRollupConfig;
