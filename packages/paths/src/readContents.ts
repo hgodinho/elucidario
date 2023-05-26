@@ -1,5 +1,9 @@
 import fs from "fs";
 import path from "path";
+import type { PackageProps } from "@elucidario/pkg-types";
+
+import { getPaths } from "./getPaths";
+import { Console } from "@elucidario/pkg-console";
 
 type ReadContentsReturn = { [key: string]: string | any };
 
@@ -9,6 +13,7 @@ type ReadContentsProps = {
     names?: boolean;
     exclude?: string[];
     log?: boolean;
+    package?: PackageProps;
 };
 
 /**
@@ -22,15 +27,56 @@ export const readContents = ({
     names = false,
     exclude,
     log,
+    package: pkg,
 }: ReadContentsProps): ReadContentsReturn => {
     const result: ReadContentsReturn = {};
 
+    if (!pkg) {
+        pkg = JSON.parse(
+            fs.readFileSync(path.resolve(getPaths().packages, 'paths', "package.json"), "utf-8")
+        )
+    }
+
+    const console = new Console(pkg as PackageProps);
+
     // ler todos os arquivos na pasta atual
-    const files = fs.readdirSync(dirPath);
+    let files: string[] = [];
+
+    try {
+        if (fs.existsSync(path.resolve(dirPath, 'index.json'))) {
+            const index = JSON.parse(fs.readFileSync(path.resolve(dirPath, 'index.json'), 'utf-8'));
+            files = index.files.map((file: string) => {
+                if (fs.existsSync(path.resolve(dirPath, `${file}.md`))) {
+                    return `${file}.md`;
+                } else {
+                    return file;
+                }
+            })
+        }
+    } catch (err) {
+        console.log({ err }, {
+            defaultLog: true,
+            type: "error",
+            title: "readContents",
+        })
+    }
+
+    if (!files) {
+        try {
+            files = fs.readdirSync(dirPath);
+        } catch (err) {
+            console.log({ err }, {
+                defaultLog: true,
+                type: "error",
+                title: "readContents",
+            })
+        }
+    }
 
     // iterar sobre cada arquivo encontrado
     const ignored: string[] = [];
-    files.forEach((file) => {
+
+    files.forEach((file: string) => {
         const filePath = path.join(dirPath, file);
 
         if (exclude && exclude.includes(file)) {
@@ -59,7 +105,7 @@ export const readContents = ({
                     );
                     const fileName = path.parse(filePath).base;
 
-                    (result as { [key: string]: any })[fileName] = fileContent;
+                    result[fileName] = fileContent;
                 }
             } else if (extensions.includes(ext) && ext === "md") {
                 if (names) {
@@ -67,7 +113,7 @@ export const readContents = ({
                 } else {
                     const fileContent = fs.readFileSync(filePath, "utf-8");
                     const fileName = path.parse(filePath).name;
-                    (result as { [key: string]: any })[fileName] = fileContent;
+                    result[fileName] = fileContent;
                 }
             } else {
                 // ignora outros tipos de arquivos
@@ -80,8 +126,13 @@ export const readContents = ({
     }
     if (log) {
         if (ignored.length > 0) {
-            console.log("Ignored files:", ignored);
+            console.log(ignored, {
+                defaultLog: true,
+                type: "warning",
+                title: "Ignored files",
+            });
         }
     }
+
     return result;
 };
