@@ -1,15 +1,14 @@
 import path from "path";
 import fs from "fs";
 
-import { pubGenRemarkProcessor } from "./remark/processor.js";
-
 import { readContents } from "@elucidario/pkg-schema-doc";
 import { getPaths } from "./getPaths.js";
 import { Console } from "@elucidario/pkg-console";
 const paths = getPaths();
-import { engine } from "./reference/csl-engine.js";
+// import { pubGenRemarkProcessor } from "./remark/processor.js";
+// import { engine } from "./reference/csl-engine.js";
 
-// import docx from "remark-docx";
+// import * as docx from "remark-docx";
 
 const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(paths.pubGen, "package.json"))

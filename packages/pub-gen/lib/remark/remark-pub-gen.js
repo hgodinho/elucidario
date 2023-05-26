@@ -2,13 +2,12 @@ import { visit } from "unist-util-visit";
 import path from "path";
 import fs from "fs";
 
-import { table } from "./table.js";
-
 import { entityPage } from "@elucidario/pkg-schema-doc";
-
 import { toMD } from "@elucidario/pkg-docusaurus-md";
 
 import { getPaths } from "../getPaths.js";
+import { table } from "./table.js";
+
 const paths = getPaths();
 
 import { engine } from "../reference/csl-engine.js";

@@ -17,10 +17,10 @@ const packageJson = JSON.parse(
 );
 const console = new Console(packageJson);
 
-const srcPath = path.resolve("src/docs");
-const libPath = path.resolve("lib");
-const docsPath = path.resolve("docs");
-const distPath = path.resolve("static", "pub-gen", "schemas");
+const srcPath = path.resolve(paths.pubGen, "src", "docs");
+const libPath = path.resolve(paths.pubGen, "lib");
+const docsPath = path.resolve(paths.pubGen, "docs");
+const distPath = path.resolve(paths.pubGen, "static", "pub-gen", "schemas");
 
 const docs = readContents(srcPath, ["md"], false);
 
