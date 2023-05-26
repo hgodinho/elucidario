@@ -6,16 +6,23 @@
     "license": "ISC",
     "author": "",
     "type": "module",
-    "types": "dist/index.d.ts",
     "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "build": "rollup -c",
+        "dev": "rollup -c -w",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "dependencies": {
+        "commander": "^10.0.1",
+        "lodash-es": "^4.17.21"
+    },
     "devDependencies": {
+        "@elucidario/pkg-console": "workspace:^",
         "@elucidario/pkg-rollup": "workspace:^",
         "@elucidario/pkg-tsconfig": "workspace:^",
         "@elucidario/pkg-types": "workspace:^",
+        "@types/lodash-es": "^4.17.7",
         "@types/node": "^18.15.11",
         "rollup": "^3.20.2",
         "ts-node": "^10.9.1",

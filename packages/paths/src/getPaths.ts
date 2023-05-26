@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import type { GetPathsReturn } from '@elucidario/pkg-types'
 
-export const getPaths = (): GetPathsReturn | Error => {
+export const getPaths = (): GetPathsReturn => {
     try {
         const Path = path.parse(process.cwd());
 
@@ -22,6 +22,7 @@ export const getPaths = (): GetPathsReturn | Error => {
 
         const paths = {
             root,
+            current: process.cwd(),
             packages: path.join(root, "packages"),
             apps: path.join(root, "apps"),
             publications: path.join(root, "publications"),
@@ -35,6 +36,18 @@ export const getPaths = (): GetPathsReturn | Error => {
         return paths as GetPathsReturn;
     } catch (error) {
         console.error(error);
-        return error as Error;
+        return {
+            root: '',
+            current: '',
+            packages: '',
+            apps: '',
+            publications: '',
+            references: '',
+            monorepo: {
+                packages: [],
+                apps: [],
+                publications: [],
+            }
+        }
     }
 };
