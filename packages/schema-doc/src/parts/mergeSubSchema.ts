@@ -45,6 +45,7 @@ export const mergeSubSchema = async (schema: JSONSchema7, options?: $RefParserOp
         throw new Error(e as string, {
             cause: {
                 schema,
+                properties: schema.properties,
                 options,
                 method,
             }
