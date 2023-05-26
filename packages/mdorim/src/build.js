@@ -102,10 +102,15 @@ export const buildTypes = async () => {
                                         "schemas",
                                         fileUrl.base
                                     );
+                                    console.log(
+                                        { fileUrl, filePath, __dirname },
+                                        { defaultLog: true }
+                                    );
                                     try {
-                                        const schemaJson = fs.readFileSync(
-                                            filePath,
-                                            "utf8"
+                                        const schemaJson = JSON.parse(
+                                            fs
+                                                .readFileSync(filePath, "utf8")
+                                                .toString()
                                         );
 
                                         return schemaJson;
