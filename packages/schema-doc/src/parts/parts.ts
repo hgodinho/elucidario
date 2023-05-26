@@ -21,16 +21,7 @@ import {
 } from "@elucidario/pkg-docusaurus-md";
 
 import path from "path";
-import { fileURLToPath } from "url";
-import fs from "fs";
 import { kebabCase } from "lodash-es";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-import { Console } from "@elucidario/pkg-console";
-const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, '..', "package.json"), "utf8")
-);
-const console = new Console(packageJson);
 
 import i18n from "../i18n";
 

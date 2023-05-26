@@ -223,4 +223,4 @@ export const build = async () => {
     }
 };
 
-await build();
+// await build();
