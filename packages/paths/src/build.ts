@@ -33,8 +33,6 @@ export const build = async (
 
         const console = new Console(options.package);
 
-        console.log({ programOptions, options }, { defaultLog: true });
-
         const fn = async ({ event, filename }: FNCallbackProps) => {
             try {
                 console.log(`${event}${filename ? `: ${filename}` : ""}`, {
@@ -47,6 +45,7 @@ export const build = async (
         };
 
         await fn({ event: "Building..." });
+
         if (programOptions.watch) {
             if (!options.watchSrc) throw new Error("watchSrc is required");
 
