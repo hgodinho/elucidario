@@ -41,7 +41,13 @@ export const mergeSubSchema = async (schema: JSONSchema7, options?: $RefParserOp
 
         return newSchema;
     } catch (e: unknown) {
-        console.log(e, { type: 'error', defaultLog: true, title: "Error" });
-        throw new Error(e as string);
+        console.log(e, { type: 'error', defaultLog: true, title: "Error (mergeSubSchema)" });
+        throw new Error(e as string, {
+            cause: {
+                schema,
+                options,
+                method,
+            }
+        });
     }
 }
