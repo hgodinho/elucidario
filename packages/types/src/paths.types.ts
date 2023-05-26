@@ -16,16 +16,11 @@ export type GetPathsReturn = {
 
 export interface BuildOptions {
     package: PackageProps;
-    program?: [
-        string,
-        string | undefined,
-        string | boolean | string[] | undefined
-    ][];
-    watchSrc?: string;
+    watch?: boolean;
+    watchSrc?: string | string[];
 }
 
-export interface BuildCallbackProps<T> {
-    programOptions: T;
+export interface BuildCallbackProps {
     options: BuildOptions;
 }
 
