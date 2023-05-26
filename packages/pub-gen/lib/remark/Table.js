@@ -44,7 +44,7 @@ ajv.addVocabulary(["context", "notes"]);
 
 const validate = ajv.compile(schema);
 
-export const table = async (json) => {
+export const tableMarkdown = async (json) => {
     try {
         const valid = validate(json);
         if (!valid) {

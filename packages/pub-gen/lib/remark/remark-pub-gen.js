@@ -6,7 +6,7 @@ import { entityPage } from "@elucidario/pkg-schema-doc";
 import { toMD } from "@elucidario/pkg-docusaurus-md";
 
 import { getPaths } from "../getPaths.js";
-import { table } from "./table.js";
+import { tableMarkdown } from "./table.js";
 
 const paths = getPaths();
 
@@ -71,7 +71,7 @@ export default function remarkPubGen(options) {
             const tableData = JSON.parse(
                 fs.readFileSync(path.resolve(options.path, tablePath))
             );
-            const tableMd = await table(tableData).then((md) => md);
+            const tableMd = await tableMarkdown(tableData).then((md) => md);
             node.value = tableMd;
             node.type = "html";
         });

@@ -2,6 +2,21 @@ import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
 import merge from "lodash.merge";
 
+const external = [
+    "@elucidario",
+    "chalk",
+    "child_process",
+    "commander",
+    "fs",
+    "i18n",
+    "inquirer",
+    "json-schema-to-typescript",
+    "lodash-es",
+    "lodash",
+    "path",
+    "url",
+];
+
 const lcdrRollupConfig = (config = null) => {
     const defaultConfig = {
         input: "src/index.ts",
@@ -21,33 +36,16 @@ const lcdrRollupConfig = (config = null) => {
                 },
             }),
         ],
-        external: [
-            "@elucidario/pkg-docusaurus-md",
-            "@elucidario/pkg-parse-args",
-            "@elucidario/pkg-pub-gen",
-            "@elucidario/pkg-schema-doc",
-            "@elucidario/pkg-console",
-            "chalk",
-            "child_process",
-            "commander",
-            "fs",
-            "i18n",
-            "inquirer",
-            "json-schema-to-typescript",
-            "lodash-es",
-            "lodash",
-            "path",
-            "url",
-        ],
+        external,
     };
 
-    const external = [];
-    external.push(...defaultConfig.external);
+    const externals = [];
+    externals.push(...defaultConfig.external);
     if (config && config.external) {
-        external.push(...config.external);
+        externals.push(...config.external);
     }
 
-    return merge({}, defaultConfig, config, { external });
+    return merge({}, defaultConfig, config, { external: externals });
 };
 
 export default lcdrRollupConfig;
