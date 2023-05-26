@@ -102,10 +102,7 @@ export const buildTypes = async () => {
                                         "schemas",
                                         fileUrl.base
                                     );
-                                    console.log(
-                                        { fileUrl, filePath, __dirname },
-                                        { defaultLog: true }
-                                    );
+
                                     try {
                                         const schemaJson = JSON.parse(
                                             fs
@@ -113,9 +110,16 @@ export const buildTypes = async () => {
                                                 .toString()
                                         );
 
+                                        console.log(
+                                            { schemaJson },
+                                            { defaultLog: true }
+                                        );
+
                                         return schemaJson;
                                     } catch (err) {
-                                        throw new Error(err);
+                                        throw new Error("Could not find json", {
+                                            cause: { err },
+                                        });
                                     }
                                 } catch (err) {
                                     throw new Error(
