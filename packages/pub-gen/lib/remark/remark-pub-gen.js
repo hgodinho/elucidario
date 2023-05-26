@@ -71,7 +71,9 @@ export default function remarkPubGen(options) {
             const tableData = JSON.parse(
                 fs.readFileSync(path.resolve(options.path, tablePath))
             );
-            const tableMd = await tableMarkdown(tableData).then((md) => md);
+            const tableMd = await tableMarkdown(tableData, "-").then(
+                (md) => md
+            );
             node.value = tableMd;
             node.type = "html";
         });

@@ -36,6 +36,7 @@
         "@elucidario/pkg-docusaurus-md": "workspace:^",
         "@elucidario/pkg-md-to-gdoc": "workspace:^",
         "@elucidario/pkg-parse-args": "workspace:^",
+        "@elucidario/pkg-paths": "workspace:^",
         "@elucidario/pkg-schema-doc": "workspace:^",
         "ajv": "^8.12.0",
         "axios": "^1.4.0",

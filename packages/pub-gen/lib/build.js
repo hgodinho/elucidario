@@ -3,16 +3,15 @@ import fs from "fs";
 import { NodeHtmlMarkdown } from "node-html-markdown";
 
 import { Console } from "@elucidario/pkg-console";
-import { readContents } from "@elucidario/pkg-schema-doc";
+import { readContents, build } from "@elucidario/pkg-paths";
 
 import { getPaths } from "./getPaths.js";
 import { pubGenRemarkProcessor } from "./remark/processor.js";
 import { engine } from "./reference/csl-engine.js";
-import { debounce } from "./debounce.js";
 
 const paths = getPaths();
 
-const build = async (publication, console) => {
+const buildDocs = async (publication, console) => {
     const pubGenJson = JSON.parse(
         fs.readFileSync(
             path.resolve(paths.publications, publication, "pub-gen.json")
@@ -30,13 +29,11 @@ const build = async (publication, console) => {
 
     pubGenJson.languages.map(async (lang) => {
         const languageContentPath = path.resolve(contentPath, lang);
-        const mdContent = readContents(
-            languageContentPath,
-            "md",
-            false,
-            undefined,
-            false
-        );
+
+        const mdContent = readContents({
+            dirPath: languageContentPath,
+            extensions: "md",
+        });
 
         fs.existsSync(path.resolve(distPath, lang)) ||
             fs.mkdirSync(path.resolve(distPath, lang));
@@ -44,6 +41,12 @@ const build = async (publication, console) => {
         try {
             await Promise.all(
                 Object.entries(mdContent).map(async ([name, content]) => {
+                    let srcPath = languageContentPath;
+                    if (typeof content === "object") {
+                        content = Object.values(content).join("\n\n");
+                        srcPath = path.resolve(languageContentPath, name);
+                    }
+
                     const newFile = await pubGenRemarkProcessor(content, {
                         pubGen: {
                             publication,
@@ -80,26 +83,20 @@ export const buildPublication = async (args) => {
         );
         const console = new Console(packageJson);
 
-        await build(publication, console);
-        if (args.watch) {
-            console.log("Watching changes...");
-            fs.watch(
-                path.resolve(paths.publications, publication, "content"),
-                { recursive: true },
-                async (eventType, filename) => {
-                    console.log(`${eventType}: ${filename}`);
-                    await debounce(build(publication, console), 500);
-                }
-            );
-            fs.watch(
-                path.resolve(paths.publications, publication, "references"),
-                { recursive: true },
-                async (eventType, filename) => {
-                    console.log(`${eventType}: ${filename}`);
-                    await debounce(build(publication, console), 500);
-                }
-            );
-        }
+        await build(
+            {
+                package: packageJson,
+                watch: args.watch,
+                watchSrc: [
+                    path.resolve(paths.publications, publication, "content"),
+                    path.resolve(paths.publications, publication, "references"),
+                ],
+            },
+            async (options) => {
+                console.log({ options }, { defaultLog: true, type: "info" });
+                await buildDocs(publication, console);
+            }
+        );
     } catch (error) {
         console.error(error);
         throw error;

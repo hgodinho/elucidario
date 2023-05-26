@@ -44,7 +44,7 @@ ajv.addVocabulary(["context", "notes"]);
 
 const validate = ajv.compile(schema);
 
-export const tableMarkdown = async (json) => {
+export const tableMarkdown = async (json, emptyValue = "") => {
     try {
         const valid = validate(json);
         if (!valid) {
@@ -59,8 +59,15 @@ export const tableMarkdown = async (json) => {
         const tableData = await tableschema.Table.load(data, {
             schema: schemaData.descriptor,
         });
-        const rows = await tableData.read({ keyed: false });
+        let rows = await tableData.read({ keyed: false });
         const headers = tableData.headers;
+
+        rows = rows.map((row) => {
+            return row.map((column) => {
+                if (!column) return emptyValue;
+                return column;
+            });
+        });
 
         return mdTable({
             title,
