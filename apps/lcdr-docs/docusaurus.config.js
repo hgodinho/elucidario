@@ -75,7 +75,10 @@ const config = {
                 routeBasePath: "mdorim",
                 editUrl:
                     "https://github.com/hgodinho/elucidario/tree/main/packages/mdorim",
-                sidebarPath: "../../packages/mdorim/docs/localSidebars.cjs",
+                sidebarPath: path.resolve(
+                    __dirname,
+                    "/packages/mdorim/docs/localSidebars.cjs"
+                ),
                 showLastUpdateTime: true,
                 showLastUpdateAuthor: true,
             },
@@ -88,7 +91,10 @@ const config = {
                 routeBasePath: "pub-gen",
                 editUrl:
                     "https://github.com/hgodinho/elucidario/tree/main/packages/pub-gen",
-                sidebarPath: "../../packages/pub-gen/lib/sidebars/local.cjs",
+                sidebarPath: path.resolve(
+                    __dirname,
+                    "packages/pub-gen/lib/sidebars/local.cjs"
+                ),
                 showLastUpdateTime: true,
                 showLastUpdateAuthor: true,
             },

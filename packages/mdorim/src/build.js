@@ -1,22 +1,30 @@
 import path from "path";
 import fs from "fs";
-import { Command } from "commander";
-import { debounce } from "lodash-es";
 import pkg from "json-schema-to-typescript";
 
+import { build, getPaths } from "@elucidario/pkg-paths";
 import { readContents, mergeSubSchema } from "@elucidario/pkg-schema-doc";
 import { Console } from "@elucidario/pkg-console";
 
-import { fileURLToPath } from "url";
 import { pubGenRemarkProcessor } from "@elucidario/pkg-pub-gen/lib/remark/processor.js";
 
 const { compile } = pkg;
+
+const { packages } = getPaths();
+
 const outDocs = "docs";
-const outStatic = path.resolve("static", "mdorim", "schemas");
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const outStatic = path.resolve(
+    packages,
+    "mdorim",
+    "static",
+    "mdorim",
+    "schemas"
+);
+
+const __dirname = path.resolve(packages, "mdorim", "src");
 
 const packageJson = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "..", "package.json"))
+    fs.readFileSync(path.resolve(packages, "mdorim", "package.json"))
 );
 const console = new Console(packageJson);
 
@@ -185,42 +193,14 @@ export const buildSchemas = async () => {
     }
 };
 
-export const build = async () => {
-    const program = new Command("build");
-
-    program.option("-w, --watch", "Watch for changes", false);
-
-    program.parse();
-
-    const options = program.opts();
-
-    if (options.watch) {
-        await buildSchemas();
-        await buildTypes();
-        await buildDocs();
-        console.log(`Watching for changes in ${__dirname}`, { type: "info" });
-        fs.watch(
-            __dirname,
-            {
-                recursive: true,
-            },
-            debounce(async (eventType, filename) => {
-                if (filename) {
-                    console.log(
-                        `event of type "${eventType}" at file "${filename}"`,
-                        { type: "info" }
-                    );
-                    await buildSchemas();
-                    await buildTypes();
-                    await buildDocs();
-                }
-            }, 500)
-        );
-    } else {
+await build(
+    {
+        package: packageJson,
+        watchSrc: __dirname,
+    },
+    async () => {
         await buildSchemas();
         await buildTypes();
         await buildDocs();
     }
-};
-
-// await build();
+);
