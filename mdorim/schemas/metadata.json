@@ -1,0 +1,122 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Metadata",
+    "description": "Definições de metadados utilizados no MDORIM.",
+    "definitions": {
+        "_id": {
+            "title": "_id",
+            "description": "Identificador único de uma entidade. É um `integer` gerado automaticamente.",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://linked.art/ns/terms/identifier",
+                "schema.org": "http://schema.org/identifier"
+            },
+            "type": "integer"
+        },
+        "_type": {
+            "title": "_type",
+            "description": "Tipo de classe.",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P2_has_type",
+                "linked.art": "https://linked.art/ns/v1/linked-art.json#type",
+                "schema.org": "http://schema.org/type"
+            },
+            "type": "string"
+        },
+        "uri": {
+            "title": "uri",
+            "description": "Uniform Resource Identifier (URI) de um recurso.",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://linked.art/ns/terms/identifier",
+                "schema.org": "http://schema.org/identifier"
+            },
+            "type": "string"
+        },
+        "ref": {
+            "title": "ref",
+            "description": "Referência genérica a uma entidade.",
+            "$ref": "#/definitions/uri"
+        },
+        "identified_by": {
+            "title": "identified_by",
+            "description": "Define o nome ou identificador de uma entidade. Pode ser `Name` ou `Identifier`.",
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/definitions/Identifier"
+                    },
+                    {
+                        "$ref": "#/definitions/Name"
+                    }
+                ]
+            },
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://www.w3.org/2000/01/rdf-schema#label",
+                "schema.org": "http://schema.org/name"
+            }
+        },
+        "Identifier": {
+            "description": "Identificador de uma entidade.",
+            "title": "Identifier",
+            "type": "object",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://linked.art/ns/terms/identifier",
+                "schema.org": "http://schema.org/identifier"
+            },
+            "properties": {
+                "type": {
+                    "const": "Identifier",
+                    "description": "Tipo do identificador. Valor constante: `Identifier`.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Valor do identificador.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "value"
+            ]
+        },
+        "Name": {
+            "description": "Nome de uma entidade.",
+            "title": "Name",
+            "type": "object",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://www.w3.org/2000/01/rdf-schema#label",
+                "schema.org": "http://schema.org/name"
+            },
+            "properties": {
+                "type": {
+                    "const": "Name",
+                    "description": "Tipo do nome. Valor constante: `Name`.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Valor do nome.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "value"
+            ]
+        },
+        "slug": {
+            "title": "slug",
+            "description": "Nome do conceito. É um `string` gerado automaticamente.",
+            "map": {
+                "crm": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by",
+                "linked.art": "http://www.w3.org/2000/01/rdf-schema#label",
+                "schema.org": "http://schema.org/name"
+            },
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "https://elucidario.art/mdorim/object../schema",
+    "title": "Object",
+    "type": "object",
+    "definitions": {
+        "object_ref": {
+            "title": "object_ref",
+            "description": "Referência a um conceito",
+            "$ref": "metadata.json#/definitions/ref"
+        },
+        "Object": {
+            "title": "Object",
+            "description": "Objeto",
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "$ref": "metadata.json#/definitions/_id"
+                },
+                "uri": {
+                    "$ref": "metadata.json#/definitions/uri"
+                }
+            },
+            "required": [
+                "_id",
+                "uri"
+            ]
+        }
+    }
+}

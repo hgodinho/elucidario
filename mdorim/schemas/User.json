@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "User",
+    "type": "object",
+    "definitions": {
+        "user_ref": {
+            "title": "user_ref",
+            "description": "Referência a um usuário",
+            "$ref": "metadata.json#/definitions/ref"
+        },
+        "User": {
+            "title": "User",
+            "description": "Usuário do sistema",
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "$ref": "metadata.json#/definitions/_id"
+                },
+                "uri": {
+                    "$ref": "metadata.json#/definitions/uri"
+                }
+            },
+            "required": [
+                "_ir",
+                "uri"
+            ]
+        }
+    }
+}

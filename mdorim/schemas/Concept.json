@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://elucidario.art/mdorim/Concept.json",
+    "title": "Concept",
+    "type": "object",
+    "definitions": {
+        "concept_ref": {
+            "title": "concept_ref",
+            "description": "Referência a um conceito",
+            "$ref": "metadata.json#/definitions/ref"
+        },
+        "Concept": {
+            "title": "Concept",
+            "description": "Conceito",
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "$ref": "metadata.json#/definitions/_id"
+                },
+                "uri": {
+                    "$ref": "metadata.json#/definitions/uri"
+                }
+            },
+            "required": [
+                "_id",
+                "uri"
+            ]
+        }
+    }
+}
