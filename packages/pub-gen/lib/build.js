@@ -42,6 +42,8 @@ const buildDocs = async (publication, console) => {
             await Promise.all(
                 Object.entries(mdContent).map(async ([name, content]) => {
                     let srcPath = languageContentPath;
+
+                    // If content is an object, it's a multi-file content, so we need to join it
                     if (typeof content === "object") {
                         content = Object.values(content).join("\n\n");
                         srcPath = path.resolve(languageContentPath, name);
@@ -93,7 +95,6 @@ export const buildPublication = async (args) => {
                 ],
             },
             async (options) => {
-                console.log({ options }, { defaultLog: true, type: "info" });
                 await buildDocs(publication, console);
             }
         );
