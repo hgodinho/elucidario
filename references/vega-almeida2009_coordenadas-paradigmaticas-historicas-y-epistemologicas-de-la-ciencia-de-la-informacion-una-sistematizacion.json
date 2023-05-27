@@ -1,0 +1,32 @@
+{
+    "id": "vega-almeida2009",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "coordenadas-paradigmaticas-historicas-y-epistemologicas-de-la-ciencia-de-la-informacion-una-sistematizacion",
+    "_create": "2023-05-27T00:54:28.843Z",
+    "_update": "2023-05-27T00:54:28.843Z",
+    "type": "article-magazine",
+    "title": "Coordenadas paradigmáticas, históricas y epistemológicas de la Ciencia de la información: una sistematización",
+    "container-title": "Information Research",
+    "volume": "14",
+    "number": "2",
+    "author": [
+        {
+            "family": "Vega-Almeida",
+            "given": "Rosa Lidia"
+        },
+        {
+            "family": "Fernández-Molina",
+            "given": "Juan Carlos"
+        },
+        {
+            "family": "Linares",
+            "given": "Radamés Colimbié"
+        }
+    ],
+    "issued": {
+        "raw": "2009"
+    },
+    "language": "es",
+    "URL": "https://informationr.net/ir/14-2/paper399.html"
+}

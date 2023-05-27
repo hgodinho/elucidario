@@ -1,0 +1,24 @@
+{
+    "id": "conselho-internacional-de-museus-icom2009",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "codigo-de-etica-lusofono",
+    "_create": "2023-05-26T15:18:55.232Z",
+    "_update": "2023-05-26T15:18:55.232Z",
+    "type": "article",
+    "title": "Código de ética lusófono",
+    "number": "3",
+    "author": [
+        {
+            "family": "Conselho Internacional de Museus - ICOM"
+        }
+    ],
+    "accessed": {
+        "raw": "2021-07-22"
+    },
+    "issued": {
+        "raw": "2009"
+    },
+    "language": "pt",
+    "URL": "http://icom.org.br/wp-content/themes/colorwaytheme/pdfs/codigo%20de%20etica/codigo_de_etica_lusofono_iii_2009.pdf"
+}

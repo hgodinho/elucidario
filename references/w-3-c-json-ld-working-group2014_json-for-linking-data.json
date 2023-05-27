@@ -1,0 +1,22 @@
+{
+    "id": "w-3-c-json-ld-working-group2014",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "json-for-linking-data",
+    "_create": "2023-05-21T15:21:28.445Z",
+    "_update": "2023-05-21T15:21:28.445Z",
+    "type": "webpage",
+    "title": "JSON for Linking Data",
+    "author": [
+        {
+            "family": "W3C JSON-LD Working Group"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-08-03"
+    },
+    "issued": {
+        "raw": "2014"
+    },
+    "URL": "https://json-ld.org"
+}

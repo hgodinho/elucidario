@@ -1,0 +1,22 @@
+{
+    "id": "linked-art2021.3",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-art-profile-of-cidoc-crm",
+    "_create": "2023-05-21T00:12:32.612Z",
+    "_update": "2023-05-21T00:12:32.612Z",
+    "type": "webpage",
+    "title": "Linked Art Profile of CIDOC-CRM",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-20"
+    },
+    "issued": {
+        "raw": "2021"
+    },
+    "URL": "https://linked.art/model/profile/"
+}

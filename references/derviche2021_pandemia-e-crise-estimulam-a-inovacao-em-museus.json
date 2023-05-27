@@ -1,0 +1,26 @@
+{
+    "id": "derviche2021",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "pandemia-e-crise-estimulam-a-inovacao-em-museus",
+    "_create": "2023-05-26T19:35:29.988Z",
+    "_update": "2023-05-26T19:35:29.988Z",
+    "type": "article-journal",
+    "title": "Pandemia e crise estimulam a inovação em museus",
+    "publisher": "Jornal da USP",
+    "publisher-place": "São Paulo",
+    "author": [
+        {
+            "family": "Derviche",
+            "given": "André"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-07-05"
+    },
+    "issued": {
+        "raw": "2021-09-15"
+    },
+    "language": "pt-br",
+    "URL": "https://jornal.usp.br/atualidades/pandemia-e-crise-estimulam-inovacao-em-museus/"
+}

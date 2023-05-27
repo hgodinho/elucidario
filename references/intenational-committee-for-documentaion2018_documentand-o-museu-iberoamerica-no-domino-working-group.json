@@ -1,0 +1,23 @@
+{
+    "id": "intenational-committee-for-documentaion2018",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "documentand-o-museu-iberoamerica-no-domino-working-group",
+    "_create": "2023-05-27T02:21:14.906Z",
+    "_update": "2023-05-27T02:21:14.906Z",
+    "type": "webpage",
+    "title": "DocumentandO Museu IberoamericaNO - DOMINO Working Group",
+    "author": [
+        {
+            "family": "International Committee for Documentation",
+            "given": "CIDOC-ICOM"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-08-02"
+    },
+    "issued": {
+        "raw": "2018"
+    },
+    "URL": "https://cidoc.mini.icom.museum/working-groups/domino/"
+}

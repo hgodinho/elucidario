@@ -1,0 +1,23 @@
+{
+    "id": "linked-art2021.2",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "community-linked-art",
+    "_create": "2023-05-20T19:06:24.839Z",
+    "_update": "2023-05-20T19:06:24.839Z",
+    "type": "webpage",
+    "title": "Community - Linked Art",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-20"
+    },
+    "issued": {
+        "raw": "2021"
+    },
+    "language": "en",
+    "URL": "https://linked.art/community/"
+}

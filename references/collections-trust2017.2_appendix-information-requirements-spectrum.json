@@ -1,0 +1,22 @@
+{
+    "id": "collections-trust2017.2",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "appendix-information-requirements-spectrum",
+    "_create": "2023-05-21T19:16:12.053Z",
+    "_update": "2023-05-21T19:16:12.053Z",
+    "type": "webpage",
+    "title": "Appendix - information requirements - Spectrum",
+    "author": [
+        {
+            "family": "Collections Trust"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-21"
+    },
+    "issued": {
+        "raw": "2017"
+    },
+    "URL": "https://collectionstrust.org.uk/spectrum/information-requirements/"
+}

@@ -1,0 +1,27 @@
+{
+    "id": "le-coadic1994",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "a-ciencia-da-informacao",
+    "_create": "2023-05-26T21:41:34.245Z",
+    "_update": "2023-05-26T21:41:34.245Z",
+    "type": "book",
+    "title": "A Ciência da Informação",
+    "publisher": "Briquet de Lemos",
+    "publisher-place": "Brasília",
+    "author": [
+        {
+            "family": "Le Coadic",
+            "given": "Yves-Fronçois"
+        }
+    ],
+    "translator": [
+        {
+            "family": "Filgueira",
+            "given": "Maria Yeda F.S."
+        }
+    ],
+    "issued": {
+        "raw": "1994"
+    }
+}

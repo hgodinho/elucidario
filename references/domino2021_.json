@@ -1,0 +1,21 @@
+{
+    "id": "domino2021",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "",
+    "_create": "2023-05-27T02:15:47.087Z",
+    "_update": "2023-05-27T02:15:47.087Z",
+    "type": "event",
+    "event-title": "CIDOC Tallinn 2021",
+    "event-place": "Tallinn",
+    "author": [
+        {
+            "family": "DOMINO",
+            "given": "DocumentandO Museu IberoamericaNO"
+        }
+    ],
+    "issued": {
+        "raw": "2022-05-22"
+    },
+    "language": "pt-br,en,es"
+}

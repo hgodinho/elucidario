@@ -1,0 +1,25 @@
+{
+    "id": "sanderson2018",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "shout-it-loud-loud",
+    "_create": "2023-05-20T23:41:16.504Z",
+    "_update": "2023-05-20T23:41:16.504Z",
+    "type": "webpage",
+    "title": "Shout It Loud: LOUD - EuropeanaTech 2018 Keynotes",
+    "publisher-place": "Roterdão, Países Baixos",
+    "author": [
+        {
+            "family": "Sanderson",
+            "given": "Robert"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-20"
+    },
+    "issued": {
+        "raw": "2018"
+    },
+    "language": "en",
+    "URL": "https://youtu.be/r4afi8mGVAY"
+}

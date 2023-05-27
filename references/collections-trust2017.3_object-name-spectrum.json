@@ -1,0 +1,22 @@
+{
+    "id": "collections-trust2017.3",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "object-name-spectrum",
+    "_create": "2023-05-23T00:07:13.462Z",
+    "_update": "2023-05-23T00:07:13.462Z",
+    "type": "webpage",
+    "title": "Object name - Spectrum",
+    "author": [
+        {
+            "family": "Collections Trust"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-22"
+    },
+    "issued": {
+        "raw": "2017"
+    },
+    "URL": "https://collectionstrust.org.uk/resource/object-name/"
+}

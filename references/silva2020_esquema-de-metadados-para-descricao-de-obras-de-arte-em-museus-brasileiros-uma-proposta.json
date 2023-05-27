@@ -1,0 +1,22 @@
+{
+    "id": "silva2020",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "esquema-de-metadados-para-descricao-de-obras-de-arte-em-museus-brasileiros-uma-proposta",
+    "_create": "2023-05-26T16:59:56.153Z",
+    "_update": "2023-05-26T16:59:56.153Z",
+    "type": "thesis",
+    "title": "Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta.",
+    "publisher": "Programa de Pós-Graduação em Ciência da Informação - Escola de Comunicações e Artes / Universidade de São Paulo",
+    "publisher-place": "São Paulo",
+    "author": [
+        {
+            "family": "Silva",
+            "given": "Camila Aparecida da"
+        }
+    ],
+    "issued": {
+        "raw": "2020"
+    },
+    "language": "pt-br"
+}

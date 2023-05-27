@@ -1,0 +1,23 @@
+{
+    "id": "mdn-web-docs2023",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "working-with-json",
+    "_create": "2023-05-21T15:26:01.532Z",
+    "_update": "2023-05-21T15:26:01.532Z",
+    "type": "webpage",
+    "title": "Working with JSON",
+    "author": [
+        {
+            "family": "MDN Web Docs"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-21"
+    },
+    "issued": {
+        "raw": "2023-05-10"
+    },
+    "language": "en",
+    "URL": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON"
+}

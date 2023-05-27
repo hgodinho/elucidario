@@ -1,0 +1,23 @@
+{
+    "id": "json-ld-working-group2020",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "json-ld-1-1-a-json-based-serialization-for-linked-data",
+    "_create": "2023-05-21T17:46:31.254Z",
+    "_update": "2023-05-21T17:46:31.254Z",
+    "type": "webpage",
+    "title": "JSON-LD 1.1 - A JSON-based Serialization for Linked Data",
+    "author": [
+        {
+            "family": "JSON-LD Working Group"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-08-03"
+    },
+    "issued": {
+        "raw": "2020-08-16"
+    },
+    "language": "en",
+    "URL": "https://www.w3.org/TR/json-ld11/"
+}

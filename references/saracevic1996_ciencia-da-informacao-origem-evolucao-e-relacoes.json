@@ -1,0 +1,28 @@
+{
+    "id": "saracevic1996",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "ciencia-da-informacao-origem-evolucao-e-relacoes",
+    "_create": "2023-05-27T00:33:49.036Z",
+    "_update": "2023-05-27T00:33:49.036Z",
+    "type": "article-magazine",
+    "title": "Ciência da Informação: origem, evolução e relações",
+    "container-title": "Perspectivas em Ciência da Informação",
+    "publisher-place": "Belo Horizonte",
+    "volume": "1",
+    "number": "1",
+    "page": "41-62",
+    "author": [
+        {
+            "family": "Saracevic",
+            "given": "Tefko"
+        }
+    ],
+    "accessed": {
+        "raw": "2022-07-15"
+    },
+    "issued": {
+        "literal": "jan./jul. 1996"
+    },
+    "URL": "http://portaldeperiodicos.eci.ufmg.br/index.php/pci/article/view/235/22"
+}
