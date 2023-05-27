@@ -76,9 +76,144 @@
             "path": "<references>/botallo2014_declaracao-de-principios-de-documentacao-em-museus-e-diretrizes-internacionais-de-informacao-sobre-objetos-de-museus-categorias-de-informacao-do-comite-internacional-de-documentacao.json"
         },
         {
-            "id": "collections-trust2017",
+            "id": "collections-trust2017.1",
             "slug": "standard-procedures-for-collections-recording-used-in-museums-spectrum",
-            "path": "<references>/collections-trust2017_standard-procedures-for-collections-recording-used-in-museums-spectrum.json"
+            "path": "<references>/collections-trust2017.1_standard-procedures-for-collections-recording-used-in-museums-spectrum.json"
+        },
+        {
+            "id": "conselho-internacional-de-museus-icom2009",
+            "slug": "codigo-de-etica-lusofono",
+            "path": "<references>/conselho-internacional-de-museus-icom2009_codigo-de-etica-lusofono.json"
+        },
+        {
+            "id": "silva2020",
+            "slug": "esquema-de-metadados-para-descricao-de-obras-de-arte-em-museus-brasileiros-uma-proposta",
+            "path": "<references>/silva2020_esquema-de-metadados-para-descricao-de-obras-de-arte-em-museus-brasileiros-uma-proposta.json"
+        },
+        {
+            "id": "derviche2021",
+            "slug": "pandemia-e-crise-estimulam-a-inovacao-em-museus",
+            "path": "<references>/derviche2021_pandemia-e-crise-estimulam-a-inovacao-em-museus.json"
+        },
+        {
+            "id": "le-coadic1994",
+            "slug": "a-ciencia-da-informacao",
+            "path": "<references>/le-coadic1994_a-ciencia-da-informacao.json"
+        },
+        {
+            "id": "saracevic1996",
+            "slug": "ciencia-da-informacao-origem-evolucao-e-relacoes",
+            "path": "<references>/saracevic1996_ciencia-da-informacao-origem-evolucao-e-relacoes.json"
+        },
+        {
+            "id": "vega-almeida2009",
+            "slug": "coordenadas-paradigmaticas-historicas-y-epistemologicas-de-la-ciencia-de-la-informacion-una-sistematizacion",
+            "path": "<references>/vega-almeida2009_coordenadas-paradigmaticas-historicas-y-epistemologicas-de-la-ciencia-de-la-informacion-una-sistematizacion.json"
+        },
+        {
+            "id": "conselho-internacional-de-museus-icom1999",
+            "slug": "lista-de-controle-da-norma-object-id",
+            "path": "<references>/conselho-internacional-de-museus-icom1999_lista-de-controle-da-norma-object-id.json"
+        },
+        {
+            "id": "domino2021",
+            "slug": "",
+            "path": "<references>/domino2021_.json"
+        },
+        {
+            "id": "intenational-committee-for-documentaion2018",
+            "slug": "documentand-o-museu-iberoamerica-no-domino-working-group",
+            "path": "<references>/intenational-committee-for-documentaion2018_documentand-o-museu-iberoamerica-no-domino-working-group.json"
+        },
+        {
+            "id": "collections-trust2022.1",
+            "slug": "introduction-do-spectrum",
+            "path": "<references>/collections-trust2022.1_introduction-do-spectrum.json"
+        },
+        {
+            "id": "matos2014",
+            "slug": "nota-sobre-a-traducao-do-spectrum-em-portugal",
+            "path": "<references>/matos2014_nota-sobre-a-traducao-do-spectrum-em-portugal.json"
+        },
+        {
+            "id": "bevilacqua2014",
+            "slug": "spectrum-4-0-o-padrao-para-gestao-de-colecoes-de-museus-do-reino-unido",
+            "path": "<references>/bevilacqua2014_spectrum-4-0-o-padrao-para-gestao-de-colecoes-de-museus-do-reino-unido.json"
+        },
+        {
+            "id": "collections-trust2011",
+            "slug": "spectrum-timeline",
+            "path": "<references>/collections-trust2011_spectrum-timeline.json"
+        },
+        {
+            "id": "collections-trust2022.2",
+            "slug": "primary-procedures",
+            "path": "<references>/collections-trust2022.2_primary-procedures.json"
+        },
+        {
+            "id": "collections-trust2021",
+            "slug": "rethinking-cataloguing",
+            "path": "<references>/collections-trust2021_rethinking-cataloguing.json"
+        },
+        {
+            "id": "linked-art2021.1",
+            "slug": "linked-art",
+            "path": "<references>/linked-art2021.1_linked-art.json"
+        },
+        {
+            "id": "linked-art2021.2",
+            "slug": "community-linked-art",
+            "path": "<references>/linked-art2021.2_community-linked-art.json"
+        },
+        {
+            "id": "sanderson2018",
+            "slug": "shout-it-loud-loud",
+            "path": "<references>/sanderson2018_shout-it-loud-loud.json"
+        },
+        {
+            "id": "linked-art2021.3",
+            "slug": "linked-art-profile-of-cidoc-crm",
+            "path": "<references>/linked-art2021.3_linked-art-profile-of-cidoc-crm.json"
+        },
+        {
+            "id": "linked-art2021.4",
+            "slug": "api-linked-art",
+            "path": "<references>/linked-art2021.4_api-linked-art.json"
+        },
+        {
+            "id": "linked-art2021.5",
+            "slug": "linked-art-api-endpoints",
+            "path": "<references>/linked-art2021.5_linked-art-api-endpoints.json"
+        },
+        {
+            "id": "w-3-c-json-ld-working-group2014",
+            "slug": "json-for-linking-data",
+            "path": "<references>/w-3-c-json-ld-working-group2014_json-for-linking-data.json"
+        },
+        {
+            "id": "mdn-web-docs2023",
+            "slug": "working-with-json",
+            "path": "<references>/mdn-web-docs2023_working-with-json.json"
+        },
+        {
+            "id": "sporny2012",
+            "slug": "what-is-json-ld",
+            "path": "<references>/sporny2012_what-is-json-ld.json"
+        },
+        {
+            "id": "json-ld-working-group2020",
+            "slug": "json-ld-1-1-a-json-based-serialization-for-linked-data",
+            "path": "<references>/json-ld-working-group2020_json-ld-1-1-a-json-based-serialization-for-linked-data.json"
+        },
+        {
+            "id": "collections-trust2017.2",
+            "slug": "appendix-information-requirements-spectrum",
+            "path": "<references>/collections-trust2017.2_appendix-information-requirements-spectrum.json"
+        },
+        {
+            "id": "collections-trust2017.3",
+            "slug": "object-name-spectrum",
+            "path": "<references>/collections-trust2017.3_object-name-spectrum.json"
         }
     ]
 }

@@ -1,41 +1,65 @@
 {
-    "type": "table",
     "title": "Tabela 1 - Uso exclusivo ou simultâneo dos instrumentos de registro pelos museus mistos",
-    "source": "Fonte: Elaborado pelo autor, com base no Cadastro Nacional de Museus (2010) apud. SILVA, Camila, 2020.",
-    "data": {
-        "headers": ["", "", "museus (544)"],
-        "testeRows": [{}],
-        "rows": {
-            "uso de 1 instrumento": {
-                "livro": 62,
-                "software": 37,
-                "ficha": 34,
-                "foto": 14,
-                "total": 147
-            },
-            "uso de 2 instrumentos": {
-                "livro e ficha": 46,
-                "ficha e foto": 29,
-                "livro e foto": 28,
-                "foto e software": 6,
-                "livro e software": 4,
-                "ficha e software": 4,
-                "total": 117
-            },
-            "uso de 3 instrumentos": {
-                "livro, ficha e foto": 72,
-                "ficha, foto e software": 18,
-                "livro, ficha e software": 13,
-                "livro, foto e software": 8,
-                "total": 111
-            },
-            "uso de 4 instrumentos": {
-                "livro, ficha, foto e software": 40,
-                "total": 40
-            },
-            "registram, mas não indicaram instrumento utilizado": {
-                "total": 129
-            }
+    "note": {
+        "label": "Fonte:",
+        "content": "Elaborado pelo autor, com base no Cadastro Nacional de Museus (2010) apud. SILVA, Camila, 2020."
+    },
+    "fields": [
+        {
+            "name": "Instrumentos de registro",
+            "type": "string"
+        },
+        {
+            "name": "Uso de 1 instrumento (147)",
+            "type": "integer"
+        },
+        {
+            "name": "Uso de 2 instrumentos (117)",
+            "type": "integer"
+        },
+        {
+            "name": "Uso de 3 instrumentos (111)",
+            "type": "integer"
+        },
+        {
+            "name": "Uso de 4 instrumentos (40)",
+            "type": "integer"
+        },
+        {
+            "name": "Registram, mas não indicaram instrumento utilizado (129)",
+            "type": "integer"
         }
-    }
+    ],
+    "data": [
+        [
+            "Instrumentos de registro",
+            "Uso de 1 instrumento (147)",
+            "Uso de 2 instrumentos (117)",
+            "Uso de 3 instrumentos (111)",
+            "Uso de 4 instrumentos (40)",
+            "Registram, mas não indicaram instrumento utilizado (129)"
+        ],
+        ["Livro", 62, "", "", "", ""],
+        ["Software", 37, "", "", "", ""],
+        ["Ficha", 34, "", "", "", ""],
+        ["Livro e ficha", "", 46, "", "", ""],
+        ["Ficha e foto", "", 29, "", "", ""],
+        ["Livro e foto", "", 28, "", "", ""],
+        ["Foto e software", "", 6, "", "", ""],
+        ["Livro e software", "", 4, "", "", ""],
+        ["Ficha e software", "", 4, "", "", ""],
+        ["Livro, ficha e foto", "", "", 72, "", ""],
+        ["Ficha, foto e software", "", "", 18, "", ""],
+        ["Livro, ficha e software", "", "", 13, "", ""],
+        ["Livro, foto e software", "", "", 8, "", ""],
+        ["Ficha, foto, software e livro", "", "", "", 40, ""],
+        [
+            "Registram, mas não indicaram instrumento utilizado",
+            "",
+            "",
+            "",
+            "",
+            129
+        ]
+    ]
 }
