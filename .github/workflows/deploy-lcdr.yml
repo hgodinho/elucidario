@@ -34,3 +34,4 @@ jobs:
         with:
           personal_token: ${{secrets.GITHUB_TOKEN}}
           publish_dir: apps/lcdr-docs/build
+          cname: elucidario.art
