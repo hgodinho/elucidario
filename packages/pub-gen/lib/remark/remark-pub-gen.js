@@ -53,7 +53,7 @@ export default function remarkPubGen(options) {
                 if (value.startsWith("status")) {
                     const status = value
                         .replace("status:", "")
-                        .split(",")
+                        .split(";")
                         .map((s) => s.replace('"', "").replace('"', ""));
                     const statusTable = toMD(
                         [`:::${status[0]} ${status[1]}`, status[2], ":::"],
@@ -116,6 +116,7 @@ export default function remarkPubGen(options) {
                         citeItems: node.data.citeItems.map((item) => {
                             const citeItem = {
                                 id: item.key,
+                                locator: item.suffix,
                                 ...item,
                             };
                             delete citeItem.key;
