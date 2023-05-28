@@ -214,6 +214,31 @@
             "id": "intenational-committee-for-documentaion2018",
             "slug": "documentand-o-museu-iberoamerica-no-domino-working-group",
             "path": "<references>/intenational-committee-for-documentaion2018_documentand-o-museu-iberoamerica-no-domino-working-group.json"
+        },
+        {
+            "id": "fielding2000",
+            "slug": "representational-state-transfer-rest",
+            "path": "<references>/fielding2000_representational-state-transfer-rest.json"
+        },
+        {
+            "id": "droettboom2020",
+            "slug": "understanding-json-schema",
+            "path": "<references>/droettboom2020_understanding-json-schema.json"
+        },
+        {
+            "id": "sanderson2021",
+            "slug": "object-json",
+            "path": "<references>/sanderson2021_object-json.json"
+        },
+        {
+            "id": "collections-trust2017.4",
+            "slug": "object-identification-information-spectrum-5-1",
+            "path": "<references>/collections-trust2017.4_object-identification-information-spectrum-5-1.json"
+        },
+        {
+            "id": "collections-trust2017.5",
+            "slug": "person-information",
+            "path": "<references>/collections-trust2017.5_person-information.json"
         }
     ]
 }

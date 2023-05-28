@@ -1,0 +1,27 @@
+{
+    "id": "fielding2000",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "representational-state-transfer-rest",
+    "_create": "2023-05-27T18:59:08.430Z",
+    "_update": "2023-05-27T18:59:08.430Z",
+    "type": "chapter",
+    "title": "Representational State Transfer (REST)",
+    "container-title": "Architectural Styles and the Design of Network-based Softwares Architectures",
+    "publisher": "Information and Computer Science - University of California",
+    "publisher-place": "Irvine",
+    "author": [
+        {
+            "family": "Fielding",
+            "given": "Roy T."
+        }
+    ],
+    "accessed": {
+        "raw": "2022-08-03"
+    },
+    "issued": {
+        "raw": "2000"
+    },
+    "language": "en",
+    "URL": "https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"
+}

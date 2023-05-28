@@ -1,0 +1,25 @@
+{
+    "id": "droettboom2020",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "understanding-json-schema",
+    "_create": "2023-05-27T19:20:15.822Z",
+    "_update": "2023-05-27T19:20:15.822Z",
+    "type": "book",
+    "title": "Understanding JSON Schema",
+    "publisher": "Space Telescope Science Institute",
+    "author": [
+        {
+            "family": "Droettboom",
+            "given": "Michael"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-27"
+    },
+    "issued": {
+        "raw": "2020"
+    },
+    "language": "en",
+    "URL": "https://json-schema.org/understanding-json-schema/"
+}

@@ -1,0 +1,22 @@
+{
+    "id": "collections-trust2017.4",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "object-identification-information-spectrum-5-1",
+    "_create": "2023-05-28T01:01:07.814Z",
+    "_update": "2023-05-28T01:01:07.814Z",
+    "type": "webpage",
+    "title": "Object identification information - Spectrum 5.1",
+    "author": [
+        {
+            "family": "Collections Trust"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-27"
+    },
+    "issued": {
+        "raw": "2017"
+    },
+    "URL": "https://collectionstrust.org.uk/resource/object-identification-information/"
+}

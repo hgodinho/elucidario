@@ -1,0 +1,23 @@
+{
+    "id": "collections-trust2017.5",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "person-information",
+    "_create": "2023-05-28T01:04:18.891Z",
+    "_update": "2023-05-28T01:04:18.891Z",
+    "type": "webpage",
+    "title": "Person information",
+    "author": [
+        {
+            "family": "Collections Trust"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-27"
+    },
+    "issued": {
+        "raw": "2017"
+    },
+    "language": "en",
+    "URL": "https://collectionstrust.org.uk/resource/person-information/"
+}

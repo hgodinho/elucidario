@@ -1,0 +1,23 @@
+{
+    "id": "sanderson2021",
+    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "object-json",
+    "_create": "2023-05-27T19:34:13.750Z",
+    "_update": "2023-05-27T19:34:13.750Z",
+    "type": "webpage",
+    "title": "object.json",
+    "publisher": "Linked Art",
+    "author": [
+        {
+            "family": "Sanderson",
+            "given": "Robert"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-27"
+    },
+    "issued": {
+        "raw": "2021"
+    }
+}
