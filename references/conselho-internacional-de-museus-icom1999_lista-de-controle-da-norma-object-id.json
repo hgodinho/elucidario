@@ -1,6 +1,6 @@
 {
     "id": "conselho-internacional-de-museus-icom1999",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "lista-de-controle-da-norma-object-id",
     "_create": "2023-05-27T02:00:15.801Z",

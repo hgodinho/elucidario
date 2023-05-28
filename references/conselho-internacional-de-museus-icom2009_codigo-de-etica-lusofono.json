@@ -1,6 +1,6 @@
 {
     "id": "conselho-internacional-de-museus-icom2009",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "codigo-de-etica-lusofono",
     "_create": "2023-05-26T15:18:55.232Z",

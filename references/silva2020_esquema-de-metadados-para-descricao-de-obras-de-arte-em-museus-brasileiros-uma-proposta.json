@@ -1,6 +1,6 @@
 {
     "id": "silva2020",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "esquema-de-metadados-para-descricao-de-obras-de-arte-em-museus-brasileiros-uma-proposta",
     "_create": "2023-05-26T16:59:56.153Z",

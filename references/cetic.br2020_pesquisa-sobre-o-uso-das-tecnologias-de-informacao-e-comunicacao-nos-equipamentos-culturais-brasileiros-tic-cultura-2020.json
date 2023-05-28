@@ -1,6 +1,6 @@
 {
     "id": "cetic.br2020",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2020",
     "_create": "2023-05-20T01:20:37.698Z",

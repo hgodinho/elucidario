@@ -1,6 +1,6 @@
 {
     "id": "linked-art2021.3",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "linked-art-profile-of-cidoc-crm",
     "_create": "2023-05-21T00:12:32.612Z",

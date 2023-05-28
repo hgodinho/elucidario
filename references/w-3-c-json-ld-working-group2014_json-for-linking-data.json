@@ -1,6 +1,6 @@
 {
     "id": "w-3-c-json-ld-working-group2014",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "json-for-linking-data",
     "_create": "2023-05-21T15:21:28.445Z",

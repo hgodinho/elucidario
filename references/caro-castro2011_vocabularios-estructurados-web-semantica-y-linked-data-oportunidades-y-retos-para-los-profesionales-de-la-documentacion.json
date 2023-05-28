@@ -1,6 +1,6 @@
 {
     "id": "caro-castro2011",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "vocabularios-estructurados-web-semantica-y-linked-data-oportunidades-y-retos-para-los-profesionales-de-la-documentacion",
     "_create": "2023-05-20T00:13:02.512Z",

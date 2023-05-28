@@ -1,6 +1,6 @@
 {
     "id": "collections-trust2017.2",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "appendix-information-requirements-spectrum",
     "_create": "2023-05-21T19:16:12.053Z",

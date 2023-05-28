@@ -1,6 +1,6 @@
 {
     "id": "baca2006",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "cataloging-cultural-objects-a-guide-to-describing-cultural-works-and-their-images",
     "_create": "2023-05-19T23:01:08.512Z",

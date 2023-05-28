@@ -1,6 +1,6 @@
 {
     "id": "botallo2014",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "declaracao-de-principios-de-documentacao-em-museus-e-diretrizes-internacionais-de-informacao-sobre-objetos-de-museus-categorias-de-informacao-do-comite-internacional-de-documentacao",
     "_create": "2023-05-20T01:29:45.112Z",

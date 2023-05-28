@@ -1,6 +1,6 @@
 {
     "id": "sporny2012",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "what-is-json-ld",
     "_create": "2023-05-21T15:29:11.177Z",

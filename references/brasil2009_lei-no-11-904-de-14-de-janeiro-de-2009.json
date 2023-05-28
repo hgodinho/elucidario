@@ -1,6 +1,6 @@
 {
     "id": "brasil2009",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "lei-no-11-904-de-14-de-janeiro-de-2009",
     "_create": "2023-05-19T23:28:20.123Z",

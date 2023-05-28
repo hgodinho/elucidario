@@ -19,7 +19,7 @@ import fs from "fs";
 import path from "path";
 
 const schemaDefault = {
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
 };
 

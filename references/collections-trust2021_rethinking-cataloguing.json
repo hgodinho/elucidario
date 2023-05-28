@@ -1,6 +1,6 @@
 {
     "id": "collections-trust2021",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "rethinking-cataloguing",
     "_create": "2023-05-20T04:40:52.243Z",

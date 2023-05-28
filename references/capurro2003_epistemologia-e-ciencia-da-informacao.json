@@ -1,6 +1,6 @@
 {
     "id": "capurro2003",
-    "@schema": "https://elucidario.art/pub-gen/schema/reference-schema.json",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
     "_slug": "epistemologia-e-ciencia-da-informacao",
     "_create": "2023-05-19T23:45:30.838Z",
