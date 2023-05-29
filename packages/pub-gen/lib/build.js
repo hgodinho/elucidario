@@ -11,100 +11,117 @@ import { engine } from "./reference/csl-engine.js";
 
 const paths = getPaths();
 
-const buildDocs = async (publication, console) => {
-    const pubGenJson = JSON.parse(
-        fs.readFileSync(
-            path.resolve(paths.publications, publication, "pub-gen.json")
-        )
-    );
-
-    const distPath = path.resolve(paths.publications, publication, "dist");
+const buildDocs = async ({ distPath, lang, style, publication, console }) => {
     fs.existsSync(distPath) || fs.mkdirSync(distPath);
 
     const contentPath = path.resolve(
         paths.publications,
         publication,
-        "content"
+        "content",
+        lang
     );
 
-    pubGenJson.languages.map(async (lang) => {
-        const languageContentPath = path.resolve(contentPath, lang);
+    const mdContent = readContents({
+        dirPath: contentPath,
+        extensions: "md",
+        log: false,
+    });
 
-        const mdContent = readContents({
-            dirPath: languageContentPath,
-            extensions: "md",
-        });
+    const imageContent = readContents({
+        dirPath: contentPath,
+        index: false,
+        extensions: ["png", "jpg", "jpeg", "gif"],
+        names: true,
+        log: false,
+    });
 
-        fs.existsSync(path.resolve(distPath, lang)) ||
-            fs.mkdirSync(path.resolve(distPath, lang));
+    fs.existsSync(path.resolve(distPath, lang)) ||
+        fs.mkdirSync(path.resolve(distPath, lang));
 
-        try {
-            await Promise.all(
-                Object.entries(mdContent).map(async ([name, content]) => {
-                    let srcPath = languageContentPath;
+    if (fs.existsSync(path.resolve(contentPath, "index.json"))) {
+        fs.copyFileSync(
+            path.resolve(contentPath, "index.json"),
+            path.resolve(distPath, lang, "index.json")
+        );
+    }
 
-                    // If content is an object, it's a multi-file content, so we need to join it
-                    if (typeof content === "object") {
-                        content = Object.values(content).join("\n\n");
-                        srcPath = path.resolve(languageContentPath, name);
-                    }
+    const log = {};
 
-                    const newFile = await pubGenRemarkProcessor(content, {
-                        pubGen: {
-                            publication,
-                            lang,
-                            style: "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt",
-                            path: languageContentPath,
-                        },
-                    });
-                    fs.writeFileSync(
-                        path.resolve(distPath, lang, `${name}.md`),
-                        newFile.value
-                    );
-                }),
-                buildReferences(distPath, lang, publication, console)
-            );
-        } catch (error) {
-            console.log({ error }, { defaultLog: true, type: "error" });
-            throw error;
-        }
+    // Cria documentação
+    try {
+        await Promise.all(
+            Object.entries(mdContent).map(async ([name, content]) => {
+                let srcPath = contentPath;
+                // If content is an object, it's a multi-file content, so we need to join it
+                if (typeof content === "object") {
+                    content = Object.values(content).join("\n\n");
+                    srcPath = path.resolve(contentPath, name);
+                }
+
+                const newFile = await pubGenRemarkProcessor(content, {
+                    pubGen: {
+                        publication,
+                        lang,
+                        style,
+                        path: srcPath,
+                    },
+                });
+                fs.writeFileSync(
+                    path.resolve(distPath, lang, `${name}.md`),
+                    newFile.value
+                );
+                log[new Date().toLocaleString()] = {
+                    type: "md",
+                    name,
+                };
+            })
+        );
+    } catch (error) {
+        console.log({ error }, { defaultLog: true, type: "error" });
+        throw error;
+    }
+
+    // copia imagens
+    try {
+        await Promise.all(
+            Object.entries(imageContent).map(async ([name, imgPath]) => {
+                if (typeof imgPath === "object") {
+                    return;
+                }
+                const imagePath = path.parse(imgPath);
+                const srcPath = path.resolve(imgPath);
+                const distPath = path.resolve(
+                    paths.publications,
+                    publication,
+                    "dist",
+                    lang,
+                    imagePath.base
+                );
+                fs.copyFileSync(srcPath, distPath);
+                log[new Date().toLocaleString()] = {
+                    type: "img",
+                    name,
+                };
+            })
+        );
+    } catch (error) {
+        console.log({ error }, { defaultLog: true, type: "error" });
+        throw error;
+    }
+
+    console.log(log, {
+        defaultLog: true,
+        title: `Docs built using ${style} style!`,
     });
 };
 
-export const buildPublication = async (args) => {
-    try {
-        const { publication } = args;
-
-        if (!publication) {
-            throw new Error("Publication name is required");
-        }
-        const packageJson = JSON.parse(
-            fs.readFileSync(
-                path.resolve(paths.publications, publication, "package.json")
-            )
-        );
-        const console = new Console(packageJson);
-
-        await build(
-            {
-                package: packageJson,
-                watch: args.watch,
-                watchSrc: [
-                    path.resolve(paths.publications, publication, "content"),
-                    path.resolve(paths.publications, publication, "references"),
-                ],
-            },
-            async (options) => {
-                await buildDocs(publication, console);
-            }
-        );
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
-};
-
-const buildReferences = async (distPath, lang, publication, console) => {
+const buildReferences = async ({
+    distPath,
+    lang,
+    style,
+    publication,
+    console,
+}) => {
     try {
         const references = JSON.parse(
             fs.readFileSync(
@@ -121,11 +138,8 @@ const buildReferences = async (distPath, lang, publication, console) => {
             return JSON.parse(fs.readFileSync(refPath, { encoding: "utf-8" }));
         });
 
-        const citeproc = await engine(
-            references,
-            lang,
-            "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt"
-        );
+        const citeproc = await engine(references, lang, style);
+
         citeproc.processCitationCluster(
             {
                 properties: {
@@ -146,9 +160,71 @@ const buildReferences = async (distPath, lang, publication, console) => {
             bibliographyMD,
             "utf-8"
         );
-        console.log("References built");
+        console.log(`References built using ${style} style!`);
     } catch (error) {
         console.log({ error }, { defaultLog: true, type: "error" });
+        throw error;
+    }
+};
+
+export const buildPublication = async (args) => {
+    try {
+        const { publication } = args;
+
+        if (!publication) {
+            throw new Error("Publication name is required");
+        }
+        const packageJson = JSON.parse(
+            fs.readFileSync(
+                path.resolve(paths.publications, publication, "package.json")
+            )
+        );
+        const console = new Console(packageJson);
+
+        const pubGenJson = JSON.parse(
+            fs.readFileSync(
+                path.resolve(paths.publications, publication, "pub-gen.json")
+            )
+        );
+
+        await build(
+            {
+                package: packageJson,
+                watch: args.watch,
+                watchSrc: [
+                    path.resolve(paths.publications, publication, "content"),
+                    path.resolve(paths.publications, publication, "references"),
+                    path.resolve(paths.references),
+                ],
+            },
+            async (options) => {
+                await Promise.all(
+                    pubGenJson.publications.map(async (pub) => {
+                        const distPath = path.resolve(
+                            paths.publications,
+                            publication,
+                            "dist"
+                        );
+                        await buildDocs({
+                            distPath,
+                            lang: pub.language,
+                            style: pub.style.name,
+                            publication,
+                            console,
+                        });
+                        await buildReferences({
+                            distPath,
+                            lang: pub.language,
+                            style: pub.style.name,
+                            publication,
+                            console,
+                        });
+                    })
+                );
+            }
+        );
+    } catch (error) {
+        console.error(error);
         throw error;
     }
 };

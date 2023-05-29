@@ -24,9 +24,7 @@ export const engine = (references, lang, style) => {
             .toString();
 
         const styleXml = fs
-            .readFileSync(
-                path.resolve(paths.pubGen, "cache", "styles", `${style}.csl`)
-            )
+            .readFileSync(path.resolve(paths.pubGen, "cache", "styles", style))
             .toString();
 
         const sys = {

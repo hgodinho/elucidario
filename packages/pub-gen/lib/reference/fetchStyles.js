@@ -23,12 +23,7 @@ export const fetchStyles = async (styles) => {
     });
 
     const cslStyles = styles.filter((style) => {
-        const stylePath = path.resolve(
-            paths.pubGen,
-            "cache",
-            "styles",
-            `${style}.csl`
-        );
+        const stylePath = path.resolve(paths.pubGen, "cache", "styles", style);
         if (!fs.existsSync(stylePath)) {
             console.log(
                 `Style ${style} not found in cache. Fetching from GitHub...`
@@ -46,7 +41,7 @@ export const fetchStyles = async (styles) => {
             try {
                 return octokit.rest.search
                     .code({
-                        q: `repo:citation-style-language/styles+filename:${style}.csl`,
+                        q: `repo:citation-style-language/styles+filename:${style}`,
                     })
                     .then(async (response) => {
                         const searchResponse = response.data.items[0];
@@ -68,7 +63,7 @@ export const fetchStyles = async (styles) => {
                                     .then((res) => {
                                         const content = res.data;
                                         return {
-                                            [`${style}.csl`]: content,
+                                            [`${style}`]: content,
                                         };
                                     })
                                     .catch((error) => {
@@ -103,5 +98,3 @@ export const fetchStyles = async (styles) => {
         );
     });
 };
-
-fetchStyles(["universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt"]);

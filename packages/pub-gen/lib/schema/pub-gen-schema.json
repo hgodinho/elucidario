@@ -40,17 +40,45 @@
             "description": "Publication year.",
             "type": "string"
         },
-        "languages": {
-            "title": "Languages",
-            "description": "The languages of the publication. Use ISO 639-1 code.",
+        "publications": {
             "type": "array",
+            "title": "Publications",
+            "description": "List of publications.",
             "items": {
-                "title": "Language",
-                "type": "string"
-            },
-            "minItems": 1,
-            "uniqueItems": true,
-            "default": ["pt-BR", "en"]
+                "title": "Publication",
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "title": "Title",
+                        "description": "Title of the publication.",
+                        "type": "string"
+                    },
+                    "style": {
+                        "title": "Style",
+                        "description": "Use CSL style.",
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "title": "Name",
+                                "description": "Name of the style.",
+                                "type": "string"
+                            },
+                            "url": {
+                                "title": "URL",
+                                "description": "URL of the style.",
+                                "type": "string"
+                            }
+                        },
+                        "required": ["name", "short_name", "url"]
+                    },
+                    "language": {
+                        "title": "Language",
+                        "description": "The language of the publication. Use RFC 5646.",
+                        "type": "string"
+                    }
+                },
+                "required": ["title", "style", "Language"]
+            }
         },
         "drive": {
             "title": "Google Drive folder",

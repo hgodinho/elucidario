@@ -43,13 +43,6 @@ describe("prompt", () => {
             },
             {
                 type: "string",
-                name: "languages",
-                message:
-                    "Languages (The languages of the publication. Use ISO 639-1 code.)",
-                default: undefined,
-            },
-            {
-                type: "string",
                 name: "homepage",
                 message:
                     "Home Page (The home on the web that is related to this data package.)",
@@ -77,6 +70,37 @@ describe("prompt", () => {
                 default: true,
                 message: "Do you want to add an author?",
                 name: "addAuthor",
+                type: "confirm",
+            },
+        ]);
+    });
+
+    it("should return a publication prompt object", () => {
+        const prompt = pubGenPrompt("publication");
+        expect(prompt).toEqual([
+            {
+                type: "string",
+                name: "publication.title",
+                message: "Title (Title of the publication.)",
+                default: undefined,
+            },
+            {
+                type: "string",
+                name: "publication.style",
+                message: "Style (Use CSL style.)",
+                default: undefined,
+            },
+            {
+                type: "string",
+                name: "publication.language",
+                message:
+                    "Language (The language of the publication. Use RFC 5646.)",
+                default: undefined,
+            },
+            {
+                default: false,
+                message: "Do you want to add another publication?",
+                name: "addMorePublication",
                 type: "confirm",
             },
         ]);

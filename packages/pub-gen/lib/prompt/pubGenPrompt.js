@@ -23,7 +23,6 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         "type",
         "year",
         "description",
-        "languages",
         "homepage",
         "keywords",
         "image",
@@ -49,6 +48,22 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
             default: true,
         }
     );
+
+    const publicationPrompt = Object.entries(
+        schema.properties.publications.items.properties
+    ).map(([key, value]) => {
+        return createInput(
+            `publication.${key}`,
+            value,
+            defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
+        );
+    });
+    publicationPrompt.push({
+        type: "confirm",
+        name: "addMorePublication",
+        message: "Do you want to add another publication?",
+        default: false,
+    });
 
     const licensePrompt = Object.entries(
         schema.properties.licenses.items.properties
@@ -91,5 +106,8 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
 
         case "addLicense":
             return licensePrompt;
+
+        case "publication":
+            return publicationPrompt;
     }
 };
