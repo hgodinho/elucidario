@@ -16,6 +16,8 @@ export const getPaths = (): GetPathsReturn => {
             root = Path.dir.split("publications")[0];
         } else if (Path.dir.includes("references")) {
             root = Path.dir.split("references")[0];
+        } else if (Path.base === "elucidario") {
+            root = path.resolve(Path.dir, Path.base);
         } else {
             throw new Error("Could not find root directory");
         }
