@@ -127,7 +127,7 @@ Hierarquia das unidades de informações "Object name" [@collections-trust2017.3
   - Object name type
   - Object name/title language
 
-{{table:quadro-teorico/spectrum-object-name.json}}
+{{table:spectrum-object-name.json}}
 
 ---
 

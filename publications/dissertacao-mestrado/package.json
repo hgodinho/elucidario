@@ -8,6 +8,7 @@
         "ref-add": "pub-gen reference add -p dissertacao-mestrado",
         "ref-search": "pub-gen reference search -p dissertacao-mestrado",
         "version-up": "pub-gen version -p dissertacao-mestrado",
+        "convert": "pub-gen pandoc convert -p dissertacao-mestrado",
         "authenticate": "pub-gen authenticate -p dissertacao-mestrado",
         "build": "pnpm clean && pub-gen build -p dissertacao-mestrado",
         "clean": "rm -rf dist/*"

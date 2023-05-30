@@ -214,6 +214,21 @@
             "id": "collections-trust2017.3",
             "slug": "object-name-spectrum",
             "path": "<references>/collections-trust2017.3_object-name-spectrum.json"
+        },
+        {
+            "id": "costa2007",
+            "slug": "sinfonia-de-objetos",
+            "path": "<references>/costa2007_sinfonia-de-objetos.json"
+        },
+        {
+            "id": "icom2022",
+            "slug": "nova-definicao-de-museu-icom",
+            "path": "<references>/icom2022_nova-definicao-de-museu-icom.json"
+        },
+        {
+            "id": "padilha2014",
+            "slug": "documentacao-museologica-e-gestao-de-acervo",
+            "path": "<references>/padilha2014_documentacao-museologica-e-gestao-de-acervo.json"
         }
     ]
 }

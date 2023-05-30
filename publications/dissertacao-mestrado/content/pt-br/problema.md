@@ -8,3 +8,6 @@ Para tentar responder à questão principal, delimitamos o problema da pesquisa 
 2. Conceitual: como realizar a gestão da documentação museológica focando a interoperabilidade do sistema?
 3. Normativo e referencial: quais são normas e práticas recomendadas por organizações, governos, instituições ou especialistas para a documentação museológica?
 4. Arquitetura e design de softwares: quais paradigmas, metodologias
+
+COMO TESTAR? ao invés de migração!
+substituir objetivo específico por como testar com cada conjunto de obras

@@ -44,6 +44,8 @@ CONSELHO INTERNACIONAL DE MUSEUS - ICOM. **Código de ética lusófono**. , 2009
 
 CONSELHO INTERNACIONAL DE MUSEUS, ICOM. **Lista de Controle da Norma Object ID**. , 1999\. Disponível em: https://icom.museum/wp-content/uploads/2020/12/ObjectID\_portuguese.pdf. Acesso em: 29 jul. 2022.
 
+COSTA, Paulo. **Sinfonia de Objetos**. São Paulo: Iluminuras, 2007\. 
+
 DERVICHE, André. Pandemia e crise estimulam a inovação em museus. São Paulo, 2021\. Disponível em: https://jornal.usp.br/atualidades/pandemia-e-crise-estimulam-inovacao-em-museus/. Acesso em: 5 jul. 2022.
 
 DOMINO, DocumentandO Museu IberoamericaNO. , 2022\. 
@@ -51,6 +53,8 @@ DOMINO, DocumentandO Museu IberoamericaNO. , 2022\.
 GODINHO, Henrique. **Explore a Coleção! - Casa Museu Ema Klabin**. 2019a. Disponível em: https://emaklabin.org.br/explore. Acesso em: 5 jul. 2022\. 
 
 GODINHO, Henrique. **Núcleos (Explore a Coleção! - Casa Museu Ema Klabin)**. 2019b. Disponível em: https://emaklabin.org.br/explore/nucleos. Acesso em: 5 jul. 2022\. 
+
+ICOM, Intenational Concoul of Museums-Brasil. **Nova definição de Museu - ICOM**. 2022\. Disponível em: https://www.icom.org.br/?page\_id=2776\. Acesso em: 29 maio. 2023\. 
 
 INTERNATIONAL COMMITTEE FOR DOCUMENTATION, CIDOC-ICOM. **DocumentandO Museu IberoamericaNO - DOMINO Working Group**. 2018\. Disponível em: https://cidoc.mini.icom.museum/working-groups/domino/. Acesso em: 2 ago. 2022\. 
 
@@ -71,6 +75,8 @@ LINKED ART. **Linked Art API Endpoints**. 2021e. Disponível em: https://linked.
 MATOS, Alexandre. Nota sobre a tradução do SPECTRUM em Portugal. _Em_: **SPECTRUM 4.0: o padrão para gestão de coleções de museus do Reino Unido**. São Paulo: Secretaria de Estado de Cultura; Associação de Amigos do Museu do Café; Pinacoteca do Estado de São Paulo, 2014\. v. 2\. Disponível em: https://spectrum-pt.org/wp-content/uploads/2021/03/Spectrum\_PT\_NET.pdf. Acesso em: 19 maio. 2023.
 
 MDN WEB DOCS. **Working with JSON**. 2023\. Disponível em: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON. Acesso em: 21 maio. 2023\. 
+
+PADILHA, Renata Cardozo. **Documentação Museológica e Gestão de Acervo**. Florianópolis: FCC Edições, 2014\. v. 2
 
 SANDERSON, Robert. **Shout It Loud: LOUD - EuropeanaTech 2018 Keynotes**. 2018\. Disponível em: https://youtu.be/r4afi8mGVAY. Acesso em: 20 maio. 2023\. 
 

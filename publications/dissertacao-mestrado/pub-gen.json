@@ -1,5 +1,6 @@
 {
-    "$schema": "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
+    "$schema": "https://elucidario.art/pub-gen/schemas/pub-gen-schema.json",
+    "name": "dissertacao-mestrado",
     "version": "1.0.0",
     "profile": "data-package",
     "id": "https://elucidario.art/publicacoes/dissertacao-mestrado",
@@ -11,7 +12,21 @@
     "keywords": ["adicionar", "palavras", "chaves"],
     "image": "",
     "languages": ["pt-br"],
-    "licenses": [],
+    "licenses": [
+        {
+            "name": "owner"
+        }
+    ],
+    "publications": [
+        {
+            "title": "Dissertação mestrado",
+            "language": "pt-br",
+            "style": {
+                "name": "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+                "url": "https://github.com/citation-style-language/styles/blob/6b7fdff8cb0fb45b342e8ac319634bf18168c73d/universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl"
+            }
+        }
+    ],
     "contributors": [
         {
             "title": "Henrique Godinho Lopes Costa",
