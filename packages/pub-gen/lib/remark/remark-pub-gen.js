@@ -1,9 +1,10 @@
 import { visit } from "unist-util-visit";
 import path from "path";
 import fs from "fs";
+import parser from "parser-front-matter";
 
 import { entityPage } from "@elucidario/pkg-schema-doc";
-import { toMD } from "@elucidario/pkg-docusaurus-md";
+import { toMD, bold } from "@elucidario/pkg-docusaurus-md";
 
 import { getPaths } from "../getPaths.js";
 import { tableMarkdown } from "./table.js";
@@ -62,6 +63,50 @@ export default function remarkPubGen(options) {
                     node.value = statusTable;
                     node.type = "html";
                 }
+
+                /**
+                 * mermaid
+                 */
+                if (value.startsWith("mermaid")) {
+                    const mermaidPath = value.replace("mermaid:", "");
+
+                    const mermaidData = fs
+                        .readFileSync(path.resolve(options.path, mermaidPath))
+                        .toString();
+
+                    const { data, content } = parser.parseSync(mermaidData);
+
+                    const {
+                        filename,
+                        source,
+                        title,
+                        width,
+                        theme,
+                        background,
+                        format,
+                    } = data;
+
+                    let mermaidOptions = "{.mermaid";
+                    if (filename) mermaidOptions += ` filename="${filename}"`;
+                    if (options.distPath)
+                        mermaidOptions += ` loc="${options.distPath}"`;
+                    if (width) mermaidOptions += ` width=${width}`;
+                    if (theme) mermaidOptions += ` theme=${theme}`;
+                    if (background)
+                        mermaidOptions += ` background=${background}`;
+                    if (format) mermaidOptions += ` format=${format}`;
+
+                    mermaidOptions += "}";
+
+                    const mermaidContent = toMD([
+                        bold(title),
+                        content.replace("mermaid", mermaidOptions),
+                        source || "",
+                    ]);
+
+                    node.value = mermaidContent;
+                    node.type = "html";
+                }
             }
         });
 
@@ -116,7 +161,6 @@ export default function remarkPubGen(options) {
                         citeItems: node.data.citeItems.map((item) => {
                             const citeItem = {
                                 id: item.key,
-                                locator: item.suffix,
                                 ...item,
                             };
                             delete citeItem.key;
