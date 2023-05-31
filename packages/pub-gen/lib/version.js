@@ -1,19 +1,24 @@
 import fs from "fs";
 import path from "path";
 import inquirer from "inquirer";
+import { simpleGit } from "simple-git";
 
 import { Console } from "@elucidario/pkg-console";
 
 import { getPaths } from "./getPaths.js";
 const paths = getPaths();
-const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
-);
-
-const console = new Console(packageJson);
 
 export const version = async (args) => {
     const { publication } = args;
+
+    const packageJson = JSON.parse(
+        fs.readFileSync(
+            path.resolve(paths.publications, publication, "package.json")
+        )
+    );
+
+    const console = new Console(packageJson);
+
     try {
         if (!publication) {
             throw new Error(
@@ -33,9 +38,67 @@ export const version = async (args) => {
             {
                 type: "info",
                 defaultLog: true,
-                title: `Actual version of ${publication}`,
+                title: `${publication}`,
             }
         );
+
+        const git = simpleGit();
+        // verifica repositório git
+        try {
+            const status = await git.status();
+            const notAdded = status.not_added.filter((file) =>
+                file.includes(publication)
+            );
+            const created = status.created.filter((file) =>
+                file.includes(publication)
+            );
+            const modified = status.modified.filter((file) =>
+                file.includes(publication)
+            );
+            const deleted = status.deleted.filter((file) =>
+                file.includes(publication)
+            );
+            const staged = status.staged.filter((file) =>
+                file.includes(publication)
+            );
+
+            // compare staged with notAdded, created, modified and deleted, if notAdded, created, modified or deleted are not in staged, throw error
+            if (
+                notAdded.some((file) => !staged.includes(file)) ||
+                created.some((file) => !staged.includes(file)) ||
+                modified.some((file) => !staged.includes(file)) ||
+                deleted.some((file) => !staged.includes(file))
+            ) {
+                console.log(
+                    {
+                        notAdded,
+                        created,
+                        modified,
+                        deleted,
+                        staged,
+                        status,
+                    },
+                    {
+                        defaultLog: true,
+                        type: "error",
+                    }
+                );
+                throw new Error("Please stage your changes before versioning");
+            } else if (staged.length > 0) {
+                console.log(
+                    {
+                        staged,
+                    },
+                    {
+                        defaultLog: true,
+                        type: "error",
+                    }
+                );
+                throw new Error("Please commit your changes before versioning");
+            }
+        } catch (error) {
+            throw new Error(error.message);
+        }
 
         let parsedVersion = [];
 
@@ -50,6 +113,9 @@ export const version = async (args) => {
         } else {
             parsedVersion = version.split(".");
         }
+
+        let message = "";
+        let push = false;
 
         await inquirer
             .prompt([
@@ -66,8 +132,21 @@ export const version = async (args) => {
                     choices: ["alpha", "beta", "rc"],
                     when: (answers) => answers.version === "prerelease",
                 },
+                {
+                    type: "string",
+                    name: "message",
+                    message: "Type a commit message:",
+                },
+                {
+                    type: "confirm",
+                    name: "push",
+                    message: "Push changes to remote?",
+                    default: false,
+                },
             ])
             .then((answers) => {
+                message = answers.message;
+                push = answers.push;
                 if (answers.version === "prerelease") {
                     if (parsedVersion[3]) {
                         parsedVersion[3].version = parsedVersion[3].version
@@ -114,6 +193,15 @@ export const version = async (args) => {
             path.resolve(publicationPath, "package.json"),
             JSON.stringify(publicationPackageJson, null, 4)
         );
+
+        console.log("Adding changes to git...");
+        await git.add(publicationPath);
+        console.log("Committing changes to git...");
+        await git.commit(`chore(${publication}) ${newVersion} ${message}`);
+        if (push) {
+            console.log("Pushing changes to remote...");
+            await git.push();
+        }
 
         console.log(
             { version: newVersion },

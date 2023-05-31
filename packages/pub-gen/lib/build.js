@@ -11,7 +11,14 @@ import { engine } from "./reference/csl-engine.js";
 
 const paths = getPaths();
 
-const buildDocs = async ({ distPath, lang, style, publication, console }) => {
+const buildDocs = async ({
+    distPath,
+    lang,
+    style,
+    publication,
+    console,
+    version,
+}) => {
     fs.existsSync(distPath) || fs.mkdirSync(distPath);
 
     const contentPath = path.resolve(
@@ -39,9 +46,22 @@ const buildDocs = async ({ distPath, lang, style, publication, console }) => {
         fs.mkdirSync(path.resolve(distPath, lang));
 
     if (fs.existsSync(path.resolve(contentPath, "index.json"))) {
-        fs.copyFileSync(
-            path.resolve(contentPath, "index.json"),
-            path.resolve(distPath, lang, "index.json")
+        const index = JSON.parse(
+            fs.readFileSync(path.resolve(contentPath, "index.json"))
+        );
+
+        if (!index.files.includes("references")) index.files.push("references");
+
+        fs.writeFileSync(
+            path.resolve(distPath, lang, "index.json"),
+            JSON.stringify(index)
+        );
+    } else {
+        fs.writeFileSync(
+            path.resolve(distPath, lang, "index.json"),
+            JSON.stringify({
+                files: [...Object.keys(mdContent), "references"],
+            })
         );
     }
 
@@ -52,6 +72,7 @@ const buildDocs = async ({ distPath, lang, style, publication, console }) => {
         await Promise.all(
             Object.entries(mdContent).map(async ([name, content]) => {
                 let srcPath = contentPath;
+
                 // If content is an object, it's a multi-file content, so we need to join it
                 if (typeof content === "object") {
                     content = Object.values(content).join("\n\n");
@@ -64,6 +85,13 @@ const buildDocs = async ({ distPath, lang, style, publication, console }) => {
                         lang,
                         style,
                         path: srcPath,
+                        distPath: path.resolve(
+                            paths.publications,
+                            publication,
+                            "files",
+                            "generated",
+                            version
+                        ),
                     },
                 });
                 fs.writeFileSync(
@@ -211,6 +239,7 @@ export const buildPublication = async (args) => {
                             style: pub.style.name,
                             publication,
                             console,
+                            version: packageJson.version,
                         });
                         await buildReferences({
                             distPath,

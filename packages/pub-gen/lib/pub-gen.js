@@ -13,8 +13,8 @@ import { search } from "./reference/search.js";
 import { version } from "./version.js";
 import { generateSearchIndex } from "./reference/generateSearchIndex.js";
 import { convert } from "./pandoc/convert.js";
+import { listTemplates } from "./pandoc/listTemplates.js";
 import { getPaths } from "./getPaths.js";
-import { toDocx } from "./to-docx.js";
 import { validateReferences } from "./reference/validateReferences.js";
 
 const paths = getPaths();
@@ -171,23 +171,23 @@ const PubGen = () => {
             buildPublication(argv);
         });
 
-    program
-        .command("to-docx")
-        .description("Convert to docx")
-        .option("-p, --publication <publication>")
-        .action((argv) => {
-            toDocx(argv);
-        });
+    /**
+     * @command <pandoc> Pandoc
+     *
+     * @command <convert> - Converte a publicação
+     * @command <templates> - Lista templates docx do pandoc
+     */
+    const pandoc = program.command("pandoc").description("Pandoc publication");
 
     /**
-     * @command <convert> - Convert
+     * @command <pandoc> <convert> - Convert
      *
      * @param {string} publication - Nome da publicação
      * @param {string} output - Diretório de saída do arquivo convertido
      * @param {string} ext - Extensão do arquivo de saída
      * @param {string} title - Título do documento
      */
-    program
+    pandoc
         .command("convert")
         .description("Convert publication")
         .option("-p, --publication <publication>")
@@ -197,6 +197,17 @@ const PubGen = () => {
         .action((argv) => {
             console.log("Converting publication:", argv.publication);
             convert(argv);
+        });
+
+    /**
+     * @command <pandoc> <templates> - Lista templates do pandoc
+     */
+    pandoc
+        .command("templates")
+        .description("List pandoc docx templates")
+        .action((argv) => {
+            console.log("Listing pandoc docx templates");
+            listTemplates();
         });
 
     program.parse(process.argv);

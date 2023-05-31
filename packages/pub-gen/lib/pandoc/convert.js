@@ -2,89 +2,143 @@ import { exec } from "child_process";
 import path from "path";
 import lodash from "lodash-es";
 import fs from "fs";
-import { readContents } from "@elucidario/pkg-schema-doc";
+import { readContents } from "@elucidario/pkg-paths";
 const { kebabCase } = lodash;
-import chalk from "chalk";
 
-const __dirname = path.resolve();
+import { getPaths } from "../getPaths.js";
+
+import { Console } from "@elucidario/pkg-console";
+
+const paths = getPaths();
 
 export const convert = async (args) => {
-    console.log("Running pandoc...", { args });
     const { publication, output, title } = args;
     let { ext } = args;
-    if (!publication) {
-        throw new Error(
-            "Publication not specified, pass --publication or -p argument"
-        );
-    }
-    const rootPath = path.resolve(__dirname, "..", "..");
-    const pubPath = path.resolve(rootPath, "publications", publication);
-    const pubGenJson = JSON.parse(
-        fs.readFileSync(path.resolve(pubPath, "pub-gen.json"))
-    );
 
-    const { documents } = pubGenJson;
-    console.log(documents);
-    const pandocs = documents.map((doc) => {
-        let { preset, language } = doc;
-        preset = kebabCase(preset);
-        language = kebabCase(language);
-
-        let files = [];
-        try {
-            files = readContents(
-                path.resolve(pubPath, "dist", language),
-                ["md"],
-                true
+    try {
+        if (!publication) {
+            throw new Error(
+                "Publication not specified, pass --publication or -p argument"
             );
-            console.log("files", files);
-        } catch (error) {
-            console.error(
-                chalk.red(
-                    '[pub-gen] No files found at dist folder! Try running "pub-gen build" first.'
-                )
-            );
-            return error;
         }
+        const packageJson = JSON.parse(
+            fs.readFileSync(
+                path.resolve(paths.publications, publication, "package.json")
+            )
+        );
 
-        const docTitle =
-            title ?? `${language}-${preset}-${kebabCase(doc.title)}`;
-        ext = ext ?? "docx";
-        const outputFile =
-            output ?? path.resolve(pubPath, "files", `${docTitle}.${ext}`);
+        const console = new Console(packageJson);
 
-        const pandocArgs = [
-            "--from=markdown+grid_tables",
-            `--to=${ext}`,
-            `--output=${outputFile}`,
-            ...files,
-        ];
-
-        const isPandocInstalled = exec("pandoc --version");
-
-        isPandocInstalled.on("close", (code) => {
-            let pandoc;
-            if (code !== 0) {
-                const dockerArgs = [
-                    "--rm",
-                    `--volume "pwd:/data"`,
-                    `--user $(id -u):$(id -g)`,
-                    "pandoc/core:3.1.1.0",
-                    ...pandocArgs,
-                ];
-                pandoc = exec(`docker run ${dockerArgs.join(" ")}`);
-            } else {
-                pandoc = exec(`pandoc ${pandocArgs.join(" ")}`);
+        console.log(
+            { args },
+            {
+                defaultLog: true,
+                title: "Running pandoc",
             }
-            pandoc.stdout.on("data", (data) => {
-                console.log(data);
-            });
-            pandoc.stderr.on("data", (data) => {
-                console.error(data);
-            });
-            pandoc.on("close", (code) => {
-                console.log(`child process exited with code ${code}`);
+        );
+
+        const pubPath = path.resolve(paths.publications, publication);
+
+        const pubGenJson = JSON.parse(
+            fs.readFileSync(path.resolve(pubPath, "pub-gen.json"))
+        );
+
+        const pandocs = pubGenJson.publications.map((publication) => {
+            const name = kebabCase(publication.title);
+
+            let files = [];
+            try {
+                files = readContents({
+                    dirPath: path.resolve(
+                        pubPath,
+                        "dist",
+                        publication.language
+                    ),
+                    extensions: "md",
+                    names: true,
+                });
+            } catch (error) {
+                console.log(
+                    'No files found at dist folder! Try running command "build" first.',
+                    { type: "error" }
+                );
+                return error;
+            }
+
+            const docTitle = title
+                ? kebabCase(title)
+                : `${publication.language}-${name}`;
+
+            ext = ext ?? "docx";
+
+            const outputDir =
+                output ??
+                path.resolve(
+                    pubPath,
+                    "files",
+                    "generated",
+                    packageJson.version
+                );
+
+            if (!fs.existsSync(outputDir))
+                fs.mkdirSync(outputDir, { recursive: true });
+
+            const outputFile = path.resolve(outputDir, `${docTitle}.${ext}`);
+
+            if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
+
+            const pandocArgs = [
+                "--from=markdown+grid_tables+rebase_relative_paths",
+                `--to=${ext}`,
+                `-F mermaid-filter.cmd`,
+                `--output=${outputFile}`,
+                `--reference-doc="${path.resolve(
+                    paths.pubGen,
+                    "template",
+                    "docx",
+                    "abnt.docx"
+                )}"`,
+                ...Object.values(files).map((file) => file),
+            ];
+
+            const isPandocInstalled = exec("pandoc --version");
+
+            isPandocInstalled.on("close", (code) => {
+                let pandoc;
+                if (code !== 0) {
+                    const dockerArgs = [
+                        "--rm",
+                        `--volume "pwd:/data"`,
+                        `--user $(id -u):$(id -g)`,
+                        "pandoc/core:3.1.1.0",
+                        ...pandocArgs,
+                    ];
+                    pandoc = exec(`docker run ${dockerArgs.join(" ")}`);
+                } else {
+                    pandoc = exec(`pandoc ${pandocArgs.join(" ")}`);
+                }
+                pandoc.stdout.on("data", (data) => {
+                    console.log(data, {
+                        defaultLog: true,
+                    });
+                });
+                pandoc.stderr.on("data", (data) => {
+                    console.log(data, {
+                        defaultLog: true,
+                        type: "error",
+                        title: "Error",
+                    });
+                });
+                pandoc.on("close", (code) => {
+                    let type = "success";
+                    if (code !== 0) type = "error";
+                    console.log(`child process exited with code ${code}`, {
+                        type,
+                    });
+                });
             });
         });
-    });
+    } catch (error) {
+        console.log({ error }, { defaultLog: true, type: "error" });
+    }
 };
