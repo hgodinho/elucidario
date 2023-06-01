@@ -11,8 +11,8 @@ export type GetPathsReturn = {
         packages: [string, string][];
         apps: [string, string][];
         publications: [string, string][];
-    }
-}
+    };
+};
 
 export interface BuildOptions {
     package: PackageProps;
@@ -27,4 +27,16 @@ export interface BuildCallbackProps {
 export interface FNCallbackProps {
     event: string;
     filename?: string;
+}
+
+export type ReadContentsReturn = { [key: string]: string | any };
+
+export interface ReadContentsProps {
+    dirPath: string;
+    index?: boolean;
+    extensions?: string[];
+    returnType?: "path" | "content";
+    exclude?: string[];
+    log?: boolean;
+    package?: PackageProps;
 }
