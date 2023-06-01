@@ -11,72 +11,127 @@ import { engine } from "./reference/csl-engine.js";
 
 const paths = getPaths();
 
-const buildDocs = async ({
-    distPath,
-    lang,
-    style,
-    publication,
-    console,
-    version,
-}) => {
-    fs.existsSync(distPath) || fs.mkdirSync(distPath);
-
-    const contentPath = path.resolve(
+/**
+ * Write Image
+ * @param {Object} args
+ * @param {string} args.srcPath
+ * @param {string} args.publication
+ * @param {string} args.lang
+ * @param {Console} args.console
+ */
+const writeImage = async ({ srcPath, publication, lang, console }) => {
+    const imagePath = path.parse(srcPath);
+    const distPath = path.resolve(
         paths.publications,
         publication,
-        "content",
-        lang
+        "dist",
+        lang,
+        imagePath.base
     );
+    fs.copyFileSync(srcPath, distPath);
+    console.log(
+        {
+            type: "img",
+            when: new Date().toLocaleString(),
+        },
+        {
+            defaultLog: true,
+            title: `Image ${imagePath.base} copied!`,
+            type: "success",
+        }
+    );
+};
 
-    const mdContent = readContents({
-        dirPath: contentPath,
-        extensions: "md",
-        log: false,
-    });
-
+/**
+ * Write Images
+ * @param {Object} args
+ * @param {string} args.srcPath
+ * @param {string} args.publication
+ * @param {string} args.lang
+ * @param {Console} args.console
+ * @returns {Promise<Array<Object>>}
+ */
+const writeImages = async ({ srcPath, publication, lang, console }) => {
     const imageContent = readContents({
-        dirPath: contentPath,
+        dirPath: srcPath,
         index: false,
+        returnType: "path",
         extensions: ["png", "jpg", "jpeg", "gif"],
         names: true,
         log: false,
     });
 
-    fs.existsSync(path.resolve(distPath, lang)) ||
-        fs.mkdirSync(path.resolve(distPath, lang));
+    try {
+        return await Promise.all(
+            Object.entries(imageContent).map(async ([name, Path]) => {
+                if (typeof Path === "object") {
+                    return await Promise.all(
+                        Object.entries(Path).map(async ([key, imgPath]) => {
+                            return {
+                                [key]: await writeImage({
+                                    srcPath: imgPath,
+                                    publication,
+                                    lang,
+                                    console,
+                                }),
+                            };
+                        })
+                    );
+                }
 
-    if (fs.existsSync(path.resolve(contentPath, "index.json"))) {
-        const index = JSON.parse(
-            fs.readFileSync(path.resolve(contentPath, "index.json"))
-        );
-
-        if (!index.files.includes("references")) index.files.push("references");
-
-        fs.writeFileSync(
-            path.resolve(distPath, lang, "index.json"),
-            JSON.stringify(index)
-        );
-    } else {
-        fs.writeFileSync(
-            path.resolve(distPath, lang, "index.json"),
-            JSON.stringify({
-                files: [...Object.keys(mdContent), "references"],
+                return {
+                    [name]: await writeImage({
+                        srcPath: Path,
+                        publication,
+                        lang,
+                        console,
+                    }),
+                };
             })
         );
+    } catch (error) {
+        throw new Error(`error writing images at writeImages: ${error}`);
     }
+};
 
-    const log = {};
-
+/**
+ * Write Docs
+ * @param {Object} args
+ * @param {string} args.distPath
+ * @param {string} args.lang
+ * @param {string} args.style
+ * @param {string} args.publication
+ * @param {string} args.version
+ * @param {string} args.srcPath
+ * @param {string} args.distPath
+ * @returns {Promise<Array<Object>>}
+ */
+const writeDocs = async ({
+    publication,
+    lang,
+    style,
+    version,
+    srcPath,
+    distPath,
+}) => {
     // Cria documentação
-    try {
-        await Promise.all(
-            Object.entries(mdContent).map(async ([name, content]) => {
-                let srcPath = contentPath;
+    const mdContent = readContents({
+        dirPath: srcPath,
+        extensions: "md",
+        log: false,
+    });
 
+    // console.log(mdContent);
+
+    try {
+        return await Promise.all(
+            Object.entries(mdContent).map(async ([name, content]) => {
                 // If content is an object, it's a multi-file content, so we need to join it
+                let Path = path.resolve(srcPath);
+
                 if (typeof content === "object") {
                     content = Object.values(content).join("\n\n");
-                    srcPath = path.resolve(contentPath, name);
+                    Path = path.resolve(srcPath, name);
                 }
 
                 const newFile = await pubGenRemarkProcessor(content, {
@@ -84,7 +139,7 @@ const buildDocs = async ({
                         publication,
                         lang,
                         style,
-                        path: srcPath,
+                        path: Path,
                         distPath: path.resolve(
                             paths.publications,
                             publication,
@@ -98,51 +153,102 @@ const buildDocs = async ({
                     path.resolve(distPath, lang, `${name}.md`),
                     newFile.value
                 );
-                log[new Date().toLocaleString()] = {
+
+                return {
                     type: "md",
-                    name,
+                    when: new Date().toLocaleString(),
                 };
             })
         );
     } catch (error) {
-        console.log({ error }, { defaultLog: true, type: "error" });
-        throw error;
+        throw new Error(`error writing docs at writeDocs: ${error}`);
     }
-
-    // copia imagens
-    try {
-        await Promise.all(
-            Object.entries(imageContent).map(async ([name, imgPath]) => {
-                if (typeof imgPath === "object") {
-                    return;
-                }
-                const imagePath = path.parse(imgPath);
-                const srcPath = path.resolve(imgPath);
-                const distPath = path.resolve(
-                    paths.publications,
-                    publication,
-                    "dist",
-                    lang,
-                    imagePath.base
-                );
-                fs.copyFileSync(srcPath, distPath);
-                log[new Date().toLocaleString()] = {
-                    type: "img",
-                    name,
-                };
-            })
-        );
-    } catch (error) {
-        console.log({ error }, { defaultLog: true, type: "error" });
-        throw error;
-    }
-
-    console.log(log, {
-        defaultLog: true,
-        title: `Docs built using ${style} style!`,
-    });
 };
 
+/**
+ * Build Docs
+ * @param {Object} args
+ * @param {string} args.distPath
+ * @param {string} args.lang
+ * @param {string} args.style
+ * @param {string} args.publication
+ * @param {Console} args.console
+ * @param {string} args.version
+ */
+const buildDocs = async ({
+    distPath,
+    lang,
+    style,
+    publication,
+    console,
+    version,
+}) => {
+    const srcPath = path.resolve(
+        paths.publications,
+        publication,
+        "content",
+        lang
+    );
+
+    fs.existsSync(path.resolve(distPath, lang)) ||
+        fs.mkdirSync(path.resolve(distPath, lang), { recursive: true });
+
+    // se não houver um index.json no srcPath,
+    // cria um index.json com os nomes dos arquivos
+    // se houver, adiciona references ao index.json
+    if (fs.existsSync(path.resolve(srcPath, "index.json"))) {
+        const index = JSON.parse(
+            fs.readFileSync(path.resolve(srcPath, "index.json"))
+        );
+
+        if (!index.files.includes("references")) index.files.push("references");
+
+        index.files = index.files.map((file) => {
+            const filePath = path.parse(file);
+            if (filePath.ext === "") return `${file}.md`;
+            return file;
+        });
+
+        fs.writeFileSync(
+            path.resolve(distPath, lang, "index.json"),
+            JSON.stringify(index)
+        );
+    } else {
+        fs.writeFileSync(
+            path.resolve(distPath, lang, "index.json"),
+            JSON.stringify({
+                files: [
+                    fs.readdirSync(path.resolve(distPath, lang)),
+                    "references",
+                ],
+            })
+        );
+    }
+
+    // Cria documentação
+    const docs = await writeDocs({
+        srcPath,
+        publication,
+        lang,
+        style,
+        version,
+        distPath,
+    });
+
+    // copia imagens
+    const images = await writeImages({ publication, srcPath, lang, console });
+};
+
+/**
+ * Build References
+ * @param {Object} args
+ * @param {string} args.distPath
+ * @param {string} args.lang
+ * @param {string} args.style
+ * @param {string} args.publication
+ * @param {Console} args.console
+ * @param {string} args.version
+ */
 const buildReferences = async ({
     distPath,
     lang,
@@ -195,6 +301,12 @@ const buildReferences = async ({
     }
 };
 
+/**
+ * Build Publication
+ * @param {Object} args
+ * @param {string} args.publication
+ * @param {boolean} args.watch
+ */
 export const buildPublication = async (args) => {
     try {
         const { publication } = args;

@@ -54,14 +54,12 @@ export const convert = async (args) => {
                         "dist",
                         publication.language
                     ),
+                    returnType: "path",
                     extensions: "md",
                     names: true,
                 });
             } catch (error) {
-                console.log(
-                    'No files found at dist folder! Try running command "build" first.',
-                    { type: "error" }
-                );
+                console.log({ error }, { type: "error", defaultLog: true });
                 return error;
             }
 
