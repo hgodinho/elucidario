@@ -1,5 +1,6 @@
 {
-    "$schema": "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
+    "$schema": "https://elucidario.art/pub-gen/schemas/pub-gen-schema.json",
+    "name": "interseccoes-entre-linked-art-e-spectrum",
     "version": "1.0.0",
     "profile": "data-package",
     "id": "https://elucidario.art/publicacoes/interseccoes-entre-linked-art-e-spectrum",
@@ -10,8 +11,29 @@
     "homepage": "https://elucidario.art",
     "keywords": ["adicionar", "palavras", "chaves"],
     "image": "",
-    "languages": ["pt-br", "en"],
-    "licenses": [],
+    "publications": [
+        {
+            "title": "Intersecções entre Linked-art e SPECTRUM",
+            "language": "pt-br",
+            "style": {
+                "name": "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+                "url": "https://github.com/citation-style-language/styles/blob/6b7fdff8cb0fb45b342e8ac319634bf18168c73d/universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl"
+            }
+        },
+        {
+            "title": "Intersections between Linked-art and SPECTRUM",
+            "language": "en-us",
+            "style": {
+                "name": "apa.csl",
+                "url": "https://github.com/citation-style-language/styles/blob/6b7fdff8cb0fb45b342e8ac319634bf18168c73d/apa.csl"
+            }
+        }
+    ],
+    "licenses": [
+        {
+            "name": "owner"
+        }
+    ],
     "contributors": [
         {
             "title": "Henrique Godinho Lopes Costa",

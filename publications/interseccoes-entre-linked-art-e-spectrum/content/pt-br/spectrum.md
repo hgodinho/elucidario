@@ -61,4 +61,74 @@ Os procedimentos obrigatórios são:
 
     Procedimento para registrar o planejamento da documentação dos objetos musealizados.
 
+Os procedimentos não obrigatórios são:
+
+1. Uso das coleções
+
+    Procedimento para registrar como coleções e dados associados são utilizados pelo museu e por outros usuários.
+
+2. Verificação de condições e avaliação técnica
+
+    Procedimento para registrar a verificação de condições e avaliação técnica dos objetos musealizados.
+
+3. Cuidados e conservação de coleções
+
+    Procedimento para registrar os cuidados e conservação dos objetos musealizados.
+
+4. Valoração
+
+    Procedimento para registrar a valoração dos objetos musealizados.
+
+5. Seguro e indenização
+
+    Procedimento para registrar o seguro e indenização dos objetos musealizados.
+
+6. Plano de emergência para coleções
+
+    Procedimento para registrar o plano de emergência para coleções do museu.
+
+7. Danos e perdas
+
+    Procedimento para registrar os danos e perdas dos objetos musealizados.
+
+8. Desacessão e alienação
+
+    Procedimento para registrar a desacessão e alienação dos objetos musealizados.
+
+9. Gestão de direitos
+
+    Procedimento para registrar a gestão de direitos dos objetos musealizados.
+
+10. Reprodução
+
+    Procedimento para registrar a reprodução dos objetos musealizados.
+
+11. Revisão da coleção
+
+    Procedimento para registrar a revisão da coleção do museu.
+
+12. Auditoria
+
+    Procedimento para registrar a auditoria da coleção do museu.
+
+## Unidades de informação
+
+Além dos procedimentos, o Spectrum apresenta um conjunto de unidades de informação, ou metadados, para descrever os objetos, procedimentos e atividades realizadas pelo museu. As unidades de informação são divididas em três grupos que contêm metadados relacionados: grupo de informações sobre objeto (Object information groups), grupo de informações sobre procedimento (Procedure information groups) e grupo de informações sobre gestão (Record management information groups) [@collections-trust2017.2].
+
+As unidades de informação são apresentadas com uma página para cada metadado contendo a definição, como registrar, exemplos, uso e a qual grupo pertence. Embora algumas unidades de informação oferecem uma hierarquia para atribuir maior contexto, como no caso do _Object name_, as informação podem ser facilmente representadas de forma tabular, como no exemplo a seguir.
+
+Hierarquia das unidades de informações "Object name" [@collections-trust2017.3]:
+
+- Object name
+  - Object name currency
+  - Object name level
+  - Object name note
+  - Object name system
+  - Object name type
+  - Object name/title language
+
+{{table:spectrum-object-name.json}}
+
+---
+
 [^1]: [@bevilacqua2014]

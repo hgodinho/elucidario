@@ -29,6 +29,91 @@
             "id": "collections-trust2021",
             "slug": "rethinking-cataloguing",
             "path": "<references>/collections-trust2021_rethinking-cataloguing.json"
+        },
+        {
+            "id": "linked-art2021.1",
+            "slug": "linked-art",
+            "path": "<references>/linked-art2021.1_linked-art.json"
+        },
+        {
+            "id": "linked-art2021.2",
+            "slug": "community-linked-art",
+            "path": "<references>/linked-art2021.2_community-linked-art.json"
+        },
+        {
+            "id": "sanderson2018",
+            "slug": "shout-it-loud-loud",
+            "path": "<references>/sanderson2018_shout-it-loud-loud.json"
+        },
+        {
+            "id": "linked-art2021.3",
+            "slug": "linked-art-profile-of-cidoc-crm",
+            "path": "<references>/linked-art2021.3_linked-art-profile-of-cidoc-crm.json"
+        },
+        {
+            "id": "linked-art2021.4",
+            "slug": "api-linked-art",
+            "path": "<references>/linked-art2021.4_api-linked-art.json"
+        },
+        {
+            "id": "linked-art2021.5",
+            "slug": "linked-art-api-endpoints",
+            "path": "<references>/linked-art2021.5_linked-art-api-endpoints.json"
+        },
+        {
+            "id": "w-3-c-json-ld-working-group2014",
+            "slug": "json-for-linking-data",
+            "path": "<references>/w-3-c-json-ld-working-group2014_json-for-linking-data.json"
+        },
+        {
+            "id": "mdn-web-docs2023",
+            "slug": "working-with-json",
+            "path": "<references>/mdn-web-docs2023_working-with-json.json"
+        },
+        {
+            "id": "sporny2012",
+            "slug": "what-is-json-ld",
+            "path": "<references>/sporny2012_what-is-json-ld.json"
+        },
+        {
+            "id": "json-ld-working-group2020",
+            "slug": "json-ld-1-1-a-json-based-serialization-for-linked-data",
+            "path": "<references>/json-ld-working-group2020_json-ld-1-1-a-json-based-serialization-for-linked-data.json"
+        },
+        {
+            "id": "collections-trust2017.2",
+            "slug": "appendix-information-requirements-spectrum",
+            "path": "<references>/collections-trust2017.2_appendix-information-requirements-spectrum.json"
+        },
+        {
+            "id": "collections-trust2017.3",
+            "slug": "object-name-spectrum",
+            "path": "<references>/collections-trust2017.3_object-name-spectrum.json"
+        },
+        {
+            "id": "fielding2000",
+            "slug": "representational-state-transfer-rest",
+            "path": "<references>/fielding2000_representational-state-transfer-rest.json"
+        },
+        {
+            "id": "droettboom2020",
+            "slug": "understanding-json-schema",
+            "path": "<references>/droettboom2020_understanding-json-schema.json"
+        },
+        {
+            "id": "sanderson2021",
+            "slug": "object-json",
+            "path": "<references>/sanderson2021_object-json.json"
+        },
+        {
+            "id": "collections-trust2017.4",
+            "slug": "object-identification-information-spectrum-5-1",
+            "path": "<references>/collections-trust2017.4_object-identification-information-spectrum-5-1.json"
+        },
+        {
+            "id": "collections-trust2017.5",
+            "slug": "person-information",
+            "path": "<references>/collections-trust2017.5_person-information.json"
         }
     ]
 }
