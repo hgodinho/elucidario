@@ -1,0 +1,41 @@
+{
+    "title": "Tabela X: Descrição a tabela MySQL _wp_lcdr_ do sistema",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Key"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Key", "Descrição"],
+        [
+            "id",
+            "bigint(20)",
+            "auto_increment",
+            "PRI",
+            "Identificador único do registro"
+        ],
+        ["name", "varchar(64)", "", "UNI", "Nome da configuração"],
+        ["value", "longtext", "", "", "Valor da configuração"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

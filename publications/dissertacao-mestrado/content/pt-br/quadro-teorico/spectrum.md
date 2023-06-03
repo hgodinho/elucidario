@@ -1,4 +1,4 @@
-### 4.1.1.4 - *Standard Procedures for Collections Recording Used in Museums* (SPECTRUM)
+### 4.3.2 - *Standard Procedures for Collections Recording Used in Museums* (SPECTRUM)
 
 O Spectrum é um padrão para gestão de coleções museológicas criado no Reino Unido por Alice Grant e publicada inicialmente em 1994 pela *Museum Documentation Association* (MDA), em 2005 passa a ser editada por Gordon McKenna (3ª Edição) [@matos2014]. O Spectrum é utilizado por todos os museus acreditados pela *Collections Trust* [@collections-trust2022.1] no Reino Unido e diversos outros ao redor do mundo, e define 21 procedimentos para gestão de coleções museológicas e unidades de informações utilizadas nos procedimentos.
 

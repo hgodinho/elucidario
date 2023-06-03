@@ -1,0 +1,35 @@
+{
+    "title": "Tabela X: Propriedades de _Identifiers_",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        ["type", "requerido", "DEVE ser _Identifier_"],
+        ["_label", "recomendado", ""],
+        ["content", "requerido", "O conteúdo _string_ do identificador"],
+        ["classified_as", "recomendado", ""],
+        ["referred_to_by", "opcional", ""],
+        [
+            "assigned_by",
+            "opcional",
+            "Um _array_ de objetos JSON, cada um dos quais DEVEM seguir os requisitos para _Identifier Assignments_"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Tradução de _Properties of Identifiers Assignments_ do Linked Art [@linked-art2021.9]"
+    }
+}

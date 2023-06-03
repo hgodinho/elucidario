@@ -14,15 +14,14 @@ Ainda sobre a interdisciplinaridade da informação, Capurro e Hjorland (2007) u
 
 Saracevic (1996) afirma que entre pioneiros da CI “havia engenheiros, bibliotecários, químicos, linguistas, filósofos, psicólogos, matemáticos, cientistas da computação, homens de negócios e outros vindos de diferentes profissões ou ciências" (SARACEVIC, jan./jul. 1996), mas cita quatro campos que desenvolveram uma relação com a informação mais contundente: biblioteconomia, ciência da computação, ciência cognitiva e comunicação. Em relação a biblioteconomia, Saracevic (1996) esclarece que o ponto central de conexão entre as áreas seria justamente o “papel social e sua preocupação comum com os problemas da efetiva utilização dos registros gráficos” (SARACEVIC, jan./jul. 1996) e expõe cinco diferenças entre as áreas que garantem sua separação como áreas independentes de estudo:
 
-> (1) seleção dos problemas propostos e a forma de sua definição; (2) questões teóricas apresentadas e os modelos explicativos introduzidos; (3) natureza e grau de experimentação e desenvolvimento empírico, assim como o conhecimento prático/competências derivadas; (4) instrumentos e enfoques usados; e (5) a natureza e a força das relações interdisciplinares estabelecidas e sua dependência para o avanço e evolução dos enfoques interdisciplinares. (SARACEVIC, jan./jul. 1996).
+> 1 seleção dos problemas propostos e a forma de sua definição; 2 questões teóricas apresentadas e os modelos explicativos introduzidos; 3 natureza e grau de experimentação e desenvolvimento empírico, assim como o conhecimento prático/competências derivadas; 4 instrumentos e enfoques usados; e 5 a natureza e a força das relações interdisciplinares estabelecidas e sua dependência para o avanço e evolução dos enfoques interdisciplinares. (SARACEVIC, jan./jul. 1996).
 
 Em relação à Ciência da Computação, Saracevic esclarece que a base comum com a CI “reside na aplicação dos computadores e da computação na recuperação da informação, assim como nos produtos, serviços e redes associados” (SARACEVIC, jan./jul. 1996). Já em relação à Ciência Cognitiva, que é a ciência que estuda os processos cognitivos, o conhecimento e a inteligência, uma relação forte com a CI fica a cargo da Inteligência Artificial (IA) que pode ser definida:
 
-> -   como um ramo da engenharia de software IA é um conjunto de técnicas de programação que fazem o computador executar alguns truques… Certamente algumas pessoas estão começando a ganhar rios de dinheiro com estes truques.
-> -   como uma teoria da ciência da computação, … IA é uma concepção ímpar do que seja programação…
-> -   como um ramo da filosofia, IA é um tipo de epistemologia experimental: o que é o conhecimento? como pode o conhecimento ser representado no computador - ou na mente?
-> -   como uma ciência da mente, IA uma ideia controversa e instigante: que a mente … É basicamente um mecanismo processador de informações ... Em seu nível mais profundo, IA liga-se a um dos grandes mistérios não resolvidos da ciência: como pode a mente surgir de uma não-mente? Como pode o cérebro, um objeto feito de matéria comum…
->     (WALDROP, 1987 apud SARACEVIC, 1996, p.52).
+> como um ramo da engenharia de software IA é um conjunto de técnicas de programação que fazem o computador executar alguns truques… Certamente algumas pessoas estão começando a ganhar rios de dinheiro com estes truques.
+> como uma teoria da ciência da computação, … IA é uma concepção ímpar do que seja programação…
+> como um ramo da filosofia, IA é um tipo de epistemologia experimental: o que é o conhecimento? como pode o conhecimento ser representado no computador - ou na mente?
+> como uma ciência da mente, IA uma ideia controversa e instigante: que a mente … É basicamente um mecanismo processador de informações ... Em seu nível mais profundo, IA liga-se a um dos grandes mistérios não resolvidos da ciência: como pode a mente surgir de uma não-mente? Como pode o cérebro, um objeto feito de matéria comum… (WALDROP, 1987 apud SARACEVIC, 1996, p.52).
 
 Tanto os dois primeiros pontos, ou IA fraca que pode ser fonte de inovações em sistemas de informação, quanto os dois últimos, ou IA forte, que é o modelo teórico da cognição, tem interesse direto para a CI (SARACEVIC, 1996, p.50). Por último, a relação com a Comunicação reside na informação como fenômeno e a comunicação como processo, além de outras dimensões como: “interesse compartilhado na comunicação humana (...); confluências de certas correntes de pesquisa; algumas permutas entre professores; e o potencial de cooperação da prática profissional e dos interesses comerciais/empíricos.” (SARACEVIC, jan./jul. 1996).
 
@@ -46,7 +45,7 @@ Capurro esclarece que o paradigma cognitivo surge na necessidade do usuários bu
 
 O paradigma social é colocado por Frohmann como uma crítica ao paradigma cognitivo, que é visto como reducionista, pois é considerado não só como idealista, mas também como associal” (CAPURRO, 2003). Capurro (2003) traz a tona o paradigma social-epistemológico desenvolvido por Hjorland e Albrechtsen, chamado de ““domain analysis” no qual o estudo de campos cognitivos está em relação direta com comunidades discursivas, ou seja, com distintos grupos sociais e de trabalho que constituem uma sociedade moderna” (CAPURRO, 2003). O objeto de estudo da CI são as relações entre os discursos, áreas de conhecimento e documentos com distintas comunidades de usuários (HJORLAND 2003, apud CAPURRO, 2003), o que significa uma integração da perspectiva individualista do paradigma cognitivo dentro do contexto social.
 
-# 4.1 A Informação Museológica
+## 4.2 A Informação Museológica
 
 > Why do centers of research assemble many sorts of collections of objects if they do not expect students and researchers to learn something from them? (BUCKLAND. Michael K. Information as Thing. Journal of the American Society for Information Science (1986-1998). Jun 1991, 42, 5.)
 
@@ -66,7 +65,7 @@ Já a atual definição de museus, adotada em 24 de agosto de 2022 durante a Con
 
 Nas duas definições podemos perceber que a informação museológica, mesmo que não citada diretamente, se faz presente em verbos como conserva, investiga, comunica, expõe, interpreta, coleciona, pesquisa, e também em substantivos como patrimônio material e imaterial, sociedade e comunidade. A informação museológica é o que permite que o museu cumpra sua função social, e é por meio da informação museológica que o museu se comunica com a sociedade.
 
-# Documentação museológica
+## 4.3 Documentação museológica
 
 > O documento é suporte que evidencia algo a alguém e que, ao passar por um processo técnico específico, manifesta seu potencial informativo. Ele é o meio que nos traz a informação e, assim, permite que o indivíduo produza conhecimentos diversos. (PADILHA, 2014)
 
@@ -80,11 +79,9 @@ Já no decreto nº 8.124 de 17 de outubro de 2013 assinado pela então president
 
 Ainda, como esclarecido por (PADILHA, 2014), a documentação museológica pode ser de dois vieses: documentação do objeto e a documentação das práticas administrativas. "O primeiro trata da compilação dos dados e do tratamento informacional extraídos de cada objeto adquirido pelo museu, enquanto que o segundo considera toda a documentação produzida pela instituição para legitimar suas práticas desenvolvidas" (PADILHA, 2014). Seguimos aqui o primeiro viés, o da documentação do objeto.
 
-## Documentação do objeto
+### 4.3.1 Documentação do objeto
 
--   [ ] todo
-
-### 4.1.1.4 - _Standard Procedures for Collections Recording Used in Museums_ (SPECTRUM)
+### 4.3.2 - _Standard Procedures for Collections Recording Used in Museums_ (SPECTRUM)
 
 O Spectrum é um padrão para gestão de coleções museológicas criado no Reino Unido por Alice Grant e publicada inicialmente em 1994 pela _Museum Documentation Association_ (MDA), em 2005 passa a ser editada por Gordon McKenna (3ª Edição) (MATOS, 2014). O Spectrum é utilizado por todos os museus acreditados pela _Collections Trust_ (COLLECTIONS TRUST, 2022) no Reino Unido e diversos outros ao redor do mundo, e define 21 procedimentos para gestão de coleções museológicas e unidades de informações utilizadas nos procedimentos.
 
@@ -225,20 +222,17 @@ Hierarquia das unidades de informações "Object name" (COLLECTIONS TRUST, 2017)
 
 [^1]: (BEVILACQUA, 2014)
 
-## 4.1.1. Metadados de representação e descrição de itens museológicos
+## 4.4. Metadados de representação e descrição de itens museológicos
 
 Neste capítulo analisaremos os padrões de metadados desenvolvidos por Silva (2020) em sua tese de doutorado: Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta, Object ID (1997) desenvolvido pelo Getty Information Institute e o Linked Art (2021), padrão de metadados desenvolvido pelo Grupo de Trabalho do CIDOC-ICOM Linked Art, formado por Robert Sanderson, Athanasios Velios e Emmanuelle Delmas-Glass. Analisaremos também os procedimentos de gestão de coleções Standard Procedures for Collections Recording Used in Museums - SPECTRUM (2007), mantido pelo Collections Trust, organização sediada no Reino Unido com foco na criação de padrões internacionais de documentação museológica. A partir da análise dos padrões, iremos propor o conjunto de metadados básico para gestão e divulgação de coleções que usaremos no Elucidário.art.
 
-### 4.1.1.1 - Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta. (SILVA, 2020)
+### 4.4.1 - Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta. (SILVA, 2020)
 
 Silva (2020), para o desenvolvimento de seu esquema de metadados, utiliza como referência os conjunto de metadados do _Categories for the Description of Works of Art_ (CDWA) mantido pelo _Getty Vocabulary Program_ (GVP), nas Categorias de Informação do Comitê Internacional de Documentação (CIDOC-ICOM) e nos grupos de informações da norma SPECTRUM. A partir daí, Silva apresenta 9 grupos de informações e 25 unidades de informação para descrição e representação de obras de arte, considerados mínimos pela autora, para os museus brasileiros. Na fig.1, representação em _Unified Modeling Language_ (UML) do esquema, vemos os 9 grupos de informações na linha central e no OBJETO localizado acima de todos—e por onde todos os outros grupos de informações convergem—, os dois elementos de baixo são as subunidades de informação da unidade de informação CRIAÇÃO, os grupos de informações listados no centro são: CLASSIFICACAO, TITULO, MEDIDA, CRIACAO, MATERIAL_TECNICA, LOCALIZACAO, ASSUNTO E REFERENCIA. Cada grupo de informação possui um conjunto de unidades de informações, à esquerda de cada grupo está listado o tipo de informação da unidade: string para texto, number para números, e array para listas. As conexões com dois traços cruzados ( || ) são referentes a presença obrigatória de ao menos um registro, as com um traço e uma chave ( |{ ) representam uma ou mais entradas.
 
----
-
 **Fig.1 - Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta. (SILVA, 2020)**
 
-```mermaid
-
+```{.mermaid filename="silva2020-modelo" loc="C:\Users\55119\Elucidário.art\elucidario\publications\dissertacao-mestrado\files\generated\0.3.0" width=1920 background=transparent}
 erDiagram
     OBJETO ||--|{ CLASSIFICACAO : ""
     OBJETO ||--|{ TITULO : ""
@@ -309,9 +303,7 @@ erDiagram
 
 **Fonte:** Elaborado pelo autor, com base em SILVA, Camila (2020).
 
----
-
-### 4.1.1.2 - Object ID (1997)
+### 4.4.2 - Object ID (1997)
 
 O Object ID é um padrão de documentação para descrever coleções de itens arqueológicos, culturais e artísticos (OBJECT ID, 1997). Foi criado com o objetivo de identificar o patrimônio cultural para evitar roubos e contrabandos e, por isso, é promovido por diversas agências governamentais como FBI, _Scotland Yard_, _Interpol_, e organizações como _World Customs Organization_ (WCO) e _The United Nations Educational, Scientific and Cultural Organization_ (UNESCO) (CONSELHO INTERNACIONAL DE MUSEUS, 1999).
 
@@ -336,9 +328,9 @@ Os quatro passos do Object ID para a documentação são:
 
 Na reunião do Grupo de Trabalho - DocumentandO Museu IberoamericaNO (DOMINO) do CIDOC-ICOM realizada no dia 22 de maio de 2022 (DOMINO, 2022), como parte das atividades da Conferência CIDOC Tallinn 2021, foi defendido pelos integrantes que o Object ID seja o padrão mínimo adotado por um museu para sua documentação, devido a sua simplicidade e reconhecimento por autoridades mundiais. O DOMINO tem como objetivo disseminar o trabalho do CIDOC para as comunidades dos idiomas português e espanhol, e servir como uma ponte linguística para troca de conhecimento especializado (INTERNATIONAL COMMITTEE FOR DOCUMENTATION, 2018).
 
-### 4.1.1.3 Linked Art (2019)
+### 4.4.3. Linked Art (2019)
 
-Linked Art é uma comunidade formada por representantes de instituições ao redor do mundo como The Canadian Heritage Information Network (CHIN), J. Paul Getty Trust, The Frick Collection, Europeana, Louvre, Rijksmuseum, The Victoria and Albert Museum, entre outras, com o objeto de criar um modelo compartilhado baseado em _Linked Open Data_ para descrever Arte (LINKED ART, 2021a, 2021b). O projeto é coordenado por um quadro editorial em que Robert Sanderson (Yale University) e Emmanuelle Delmas-Glass (Yale Center for British Art) compartilham o posto de co-presidentes.
+Linked Art é uma comunidade formada por representantes de instituições ao redor do mundo como The Canadian Heritage Information Network (CHIN), J. Paul Getty Trust, The Frick Collection, Europeana, Louvre, Rijksmuseum, The Victoria and Albert Museum, entre outras, com o objetivo de criar um modelo compartilhado baseado em _Linked Open Data_ para descrever Arte (LINKED ART, 2021a, 2021b). O projeto é coordenado por um quadro editorial em que Robert Sanderson (Yale University) e Emmanuelle Delmas-Glass (Yale Center for British Art) compartilham o posto de co-presidentes.
 
 A comunidade Linked Art parte do conceito da usabilidade para a audiência correta, em que o maior público interessado em "dados" seriam os desenvolvedores que poderiam criar interfaces para o público final, desdobrando esta ideia em cinco princípios de design, temos:
 
@@ -352,21 +344,7 @@ O modelo Linked Art tem como foco principal a descrição de recursos do patrim�
 
 O Linked Art está sob desenvolvimento ativo e a versão atual é a 0.8.0 e é considerada instável, passível de mudanças. A versão 1.0.0 estava prevista para o final de 2021, mas foi atrasada por conta da pandemia de COVID-19 (LINKED ART, 2021).
 
-O modelo apresenta 11 classes, ou entidades, sendo elas (LINKED ART, 2021):
-
-1.  **Concept** - tipos, materiais, idiomas, entre outros que sejam registros completos, ao contrário de referências externas;
-2.  **Digital Object** - imagens, vídeos, áudios, documentos, ou outros recursos digitais;
-3.  **Event** - eventos e atividades não específicas que estão relacionadas, mas não são parte de outra entidade;
-4.  **Groups** - grupos de pessoas, organizações, ou outras entidades;
-5.  **People** - pessoas;
-6.  **Physical Object** - objetos físicos, incluindo obras de arte, artefatos, edifícios, partes de objetos, entre outros;
-7.  **Place** - locais;
-8.  **Provenance Activity** - atividades de proveniência;
-9.  **Sets** - conjuntos de entidades;
-10. **Textual Work** - obras textuais que merecem descrição como entidades únicas, como conteúdo de livro ou artigos, entre outros; e
-11. **Visual Work** - conteúdo imagético que merece descrição como entidades únicas, como a imagem exibida em uma pintura ou desenho, entre outros.
-
-#### JSON para conectar dados: JSON-LD
+#### 4.4.3.1. JSON para conectar dados: JSON-LD
 
 _JavaScript Object Notation_ (JSON) é um formato aberto de arquivo para intercâmbio de informações (W3C JSON-LD WORKING GROUP, 2014). Consiste em arquivos de fácil leitura por humanos e máquinas com a extensão .json. Mesmo que tenha se originado na sintaxe de objetos JavaScript, por isso seu nome, pode ser utilizado por diversos ambientes e linguagens de programação diferentes devido sua sintaxe simples (MDN WEB DOCS, 2023).
 
@@ -420,57 +398,133 @@ Parece mais complexo que o exemplo anterior, e de fato é, mas agora temos um ar
 
 O JSON-LD fornece uma maneira de os dados JSON serem interoperáveis na escala da Web (JSON-LD WORKING GROUP, 2020). E, tem como principal intenção “ser uma maneira de usar Linked Data em ambientes de programação baseados na Web, para construir serviços Web interoperáveis e para armazenar Linked Data em mecanismos de armazenamento baseados em JSON” (JSON-LD WORKING GROUP, 2020), ou seja, é o formato ideal para serviços REST.
 
-# 4.2. A Casa Museu Ema Klabin
+#### 4.4.3.2. API Linked Art
 
-A Casa Museu Ema Klabin é uma casa museu de colecionador localizada na Rua Portugal, 43 do bairro Jardim Europa em São Paulo, SP.
+A API do Linked Art é baseada em REST, e utiliza o JSON-LD como formato de dados. A API também apresenta os schemas de validação dos dados definidos no formato JSON Schema (DROETTBOOM, 2020).
 
-Fig. 1. Fachada da Casa Museu Ema Klabin vista do Jardim. Foto de F. Pepe Guimarães. 28 de maio de 2019.
+A API é dividida em duas partes: _Shared Constructs_ e _Entity Endpoints_. Mas como existem propriedades que se repetem pelas _Shared Constructs_ e _Entity Endpoints_, separamos as propriedades em uma tabela única para facilitar a visualização.
 
-Ema Klabin (1907 - 1994) foi uma mecenas e colecionadora de arte, filha de Hessel Klabin, um dos sócios-fundadores da empresa hoje conhecida como Klabin S.A., de papel e celulose. Em 1946, antes de seu falecimento, Hessel doou todos seus bens para as duas filhas (Ema e Eva Klabin), inclusive sua parte da empresa (COSTA, 2007). Paulo de Freitas Costa, curador da Casa Museu Ema Klabin, descreve Ema em seu livro "Sinfonia de Objetos" (COSTA, 2007) como uma "grande apreciadora de música e de arte, leitora voraz e frequentadora assídua de concertos e apresentações de teatro, ópera e balé, bem como de exposições em museus e galerias", Paulo também menciona a atuação ativa de Ema no setor cultural paulistano:
+##### 4.4.3.2.1. Propriedades
 
-> Participou dos conselhos da Fundação Bienal de São Paulo, do Museu de Arte de São Paulo Assis Chateaubriand—MASP— e do Museu de Arte Moderna de São Paulo, e colaborou na criação do Museu Lasar Segall e da Fundação Magda Tagliaferro, entre outros. Foi sócia da Sociedade de Cultura Artística, da Orquestra Filarmônica de São Paulo e da Sociedade dos Cem Bibliófilos do Brasil, criada por Raymundo Ottoni de Castro Maya. (COSTA, 2007)
+As propriedades do Linked Art são dados de diferentes tipos, como _strings_, _numbers_, _arrays_, _json objects_, _datetime_, entre outras. A tabela a seguir apresenta as propriedades do Linked Art, com seus tipos e descrições (LINKED ART, 2021):
 
-A Coleção Ema Klabin é formada por mais de 1700 itens e "contém exemplares das mais variadas procedências e técnicas, e seu denominador comum —seu fio condutor— é o período de vida de Ema Klabin e o julgamento estético e histórico que norteou suas escolhas" (COSTA, 2007). Uma das grandes características da coleção é justamente sua heterogeneidade, sendo composta por pinturas, gravuras, esculturas, artes decorativas, arte-sacra, roupas, e outros. Os itens são de diversos períodos e culturas e abrangem um arco histórico de 35 séculos (COSTA, 2021). Ema adquiriu a primeira peça da coleção "Ariadne" de Jean Baptiste Greuze em 1948, e as outras aquisições aconteceram ao longo de sua vida. Costa (2007) define quatro movimentos da coleção de Ema:
+**Tabela X: Propriedades comuns do Linked Art**
 
-## Primeiro movimento: A tradição Européia
+| Nome           | Tipo de dado | Descrição                                                                                                                                                                       |
+| -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id             | string       | Se presente, DEVE ser uma URI que o _Shared Construct_ ou _Entity Endpoint_                                                                                                     |
+| type           | string       | O nome da classe                                                                                                                                                                |
+| \_label        | string       | Um rótulo legível por humanos para a dimensão                                                                                                                                   |
+| classified_as  | array        | Uma ou mais classificações do recurso e DEVE seguir os requisitos para _Type_                                                                                                   |
+| identified_by  | array        | Uma ou mais identificadores do recurso e DEVE seguir os requisitos para _Name_ ou _Identifier_                                                                                  |
+| referred_to_by | array        | Uma ou mais referências a um _TextualWork_ que referencia o recurso, ou uma declaração incorporada sobre o recurso, e DEVE seguir os requisitos para _Reference_ ou _Statement_ |
+| representation | array        | Uma ou mais referências a um _VisualWork_ que retrata o recurso                                                                                                                 |
+| member_of      | array        | Uma ou mais referências a um _Set_ que este recurso é um membro                                                                                                                 |
+| equivalent     | array        | Uma ou mais referências a uma entidade externa, como vocabulários controlados ou sistemas                                                                                       |
+| took_place_at  | array        | Uma ou mais referências a um _Place_ que o evento ocorreu                                                                                                                       |
+| caused_by      | array        | Uma ou mais referências a um _Event_ que causou este evento                                                                                                                     |
+| carried_out_by | array        | Uma ou mais referências a uma _Peson_ ou _Group_ que realizou esta atividade                                                                                                    |
+| technique      | array        | Uma ou mais referências a um _Concept_ que define a técnica usada na atividade                                                                                                  |
 
-Seguindo o processo de formação de muitas coleções ao redor do mundo, marchands aproveitaram o momento que a Europa estava se recuperando dos danos pós-guerra para negociar obras para o Novo Mundo, entre eles destaca-se Pietro Maria Bardi, que desembarca no Brasil em 1946 e influencia a formação de diversas coleções privadas no Brasil como a de Ema Klabin e do Museu de Arte de São Paulo (MASP).
+**Fonte**: Elaborado pelo autor. Tradução das propriedades do Linked Art [@linked-art2021.1]
 
-### Contraponto Oriental
+##### 4.4.3.2.2. _Shared Constructs_
 
-"Ainda dentro da tradição européia, mas em contraponto à cultura ocidental, está o conjunto de peças orientais reunidas por Ema Klabin" (COSTA, 2007). Este movimento da coleção ainda pode ser subdividido pela intenção pela qual foram colecionados em três conjuntos: "objetos decorativos feitos no oriente para o mercado europeu, os souvenirs de viagem e as peças arqueológicas";
+_Shared Constructs_ são estruturas de dados definidas no Linked Art que são utilizadas por mais de um endpoint. São elas (LINKED ART, 2021):
 
-## Segundo movimento: Raízes brasileiras
+-   _Dimensions_ - dimensões de um recurso físico ou digital, com uma unidade e um tipo de dimensão;
+    Suas propriedades são:
 
-"O segundo movimento da coleção apresenta temas totalmente novos, relacionados ao nosso passado imperial e colonial, explorando os elementos artísticos brasileiros" (COSTA, 2007). As primeiras peças brasileiras a entrar na coleção de Ema são as imagens do Bom Jesus da Lapa, da Santa Luzia, da Nossa Senhora Divina Pastora e da Nossa Senhora da Assunção, que foram expostas inicialmente na exposição Imagens Religiosas Brasileiras, realizada em comemoração ao IV Centenário da Cidade de São Paulo, junto com mais outras exposições que buscavam entender a formação da nação brasileira a partir de referências paulistas (COSTA, 2007). Costa destaca que a formação da coleção brasileira de Ema se caracteriza por um olhar estrangeiro, embora Ema tenha nascido no Rio de Janeiro, é filha de imigrantes e teve sua educação realizada na Europa "para Ema, talvez, uma Virgem Maria de nosso barroco fosse tão distante quanto uma Guanyin chinesa do século XVII" (COSTA, 2007);
+    **Tabela X: Propriedades de _Dimensions_**
 
-## Terceiro movimento: Aproximações com o Modernismo
+    | Nome              | Exigência   | Descrição                                                                                                   |
+    | ----------------- | ----------- | ----------------------------------------------------------------------------------------------------------- |
+    | id                | opcional    | -                                                                                                           |
+    | type              | requerido   | DEVE ser _Dimension_                                                                                        |
+    | \_label           | recomendado | -                                                                                                           |
+    | value             | requerido   | O valor numérico da dimensão                                                                                |
+    | unit              | requerido   | A unidade para a dimensão, que DEVE seguir os requisitos de _MeasurementUnit_, que é uma extensão de _Type_ |
+    | classified_as     | recomendado | -                                                                                                           |
+    | identified_by     | recomendado | Somente _Name_                                                                                              |
+    | upper_value_limit | opcional    | Um número que representa o valor máximo da dimensão                                                         |
+    | lower_value_limit | opcional    | Um número que representa o valor mínimo da dimensão                                                         |
+    | referred_to_by    | opcional    | -                                                                                                           |
+    | assigned_by       | opcional    | DEVE seguir os requisitos de _Measurements_                                                                 |
 
-"Este movimento tem seu início no ano de 1961, quando Ema, recém-instalada em sua nova casa no Jardim Europa, assume um papel mais significativo no cenário cultural da cidade" (COSTA, 2007). Este movimento se caracteriza pela entrada de obras representativas do modernismo brasileiro. Neste período Ema se empenhou na organização de leilões em prol da construção do Hospital Israelita Albert Einstein, "que tiveram papel importante na consolidação do mercado de arte moderna brasileira" (COSTA, 2007). As aquisições realmente significativas deste movimento ocorreram no final da década de 1960, quando Ema se envolveu na criação do Museu Lasar Segall, e adquiriu três telas do artista: Retrato Feminino (1927), Retrato de Lucy (1937) e Natureza-morta com frutas (1938).
+    **Fonte**: Elaborado pelo autor. Tradução de _Properties of Dimensions_ do Linked Art [@linked-art2021.8]
 
-## Quarto movimento: Últimas aquisições - novas direções
+    **Tabela X: Propriedades de _Measurements_**
 
-Em 1972, Ema e sua irmã Eva, preocupadas com o destino de suas coleções, convidam Karl Katz, especialista em arte e arqueologia e membro do conselho do Metropolitan Museum de Nova Iorque, para contribuir com um projeto para as coleções. "Após a visita, Katz apresentou uma proposta de catalogação das duas coleções e sugeriu a criação de um ‘Centro de Altos Estudos em Museologia’ no Brasil" (COSTA, 2007), mas somente a ideia de transformar as casas em museu prevaleceu. A partir deste momento, Ema volta seus olhares para obras que "‘coroassem’ a coleção ou, melhor dizendo, seu ‘museu’" (COSTA, 2007), momento que adquiriu sua primeira obra de Marc Chagall À la Campagne, em 1972, obra que se tornaria a mais valiosa da coleção. Seguindo a mesma lógica, Ema passa a buscar obras de altíssimo valor em leilões da casa Sotheby’s de Londres: "de uma só vez, adquiriu telas de Chaim Soutine, Pierre-Auguste Renoir e Maurice de Vlaminck. Essas obras entraram para a coleção justamente no final de 1978, quando ela acabara de registrar oficialmente sua Fundação" (COSTA, 2007).
+    | Nome           | Exigência   | Descrição                      |
+    | -------------- | ----------- | ------------------------------ |
+    | id             | opcional    | -                              |
+    | type           | requerido   | DEVE ser _AttributeAssignment_ |
+    | \_label        | recomendado | -                              |
+    | classified_as  | recomendado | -                              |
+    | carried_out_by | recomendado | -                              |
+    | timespan       | opcional    | -                              |
+    | referred_to_by | opcional    | -                              |
 
-O primeiro inventário da coleção foi realizado por Marcelo Mattos Araújo por insistência dos parentes de Ema Klabin, entre os anos de 1989 e 1991 \[NO_PRINTED_FORM], resultando em uma lista dos itens da coleção separadas por ambientes. Em 1997, 3 anos após o falecimento de Ema (1994), Paulo de Freitas Costa inicia os trabalhos de catalogação e pesquisa da coleção que deu origem a sua dissertação de mestrado e posteriormente no livro "Sinfonia de Objetos" publicado em 2007 pela editora Iluminuras, que se apresenta como um estudo sobre o colecionismo brasileiro e sobre a coleção de Ema Klabin.
+    **Fonte**: Elaborado pelo autor. Tradução de _Properties of Measurements_ do Linked Art [@linked-art2021.8]
 
-Em 2001 foram criadas 04 (quatro) bases de dados para armazenar todas informações das coleções de itens museológicos, livros, fotografias pessoais e arquivos, sendo separadas em: "Museológico" para as informações sobre os itens da coleção de artes visuais e artes decorativas com atualmente 1701 itens; "Arquivístico" para os documentos pessoais de Ema, bem como suas correspondências, notas fiscais de compra de obras, negociações com marchands, etc, com 5261 itens; "Fotográfico" para as fotografias pessoais de Ema Klabin com 2132 fotografias; e, por fim, "Bibliográfico", que armazena as informações sobre a coleções de livros e livros raros de Ema com 3554 publicações.
+-   _Identifiers_ - identificadores de um recurso, como um número de catálogo ou um número de inventário;
+    Suas propriedades são:
 
-Todos os itens da coleção possuem um número de tombo —o principal metadado para identificação entre as demais entradas na BD —, que é composto pela letra M, indicando a base Museológica, seguido pelo hífen (-) para separar a indicação da BD do número sequencial de entrada no registro. A numeração é composta por quatro algarismos de 0 a 9, possibilitando a entrada de até 9999 itens. Por exemplo: M-0001, M-0002, (…), M-1660. As outras bases de dados seguem a mesma estrutura: A para arquivístico, B para bibliográfico, F para fotográfico e R para referências.
+    **Tabela X: Propriedades de _Identifiers_**
 
-Devido a heterogeneidade da coleção alguns itens são simples como uma peça esculpida em pedra ou um desenho em uma folha de papel, enquanto outros são itens compostos por diversos outros itens, como os faqueiros e os jogos para chá. Ou até mesmo objetos compostos por duas ou mais peças de materiais diferentes, como no caso dos frascos para rapé que possuem o corpo e a tampa —alguns ainda possuem uma terceira peça que seria a base. Ou ainda, as sopeiras, que possuem corpo e tampa e fazem parte dos conjuntos de porcelanas chinesas de exportações, ou seja, duas peças distintas que constituem um único item pertencendo a um conjunto de itens. Com exceção do primeiro caso (item simples), a sintaxe de numeração não dá conta da real característica física da coleção. O esquema abaixo ilustra a estrutura atual de numeração:
+    | Nome           | Exigência   | Descrição                                                                                              |
+    | -------------- | ----------- | ------------------------------------------------------------------------------------------------------ |
+    | id             | opcional    | -                                                                                                      |
+    | type           | requerido   | DEVE ser _Identifier_                                                                                  |
+    | \_label        | recomendado | -                                                                                                      |
+    | content        | requerido   | O conteúdo _string_ do identificador                                                                   |
+    | classified_as  | recomendado | -                                                                                                      |
+    | referred_to_by | opcional    | -                                                                                                      |
+    | assigned_by    | opcional    | Um _array_ de objetos JSON, cada um dos quais DEVEM seguir os requisitos para _Identifier Assignments_ |
 
-Fig. 2 - Estrutura de numeração atual dos itens na Coleção Ema Klabin.
+    **Fonte**: Elaborado pelo autor. Tradução de _Properties of Identifiers Assignments_ do Linked Art [@linked-art2021.9]
 
-Esta sintaxe de numeração dos itens não corresponde às práticas recomendadas por modelos e guias como Cataloguing Cultural Objects: A Guide to Describing Cultural Works and Their Images (CCO) e Categories for the Description of Works of Art (CDWA) mantido pelo Getty Vocabulary Program (GVP). O CCO recomenda o registro separado das partes do todo e um registro para o todo em si (CCO, 2007, p.14), e que o catalogador faça o registro dessas relações entre os objetos. Para isso, o guia define três tipos diferentes de relações intrínsecas, ou relações hierárquicas parte-todo: grupos ou coleções, séries, componentes ou obras arquitetônicas. Já a diretriz CDWA apresenta uma lista de possibilidades recomendadas que definem o nível de catalogação de um trabalho artístico: item, volume, álbum, grupo, subgrupo, coleção, série, conjunto, múltiplos, componentes, caixa, fundo, portfólio, suíte, complexo, agrupamento de objetos, perfomance e itens (CDWA, 2016). O CDWA, assim como o CCO, define essa informação como obrigatória, e é desejável que as partes sejam registradas separadamente do todo, com a indicação de suas relações intrínsecas.
+    **Tabela X: Propriedades de _Identifiers Assignments_**
 
-Um outro problema é a representação dos itens nas BDs Filemaker, que estão incompletas e não estruturadas. Informações como Material e Técnica do item estão em um único campo chamado MaterialTécnica, e as informações armazenadas neste campo não aderem a nenhum vocabulário controlado, o que torna difícil a recuperação da informação. O metadado sobre as dimensões da peça são armazenados todos no mesmo campo "Dimensões" sem um padrão definido em relação a ordem de escrita da altura, largura e profundidade e não há padrão para unidade de medida utilizada, temos registros em milímetros e em centímetros. Todos os metadados são dos tipos "text" ou "number", ou seja, aceitam valores textuais (string) ou numéricos, o que torna difícil a inclusão de informações com estruturas mais complexas como "arrays" ou "objects", como por exemplo o campo DescriçãoConservação que armazena as informações em texto livre sem padrão definido, fazendo com que novos registros sejam adicionados em uma nova linha. No exemplo abaixo vemos as informações registradas no campo DescriçãoConservação do item com número de tombo M-1001:
+    | Nome                 | Exigência   | Descrição                                                                                                                                |
+    | -------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+    | id                   | opcional    | -                                                                                                                                        |
+    | type                 | requerido   | DEVE ser _AttributeAssignment_                                                                                                           |
+    | \_label              | recomendado | -                                                                                                                                        |
+    | classified_as        | recomendado | -                                                                                                                                        |
+    | carried_out_by       | recomendado | -                                                                                                                                        |
+    | timespan             | opcional    | -                                                                                                                                        |
+    | referred_to_by       | opcional    | -                                                                                                                                        |
+    | used_specific_object | opcional    | Um _array_ de objetos JSON, cada um dos quais é uma referência para outro _Endpoint_ que foi instrumental na atribuição do identificador |
 
-25/abr/97: fendas generalizadas; manchas escuras na face. Recolhida.
-07/04/2021 - higienização com água mineral e detergente neutro.
+    **Fonte**: Elaborado pelo autor. Tradução de _Properties of Identifiers Assignments_ do Linked Art [@linked-art2021.9]
 
-Este metadado poderia ser facilmente representado por um array de objetos, em que o objeto contém as propriedades data, observação, e usuário, em uma arquitetura da informação baseada em eventos, em que o usuário adicionaria novos estados de conservação sempre com a mesma estrutura.
+-   _Monetary Amounts_ - similares a _Dimensions_, mas para valores monetários, no caso a propriedade _Type_ é definida como _MonetaryAmount_, e não possui a propriedade _assigned_by_;
 
-Somente os metadados Classificação e Núcleo utilizam vocabulários controlados para a indexação. Em Classificação foi utilizado o Tesauro de Objetos do Patrimônio Cultural nos Museus Brasileiros, de Helena Dodd Ferrez (2016), e Núcleo utiliza uma taxonomia estabelecida internamente pela equipe da casa museu: "Os núcleos foram estabelecidos pela equipe da Fundação e se baseiam no papel que os objetos representam dentro da coleção, independentemente de sua função original, visando facilitar a compreensão do público" (EXPLORE, 2019). A não utilização de vocabulários controlados em outros metadados como material, técnica ou local de criação torna impossível a recuperação da informação por meio de filtros baseados nesses campos.
+-   _Names_ - definir
 
-Um outro problema nas BDs do Filemaker é que não há uma conexão direta entre as BDs, quando muito, há a indicação do número de tombo do Arquivístico referente ao documento de compra da obra no campo DocumentoAquisição da BD Museológica. Informações que poderiam ser compartilhadas entre as bases em forma de linguagens documentárias como a localização interna dos itens na casa, a localização geográfica de origem do objeto e a autoria, operam de maneira isolada entre as BDs o que torna difícil a sua manutenção.
+-   _Statements_ - definir
+
+-   _TimeSpans_ - definir
+
+-   _Types/Concepts_ - definir
+
+-   _Relationships_ - definir
+
+-   _Entity References_ - definir
+
+##### 4.4.3.2.3. _Endpoints_
+
+O modelo apresenta 11 classes, ou endpoints, sendo elas (LINKED ART, 2021):
+
+1.  **Concept** - tipos, materiais, técnicas, idiomas, entre outros que sejam registros completos, ao contrário de referências externas;
+2.  **Digital Object** - imagens, vídeos, áudios, documentos, webpages, ou outros recursos digitais;
+3.  **Event** - eventos e atividades não específicas que estão relacionadas, mas não são parte de outra entidade;
+4.  **Groups** - grupos de pessoas, organizações, ou outras entidades;
+5.  **People** - pessoas;
+6.  **Physical Object** - objetos físicos, incluindo obras de arte, artefatos, edifícios, partes de objetos, entre outros;
+7.  **Place** - locais;
+8.  **Provenance Activity** - atividades de proveniência;
+9.  **Sets** - conjuntos de entidades;
+10. **Textual Work** - obras textuais que merecem descrição como entidades únicas, como conteúdo de livro ou artigos, entre outros; e
+11. **Visual Work** - conteúdo imagético que merece descrição como entidades únicas, como a imagem exibida em uma pintura ou desenho, entre outros.

@@ -1,6 +1,6 @@
-### 4.1.1.3 Linked Art (2019)
+### 4.4.3. Linked Art (2019)
 
-Linked Art é uma comunidade formada por representantes de instituições ao redor do mundo como The Canadian Heritage Information Network (CHIN), J. Paul Getty Trust, The Frick Collection, Europeana, Louvre, Rijksmuseum, The Victoria and Albert Museum, entre outras, com o objeto de criar um modelo compartilhado baseado em _Linked Open Data_ para descrever Arte [@linked-art2021.1; @linked-art2021.2]. O projeto é coordenado por um quadro editorial em que Robert Sanderson (Yale University) e Emmanuelle Delmas-Glass (Yale Center for British Art) compartilham o posto de co-presidentes.
+Linked Art é uma comunidade formada por representantes de instituições ao redor do mundo como The Canadian Heritage Information Network (CHIN), J. Paul Getty Trust, The Frick Collection, Europeana, Louvre, Rijksmuseum, The Victoria and Albert Museum, entre outras, com o objetivo de criar um modelo compartilhado baseado em _Linked Open Data_ para descrever Arte [@linked-art2021.1; @linked-art2021.2]. O projeto é coordenado por um quadro editorial em que Robert Sanderson (Yale University) e Emmanuelle Delmas-Glass (Yale Center for British Art) compartilham o posto de co-presidentes.
 
 A comunidade Linked Art parte do conceito da usabilidade para a audiência correta, em que o maior público interessado em "dados" seriam os desenvolvedores que poderiam criar interfaces para o público final, desdobrando esta ideia em cinco princípios de design, temos:
 
@@ -14,21 +14,7 @@ O modelo Linked Art tem como foco principal a descrição de recursos do patrim�
 
 O Linked Art está sob desenvolvimento ativo e a versão atual é a 0.8.0 e é considerada instável, passível de mudanças. A versão 1.0.0 estava prevista para o final de 2021, mas foi atrasada por conta da pandemia de COVID-19 [@linked-art2021.4].
 
-O modelo apresenta 11 classes, ou entidades, sendo elas [@linked-art2021.5]:
-
-1. **Concept** - tipos, materiais, idiomas, entre outros que sejam registros completos, ao contrário de referências externas;
-2. **Digital Object** - imagens, vídeos, áudios, documentos, ou outros recursos digitais;
-3. **Event** - eventos e atividades não específicas que estão relacionadas, mas não são parte de outra entidade;
-4. **Groups** - grupos de pessoas, organizações, ou outras entidades;
-5. **People** - pessoas;
-6. **Physical Object** - objetos físicos, incluindo obras de arte, artefatos, edifícios, partes de objetos, entre outros;
-7. **Place** - locais;
-8. **Provenance Activity** - atividades de proveniência;
-9. **Sets** - conjuntos de entidades;
-10. **Textual Work** - obras textuais que merecem descrição como entidades únicas, como conteúdo de livro ou artigos, entre outros; e
-11. **Visual Work** - conteúdo imagético que merece descrição como entidades únicas, como a imagem exibida em uma pintura ou desenho, entre outros.
-
-#### JSON para conectar dados: JSON-LD
+#### 4.4.3.1. JSON para conectar dados: JSON-LD
 
 _JavaScript Object Notation_ (JSON) é um formato aberto de arquivo para intercâmbio de informações [@w-3-c-json-ld-working-group2014]. Consiste em arquivos de fácil leitura por humanos e máquinas com a extensão .json. Mesmo que tenha se originado na sintaxe de objetos JavaScript, por isso seu nome, pode ser utilizado por diversos ambientes e linguagens de programação diferentes devido sua sintaxe simples [@mdn-web-docs2023].
 
@@ -37,7 +23,7 @@ Um arquivo JSON pode ser expressado da seguinte forma:
 ```json
 {
     "title": "One and three chairs",
-    "author": "Joseph Kosuth",
+    "author": "Joseph Kosuth"
 }
 ```
 
@@ -81,3 +67,59 @@ _JSON for Linked Data_ (JSON-LD) busca solucionar este problema adicionando uma 
 Parece mais complexo que o exemplo anterior, e de fato é, mas agora temos um arquivo JSON que pode ser lido por humanos e máquinas, e que pode ser utilizado para conectar dados, trazendo muito mais contexto para a informação, em que: _"@context"_ é a URI do vocabulário utilizado, no caso Linked Art; "_id_" é o identificador do objeto, a URI para o registro no MoMA; "_\_label_" é um rótulo para leitura pelo desenvolvedor; "_type_" é o tipo de entidade; "_identified_by_" é a propriedade para identificar a obra, recebe um array de objetos que podem ser tanto "_Name_" quanto "_Identifier_", no caso é um "_Identifier_"com o valor "_One and three chairs_" classificado como "_Title_" e referenciado à definição de "_title_" no vocabulário AAT do Getty. Por fim,"_produced_by_" é a propriedade que recebe um objeto "_Production_" que tem como propriedade "_carried_out_by_" que recebe um array de objetos "_Person_" que tem como propriedade "_id_" a URI para o registro do artista no MoMA e "_\_label_" o nome do artista.
 
 O JSON-LD fornece uma maneira de os dados JSON serem interoperáveis na escala da Web [@json-ld-working-group2020]. E, tem como principal intenção “ser uma maneira de usar Linked Data em ambientes de programação baseados na Web, para construir serviços Web interoperáveis e para armazenar Linked Data em mecanismos de armazenamento baseados em JSON” [@json-ld-working-group2020], ou seja, é o formato ideal para serviços REST.
+
+#### 4.4.3.2. API Linked Art
+
+A API do Linked Art é baseada em REST, e utiliza o JSON-LD como formato de dados. A API também apresenta os schemas de validação dos dados definidos no formato JSON Schema [@droettboom2020].
+
+A API é dividida em duas partes: _Shared Constructs_ e _Entity Endpoints_. Mas como existem propriedades que se repetem pelas _Shared Constructs_ e _Entity Endpoints_, separamos as propriedades em uma tabela única para facilitar a visualização.
+
+##### 4.4.3.2.1. Propriedades
+
+As propriedades do Linked Art são dados de diferentes tipos, como _strings_, _numbers_, _arrays_, _json objects_, _datetime_, entre outras. A tabela a seguir apresenta as propriedades do Linked Art, com seus tipos e descrições [@linked-art2021.1]:
+
+{{table:linked-art-properties.json}}
+
+##### 4.4.3.2.2. _Shared Constructs_
+
+_Shared Constructs_ são estruturas de dados definidas no Linked Art que são utilizadas por mais de um endpoint. São elas [@linked-art2021.7]:
+
+-   _Dimensions_ - dimensões de um recurso físico ou digital, com uma unidade e um tipo de dimensão;
+    Suas propriedades são:
+
+    {{table:linked-art-dimensions.json}}
+
+    {{table:linked-art-measurement.json}}
+
+-   _Identifiers_ - identificadores de um recurso, como um número de catálogo ou um número de inventário;
+    Suas propriedades são:
+
+    {{table:linked-art-identifiers.json}}
+
+    {{table:linked-art-identifiers-assignments.json}}
+
+-   _Monetary Amounts_ - similares a _Dimensions_, mas para valores monetários, no caso a propriedade _Type_ é definida como _MonetaryAmount_, e não possui a propriedade _assigned_by_;
+
+-   _Names_ - definir
+
+-   _Statements_ - definir
+-   _TimeSpans_ - definir
+-   _Types/Concepts_ - definir
+-   _Relationships_ - definir
+-   _Entity References_ - definir
+
+##### 4.4.3.2.3. _Endpoints_
+
+O modelo apresenta 11 classes, ou endpoints, sendo elas [@linked-art2021.5]:
+
+1. **Concept** - tipos, materiais, técnicas, idiomas, entre outros que sejam registros completos, ao contrário de referências externas;
+2. **Digital Object** - imagens, vídeos, áudios, documentos, webpages, ou outros recursos digitais;
+3. **Event** - eventos e atividades não específicas que estão relacionadas, mas não são parte de outra entidade;
+4. **Groups** - grupos de pessoas, organizações, ou outras entidades;
+5. **People** - pessoas;
+6. **Physical Object** - objetos físicos, incluindo obras de arte, artefatos, edifícios, partes de objetos, entre outros;
+7. **Place** - locais;
+8. **Provenance Activity** - atividades de proveniência;
+9. **Sets** - conjuntos de entidades;
+10. **Textual Work** - obras textuais que merecem descrição como entidades únicas, como conteúdo de livro ou artigos, entre outros; e
+11. **Visual Work** - conteúdo imagético que merece descrição como entidades únicas, como a imagem exibida em uma pintura ou desenho, entre outros.

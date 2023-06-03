@@ -11,6 +11,7 @@
         "convert": "pub-gen pandoc convert -p dissertacao-mestrado",
         "authenticate": "pub-gen authenticate -p dissertacao-mestrado",
         "build": "pnpm clean && pub-gen build -p dissertacao-mestrado",
+        "dev": "pnpm build -w",
         "clean": "rm -rf dist/*"
     },
     "devDependencies": {

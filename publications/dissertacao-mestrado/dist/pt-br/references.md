@@ -12,6 +12,8 @@ BRASIL. **Lei no 11.904 de 14 de janeiro de 2009\. Regulamenta dispositivos da L
 
 BRASIL. **Decreto no 8.124 de 17 de outubro de 2013\. Regulamenta dispositivos da Lei no 11.904, de 14 de janeiro de 2009, que institui o Estatuto de Museus, e da Lei no 11.906, de 20 de janeiro de 2009, que cria o Instituto Brasileiro de Museus - IBRAM.**, 17 out. 2013\. Disponível em: http://www.planalto.gov.br/ccivil\_03/\_ato2011-2014/2013/decreto/d8124.htm. Acesso em: 10 mar. 2021.
 
+BRAY, T. Ed.; IETF, Internet Engineering Task Force. **RFC 8259 - The JavaScript Object Notation (JSON) Data Interchange Format**. 2017\. Disponível em: https://www.rfc-editor.org/rfc/rfc8259\. Acesso em: 2 jun. 2023\. 
+
 BUCKLAND, Michael K. Information as Thing. **Journal of the American Society for Information Science (1986-1998)**, New Jersey, v. 42, 1991\. 
 
 CAPURRO, Rafael. Epistemologia e Ciência da Informação. **V Encontro Nacional de Pesquisa em Ciência da Informação**, Belo Horizonte, 2003\. Disponível em: http://www.capurro.de/enancib\_p.htm. Acesso em: 22 jul. 2022.
@@ -50,6 +52,10 @@ DERVICHE, André. Pandemia e crise estimulam a inovação em museus. São Paulo,
 
 DOMINO, DocumentandO Museu IberoamericaNO. , 2022\. 
 
+DROETTBOOM, Michael. **Understanding JSON Schema**. \[s.l.\] : Space Telescope Science Institute, 2020\. Disponível em: https://json-schema.org/understanding-json-schema/. Acesso em: 27 maio. 2023.
+
+EXTREMEPROGRAMMINGROADPMAP. **Extreme Programming**. 2006\. Disponível em: http://xp.c2.com/ExtremeProgramming.html. Acesso em: 3 jun. 2023\. 
+
 GODINHO, Henrique. **Explore a Coleção! - Casa Museu Ema Klabin**. 2019a. Disponível em: https://emaklabin.org.br/explore. Acesso em: 5 jul. 2022\. 
 
 GODINHO, Henrique. **Núcleos (Explore a Coleção! - Casa Museu Ema Klabin)**. 2019b. Disponível em: https://emaklabin.org.br/explore/nucleos. Acesso em: 5 jul. 2022\. 
@@ -72,15 +78,39 @@ LINKED ART. **API - Linked Art**. 2021d. Disponível em: https://linked.art/api/
 
 LINKED ART. **Linked Art API Endpoints**. 2021e. Disponível em: https://linked.art/api/1.0/endpoint/. Acesso em: 21 maio. 2023\. 
 
+LINKED ART. **Linked Art API: Concept**. 2021f. Disponível em: https://linked.art/api/1.0/endpoint/concept/. Acesso em: 2 jun. 2023\. 
+
+LINKED ART. **Linked Art API: Shared Data Structures**. 2021g. Disponível em: https://linked.art/api/1.0/shared/. Acesso em: 2 jun. 2023\. 
+
+LINKED ART. **Linked Art API: Dimension Structure**. 2021h. Disponível em: https://linked.art/api/1.0/shared/dimension/. Acesso em: 2 jun. 2023\. 
+
+LINKED ART. **Linked Art API: Identifier Structure**. 2021i. Disponível em: https://linked.art/api/1.0/shared/identifier/. Acesso em: 2 jun. 2023\. 
+
 MATOS, Alexandre. Nota sobre a tradução do SPECTRUM em Portugal. _Em_: **SPECTRUM 4.0: o padrão para gestão de coleções de museus do Reino Unido**. São Paulo: Secretaria de Estado de Cultura; Associação de Amigos do Museu do Café; Pinacoteca do Estado de São Paulo, 2014\. v. 2\. Disponível em: https://spectrum-pt.org/wp-content/uploads/2021/03/Spectrum\_PT\_NET.pdf. Acesso em: 19 maio. 2023.
+
+MDN, Mozilla. **JavaScript**. 2022\. Disponível em: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript. Acesso em: 2 jun. 2023\. 
 
 MDN WEB DOCS. **Working with JSON**. 2023\. Disponível em: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON. Acesso em: 21 maio. 2023\. 
 
+MICROSOFT. **TypeScript 5.1**. 2023a. Disponível em: https://www.typescriptlang.org. Acesso em: 2 jun. 2023\. 
+
+MICROSOFT. **Description of the database normalization basics**. 2023b. Disponível em: https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description. Acesso em: 2 jun. 2023\. 
+
+NARWHAL TECHNOLOGIES INC. **monorepo.tools**. 2022\. Disponível em: https://monorepo.tools. Acesso em: 1 jun. 2023\. 
+
 PADILHA, Renata Cardozo. **Documentação Museológica e Gestão de Acervo**. Florianópolis: FCC Edições, 2014\. v. 2
+
+PETTY, Brian. **dbdelta supporting foreign key**. 2014\. Disponível em: https://core.trac.wordpress.org/ticket/19207#comment:3\. Acesso em: 2 jun. 2023\. 
+
+PHP, The PHP Group. **PHP**. 2022\. Disponível em: https://www.php.net. Acesso em: 2 jun. 2023\. 
 
 SANDERSON, Robert. **Shout It Loud: LOUD - EuropeanaTech 2018 Keynotes**. 2018\. Disponível em: https://youtu.be/r4afi8mGVAY. Acesso em: 20 maio. 2023\. 
 
 SARACEVIC, Tefko. Ciência da Informação: origem, evolução e relações. **Perspectivas em Ciência da Informação**, Belo Horizonte, v. 1, p. 41–62, jan./jul. 1996\. Disponível em: http://portaldeperiodicos.eci.ufmg.br/index.php/pci/article/view/235/22\. Acesso em: 15 jul. 2022.
+
+SCHWABER, Ken; SUTHERLAND, Jeff. **The 2020 Scrum Guide**. 2020\. Disponível em: https://scrumguides.org/scrum-guide.html. Acesso em: 3 jun. 2023\. 
+
+SHADOW. **Violation of 1NF in MySQL - Response**. 2017\. Disponível em: https://stackoverflow.com/a/42602932/11085794\. Acesso em: 2 jun. 2023\. 
 
 SILVA, Camila Aparecida Da. **Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta.** 2020\. Programa de Pós-Graduação em Ciência da Informação - Escola de Comunicações e Artes / Universidade de São Paulo, São Paulo, 2020.
 
@@ -89,3 +119,11 @@ SPORNY, Manu. **What is JSON-LD?** 2012\. Disponível em: https://www.youtube.co
 VEGA-ALMEIDA, Rosa Lidia; FERNÁNDEZ-MOLINA, Juan Carlos; LINARES, Radamés Colimbié. Coordenadas paradigmáticas, históricas y epistemológicas de la Ciencia de la información: una sistematización. **Information Research**, _\[S. l.\]_, v. 14, 2009\. Disponível em: https://informationr.net/ir/14-2/paper399.html.
 
 W3C JSON-LD WORKING GROUP. **JSON for Linking Data**. 2014\. Disponível em: https://json-ld.org. Acesso em: 3 ago. 2022\. 
+
+WELLS, Don. **Extreme Programming: a gentle introduction**. 1999\. Disponível em: http://www.extremeprogramming.org. Acesso em: 3 jun. 2023\. 
+
+WELLS, Don. **Agile Software Development: A gentle introduction**. 2009\. Disponível em: http://www.agile-process.org. Acesso em: 3 jun. 2023\. 
+
+WIKI EXTREME PROGRAMMING. **Relentless Testing**. 2009\. Disponível em: http://wiki.c2.com/?RelentlessTesting. Acesso em: 3 jun. 2023\. 
+
+WIKI EXTREME PROGRAMMING. **Extreme Programming For One**. 2014\. Disponível em: http://wiki.c2.com/?ExtremeProgrammingForOne. Acesso em: 3 jun. 2023\. 

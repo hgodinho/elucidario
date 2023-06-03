@@ -1,14 +1,16 @@
 {
     "files": [
-        "agradecimentos",
-        "resumo",
-        "ilustracoes",
-        "tabelas",
-        "siglas",
+        "agradecimentos.md",
+        "resumo.md",
+        "ilustracoes.md",
+        "tabelas.md",
+        "siglas.md",
         "introducao",
-        "problema",
-        "objetivos",
-        "metodologia",
-        "quadro-teorico"
+        "problema.md",
+        "objetivos.md",
+        "metodologia.md",
+        "quadro-teorico",
+        "casa-museu-ema-klabin",
+        "elucidario"
     ]
 }

@@ -1,4 +1,4 @@
-# 4.1 A Informação Museológica
+## 4.2 A Informação Museológica
 
 > Why do centers of research assemble many sorts of collections of objects if they do not expect students and researchers to learn something from them? (BUCKLAND. Michael K. Information as Thing. Journal of the American Society for Information Science (1986-1998). Jun 1991, 42, 5.)
 

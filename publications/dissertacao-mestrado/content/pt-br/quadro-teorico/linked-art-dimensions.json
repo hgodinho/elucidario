@@ -1,0 +1,51 @@
+{
+    "title": "Tabela X: Propriedades de _Dimensions_",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        ["type", "requerido", "DEVE ser _Dimension_"],
+        ["_label", "recomendado", ""],
+        ["value", "requerido", "O valor numérico da dimensão"],
+        [
+            "unit",
+            "requerido",
+            "A unidade para a dimensão, que DEVE seguir os requisitos de _MeasurementUnit_, que é uma extensão de _Type_"
+        ],
+        ["classified_as", "recomendado", ""],
+        ["identified_by", "recomendado", "Somente _Name_"],
+        [
+            "upper_value_limit",
+            "opcional",
+            "Um número que representa o valor máximo da dimensão"
+        ],
+        [
+            "lower_value_limit",
+            "opcional",
+            "Um número que representa o valor mínimo da dimensão"
+        ],
+        ["referred_to_by", "opcional", ""],
+        [
+            "assigned_by",
+            "opcional",
+            "DEVE seguir os requisitos de _Measurements_"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Tradução de _Properties of Dimensions_ do Linked Art [@linked-art2021.8]"
+    }
+}

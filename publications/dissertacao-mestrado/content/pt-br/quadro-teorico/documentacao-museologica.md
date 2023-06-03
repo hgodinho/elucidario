@@ -1,4 +1,4 @@
-# Documentação museológica
+## 4.3 Documentação museológica
 
 > O documento é suporte que evidencia algo a alguém e que, ao passar por um processo técnico específico, manifesta seu potencial informativo. Ele é o meio que nos traz a informação e, assim, permite que o indivíduo produza conhecimentos diversos. [@padilha2014 p.14]
 
@@ -12,6 +12,4 @@ Já no decreto nº 8.124 de 17 de outubro de 2013 assinado pela então president
 
 Ainda, como esclarecido por [@padilha2014 p.36], a documentação museológica pode ser de dois vieses: documentação do objeto e a documentação das práticas administrativas. "O primeiro trata da compilação dos dados e do tratamento informacional extraídos de cada objeto adquirido pelo museu, enquanto que o segundo considera toda a documentação produzida pela instituição para legitimar suas práticas desenvolvidas" [@padilha2014 p.36]. Seguimos aqui o primeiro viés, o da documentação do objeto.
 
-## Documentação do objeto
-
-- [ ] todo
+### 4.3.1 Documentação do objeto

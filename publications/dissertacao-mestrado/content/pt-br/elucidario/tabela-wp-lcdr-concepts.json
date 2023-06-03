@@ -1,0 +1,75 @@
+{
+    "title": "Tabela X: Descrição da tabela MySQL _wp_lcdr_concepts_ do sistema",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Key"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Key", "Descrição"],
+        [
+            "id",
+            "bigint(20)",
+            "auto_increment",
+            "PRI",
+            "Identificador único do registro"
+        ],
+        [
+            "label",
+            "text",
+            "",
+            "",
+            "Nome do Concept, gerado automaticamente baseado na coluna identified_by"
+        ],
+        [
+            "identified_by",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON que representam as identificações do conceito"
+        ],
+        [
+            "referred_to_by",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON que representam as descrições do conceito"
+        ],
+        [
+            "equivalent",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON em que cada um é uma referência a uma entidade externa equivalente ao conceito"
+        ],
+        ["created_at", "datetime", "", "", "Data de criação do registro"],
+        [
+            "updated_at",
+            "datetime",
+            "",
+            "",
+            "Data da última atualização do registro"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Baseado em Linked Art [@linked-art2021.6]"
+    }
+}
