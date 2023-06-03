@@ -1,0 +1,24 @@
+{
+    "id": "php2022",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "php",
+    "_create": "2023-06-02T04:59:34.070Z",
+    "_update": "2023-06-02T04:59:34.070Z",
+    "type": "webpage",
+    "title": "PHP",
+    "author": [
+        {
+            "family": "PHP",
+            "given": "The PHP Group"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2022"
+    },
+    "language": "en",
+    "URL": "https://www.php.net"
+}

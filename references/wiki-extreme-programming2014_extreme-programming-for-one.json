@@ -1,0 +1,23 @@
+{
+    "id": "wiki-extreme-programming2014",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "extreme-programming-for-one",
+    "_create": "2023-06-03T16:38:35.025Z",
+    "_update": "2023-06-03T16:38:35.025Z",
+    "type": "webpage",
+    "title": "Extreme Programming For One",
+    "author": [
+        {
+            "family": "Wiki Extreme Programming"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-03"
+    },
+    "issued": {
+        "raw": "2014"
+    },
+    "language": "en",
+    "URL": "http://wiki.c2.com/?ExtremeProgrammingForOne"
+}

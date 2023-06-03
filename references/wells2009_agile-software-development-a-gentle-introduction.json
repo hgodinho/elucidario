@@ -1,0 +1,24 @@
+{
+    "id": "wells2009",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "agile-software-development-a-gentle-introduction",
+    "_create": "2023-06-03T14:39:12.908Z",
+    "_update": "2023-06-03T14:39:12.908Z",
+    "type": "webpage",
+    "title": "Agile Software Development: A gentle introduction",
+    "author": [
+        {
+            "family": "Wells",
+            "given": "Don"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-03"
+    },
+    "issued": {
+        "raw": "2009"
+    },
+    "language": "en",
+    "URL": "http://www.agile-process.org"
+}

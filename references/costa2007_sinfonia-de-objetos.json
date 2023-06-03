@@ -1,0 +1,22 @@
+{
+    "id": "costa2007",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "sinfonia-de-objetos",
+    "_create": "2023-05-29T05:13:56.229Z",
+    "_update": "2023-05-29T05:13:56.229Z",
+    "type": "book",
+    "title": "Sinfonia de Objetos",
+    "publisher": "Iluminuras",
+    "publisher-place": "São Paulo",
+    "author": [
+        {
+            "family": "Costa",
+            "given": "Paulo"
+        }
+    ],
+    "issued": {
+        "raw": "2007"
+    },
+    "language": "pt-br"
+}

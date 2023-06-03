@@ -1,0 +1,23 @@
+{
+    "id": "linked-art2021.7",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-art-api-shared-data-structures",
+    "_create": "2023-06-03T01:32:14.032Z",
+    "_update": "2023-06-03T01:32:14.033Z",
+    "type": "webpage",
+    "title": "Linked Art API: Shared Data Structures",
+    "container-title": "Linked Art",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2021"
+    },
+    "URL": "https://linked.art/api/1.0/shared/"
+}

@@ -1,0 +1,23 @@
+{
+    "id": "microsoft2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "type-script-5-1",
+    "_create": "2023-06-02T05:02:11.620Z",
+    "_update": "2023-06-02T05:02:11.620Z",
+    "type": "webpage",
+    "title": "TypeScript 5.1",
+    "author": [
+        {
+            "family": "Microsoft"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2023"
+    },
+    "language": "en",
+    "URL": "https://www.typescriptlang.org"
+}

@@ -1,0 +1,28 @@
+{
+    "id": "schwaber2020",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "the-2020-scrum-guide",
+    "_create": "2023-06-03T14:09:50.420Z",
+    "_update": "2023-06-03T14:09:50.420Z",
+    "type": "webpage",
+    "title": "The 2020 Scrum Guide",
+    "author": [
+        {
+            "family": "Schwaber",
+            "given": "Ken"
+        },
+        {
+            "family": "Sutherland",
+            "given": "Jeff"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-03"
+    },
+    "issued": {
+        "raw": "2020"
+    },
+    "language": "en",
+    "URL": "https://scrumguides.org/scrum-guide.html"
+}

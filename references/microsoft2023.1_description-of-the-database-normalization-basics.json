@@ -1,0 +1,25 @@
+{
+    "id": "microsoft2023.1",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "description-of-the-database-normalization-basics",
+    "_create": "2023-06-02T19:42:53.106Z",
+    "_update": "2023-06-02T19:42:53.107Z",
+    "type": "webpage",
+    "title": "Description of the database normalization basics",
+    "publisher": "Microsoft",
+    "author": [
+        {
+            "family": "Microsoft"
+        }
+    ],
+    "accessed": {
+        "season": "2023-06-02",
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2023-03-16"
+    },
+    "language": "en",
+    "URL": "https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description"
+}

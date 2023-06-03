@@ -239,6 +239,111 @@
             "id": "collections-trust2017.5",
             "slug": "person-information",
             "path": "<references>/collections-trust2017.5_person-information.json"
+        },
+        {
+            "id": "costa2007",
+            "slug": "sinfonia-de-objetos",
+            "path": "<references>/costa2007_sinfonia-de-objetos.json"
+        },
+        {
+            "id": "icom2022",
+            "slug": "nova-definicao-de-museu-icom",
+            "path": "<references>/icom2022_nova-definicao-de-museu-icom.json"
+        },
+        {
+            "id": "padilha2014",
+            "slug": "documentacao-museologica-e-gestao-de-acervo",
+            "path": "<references>/padilha2014_documentacao-museologica-e-gestao-de-acervo.json"
+        },
+        {
+            "id": "narwhal-technologies-inc2022",
+            "slug": "monorepo-tools",
+            "path": "<references>/narwhal-technologies-inc2022_monorepo-tools.json"
+        },
+        {
+            "id": "php2022",
+            "slug": "php",
+            "path": "<references>/php2022_php.json"
+        },
+        {
+            "id": "microsoft2023",
+            "slug": "type-script-5-1",
+            "path": "<references>/microsoft2023_type-script-5-1.json"
+        },
+        {
+            "id": "mdn2022",
+            "slug": "java-script",
+            "path": "<references>/mdn2022_java-script.json"
+        },
+        {
+            "id": "ietf2017",
+            "slug": "rfc-8259-the-java-script-object-notation-json-data-interchange-format",
+            "path": "<references>/ietf2017_rfc-8259-the-java-script-object-notation-json-data-interchange-format.json"
+        },
+        {
+            "id": "linked-art2021.6",
+            "slug": "linked-art-api-concept",
+            "path": "<references>/linked-art2021.6_linked-art-api-concept.json"
+        },
+        {
+            "id": "microsoft2023.1",
+            "slug": "description-of-the-database-normalization-basics",
+            "path": "<references>/microsoft2023.1_description-of-the-database-normalization-basics.json"
+        },
+        {
+            "id": "shadow2017",
+            "slug": "violation-of-1-nf-in-my-sql-response",
+            "path": "<references>/shadow2017_violation-of-1-nf-in-my-sql-response.json"
+        },
+        {
+            "id": "petty2014",
+            "slug": "dbdelta-supporting-foreign-key",
+            "path": "<references>/petty2014_dbdelta-supporting-foreign-key.json"
+        },
+        {
+            "id": "linked-art2021.7",
+            "slug": "linked-art-api-shared-data-structures",
+            "path": "<references>/linked-art2021.7_linked-art-api-shared-data-structures.json"
+        },
+        {
+            "id": "linked-art2021.8",
+            "slug": "linked-art-api-dimension-structure",
+            "path": "<references>/linked-art2021.8_linked-art-api-dimension-structure.json"
+        },
+        {
+            "id": "linked-art2021.9",
+            "slug": "linked-art-api-identifier-structure",
+            "path": "<references>/linked-art2021.9_linked-art-api-identifier-structure.json"
+        },
+        {
+            "id": "schwaber2020",
+            "slug": "the-2020-scrum-guide",
+            "path": "<references>/schwaber2020_the-2020-scrum-guide.json"
+        },
+        {
+            "id": "wells1999",
+            "slug": "extreme-programming-a-gentle-introduction",
+            "path": "<references>/wells1999_extreme-programming-a-gentle-introduction.json"
+        },
+        {
+            "id": "wells2009",
+            "slug": "agile-software-development-a-gentle-introduction",
+            "path": "<references>/wells2009_agile-software-development-a-gentle-introduction.json"
+        },
+        {
+            "id": "extreme-programming-roadpmap2006",
+            "slug": "extreme-programming",
+            "path": "<references>/extreme-programming-roadpmap2006_extreme-programming.json"
+        },
+        {
+            "id": "wiki-extreme-programming2009",
+            "slug": "relentless-testing",
+            "path": "<references>/wiki-extreme-programming2009_relentless-testing.json"
+        },
+        {
+            "id": "wiki-extreme-programming2014",
+            "slug": "extreme-programming-for-one",
+            "path": "<references>/wiki-extreme-programming2014_extreme-programming-for-one.json"
         }
     ]
 }

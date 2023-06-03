@@ -1,0 +1,26 @@
+{
+    "id": "padilha2014",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "documentacao-museologica-e-gestao-de-acervo",
+    "_create": "2023-05-30T00:32:17.109Z",
+    "_update": "2023-05-30T00:32:17.109Z",
+    "type": "book",
+    "title": "Documentação Museológica e Gestão de Acervo",
+    "container-title": "Coleção Estudos Museológicos",
+    "publisher": "FCC Edições",
+    "publisher-place": "Florianópolis",
+    "volume": "2",
+    "number-of-pages": "74",
+    "ISBN": "978-85-85641-11-5",
+    "author": [
+        {
+            "family": "Padilha",
+            "given": "Renata Cardozo"
+        }
+    ],
+    "issued": {
+        "raw": "2014"
+    },
+    "language": "pt-br"
+}

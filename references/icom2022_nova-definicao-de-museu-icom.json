@@ -1,0 +1,24 @@
+{
+    "id": "icom2022",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "nova-definicao-de-museu-icom",
+    "_create": "2023-05-29T23:58:42.536Z",
+    "_update": "2023-05-29T23:58:42.536Z",
+    "type": "webpage",
+    "title": "Nova definição de Museu - ICOM",
+    "publisher": "ICOM",
+    "author": [
+        {
+            "family": "ICOM",
+            "given": "Intenational Concoul of Museums - Brasil"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-05-29"
+    },
+    "issued": {
+        "raw": "2022-08-24"
+    },
+    "URL": "https://www.icom.org.br/?page_id=2776"
+}

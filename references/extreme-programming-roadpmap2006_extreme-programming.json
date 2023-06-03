@@ -1,0 +1,23 @@
+{
+    "id": "extreme-programming-roadpmap2006",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "extreme-programming",
+    "_create": "2023-06-03T14:43:46.009Z",
+    "_update": "2023-06-03T14:43:46.009Z",
+    "type": "webpage",
+    "title": "Extreme Programming",
+    "author": [
+        {
+            "family": "ExtremeProgrammingRoadpmap"
+        }
+    ],
+    "issued": {
+        "raw": "2006"
+    },
+    "accessed": {
+        "raw": "2023-06-03"
+    },
+    "language": "en",
+    "URL": "http://xp.c2.com/ExtremeProgramming.html"
+}

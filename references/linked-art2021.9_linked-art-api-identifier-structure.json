@@ -1,0 +1,23 @@
+{
+    "id": "linked-art2021.9",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-art-api-identifier-structure",
+    "_create": "2023-06-03T02:35:33.999Z",
+    "_update": "2023-06-03T02:35:33.999Z",
+    "type": "webpage",
+    "title": "Linked Art API: Identifier Structure",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2021"
+    },
+    "language": "en",
+    "URL": "https://linked.art/api/1.0/shared/identifier/"
+}

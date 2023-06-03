@@ -1,0 +1,28 @@
+{
+    "id": "ietf2017",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "rfc-8259-the-java-script-object-notation-json-data-interchange-format",
+    "_create": "2023-06-02T05:09:20.107Z",
+    "_update": "2023-06-02T05:09:20.107Z",
+    "type": "webpage",
+    "title": "RFC 8259 - The JavaScript Object Notation (JSON) Data Interchange Format",
+    "author": [
+        {
+            "family": "Bray",
+            "given": "T. Ed."
+        },
+        {
+            "family": "IETF",
+            "given": "Internet Engineering Task Force"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2017"
+    },
+    "language": "en",
+    "URL": "https://www.rfc-editor.org/rfc/rfc8259"
+}

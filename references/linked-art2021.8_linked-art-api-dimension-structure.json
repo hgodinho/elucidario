@@ -1,0 +1,23 @@
+{
+    "id": "linked-art2021.8",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-art-api-dimension-structure",
+    "_create": "2023-06-03T02:03:52.074Z",
+    "_update": "2023-06-03T02:03:52.074Z",
+    "type": "webpage",
+    "title": "Linked Art API: Dimension Structure",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2021"
+    },
+    "language": "en",
+    "URL": "https://linked.art/api/1.0/shared/dimension/"
+}

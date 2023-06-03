@@ -1,0 +1,23 @@
+{
+    "id": "wiki-extreme-programming2009",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "relentless-testing",
+    "_create": "2023-06-03T15:57:26.241Z",
+    "_update": "2023-06-03T15:57:26.241Z",
+    "type": "webpage",
+    "title": "Relentless Testing",
+    "author": [
+        {
+            "family": "Wiki Extreme Programming"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-03"
+    },
+    "issued": {
+        "raw": "2009"
+    },
+    "language": "en",
+    "URL": "http://wiki.c2.com/?RelentlessTesting"
+}

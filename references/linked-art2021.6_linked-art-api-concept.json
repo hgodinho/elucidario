@@ -1,0 +1,23 @@
+{
+    "id": "linked-art2021.6",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-art-api-concept",
+    "_create": "2023-06-02T19:05:01.484Z",
+    "_update": "2023-06-02T19:05:01.484Z",
+    "type": "webpage",
+    "title": "Linked Art API: Concept",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "issued": {
+        "raw": "2021"
+    },
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "language": "en",
+    "URL": "https://linked.art/api/1.0/endpoint/concept/"
+}

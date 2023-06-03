@@ -1,0 +1,23 @@
+{
+    "id": "narwhal-technologies-inc2022",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "monorepo-tools",
+    "_create": "2023-06-02T02:31:07.008Z",
+    "_update": "2023-06-02T02:31:07.008Z",
+    "type": "webpage",
+    "title": "monorepo.tools",
+    "author": [
+        {
+            "family": "Narwhal Technologies Inc."
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-01"
+    },
+    "issued": {
+        "raw": "2022"
+    },
+    "language": "en",
+    "URL": "https://monorepo.tools"
+}

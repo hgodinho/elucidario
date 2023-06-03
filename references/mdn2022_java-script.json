@@ -1,0 +1,23 @@
+{
+    "id": "mdn2022",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "java-script",
+    "_create": "2023-06-02T05:04:54.038Z",
+    "_update": "2023-06-02T05:04:54.038Z",
+    "type": "webpage",
+    "title": "JavaScript",
+    "author": [
+        {
+            "family": "MDN",
+            "given": "Mozilla"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2022"
+    },
+    "URL": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript"
+}

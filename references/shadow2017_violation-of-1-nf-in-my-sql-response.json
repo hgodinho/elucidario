@@ -1,0 +1,23 @@
+{
+    "id": "shadow2017",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "violation-of-1-nf-in-my-sql-response",
+    "_create": "2023-06-02T19:58:41.551Z",
+    "_update": "2023-06-02T19:58:41.551Z",
+    "type": "webpage",
+    "title": "Violation of 1NF in MySQL - Response",
+    "publisher": "StackOverfow",
+    "author": [
+        {
+            "family": "Shadow"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2017-03-05"
+    },
+    "URL": "https://stackoverflow.com/a/42602932/11085794"
+}

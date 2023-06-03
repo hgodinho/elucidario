@@ -1,0 +1,24 @@
+{
+    "id": "petty2014",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "dbdelta-supporting-foreign-key",
+    "_create": "2023-06-02T20:24:01.401Z",
+    "_update": "2023-06-02T20:24:01.401Z",
+    "type": "webpage",
+    "title": "dbdelta supporting foreign key",
+    "publisher": "WordPress Core Trac",
+    "author": [
+        {
+            "family": "Petty",
+            "given": "Brian"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-02"
+    },
+    "issued": {
+        "raw": "2014-02-22"
+    },
+    "URL": "https://core.trac.wordpress.org/ticket/19207#comment:3"
+}
