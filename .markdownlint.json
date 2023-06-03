@@ -2,5 +2,12 @@
     "MD024": { "siblings_only": true },
     "MD013": false,
     "MD036": false,
-    "MD041": false
+    "MD041": false,
+    "list-marker-space": {
+        "ul_multi": 3,
+        "ul_single": 3
+    },
+    "ul-indent": {
+        "indent": 4
+    }
 }
