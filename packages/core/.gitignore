@@ -1,0 +1,11 @@
+node_modules
+vendor
+package-lock.json
+composer.lock
+bundle
+/log/
+debug.log
+/index.php
+/dist/
+.phpcs-cache
+wp-app

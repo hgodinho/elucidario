@@ -1,0 +1,1 @@
+# `@elucidario/pkg-core`

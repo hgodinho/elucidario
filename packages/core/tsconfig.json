@@ -1,0 +1,8 @@
+{
+    "extends": "@elucidario/pkg-tsconfig",
+    "compilerOptions": {
+        "resolveJsonModule": true,
+        "outDir": "dist"
+    },
+    "include": ["src/js/index.ts"]
+}
