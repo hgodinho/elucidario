@@ -1,0 +1,24 @@
+{
+    "title": "Tabela X: Grupos de informação para entrada de objetos",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Grupo de informação"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        }
+    ],
+    "data": [
+        ["Grupo de informação", "Exigência"],
+        ["Loan in", "opcional"],
+        ["Object identification information", "requerido"],
+        ["Object description information", "requerido"],
+        ["Object entry information", "requerido"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Grupos de informação para o procedimento _Object Entry_ do Spectrum 5."
+    }
+}

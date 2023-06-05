@@ -5,8 +5,9 @@
     "_slug": "object-name-spectrum",
     "_create": "2023-05-23T00:07:13.462Z",
     "_update": "2023-05-23T00:07:13.462Z",
-    "type": "webpage",
-    "title": "Object name - Spectrum",
+    "type": "standard",
+    "title": "Object name",
+    "container-title": "Spectrum 5",
     "author": [
         {
             "family": "Collections Trust"

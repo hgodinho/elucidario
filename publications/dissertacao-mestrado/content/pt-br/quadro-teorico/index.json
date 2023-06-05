@@ -4,7 +4,18 @@
         "a-informacao-museologica.md",
         "documentacao-museologica.md",
         "spectrum.md",
+        "spectrum-object-entry.md",
+        "spectrum-acquisition.md",
+        "spectrum-location.md",
+        "spectrum-inventory.md",
+        "spectrum-cataloguing.md",
+        "spectrum-exit.md",
+        "spectrum-loan-in.md",
+        "spectrum-loan-out.md",
+        "spectrum-planning.md",
+        "spectrum-unidades-informacao.md",
         "metadados-de-representacao.md",
-        "linked-art.md"
+        "linked-art.md",
+        "notas.md"
     ]
 }

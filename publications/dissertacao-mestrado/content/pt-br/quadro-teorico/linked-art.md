@@ -78,7 +78,7 @@ A API é dividida em duas partes: _Shared Constructs_ e _Entity Endpoints_. Mas 
 
 As propriedades do Linked Art são dados de diferentes tipos, como _strings_, _numbers_, _arrays_, _json objects_, _datetime_, entre outras. A tabela a seguir apresenta as propriedades do Linked Art, com seus tipos e descrições [@linked-art2021.1]:
 
-{{table:linked-art-properties.json}}
+{{table:linked-art/linked-art-properties.json}}
 
 ##### 4.4.3.2.2. _Shared Constructs_
 
@@ -87,16 +87,16 @@ _Shared Constructs_ são estruturas de dados definidas no Linked Art que são ut
 -   _Dimensions_ - dimensões de um recurso físico ou digital, com uma unidade e um tipo de dimensão;
     Suas propriedades são:
 
-    {{table:linked-art-dimensions.json}}
+    {{table:linked-art/linked-art-dimensions.json}}
 
-    {{table:linked-art-measurement.json}}
+    {{table:linked-art/linked-art-measurement.json}}
 
 -   _Identifiers_ - identificadores de um recurso, como um número de catálogo ou um número de inventário;
     Suas propriedades são:
 
-    {{table:linked-art-identifiers.json}}
+    {{table:linked-art/linked-art-identifiers.json}}
 
-    {{table:linked-art-identifiers-assignments.json}}
+    {{table:linked-art/linked-art-identifiers-assignments.json}}
 
 -   _Monetary Amounts_ - similares a _Dimensions_, mas para valores monetários, no caso a propriedade _Type_ é definida como _MonetaryAmount_, e não possui a propriedade _assigned_by_;
 
@@ -112,14 +112,14 @@ _Shared Constructs_ são estruturas de dados definidas no Linked Art que são ut
 
 O modelo apresenta 11 classes, ou endpoints, sendo elas [@linked-art2021.5]:
 
-1. **Concept** - tipos, materiais, técnicas, idiomas, entre outros que sejam registros completos, ao contrário de referências externas;
-2. **Digital Object** - imagens, vídeos, áudios, documentos, webpages, ou outros recursos digitais;
-3. **Event** - eventos e atividades não específicas que estão relacionadas, mas não são parte de outra entidade;
-4. **Groups** - grupos de pessoas, organizações, ou outras entidades;
-5. **People** - pessoas;
-6. **Physical Object** - objetos físicos, incluindo obras de arte, artefatos, edifícios, partes de objetos, entre outros;
-7. **Place** - locais;
-8. **Provenance Activity** - atividades de proveniência;
-9. **Sets** - conjuntos de entidades;
+1.  **Concept** - tipos, materiais, técnicas, idiomas, entre outros que sejam registros completos, ao contrário de referências externas;
+2.  **Digital Object** - imagens, vídeos, áudios, documentos, webpages, ou outros recursos digitais;
+3.  **Event** - eventos e atividades não específicas que estão relacionadas, mas não são parte de outra entidade;
+4.  **Groups** - grupos de pessoas, organizações, ou outras entidades;
+5.  **People** - pessoas;
+6.  **Physical Object** - objetos físicos, incluindo obras de arte, artefatos, edifícios, partes de objetos, entre outros;
+7.  **Place** - locais;
+8.  **Provenance Activity** - atividades de proveniência;
+9.  **Sets** - conjuntos de entidades;
 10. **Textual Work** - obras textuais que merecem descrição como entidades únicas, como conteúdo de livro ou artigos, entre outros; e
 11. **Visual Work** - conteúdo imagético que merece descrição como entidades únicas, como a imagem exibida em uma pintura ou desenho, entre outros.

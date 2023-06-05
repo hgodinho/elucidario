@@ -5,8 +5,9 @@
     "_slug": "object-identification-information-spectrum-5-1",
     "_create": "2023-05-28T01:01:07.814Z",
     "_update": "2023-05-28T01:01:07.814Z",
-    "type": "webpage",
-    "title": "Object identification information - Spectrum 5.1",
+    "type": "standard",
+    "title": "Object identification information",
+    "container-title": "Spectrum 5",
     "author": [
         {
             "family": "Collections Trust"

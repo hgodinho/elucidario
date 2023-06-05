@@ -28,19 +28,37 @@ CETIC.BR. **Pesquisa sobre o uso das tecnologias de informação e comunicação
 
 CETIC.BR. **Pesquisa sobre o uso das tecnologias de informação e comunicação nos equipamentos culturais brasileiros: TIC Cultura 2020.** 2021\. Disponível em: https://www.cetic.br/pt/tics/cultura/2020/geral/. Acesso em: 18 jul. 2022\. 
 
-COLLECTIONS TRUST. **Appendix - information requirements - Spectrum**. 2017a. Disponível em: https://collectionstrust.org.uk/spectrum/information-requirements/. Acesso em: 21 maio. 2023\. 
+COLLECTIONS TRUST. **Standard Procedures for Collections Recording Used in Museums**. **Spectrum 5**, 2017\. a. Disponível em: https://collectionstrust.org.uk/spectrum/. Acesso em: 5 jul. 2022.
 
-COLLECTIONS TRUST. **Object name - Spectrum**. 2017b. Disponível em: https://collectionstrust.org.uk/resource/object-name/. Acesso em: 22 maio. 2023\. 
+COLLECTIONS TRUST. **Primary procedures**. **Spectrum 5**, 2017\. b. Disponível em: https://collectionstrust.org.uk/spectrum/primary-procedures/. Acesso em: 20 maio. 2023.
 
-COLLECTIONS TRUST. **Introduction do Spectrum**. 2022\. Disponível em: https://collectionstrust.org.uk/spectrum/spectrum-5/. Acesso em: 19 maio. 2023\. 
+COLLECTIONS TRUST. **Appendix - information requirements**. **Spectrum 5**, 2017\. c. Disponível em: https://collectionstrust.org.uk/spectrum/information-requirements/. Acesso em: 21 maio. 2023.
 
-COLLECTIONS TRUST. **Primary procedures**. 2023\. Disponível em: https://collectionstrust.org.uk/spectrum/primary-procedures/. Acesso em: 20 maio. 2023\. 
+COLLECTIONS TRUST. **Object name**. **Spectrum 5**, 2017\. d. Disponível em: https://collectionstrust.org.uk/resource/object-name/. Acesso em: 22 maio. 2023.
 
-COLLECTIONS TRUST. **Standard Procedures for Collections Recording Used in Museums - SPECTRUM.** \[s.d.\]. Disponível em: https://collectionstrust.org.uk/spectrum/. Acesso em: 5 jul. 2022a. 
+COLLECTIONS TRUST. **Object Entry**. **Spectrum 5**, 2017\. e. Disponível em: https://collectionstrust.org.uk/wp-content/uploads/2017/11/Object-entry.pdf. Acesso em: 4 jun. 2023.
 
-COLLECTIONS TRUST. **Spectrum Timeline**. \[s.d.\]. Disponível em: https://collectionstrust.org.uk/resource/spectrum-timeline/. Acesso em: 20 maio. 2023b. 
+COLLECTIONS TRUST. **Acquisition and accessioning**. **Spectrum 5**, 2017\. f. Disponível em: https://collectionstrust.org.uk/wp-content/uploads/2017/11/Acquisition-and-accessioning.pdf. Acesso em: 4 jun. 2023.
 
-COLLECTIONS TRUST. **#RethinkingCataloguing**. \[s.d.\]. Disponível em: https://collectionstrust.org.uk/blog/rethinkingcataloguing/. Acesso em: 20 maio. 2023c. 
+COLLECTIONS TRUST. **Location and movement control**. **Spectrum 5**, 2017\. g. Disponível em: https://collectionstrust.org.uk/wp-content/uploads/2017/11/Location-and-movement-control.pdf. Acesso em: 4 jun. 2023.
+
+COLLECTIONS TRUST. **Inventory**. **Spectrum 5**, 2017\. h. Disponível em: https://collectionstrust.org.uk/wp-content/uploads/2017/11/Inventory.pdf. Acesso em: 4 jun. 2023.
+
+COLLECTIONS TRUST. **Cataloguing**. **Spectrum 5**, 2017\. i. Disponível em: https://collectionstrust.org.uk/wp-content/uploads/2017/11/Cataloguing.pdf. Acesso em: 4 jun. 2023.
+
+COLLECTIONS TRUST. **Object exit**. **Spectrum 5**, 2017\. j. Disponível em: https://collectionstrust.org.uk/wp-content/uploads/2017/11/Object-exit.pdf. Acesso em: 4 jun. 2023.
+
+COLLECTIONS TRUST. **Loan in (borrowing object)**. **Spectrum 5**, 2017\. k. Disponível em: https://collectionstrust.org.uk/wp-content/uploads/2017/11/Loans-in-borrowing-objects.pdf. Acesso em: 4 jun. 2023.
+
+COLLECTIONS TRUST. **Documentation planning**. **Spectrum 5**, 2017\. l. Disponível em: https://collectionstrust.org.uk/wp-content/uploads/2017/11/Documentation-planning.pdf. Acesso em: 4 jun. 2023.
+
+COLLECTIONS TRUST. **Loans out (lending objects)**. **Spectrum 5**, 2017\. m. Disponível em: https://collectionstrust.org.uk/wp-content/uploads/2017/11/Loans-out-lending-objects.pdf. Acesso em: 4 jun. 2023.
+
+COLLECTIONS TRUST. **Introduction do Spectrum**. **Spectrum 5**, 2022\. Disponível em: https://collectionstrust.org.uk/spectrum/spectrum-5/. Acesso em: 19 maio. 2023.
+
+COLLECTIONS TRUST. **Spectrum Timeline**. \[s.d.\]. Disponível em: https://collectionstrust.org.uk/resource/spectrum-timeline/. Acesso em: 20 maio. 2023a. 
+
+COLLECTIONS TRUST. **#RethinkingCataloguing**. \[s.d.\]. Disponível em: https://collectionstrust.org.uk/blog/rethinkingcataloguing/. Acesso em: 20 maio. 2023b. 
 
 CONSELHO INTERNACIONAL DE MUSEUS - ICOM. **Código de ética lusófono**. , 2009\. Disponível em: http://icom.org.br/wp-content/themes/colorwaytheme/pdfs/codigo%20de%20etica/codigo\_de\_etica\_lusofono\_iii\_2009.pdf. Acesso em: 22 jul. 2021.
 

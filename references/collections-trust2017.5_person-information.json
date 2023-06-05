@@ -5,8 +5,9 @@
     "_slug": "person-information",
     "_create": "2023-05-28T01:04:18.891Z",
     "_update": "2023-05-28T01:04:18.891Z",
-    "type": "webpage",
+    "type": "standard",
     "title": "Person information",
+    "container-title": "Spectrum 5",
     "author": [
         {
             "family": "Collections Trust"

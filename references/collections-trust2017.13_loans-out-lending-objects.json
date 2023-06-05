@@ -1,12 +1,12 @@
 {
-    "id": "collections-trust2022.2",
+    "id": "collections-trust2017.13",
     "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
-    "_slug": "primary-procedures",
-    "_create": "2023-05-20T04:02:54.294Z",
-    "_update": "2023-05-20T04:02:54.295Z",
+    "_slug": "loans-out-lending-objects",
+    "_create": "2023-06-05T03:58:53.413Z",
+    "_update": "2023-06-05T03:58:53.413Z",
     "type": "standard",
-    "title": "Primary procedures",
+    "title": "Loans out (lending objects)",
     "container-title": "Spectrum 5",
     "author": [
         {
@@ -14,11 +14,11 @@
         }
     ],
     "accessed": {
-        "raw": "2023-05-20"
+        "raw": "2023-06-04"
     },
     "issued": {
         "raw": "2017"
     },
     "language": "en",
-    "URL": "https://collectionstrust.org.uk/spectrum/primary-procedures/"
+    "URL": "https://collectionstrust.org.uk/wp-content/uploads/2017/11/Loans-out-lending-objects.pdf"
 }

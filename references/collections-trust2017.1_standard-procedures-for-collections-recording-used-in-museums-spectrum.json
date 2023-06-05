@@ -5,10 +5,9 @@
     "_slug": "standard-procedures-for-collections-recording-used-in-museums-spectrum",
     "_create": "2023-05-20T01:45:36.705Z",
     "_update": "2023-05-20T01:45:36.705Z",
-    "type": "webpage",
-    "title": "Standard Procedures for Collections Recording Used in Museums - SPECTRUM.",
-    "publisher": "Collections Trust",
-    "publisher-place": "Reino Unido",
+    "type": "standard",
+    "title": "Standard Procedures for Collections Recording Used in Museums",
+    "container-title": "Spectrum 5",
     "author": [
         {
             "literal": "COLLECTIONS TRUST"
@@ -16,6 +15,9 @@
     ],
     "accessed": {
         "raw": "2022-07-05"
+    },
+    "issued": {
+        "raw": "2017"
     },
     "language": "en",
     "URL": "https://collectionstrust.org.uk/spectrum/"

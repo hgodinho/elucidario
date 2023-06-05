@@ -1,12 +1,12 @@
 {
-    "id": "collections-trust2022.2",
+    "id": "collections-trust2017.10",
     "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
-    "_slug": "primary-procedures",
-    "_create": "2023-05-20T04:02:54.294Z",
-    "_update": "2023-05-20T04:02:54.295Z",
+    "_slug": "object-exit",
+    "_create": "2023-06-05T01:01:21.548Z",
+    "_update": "2023-06-05T01:01:21.548Z",
     "type": "standard",
-    "title": "Primary procedures",
+    "title": "Object exit",
     "container-title": "Spectrum 5",
     "author": [
         {
@@ -14,11 +14,10 @@
         }
     ],
     "accessed": {
-        "raw": "2023-05-20"
+        "raw": "2023-06-04"
     },
     "issued": {
         "raw": "2017"
     },
-    "language": "en",
-    "URL": "https://collectionstrust.org.uk/spectrum/primary-procedures/"
+    "URL": "https://collectionstrust.org.uk/wp-content/uploads/2017/11/Object-exit.pdf"
 }

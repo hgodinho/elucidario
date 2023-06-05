@@ -1,0 +1,22 @@
+{
+    "title": "Tabela X: Grupos de informação para localização de objetos",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Grupo de informação"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        }
+    ],
+    "data": [
+        ["Grupo de informação", "Exigência"],
+        ["Object identification information", "requerido"],
+        ["Object location information", "requerido"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Grupos de informação para o procedimento _Object location and movement control_ do Spectrum 5."
+    }
+}

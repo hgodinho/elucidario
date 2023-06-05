@@ -1,12 +1,12 @@
 {
-    "id": "collections-trust2022.1",
+    "id": "collections-trust2017.6",
     "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
-    "_slug": "introduction-do-spectrum",
-    "_create": "2023-05-20T02:23:52.803Z",
-    "_update": "2023-05-20T02:23:52.803Z",
+    "_slug": "object-entry",
+    "_create": "2023-06-04T14:57:29.168Z",
+    "_update": "2023-06-04T14:57:29.168Z",
     "type": "standard",
-    "title": "Introduction do Spectrum",
+    "title": "Object Entry",
     "container-title": "Spectrum 5",
     "author": [
         {
@@ -14,11 +14,11 @@
         }
     ],
     "accessed": {
-        "raw": "2023-05-19"
+        "raw": "2023-06-04"
     },
     "issued": {
-        "raw": "2022"
+        "raw": "2017"
     },
     "language": "en",
-    "URL": "https://collectionstrust.org.uk/spectrum/spectrum-5/"
+    "URL": "https://collectionstrust.org.uk/wp-content/uploads/2017/11/Object-entry.pdf"
 }

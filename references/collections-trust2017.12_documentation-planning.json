@@ -1,12 +1,12 @@
 {
-    "id": "collections-trust2022.2",
+    "id": "collections-trust2017.12",
     "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
     "@type": "Reference",
-    "_slug": "primary-procedures",
-    "_create": "2023-05-20T04:02:54.294Z",
-    "_update": "2023-05-20T04:02:54.295Z",
+    "_slug": "documentation-planning",
+    "_create": "2023-06-05T02:49:01.223Z",
+    "_update": "2023-06-05T02:49:01.223Z",
     "type": "standard",
-    "title": "Primary procedures",
+    "title": "Documentation planning",
     "container-title": "Spectrum 5",
     "author": [
         {
@@ -14,11 +14,11 @@
         }
     ],
     "accessed": {
-        "raw": "2023-05-20"
+        "raw": "2023-06-04"
     },
     "issued": {
         "raw": "2017"
     },
     "language": "en",
-    "URL": "https://collectionstrust.org.uk/spectrum/primary-procedures/"
+    "URL": "https://collectionstrust.org.uk/wp-content/uploads/2017/11/Documentation-planning.pdf"
 }

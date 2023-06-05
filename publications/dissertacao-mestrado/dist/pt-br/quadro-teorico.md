@@ -81,7 +81,7 @@ Ainda, como esclarecido por (PADILHA, 2014), a documentação museológica pode 
 
 ### 4.3.1 Documentação do objeto
 
-### 4.3.2 - _Standard Procedures for Collections Recording Used in Museums_ (SPECTRUM)
+### 4.3.2. - _Standard Procedures for Collections Recording Used in Museums_ (SPECTRUM)
 
 O Spectrum é um padrão para gestão de coleções museológicas criado no Reino Unido por Alice Grant e publicada inicialmente em 1994 pela _Museum Documentation Association_ (MDA), em 2005 passa a ser editada por Gordon McKenna (3ª Edição) (MATOS, 2014). O Spectrum é utilizado por todos os museus acreditados pela _Collections Trust_ (COLLECTIONS TRUST, 2022) no Reino Unido e diversos outros ao redor do mundo, e define 21 procedimentos para gestão de coleções museológicas e unidades de informações utilizadas nos procedimentos.
 
@@ -98,87 +98,91 @@ A versão 5.1, publicada em 2022 como parte da campanha "rethink cataloguing" (C
 
 Utilizaremos a versão 5.1 em nossos estudos por ser a versão mais recente do Spectrum.
 
-#### Procedimentos
+#### 4.3.2.1. Procedimentos
 
-O Spectrum define 21 procedimentos para gestão de coleções museológicas (COLLECTIONS TRUST, 2023), são os procedimentos que um museu irá utilizar em todo o ciclo de vida de um objeto musealizado, desde a sua aquisição até a sua desincorporação.
+O Spectrum define 21 procedimentos para gestão de coleções museológicas (COLLECTIONS TRUST, 2017), são os procedimentos que um museu irá utilizar em todo o ciclo de vida de um objeto musealizado, desde a sua aquisição até a sua desincorporação.
 
 Um procedimento Spectrum é descrito como um fluxo de trabalho, composto por uma definição, notas de escopo, o padrão Spectrum (o que o museu deve alcançar) e procedimento sugerido. O padrão Spectrum que deve ser alcançado é dividido em duas partes: políticas e requisitos mínimos. As políticas são questões que o museu deve considerar ao definir o seu procedimento, e os requisitos mínimos são as atividades que devem ser realizadas para que o procedimento seja considerado minimamente completo. O procedimento sugerido também é apresentado em duas partes: um diagrama de fluxo de trabalho e uma descrição textual do procedimento (COLLECTIONS TRUST, 2022).
 
 Dos 21 procedimentos, 9 são obrigatórios para acreditação à _Collections Trust_ e são os que o museu irá utilizar em todos os objetos musealizados, os outros 12 são opcionais e o museu pode escolher quais utilizar de acordo com a sua necessidade. Os procedimentos podem ser entendidos como uma cadeia de atividades que se interconectam, em que um procedimento pode desencadear o outro.
 
-Os procedimentos obrigatórios são:
+Em cada procedimento o Spectrum identifica as unidades de informação que são utilizadas, e estas unidades de informação são definidas em um documento separado, o _Spectrum Units of Information_, que falaremos mais adiante.
 
-1.  Entrada de Objetos
+A seguir listamos os 21 procedimentos do Spectrum, e os que são obrigatórios para a acreditação à _Collections Trust_ estão marcados com um asterisco (\*). Como as políticas vão além do escopo do aplicativo, e sim do museu -porque você escolhe adquirir obras de arte contemporânea, ao invés de obras do renascimento- não iremos apresentá-las aqui, mas o Spectrum sugere como elaborar uma política para cada procedimento descrito.
+
+<!-- Os procedimentos obrigatórios são:
+
+1. Entrada de Objetos
 
     Procedimento para registrar a entrada de objetos no museu, seja por doação, compra, empréstimo, etc.
 
-2.  Aquisição e adesão
+2. Aquisição e adesão
 
     Procedimento para registrar a aquisição de objetos, seja por compra, doação, etc.
 
-3.  Localização e controle de movimentação
+3. Localização e controle de movimentação
 
     Procedimento para registrar a localização de objetos no museu e o controle de movimentação dos objetos.
 
-4.  Inventário
+4. Inventário
 
     Procedimento para registrar o inventário dos objetos musealizados.
 
-5.  Catalogação
+5. Catalogação
 
     Procedimento para registrar a catalogação dos objetos musealizados.
 
-6.  Saída de objetos
+6. Saída de objetos
 
     Procedimento para registrar a saída de objetos do museu, seja por empréstimo, doação, venda, etc.
 
-7.  Entrada de empréstimos
+7. Entrada de empréstimos
 
     Procedimento para registrar a entrada de objetos emprestados ao museu.
 
-8.  Saída de empréstimos
+8. Saída de empréstimos
 
     Procedimento para registrar a saída de objetos emprestados pelo museu.
 
-9.  Planejamento da documentação
+9. Planejamento da documentação
 
     Procedimento para registrar o planejamento da documentação dos objetos musealizados.
 
 Os procedimentos não obrigatórios são:
 
-1.  Uso das coleções
+1. Uso das coleções
 
     Procedimento para registrar como coleções e dados associados são utilizados pelo museu e por outros usuários.
 
-2.  Verificação de condições e avaliação técnica
+2. Verificação de condições e avaliação técnica
 
     Procedimento para registrar a verificação de condições e avaliação técnica dos objetos musealizados.
 
-3.  Cuidados e conservação de coleções
+3. Cuidados e conservação de coleções
 
     Procedimento para registrar os cuidados e conservação dos objetos musealizados.
 
-4.  Valoração
+4. Valoração
 
     Procedimento para registrar a valoração dos objetos musealizados.
 
-5.  Seguro e indenização
+5. Seguro e indenização
 
     Procedimento para registrar o seguro e indenização dos objetos musealizados.
 
-6.  Plano de emergência para coleções
+6. Plano de emergência para coleções
 
     Procedimento para registrar o plano de emergência para coleções do museu.
 
-7.  Danos e perdas
+7. Danos e perdas
 
     Procedimento para registrar os danos e perdas dos objetos musealizados.
 
-8.  Desacessão e alienação
+8. Desacessão e alienação
 
     Procedimento para registrar a desacessão e alienação dos objetos musealizados.
 
-9.  Gestão de direitos
+9. Gestão de direitos
 
     Procedimento para registrar a gestão de direitos dos objetos musealizados.
 
@@ -192,7 +196,637 @@ Os procedimentos não obrigatórios são:
 
 12. Auditoria
 
-    Procedimento para registrar a auditoria da coleção do museu.
+    Procedimento para registrar a auditoria da coleção do museu. -->
+
+##### 4.3.2.1.1. \*_Object Entry_ (Entrada de objetos)
+
+Entrada de objetos no museu por qualquer motivo (COLLECTIONS TRUST, 2017).
+
+1.  Preparação para a entrada:
+
+    Relacionado a _Acquisition and accessioning_ e _Loans in_
+
+    A preparação pode ser simples como avisar alguém que irá receber, ou durar anos como no caso de coleções arqueológicas.
+
+    -   Se necessário arranjar transporte vá para _Location and movement control_;
+    -   Se necessário atualizar informações de seguro e indenização vá para _Insurance and indemnity_
+
+2.  Crie um registro e um recibo:
+
+    1.  Os grupos de informações são:
+
+        **Tabela X: Grupos de informação para entrada de objetos**
+
+        | Grupo de informação               | Exigência |
+        | --------------------------------- | --------- |
+        | Loan in                           | opcional  |
+        | Object identification information | requerido |
+        | Object description information    | requerido |
+        | Object entry information          | requerido |
+
+        **Fonte**: Elaborado pelo autor. Grupos de informação para o procedimento _Object Entry_ do Spectrum 5.
+
+    2.  Verifique e registre as condições do objeto e quaisquer riscos associados
+
+        -   Vá para _Conditional checking and technical assessment_,
+        -   Vá para _Reproduction_
+
+    3.  Envie ou entregue uma cópia do registro de entrada.
+
+3.  Processando objetos recém chegados:
+
+    1.  Marque o objeto com um marcador temporário com o _Entry number_ ou _Loan in reference number_;
+    2.  Registre a primeira localização dos objetos - _Location and movement control_;
+    3.  Se o objeto é uma aquisição planejada ou entrada de empréstimos, volte ao procedimento relevante: _Acquisition and accessioning_ ou _Loans in_;
+    4.  Se o objeto chega inesperadamente, considera a oferta e vá para _Acquisition and accessioning_;
+    5.  Se o dono deixa para identificação, realize a tarefa no tempo acordado e vá para _Object exit_;
+    6.  Se o objeto chega anonimamente, lide de acordo com a política da instituição;
+
+##### 4.3.2.1.2. \*_Acquisition and accessioning_ (Aquisição e adesão)
+
+O compromisso formal do corpo governante do museu de cuidar do objeto a longo prazo (COLLECTIONS TRUST, 2017).
+
+1.  Avaliação de potenciais aquisições
+
+    1.  Faça um caso para a aquisição
+
+        Siga a política de aquisição do museu.
+
+    2.  Avalie a proposta
+
+        Siga a política, informe o doador ou vendedor sobre a decisão.
+
+2.  Obtenção de títulos e direitos autorais
+
+    1.  Registro de evidências de propriedade e direitos autorais:
+
+        -   Referência ao título formal da pessoa jurídica que está adquirindo o objeto;
+        -   O nome e endereco do antigo dono;
+        -   Uma breve descrição do objeto;
+        -   Assinatura confirmando a transferência de propriedade;
+        -   O método de aquisição.
+
+    2.  Registre direitos de reprodução ou outros direitos se houver:
+
+        -   Vá para _Rights management_.
+
+3.  Recebimento de objetos que ainda não está com você
+
+    1.  Planejamento da chegada:
+
+        -   Vá para _Object entry_.
+
+4.  Processando novas aquisições
+
+    1.  Etiquetagem ou marcação de objetos
+
+        A política deve especificar o formato de numeração e marcação.
+
+    2.  Registro de informações:
+
+        Os grupos de informações são:
+
+        **Tabela X: Grupos de informação para aquisição de objetos**
+
+        | Grupo de informação                        | Exigência |
+        | ------------------------------------------ | --------- |
+        | Object identification information          | requerido |
+        | Acquisition information                    | requerido |
+        | Object history and association information | requerido |
+        | Object use information                     | requerido |
+        | Object owners contribution information     | requerido |
+
+        **Fonte**: Elaborado pelo autor. Grupos de informação para o procedimento _Acquisition and accessioning_ do Spectrum 5.
+
+    3.  Se o objeto for um presente, envie agradecimentos e um recibo.
+
+        Inclua informações sobre como o objeto pode ser acessado no futuro.
+
+5.  Adesão de objetos à coleção
+
+    Se o objeto adquirido for fazer parte da coleção permanente do museu, faça o registro das seguintes informações:
+
+    -   _Entry number_;
+    -   _Object number_;
+    -   _Date acquired_;
+    -   _Who it was acquired from_;
+    -   _Description_;
+        -   _Object name_
+        -   _Title_
+        -   _Brief description_
+        -   _Any other information_
+    -   _Any other information_.
+
+##### 4.3.2.1.3. \*_Location and movement control_ (Localização e controle de movimentação)
+
+Registro da localização dos objetos e controle de movimentação, seja internamente ou externamente ao museu (COLLECTIONS TRUST, 2017).
+
+1.  Identificando e descrevendo localizações:
+
+    1.  Atribua um nome para cada display ou área de armazenamento:
+
+        Registre as informações da localização de cada objeto;
+
+        -   _Location reference number_;
+        -   _Location type_;
+        -   _Location address_;
+        -   _Location condition_:
+            -   _Location condition note_;
+            -   _Location condition note date_;
+        -   _Location security note_;
+        -   _Location access note_.
+
+    2.  Mantenha o sistema de localização:
+
+        Faça atualizações e adicione informações quando necessário:
+
+        -   _Tipo de medição do ambiente_;
+        -   _Medida do ambiente_:
+            -   _Unidade de medida do ambiente_;
+            -   _Data da medida do ambiente_.
+
+2.  Registre a localização dos objetos:
+
+    Registre as informações:
+
+    **Tabela X: Grupos de informação para localização de objetos**
+
+    | Grupo de informação               | Exigência |
+    | --------------------------------- | --------- |
+    | Object identification information | requerido |
+    | Object location information       | requerido |
+
+    **Fonte**: Elaborado pelo autor. Grupos de informação para o procedimento _Object location and movement control_ do Spectrum 5.
+
+3.  Movimentação de objetos
+
+    Geralmente ocorre em decorrência de outro procedimento Spectrum.
+
+    1.  Obtenha e registre autorização para todas as movimentações:
+
+        Registre as informações do grupo _Movement information_;
+
+    2.  Verifique as condições do objeto antes de movimentá-lo:
+
+        Vá para _Conditional checking and technical assessment_.
+
+    3.  Verifique se há riscos ou recomendações no manuseio e movimentação:
+
+        -   _Display recommendations_;
+        -   _Environment recommendations_;
+        -   _Handling recommendations_;
+        -   _Packing recommendations_;
+        -   _Security recommendations_;
+        -   _Transport recommendations_;
+        -   _Specials recommendations_;
+        -   _Storage recommendations_.
+
+    4.  Verifique se há obstáculos para a movimentação;
+
+    5.  Providencia qualquer atividade de conservação ou embalagem necessária
+
+        1.  Vá para _Collections cara and conservation_.
+
+    6.  Se nenhum transporte está envolvido, vá para _Atualize o registro do objeto_;
+
+    7.  Se o transporte está envolvido, defina e registre o meio mais apropriado:
+
+    8.  Providencia seguro e indenização se necessário:
+
+        1.  Vá para _Seguro e indenizações_.
+
+    9.  Providencia devida documentação para acompanhar o objeto:
+
+    10. Transporte e confirme a chegada do objeto:
+
+    11. Atualize o registro do objeto e de controle de movimentação:
+        Registre as informações:
+
+        **Tabela X: Grupos de informação para movimentação de objetos**
+
+        | Grupo de informação               | Exigência |
+        | --------------------------------- | --------- |
+        | Object identification information | requerido |
+        | Movement information              | requerido |
+        | Object location information       | requerido |
+
+        **Fonte**: Elaborado pelo autor. Grupos de informação para o procedimento _Object location and movement control_ do Spectrum 5.
+
+    12. Retorne ao procedimento que iniciou a movimentação.
+
+##### 4.3.2.1.4. \*_Inventory_ (Inventário)
+
+Certifica que você tem as informações básicas de cada objeto (COLLECTIONS TRUST, 2017).
+
+1.  Todos os procedimentos primários foram completados:
+
+    1.  Verifica se você atendeu a todos os requisitos dos outros 8 procedimentos primários
+
+    2.  Se todos os critérios dos outros procedimentos principais forem atendidos, vá para a próxima etapa, se não volte para o procedimento principal que não foi atendido.
+
+2.  Verifique se você possui informações fundamentais do objeto
+
+    1.  Verifique as informações:
+        1.  _Object number_;
+        2.  _Object name_;
+        3.  _Number of objects_;
+        4.  _Brief description_;
+        5.  _Current location_;
+        6.  _Current owner_;
+        7.  _Recording date_.
+    2.  Crie um plano para obter as informações que faltam.
+        -   Va para e volte de _Documentation planning_.
+
+3.  Produzindo um inventário
+
+    1.  Vá para as localizações que está inventariando e liste todo objeto neste local.
+    2.  Verifique se o objeto possui uma marcação de numeração ou etiqueta
+        1.  Caso não possua, atribua um número temporário;
+    3.  Atualize ou crie um registro para objetos que possuem marcação ou etiqueta;
+
+4.  Verifique por discrepâncias entre o inventário e o registro
+
+    1.  Tente identificar os objetos com numeração temporária;
+    2.  Se for possível identificar o objeto, remova a marcação temporária adicione a marcação correta;
+    3.  Atualize o registro do objeto, incluindo a localização;
+    4.  Mantenha informações essenciais por meio de outros procedimentos.
+
+5.  Resolução de problemas pendentes
+
+    -   Decida como lidar com os objetos que não foram identificados;
+
+##### 4.3.2.1.5. \*_Cataloguing_ (Catalogação)
+
+É o processo contínuo de registro e gestão da informação sobre as coleção, sob diferentes perspectivas (COLLECTIONS TRUST, 2017).
+
+1.  Criando registro de catalogação:
+
+    1.  Crie um registro para cada objeto, grupo de objetos, acessíveis via numeração, as informações obrigatórias são:
+
+        -   _Object number_;
+        -   _Object name_;
+        -   _Number of objects_;
+        -   _Brief description_;
+        -   _Current location_;
+        -   _Current owner_;
+        -   _Recording date_.
+
+    2.  Adicione outras informações disponíveis
+
+        1.  Os grupos de informações são:
+
+            **Tabela X: Grupos de informação para catalogação de objetos**
+
+            | Grupo de informação                                           | Exigência |
+            | ------------------------------------------------------------- | --------- |
+            | Object identification information                             | requerido |
+            | Object description information                                | requerido |
+            | Object history and association information                    | requerido |
+            | Field collection information                                  | requerido |
+            | Object production information                                 | requerido |
+            | Object owners contribution information                        | requerido |
+            | Reference information                                         | requerido |
+            | Amendment history (information about change to the catalogue) | requerido |
+
+            **Fonte**: Elaborado pelo autor. Grupos de informação para o procedimento _Cataloguing_ do Spectrum 5.
+
+        2.  Verifique se as informações registradas atendem o seu alvo mínimo de informações.
+            -   Relacionado com _Audit_;
+            -   Se houver problemas ou melhoras a fazer, vá para e retorne de _Documentation planning_.
+
+2.  Adicionando a registros de catalogação:
+
+    1.  Adicione informações sobre projetos de documentação
+
+        -   Relacionado com _Documentation planning_.
+
+    2.  Adicione informações sobre pesquisa e interpretação
+
+        -   Relacionado com _Use of collections_.
+
+    3.  Adicione informações advindas de pesquisa e interpretação
+
+        -   Relacionado com _Use of collections_.
+
+    4.  Adicione informações sobre outros procedimentos.
+
+3.  Mantendo registros de catalogação
+
+    1.  Providencias acesso aos registros por meio de indexação:
+
+        -   Object name;
+        -   Subject;
+        -   Artist;
+        -   Source
+        -   Production date;
+        -   Associated people, places and events;
+        -   entre outros.
+
+    2.  Mantenha o catalogo seguro, incluindo backups, e cópias impressas
+
+4.  Auditando registros de catalogação
+
+    -   Relacionado com _Audit_.
+
+##### 4.3.2.1.6. \*_Object exit_ (Saída de objetos)
+
+O procedimento para registrar a saída de objetos do museu, seja por empréstimo, doação, venda, alienação, etc (COLLECTIONS TRUST, 2017).
+
+1.  Autorize a saída de acordo com a sua política e o procedimento relacionado;
+
+2.  Se o objeto será transportado, vá para _Location and movement control_;
+
+    -   Se o objeto será coletado diretamente pelo dono, vá para o próximo passo, se não, vá para _Location and movement control_;
+
+3.  Agende a coleta dos objetos;
+
+4.  Providencia para o objeto estar na hora e local combinados para a coleta;
+
+5.  Atualize o registro do objeto para refletir a saída;
+
+    -   Grupo de informações _Movement information_
+
+6.  Registre informações sobre a saída do objeto;
+
+    Os grupos de informações são:
+
+    **Tabela X: Grupos de informação para saída de objetos**
+
+    | Grupo de informação               | Exigência |
+    | --------------------------------- | --------- |
+    | Object identification information | requerido |
+    | Object entry information          | requerido |
+    | Object exit information           | requerido |
+    | Object valuation information      | requerido |
+    | Object condition information      | requerido |
+
+    **Fonte**: Elaborado pelo autor. Grupos de informação para o procedimento _Object exit_ do Spectrum 5.
+
+7.  Atualize _Insurance and indemnity_ se necessário;
+
+8.  Retorne para o procedimento que levou a saída do objeto.
+
+##### 4.3.2.1.7. \*_Loans in_ (Entrada de empréstimos)
+
+Gerenciar objetos emprestados por um período fixo de tempo e para uma finalidade específica (COLLECTIONS TRUST, 2017).
+
+1.  Pesquisa para o empréstimo
+
+    1.  Faça o caso para o empréstimo e obtenha autorização;
+
+    2.  Envie um pedido de empréstimo para o emprestador;
+
+        Deve conter:
+
+        -   Datas de início e término do empréstimo;
+        -   Orçamento para o empréstimo;
+        -   Contexto e propósito do empréstimo;
+        -   Informações sobre o responsável pelo empréstimo;
+        -   Contato e informações sobre o responsável pelo empréstimo;
+        -   Breve descrição do objeto;
+        -   Informações sobre o seguro e indenização;
+
+    3.  Registre detalhes da solicitação:
+
+        Os grupos de informação são:
+
+        **Tabela X: Grupos de informação para entrada de empréstimos de objetos**
+
+        | Grupo de informação               | Exigência |
+        | --------------------------------- | --------- |
+        | Loan in information               | requerido |
+        | Object identification information | requerido |
+
+        **Fonte**: Elaborado pelo autor. Grupos de informação para o procedimento _Loan in (borrowing objects)_ do Spectrum 5.
+
+    4.  Mantenha um registro atualizado do status do empréstimo;
+
+2.  Troca de informações adicionais:
+
+    1.  Conclua e envie um relatório sobre as instalações do museu para o emprestador;
+
+    2.  Obtenha informações adicionais para cada objeto e atualize o registro;
+
+        As informações são:
+
+        -   O número de registro do objeto pelo emprestador (se necessário);
+        -   Descrição do objeto;
+        -   Nome e endereço do emprestador;
+        -   Sua avaliação do valor do objeto;
+        -   Sua condição;
+        -   Suas exigências de exibição;
+        -   Suas exigências de ambientação;
+        -   Suas exigências de manuseio;
+        -   Quaisquer riscos potenciais;
+        -   Dimensões
+        -   Fotografias;
+        -   Detalhes de quaisquer direitos autorais ou outras restrições;
+        -   Quaisquer informações históricas ou de contexto;
+        -   Número de exibição (se necessário);
+
+3.  Fechando acordo de empréstimo:
+
+    1.  Prepare um contrato de empréstimo;
+
+    2.  Registre informações sobre o empréstimo:
+
+        Registre as _Loan in information_
+
+4.  Preparando para o recebimento do objeto:
+
+    1.  Agende e prepare a recepção do objeto;
+
+        -   _Insurance and indemnity_;
+        -   _Object entry_;
+        -   _Location and movement control_;
+
+    2.  Registre informações sobre a recepção do objeto e envie para o emprestador;
+
+        -   _Object entry_
+
+    3.  Se trabalho de conservação for necessário, combine com o emprestador;
+
+        -   _Collections cara and conservation_
+
+5.  Monitore o empréstimo:
+
+    1.  Monitore e reporte as condições do objeto durante o empréstimo
+
+        -   _Condition checking and technical assessment_
+        -   _Location and movement control_
+
+6.  Estender o empréstimo:
+
+    1.  No caso de extensão do período de empréstimo
+
+        -   _Insurance and indemnity_;
+        -   _Valuation_
+
+7.  Retornar o objeto:
+
+    1.  Contate o emprestador para organizar a devolução do objeto;
+
+    2.  Realize uma nova avaliação de condições objeto;
+
+        -   _Condition checking and technical assessment_
+
+    3.  Retorne o objeto;
+
+        -   _Object exit_;
+        -   _Location and movement control_;
+
+    4.  Confirme que todas as condições foram cumpridas e feche o registro do empréstimo;
+
+##### 4.3.2.1.8. \*_Loan out_ (lending objects) (Saída de empréstimos)
+
+Avaliação de solicitação de empréstimos e gerenciamento dos processos até que o objeto retorne a você (COLLECTIONS TRUST, 2017).
+
+1.  Avaliação do pedido
+
+    1.  Crie um caso para o pedido de empréstimo;
+
+    2.  Verifique os detalhes do pedido;
+
+        Informações sobre o pedido são:
+
+        **Tabela X: Grupos de informação para saída de empréstimos de objetos**
+
+        | Grupo de informação               | Exigência |
+        | --------------------------------- | --------- |
+        | Object identification information | requerido |
+        | Loan out information              | requerido |
+
+        **Fonte**: Elaborado pelo autor. Grupos de informação para o procedimento _Loan out (lending objects)_ do Spectrum 5.
+
+    3.  Considere o pedido de empréstimo;
+
+    4.  Comunique a decisão ao emprestador;
+
+    5.  Reserve o objeto para empréstimo;
+
+2.  Solicitando informações adicionais:
+
+    1.  Solicite informações adicionais sobre o solicitante;
+
+    2.  Considere fatores como:
+
+        -   Referências do solicitante;
+        -   Informações obtidas em uam visita ao local proposto para a exibição;
+        -   Consulte órgãos setoriais regionais ou nacionais, se relevante;
+        -   Garanta que o objeto está adequadamente segurado;
+        -   Cronograma necessário para cumprir o empréstimo;
+        -   Custos;
+        -   Requisitos especiais, como couriers;
+        -   Considerações de segurança;
+        -   Considerações de ambientação;
+
+        No caso de não aceitação escreva uma justificativa e envie ao solicitante;
+
+3.  Concordado com o empréstimo:
+
+    1.  Envie informações adicionais ao solicitante:
+
+        -   _Object number_;
+        -   _Object description_;
+        -   _Valuation_;
+        -   _Condition_;
+        -   _Display requirements_;
+        -   _Environmental requirements_;
+        -   _Handling requirements_;
+        -   _Any potential risks_;
+        -   _Dimensions_;
+        -   _Photographs_;
+        -   _Details of any copyright or other restrictions_;
+        -   _Any historical or contextual information_;
+        -   _Estimated costs_;
+
+    2.  Registre as condições finais do empréstimo e crie o contrato;
+
+        Registre as informações de _Loan out information_:
+
+    3.  As duas partes assinam o acordo de empréstimo;
+
+4.  Preparando para o empréstimo:
+
+    1.  Verifique e registre as condições do objeto:
+
+        -   _Condition checking and technical assessment_;
+
+    2.  Realize quaisquer trabalhos de conservação necessários:
+
+        -   _Collections care and conservation_;
+
+    3.  Assegure-se que todas as exigências de segurança foram atendidas;
+
+    4.  Obtenha garantias de seguro e indenização e atualize os registros:
+
+        -   _Insurance and indemnity_;
+
+5.  Enviando os objetos:
+
+    Realize as providências para a saída do objeto
+
+    -   Vá para _Object exit_ e _Location and movement control_;
+
+6.  Monitore o empréstimo:
+
+    1.  Monitore as condições e localização do objeto;
+
+7.  Estender o empréstimo
+
+    1.  Considere o pedido de extensão;
+
+        -   _Valuation_;
+        -   _Insurance and indemnity_;
+
+8.  Providencie o retorno:
+
+    Confirme as providências para o retorno do objeto;
+
+    -   Vá para _Location and movement control_;
+
+9.  Encerrando o empréstimo:
+
+    1.  Envie a fatura de quaisquer custos adicionais;
+    2.  Confirme o retorno do objeto e que todas as condições foram atendidas;
+    3.  Adiciona informações sobre o empréstimo ao registro do objeto;
+        -   _Use of collections_;
+    4.  Encerre o caso do empréstimo.
+
+##### 4.3.2.1.9. \*_Documentation planning_ (Planejamento da documentação)
+
+Tornar o sistema de documentação melhor e aprimorar as informações sobre as coleções, em um processo de melhoria contínua (COLLECTIONS TRUST, 2017).
+
+Este processo é mais genérico que os demais, são foco principal é o planejamento de melhorias em qualquer projeto de documentação.
+
+1.  Revisão das informações existentes sobre a coleção:
+
+    1.  Verifique se as informações registradas atendem o seu alvo mínimo de informações.
+        -   _Inventory_;
+        -   _Collections review_;
+        -   _Audit_;
+        -   _Rights management_;
+
+2.  Escreva o plano de documentação
+
+    Deve conter:
+
+    -   Objetivos;
+    -   Ações
+    -   Recursos;
+    -   Resultados esperados;
+    -   Metas;
+
+3.  Coloque em prática o plano
+
+    1.  Receba aprovação do plano de documentação;
+    2.  Coloque o plano em ação;
+    3.  Revise regularmente o progresso baseado nas metas;
+    4.  Finalize o trabalho e avalie o plano;
+
+4.  Melhoria continuada:
+
+    -   Repita o procedimento;
 
 #### Unidades de informação
 
@@ -218,10 +852,6 @@ Hierarquia das unidades de informações "Object name" (COLLECTIONS TRUST, 2017)
 
 **Fonte**: Elaborado pelo autor. Exemplifica a tabulação do campo _object_name_ do Spectrum com o registro da gravura Réquiem de Maria Bonomi da Coleção Ema Klabin.
 
----
-
-[^1]: (BEVILACQUA, 2014)
-
 ## 4.4. Metadados de representação e descrição de itens museológicos
 
 Neste capítulo analisaremos os padrões de metadados desenvolvidos por Silva (2020) em sua tese de doutorado: Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta, Object ID (1997) desenvolvido pelo Getty Information Institute e o Linked Art (2021), padrão de metadados desenvolvido pelo Grupo de Trabalho do CIDOC-ICOM Linked Art, formado por Robert Sanderson, Athanasios Velios e Emmanuelle Delmas-Glass. Analisaremos também os procedimentos de gestão de coleções Standard Procedures for Collections Recording Used in Museums - SPECTRUM (2007), mantido pelo Collections Trust, organização sediada no Reino Unido com foco na criação de padrões internacionais de documentação museológica. A partir da análise dos padrões, iremos propor o conjunto de metadados básico para gestão e divulgação de coleções que usaremos no Elucidário.art.
@@ -232,7 +862,7 @@ Silva (2020), para o desenvolvimento de seu esquema de metadados, utiliza como r
 
 **Fig.1 - Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta. (SILVA, 2020)**
 
-```{.mermaid filename="silva2020-modelo" loc="C:\Users\55119\Elucidário.art\elucidario\publications\dissertacao-mestrado\files\generated\0.3.0" width=1920 background=transparent}
+```{.mermaid filename="silva2020-modelo" loc="C:\Users\55119\Elucidário.art\elucidario\publications\dissertacao-mestrado\files\generated\0.4.0" width=1920 background=transparent}
 erDiagram
     OBJETO ||--|{ CLASSIFICACAO : ""
     OBJETO ||--|{ TITULO : ""
@@ -528,3 +1158,5 @@ O modelo apresenta 11 classes, ou endpoints, sendo elas (LINKED ART, 2021):
 9.  **Sets** - conjuntos de entidades;
 10. **Textual Work** - obras textuais que merecem descrição como entidades únicas, como conteúdo de livro ou artigos, entre outros; e
 11. **Visual Work** - conteúdo imagético que merece descrição como entidades únicas, como a imagem exibida em uma pintura ou desenho, entre outros.
+
+[^1]: (BEVILACQUA, 2014)

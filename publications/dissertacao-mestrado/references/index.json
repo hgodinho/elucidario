@@ -324,6 +324,51 @@
             "id": "wiki-extreme-programming2014",
             "slug": "extreme-programming-for-one",
             "path": "<references>/wiki-extreme-programming2014_extreme-programming-for-one.json"
+        },
+        {
+            "id": "collections-trust2017.6",
+            "slug": "object-entry",
+            "path": "<references>/collections-trust2017.6_object-entry.json"
+        },
+        {
+            "id": "collections-trust2017.7",
+            "slug": "acquisition-and-accessioning",
+            "path": "<references>/collections-trust2017.7_acquisition-and-accessioning.json"
+        },
+        {
+            "id": "collections-trust2017.8",
+            "slug": "location-and-movement-control",
+            "path": "<references>/collections-trust2017.8_location-and-movement-control.json"
+        },
+        {
+            "id": "collections-trust2017.9",
+            "slug": "inventory",
+            "path": "<references>/collections-trust2017.9_inventory.json"
+        },
+        {
+            "id": "collections-trust2017.9",
+            "slug": "cataloguing",
+            "path": "<references>/collections-trust2017.9_cataloguing.json"
+        },
+        {
+            "id": "collections-trust2017.10",
+            "slug": "object-exit",
+            "path": "<references>/collections-trust2017.10_object-exit.json"
+        },
+        {
+            "id": "collections-trust2017.11",
+            "slug": "loan-in-borrowing-object",
+            "path": "<references>/collections-trust2017.11_loan-in-borrowing-object.json"
+        },
+        {
+            "id": "collections-trust2017.12",
+            "slug": "documentation-planning",
+            "path": "<references>/collections-trust2017.12_documentation-planning.json"
+        },
+        {
+            "id": "collections-trust2017.13",
+            "slug": "loans-out-lending-objects",
+            "path": "<references>/collections-trust2017.13_loans-out-lending-objects.json"
         }
     ]
 }

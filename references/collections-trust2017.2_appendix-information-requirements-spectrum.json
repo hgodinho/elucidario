@@ -5,8 +5,9 @@
     "_slug": "appendix-information-requirements-spectrum",
     "_create": "2023-05-21T19:16:12.053Z",
     "_update": "2023-05-21T19:16:12.053Z",
-    "type": "webpage",
-    "title": "Appendix - information requirements - Spectrum",
+    "type": "standard",
+    "title": "Appendix - information requirements",
+    "container-title": "Spectrum 5",
     "author": [
         {
             "family": "Collections Trust"

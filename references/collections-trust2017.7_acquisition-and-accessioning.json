@@ -1,0 +1,24 @@
+{
+    "id": "collections-trust2017.7",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "acquisition-and-accessioning",
+    "_create": "2023-06-04T17:47:38.723Z",
+    "_update": "2023-06-04T17:47:38.724Z",
+    "type": "standard",
+    "title": "Acquisition and accessioning",
+    "container-title": "Spectrum 5",
+    "author": [
+        {
+            "family": "Collections Trust"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-04"
+    },
+    "issued": {
+        "raw": "2017"
+    },
+    "language": "en",
+    "URL": "https://collectionstrust.org.uk/wp-content/uploads/2017/11/Acquisition-and-accessioning.pdf"
+}

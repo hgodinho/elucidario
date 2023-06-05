@@ -1,0 +1,25 @@
+{
+    "title": "Tabela X: Grupos de informação para aquisição de objetos",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Grupo de informação"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        }
+    ],
+    "data": [
+        ["Grupo de informação", "Exigência"],
+        ["Object identification information", "requerido"],
+        ["Acquisition information", "requerido"],
+        ["Object history and association information", "requerido"],
+        ["Object use information", "requerido"],
+        ["Object owners contribution information", "requerido"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Grupos de informação para o procedimento _Acquisition and accessioning_ do Spectrum 5."
+    }
+}
