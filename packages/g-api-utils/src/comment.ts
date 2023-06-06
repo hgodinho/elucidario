@@ -3,21 +3,74 @@ import { Credentials } from "./classes/Auth";
 import { PathOrFileDescriptor } from "fs";
 import type { SCOPES } from "./classes/Auth";
 
-export const comments = async (
-    title: string,
-    credentials: Credentials,
-    tokenPath: PathOrFileDescriptor,
-    scopes: SCOPES | undefined = undefined
-) => {
+export interface Reply {
+    id: string,
+    kind: string,
+    createdTime: string,
+    modifiedTime: string,
+    action: string,
+    author: User,
+    deleted: boolean,
+    htmlContent: string,
+    content: string
+}
+
+export interface User {
+    displayName: string,
+    kind: string,
+    me: boolean,
+    permissionId: string,
+    emailAddress: string,
+    photoLink: string
+}
+
+export interface Comment {
+    id: string,
+    kind: string,
+    createdTime: string,
+    modifiedTime: string,
+    resolved: boolean,
+    anchor: string,
+    replies: Reply[],
+    author: User,
+    deleted: boolean,
+    htmlContent: string,
+    content: string,
+    quotedFileContent: {
+        mimeType: string,
+        value: string
+    }
+}
+
+export interface CommentsArgs {
+    fileId: string;
+    credentials: Credentials;
+    tokenPath: PathOrFileDescriptor;
+    scopes?: SCOPES;
+    callback?: (comments: Comment[], drive: Drive) => Promise<void>;
+}
+
+export const comments = async ({
+    fileId,
+    credentials,
+    tokenPath,
+    scopes,
+    callback,
+}: CommentsArgs) => {
     const drive = new Drive(credentials, tokenPath, scopes);
 
-    console.log(drive);
+    await drive.authenticate();
 
-    // try {
-    //     return await googleDocs.createDocument(title);
-    // } catch (err) {
-    //     console.log("createDoc: catch", err);
-    //     await googleDocs.authenticate();
-    //     return await googleDocs.createDocument(title);
-    // }
+    const comments = await drive
+        .getComments(fileId, {
+            pageSize: 50,
+        })
+        .then(async (response) => {
+            if (callback) {
+                return await callback(response.data.items, drive);
+            }
+            return response.data;
+        });
+
+    return comments;
 };

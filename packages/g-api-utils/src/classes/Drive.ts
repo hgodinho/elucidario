@@ -12,6 +12,13 @@ export interface Document {
     updatedTime?: string;
 }
 
+export interface CommentsQueryOptions {
+    includeDeleted?: boolean;
+    pageSize?: number;
+    pageToken?: string;
+    startModifiedTime?: string;
+}
+
 /**
  * Drive class
  */
@@ -50,15 +57,9 @@ export class Drive {
                 .authenticate()
                 .then((response) => {
                     this.drive = google.drive({
-                        version: "v3",
+                        version: "v2",
                         auth: this.auth ? this.auth.getAuth() : undefined,
                     });
-                    console.log({ drive: this.drive })
-
-                    // this.docs = google.docs({
-                    //     version: "v1",
-                    //     auth: this.auth ? this.auth.getAuth() : undefined,
-                    // });
                 })
                 .catch((error) => {
                     throw new Error(error);
@@ -66,4 +67,26 @@ export class Drive {
         }
     }
 
+    public async getComments(documentId: string, options?: CommentsQueryOptions) {
+        return await this.drive.comments.list({
+            fileId: documentId,
+            ...options
+        });
+    }
+
+    public async replyComment(documentId: string, commentId: string, content: string) {
+        const reply = async () => await this.drive.replies.insert({
+            fileId: documentId,
+            commentId,
+            requestBody: {
+                content
+            }
+        });
+        try {
+            return await reply();
+        } catch (error: any) {
+            await this.authenticate();
+            return await reply();
+        }
+    }
 }

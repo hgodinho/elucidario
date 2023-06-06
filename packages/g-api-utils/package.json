@@ -1,5 +1,5 @@
 {
-    "name": "@elucidario/pkg-md-to-gdoc",
+    "name": "@elucidario/pkg-g-api-utils",
     "version": "0.1.0",
     "description": "Converte md para google docs",
     "license": "MIT",
