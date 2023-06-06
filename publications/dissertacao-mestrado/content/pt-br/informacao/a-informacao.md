@@ -1,6 +1,4 @@
-# 4. Quadro referencial teórico
-
-## 4.1 A Informação
+# 4. A Informação
 
 Le-Codiac afirma que “a informação comporta um elemento de sentido. É um significado transmitido a um ser consciente por meio de uma mensagem inscrita em um suporte espacial-temporal: impresso, sinal elétrico, onda sonora, etc”. Ela tem por objetivo o conhecimento, ou ”apreensão de sentidos ou seres em sua significação” [@le-coadic1994].
 

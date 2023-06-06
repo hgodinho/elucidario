@@ -1,7 +1,5 @@
 {
     "files": [
-        "a-informacao.md",
-        "a-informacao-museologica.md",
         "documentacao-museologica.md",
         "spectrum.md",
         "spectrum-object-entry.md",
@@ -13,9 +11,6 @@
         "spectrum-loan-in.md",
         "spectrum-loan-out.md",
         "spectrum-planning.md",
-        "spectrum-unidades-informacao.md",
-        "metadados-de-representacao.md",
-        "linked-art.md",
-        "notas.md"
+        "spectrum-unidades-informacao.md"
     ]
 }

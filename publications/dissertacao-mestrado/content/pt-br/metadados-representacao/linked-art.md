@@ -1,4 +1,4 @@
-### 4.4.3. Linked Art (2019)
+### 6.3. Linked Art (2019)
 
 Linked Art é uma comunidade formada por representantes de instituições ao redor do mundo como The Canadian Heritage Information Network (CHIN), J. Paul Getty Trust, The Frick Collection, Europeana, Louvre, Rijksmuseum, The Victoria and Albert Museum, entre outras, com o objetivo de criar um modelo compartilhado baseado em _Linked Open Data_ para descrever Arte [@linked-art2021.1; @linked-art2021.2]. O projeto é coordenado por um quadro editorial em que Robert Sanderson (Yale University) e Emmanuelle Delmas-Glass (Yale Center for British Art) compartilham o posto de co-presidentes.
 
@@ -14,7 +14,7 @@ O modelo Linked Art tem como foco principal a descrição de recursos do patrim�
 
 O Linked Art está sob desenvolvimento ativo e a versão atual é a 0.8.0 e é considerada instável, passível de mudanças. A versão 1.0.0 estava prevista para o final de 2021, mas foi atrasada por conta da pandemia de COVID-19 [@linked-art2021.4].
 
-#### 4.4.3.1. JSON para conectar dados: JSON-LD
+#### 6.3.1. JSON para conectar dados: JSON-LD
 
 _JavaScript Object Notation_ (JSON) é um formato aberto de arquivo para intercâmbio de informações [@w-3-c-json-ld-working-group2014]. Consiste em arquivos de fácil leitura por humanos e máquinas com a extensão .json. Mesmo que tenha se originado na sintaxe de objetos JavaScript, por isso seu nome, pode ser utilizado por diversos ambientes e linguagens de programação diferentes devido sua sintaxe simples [@mdn-web-docs2023].
 
@@ -68,19 +68,19 @@ Parece mais complexo que o exemplo anterior, e de fato é, mas agora temos um ar
 
 O JSON-LD fornece uma maneira de os dados JSON serem interoperáveis na escala da Web [@json-ld-working-group2020]. E, tem como principal intenção “ser uma maneira de usar Linked Data em ambientes de programação baseados na Web, para construir serviços Web interoperáveis e para armazenar Linked Data em mecanismos de armazenamento baseados em JSON” [@json-ld-working-group2020], ou seja, é o formato ideal para serviços REST.
 
-#### 4.4.3.2. API Linked Art
+#### 6.3.2. API Linked Art
 
 A API do Linked Art é baseada em REST, e utiliza o JSON-LD como formato de dados. A API também apresenta os schemas de validação dos dados definidos no formato JSON Schema [@droettboom2020].
 
 A API é dividida em duas partes: _Shared Constructs_ e _Entity Endpoints_. Mas como existem propriedades que se repetem pelas _Shared Constructs_ e _Entity Endpoints_, separamos as propriedades em uma tabela única para facilitar a visualização.
 
-##### 4.4.3.2.1. Propriedades
+##### 6.3.2.1. Propriedades
 
 As propriedades do Linked Art são dados de diferentes tipos, como _strings_, _numbers_, _arrays_, _json objects_, _datetime_, entre outras. A tabela a seguir apresenta as propriedades do Linked Art, com seus tipos e descrições [@linked-art2021.1]:
 
 {{table:linked-art/linked-art-properties.json}}
 
-##### 4.4.3.2.2. _Shared Constructs_
+##### 6.3.2.2. _Shared Constructs_
 
 _Shared Constructs_ são estruturas de dados definidas no Linked Art que são utilizadas por mais de um endpoint. São elas [@linked-art2021.7]:
 
@@ -108,7 +108,7 @@ _Shared Constructs_ são estruturas de dados definidas no Linked Art que são ut
 -   _Relationships_ - definir
 -   _Entity References_ - definir
 
-##### 4.4.3.2.3. _Endpoints_
+##### 6.3.2.3. _Endpoints_
 
 O modelo apresenta 11 classes, ou endpoints, sendo elas [@linked-art2021.5]:
 
