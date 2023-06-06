@@ -38,6 +38,7 @@ if (!defined('LCDR_VERSION')) {
 }
 
 require LCDR_PATH . 'vendor/autoload.php';
+require LCDR_PATH . 'src/php/utils.php';
 require LCDR_PATH . 'src/php/functions.php';
 
 global $lcdr;

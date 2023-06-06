@@ -23,8 +23,11 @@
         "phpcbf": [
             "phpcbf --standard=phpcs.xml.dist --extensions=php --ignore=vendor/ ."
         ],
-        "phpunit": [
-            "phpunit tests"
+        "test:unit": [
+            "vendor/bin/pest --group=unit"
+        ],
+        "test:integration": [
+            "vendor/bin/pest --group=integration"
         ]
     },
     "autoload": {

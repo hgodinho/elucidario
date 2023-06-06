@@ -15,7 +15,6 @@ if (!defined('LCDR_PATH')) exit;
 
 if (!class_exists('Core')) {
     class Core {
-
         public function __construct() {
         }
     }
