@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { NodeHtmlMarkdown } from "node-html-markdown";
+import { isEmpty } from "lodash-es";
 
 import { Console } from "@elucidario/pkg-console";
 import { readContents, build } from "@elucidario/pkg-paths";
@@ -20,6 +21,7 @@ const paths = getPaths();
  * @param {Console} args.console
  */
 const writeImage = async ({ srcPath, publication, lang, console }) => {
+    if (isEmpty(srcPath)) return;
     const imagePath = path.parse(srcPath);
     const distPath = path.resolve(
         paths.publications,

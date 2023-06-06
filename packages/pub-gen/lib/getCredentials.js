@@ -2,23 +2,22 @@ import path from "path";
 import fs from "fs";
 import chalk from "chalk";
 
-const __dirname = path.resolve();
+import { getPaths } from "@elucidario/pkg-paths";
+
+const paths = getPaths();
 
 export const getCredentials = (publication = undefined) => {
-    let rootPath = path.resolve(__dirname, "..", "..");
+    let rootPath = paths.root;
+
     if (publication) {
-        rootPath = path.resolve(
-            rootPath,
-            "publications",
-            publication
-        );
+        rootPath = path.resolve(rootPath, "publications", publication);
     }
     try {
-        console.log(chalk.cyan(`Trying to read credentials.json from ${rootPath}`));
+        console.log(
+            chalk.cyan(`Trying to read credentials.json from ${rootPath}`)
+        );
         const credentials = JSON.parse(
-            fs.readFileSync(
-                path.resolve(rootPath, "credentials.json")
-            )
+            fs.readFileSync(path.resolve(rootPath, "credentials.json"))
         );
         console.log(chalk.green("Credentials found!"));
         return credentials.installed;
@@ -26,4 +25,4 @@ export const getCredentials = (publication = undefined) => {
         console.error(chalk.red("Credentials not found"));
         return error;
     }
-} 
+};
