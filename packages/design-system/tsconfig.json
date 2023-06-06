@@ -1,0 +1,14 @@
+{
+    "extends": "@elucidario/pkg-tsconfig",
+    "compilerOptions": {
+        "resolveJsonModule": true,
+        "outDir": "dist",
+        "jsx": "react",
+        "declaration": true,
+        "paths": {
+            "@/*": ["./src/*"],
+            "@elucidario/pkg-types": ["../types/dist"]
+        }
+    },
+    "include": ["src/index.ts"]
+}
