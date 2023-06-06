@@ -14,17 +14,23 @@
         "clean:dist": "rm -rf dist/*",
         "clean:docs": "rm -rf docs/*",
         "clean:static": "rm -rf static/*",
-        "dev": "pnpm build -w"
+        "dev": "pnpm build -w",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js -c"
     },
     "dependencies": {
         "json-schema-to-typescript": "^13.0.1",
         "lodash-es": "^4.17.21"
     },
     "devDependencies": {
+        "@babel/preset-env": "^7.21.5",
         "@elucidario/pkg-console": "workspace:^",
         "@elucidario/pkg-docusaurus-md": "workspace:^",
         "@elucidario/pkg-paths": "workspace:^",
         "@elucidario/pkg-pub-gen": "workspace:^",
-        "@elucidario/pkg-schema-doc": "workspace:^"
+        "@elucidario/pkg-schema-doc": "workspace:^",
+        "child_process": "^1.0.2",
+        "commander": "^10.0.1",
+        "jest": "^29.5.0",
+        "jest-json-schema": "^6.1.0"
     }
 }

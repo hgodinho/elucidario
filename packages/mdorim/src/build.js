@@ -1,12 +1,15 @@
 import path from "path";
 import fs from "fs";
 import pkg from "json-schema-to-typescript";
+import { exec } from "child_process";
+import { program } from "commander";
 
-import { build, getPaths } from "@elucidario/pkg-paths";
-import { readContents, mergeSubSchema } from "@elucidario/pkg-schema-doc";
+import { build, getPaths, readContents } from "@elucidario/pkg-paths";
+import { mergeSubSchema } from "@elucidario/pkg-schema-doc";
 import { Console } from "@elucidario/pkg-console";
 
 import { pubGenRemarkProcessor } from "@elucidario/pkg-pub-gen/lib/remark/processor.js";
+import { type } from "os";
 
 const { compile } = pkg;
 
@@ -28,7 +31,7 @@ const packageJson = JSON.parse(
 );
 const console = new Console(packageJson);
 
-export const buildDocs = async () => {
+const buildDocs = async () => {
     const pages = readContents(path.join(__dirname, "pages"), ["md"]);
     return Promise.all(
         Object.entries(pages).map(async ([name, page]) => {
@@ -83,7 +86,7 @@ export const buildDocs = async () => {
     );
 };
 
-export const buildTypes = async () => {
+const buildTypes = async () => {
     const index = JSON.parse(
         fs.readFileSync(path.join(__dirname, "schemas", "index.json"), "utf8")
     );
@@ -167,13 +170,15 @@ const replaceRef = (schema) => {
     return schema;
 };
 
-export const buildSchemas = async () => {
-    const schemas = readContents(
-        path.join(__dirname, "schemas"),
-        ["json"],
-        undefined,
-        ["index.json"]
-    );
+const buildSchemas = async () => {
+    const schemas = readContents({
+        dirPath: path.join(__dirname, "schemas"),
+        extensions: ["json"],
+        index: false,
+        ignore: ["index.json"],
+        package: packageJson,
+    });
+
     try {
         return Promise.all(
             Object.entries(schemas).map(async ([name, schema]) => {
@@ -184,7 +189,7 @@ export const buildSchemas = async () => {
                     });
                 }
                 fs.writeFile(
-                    path.resolve(outStatic, `${name}`),
+                    path.resolve(outStatic, `${name}.json`),
                     JSON.stringify(newSchema, null, 4),
                     (err) => {
                         if (err)
@@ -194,6 +199,10 @@ export const buildSchemas = async () => {
                             });
                     }
                 );
+                console.log(`Built: ${name}.json`, {
+                    type: "success",
+                    title: "Schema built",
+                });
             })
         );
     } catch (err) {
@@ -202,14 +211,71 @@ export const buildSchemas = async () => {
     }
 };
 
-await build(
-    {
-        package: packageJson,
-        watchSrc: __dirname,
-    },
-    async () => {
-        await buildSchemas();
-        await buildTypes();
-        await buildDocs();
-    }
-);
+const test = async () => {
+    console.log("Testing...");
+    exec("pnpm test", async (error, stdout, stderr) => {
+        if (error) {
+            console.log(
+                { error },
+                {
+                    defaultLog: true,
+                    type: "error",
+                    title: "Error",
+                }
+            );
+            return;
+        }
+        if (stderr) {
+            console.log(stderr, {
+                defaultLog: true,
+                type: "warning",
+                title: "stderr",
+            });
+            return;
+        }
+        console.log(
+            { stdout },
+            {
+                defaultLog: true,
+                type: "success",
+                title: "stdout",
+            }
+        );
+    });
+};
+
+export const buildMdorim = async () => {
+    program
+        .description("Builds the mdorim model")
+        .option("-w, --watch", "Watch for changes", false)
+        .option("-s, --schema", "Builds the schema", false)
+        .option("-e, --examples", "Builds the examples", false)
+        .option("-t, --types", "Builds the types", false)
+        .option("-d, --docs", "Builds the docs", false)
+        .option("--test", "Test the model", false)
+        .action(async (options) => {
+            await build(
+                {
+                    package: packageJson,
+                    watch: options.watch,
+                    watchSrc: [
+                        __dirname,
+                        path.resolve(__dirname, "..", "test"),
+                    ],
+                },
+                async () => {
+                    if (options.schema) await buildSchemas();
+                    if (options.types) await buildTypes();
+                    if (options.docs) await buildDocs();
+
+                    if (options.test) {
+                        await test();
+                    }
+                }
+            );
+        });
+
+    program.parse(process.argv);
+};
+
+await buildMdorim();
