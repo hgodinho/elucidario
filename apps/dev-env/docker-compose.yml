@@ -1,0 +1,60 @@
+version: "3.7"
+
+services:
+    db:
+        image: mysql:5.7
+        ports:
+            - "3306"
+        volumes:
+            - db_data:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_DATABASE: wordpress
+            MYSQL_ROOT_PASSWORD: somewordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: wordpress
+
+    wp:
+        build: .
+        depends_on:
+            - db
+        image: wordpress:latest
+        ports:
+            - 8080:80
+        restart: always
+        environment: &ref_0
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DB_TABLE_PREFIX: wp_
+            WORDPRESS_DEBUG: 1
+            WORDPRESS_CONFIG_EXTRA: |
+                define('WP_DEBUG_LOG', true);
+                define('WP_ENVIRONMENT_TYPE', 'local');
+                define('SCRIPT_DEBUG', true);
+                define('QM_ENABLE_CAPS_PANEL', true);
+        volumes: &ref_1
+            - ./wp-app:/var/www/html
+            - ../../packages/core:/var/www/html/wp-content/plugins/elucidario-art
+
+    cli:
+        depends_on:
+            - db
+            - wp
+        image: wordpress:cli
+        user: xfs
+        volumes: *ref_1
+        environment: *ref_0
+
+    adminer:
+        depends_on: 
+            - db
+        image: adminer
+        restart: always
+        ports: 
+            - 8888:8080
+
+volumes:
+    db_data: {}
+    wp-app: {}
