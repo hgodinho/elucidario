@@ -3,11 +3,10 @@
     "MD013": false,
     "MD036": false,
     "MD041": false,
-    "list-marker-space": {
-        "ul_multi": 3,
-        "ul_single": 3
-    },
-    "ul-indent": {
-        "indent": 4
+    "MD030": {
+        "ul_multi": 2,
+        "ul_single": 1,
+        "ol_multi": 2,
+        "ol_single": 1
     }
 }

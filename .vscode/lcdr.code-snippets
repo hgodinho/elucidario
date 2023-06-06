@@ -1,54 +1,67 @@
 {
-    "table": {
-        "scope": "markdown",
-        "prefix": "tabela",
-        "body": [
-            "## `${1:header}`\n",
-            "[^topo](#${2:topo})\n",
-            "**Descrição:** ${3:description}\n",
-            "| name | label | type | public | requirement | extra |",
-            "| --- | --- | --- | --- | --- | --- |",
-            "| ${4:name} | ${5:label} | ${6:type} | ${7|true,false|} | ${8|true,false,auto|} | ${9:extra} |",
-            "\n---\n"
-        ],
-        "description": "Insere um bloco para descrição de uma tabela no modelo"
+    "traduz": {
+        "scope": "php",
+        "prefix": "traduz",
+        "body": "__('${1:Texto}', 'lcdr')",
+        "description": "Traduz um texto"
     },
-    "table-line": {
-        "scope": "markdown",
-        "prefix": "table-line",
+    "phpclass": {
+        "scope": "php",
+        "prefix": "class",
+        "description": "Inicia uma classe php",
         "body": [
-            "| ${1:name} | ${2:label} | ${3:type} | ${4|true,false|} | ${5|true,false,auto|} | ${6:extra} |",
-        ],
-        "description": "Insere um bloco para descrição de uma tabela no modelo"
+            "/**",
+            " * ${1:Class} class.",
+            " *",
+            " * @since ${2:since}",
+            " * @package elucidario/pkg-core",
+            " */",
+            "",
+            "namespace LCDR${3:namespace};",
+            "",
+            "if (!defined('ABSPATH')) exit;",
+            "",
+            "if (!defined('LCDR_PATH')) exit;",
+            "",
+            "if (!class_exists('${1:Class}')) {",
+            "    class ${1:Class} {",
+            "        ",
+            "    }",
+            "}"
+        ]
     },
-    "metadata": {
-        "scope": "markdown",
-        "prefix": "metadata",
+    "phptest": {
+        "scope": "php",
+        "prefix": "test",
+        "description": "Inicia uma classe de teste phpunit",
         "body": [
-            "### `${1:header}`\n",
-            "[^topo](#${2:topo})\n",
-            "> tipo `${3|string,integer,number,array,object|}` usado em `${4:nome}`\n",
-            "**Descrição:** ${5:descrição}\n",
-            "| name | label | type | public | requirement | extra | map: linked-art | map: crm |",
-            "| --- | --- | --- | --- | --- | --- | --- | --- |",
-            "| ${6:name} | ${7:label} | ${8:type} | ${9|true,false|} | ${10|true,false|} | ${11:extra} | ${12:linked-art} | ${13:crm} |",
-            "\n---\n"
-        ],
-        "description": "Insere um bloco para descrição de um metadado no modelo"
+            "/**",
+            " * ${1:Class} class.",
+            " *",
+            " * @since ${2:since}",
+            " * @package elucidario/pkg-core",
+            " * @subpackage tests/php",
+            " */",
+            "",
+            "namespace LCDR\\Tests${3:namespace};",
+            "",
+            "use PHPUnit\\Framework\\TestCase;",
+            "",
+            "class ${1:Class} extends TestCase {",
+            "",
+            "}"
+        ]
     },
-    "enum": {
-        "scope": "markdown",
-        "prefix": "enum",
-        "body": [
-            "### **enum:** `${1:header}`\n",
-            "[^topo](#${2:topo})\n",
-            "> usado em `${3:object}`\n",
-            "**Descrição:** ${4:description}\n",
-            "| name | label | ",
-            "| --- | --- |",
-            "| ${5:name} | ${6:label} |",
-            "\n---\n"
-        ],
-        "description": "Insere um bloco para descrição de um enum no modelo"
+    "log": {
+        "scope": "php",
+        "prefix": "log",
+        "description": "LCDR\\Debug\\::log",
+        "body": "LCDR\\Debug\\::log(EK_PATH, ${1:msg}, ${2:title}, __CLASS__, __METHOD__, __LINE__);"
+    },
+    "dump": {
+        "scope": "php",
+        "prefix": "dump",
+        "description": "LCDR\\Debug\\::dump",
+        "body": "LCDR\\Debug\\::dump(${1:msg}, __CLASS__, __METHOD__, __LINE__, ${2:die:true});"
     }
 }

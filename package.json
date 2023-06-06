@@ -5,28 +5,31 @@
     "description": "monorepo Elucidário.art",
     "license": "MIT",
     "author": "Henrique Godinho <henrique@hgod.in>",
-    "main": "index.js",
     "type": "module",
+    "main": "index.js",
     "scripts": {
-        "commit": "cz",
-        "graph": "pnpm nx graph",
-        "docusaurus": "lerna run docusaurus",
-        "start": "lerna run start",
         "build": "lerna run build",
         "build:pkg-app": "lerna run build --stream --ignore '@elucidario/pub-*'",
-        "swizzle": "lerna run swizzle",
-        "deploy": "lerna run deploy",
-        "serve": "lerna run serve",
         "clean": "lerna clean",
+        "commit": "cz",
+        "deploy": "lerna run deploy",
+        "docusaurus": "lerna run docusaurus",
+        "graph": "pnpm nx graph",
         "link": "lerna link",
-        "versionUp": "lerna version --no-private --conventional-commits --create-release github",
         "pub-gen": "pub-gen",
-        "typecheck": "tsc"
+        "serve": "lerna run serve",
+        "start": "lerna run start",
+        "swizzle": "lerna run swizzle",
+        "typecheck": "tsc",
+        "versionUp": "lerna version --no-private --conventional-commits --create-release github"
     },
     "config": {
         "commitizen": {
             "path": "cz-conventional-changelog"
         }
+    },
+    "dependencies": {
+        "nx": "^15.9.2"
     },
     "devDependencies": {
         "@elucidario/pkg-eslint-config": "workspace:^",
@@ -38,7 +41,8 @@
         "prettier": "^2.8.7",
         "typescript": "^5.0.4"
     },
-    "dependencies": {
-        "nx": "^15.9.2"
+    "engines": {
+        "node": ">=14.15.0",
+        "npm": ">=6.14.8 <7"
     }
 }
