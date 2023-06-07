@@ -11,5 +11,3 @@ Na ausência de uma autoridade nacional para definir o escopo de trabalho dos mu
 Já no decreto nº 8.124 de 17 de outubro de 2013 assinado pela então presidenta Dilma Rousseff, que regulamenta os dispositivos da lei nº 11.904, decreta no artigo 23, item IV, letra c, que o Plano Museológico deve conter um programa de acervos e que este programa abranja “o processamento técnico e o gerenciamento dos diferentes tipos de acervos da instituição, incluídos os de origem arquivística e bibliográfica”.
 
 Ainda, como esclarecido por [@padilha2014 p.36], a documentação museológica pode ser de dois vieses: documentação do objeto e a documentação das práticas administrativas. "O primeiro trata da compilação dos dados e do tratamento informacional extraídos de cada objeto adquirido pelo museu, enquanto que o segundo considera toda a documentação produzida pela instituição para legitimar suas práticas desenvolvidas" [@padilha2014 p.36]. Seguimos aqui o primeiro viés, o da documentação do objeto.
-
-### 4.3.1 Documentação do objeto
