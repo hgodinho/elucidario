@@ -65,7 +65,7 @@ export const convert = async (args) => {
 
             const docTitle = title
                 ? kebabCase(title)
-                : `${publication.language}-${name}`;
+                : `${packageJson.version}-${publication.language}-${name}`;
 
             ext = ext ?? "docx";
 
