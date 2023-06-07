@@ -8,7 +8,7 @@ const paths = getPaths();
 let directory = '';
 
 if (typeof paths !== typeof Error) {
-    directory = path.resolve((paths as GetPathsReturn).packages, '../locales');
+    directory = path.resolve((paths as GetPathsReturn).packages, 'schema-doc', 'locales');
 }
 
 const i18n = new I18n({
