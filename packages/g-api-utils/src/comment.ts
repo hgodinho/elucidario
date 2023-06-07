@@ -47,14 +47,34 @@ export interface CommentsArgs {
     credentials: Credentials;
     tokenPath: PathOrFileDescriptor;
     scopes?: SCOPES;
-    callback?: (comments: Comment[], drive: Drive) => Promise<void>;
+    options?: {
+        includeDeleted?: boolean;
+        pageSize?: number;
+        pageToken?: string;
+        updateMin?: string;
+    }
+    callback?: (comments: Comment[], drive: Drive, nextPageToken?: string) => Promise<void>;
 }
 
+/**
+ * 
+ * @param param0 | CommentsArgs
+ * @param param0.fileId | File ID
+ * @param param0.credentials | Credentials object
+ * @param param0.tokenPath | Path to token.json
+ * @param param0.scopes | Scopes to use
+ * @param param0.options | Options
+ * @param param0.callback | Callback function
+ * @throws | Error
+ * 
+ * @returns | Comments 
+ */
 export const comments = async ({
     fileId,
     credentials,
     tokenPath,
     scopes,
+    options,
     callback,
 }: CommentsArgs) => {
     const drive = new Drive(credentials, tokenPath, scopes);
@@ -62,12 +82,10 @@ export const comments = async ({
     await drive.authenticate();
 
     const comments = await drive
-        .getComments(fileId, {
-            pageSize: 50,
-        })
+        .getComments(fileId, options)
         .then(async (response) => {
             if (callback) {
-                return await callback(response.data.items, drive);
+                return await callback(response.data.items, drive, response.data.nextPageToken);
             }
             return response.data;
         });
