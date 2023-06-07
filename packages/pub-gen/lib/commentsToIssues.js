@@ -126,7 +126,37 @@ export const commentsToIssues = async ({ fileId, publication }) => {
         credentials,
         tokenPath: paths.root,
         scopes: ["https://www.googleapis.com/auth/drive"],
-        callback: async (comments, drive) => {
+        options: {
+            maxResults: 100,
+        },
+        callback: async (comments, drive, nextPageToken) => {
+            // filter comments
+            comments = comments.filter((comment) => {
+                // if resolved, ignore
+                if (comment.status === "resolved") {
+                    return false;
+                }
+
+                // if reply includes pub-gen, issue already created, ignore
+                let reply = false;
+                comment.replies.map((rep) => {
+                    if (
+                        "content" in rep &&
+                        rep.content.includes("[pub-gen] issue: ")
+                    ) {
+                        reply = true;
+                    }
+                });
+                if (reply) {
+                    return false;
+                }
+
+                // if open, create issue
+                return comment.status === "open";
+            });
+
+            console.log(`total: ${comments.length}`);
+
             comments.map(async (comment) => {
                 const issue = mountIssue({
                     fileId,

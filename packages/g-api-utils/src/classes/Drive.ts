@@ -14,9 +14,9 @@ export interface Document {
 
 export interface CommentsQueryOptions {
     includeDeleted?: boolean;
-    pageSize?: number;
+    maxResults?: number;
     pageToken?: string;
-    startModifiedTime?: string;
+    updateMin?: string;
 }
 
 /**
@@ -75,18 +75,12 @@ export class Drive {
     }
 
     public async replyComment(documentId: string, commentId: string, content: string) {
-        const reply = async () => await this.drive.replies.insert({
+        return await this.drive.replies.insert({
             fileId: documentId,
             commentId,
             requestBody: {
                 content
             }
         });
-        try {
-            return await reply();
-        } catch (error: any) {
-            await this.authenticate();
-            return await reply();
-        }
     }
 }
