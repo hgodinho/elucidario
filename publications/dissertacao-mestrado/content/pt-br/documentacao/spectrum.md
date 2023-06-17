@@ -13,8 +13,6 @@ A versão 5.1, publicada em 2022 como parte da campanha "rethink cataloguing" [@
 
 Utilizaremos a versão 5.1 em nossos estudos por ser a versão mais recente do Spectrum.
 
-#### 4.3.2.1. Procedimentos
-
 O Spectrum define 21 procedimentos para gestão de coleções museológicas [@collections-trust2022.2], são os procedimentos que um museu irá utilizar em todo o ciclo de vida de um objeto musealizado, desde a sua aquisição até a sua desincorporação.
 
 Um procedimento Spectrum é descrito como um fluxo de trabalho, composto por uma definição, notas de escopo, o padrão Spectrum (o que o museu deve alcançar) e procedimento sugerido. O padrão Spectrum que deve ser alcançado é dividido em duas partes: políticas e requisitos mínimos. As políticas são questões que o museu deve considerar ao definir o seu procedimento, e os requisitos mínimos são as atividades que devem ser realizadas para que o procedimento seja considerado minimamente completo. O procedimento sugerido também é apresentado em duas partes: um diagrama de fluxo de trabalho e uma descrição textual do procedimento [@collections-trust2022.1].

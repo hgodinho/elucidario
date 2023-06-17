@@ -1,4 +1,4 @@
-##### 4.3.2.1.9. \*_Documentation planning_ (Planejamento da documentação)
+## 6.9. \*Planejamento da documentação (_Documentation planning_)
 
 Tornar o sistema de documentação melhor e aprimorar as informações sobre as coleções, em um processo de melhoria contínua [@collections-trust2017.12].
 
@@ -6,11 +6,11 @@ Este processo é mais genérico que os demais, são foco principal é o planejam
 
 1.  Revisão das informações existentes sobre a coleção:
 
-    1. Verifique se as informações registradas atendem o seu alvo mínimo de informações.
-        - _Inventory_;
-        - _Collections review_;
-        - _Audit_;
-        - _Rights management_;
+    1.  Verifique se as informações registradas atendem o seu alvo mínimo de informações.
+        -   _Inventory_;
+        -   _Collections review_;
+        -   _Audit_;
+        -   _Rights management_;
 
 2.  Escreva o plano de documentação
 

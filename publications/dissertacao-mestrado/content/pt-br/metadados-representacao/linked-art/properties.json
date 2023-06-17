@@ -1,5 +1,5 @@
 {
-    "title": "Tabela X: Propriedades comuns do Linked Art",
+    "title": "Quadro X: Propriedades comuns do Linked Art",
     "fields": [
         {
             "type": "string",
@@ -17,12 +17,21 @@
     "data": [
         ["Nome", "Tipo de dado", "Descrição"],
         [
+            "@context",
+            "string",
+            "DEVE ser a URI do contexto Linked Art: \"https://linked.art/ns/v1/linked-art.json\""
+        ],
+        [
             "id",
             "string",
-            "Se presente, DEVE ser uma URI que o _Shared Construct_ ou _Entity Endpoint_"
+            "DEVE ser uma URI que define o _Shared Construct_ ou _Entity Endpoint_"
         ],
-        ["type", "string", "O nome da classe"],
-        ["_label", "string", "Um rótulo legível por humanos para a dimensão"],
+        ["type", "string", "O tipo da classe"],
+        [
+            "_label",
+            "string",
+            "Um rótulo legível por humanos, para desenvolvedores"
+        ],
         [
             "classified_as",
             "array",
@@ -31,7 +40,7 @@
         [
             "identified_by",
             "array",
-            "Uma ou mais identificadores do recurso e DEVE seguir os requisitos para _Name_ ou _Identifier_"
+            "Um ou mais identificadores do recurso e DEVE seguir os requisitos para _Name_ ou _Identifier_"
         ],
         [
             "referred_to_by",
@@ -66,7 +75,7 @@
         [
             "carried_out_by",
             "array",
-            "Uma ou mais referências a uma _Peson_ ou _Group_ que realizou esta atividade"
+            "Uma ou mais referências a uma _Person_ ou _Group_ que realizou esta atividade"
         ],
         [
             "technique",

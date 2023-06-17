@@ -1,4 +1,4 @@
-##### 4.3.2.1.8. \*_Loan out_ (lending objects) (Saída de empréstimos)
+## 6.8. \*Saída de empréstimos (_Loan out_ - lending objects)
 
 Avaliação de solicitação de empréstimos e gerenciamento dos processos até que o objeto retorne a você [@collections-trust2017.13].
 

@@ -1,4 +1,4 @@
-## 5 Documentação museológica
+# 6. Documentação museológica
 
 > O documento é suporte que evidencia algo a alguém e que, ao passar por um processo técnico específico, manifesta seu potencial informativo. Ele é o meio que nos traz a informação e, assim, permite que o indivíduo produza conhecimentos diversos. [@padilha2014 p.14]
 

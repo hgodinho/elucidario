@@ -1,4 +1,4 @@
-##### 4.3.2.1.5. \*_Cataloguing_ (Catalogação)
+## 6.5. \*Catalogação (_Cataloguing_)
 
 É o processo contínuo de registro e gestão da informação sobre as coleção, sob diferentes perspectivas [@collections-trust2017.9].
 

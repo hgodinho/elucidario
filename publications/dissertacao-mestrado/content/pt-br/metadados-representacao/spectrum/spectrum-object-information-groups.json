@@ -1,0 +1,92 @@
+{
+    "title": "Quadro X: Object information groups do Spectrum",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Descrição"],
+        [
+            "**Informação de identificação do objeto**",
+            "Usado para registrar informações básicas sobre um objeto"
+        ],
+        [
+            "**Informação de descrição do objeto**",
+            "Usado para descrever um objeto como necessário"
+        ],
+        [
+            "**Informação de localização do objeto**",
+            "Usado para registrar onde o objeto está localizado"
+        ],
+        [
+            "**Informação de exigências do objeto**",
+            "Usado para registrar quaisquer exigências que o objeto possa ter"
+        ],
+        [
+            "**Informação de produção do objeto**",
+            "Usado para registrar os aspectos da produção do objeto"
+        ],
+        [
+            "**Informação sobre o histórico e associação do objeto**",
+            "Usado para registrar o histórico e a associação do objeto"
+        ],
+        [
+            "**Informação sobre a coleta do objeto**",
+            "Usado para registrar informações sobre a coleta de campo do objeto, por exemplo durante uma escavação arqueológica"
+        ],
+        [
+            "**Informação sobre os direitos do objeto**",
+            "Usado para registrar informações sobre os direitos do objeto, como reproduções, textos criados para um uso específico, e quem quer que seja que os detenha"
+        ],
+        [
+            "**Informação sobre os direitos de entrada do objeto**",
+            "Usado para registrar informações sobre os direitos do objeto obtidos pela sua organização de outros"
+        ],
+        [
+            "**Informação sobre os direitos de saída do objeto**",
+            "Usado para registrar informações sobre os direitos do objeto cedidos por sua organização a outros"
+        ],
+        [
+            "**Informação sobre as condições e avaliação técnica do objeto**",
+            "Usado para registrar informações sobre os aspectos de condições e avaliações técnicas de um objeto"
+        ],
+        [
+            "**Informação sobre as conservação e tratamento do objeto**",
+            "Usado para registrar informações sobre os aspectos de conservação e tratamento de um objeto"
+        ],
+        [
+            "**Informação de contribuição do proprietário do objeto**",
+            "Usado para registrar informações sobre um objeto contribuído pelo proprietário anterior de um objeto"
+        ],
+        [
+            "**Informação de uso da informação**",
+            "Usado para registrar o uso das informações sobre um objeto e reproduções, também registra textos para o uso, como no caso de textos de exposições, e dados associados ao uso, como condições do ambiente"
+        ],
+        [
+            "**Informação de valoração do objeto**",
+            "Usado para registrar o resultado específico de uma valoração de um objeto, como uma valoração de seguro, uma valoração de mercado, ou uma valoração de doação"
+        ],
+        [
+            "**Informação de contribuição do usuário do objeto**",
+            "Usado para registrar informações sobre um objeto contribuído pelo usuário do objeto"
+        ],
+        [
+            "**Informação de revisão de coleção de objetos**",
+            "Usado para registrar informações sobre os resultados de objetos específicos de uma revisão"
+        ],
+        [
+            "**Informação sobre auditoria**",
+            "Usado para registrar informações sobre os resultados de de uma auditoria"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Tradução de Object information groups do Spectrum."
+    }
+}
