@@ -1,0 +1,100 @@
+{
+    "title": "Quadro X: Object procedural groups do Spectrum",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Descrição"],
+        [
+            "**Informações de entrada de objeto**",
+            "Usado para registrar um evento de entrada de objeto"
+        ],
+        [
+            "**Informações de aquisição de objeto**",
+            "Usado para registrar um evento de aquisição de objeto"
+        ],
+        [
+            "**Informações de movimentação de objeto**",
+            "Usado para registrar um evento de movimentação de objeto"
+        ],
+        [
+            "**Informações de saída de objeto**",
+            "Usado para registrar um evento de saída do objeto"
+        ],
+        [
+            "**Informações de entrada de empréstimos do objeto**",
+            "Usado para registrar um evento de entrada de empréstimo do objeto"
+        ],
+        [
+            "**Informações de saída de empréstimos do objeto**",
+            "Usado para registrar um evento de saída de empréstimo do objeto"
+        ],
+        [
+            "**Informações sobre as verificações técnicas de condições**",
+            "Usado para registrar um evento de avaliação de condição técnica"
+        ],
+        [
+            "**Informações sobre conservação e tratamento**",
+            "Usado para registrar um evento de conservação e tratamento"
+        ],
+        [
+            "**Informação de valoração**",
+            "Usado para registrar um evento de valoração"
+        ],
+        [
+            "**Informação de seguro**",
+            "Usado para registrar um evento de seguro"
+        ],
+        [
+            "**Informação de indenização**",
+            "Usado para registrar um evento de indenização"
+        ],
+        [
+            "**Informação de perdas e danos**",
+            "Usado para registrar um evento de perdas e danos"
+        ],
+        [
+            "**Informação de descarte**",
+            "Usado para registrar um evento de descarte"
+        ],
+        [
+            "**Informação de uso das coleções**",
+            "Usado para registrar um evento de uso das coleções"
+        ],
+        [
+            "**Informação de auditoria**",
+            "Usado para registrar um evento de auditoria"
+        ],
+        [
+            "**Informação de revisão de coleção**",
+            "Usado para registrar um evento de revisão de coleção"
+        ],
+        [
+            "**Unidades procedurais comuns**",
+            "Este grupo lista todas as unidades generalizadas na organização que são usadas para descrever um procedimento Spectrum"
+        ],
+        [
+            "**Informação de processo**",
+            "Usado para modelar qualquer processo que seja criado pela organização que pretenda registrar informação sobre"
+        ],
+        [
+            "**Informação de reprodução**",
+            "Usado para registrar informações sobre uma reprodução"
+        ],
+        [
+            "**Informação de reprodução**",
+            "Usado para registrar informações sobre uma reprodução"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Tradução de Object procedural groups do Spectrum."
+    }
+}

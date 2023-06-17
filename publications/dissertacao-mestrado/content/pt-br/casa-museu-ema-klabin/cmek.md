@@ -1,4 +1,4 @@
-## 7. A Casa Museu Ema Klabin
+# 8. A Casa Museu Ema Klabin
 
 A Casa Museu Ema Klabin é uma casa museu de colecionador localizada na Rua Portugal, 43 do bairro Jardim Europa em São Paulo, SP.
 
@@ -56,7 +56,7 @@ Foto de Nelson Kon, 2022.
 
 Na figura 5 vemos em destaque a tela _À la Campagne_ de Marc Chagall de 1925, à sua esquerda o relógio de piso francês do século XVIII.
 
-### 7.1 A documentação da coleção Ema Klabin
+## 8.1 A documentação da coleção Ema Klabin
 
 O primeiro inventário da coleção foi realizado por Marcelo Mattos Araújo por insistência dos parentes de Ema Klabin, entre os anos de 1989 e 1991 [@costa2007 p.86], resultando em uma lista dos itens da coleção separadas por ambientes. Em 1997, 3 anos após o falecimento de Ema (1994), Paulo de Freitas Costa inicia os trabalhos de catalogação e pesquisa da coleção que deu origem a sua dissertação de mestrado e posteriormente no livro "Sinfonia de Objetos" publicado em 2007 pela editora Iluminuras, que se apresenta como um estudo sobre o colecionismo brasileiro e sobre a coleção de Ema Klabin.
 

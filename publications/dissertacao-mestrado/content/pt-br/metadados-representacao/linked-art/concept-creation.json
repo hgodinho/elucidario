@@ -1,0 +1,41 @@
+{
+    "title": "Quadro X: Propriedades de _Creation_",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        ["id", "string", "requerido", ""],
+        [
+            "type",
+            "string",
+            "requerido",
+            "O tipo da classe que deve ser _Creation_"
+        ],
+        ["_label", "string", "recomendado", ""],
+        ["identified_by", "array", "opcional", ""],
+        ["classified_as", "array", "opcional", ""],
+        ["timespan", "array", "opcional", ""],
+        ["referred_to_by", "array", "opcional", ""],
+        ["influenced_by", "array", "opcional", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Tradução de _Creation_ do Linked Art"
+    }
+}

@@ -1,4 +1,4 @@
-##### 4.3.2.1.7. \*_Loans in_ (Entrada de empréstimos)
+## 6.7. \*Entrada de empréstimos (_Loans in_)
 
 Gerenciar objetos emprestados por um período fixo de tempo e para uma finalidade específica [@collections-trust2017.11].
 

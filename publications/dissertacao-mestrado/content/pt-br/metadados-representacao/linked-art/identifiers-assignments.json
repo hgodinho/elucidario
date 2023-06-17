@@ -1,5 +1,5 @@
 {
-    "title": "Tabela X: Propriedades de _Measurements_",
+    "title": "Quadro X: Propriedades de _Identifiers Assignments_",
     "fields": [
         {
             "type": "string",
@@ -22,10 +22,15 @@
         ["classified_as", "recomendado", ""],
         ["carried_out_by", "recomendado", ""],
         ["timespan", "opcional", ""],
-        ["referred_to_by", "opcional", ""]
+        ["referred_to_by", "opcional", ""],
+        [
+            "used_specific_object",
+            "opcional",
+            "Um _array_ de objetos JSON, cada um dos quais é uma referência para outro _Endpoint_ que foi instrumental na atribuição do identificador"
+        ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Properties of Measurements_ do Linked Art [@linked-art2021.8]"
+        "content": "Elaborado pelo autor. Tradução de _Properties of Identifiers Assignments_ do Linked Art [@linked-art2021.9]"
     }
 }

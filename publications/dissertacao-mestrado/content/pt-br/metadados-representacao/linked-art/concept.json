@@ -1,0 +1,57 @@
+{
+    "title": "Quadro X: Propriedades de _Concept_",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        ["@context", "string", "requerido", ""],
+        ["id", "string", "requerido", ""],
+        [
+            "type",
+            "string",
+            "requerido",
+            "O tipo do _Concept_, deve ser _Type_, _Material_, _Language_, _Currency_ ou _MeasurementUnit_"
+        ],
+        ["_label", "string", "recomendado", ""],
+        ["classified_as", "array", "recomendado", ""],
+        ["identified_by", "array", "recomendado", ""],
+        ["referred_to_by", "array", "opcional", ""],
+        ["equivalent", "array", "opcional", ""],
+        ["representation", "array", "opcional", ""],
+        ["member_of", "array", "opcional", ""],
+        ["subject_of", "array", "opcional", ""],
+        ["attributed_by", "array", "opcional", ""],
+        [
+            "broader",
+            "array",
+            "opcional",
+            "Um array de referências a outro _Concept_ que é mais amplo do que este"
+        ],
+        [
+            "created_by",
+            "object",
+            "opcional",
+            "Um objeto JSON representando a criação do _Concept_, que deve seguir o formato do objeto _Creation_ descrito a seguir"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Tradução de _Concept_ do Linked Art"
+    }
+}

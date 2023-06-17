@@ -1,4 +1,4 @@
-##### 4.3.2.1.4. \*_Inventory_ (Inventário)
+## 6.4. \*Inventário (_Inventory_)
 
 Certifica que você tem as informações básicas de cada objeto [@collections-trusts2017.9].
 

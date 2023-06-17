@@ -1,4 +1,4 @@
-##### 4.3.2.1.6. \*_Object exit_ (Saída de objetos)
+## 6.6. \*Saída de objetos (_Object exit_)
 
 O procedimento para registrar a saída de objetos do museu, seja por empréstimo, doação, venda, alienação, etc [@collections-trust2017.10].
 

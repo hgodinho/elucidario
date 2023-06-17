@@ -1,4 +1,4 @@
-#### Unidades de informação
+## Unidades de informação
 
 Além dos procedimentos, o Spectrum apresenta um conjunto de unidades de informação, ou metadados, para descrever os objetos, procedimentos e atividades realizadas pelo museu. As unidades de informação são divididas em três grupos que contêm metadados relacionados: grupo de informações sobre objeto (Object information groups), grupo de informações sobre procedimento (Procedure information groups) e grupo de informações sobre gestão (Record management information groups) [@collections-trust2017.2].
 

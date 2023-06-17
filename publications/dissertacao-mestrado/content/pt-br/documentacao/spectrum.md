@@ -1,5 +1,3 @@
-### 4.3.2. - _Standard Procedures for Collections Recording Used in Museums_ (SPECTRUM)
-
 O Spectrum é um padrão para gestão de coleções museológicas criado no Reino Unido por Alice Grant e publicada inicialmente em 1994 pela _Museum Documentation Association_ (MDA), em 2005 passa a ser editada por Gordon McKenna (3ª Edição) [@matos2014]. O Spectrum é utilizado por todos os museus acreditados pela _Collections Trust_ [@collections-trust2022.1] no Reino Unido e diversos outros ao redor do mundo, e define 21 procedimentos para gestão de coleções museológicas e unidades de informações utilizadas nos procedimentos.
 
 Em 2014, com um esforço conjunto da Secretaria de Estado de Cultura, Associação de Amigos do Museu do Café e Pinacoteca do Estado de São Paulo, a versão 4.0 do Spectrum foi traduzida para o português-brasileiro [^1], baseado na versão previamente traduzida para o português pela Universidade do Porto em Portugal. Nesta versão, originalmente editada em 2011 por Alex Dawson e Susie Hillhouse, tem sem nome alterado de "UK Museum Documentation Standard" para "UK Collections Management Standard", e apresenta uma nova estrutura que passa a publicar os procedimentos e unidades de informação em documentos separados, e os procedimentos passam a ser apresentados em fluxos de trabalho [@collections-trust2011].
@@ -14,8 +12,6 @@ A versão 5.0 também substitui o procedimento "Documentação retrospectiva" po
 A versão 5.1, publicada em 2022 como parte da campanha "rethink cataloguing" [@collections-trust2021], modifica os procedimentos de Catalogação e Uso das coleções para estimular uma abordagem mais inclusiva nestas atividades [@collections-trust2011].
 
 Utilizaremos a versão 5.1 em nossos estudos por ser a versão mais recente do Spectrum.
-
-#### 4.3.2.1. Procedimentos
 
 O Spectrum define 21 procedimentos para gestão de coleções museológicas [@collections-trust2022.2], são os procedimentos que um museu irá utilizar em todo o ciclo de vida de um objeto musealizado, desde a sua aquisição até a sua desincorporação.
 

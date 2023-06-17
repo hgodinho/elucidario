@@ -1,3 +1,8 @@
 {
-    "files": ["metadados-de-representacao.md", "linked-art.md", "notas.md"]
+    "files": [
+        "metadados-de-representacao.md",
+        "spectrum-information-requirements.md",
+        "linked-art.md",
+        "notas.md"
+    ]
 }
