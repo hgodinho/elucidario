@@ -22,7 +22,8 @@ const generateIndex = () => {
         .replaceAll("<!MIN_PHP>", packageJson.wp_plugin.min_php)
         .replaceAll("<!AUTHOR>", packageJson.author)
         .replaceAll("<!LICENSE>", packageJson.license)
-        .replaceAll("<!TEXT_DOMAIN>", packageJson.wp_plugin.text_domain);
+        .replaceAll("<!TEXT_DOMAIN>", packageJson.wp_plugin.text_domain)
+        .replaceAll("<!DOMAIN_PATH>", packageJson.wp_plugin.domain_path);
 
     fs.writeFileSync(path.resolve(root, "index.php"), index);
     console.log("index.php generated");

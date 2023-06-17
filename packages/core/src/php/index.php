@@ -9,8 +9,9 @@
  * Author:            <!AUTHOR>
  * License:           <!LICENSE>
  * Text Domain:       <!TEXT_DOMAIN>
+ * Domain Path:       <!DOMAIN_PATH>
  *
  * @package           lcdr/core
  */
 
-require_once __DIR__ . '/elucidario.php';
+require_once __DIR__ . '/lcdr.php';
