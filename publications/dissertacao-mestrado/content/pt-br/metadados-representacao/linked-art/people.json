@@ -1,0 +1,43 @@
+{
+    "title": "Quadro X: Propriedades de _People_",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        [
+            "type",
+            "string",
+            "requerido",
+            "O tipo deve ser _Period_, _Event_ ou _Activity_."
+        ],
+        ["representation", "array", "opcional", ""],
+        ["member_of", "array", "opcional", ""],
+        ["subject_of", "array", "opcional", ""],
+        ["attributed_by", "array", "opcional", ""],
+        ["carried_out", "array", "opcional", ""],
+        ["contact_point", "array", "opcional", ""],
+        ["residence", "array", "opcional", ""],
+        ["born", "array", "opcional", ""],
+        ["died", "array", "opcional", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Tradução de _People_ do Linked Art"
+    }
+}

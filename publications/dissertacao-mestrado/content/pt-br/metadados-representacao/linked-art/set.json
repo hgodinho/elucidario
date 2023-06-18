@@ -1,0 +1,40 @@
+{
+    "title": "Quadro X: Propriedades de _Set_",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        [
+            "type",
+            "string",
+            "requerido",
+            "O tipo deve ser _Period_, _Event_ ou _Activity_."
+        ],
+        ["representation", "array", "opcional", ""],
+        ["member_of", "array", "opcional", ""],
+        ["subject_of", "array", "opcional", ""],
+        ["attributed_by", "array", "opcional", ""],
+        ["dimension", "array", "opcional", ""],
+        ["created_by", "array", "opcional", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Tradução de _Set_ do Linked Art"
+    }
+}
