@@ -20,11 +20,11 @@
     ],
     "data": [
         ["Nome", "Tipo", "Exigência", "Descrição"],
-        ["id", "string", "requerido", ""],
+        ["id", "string", "opcional", ""],
         [
             "type",
             "string",
-            "requerido",
+            "obrigatório",
             "O tipo da classe que deve ser _Creation_"
         ],
         ["_label", "string", "recomendado", ""],
@@ -36,6 +36,6 @@
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Creation_ do Linked Art"
+        "content": "Elaborado pelo autor. Tradução de _Concept Creation_ do Linked Art [@linked-art2021.6]"
     }
 }
