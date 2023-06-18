@@ -1,4 +1,4 @@
-## 6.1. \*Entrada de objetos (_Object Entry_)
+1. \*Entrada de objetos (_Object Entry_)
 
 Entrada de objetos no museu por qualquer motivo [@collections-trust2017.6].
 
@@ -10,7 +10,7 @@ Entrada de objetos no museu por qualquer motivo [@collections-trust2017.6].
 
 2.  Crie um registro e um recibo:
     : Ver Quadro X a seguir.
-    : Verifique e registre as condições do objeto e quaisquer riscos associados
+    : 1. Verifique e registre as condições do objeto e quaisquer riscos associados
     : - Vá para _Conditional checking and technical assessment_, - Vá para _Reproduction_
     : 2. Envie ou entregue uma cópia do registro de entrada.
 
@@ -18,7 +18,7 @@ Entrada de objetos no museu por qualquer motivo [@collections-trust2017.6].
     : 1. Marque o objeto com um marcador temporário com o _Entry number_ ou _Loan in reference number_;
     : 2. Registre a primeira localização dos objetos - _Location and movement control_;
     : 3. Se o objeto é uma aquisição planejada ou entrada de empréstimos, volte ao procedimento relevante: _Acquisition and accessioning_ ou _Loans in_;
-    : 4. Se o objeto chega inesperadamente, considera a oferta e vá para _Acquisition and accessioning_;
+    : 4. Se o objeto chega inesperadamente, considere a oferta e vá para _Acquisition and accessioning_;
     : 5. Se o dono deixa para identificação, realize a tarefa no tempo acordado e vá para _Object exit_; :
     : 6. Se o objeto chega anonimamente, lide de acordo com a política da instituição;
 
