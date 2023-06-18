@@ -389,6 +389,11 @@
             "id": "collections-trust2017.13",
             "slug": "loans-out-lending-objects",
             "path": "<references>/collections-trust2017.13_loans-out-lending-objects.json"
+        },
+        {
+            "id": "linked-art2021.10",
+            "slug": "linked-art-api-digital-object",
+            "path": "<references>/linked-art2021.10_linked-art-api-digital-object.json"
         }
     ]
 }

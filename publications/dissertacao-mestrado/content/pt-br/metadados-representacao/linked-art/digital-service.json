@@ -1,0 +1,31 @@
+{
+    "title": "Quadro X: Propriedades de _Digital Service_",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        ["type", "string", "obrigatório", "O tipo deve ser _DigitalService_."],
+        ["access_point", "array", "opcional", ""],
+        ["conforms_to", "array", "opcional", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Tradução de _Digital Service_ do Linked Art [@linked-art2021.10]"
+    }
+}

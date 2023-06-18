@@ -369,6 +369,16 @@
             "id": "collections-trust2017.13",
             "slug": "loans-out-lending-objects",
             "path": "<references>/collections-trust2017.13_loans-out-lending-objects.json"
+        },
+        {
+            "id": "fielding2000",
+            "slug": "representational-state-transfer-rest",
+            "path": "<references>/fielding2000_representational-state-transfer-rest.json"
+        },
+        {
+            "id": "linked-art2021.10",
+            "slug": "linked-art-api-digital-object",
+            "path": "<references>/linked-art2021.10_linked-art-api-digital-object.json"
         }
     ]
 }
