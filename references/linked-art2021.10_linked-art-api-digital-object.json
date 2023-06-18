@@ -1,0 +1,23 @@
+{
+    "id": "linked-art2021.10",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-art-api-digital-object",
+    "_create": "2023-06-18T03:43:42.177Z",
+    "_update": "2023-06-18T03:43:42.177Z",
+    "type": "webpage",
+    "title": "Linked Art API: Digital Object",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-18"
+    },
+    "issued": {
+        "raw": "2021"
+    },
+    "language": "en",
+    "URL": "https://linked.art/api/1.0/endpoint/digital_object/"
+}
