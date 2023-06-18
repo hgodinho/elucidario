@@ -1,4 +1,4 @@
-## 6.2. \*Aquisição e adesão (_Acquisition and accessioning_)
+2. \***Aquisição e adesão** (_Acquisition and accessioning_)
 
 O compromisso formal do corpo governante do museu de cuidar do objeto a longo prazo [@collections-trust2017.7].
 

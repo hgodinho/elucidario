@@ -1,4 +1,4 @@
-1. \*Entrada de objetos (_Object Entry_)
+1. \***Entrada de objetos** (_Object Entry_)
 
 Entrada de objetos no museu por qualquer motivo [@collections-trust2017.6].
 
