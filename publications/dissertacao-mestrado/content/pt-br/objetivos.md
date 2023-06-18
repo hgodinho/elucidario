@@ -8,4 +8,6 @@ Definir informação museológica e documentação museológica para o escopo do
 
 Identificar os modelos conceituais e padrões internacionais de representação da informação museológica que serão utilizados no aplicativo.
 
-E, por fim, testar o uso do aplicativo com um recorte específico da coleção da Casa Museu Ema Klabin de 50 itens da BD Museológica e informações correlatas, como agentes, eventos, lugares, conceitos, etc. A escolha destes itens se deu por terem passado por processo recente de digitalização. De um total de xxx itens digitalizados, este recorte de 50 itens foi escolhido por ser um número que permite a realização de testes e experimentos com o aplicativo, além de representarem diversos tipos de itens, como pinturas, esculturas, mobiliário, etc.
+Desenvolver efetivamente o aplicativo Elucidário.art, com base nos modelos conceituais e padrões internacionais de representação da informação museológica identificados.
+
+E, por fim, testar o uso do aplicativo com um recorte específico da coleção da Casa Museu Ema Klabin de 50 itens da BD Museológica e informações correlatas, como agentes, eventos, lugares, conceitos, etc. A escolha destes itens se deu por terem passado por processo recente de digitalização. De um total de xxx itens digitalizados, este recorte de 50 itens foi escolhido por ser um número que permite a realização de testes e experimentos com o aplicativo, além de representarem diversos tipos de itens, como pinturas, esculturas, mobiliário, etc, e diversos níveis de documentação diferente como empréstimos, exposições, restaurações, etc.
