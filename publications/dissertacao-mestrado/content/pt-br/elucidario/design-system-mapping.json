@@ -1,0 +1,108 @@
+{
+    "title": "Quadro X: Mapeamento entre JSON-Schema e HTML para a definição do SD do Elucidário.art",
+    "fields": [
+        {
+            "type": "string",
+            "name": "schema type"
+        },
+        {
+            "type": "string",
+            "name": "schema format"
+        },
+        {
+            "type": "string",
+            "name": "schema extra"
+        },
+        {
+            "type": "string",
+            "name": "html tag"
+        },
+        {
+            "type": "string",
+            "name": "input type"
+        },
+        {
+            "type": "string",
+            "name": "attributes"
+        },
+        {
+            "type": "string",
+            "name": "descrição"
+        }
+    ],
+    "data": [
+        [
+            "schema type",
+            "schema format",
+            "schema extra",
+            "html tag",
+            "input type",
+            "attributes",
+            "descrição"
+        ],
+        ["string", "", "", "input", "text", "", "Texto livre"],
+        [
+            "string",
+            "date-time",
+            "",
+            "input",
+            "date, datetime, datetime-local, time, week",
+            "",
+            "Data e hora"
+        ],
+        ["string", "uri", "", "input", "url", "", "URI"],
+        ["string", "email", "", "input", "email", "", "E-mail"],
+        ["string", "ip", "", "input", "text", "pattern: definir", "IP"],
+        ["string", "uuid", "", "input", "text", "pattern: definir", "UUID"],
+        [
+            "string",
+            "hex-color",
+            "",
+            "input",
+            "color",
+            "",
+            "Cor em código hexadecimal"
+        ],
+        [
+            "string",
+            "",
+            "enum",
+            "select > option",
+            "",
+            "",
+            "Usa-se a tag select para o elemento pai e uma tag option para cada item do enum"
+        ],
+        [
+            "number \\| integer",
+            "",
+            "minimum \\| maximum \\| multipleOf",
+            "input",
+            "number",
+            "min \\| max \\| step",
+            "Número"
+        ],
+        ["boolean", "", "", "input", "checkbox", "", "Caixa de seleção"],
+        [
+            "object",
+            "",
+            "",
+            "fieldset > \\<qualquer outra propriedade\\>",
+            "",
+            "",
+            "Objeto composto por propriedades"
+        ],
+        [
+            "array",
+            "",
+            "",
+            "fieldset > componente Array",
+            "",
+            "",
+            "Array de itens"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

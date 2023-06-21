@@ -4,11 +4,13 @@
         "resolveJsonModule": true,
         "outDir": "dist",
         "jsx": "react",
+        "baseUrl": ".",
+        "moduleResolution": "node",
         "declaration": true,
         "paths": {
             "@/*": ["./src/*"],
-            "@elucidario/pkg-types": ["../types/dist"]
+            "@elucidario/pkg-types": ["../types/dist/*"]
         }
     },
-    "include": ["src/index.ts"]
+    "include": ["src/**/*"]
 }
