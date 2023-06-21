@@ -1,3 +1,8 @@
 {
-    "files": ["elucidario.md", "mdorim.md"]
+    "files": [
+        "elucidario.md",
+        "lcdr-core.md",
+        "lcdr-mdorim.md",
+        "lcdr-design-system.md"
+    ]
 }

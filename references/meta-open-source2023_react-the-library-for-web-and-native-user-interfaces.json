@@ -1,0 +1,23 @@
+{
+    "id": "meta-open-source2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "react-the-library-for-web-and-native-user-interfaces",
+    "_create": "2023-06-19T03:54:41.351Z",
+    "_update": "2023-06-19T03:54:41.351Z",
+    "type": "webpage",
+    "title": "React: The library for web and native user interfaces",
+    "author": [
+        {
+            "family": "Meta Open Source"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-19"
+    },
+    "issued": {
+        "raw": "2023"
+    },
+    "language": "en",
+    "URL": "https://react.dev"
+}

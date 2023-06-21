@@ -379,6 +379,11 @@
             "id": "linked-art2021.10",
             "slug": "linked-art-api-digital-object",
             "path": "<references>/linked-art2021.10_linked-art-api-digital-object.json"
+        },
+        {
+            "id": "meta-open-source2023",
+            "slug": "react-the-library-for-web-and-native-user-interfaces",
+            "path": "<references>/meta-open-source2023_react-the-library-for-web-and-native-user-interfaces.json"
         }
     ]
 }
