@@ -7,7 +7,6 @@
                 Configurações
                     Geral
                     Integrações
-                    Idioma
             Usuários
                 Níveis de permissão
             Histórico de Edições
@@ -29,6 +28,5 @@
             ObjetosDigitais
                 Todos
                 Novo
-
 
 ```
