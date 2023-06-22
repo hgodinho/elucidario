@@ -56,12 +56,12 @@
         "scope": "php",
         "prefix": "log",
         "description": "LCDR\\Debug\\::log",
-        "body": "LCDR\\Debug\\::log(EK_PATH, ${1:msg}, ${2:title}, __CLASS__, __METHOD__, __LINE__);"
+        "body": "\\LCDR\\Debug::log(LCDRP_PATH, ${1:msg}, ${2:title}, __CLASS__, __METHOD__, __LINE__);"
     },
     "dump": {
         "scope": "php",
         "prefix": "dump",
         "description": "LCDR\\Debug\\::dump",
-        "body": "LCDR\\Debug\\::dump(${1:msg}, __CLASS__, __METHOD__, __LINE__, ${2:die:true});"
+        "body": "\\LCDR\\Debug::dump(${1:msg}, __CLASS__, __METHOD__, __LINE__, ${2:true});"
     }
 }

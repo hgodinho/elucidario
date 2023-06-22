@@ -39,11 +39,13 @@ services:
             - ../../packages/core:/var/www/html/wp-content/plugins/elucidario-art
 
     cli:
+        container_name: cli
         depends_on:
             - db
             - wp
         image: wordpress:cli
-        user: xfs
+        user: 1000:1000
+        command: tail -f /dev/null
         volumes: *ref_1
         environment: *ref_0
 
