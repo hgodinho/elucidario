@@ -127,6 +127,8 @@
             "zip",
             "zlib",
             "wordpress"
-        ]
+        ],
+        "typescript.tsdk": "node_modules\\typescript\\lib",
+        "cSpell.language": "en,pt-BR,es-ES,pt"
     }
 }
