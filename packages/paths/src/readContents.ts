@@ -86,35 +86,46 @@ export const readContents = ({
         try {
             const files = fs.readdirSync(dirPath);
 
-
             files.forEach((file: string) => {
                 const filePath = path.parse(file);
 
-                // se for um diretório, chama a função recursivamente
-                if (filePath.ext === "") {
-                    result[filePath.name] = readContents({
-                        dirPath: path.resolve(dirPath, file),
-                        index,
-                        extensions,
-                        returnType,
-                        exclude,
-                        log,
-                        package: pkg,
-                    });
+                try {
+                    // se for um diretório, chama a função recursivamente
+                    if (filePath.ext === "") {
+                        result[filePath.name] = readContents({
+                            dirPath: path.resolve(dirPath, file),
+                            index,
+                            extensions,
+                            returnType,
+                            exclude,
+                            log,
+                            package: pkg,
+                        });
+                        console.log({ result }, { defaultLog: true })
+                    }
+                } catch (err: any) {
+                    console.log({ err }, { defaultLog: true, type: "error" })
+                    throw new Error(`Cannot read directory: ${path.resolve(dirPath, file)}`);
                 }
 
-                // se for um arquivo, lê o conteúdo
-                const ext = filePath.ext.replace(".", "");
-                if (extensions.includes(ext)) {
-                    switch (returnType) {
-                        case 'path':
-                            result[filePath.name] = path.resolve(dirPath, file);
-                            break;
-                        case 'content':
-                            result[filePath.name] = readFile(path.resolve(dirPath, file), ext);
+                try {
+                    // se for um arquivo, lê o conteúdo
+                    const ext = filePath.ext.replace(".", "");
+                    if (extensions.includes(ext)) {
+                        switch (returnType) {
+                            case 'path':
+                                result[filePath.name] = path.resolve(dirPath, file);
+                                break;
+                            case 'content':
+                                result[filePath.name] = readFile(path.resolve(dirPath, file), ext);
+                        }
                     }
+                } catch (err: any) {
+                    console.log({ err }, { defaultLog: true, type: "error" })
+                    throw new Error(`Cannot read file: ${path.resolve(dirPath, file)}`);
                 }
             });
+
         } catch (err: any) {
             throw new Error(`Cannot read directory: ${dirPath}`);
         }
@@ -170,5 +181,4 @@ export const readContents = ({
     }
 
     return result;
-
 };
