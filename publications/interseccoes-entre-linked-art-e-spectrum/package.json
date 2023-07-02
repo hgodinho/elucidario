@@ -11,7 +11,8 @@
         "convert": "pub-gen pandoc convert -p interseccoes-entre-linked-art-e-spectrum",
         "authenticate": "pub-gen authenticate -p interseccoes-entre-linked-art-e-spectrum",
         "build": "pnpm clean && pub-gen build -p interseccoes-entre-linked-art-e-spectrum",
-        "clean": "rm -rf dist/*"
+        "clean": "rm -rf dist/*",
+        "dev": "pnpm build -w"
     },
     "devDependencies": {
         "@elucidario/pkg-pub-gen": "workspace:^"
