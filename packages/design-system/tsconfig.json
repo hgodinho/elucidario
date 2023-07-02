@@ -10,7 +10,7 @@
         "declaration": true,
         "declarationMap": true,
         "preserveSymlinks": true,
-        "declarationDir": "./types",
+        "declarationDir": "./dist/types",
         "paths": {
             "@/*": ["./src/*"],
             "@elucidario/pkg-types": [
@@ -19,5 +19,5 @@
             "tslib": ["./node_modules/tslib/tslib.d.ts"]
         }
     },
-    "include": ["src/**/*"]
+    "include": ["src/index.ts"]
 }
