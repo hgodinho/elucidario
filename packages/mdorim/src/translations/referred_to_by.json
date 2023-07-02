@@ -1,0 +1,52 @@
+{
+    "referred_to_by": {
+        "label": [
+            {
+                "lang": "pt-BR",
+                "content": "Referido por"
+            },
+            {
+                "lang": "es-ES",
+                "content": "Referido por"
+            },
+            {
+                "lang": "en-US",
+                "content": "Referred to by"
+            }
+        ],
+        "description": [
+            {
+                "lang": "pt-BR",
+                "content": "Uma declaração incorporada sobre esta entidade, ou uma referência a um texto que se refere à entidade"
+            },
+            {
+                "lang": "es-ES",
+                "content": "Una declaración incorporada sobre esta entidad, o una referencia a un texto que se refiere a la entidad"
+            },
+            {
+                "lang": "en-US",
+                "content": "An embedded statement about this entity, or a reference to a text that refers to the entity"
+            }
+        ],
+        "messages": [
+            {
+                "code": "referred_to_by.error.missing",
+                "type": "error",
+                "content": [
+                    {
+                        "lang": "pt-BR",
+                        "content": ""
+                    },
+                    {
+                        "lang": "es-ES",
+                        "content": ""
+                    },
+                    {
+                        "lang": "en-US",
+                        "content": ""
+                    }
+                ]
+            }
+        ]
+    }
+}

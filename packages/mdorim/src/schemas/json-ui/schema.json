@@ -1,0 +1,84 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "https://elucidario.art/mdorim/json-ui/schema.json",
+    "title": "JSON-UI",
+    "description": "JSON-UI is a JSON-based declarative schema for describing user interfaces, use with JSON-Schema to describe data structures and JSON-UI to describe the user interface for the data structure.",
+    "type": "object",
+    "patternProperties": {
+        "^_?[a-z][a-z0-9_]*$": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "array",
+                    "description": "The label of the data model, use an array of localized strings to support multiple languages.",
+                    "items": {
+                        "$ref": "#/definitions/localizedString"
+                    }
+                },
+                "description": {
+                    "type": "array",
+                    "description": "The description of the data model, use an array of localized strings to support multiple languages.",
+                    "items": {
+                        "$ref": "#/definitions/localizedString"
+                    }
+                },
+                "messages": {
+                    "type": "array",
+                    "description": "The messages of the data model, use an array of message objects to support multiple messages.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "type": "string",
+                                "description": "The code of the message, use a dot notation to separate the code into parts, e.g. 'error.name.required'."
+                            },
+                            "type": {
+                                "type": "string",
+                                "description": "The type of the message, use one of the following values: message, error, warn, info, success.",
+                                "enum": [
+                                    "message",
+                                    "error",
+                                    "warn",
+                                    "info",
+                                    "success"
+                                ]
+                            },
+                            "content": {
+                                "type": "array",
+                                "description": "The content of the message, use an array of localized strings to support multiple languages.",
+                                "items": {
+                                    "$ref": "#/definitions/localizedString"
+                                }
+                            }
+                        },
+                        "required": ["code", "type", "content"],
+                        "additionalProperties": false
+                    }
+                },
+                "component": {
+                    "type": "string",
+                    "description": "The component to use to render the data model, if not specified the component is inferred from the data model."
+                }
+            },
+            "required": ["label", "description", "messages"],
+            "additionalProperties": false
+        }
+    },
+    "definitions": {
+        "localizedString": {
+            "type": "object",
+            "properties": {
+                "lang": {
+                    "type": "string",
+                    "description": "The language of the string, use RFC 5646 language tags, e.g. pt-BR, en-US, en-GB, fr-FR, etc."
+                },
+                "content": {
+                    "type": "string",
+                    "description": "The localized content of the string."
+                }
+            },
+            "required": ["lang", "content"],
+            "additionalProperties": false
+        }
+    }
+}

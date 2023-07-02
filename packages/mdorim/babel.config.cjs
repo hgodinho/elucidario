@@ -2,12 +2,13 @@
 module.exports = {
     presets: [
         [
-            '@babel/preset-env',
+            "@babel/preset-env",
             {
                 targets: {
-                    node: 'current',
+                    node: "current",
                 },
             },
         ],
     ],
+    plugins: ["@babel/plugin-transform-json-strings"],
 };

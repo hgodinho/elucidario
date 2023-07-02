@@ -14,14 +14,15 @@
         "clean:dist": "rm -rf dist/*",
         "clean:docs": "rm -rf docs/*",
         "clean:static": "rm -rf static/*",
-        "dev": "pnpm build -w",
-        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js -c"
+        "dev": "pnpm build -s -e -w --test",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
     },
     "dependencies": {
         "json-schema-to-typescript": "^13.0.1",
         "lodash-es": "^4.17.21"
     },
     "devDependencies": {
+        "@babel/plugin-transform-json-strings": "^7.22.5",
         "@babel/preset-env": "^7.21.5",
         "@elucidario/pkg-console": "workspace:^",
         "@elucidario/pkg-docusaurus-md": "workspace:^",
