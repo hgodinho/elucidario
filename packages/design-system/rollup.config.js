@@ -3,7 +3,8 @@ import babel from "@rollup/plugin-babel";
 import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
 
-import pkg from "./package.json" assert { type: "json" };
+import fs from "fs";
+const pkg = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
 
 const external = [
     // ...Object.keys(pkg.dependencies),
@@ -12,6 +13,12 @@ const external = [
 
 const config = lcdrRollupConfig({
     external,
+    output: {
+        dir: "dist",
+        declarationDir: "dist",
+        format: "es",
+        sourcemap: true,
+    },
     plugins: [
         resolve(),
         babel({
