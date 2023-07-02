@@ -1,20 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Label } from '@/components';
+import { Button } from '@/components';
 
 const meta = {
-    title: 'Componentes/Form/Label',
-    component: Label,
+    title: 'Componentes/Form/Button',
+    component: Button,
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
     tags: ['autodocs'],
     args: {
-        children: 'Label',
-        htmlFor: 'input',
+        children: 'Button',
     },
     parameters: {
         layout: 'fullscreen',
     },
-} satisfies Meta<typeof Label>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 

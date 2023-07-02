@@ -1,5 +1,7 @@
 import React from "react";
 
-export const Button = () => {
-    return <button>botão</button>;
+import type { ButtonProps } from "@elucidario/pkg-types";
+
+export const Button = ({ children, ...props }: ButtonProps) => {
+    return <button {...props}>{children}</button>;
 };
