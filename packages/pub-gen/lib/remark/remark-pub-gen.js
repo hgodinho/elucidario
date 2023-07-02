@@ -4,7 +4,7 @@ import fs from "fs";
 import parser from "parser-front-matter";
 
 import { entityPage } from "@elucidario/pkg-schema-doc";
-import { toMD, bold } from "@elucidario/pkg-docusaurus-md";
+import { toMD, bold, codeBlock } from "@elucidario/pkg-docusaurus-md";
 
 import { getPaths } from "../getPaths.js";
 import { tableMarkdown } from "./table.js";
@@ -105,6 +105,28 @@ export default function remarkPubGen(options) {
                     ]);
 
                     node.value = mermaidContent;
+                    node.type = "html";
+                }
+
+                /**
+                 * Code
+                 * {{code:./src/...}}
+                 * {{code:./src/...;language}}
+                 */
+                if (value.startsWith("code")) {
+                    const codePath = value.replace("code:", "");
+                    let [codeFile, language] = codePath.split(";");
+                    if (!language)
+                        language =
+                            path.parse(codeFile).ext.replace(".", "") || "js";
+
+                    const codeData = fs
+                        .readFileSync(path.resolve(options.path, codeFile))
+                        .toString();
+
+                    const codeContent = codeBlock(codeData, language);
+
+                    node.value = codeContent;
                     node.type = "html";
                 }
             }
