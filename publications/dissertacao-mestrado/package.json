@@ -9,6 +9,7 @@
         "ref-search": "pub-gen reference search -p dissertacao-mestrado",
         "version-up": "pub-gen version -p dissertacao-mestrado",
         "convert": "pub-gen pandoc convert -p dissertacao-mestrado",
+        "comments-to-issues": "pub-gen comments-to-issues -p dissertacao-mestrado",
         "authenticate": "pub-gen authenticate -p dissertacao-mestrado",
         "build": "pnpm clean && pub-gen build -p dissertacao-mestrado",
         "dev": "pnpm build -w",

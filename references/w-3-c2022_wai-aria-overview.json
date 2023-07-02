@@ -1,0 +1,25 @@
+{
+    "id": "w-3-c2022",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "wai-aria-overview",
+    "_create": "2023-06-25T18:17:20.432Z",
+    "_update": "2023-06-25T18:17:20.432Z",
+    "type": "webpage",
+    "title": "WAI-ARIA Overview",
+    "publisher": "W3C",
+    "author": [
+        {
+            "family": "W3C",
+            "given": "Word Wide Web Consortium"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-06-25"
+    },
+    "issued": {
+        "raw": "2022"
+    },
+    "language": "en",
+    "URL": "https://www.w3.org/WAI/standards-guidelines/aria/"
+}

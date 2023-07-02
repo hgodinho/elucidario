@@ -52,8 +52,8 @@
         ],
         ["string", "uri", "", "input", "url", "", "URI"],
         ["string", "email", "", "input", "email", "", "E-mail"],
-        ["string", "ip", "", "input", "text", "pattern: definir", "IP"],
-        ["string", "uuid", "", "input", "text", "pattern: definir", "UUID"],
+        ["string", "ip", "", "input", "text", "REGEX pattern", "IP"],
+        ["string", "uuid", "", "input", "text", "REGEX pattern", "UUID"],
         [
             "string",
             "hex-color",

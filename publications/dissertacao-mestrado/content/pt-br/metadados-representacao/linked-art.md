@@ -76,7 +76,7 @@ As camadas de restrições são [@fielding2000]:
 > 4. Interface uniforme: a característica principal que distingue a arquitetura REST de outra arquitetura de rede é a interface uniforme entre componentes. As implementações são dissociadas dos serviços que fornecem, o que incentiva a evolução independente; e
 > 5. Sistema em camadas: ao compor a arquitetura em camadas hierárquicas, restringimos os componentes a não irem além de seus escopos.
 
-O Linked Art também apresenta os schemas definidos no formato JSON-Schema, utilizado para descrever e validar estruturas de dados JSON [@droettboom2020]. Com o JSON-Schema é possível descrever diferentes tipos de dados, como números, strings, objetos, arrays, booleanos e nulos. Além disso, é possível definir restrições para os dados, como o tamanho máximo de uma string, o intervalo de valores de um número, ou o número de itens em um array, entre outras [@droettboom2020].
+<!-- O Linked Art também apresenta os schemas definidos no formato JSON-Schema, utilizado para descrever e validar estruturas de dados JSON [@droettboom2020]. Com o JSON-Schema é possível descrever diferentes tipos de dados, como números, strings, objetos, arrays, booleanos e nulos. Além disso, é possível definir restrições para os dados, como o tamanho máximo de uma string, o intervalo de valores de um número, ou o número de itens em um array, entre outras [@droettboom2020].
 
 Um objeto com uma propriedade "name" do tipo string pode ser representado em JSON-Schema da seguinte forma:
 
@@ -89,7 +89,7 @@ Um objeto com uma propriedade "name" do tipo string pode ser representado em JSO
         }
     }
 }
-```
+``` -->
 
 A API do Linked Art é dividida em duas partes: _Shared Constructs_, ou Estruturas Compartilhadas (EC), e _Entity Endpoints_, Endpoints de Entidades (EE). Como as propriedades definidas no Linked Art se repetem pelas EC e EE, separamos as propriedades em dois quadros distintos para facilitar a visualização. No primeiro, apresentamos as propriedades que são obrigatórias nas EE e, com exceção de "@context" e "id", também são obrigatórias em todas as EC. No segundo, apresentamos as propriedades que podem ou não serem utilizadas em mais de uma EC ou EE. Após os quadros, apresentamos as EC e EE:
 

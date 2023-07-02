@@ -11,7 +11,7 @@ A versão 5.0 também substitui o procedimento "Documentação retrospectiva" po
 
 A versão 5.1, publicada em 2022 como parte da campanha "rethink cataloguing" [@collections-trust2021], modifica os procedimentos de Catalogação e Uso das coleções para estimular uma abordagem mais inclusiva nestas atividades [@collections-trust2011].
 
-Utilizaremos a versão 5.1 em nossos estudos por ser a versão mais recente do Spectrum.
+Utilizamos a versão 5.1 em nossos estudos por ser a versão mais recente do Spectrum.
 
 O Spectrum define 21 procedimentos para gestão de coleções museológicas [@collections-trust2022.2], são os procedimentos que um museu irá utilizar em todo o ciclo de vida de um objeto musealizado, desde a sua aquisição até a sua desincorporação.
 
