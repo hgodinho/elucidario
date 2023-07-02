@@ -8,6 +8,7 @@ import { init } from "./init.js";
 import { createPublication } from "./create.js";
 import { buildPublication } from "./build.js";
 import { addAuthor } from "./addAuthor.js";
+import { commentsToIssues } from "./commentsToIssues.js";
 import { reference } from "./reference/reference.js";
 import { search } from "./reference/search.js";
 import { version } from "./version.js";
@@ -208,6 +209,19 @@ const PubGen = () => {
         .action((argv) => {
             console.log("Listing pandoc docx templates");
             listTemplates();
+        });
+
+    program
+        .command("comments-to-issues")
+        .description("Convert comments to issues")
+        .option("-p, --publication <publication>")
+        .option("-f, --fileId <fileId>")
+        .action(async (argv) => {
+            console.log("Converting comments to issues");
+            await commentsToIssues({
+                publication: argv.publication,
+                fileId: argv.fileId,
+            });
         });
 
     program.parse(process.argv);

@@ -9,13 +9,13 @@ import { mergeSubSchema } from "@elucidario/pkg-schema-doc";
 import { Console } from "@elucidario/pkg-console";
 
 import { pubGenRemarkProcessor } from "@elucidario/pkg-pub-gen/lib/remark/processor.js";
-import { type } from "os";
 
 const { compile } = pkg;
 
 const { packages } = getPaths();
 
 const outDocs = "docs";
+
 const outStatic = path.resolve(
     packages,
     "mdorim",
@@ -26,11 +26,16 @@ const outStatic = path.resolve(
 
 const __dirname = path.resolve(packages, "mdorim", "src");
 
+const folders = ["linked-art"];
+
 const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(packages, "mdorim", "package.json"))
 );
 const console = new Console(packageJson);
 
+/**
+ * Build docs
+ */
 const buildDocs = async () => {
     const pages = readContents(path.join(__dirname, "pages"), ["md"]);
     return Promise.all(
@@ -86,6 +91,9 @@ const buildDocs = async () => {
     );
 };
 
+/**
+ * Build types
+ */
 const buildTypes = async () => {
     const index = JSON.parse(
         fs.readFileSync(path.join(__dirname, "schemas", "index.json"), "utf8")
@@ -154,6 +162,11 @@ const buildTypes = async () => {
     }
 };
 
+/**
+ * Replace <local> with the local path
+ * @param {object} schema
+ * @returns {object} schema
+ */
 const replaceRef = (schema) => {
     for (let key in schema) {
         if (key === "$ref") {
@@ -170,39 +183,38 @@ const replaceRef = (schema) => {
     return schema;
 };
 
+/**
+ * Build schemas
+ */
 const buildSchemas = async () => {
-    const schemas = readContents({
-        dirPath: path.join(__dirname, "schemas"),
-        extensions: ["json"],
-        index: false,
-        ignore: ["index.json"],
-        package: packageJson,
-    });
-
+    let schemas = {};
+    try {
+        schemas = readContents({
+            dirPath: path.join(__dirname, "schemas"),
+            extensions: ["json"],
+            index: false,
+            ignore: ["index.js"],
+            package: packageJson,
+        });
+    } catch (err) {
+        console.log(err, { type: "error", defaultLog: true, title: "Error" });
+        throw new Error(err);
+    }
     try {
         return Promise.all(
             Object.entries(schemas).map(async ([name, schema]) => {
-                const newSchema = replaceRef(schema);
-                if (!fs.existsSync(path.resolve(outStatic))) {
-                    fs.mkdirSync(path.resolve(outStatic), {
-                        recursive: true,
+                if (folders.includes(name)) {
+                    Object.entries(schema).map(async ([ldName, ldSchema]) => {
+                        const newLdSchema = replaceRef(ldSchema);
+                        writeFile(
+                            path.resolve(outStatic, name),
+                            ldName,
+                            newLdSchema
+                        );
                     });
                 }
-                fs.writeFile(
-                    path.resolve(outStatic, `${name}.json`),
-                    JSON.stringify(newSchema, null, 4),
-                    (err) => {
-                        if (err)
-                            console.log(`There was an error: ${err}`, {
-                                type: "error",
-                                defaultLog: true,
-                            });
-                    }
-                );
-                console.log(`Built: ${name}.json`, {
-                    type: "success",
-                    title: "Schema built",
-                });
+                const newSchema = replaceRef(schema);
+                writeFile(path.resolve(outStatic), name, newSchema);
             })
         );
     } catch (err) {
@@ -211,6 +223,29 @@ const buildSchemas = async () => {
     }
 };
 
+const writeFile = (pathDir, name, schema) => {
+    if (!fs.existsSync(path.resolve(pathDir))) {
+        fs.mkdirSync(path.resolve(pathDir), {
+            recursive: true,
+        });
+    }
+    const fileName = path.resolve(pathDir, `${name}.json`);
+    fs.writeFile(fileName, JSON.stringify(schema, null, 4), (err) => {
+        if (err)
+            console.log(`There was an error: ${err}`, {
+                type: "error",
+                defaultLog: true,
+            });
+    });
+    console.log(`Built: ${fileName}`, {
+        type: "success",
+        title: "Schema built",
+    });
+};
+
+/**
+ * Test mdorim
+ */
 const test = async () => {
     console.log("Testing...");
     exec("pnpm test", async (error, stdout, stderr) => {
@@ -244,6 +279,9 @@ const test = async () => {
     });
 };
 
+/**
+ * Build mdorim
+ */
 export const buildMdorim = async () => {
     program
         .description("Builds the mdorim model")
@@ -260,7 +298,7 @@ export const buildMdorim = async () => {
                     watch: options.watch,
                     watchSrc: [
                         __dirname,
-                        path.resolve(__dirname, "..", "test"),
+                        path.resolve(__dirname, "..", "tests"),
                     ],
                 },
                 async () => {

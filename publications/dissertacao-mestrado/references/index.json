@@ -384,6 +384,16 @@
             "id": "meta-open-source2023",
             "slug": "react-the-library-for-web-and-native-user-interfaces",
             "path": "<references>/meta-open-source2023_react-the-library-for-web-and-native-user-interfaces.json"
+        },
+        {
+            "id": "w-3-c2022",
+            "slug": "wai-aria-overview",
+            "path": "<references>/w-3-c2022_wai-aria-overview.json"
+        },
+        {
+            "id": "droettboom2023",
+            "slug": "what-is-a-schema",
+            "path": "<references>/droettboom2023_what-is-a-schema.json"
         }
     ]
 }

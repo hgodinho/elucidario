@@ -6,10 +6,17 @@
         "jsx": "react",
         "baseUrl": ".",
         "moduleResolution": "node",
+        "module": "ES2015",
         "declaration": true,
+        "declarationMap": true,
+        "preserveSymlinks": true,
+        "declarationDir": "./types",
         "paths": {
             "@/*": ["./src/*"],
-            "@elucidario/pkg-types": ["../types/dist/*"]
+            "@elucidario/pkg-types": [
+                "./node_modules/@elucidario/pkg-types/dist/index.d.ts"
+            ],
+            "tslib": ["./node_modules/tslib/tslib.d.ts"]
         }
     },
     "include": ["src/**/*"]

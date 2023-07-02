@@ -29,17 +29,17 @@
         }
     },
     "dependencies": {
-        "nx": "^15.9.2"
+        "nx": "^16.4.0"
     },
     "devDependencies": {
         "@elucidario/pkg-eslint-config": "workspace:^",
         "@elucidario/pkg-pub-gen": "workspace:^",
         "commitizen": "^4.3.0",
-        "conventional-changelog": "^3.1.25",
-        "eslint": "^8.38.0",
-        "lerna": "^6.6.1",
-        "prettier": "^2.8.7",
-        "typescript": "^5.0.4"
+        "conventional-changelog": "^4.0.0",
+        "eslint": "^8.43.0",
+        "lerna": "^7.0.2",
+        "prettier": "^2.8.8",
+        "typescript": "^5.1.3"
     },
     "engines": {
         "node": ">=14.15.0",

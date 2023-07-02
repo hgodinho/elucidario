@@ -1,10 +1,10 @@
 {
     "files": [
-        "resumo",
-        "introducao",
-        "metodologia",
-        "spectrum",
-        "linked-art",
-        "interseccoes"
+        "resumo.md",
+        "introducao.md",
+        "metodologia.md",
+        "spectrum.md",
+        "linked-art.md",
+        "interseccoes.md"
     ]
 }

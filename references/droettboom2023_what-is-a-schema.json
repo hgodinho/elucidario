@@ -1,0 +1,25 @@
+{
+    "id": "droettboom2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "what-is-a-schema",
+    "_create": "2023-07-01T19:53:13.510Z",
+    "_update": "2023-07-01T19:53:13.511Z",
+    "type": "webpage",
+    "title": "What is a schema?",
+    "container-title": "Understanding JSON-Schema",
+    "author": [
+        {
+            "family": "Droettboom",
+            "given": "Michael"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-07-01"
+    },
+    "issued": {
+        "raw": "2013"
+    },
+    "language": "en",
+    "URL": "https://json-schema.org/understanding-json-schema/about.html"
+}

@@ -6,6 +6,7 @@
                 Exportar
                 Configurações
                     Geral
+                    Idiomas
                     Integrações
             Usuários
                 Níveis de permissão
@@ -19,14 +20,16 @@
                 ObjectExit
                 LoanIn
                 LoanOut
-            Objetos
-                Todos
-                Novo
-            Conceitos
-                Todos
-                Novo
-            ObjetosDigitais
-                Todos
-                Novo
+            LinkedArt
+                Objetos
+                Conceitos
+                ObjetosDigitais
+                TextualWorks
+                VisualWorks
+                Agents
+                Places
+                Events
+                Sets
+                ProvenanceActivities
 
 ```

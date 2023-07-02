@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "$id": "http://example.com/person.json",
+    "title": "Person",
+    "type": "object",
+    "properties": {
+        "name": {
+            "$ref": "http://example.com/definitions.json#/definitions/name"
+        },
+        "age": {
+            "$ref": "http://example.com/definitions.json#/definitions/age"
+        }
+    }
+}

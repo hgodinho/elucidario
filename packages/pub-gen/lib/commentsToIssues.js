@@ -178,8 +178,3 @@ export const commentsToIssues = async ({ fileId, publication }) => {
         },
     });
 };
-
-commentsToIssues({
-    fileId: "16BHZxZOg0e0A0If00S_-8_aYVqY7A6wZhEgRQGjeis4",
-    publication: "dissertacao-mestrado",
-});

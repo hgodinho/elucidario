@@ -1,27 +1,24 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://elucidario.art/mdorim/object../schema",
+    "$schema": "http://json-schema.org/schema",
     "title": "Object",
+    "description": "A generic object",
     "type": "object",
+    "properties": {
+        "_meta": {
+            "$ref": "core.json#/definitions/_meta"
+        }
+    },
     "definitions": {
-        "object_ref": {
-            "title": "object_ref",
-            "description": "Referência a um conceito",
-            "$ref": "metadata.json#/definitions/ref"
-        },
         "Object": {
-            "title": "Object",
-            "description": "Objeto",
             "type": "object",
+            "title": "Object",
+            "description": "A generic object",
+            "$ref": "https://linked.art/api/1.0/schema/object.json#",
             "properties": {
-                "_id": {
-                    "$ref": "metadata.json#/definitions/_id"
-                },
-                "uri": {
-                    "$ref": "metadata.json#/definitions/uri"
+                "_meta": {
+                    "$ref": "core.json#/definitions/_meta"
                 }
-            },
-            "required": ["_id", "uri"]
+            }
         }
     }
 }
