@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/Object.json",
+    "title": "Object",
+    "description": "A generic object",
+    "type": "object",
+    "properties": {
+        "identified_by": {
+            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/identified_byProp"
+        },
+        "classified_as": {
+            "$ref": "https://elucidario.art/mdorim/schemas/core.json#/definitions/classified_as"
+        },
+        "referred_to_by": {
+            "$ref": "https://elucidario.art/mdorim/schemas/core.json#/definitions/referred_to_by"
+        },
+        "equivalent": {
+            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/equivalentProp"
+        },
+        "representation": {
+            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/representationProp"
+        },
+        "member_of": {
+            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/member_ofSetProp"
+        },
+        "subject_of": {
+            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/subject_ofProp"
+        },
+        "attributed_by": {
+            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/attributed_byProp"
+        },
+        "part_of": {
+            "$ref": "https://linked.art/api/1.0/schema/object.json#/properties/part_of"
+        },
+        "dimension": {
+            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/dimensionProp"
+        },
+        "made_of": {
+            "$ref": "https://elucidario.art/mdorim/schemas/core.json#/definitions/made_of"
+        }
+    },
+    "required": ["identified_by"],
+    "additionalProperties": false,
+    "definitions": {
+        "Object": {
+            "type": "object",
+            "title": "Object",
+            "description": "A generic object",
+            "$ref": "https://linked.art/api/1.0/schema/object.json#",
+            "properties": {
+                "_meta": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/core.json#/definitions/_meta"
+                }
+            }
+        }
+    }
+}

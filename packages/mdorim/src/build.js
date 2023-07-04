@@ -16,17 +16,9 @@ const { packages } = getPaths();
 
 const outDocs = "docs";
 
-const outStatic = path.resolve(
-    packages,
-    "mdorim",
-    "static",
-    "mdorim",
-    "schemas"
-);
+const outStatic = path.resolve(packages, "mdorim", "static", "mdorim");
 
 const __dirname = path.resolve(packages, "mdorim", "src");
-
-const folders = ["linked-art"];
 
 const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(packages, "mdorim", "package.json"))
@@ -121,11 +113,6 @@ const buildTypes = async () => {
                                                 .toString()
                                         );
 
-                                        console.log(
-                                            { schemaJson },
-                                            { defaultLog: true }
-                                        );
-
                                         return schemaJson;
                                     } catch (err) {
                                         throw new Error("Could not find json", {
@@ -193,7 +180,6 @@ const buildSchemas = async () => {
             dirPath: path.join(__dirname, "schemas"),
             extensions: ["json"],
             index: false,
-            ignore: ["index.js"],
             package: packageJson,
         });
     } catch (err) {
@@ -201,36 +187,57 @@ const buildSchemas = async () => {
         throw new Error(err);
     }
     try {
-        return Promise.all(
-            Object.entries(schemas).map(async ([name, schema]) => {
-                if (folders.includes(name)) {
-                    Object.entries(schema).map(async ([ldName, ldSchema]) => {
-                        const newLdSchema = replaceRef(ldSchema);
-                        writeFile(
-                            path.resolve(outStatic, name),
-                            ldName,
-                            newLdSchema
-                        );
-                    });
-                }
-                const newSchema = replaceRef(schema);
-                writeFile(path.resolve(outStatic), name, newSchema);
-            })
-        );
+        const indexes = {};
+        return Promise.all([
+            // Create schemas
+            ...Object.entries(schemas).map(async ([name, schema]) => {
+                indexes[name] = [];
+                Object.entries(schema).map(async ([ldName, ldSchema]) => {
+                    const newLdSchema = replaceRef(ldSchema);
+                    const folder = name === "mdorim" ? "schema" : name;
+                    const fileName = `${ldName}.json`;
+                    indexes[name].push(fileName);
+                    writeFile(
+                        path.resolve(outStatic, folder),
+                        fileName,
+                        JSON.stringify(newLdSchema, null, 4)
+                    );
+                });
+            }),
+            // Create commonjs indexes
+            ...Object.entries(indexes).map(async ([name, index]) => {
+                const indexFile = `module.exports = {${index
+                    .map(
+                        (i) =>
+                            `${
+                                i.includes(".json") ? i.replace(".json", "") : i
+                            }: require("./${i}"),`
+                    )
+                    .join(" ")}}`;
+                console.log(indexFile);
+                const folder = name === "mdorim" ? "schema" : name;
+                writeFile(
+                    path.resolve(outStatic, folder),
+                    "index.cjs",
+                    indexFile
+                );
+            }),
+            // Create esm indexes
+        ]);
     } catch (err) {
         console.log(err, { type: "error", defaultLog: true, title: "Error" });
         throw new Error(err);
     }
 };
 
-const writeFile = (pathDir, name, schema) => {
+const writeFile = (pathDir, name, file) => {
     if (!fs.existsSync(path.resolve(pathDir))) {
         fs.mkdirSync(path.resolve(pathDir), {
             recursive: true,
         });
     }
-    const fileName = path.resolve(pathDir, `${name}.json`);
-    fs.writeFile(fileName, JSON.stringify(schema, null, 4), (err) => {
+    const fileName = path.resolve(pathDir, name);
+    fs.writeFile(fileName, file, (err) => {
         if (err)
             console.log(`There was an error: ${err}`, {
                 type: "error",
@@ -239,7 +246,7 @@ const writeFile = (pathDir, name, schema) => {
     });
     console.log(`Built: ${fileName}`, {
         type: "success",
-        title: "Schema built",
+        title: "File built",
     });
 };
 

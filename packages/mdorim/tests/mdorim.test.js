@@ -1,13 +1,15 @@
 import { matchersWithOptions } from "jest-json-schema";
 
 import schemas from "../src/schemas";
+import examples from "../src/examples";
+
+import * as mdorim from "../static/mdorim";
+
+console.log({ mdorim });
 
 expect.extend(
     matchersWithOptions({
-        schemas: [
-            // ...Object.values(schemas.LinkedArt),
-            schemas.Core,
-        ],
+        schemas: [...Object.values(schemas.LinkedArt), schemas.Core],
     })
 );
 
@@ -19,6 +21,7 @@ describe("Validate Schemas", () => {
     test("Object Schema must be valid", () => {
         expect(schemas.Object).toBeValidSchema();
     });
+
     test("definitions Object Schema must be valid", () => {
         expect(schemas.Object.definitions.Object).toBeValidSchema();
     });
@@ -28,4 +31,10 @@ describe("Validate Schemas", () => {
     //         expect( schema ).toBeValidSchema();
     //     } );
     // } );
+});
+
+describe("Validate Schemas with data", () => {
+    test("Object Schema must be valid", () => {
+        expect(examples.Storage.Object).toMatchSchema(schemas.Object);
+    });
 });

@@ -8,7 +8,19 @@
         "email": "ola@hgod.in"
     },
     "type": "module",
-    "main": "dist/mdorim.js",
+    "exports": {
+        ".": {
+            "import": "./static/mdorim/index.mjs",
+            "require": "./static/mdorim/index.cjs"
+        }
+    },
+    "files": [
+        "dist",
+        "mapping",
+        "static",
+        "docs",
+        "translations"
+    ],
     "scripts": {
         "build": "pnpm clean:docs && pnpm clean:dist && pnpm clean:static && node src/build.js",
         "clean:dist": "rm -rf dist/*",

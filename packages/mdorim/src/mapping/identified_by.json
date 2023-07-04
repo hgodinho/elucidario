@@ -1,0 +1,17 @@
+{
+    "identified_by": {
+        "version": "0.1.0",
+        "mapping": [
+            {
+                "standard": "la",
+                "metadata": "identified_by",
+                "link": "https://linked.art/api/1.0/shared/"
+            },
+            {
+                "standard": "crm",
+                "metadata": "PI_is_identified_by",
+                "link": "http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by"
+            }
+        ]
+    }
+}

@@ -1,0 +1,154 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/core.json",
+    "definitions": {
+        "id": {
+            "type": "integer",
+            "title": "id",
+            "description": "Unique identifier for the resource."
+        },
+        "uri": {
+            "type": "string",
+            "title": "uri",
+            "description": "The URI for the resource."
+        },
+        "_meta": {
+            "type": "object",
+            "title": "meta",
+            "description": "WordPress information about the entity.",
+            "properties": {
+                "id": {
+                    "$ref": "#/definitions/id"
+                },
+                "uri": {
+                    "$ref": "#/definitions/uri"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["// listar tipos de entidades e taxonomias //"]
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "Slug da entidade ou taxonomia."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Título da entidade ou taxonomia."
+                },
+                "author": {
+                    "type": "string",
+                    "description": "Autor da entidade ou taxonomia."
+                },
+                "creation": {
+                    "type": "string",
+                    "description": "Data de criação da entidade ou taxonomia.",
+                    "format": "date-time"
+                },
+                "modification": {
+                    "type": "string",
+                    "description": "Data de modificação da entidade ou taxonomia.",
+                    "format": "date-time"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status da entidade ou taxonomia.",
+                    "enum": [
+                        "publish",
+                        "future",
+                        "draft",
+                        "pending",
+                        "private",
+                        "trash"
+                    ]
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "uri",
+                "tipo",
+                "slug",
+                "title",
+                "autor",
+                "criacao",
+                "modificacao",
+                "status"
+            ]
+        },
+        "classified_as": {
+            "title": "crm:P2_has_type",
+            "description": "A `Type` which classifies this entity beyond the class given in the `type` property",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/id"
+            }
+        },
+        "referred_to_by": {
+            "title": "crm:P67i_is_referred_to_by",
+            "description": "An embedded statement about this entity, or a reference to a text that refers to the entity",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/LingObjOrDigitalObjOrStatement"
+            }
+        },
+        "made_of": {
+            "title": "crm:P45_consists_of",
+            "description": "One or more `Material` types of which this object is made",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/id"
+            }
+        },
+        "Statement": {
+            "title": "crm:E33_Linguistic_Object",
+            "description": "An embedded, relatively short piece of textual content\nSee: [API](https://linked.art/api/1.0/shared/statement/) | [Model](https://linked.art/model/base/#statements-about-a-resource)",
+            "type": "object",
+            "properties": {
+                "_label": {
+                    "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/labelProp"
+                },
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "const": "LinguisticObject"
+                        }
+                    ]
+                },
+                "identified_by": {
+                    "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/identified_byProp"
+                },
+                "classified_as": {
+                    "$ref": "#/definitions/classified_as"
+                },
+                "content": {
+                    "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/contentProp"
+                },
+                "language": {
+                    "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/languageProp"
+                },
+                "format": {
+                    "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/formatProp"
+                }
+            },
+            "required": ["type", "content"],
+            "additionalProperties": false
+        },
+        "LingObjOrDigitalObjOrStatement": {
+            "description": "A Linguistic Object Reference, Digital Object Reference or Statement",
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/Statement"
+                },
+                {
+                    "$ref": "#/definitions/id"
+                }
+            ]
+        }
+    }
+}

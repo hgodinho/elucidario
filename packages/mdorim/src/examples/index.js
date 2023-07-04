@@ -15,6 +15,7 @@ const examples = fs
                     .readdirSync(path.resolve("src", "examples", name))
                     .map((file) => {
                         const pathObject = path.parse(file);
+
                         if (pathObject.ext === ".json") {
                             return {
                                 name: upperFirst(camelCase(pathObject.name)),
@@ -39,6 +40,19 @@ const examples = fs
                         }
                         return acc;
                     }, {}),
+            };
+        }
+
+        if (pathObject.ext === ".json") {
+            return {
+                name: upperFirst(camelCase(pathObject.name)),
+                data: JSON.parse(
+                    fs
+                        .readFileSync(
+                            path.resolve("src", "examples", pathObject.base)
+                        )
+                        .toString()
+                ),
             };
         }
     })

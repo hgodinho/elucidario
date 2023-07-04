@@ -1,11 +1,4 @@
 {
-    "@context": [
-        "https://linked.art/ns/v1/linked-art.json",
-        "https://elucidario.art/mdorim/schemas.json"
-    ],
-    "id": "https://elucidario.art/mdorim/objects/1",
-    "type": "HumanMadeObject",
-    "_label": "Rio de Janeiro (Tarsila do Amaral, 1923)",
     "identified_by": [
         {
             "type": "Identifier",
@@ -30,17 +23,20 @@
             ]
         }
     ],
+    "classified_as": [123, 432],
     "referred_to_by": [
         {
             "type": "LinguisticObject",
-            "content": "https://elucidario.art/mdorim/objects/1",
-            "classified_as": [
-                {
-                    "id": "http://vocab.getty.edu/aat/300404621",
-                    "type": "Type",
-                    "_label": "description"
-                }
-            ]
+            "content": "Obra Rio de Janeiro de Tarsila do Amaral"
+        },
+        234
+    ],
+    "equivalent": [
+        {
+            "id": "https://emaklabin.org.br/explore/obras/rio-de-janeiro/",
+            "type": "HumanMadeObject",
+            "_label": "Rio de Janeiro, Séc XX. 1923."
         }
-    ]
+    ],
+    "representation": []
 }
