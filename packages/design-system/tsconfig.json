@@ -15,9 +15,8 @@
             "@/*": ["./src/*"],
             "@elucidario/pkg-types": [
                 "./node_modules/@elucidario/pkg-types/dist/index.d.ts"
-            ],
-            "tslib": ["./node_modules/tslib/tslib.d.ts"]
+            ]
         }
     },
-    "include": ["src/index.ts"]
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"]
 }
