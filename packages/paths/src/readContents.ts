@@ -101,7 +101,6 @@ export const readContents = ({
                             log,
                             package: pkg,
                         });
-                        console.log({ result }, { defaultLog: true })
                     }
                 } catch (err: any) {
                     console.log({ err }, { defaultLog: true, type: "error" })
