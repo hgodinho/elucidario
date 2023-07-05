@@ -205,23 +205,23 @@ const buildSchemas = async () => {
                 });
             }),
             // Create commonjs indexes
-            ...Object.entries(indexes).map(async ([name, index]) => {
-                const indexFile = `module.exports = {${index
-                    .map(
-                        (i) =>
-                            `${
-                                i.includes(".json") ? i.replace(".json", "") : i
-                            }: require("./${i}"),`
-                    )
-                    .join(" ")}}`;
-                console.log(indexFile);
-                const folder = name === "mdorim" ? "schema" : name;
-                writeFile(
-                    path.resolve(outStatic, folder),
-                    "index.cjs",
-                    indexFile
-                );
-            }),
+            // ...Object.entries(indexes).map(async ([name, index]) => {
+            //     const indexFile = `module.exports = {${index
+            //         .map(
+            //             (i) =>
+            //                 `${
+            //                     i.includes(".json") ? i.replace(".json", "") : i
+            //                 }: require("./${i}"),`
+            //         )
+            //         .join(" ")}}`;
+            //     console.log(indexFile);
+            //     const folder = name === "mdorim" ? "schema" : name;
+            //     writeFile(
+            //         path.resolve(outStatic, folder),
+            //         "index.cjs",
+            //         indexFile
+            //     );
+            // }),
             // Create esm indexes
         ]);
     } catch (err) {
