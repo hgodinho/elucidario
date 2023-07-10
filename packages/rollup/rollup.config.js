@@ -1,6 +1,7 @@
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
-import merge from "lodash.merge";
+import pkg from "lodash";
+const { mergeWith } = pkg;
 
 const external = [
     "@elucidario",
@@ -45,9 +46,21 @@ const lcdrRollupConfig = (config = null) => {
         externals.push(...config.external);
     }
 
-    return merge({}, defaultConfig, config, {
-        external: (id) => externals.some((d) => id.startsWith(d)),
-    });
+    const rollup = mergeWith(
+        {},
+        defaultConfig,
+        config,
+        {
+            external: (id) => externals.some((d) => id.startsWith(d)),
+        },
+        (objValue, srcValue) => {
+            if (Array.isArray(objValue)) {
+                return objValue.concat(srcValue);
+            }
+        }
+    );
+
+    return rollup;
 };
 
 export default lcdrRollupConfig;
