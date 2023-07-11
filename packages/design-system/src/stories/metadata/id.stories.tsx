@@ -7,7 +7,9 @@ import { FieldProps } from "@elucidario/pkg-types";
 
 import mdorim, { MDORIM } from "@elucidario/pkg-mdorim";
 
-const IdentifiedByTemplate = (args: FieldProps) => {
+console.log({ mdorim });
+
+const IdTemplate = (args: FieldProps) => {
     return (
         <ComponentTemplate>
             <Field {...args} />
@@ -15,20 +17,15 @@ const IdentifiedByTemplate = (args: FieldProps) => {
     );
 };
 
-console.log({ mdorim })
-const dereference = (mdorim as MDORIM).dereference;
-
-const schema = await dereference((mdorim as MDORIM).schemas.mdorim.core.definitions.identified_by);
-
 const meta = {
-    title: "Metadata/Propriedades/identified_by",
-    component: IdentifiedByTemplate,
+    title: "Metadata/Propriedades/id",
+    component: IdTemplate,
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
     tags: ["autodocs"],
     args: {
-        schema,
-        translations: (mdorim as MDORIM).translations.identified_by,
-        mapping: (mdorim as MDORIM).mapping.identified_by,
+        schema: (mdorim as MDORIM).schemas.mdorim.core.definitions.id,
+        translations: (mdorim as MDORIM).translations.id,
+        mapping: (mdorim as MDORIM).mapping.id,
         language: "pt-BR",
     },
     argTypes: {
