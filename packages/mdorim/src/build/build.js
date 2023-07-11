@@ -7,6 +7,9 @@ import { buildDocs } from "./docs.js";
 import { buildSchemas } from "./schemas.js";
 import { dereferenceSchemas } from "./dereference.js";
 import { buildTypes } from "./types.js";
+import { buildTranslations } from "./translations.js";
+import { buildMapping } from "./mapping.js";
+import { buildExamples } from "./examples.js";
 import { test } from "./test.js";
 
 const { packages } = getPaths();
@@ -44,6 +47,13 @@ export const buildMdorim = async () => {
                 async () => {
                     if (options.schema) {
                         await buildSchemas(packageJson, __dirname, outStatic);
+                        await buildTranslations(
+                            packageJson,
+                            __dirname,
+                            outStatic
+                        );
+                        await buildMapping(packageJson, __dirname, outStatic);
+                        await buildExamples(packageJson, __dirname, outStatic);
                         // await dereferenceSchemas(packageJson, __dirname);
                     }
                     if (options.types) await buildTypes(packageJson, __dirname);
