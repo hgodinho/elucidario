@@ -9,6 +9,7 @@
                     Idiomas
                     Integrações
             Usuários
+                Departamentos
                 Níveis de permissão
             Histórico de Edições
             Procedimentos
@@ -31,5 +32,4 @@
                 Events
                 Sets
                 ProvenanceActivities
-
 ```
