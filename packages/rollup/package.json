@@ -1,16 +1,16 @@
 {
-    "name": "@elucidario/pkg-rollup",
-    "version": "1.0.0",
-    "main": "rollup.config.js",
-    "license": "MIT",
-    "type": "module",
-    "devDependencies": {
-        "@elucidario/pkg-tsconfig": "workspace:^",
-        "@rollup/plugin-json": "^6.0.0",
-        "@rollup/plugin-terser": "^0.4.0",
-        "@rollup/plugin-typescript": "^11.1.0",
-        "lodash": "^4.17.21",
-        "rollup": "^3.20.2",
-        "typescript": "^5.0.4"
-    }
+  "name": "@elucidario/pkg-rollup",
+  "version": "1.0.1",
+  "main": "rollup.config.js",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@elucidario/pkg-tsconfig": "workspace:^",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.1.0",
+    "lodash": "^4.17.21",
+    "rollup": "^3.20.2",
+    "typescript": "^5.0.4"
+  }
 }
