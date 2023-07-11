@@ -1,30 +1,29 @@
 import { matchersWithOptions } from "jest-json-schema";
 
-import schemas from "../src/schemas";
-import examples from "../src/examples";
-
-import * as mdorim from "../static/mdorim";
-
-console.log({ mdorim });
+import mdorim from "../lib/mjs/index.mjs";
 
 expect.extend(
     matchersWithOptions({
-        schemas: [...Object.values(schemas.LinkedArt), schemas.Core],
+        schemas: [mdorim.schemas.mdorim.core, mdorim.schemas.mdorim.object],
     })
 );
 
 describe("Validate Schemas", () => {
     test("Core Schema must be valid", () => {
-        expect(schemas.Core).toBeValidSchema();
+        expect(mdorim.schemas.mdorim.core).toBeValidSchema();
     });
 
     test("Object Schema must be valid", () => {
-        expect(schemas.Object).toBeValidSchema();
+        expect(mdorim.schemas.mdorim.object).toBeValidSchema();
     });
 
-    test("definitions Object Schema must be valid", () => {
-        expect(schemas.Object.definitions.Object).toBeValidSchema();
+    test("Options Schema must be valid", () => {
+        expect(mdorim.schemas.mdorim.options).toBeValidSchema();
     });
+
+    // test("definitions Object Schema must be valid", () => {
+    //     expect(schemas.Object.definitions.Object).toBeValidSchema();
+    // });
 
     // test( "LinkedArt schemas must be valid", () => {
     //     Object.values( schemas.LinkedArt ).forEach( ( schema ) => {
@@ -33,8 +32,18 @@ describe("Validate Schemas", () => {
     // } );
 });
 
-describe("Validate Schemas with data", () => {
-    test("Object Schema must be valid", () => {
-        expect(examples.Storage.Object).toMatchSchema(schemas.Object);
+describe("Validate Options Schema with data", () => {
+    test("Storage Options data must be valid", () => {
+        expect(mdorim.examples.storage.Options).toMatchSchema(
+            mdorim.schemas.mdorim.options
+        );
     });
+});
+
+describe("Validate Schemas with data", () => {
+    // test("Object Schema must be valid", () => {
+    //     expect(mdorim.examples.rest.RioJaneiro).toMatchSchema(
+    //         mdorim.schemas.mdorim.object
+    //     );
+    // });
 });

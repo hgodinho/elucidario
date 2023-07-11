@@ -1,12 +1,17 @@
-import restObject1 from "../../static/mdorim/examples/rest/object-1.json" assert { type: "json" };
-import storageObject from "../../static/mdorim/examples/storage/object.json" assert { type: "json" };
+// REST
+import RestRioJaneiro from "../../static/mdorim/examples/rest/rio-janeiro.json" assert { type: "json" };
+
+// STORAGE
+import Options from "../../static/mdorim/examples/storage/options.json" assert { type: "json" };
+import StorageRioJaneiro from "../../static/mdorim/examples/storage/rio-janeiro.json" assert { type: "json" };
 
 const examples = {
     rest: {
-        object1: restObject1,
+        RioJaneiro: RestRioJaneiro,
     },
     storage: {
-        object: storageObject,
+        Options,
+        RioJaneiro: StorageRioJaneiro,
     },
 };
 

@@ -1,42 +1,12 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "$id": "https://elucidario.art/mdorim/schemas/Object.json",
-    "title": "Object",
-    "description": "A generic object",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/object.json",
+    "title": "Human-Made Object Schema",
+    "description": "_crm:E22\\_Human-Made\\_Object_\nA human-made object, part thereof, or a natural object with value imbued through interaction with human culture.\nSee: [API](https://linked.art/api/1.0/endpoint/object/) | [Model](https://linked.art/model/object/)",
     "type": "object",
     "properties": {
         "identified_by": {
-            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/identified_byProp"
-        },
-        "classified_as": {
-            "$ref": "https://elucidario.art/mdorim/schemas/core.json#/definitions/classified_as"
-        },
-        "referred_to_by": {
-            "$ref": "https://elucidario.art/mdorim/schemas/core.json#/definitions/referred_to_by"
-        },
-        "equivalent": {
-            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/equivalentProp"
-        },
-        "representation": {
-            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/representationProp"
-        },
-        "member_of": {
-            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/member_ofSetProp"
-        },
-        "subject_of": {
-            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/subject_ofProp"
-        },
-        "attributed_by": {
-            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/attributed_byProp"
-        },
-        "part_of": {
-            "$ref": "https://linked.art/api/1.0/schema/object.json#/properties/part_of"
-        },
-        "dimension": {
-            "$ref": "https://linked.art/api/1.0/schema/core.json#/definitions/dimensionProp"
-        },
-        "made_of": {
-            "$ref": "https://elucidario.art/mdorim/schemas/core.json#/definitions/made_of"
+            "$ref": "<local>/core.json#/definitions/identified_by"
         }
     },
     "required": ["identified_by"],
@@ -46,10 +16,9 @@
             "type": "object",
             "title": "Object",
             "description": "A generic object",
-            "$ref": "https://linked.art/api/1.0/schema/object.json#",
             "properties": {
                 "_meta": {
-                    "$ref": "https://elucidario.art/mdorim/schemas/core.json#/definitions/_meta"
+                    "$ref": "<local>/core.json#/definitions/_meta"
                 }
             }
         }

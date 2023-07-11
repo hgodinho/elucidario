@@ -2,47 +2,47 @@
     "label": [
         {
             "lang": "pt-BR",
-            "content": "Identificado por"
+            "content": "ID"
         },
         {
             "lang": "es-ES",
-            "content": "Identificado por"
+            "content": "ID"
         },
         {
             "lang": "en-US",
-            "content": "Identified by"
+            "content": "ID"
         }
     ],
     "description": [
         {
             "lang": "pt-BR",
-            "content": "Identificador do recurso"
+            "content": "Identificador único da entidade"
         },
         {
             "lang": "es-ES",
-            "content": "Identificador del recurso"
+            "content": "Identificador único de la entidad"
         },
         {
             "lang": "en-US",
-            "content": "Resource identifier"
+            "content": "Entity unique identifier"
         }
     ],
     "messages": [
         {
-            "code": "identified_by.error.missing",
+            "code": "id.error.missing",
             "type": "error",
             "content": [
                 {
                     "lang": "pt-BR",
-                    "content": "Identificador do recurso não informado"
+                    "content": "O campo ID é obrigatório"
                 },
                 {
                     "lang": "es-ES",
-                    "content": "Identificador del recurso no informado"
+                    "content": "El campo ID es obligatorio"
                 },
                 {
                     "lang": "en-US",
-                    "content": "Resource identifier not informed"
+                    "content": "The ID field is required"
                 }
             ]
         }

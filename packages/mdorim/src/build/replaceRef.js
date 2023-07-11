@@ -12,7 +12,7 @@ export const replaceRef = (schema, ext = false, ref) => {
                 if (ext && !ref) throw new Error("No ref provided");
                 newSchema[key] = newSchema[key].replace(
                     "<local>",
-                    ext ? `${ref}/schema` : "mdorim"
+                    ext ? `${ref}/schemas/mdorim` : "mdorim"
                 );
             }
             if (newSchema[key].includes("<linked-art>")) {

@@ -1,8 +1,8 @@
 module.exports = {
     rest: {
-        object1: require("../../static/mdorim/examples/rest/object-1.json"),
+        RioJaneiro: require("../../static/mdorim/examples/rest/rio-janeiro.json"),
     },
     storage: {
-        object: require("../../static/mdorim/examples/storage/object.json"),
+        RioJaneiro: require("../../static/mdorim/examples/storage/rio-janeiro.json"),
     },
 };
