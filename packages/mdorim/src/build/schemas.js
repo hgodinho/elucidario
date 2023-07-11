@@ -26,23 +26,21 @@ export const buildSchemas = async (pkg, __dirname, outStatic) => {
         const toCopy = ["json-ui", "linked-art", "mapping", "mdorim"];
         for (let [name, schema] of Object.entries(schemas)) {
             if (toCopy.includes(name)) {
-                Object.entries(schema).map(
-                    async ([schemaName, schemaValue]) => {
-                        const fileName = `${schemaName}.json`;
-                        // replace ref to external schemas
-                        const external = replaceRef(
-                            schemaValue,
-                            true,
-                            pkg.homepage
-                        );
-                        writeFile(
-                            path.resolve(outStatic, "schemas", name),
-                            fileName,
-                            JSON.stringify(external, null, 4),
-                            pkg
-                        );
-                    }
-                );
+                Object.entries(schema).map(([schemaName, schemaValue]) => {
+                    const fileName = `${schemaName}.json`;
+                    // replace ref to external schemas
+                    const external = replaceRef(
+                        schemaValue,
+                        true,
+                        pkg.homepage
+                    );
+                    writeFile(
+                        path.resolve(outStatic, "schemas", name),
+                        fileName,
+                        JSON.stringify(external, null, 4),
+                        pkg
+                    );
+                });
             }
         }
     } catch (err) {

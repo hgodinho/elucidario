@@ -9,6 +9,7 @@ export const replaceRef = (schema, ext = false, ref) => {
     for (let key in newSchema) {
         if (key === "$ref") {
             if (newSchema[key].includes("<local>")) {
+                if (ext && !ref) throw new Error("No ref provided");
                 newSchema[key] = newSchema[key].replace(
                     "<local>",
                     ext ? `${ref}/schema` : "mdorim"
@@ -21,7 +22,7 @@ export const replaceRef = (schema, ext = false, ref) => {
                 );
             }
         } else if (typeof newSchema[key] === "object") {
-            newSchema[key] = replaceRef(newSchema[key], ext);
+            newSchema[key] = replaceRef(newSchema[key], ext, ref);
         }
     }
     return newSchema;
