@@ -1,52 +1,50 @@
 {
-    "identified_by": {
-        "label": [
-            {
-                "lang": "pt-BR",
-                "content": "Identificado por"
-            },
-            {
-                "lang": "es-ES",
-                "content": "Identificado por"
-            },
-            {
-                "lang": "en-US",
-                "content": "Identified by"
-            }
-        ],
-        "description": [
-            {
-                "lang": "pt-BR",
-                "content": "Identificador do recurso"
-            },
-            {
-                "lang": "es-ES",
-                "content": "Identificador del recurso"
-            },
-            {
-                "lang": "en-US",
-                "content": "Resource identifier"
-            }
-        ],
-        "messages": [
-            {
-                "code": "identified_by.error.missing",
-                "type": "error",
-                "content": [
-                    {
-                        "lang": "pt-BR",
-                        "content": "Identificador do recurso não informado"
-                    },
-                    {
-                        "lang": "es-ES",
-                        "content": "Identificador del recurso no informado"
-                    },
-                    {
-                        "lang": "en-US",
-                        "content": "Resource identifier not informed"
-                    }
-                ]
-            }
-        ]
-    }
+    "label": [
+        {
+            "lang": "pt-BR",
+            "content": "Identificado por"
+        },
+        {
+            "lang": "es-ES",
+            "content": "Identificado por"
+        },
+        {
+            "lang": "en-US",
+            "content": "Identified by"
+        }
+    ],
+    "description": [
+        {
+            "lang": "pt-BR",
+            "content": "Identificador do recurso"
+        },
+        {
+            "lang": "es-ES",
+            "content": "Identificador del recurso"
+        },
+        {
+            "lang": "en-US",
+            "content": "Resource identifier"
+        }
+    ],
+    "messages": [
+        {
+            "code": "identified_by.error.missing",
+            "type": "error",
+            "content": [
+                {
+                    "lang": "pt-BR",
+                    "content": "Identificador do recurso não informado"
+                },
+                {
+                    "lang": "es-ES",
+                    "content": "Identificador del recurso no informado"
+                },
+                {
+                    "lang": "en-US",
+                    "content": "Resource identifier not informed"
+                }
+            ]
+        }
+    ]
 }

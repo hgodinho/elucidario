@@ -1,6 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema#",
     "title": "Core Schema Definitions",
+    "$id": "https://linked.art/api/1.0/schema/core.json",
     "description": "Core definitions that are used to compose the Linked Art JSON-LD API",
     "type": "object",
     "definitions": {
@@ -1012,7 +1013,7 @@
             ]
         },
         "LingObjOrDigitalObjOrStatement": {
-            "description": "A Linguistic Object Reference, Digitial Object Reference or Statement",
+            "description": "A Linguistic Object Reference, Digital Object Reference or Statement",
             "anyOf": [
                 {
                     "$ref": "#/definitions/Statement"

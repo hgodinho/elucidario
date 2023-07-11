@@ -1,0 +1,32 @@
+{
+    "configurations": {
+        "category": {
+            "name": "category",
+            "description": "category",
+            "options": {
+                "option1": "option1",
+                "option2": ["option2", "option2", "option2"],
+                "option3": 3,
+                "option4": {
+                    "option4_1": "option4_1",
+                    "option4_2": "option4_2"
+                },
+                "option5": true
+            }
+        },
+        "another_category": {
+            "name": "category",
+            "description": "category",
+            "options": {
+                "option1": "option1",
+                "option2": ["option2", "option2", "option2"],
+                "option3": 3,
+                "option4": {
+                    "option4_1": "option4_1",
+                    "option4_2": "option4_2"
+                },
+                "option5": true
+            }
+        }
+    }
+}

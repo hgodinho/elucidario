@@ -1,0 +1,50 @@
+{
+    "label": [
+        {
+            "lang": "pt-BR",
+            "content": "ID"
+        },
+        {
+            "lang": "es-ES",
+            "content": "ID"
+        },
+        {
+            "lang": "en-US",
+            "content": "ID"
+        }
+    ],
+    "description": [
+        {
+            "lang": "pt-BR",
+            "content": "Identificador único da entidade"
+        },
+        {
+            "lang": "es-ES",
+            "content": "Identificador único de la entidad"
+        },
+        {
+            "lang": "en-US",
+            "content": "Entity unique identifier"
+        }
+    ],
+    "messages": [
+        {
+            "code": "id.error.missing",
+            "type": "error",
+            "content": [
+                {
+                    "lang": "pt-BR",
+                    "content": "O campo ID é obrigatório"
+                },
+                {
+                    "lang": "es-ES",
+                    "content": "El campo ID es obligatorio"
+                },
+                {
+                    "lang": "en-US",
+                    "content": "The ID field is required"
+                }
+            ]
+        }
+    ]
+}

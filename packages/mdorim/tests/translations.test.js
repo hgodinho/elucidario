@@ -1,23 +1,22 @@
 import { matchersWithOptions } from "jest-json-schema";
 
-import schemas from "../src/schemas";
-import translations from "../src/translations";
+import mdorim from "../lib//mjs/index.mjs";
 
 expect.extend(
     matchersWithOptions({
-        schemas: [schemas.JsonUi.Schema],
+        schemas: [mdorim.schemas.jsonUi],
     })
 );
 
 describe("Validate JSON-UI Schema", () => {
     test("JSON-UI Schema must be valid", () => {
-        expect(schemas.JsonUi.Schema).toBeValidSchema();
+        expect(mdorim.schemas.jsonUi).toBeValidSchema();
     });
 });
 
 describe("Validate translations", () => {
     test("Translations must adhere to schema", () => {
-        expect(translations).toMatchSchema(schemas.JsonUi.Schema);
+        expect(mdorim.translations).toMatchSchema(mdorim.schemas.jsonUi);
     });
 });
 

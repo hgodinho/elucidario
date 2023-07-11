@@ -1,12 +1,13 @@
 {
     "extends": "@elucidario/pkg-tsconfig",
     "compilerOptions": {
+        "target": "es2017",
         "resolveJsonModule": true,
         "outDir": "dist",
         "jsx": "react",
         "baseUrl": ".",
         "moduleResolution": "node",
-        "module": "ES2015",
+        "module": "esnext",
         "declaration": true,
         "declarationMap": true,
         "preserveSymlinks": true,
@@ -15,9 +16,8 @@
             "@/*": ["./src/*"],
             "@elucidario/pkg-types": [
                 "./node_modules/@elucidario/pkg-types/dist/index.d.ts"
-            ],
-            "tslib": ["./node_modules/tslib/tslib.d.ts"]
+            ]
         }
     },
-    "include": ["src/index.ts"]
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"]
 }

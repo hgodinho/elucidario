@@ -28,19 +28,14 @@ export const readFile = (filePath: string, ext: string): ReadContentsReturn | st
                     ).toString()
                 );
 
-            case 'md':
+            default:
                 return fs.readFileSync(
                     path.resolve(filePath),
                     "utf-8"
                 ).toString();
-
-            default:
-                return fs.readFileSync(
-                    path.resolve(filePath),
-                ).toString();
         }
     } catch (err: any) {
-        throw new Error(`Cannot read file: ${filePath}`);
+        throw new Error(`Cannot read file at ${filePath}: ${err}`);
     }
 }
 
@@ -85,13 +80,12 @@ export const readContents = ({
     if (!index) {
         try {
             const files = fs.readdirSync(dirPath);
-
             files.forEach((file: string) => {
                 const filePath = path.parse(file);
 
-                try {
-                    // se for um diretório, chama a função recursivamente
-                    if (filePath.ext === "") {
+                // se for um diretório, chama a função recursivamente
+                if (filePath.ext === "") {
+                    try {
                         result[filePath.name] = readContents({
                             dirPath: path.resolve(dirPath, file),
                             index,
@@ -101,11 +95,10 @@ export const readContents = ({
                             log,
                             package: pkg,
                         });
-                        console.log({ result }, { defaultLog: true })
+                    } catch (err: any) {
+                        console.log({ err }, { defaultLog: true, type: "error" })
+                        throw new Error(`Cannot read recursive directory: ${path.resolve(dirPath, file)}`);
                     }
-                } catch (err: any) {
-                    console.log({ err }, { defaultLog: true, type: "error" })
-                    throw new Error(`Cannot read directory: ${path.resolve(dirPath, file)}`);
                 }
 
                 try {
@@ -121,13 +114,12 @@ export const readContents = ({
                         }
                     }
                 } catch (err: any) {
-                    console.log({ err }, { defaultLog: true, type: "error" })
-                    throw new Error(`Cannot read file: ${path.resolve(dirPath, file)}`);
+                    throw new Error(`Cannot read file at ${path.resolve(dirPath, file)}: ${err}`);
                 }
             });
 
         } catch (err: any) {
-            throw new Error(`Cannot read directory: ${dirPath}`);
+            throw new Error(`Cannot read directory at ${dirPath}: ${err}`);
         }
     }
 

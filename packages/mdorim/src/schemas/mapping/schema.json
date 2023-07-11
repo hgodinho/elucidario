@@ -1,0 +1,80 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/mapping/schema.json",
+    "title": "Mapping",
+    "description": "Describe the mapping between MDORIM and other metadata standards. Includes also a mapping to be used for the UI of Elucidário.art, that maps to the components library of @elucidario/pkg-design-system.",
+    "type": "object",
+    "version": "0.1.0",
+    "properties": {
+        "version": {
+            "description": "Version of schema file. Use semantic versioning: MAJOR.MINOR.PATCH.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "mapping": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "standard": {
+                        "$ref": "#/definitions/standard"
+                    },
+                    "metadata": {
+                        "type": "string",
+                        "title": "Metadata",
+                        "description": "The metadata field of the standard to be mapped to."
+                    },
+                    "link": {
+                        "type": "string",
+                        "title": "link",
+                        "description": "Link to the documentation of the mapped field."
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "description": "Description of the mapping."
+                    }
+                },
+                "required": ["standard", "metadata"],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": ["version", "mapping"],
+    "additionalProperties": false,
+    "definitions": {
+        "standard": {
+            "type": "string",
+            "anyOf": [
+                {
+                    "title": "Linked Art",
+                    "enum": ["la"]
+                },
+                {
+                    "title": "CIDOC-CRM",
+                    "enum": ["crm"]
+                },
+                {
+                    "title": "Dublin Core",
+                    "enum": ["dc"]
+                },
+                {
+                    "title": "Europeana Data Model",
+                    "enum": ["edm"]
+                },
+                {
+                    "title": "Schema.org",
+                    "enum": ["schema"]
+                },
+                {
+                    "title": "WordPress",
+                    "enum": ["wp"]
+                },
+                {
+                    "title": "Elucidário.art UI",
+                    "enum": ["ui"]
+                }
+            ]
+        }
+    }
+}

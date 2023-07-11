@@ -1,0 +1,42 @@
+{
+    "identified_by": [
+        {
+            "type": "Identifier",
+            "content": "M-0821",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300312355",
+                    "type": "Type",
+                    "_label": "accession number"
+                }
+            ]
+        },
+        {
+            "type": "Name",
+            "content": "Rio de Janeiro",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300417201",
+                    "type": "Type",
+                    "_label": "artist title"
+                }
+            ]
+        }
+    ],
+    "classified_as": [123, 432],
+    "referred_to_by": [
+        {
+            "type": "LinguisticObject",
+            "content": "Obra Rio de Janeiro de Tarsila do Amaral"
+        },
+        234
+    ],
+    "equivalent": [
+        {
+            "id": "https://emaklabin.org.br/explore/obras/rio-de-janeiro/",
+            "type": "HumanMadeObject",
+            "_label": "Rio de Janeiro, Séc XX. 1923."
+        }
+    ],
+    "representation": []
+}

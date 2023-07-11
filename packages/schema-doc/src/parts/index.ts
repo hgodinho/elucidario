@@ -1,3 +1,5 @@
 export * from './parts'
 export * from './readContents'
 export * from './mergeSubSchema'
+export * from './dereference'
+export * from './bundle'

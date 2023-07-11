@@ -1,26 +1,26 @@
 {
-    "name": "@elucidario/pkg-docusaurus-md",
-    "version": "0.1.0",
-    "description": "Markdown generator for Docusaurus",
-    "license": "MIT",
-    "author": "Henrique Godinho <ola@hgod.in>",
-    "type": "module",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "scripts": {
-        "build": "pnpm clear && rollup -c",
-        "clear": "rm -rf dist/*",
-        "dev": "pnpm build -w",
-        "test": "jest"
-    },
-    "devDependencies": {
-        "@elucidario/pkg-rollup": "workspace:^",
-        "@elucidario/pkg-tsconfig": "workspace:^",
-        "@elucidario/pkg-types": "workspace:^",
-        "@types/node": "^18.15.11",
-        "jest": "^29.5.0",
-        "rollup": "^3.20.2",
-        "ts-jest": "^29.1.0",
-        "typescript": "^5.0.4"
-    }
+  "name": "@elucidario/pkg-docusaurus-md",
+  "version": "1.0.0",
+  "description": "Markdown generator for Docusaurus",
+  "license": "MIT",
+  "author": "Henrique Godinho <ola@hgod.in>",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "pnpm clear && rollup -c",
+    "clear": "rm -rf dist/*",
+    "dev": "pnpm build -w",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@elucidario/pkg-rollup": "workspace:^",
+    "@elucidario/pkg-tsconfig": "workspace:^",
+    "@elucidario/pkg-types": "workspace:^",
+    "@types/node": "^18.15.11",
+    "jest": "^29.5.0",
+    "rollup": "^3.20.2",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  }
 }

@@ -1,0 +1,24 @@
+{
+    "title": "Quadro X: Representação da identificação da obra Rio de Janeiro de Tarsila do Amaral utilizando Spectrum",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Metadado"
+        },
+        {
+            "type": "string",
+            "name": "Valor"
+        }
+    ],
+    "data": [
+        ["Metadado", "Valor"],
+        ["_Object Name_", "Rio de Janeiro"],
+        ["_Object Number_", "M-0821"],
+        ["_Title_", "Rio de Janeiro"],
+        ["_Other Number_", "..."]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

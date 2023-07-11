@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/options.json",
+    "title": "Options",
+    "description": "Options for elucidário.art plugin",
+    "type": "object",
+    "properties": {
+        "import": {
+            "type": "array",
+            "title": "Import",
+            "description": "Import models",
+            "items": {
+                "$ref": "#/definitions/Import"
+            }
+        },
+        "export": {
+            "type": "array",
+            "title": "Export",
+            "description": "Export models",
+            "items": {
+                "$ref": "#/definitions/Export"
+            }
+        },
+        "configurations": {
+            "type": "object",
+            "title": "Configurations categories",
+            "description": "Configurations categories for elucidário.art plugin",
+            "patternProperties": {
+                "^[a-z0-9]+(_[a-z0-9]+)*$": {
+                    "$ref": "#/definitions/ConfigCategory"
+                }
+            }
+        }
+    },
+    "required": ["configurations"],
+    "additionalProperties": false,
+    "definitions": {
+        "Import": {
+            "type": "object",
+            "title": "Import",
+            "description": "Import model configuration",
+            "properties": {
+                "name": { "$ref": "#/definitions/name" },
+                "description": { "$ref": "#/definitions/description" },
+                "standard": { "$ref": "#/definitions/standard" },
+                "format": { "$ref": "#/definitions/format" }
+            }
+        },
+        "Export": {
+            "type": "object",
+            "title": "Import",
+            "description": "Import model configuration",
+            "properties": {
+                "name": { "$ref": "#/definitions/name" },
+                "description": { "$ref": "#/definitions/description" },
+                "standard": { "$ref": "#/definitions/standard" },
+                "format": { "$ref": "#/definitions/format" }
+            }
+        },
+        "ConfigCategory": {
+            "type": "object",
+            "title": "Configuration category",
+            "description": "Configurations category describe a set of configurations for a specific purpose.",
+            "properties": {
+                "name": {
+                    "$ref": "#/definitions/name"
+                },
+                "description": {
+                    "$ref": "#/definitions/description",
+                    "description": "Description of the category, simple markdown is encouraged"
+                },
+                "options": {
+                    "type": "object",
+                    "title": "Options",
+                    "description": "Options for a specific category",
+                    "patternProperties": {
+                        "^[a-z0-9]+(_[a-z0-9]+)*$": {
+                            "anyOf": [
+                                { "type": "string" },
+                                { "type": "number" },
+                                { "type": "boolean" },
+                                { "type": "array" },
+                                { "type": "object" }
+                            ]
+                        }
+                    }
+                }
+            },
+            "required": ["name", "options"],
+            "additionalProperties": false
+        },
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "standard": {
+            "type": "string"
+        },
+        "format": {
+            "type": "string",
+            "description": "MIME type"
+        }
+    }
+}

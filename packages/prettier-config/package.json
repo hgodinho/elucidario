@@ -1,6 +1,6 @@
 {
     "name": "@elucidario/pkg-prettier-config",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Configurações do prettier",
     "main": "./.prettierrc.json",
     "author": "Henrique Godinho <henrique@hgod.in>",

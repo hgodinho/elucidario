@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "$id": "https://elucidario.art/mdorim/json-ui/schema.json",
+    "$id": "https://elucidario.art/mdorim/schemas/json-ui/schema.json",
     "title": "JSON-UI",
     "description": "JSON-UI is a JSON-based declarative schema for describing user interfaces, use with JSON-Schema to describe data structures and JSON-UI to describe the user interface for the data structure.",
     "type": "object",

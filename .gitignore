@@ -1,7 +1,6 @@
 node_modules
 vendor
 packages/*/dist
-packages/*/static
 apps/*/dist
 apps/*/build
 coverage

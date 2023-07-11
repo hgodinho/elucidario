@@ -1,0 +1,46 @@
+{
+    "@context": [
+        "https://linked.art/ns/v1/linked-art.json",
+        "https://elucidario.art/mdorim/schemas.json"
+    ],
+    "id": "https://elucidario.art/mdorim/objects/1",
+    "type": "HumanMadeObject",
+    "_label": "Rio de Janeiro (Tarsila do Amaral, 1923)",
+    "identified_by": [
+        {
+            "type": "Identifier",
+            "content": "M-0821",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300312355",
+                    "type": "Type",
+                    "_label": "accession number"
+                }
+            ]
+        },
+        {
+            "type": "Name",
+            "content": "Rio de Janeiro",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300417201",
+                    "type": "Type",
+                    "_label": "artist title"
+                }
+            ]
+        }
+    ],
+    "referred_to_by": [
+        {
+            "type": "LinguisticObject",
+            "content": "https://elucidario.art/mdorim/objects/1",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300404621",
+                    "type": "Type",
+                    "_label": "description"
+                }
+            ]
+        }
+    ]
+}

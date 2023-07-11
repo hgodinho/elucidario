@@ -1,11 +1,11 @@
 {
-    "name": "@elucidario/app-dev-env",
-    "version": "1.0.0",
-    "description": "",
-    "scripts": {
-        "start": "docker compose up"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+  "name": "@elucidario/app-dev-env",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "docker compose up"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

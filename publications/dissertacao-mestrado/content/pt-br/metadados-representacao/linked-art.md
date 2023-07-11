@@ -23,9 +23,9 @@ Um arquivo JSON pode ser expressado da seguinte forma:
 }
 ```
 
-Mas o que este JSON representa para alguém não conhece o contexto artístico? O que é _"title"_ e _"author"_ para uma máquina, e quais valores eles podem receber?
+Mas o que este JSON representa para alguém que não conhece o contexto artístico? O que é _"title"_ e _"author"_ para uma máquina, e quais tipos de valores eles podem receber?
 
-_JSON for Linked Data_ (JSON-LD) busca solucionar este problema adicionando uma camada de contexto ao JSON, ao fazer um link com a definição do vocabulário utilizado [@sporny2012]. Além disso é possível adicionar um identificador ao objeto, desta forma, o mesmo arquivo, porém agora com a definição do vocabulário e sua estrutura utilizando o contexto do Linked Art, pode ser expresso da seguinte forma:
+_JSON for Linked Data_ (JSON-LD) busca solucionar este problema adicionando uma camada de contexto ao JSON, ao fazer um link com a definição do vocabulário utilizado [@sporny2012]. Além disso é possível adicionar um identificador ao objeto, desta forma, o mesmo arquivo, porém agora com a definição do vocabulário e utilizando o contexto do Linked Art, pode ser expresso da seguinte forma:
 
 ```json
 {
