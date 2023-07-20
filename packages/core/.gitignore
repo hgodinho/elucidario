@@ -8,4 +8,6 @@ debug.log
 /index.php
 /dist/
 .phpcs-cache
+.phpunit.result.cache
 wp
+wp-content
