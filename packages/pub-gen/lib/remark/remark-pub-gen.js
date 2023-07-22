@@ -13,6 +13,35 @@ const paths = getPaths();
 
 import { engine } from "../reference/csl-engine.js";
 
+export function replaceRegexHandlebars(text, options) {
+    if (!text) return null;
+    const regex = /{{(.*?)}}/g;
+    const replacedText = text.replace(regex, (match, group) => {
+        const replacement = options[group.trim()] || "";
+        return replacement;
+    });
+
+    return replacedText;
+}
+
+export const parseValue = (value) => {
+    const [action, optionsString] = value.split(":");
+    const [filePath, ...fileOptions] = optionsString.split(";");
+
+    const options = {};
+    for (let option of fileOptions) {
+        const [key, value] = option.split("=");
+        options[key] = value;
+    }
+
+    return {
+        action,
+        optionsString,
+        filePath,
+        fileOptions: options,
+    };
+};
+
 export default function remarkPubGen(options) {
     return async function transformer(tree) {
         const tables = [];
@@ -20,21 +49,33 @@ export default function remarkPubGen(options) {
         visit(tree, "text", (node) => {
             if (node.value.startsWith("{{") && node.value.endsWith("}}")) {
                 const value = node.value.replace("{{", "").replace("}}", "");
+                const { action, optionsString, filePath, fileOptions } =
+                    parseValue(value);
+
+                // console.log({
+                //     action,
+                //     optionsString,
+                //     filePath,
+                //     fileOptions,
+                // });
+                // verify if value contain ; and split
+                // if (value.includes(";")) {
+                //     const
+                // }
 
                 /**
                  * Table
                  */
-                if (value.startsWith("table")) {
+                if ("table" === action) {
                     tables.push({ node, value });
                 }
 
                 /**
                  * Schema
                  */
-                if (value.startsWith("json-schema")) {
-                    const schemaName = value.replace("json-schema:", "");
+                if ("json-schema" === action) {
                     const schemaData = JSON.parse(
-                        fs.readFileSync(path.resolve(options.path, schemaName))
+                        fs.readFileSync(path.resolve(options.path, filePath))
                     );
                     let schemaTable = {};
 
@@ -51,11 +92,12 @@ export default function remarkPubGen(options) {
                 /**
                  * Status
                  */
-                if (value.startsWith("status")) {
+                if ("status" === action) {
                     const status = value
                         .replace("status:", "")
                         .split(";")
                         .map((s) => s.replace('"', "").replace('"', ""));
+
                     const statusTable = toMD(
                         [`:::${status[0]} ${status[1]}`, status[2], ":::"],
                         "\n\n"
@@ -67,14 +109,13 @@ export default function remarkPubGen(options) {
                 /**
                  * mermaid
                  */
-                if (value.startsWith("mermaid")) {
-                    const mermaidPath = value.replace("mermaid:", "");
-
+                if ("mermaid" === action) {
                     const mermaidData = fs
-                        .readFileSync(path.resolve(options.path, mermaidPath))
+                        .readFileSync(path.resolve(options.path, filePath))
                         .toString();
 
-                    const { data, content } = parser.parseSync(mermaidData);
+                    let { data, content } = parser.parseSync(mermaidData);
+                    content = replaceRegexHandlebars(content, fileOptions);
 
                     const {
                         filename,
@@ -99,7 +140,7 @@ export default function remarkPubGen(options) {
                     mermaidOptions += "}";
 
                     const mermaidContent = toMD([
-                        bold(title),
+                        bold(replaceRegexHandlebars(title, fileOptions)),
                         content.replace("mermaid", mermaidOptions),
                         source || "",
                     ]);
@@ -113,15 +154,12 @@ export default function remarkPubGen(options) {
                  * {{code:./src/...}}
                  * {{code:./src/...;language}}
                  */
-                if (value.startsWith("code")) {
-                    const codePath = value.replace("code:", "");
-                    let [codeFile, language] = codePath.split(";");
-                    if (!language)
-                        language =
-                            path.parse(codeFile).ext.replace(".", "") || "js";
+                if ("code" === action) {
+                    const language =
+                        path.parse(filePath).ext.replace(".", "") || "js";
 
                     const codeData = fs
-                        .readFileSync(path.resolve(options.path, codeFile))
+                        .readFileSync(path.resolve(options.path, filePath))
                         .toString();
 
                     const codeContent = codeBlock(codeData, language);
@@ -133,10 +171,12 @@ export default function remarkPubGen(options) {
         });
 
         // parse tables
+
         const promises = tables.map(async ({ node, value }) => {
-            const tablePath = value.replace("table:", "");
+            const { filePath } = parseValue(value);
+
             const tableData = JSON.parse(
-                fs.readFileSync(path.resolve(options.path, tablePath))
+                fs.readFileSync(path.resolve(options.path, filePath))
             );
             const tableMd = await tableMarkdown(tableData, "-").then(
                 (md) => md
