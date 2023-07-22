@@ -7,10 +7,15 @@ export type DataTypes =
     | "object"
     | null;
 
+export type Mapping = {
+    [x: string]: string;
+};
+
 export type BaseSchema<T extends DataTypes> = {
     type: T;
     description: string;
     title?: string;
+    map?: Mapping;
     required?: string[];
     examples?: any[];
     [x: string]: unknown;
