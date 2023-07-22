@@ -7,7 +7,7 @@
  * @package elucidario/pkg-core
  */
 
-namespace LCDR\Model\Entities;
+namespace LCDR\Mdorim\Entities;
 
 if ( ! defined( 'ABSPATH' ) )
 	exit;
@@ -15,48 +15,7 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! defined( 'LCDR_PATH' ) )
 	exit;
 
-final class Concept extends \LCDR\Abstracts\Model\Entity {
-	/**
-	 * The Concepts's attribution
-	 *
-	 * @var array
-	 */
-	public $attributed_by = [];
-
-	/**
-	 * The Concepts's representations.
-	 *
-	 * @var array
-	 */
-	public $representation = [];
-
-	/**
-	 * The Concepts's parts.
-	 *
-	 * @var array
-	 */
-	public $part_of = [];
-
-	/**
-	 * The Concepts's Sets.
-	 *
-	 * @var array
-	 */
-	public $member_of = [];
-
-	/**
-	 * The Concepts's subjects.
-	 *
-	 * @var array
-	 */
-	public $subject_of = [];
-
-	/**
-	 * The post's status.
-	 * @var string
-	 */
-	public $post_status = 'publish';
-
+final class Concept extends \LCDR\Abstracts\Mdorim\Entity {
 	/**
 	 * The Concepts's objects.
 	 * 
@@ -74,8 +33,6 @@ final class Concept extends \LCDR\Abstracts\Model\Entity {
 	public function set_type() {
 		$this->type = 'Concept';
 	}
-
-
 	// /**
 	//  * Whether comments are allowed.
 	//  *@todo ver necessidade

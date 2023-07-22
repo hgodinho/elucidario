@@ -6,7 +6,7 @@
  * @package elucidario/pkg-core
  */
 
-namespace LCDR\Abstracts\Model;
+namespace LCDR\Abstracts\Mdorim;
 
 if ( ! defined( 'ABSPATH' ) )
 	exit;
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! defined( 'LCDR_PATH' ) )
 	exit;
 
-abstract class Entity implements \LCDR\Interfaces\Model\Entity {
+abstract class Entity implements \LCDR\Interfaces\Mdorim\Entity {
 	/**
 	 * Entity ID.
 	 * 
@@ -30,6 +30,13 @@ abstract class Entity implements \LCDR\Interfaces\Model\Entity {
 	public $type;
 
 	/**
+	 * Entity schema.
+	 * 
+	 * @var \LCDR\Mdorim\Schema
+	 */
+	public $schema;
+
+	/**
 	 * Entity data.
 	 * 
 	 * @var object|null
@@ -37,37 +44,30 @@ abstract class Entity implements \LCDR\Interfaces\Model\Entity {
 	public $data = null;
 
 	/**
-	 * Entity schema.
-	 * 
-	 * @var object|null
-	 */
-	public $schema = null;
-
-	/**
 	 * Entity meta.
 	 * 
-	 * @var \LCDR\Model\Classes\Meta
+	 * @var \LCDR\Mdorim\Meta
 	 */
 	public $meta;
 
 	/**
 	 * Entity edit history.
 	 * 
-	 * @var \LCDR\Model\Classes\EditHistory
+	 * @var \LCDR\Mdorim\History
 	 */
 	public $edit_history;
 
 	/**
-	 * Construtor.
+	 * Constructor.
 	 *
-	 * @param object $schema
-	 * @param object $data
+	 * @param object|null $data
 	 */
-	public function __construct( object $schema, object $data ) {
-		$this->ID = $data->ID;
+	public function __construct( object|null $data ) {
 		$this->set_type();
-		$this->schema = $schema;
-		$this->set_data( $data );
+
+		if ( $data ) {
+			$this->set_data( $data );
+		}
 	}
 
 	/**
@@ -85,8 +85,29 @@ abstract class Entity implements \LCDR\Interfaces\Model\Entity {
 		}
 	}
 
-	public function set_data( object $data ) {
-		$this->data = $data;
+	/**
+	 * Set data.
+	 * 
+	 * @param object $data
+	 * @param bool $validate
+	 * 
+	 * @return void
+	 * @throws \Exception
+	 */
+	public function set_data( object $data, bool $validate = true ) {
+		$this->ID = $data->ID;
+		$this->set_schema();
+		if ( $validate ) {
+			$this->schema->set_data( $data );
+			$this->ID = $data->ID;
+			try {
+				$validate = $this->schema->validate();
+			} catch (\Exception $e) {
+				throw new \Exception( $e->getMessage() );
+			}
+		} else {
+			$this->data = $data;
+		}
 	}
 
 	/**
@@ -96,6 +117,15 @@ abstract class Entity implements \LCDR\Interfaces\Model\Entity {
 	 */
 	public function get_data(): object {
 		return $this->data;
+	}
+
+	/**
+	 * Set entity schema.
+	 * 
+	 * @return void
+	 */
+	public function set_schema() {
+		$this->schema = new \LCDR\Mdorim\Schema( $this->type, $this->data );
 	}
 
 	/**

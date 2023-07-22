@@ -20,22 +20,22 @@ afterEach( function () {
 	parent::tearDown();
 } );
 
-test( 'Schema class', function () {
+test( '\LCDR\DB\Schema class', function () {
 	$schema = new \LCDR\DB\Schema();
 	expect( $schema )->toBeInstanceOf( \LCDR\DB\Schema::class);
 } );
 
-test( 'Schema->wpdb', function () {
+test( '\LCDR\DB\Schema->wpdb', function () {
 	$schema = new \LCDR\DB\Schema();
 	expect( $schema->wpdb )->toBeInstanceOf( \wpdb::class);
 } );
 
-test( 'Schema->prefix', function () {
+test( '\LCDR\DB\Schema->prefix', function () {
 	$schema = new \LCDR\DB\Schema();
 	expect( $schema->prefix )->toBe( $schema->wpdb->prefix . 'lcdr_' );
 } );
 
-test( 'Schema->relationship_query', function () {
+test( '\LCDR\DB\Schema->relationship_query', function () {
 	$schema = new \LCDR\DB\Schema();
 	expect( $schema->relationship_query( 'teste', 'teste_a', 'teste_b', 'teste', 'teste' ) )->toBe(
 		"CREATE TABLE teste (
@@ -49,7 +49,7 @@ test( 'Schema->relationship_query', function () {
 	);
 } );
 
-test( 'Schema->create_options', function () {
+test( '\LCDR\DB\Schema->create_options', function () {
 	$schema = new \LCDR\DB\Schema();
 	$result = $schema->create_options();
 	expect( $result )->toBe( true );

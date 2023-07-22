@@ -6,7 +6,7 @@
  * @package elucidario/pkg-core
  */
 
-namespace LCDR\Interfaces\Model;
+namespace LCDR\Interfaces\Mdorim;
 
 interface Entity {
 	/**

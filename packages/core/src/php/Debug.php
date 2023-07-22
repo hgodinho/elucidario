@@ -113,7 +113,6 @@ if ( ! class_exists( 'Debug' ) ) {
 		 */
 		public static function file_force_contents( $dir, $contents ) {
 			$file = 'debug.md';
-			var_dump( $dir, $file );
 			if ( ! is_dir( $dir ) ) {
 				mkdir( $dir, 0777, true );
 			}

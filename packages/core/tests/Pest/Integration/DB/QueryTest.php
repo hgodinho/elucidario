@@ -19,22 +19,22 @@ afterAll( function () {
 	$schema->unregister_tables();
 } );
 
-test( 'Query class', function () {
+test( '\LCDR\DB\Query class', function () {
 	$query = new \LCDR\DB\Query();
 	expect( $query )->toBeInstanceOf( \LCDR\DB\Query::class);
 } );
 
-test( 'Query->wpdb', function () {
+test( '\LCDR\DB\Query->wpdb', function () {
 	$query = new \LCDR\DB\Query();
 	expect( $query->wpdb )->toBeInstanceOf( \wpdb::class);
 } );
 
-test( 'Query->prefix', function () {
+test( '\LCDR\DB\Query->prefix', function () {
 	$query = new \LCDR\DB\Query();
-	expect( $query->prefix )->toBe( $query->wpdb->prefix . 'lcdr_' );
+	expect( $query->prefix )->toBe( 'wptests_lcdr_' );
 } );
 
-test( 'Query->insert', function () {
+test( '\LCDR\DB\Query->insert', function () {
 	$query = new \LCDR\DB\Query();
 	$table_name = 'concepts';
 	$data = [ 
@@ -51,21 +51,21 @@ test( 'Query->insert', function () {
 	expect( $result )->toBe( 1 );
 } );
 
-test( 'Query->update', function () {
+test( '\LCDR\DB\Query->update', function () {
 	$query = new \LCDR\DB\Query();
 	$table_name = 'concepts';
 	$result = $query->update( $table_name, [ 'label' => 'Test 2' ], [ 'label' => 'test' ] );
 	expect( $result )->toBe( 1 );
 } );
 
-test( 'Query->select', function () {
+test( '\LCDR\DB\Query->select', function () {
 	$query = new \LCDR\DB\Query();
 	$table_name = 'concepts';
 	$results = $query->select( $table_name, [ 'label' => 'Test 2' ] );
 	expect( $results[0]->label )->toBe( 'Test 2' );
 } );
 
-test( 'Query->delete', function () {
+test( '\LCDR\DB\Query->delete', function () {
 	$query = new \LCDR\DB\Query();
 	$table_name = 'concepts';
 	$result = $query->delete( $table_name, [ 'label' => 'Test 2' ] );
