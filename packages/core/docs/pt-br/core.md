@@ -9,13 +9,14 @@ Sistema de Gestão de Coleções
 ```mermaid
     classDiagram
 
-        Entity "1" --* "1" Schema : possui
-        Entity "1" --* "1" History : possui
-        Entity "1" --* "1" Meta : possui
+        AbstractEntity "1" --> "1" Schema : schema
+        Schema "1" --* "1" Validator : validator
+        AbstractEntity "1" --* "1" Meta : meta
+        AbstractEntity "1" --* "1" History : history
 
-        History "1" --* "*" Event : possui
+        History "1" --* "*" Event : events
 
-        class Entity {
+        class AbstractEntity["LCDR\Mdorim\Entities\AbstractEntity"] {
             <<abstract>>
 
             +int ID
@@ -25,44 +26,55 @@ Sistema de Gestão de Coleções
             +Meta meta
             +History history
 
-            +get() mixed
+            +__construct(data)
+            +get(property) mixed
             +set_type()
             +set_data(data, validate = true)
             +get_data() object
+            +set_schema()
             +get_schema() Schema
+            +set_meta(data)
             +get_meta() Meta
+            +set_history(data)
+            +get_history() History\Core
         }
 
-        class Schema {
+        class Schema["LCDR\Mdorim\Schema"] {
             <<final>>
 
-            +string type
-            +object data
-            #object schema
+            #Validator validator
+            #array schemas
 
-            +set_schema()
-            +get_schema() object
-            +set_data(data)
-            +validate() true|Exception
+            +__construct()
+            +init_validator()
+            +validate(schema, data) bool
+            +select(schema) object
+            +get_validator() Validator
+            +get_schemas() array
         }
 
-        class History {
+        class Validator["Opis\JsonSchema\Validator"] {
+            <<ext-dependency>>
+        }
+
+        class History["LCDR\Mdorim\History\Core"] {
             <<final>>
 
             +List~Event~ events
 
+            +__construct(data)
             +add_event(event)
             +get_events() array
             +get_event(ID) Event
             +remove_event(ID) bool
         }
 
-        class Event {
+        class Event["LCDR\Mdorim\History\Event"] {
             <<final>>
 
             +int ID
-            +date timestamp
             +string type
+            +date timestamp
             +int entity
             +int user
             +string name
@@ -70,11 +82,10 @@ Sistema de Gestão de Coleções
             +mixed previous
             +mixed current
 
-            +set_previous(previous)
-            +set_current(current)
+            +__construct(data)
         }
 
-        class Meta {
+        class Meta["LCDR\Mdorim\Meta"] {
             <<final>>
 
             +int ID
@@ -83,5 +94,7 @@ Sistema de Gestão de Coleções
             +string slug
             +int author
             +string status
+
+            +__construct(data)
         }
 ```

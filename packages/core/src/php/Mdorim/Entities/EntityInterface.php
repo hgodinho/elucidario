@@ -6,9 +6,9 @@
  * @package elucidario/pkg-core
  */
 
-namespace LCDR\Interfaces\Mdorim;
+namespace LCDR\Mdorim\Entities;
 
-interface Entity {
+interface EntityInterface {
 	/**
 	 * Get entity property.
 	 *

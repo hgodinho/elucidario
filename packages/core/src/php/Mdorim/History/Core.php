@@ -7,7 +7,7 @@
  * @package elucidario/pkg-core
  */
 
-namespace LCDR\Mdorim;
+namespace LCDR\Mdorim\History;
 
 if ( ! defined( 'ABSPATH' ) )
 	exit;
@@ -15,13 +15,22 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! defined( 'LCDR_PATH' ) )
 	exit;
 
-final class History {
+final class Core {
 	/**
 	 * Events.
 	 * 
 	 * @var \LCDR\Mdorim\History\Event[]
 	 */
 	public $events = [];
+
+	/**
+	 * Constructor.
+	 *
+	 * @param $data
+	 */
+	public function __construct( object $data ) {
+		$this->events = $data->events;
+	}
 
 	/**
 	 * Add event.
@@ -31,6 +40,15 @@ final class History {
 	 */
 	public function add_event( \LCDR\Mdorim\History\Event $event ) {
 		$this->events[] = $event;
+	}
+
+	/**
+	 * Get events.
+	 *
+	 * @return \LCDR\Mdorim\History\Event[]
+	 */
+	public function get_events(): array {
+		return $this->events;
 	}
 
 	/**

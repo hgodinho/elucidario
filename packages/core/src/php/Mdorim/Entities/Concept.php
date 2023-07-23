@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! defined( 'LCDR_PATH' ) )
 	exit;
 
-final class Concept extends \LCDR\Abstracts\Mdorim\Entity {
+final class Concept extends \LCDR\Mdorim\Entities\AbstractEntity {
 	/**
 	 * The Concepts's objects.
 	 * 

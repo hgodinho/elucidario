@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Schema class.
  *
@@ -8,33 +9,36 @@
 
 namespace LCDR\Mdorim;
 
+use \Opis\JsonSchema\{
+	Validator,
+	ValidationResult,
+};
+
+use \Opis\JsonSchema\Errors\ErrorFormatter;
+
 if ( ! defined( 'ABSPATH' ) )
 	exit;
 
 if ( ! defined( 'LCDR_PATH' ) )
 	exit;
 
+/**
+ * Schema class.
+ */
 class Schema {
 	/**
-	 * Type.
-	 * 
-	 * @var string
+	 * Schema validator.
+	 *
+	 * @var Validator
 	 */
-	public $type;
-
-	/**
-	 * Data.
-	 * 
-	 * @var object|null
-	 */
-	public $data;
+	protected $validator;
 
 	/**
 	 * JSON-Schema
 	 * 
-	 * @var object
+	 * @var array
 	 */
-	protected $schema;
+	protected $schemas;
 
 	/**
 	 * Constructor.
@@ -42,63 +46,91 @@ class Schema {
 	 * @param string $type Schema type.
 	 * @param object|null $data Schema data.
 	 */
-	public function __construct( string $type, object|null $data = null ) {
-		$this->type = $type;
-		$this->data = $data;
+	public function __construct() {
+		$this->init_validator();
+	}
+
+	/**
+	 * Initialize validator.
+	 * 
+	 * @return void
+	 */
+	public function init_validator() {
+		$this->validator = new Validator();
+		$this->validator->resolver()->registerPrefix(
+			'https://elucidario.art/mdorim',
+			LCDR_PATH . 'node_modules/@elucidario/pkg-mdorim/static/mdorim'
+		);
 	}
 
 	/**
 	 * Validate data against specified schema.
 	 * 
-	 * @param object|null $data
+	 * @param string $schema
+	 * @param mixed $data
 	 * 
-	 * @return bool|\Exception
+	 * @return bool
 	 */
-	public function validate( $data = null ) {
-		if ( ! $data ) {
-			$data = $this->data;
+	public function validate( string $schema, mixed $data = null ) {
+		/** @var ValidationResult $result  */
+		$result = $this->get_validator()->validate( $data, $this->id_map( $schema ) );
+		if ( $result->isValid() ) {
+			return true;
 		}
-		return true;
+		$errors = ( new ErrorFormatter() )->format( $result->error() );
+		var_dump( $errors );
+		return false;
+	}
+
+	public function select( string $schema_name ) {
 	}
 
 	/**
-	 * Set data
+	 * Get validator.
 	 * 
-	 * @param object|null $data
-	 * @return void
+	 * @return Validator
 	 */
-	public function set_data( object|null $data = null ) {
-		$this->data = $data;
+	public function get_validator() {
+		return $this->validator;
 	}
 
+	/**
+	 * Get id.
+	 * 
+	 * @return string
+	 */
+	public function id_map( $id ) {
+		$id_map = "https://elucidario.art/mdorim/{$id}.json";
+		return $id_map;
+	}
 
 	/**
 	 * Set schema.
 	 * 
 	 * @return void
 	 */
-	public function set_schema() {
-		try {
-			$this->schema = json_decode(
-				file_get_contents(
-					LCDR_PATH
-					. 'node_modules/@elucidario/pkg-mdorim/static/mdorim/schemas/mdorim/'
-					. lcdr_camel_to_snake( $this->type )
-					. '.json'
-				)
-			);
-		} catch (\Exception $err) {
-			$this->schema = null;
-			throw new \Exception( 'Schema not found.' );
-		}
-	}
+	// public function set_schema() {
+	// 	try {
+	// 		$this->schema = json_decode(
+	// 			file_get_contents(
+	// 				LCDR_PATH
+	// 				. 'node_modules/@elucidario/pkg-mdorim/static/mdorim/schemas/mdorim/'
+	// 				. lcdr_camel_to_snake( $this->type )
+	// 				. '.json'
+	// 			)
+	// 		);
+	// 	} catch (\Exception $err) {
+	// 		$this->schema = null;
+	// 		throw new \Exception( 'Schema not found.' );
+	// 	}
+	// }
 
 	/**
-	 * Get schema.
+	 * Get schemas.
 	 * 
-	 * @return object
+	 * @return array
 	 */
-	public function get_schema() {
-		return $this->schema;
+	public function get_schemas() {
+		return $this->schemas;
 	}
 }

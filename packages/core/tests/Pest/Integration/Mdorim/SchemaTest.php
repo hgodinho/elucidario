@@ -11,25 +11,40 @@ if ( isUnitTest() ) {
 uses( TestCase::class);
 
 test( '\LCDR\Mdorim\Schema', function () {
-	$schema = new \LCDR\Mdorim\Schema( 'concept', null );
+	$schema = new \LCDR\Mdorim\Schema();
 	expect( $schema )->toBeInstanceOf( \LCDR\Mdorim\Schema::class);
 } );
 
-test( '\LCDR\Mdorim\Schema->type', function () {
-	$schema = new \LCDR\Mdorim\Schema( 'concept', null );
-	expect( $schema->type )->toBe( 'concept' );
+test( '\LCDR\Mdorim\Schema->init_validator() && get_validator()', function () {
+	$schema = new \LCDR\Mdorim\Schema();
+	$schema->init_validator();
+	expect( $schema->get_validator() )->toBeInstanceOf( \Opis\JsonSchema\Validator::class);
 } );
 
-test( '\LCDR\Mdorim\Schema->set_schema', function () {
-	$schema = new \LCDR\Mdorim\Schema( 'concept', null );
-	$schema->set_schema();
-	$default = json_decode( file_get_contents( LCDR_PATH . 'node_modules/@elucidario/pkg-mdorim/static/mdorim/schemas/mdorim/concept.json' ) );
-	expect( $schema->get_schema() )->toEqual( $default );
+test( '\LCDR\Mdorim\Schema->id_map()', function () {
+	$schema = new \LCDR\Mdorim\Schema();
+	$id_map = $schema->id_map( 'concept' );
+	expect( $id_map )->toBe( 'https://elucidario.art/mdorim/concept.json' );
+
+	$id_map2 = $schema->id_map( 'concept/concept' );
+	expect( $id_map2 )->toBe( 'https://elucidario.art/mdorim/concept/concept.json' );
 } );
 
-test( '\LCDR\Mdorim\Schema->set_schema no schema type', function () {
-	expect( function () {
-		$schema = new \LCDR\Mdorim\Schema( 'banana', null );
-		return $schema->set_schema();
-	} )->toThrow( \Exception::class, 'Schema not found.' );
+test( '\LCDR\Mdorim\Schema->validate()', function () {
+	$schema = new \LCDR\Mdorim\Schema();
+	$result = $schema->validate( 'schemas/mdorim/concept', (object) array(
+		'identified_by' => array(
+			(object) array(
+				'type' => 'Identifier',
+				'content' => 'Ola mundo',
+			)
+		),
+		'classified_as' => array(
+			(object) array(
+				'type' => 'Type',
+				'id' => 1,
+			)
+		),
+	) );
+	expect( $result )->toBeTrue();
 } );

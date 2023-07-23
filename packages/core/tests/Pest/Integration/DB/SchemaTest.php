@@ -25,14 +25,14 @@ test( '\LCDR\DB\Schema class', function () {
 	expect( $schema )->toBeInstanceOf( \LCDR\DB\Schema::class);
 } );
 
-test( '\LCDR\DB\Schema->wpdb', function () {
+test( '\LCDR\DB\Schema->get_wpdb()', function () {
 	$schema = new \LCDR\DB\Schema();
-	expect( $schema->wpdb )->toBeInstanceOf( \wpdb::class);
+	expect( $schema->get_wpdb() )->toBeInstanceOf( \wpdb::class);
 } );
 
 test( '\LCDR\DB\Schema->prefix', function () {
 	$schema = new \LCDR\DB\Schema();
-	expect( $schema->prefix )->toBe( $schema->wpdb->prefix . 'lcdr_' );
+	expect( $schema->prefix )->toBe( $schema->get_wpdb()->prefix . 'lcdr_' );
 } );
 
 test( '\LCDR\DB\Schema->relationship_query', function () {

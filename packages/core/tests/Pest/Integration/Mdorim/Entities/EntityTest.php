@@ -10,7 +10,7 @@ if ( isUnitTest() ) {
 
 uses( TestCase::class);
 
-final class Entity extends \LCDR\Abstracts\Mdorim\Entity {
+final class Entity extends \LCDR\Mdorim\Entities\AbstractEntity {
 	public function __construct( $entity = null ) {
 		parent::__construct( $entity );
 	}

@@ -16,7 +16,7 @@ if ( ! defined( 'LCDR_PATH' ) )
 
 if ( ! class_exists( '\LCDR\DB\Schema' ) ) {
 	class Schema {
-		public $wpdb;
+		protected $wpdb;
 
 		public $charset = '';
 
@@ -144,6 +144,15 @@ if ( ! class_exists( '\LCDR\DB\Schema' ) ) {
             ) {$this->charset};";
 
 			return $this->wpdb->prepare( $query, $entity_a, $entity_b );
+		}
+
+		/**
+		 * Get wpdb.
+		 *
+		 * @return \wpdb
+		 */
+		public function get_wpdb() {
+			return $this->wpdb;
 		}
 	}
 }

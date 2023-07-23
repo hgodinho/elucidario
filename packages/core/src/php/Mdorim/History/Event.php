@@ -78,4 +78,15 @@ final class Event {
 	 * @var mixed
 	 */
 	public $current;
+
+	/**
+	 * Constructor.
+	 *
+	 * @param object $data
+	 */
+	public function __construct( object $data ) {
+		foreach ( $data as $key => $value ) {
+			$this->$key = $value;
+		}
+	}
 }

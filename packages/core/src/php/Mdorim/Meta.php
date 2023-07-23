@@ -57,4 +57,13 @@ final class Meta {
 	 * 
 	 */
 	public $status;
+
+	/**
+	 * Constructor.
+	 */
+	public function __construct( object $data ) {
+		foreach ( $data as $key => $value ) {
+			$this->$key = $value;
+		}
+	}
 }

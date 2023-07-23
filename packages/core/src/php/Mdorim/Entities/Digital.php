@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! defined( 'LCDR_PATH' ) )
 	exit;
 
-final class Digital extends \LCDR\Abstracts\Mdorim\Entity {
+final class Digital extends \LCDR\Mdorim\Entities\AbstractEntity {
 	/**
 	 * The DigitalObject's objects.
 	 * 
