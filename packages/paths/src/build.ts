@@ -40,8 +40,8 @@ export const build = async (
                     case "string":
                         fs.watch(
                             path.resolve(options.watchSrc),
-                            { recursive: true },
-                            debounce(
+                            { recursive: true, encoding: "buffer" },
+                            () => debounce(
                                 async (event: string, filename: string) => await fn({ event, filename }),
                                 500
                             )
@@ -52,8 +52,8 @@ export const build = async (
                         options.watchSrc.forEach((src: string) => {
                             fs.watch(
                                 path.resolve(src),
-                                { recursive: true },
-                                debounce(
+                                { recursive: true, encoding: "buffer" },
+                                () => debounce(
                                     async (event: string, filename: string) => await fn({ event, filename }),
                                     500
                                 )

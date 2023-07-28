@@ -14,4 +14,4 @@ Hierarquia das unidades de informações "Object name" [@collections-trust2017.3
     -   Object name type
     -   Object name/title language
 
-{{table:spectrum/spectrum-object-name.json}}
+{{table:documentacao/spectrum/spectrum-object-name.json}}

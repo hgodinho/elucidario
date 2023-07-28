@@ -9,8 +9,9 @@ services:
             - db_data:/var/lib/mysql
         restart: always
         environment:
-            MYSQL_DATABASE: wordpress
-            MYSQL_ROOT_PASSWORD: somewordpress
+            MYSQL_DATABASE: wp
+            MYSQL_DATABASE_TEST: wp_tests
+            MYSQL_ROOT_PASSWORD: wordpress
             MYSQL_USER: wordpress
             MYSQL_PASSWORD: wordpress
 
@@ -24,7 +25,7 @@ services:
         restart: always
         environment: &ref_0
             WORDPRESS_DB_HOST: db:3306
-            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DB_NAME: wp
             WORDPRESS_DB_USER: wordpress
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DB_TABLE_PREFIX: wp_

@@ -7,16 +7,20 @@
     "properties": {
         "identified_by": {
             "$ref": "<local>/core.json#/definitions/identified_by"
+        },
+        "classified_as": {
+            "$ref": "<local>/core.json#/definitions/classified_as"
         }
     },
-    "required": ["identified_by"],
+    "required": ["identified_by", "classified_as"],
     "additionalProperties": false,
     "definitions": {
-        "Object": {
+        "StorageObject": {
             "type": "object",
-            "title": "Object",
-            "description": "A generic object",
             "properties": {
+                "identified_by": {
+                    "$ref": "<local>/core.json#/definitions/identified_by"
+                },
                 "_meta": {
                     "$ref": "<local>/core.json#/definitions/_meta"
                 }

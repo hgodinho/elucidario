@@ -1,7 +1,8 @@
 /**
- * Replace <local>|<linked-art> with the local path
+ * Replace `<local>`|`<linked-art>` with path
  * @param {object} schema - schema
- * @param {boolean} ext - if true, replace <local>|<linked-art> with the external path
+ * @param {boolean} ext - if true, replace `<local>`|`<linked-art>` with the external path
+ * @param {string|undefined} ref - external path
  * @returns {object} schema
  */
 export const replaceRef = (schema, ext = false, ref) => {
@@ -12,13 +13,13 @@ export const replaceRef = (schema, ext = false, ref) => {
                 if (ext && !ref) throw new Error("No ref provided");
                 newSchema[key] = newSchema[key].replace(
                     "<local>",
-                    ext ? `${ref}/schemas/mdorim` : "mdorim"
+                    ext ? `${ref}/schemas/mdorim` : ".",
                 );
             }
             if (newSchema[key].includes("<linked-art>")) {
                 newSchema[key] = newSchema[key].replace(
                     "<linked-art>",
-                    ext ? `https://linked.art/api/1.0/schema` : "linked-art"
+                    ext ? `https://linked.art/api/1.0/schema` : "linked-art",
                 );
             }
         } else if (typeof newSchema[key] === "object") {

@@ -9,26 +9,55 @@
 
 namespace LCDR;
 
-if (!defined('ABSPATH')) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-if (!defined('LCDR_PATH')) exit;
+if ( ! defined( 'LCDR_PATH' ) ) {
+	exit;
+}
 
-if (!class_exists('Core')) {
-    class Core {
-        public $options;
-        public $schema;
+class Core {
+	/**
+	 * Options.
+	 *
+	 * @var \LCDR\Options\Core
+	 */
+	public $options;
 
-        public function __construct() {
-            $this->schema = new \LCDR\DB\Schema();
-            $this->options = new \LCDR\Options\Core();
+	/**
+	 * DB.
+	 *
+	 * @var \LCDR\DB\Core
+	 */
+	protected $db;
 
-            add_action('init', array($this, 'textdomain'));
-        }
+	/**
+	 * Schema.
+	 *
+	 * @var \LCDR\Mdorim\Schema
+	 */
+	public $schema;
 
-        public function textdomain() {
-            $domain = 'lcdr';
-            $locale = apply_filters('plugin_locale', get_locale(), $domain);
-            \load_textdomain($domain, LCDR_PATH . "languages/php-{$domain}-{$locale}.mo");
-        }
-    }
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+		$this->db = new \LCDR\DB\Core();
+		$this->options = new \LCDR\Options\Core();
+		$this->schema = new \LCDR\Mdorim\Schema();
+
+		add_action( 'init', array( $this, 'textdomain' ) );
+	}
+
+	/**
+	 * Load textdomain.
+	 *
+	 * @return void
+	 */
+	public function textdomain() {
+		$domain = 'lcdr';
+		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+		\load_textdomain( $domain, LCDR_PATH . "languages/php-{$domain}-{$locale}.mo" );
+	}
 }

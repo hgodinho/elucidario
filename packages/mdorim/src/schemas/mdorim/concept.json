@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/concept.json",
+    "title": "Concept",
+    "description": "@todo",
+    "type": "object",
+    "properties": {
+        "identified_by": {
+            "$ref": "<local>/core.json#/definitions/identified_by"
+        },
+        "classified_as": {
+            "$ref": "<local>/core.json#/definitions/classified_as"
+        }
+    },
+    "required": ["identified_by", "classified_as"],
+    "additionalProperties": false,
+    "definitions": {
+        "StorageObject": {
+            "type": "object",
+            "properties": {
+                "identified_by": {
+                    "$ref": "<local>/core.json#/definitions/identified_by"
+                },
+                "_meta": {
+                    "$ref": "<local>/core.json#/definitions/_meta"
+                }
+            }
+        }
+    }
+}

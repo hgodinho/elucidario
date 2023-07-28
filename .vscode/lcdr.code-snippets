@@ -5,13 +5,32 @@
         "body": "__('${1:Texto}', 'lcdr')",
         "description": "Traduz um texto"
     },
+    "phpinterface": {
+        "scope": "php",
+        "prefix": "interface",
+        "description": "Inicia uma interface php",
+        "body": [
+            "/**",
+            " * ${1:Class} interface.",
+            " *",
+            " * @since ${2:since}",
+            " * @package elucidario/pkg-core",
+            " */",
+            "",
+            "namespace LCDR\\${3:namespace};",
+            "",
+            "interface ${1:Class} {",
+            "    ",
+            "}"
+        ]
+    },
     "phpclass": {
         "scope": "php",
         "prefix": "class",
         "description": "Inicia uma classe php",
         "body": [
             "/**",
-            " * ${1:Class} class.",
+            " * ${1:class} class.",
             " *",
             " * @since ${2:since}",
             " * @package elucidario/pkg-core",
@@ -23,10 +42,8 @@
             "",
             "if (!defined('LCDR_PATH')) exit;",
             "",
-            "if (!class_exists('${1:Class}')) {",
-            "    class ${1:Class} {",
-            "        ",
-            "    }",
+            "class ${1:class} {",
+            "    ",
             "}"
         ]
     },
@@ -55,13 +72,13 @@
     "log": {
         "scope": "php",
         "prefix": "log",
-        "description": "LCDR\\Debug\\::log",
-        "body": "\\LCDR\\Debug::log(LCDRP_PATH, ${1:msg}, ${2:title}, __CLASS__, __METHOD__, __LINE__);"
+        "description": "LCDR\\Utils\\Debug\\::log",
+        "body": "\\LCDR\\Utils\\Debug::log( ${1:msg}, ${2:title}, __METHOD__, __LINE__ );"
     },
     "dump": {
         "scope": "php",
         "prefix": "dump",
-        "description": "LCDR\\Debug\\::dump",
-        "body": "\\LCDR\\Debug::dump(${1:msg}, __CLASS__, __METHOD__, __LINE__, ${2:true});"
+        "description": "LCDR\\Utils\\Debug\\::dump",
+        "body": "\\LCDR\\Utils\\Debug::dump( ${1:msg}, __CLASS__, __METHOD__, __LINE__, ${2:true} );"
     }
 }

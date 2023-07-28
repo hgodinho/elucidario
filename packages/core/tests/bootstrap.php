@@ -31,9 +31,9 @@ if (isset($GLOBALS['argv']) && in_array('--group=integration', $GLOBALS['argv'],
             "dirname(__FILE__, 3) . '/src/'",
             $testConfigContents
         );
-        $testConfigContents = str_replace("youremptytestdbnamehere", $_SERVER['DB_NAME'], $testConfigContents);
-        $testConfigContents = str_replace("yourusernamehere", $_SERVER['DB_USER'], $testConfigContents);
-        $testConfigContents = str_replace("yourpasswordhere", $_SERVER['DB_PASSWORD'], $testConfigContents);
+        $testConfigContents = str_replace("wp", $_SERVER['DB_NAME'], $testConfigContents);
+        $testConfigContents = str_replace("wordpress", $_SERVER['DB_USER'], $testConfigContents);
+        $testConfigContents = str_replace("wordpress", $_SERVER['DB_PASSWORD'], $testConfigContents);
         $testConfigContents = str_replace("localhost", $_SERVER['DB_HOST'], $testConfigContents);
 
         file_put_contents($testConfigPath, $testConfigContents);
@@ -46,7 +46,7 @@ if (isset($GLOBALS['argv']) && in_array('--group=integration', $GLOBALS['argv'],
      * Manually load the plugin being tested.
      */
     function _manually_load_plugin() {
-        require dirname(__DIR__) . '/elucidario.php';
+        require dirname(__DIR__) . '/lcdr.php';
     }
 
     tests_add_filter('muplugins_loaded', '_manually_load_plugin');

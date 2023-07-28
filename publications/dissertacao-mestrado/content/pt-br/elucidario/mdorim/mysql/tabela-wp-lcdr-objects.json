@@ -1,0 +1,135 @@
+{
+    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_objects_ do sistema",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Chave"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
+        [
+            "id",
+            "bigint(20) unsigned",
+            "auto_increment",
+            "PRI IND",
+            "Identificador único do _HumanMadeObject_"
+        ],
+        [
+            "slug",
+            "varchar(200)",
+            "",
+            "IND",
+            "Slug do _HumanMadeObject_, igual ao _post_name_ da tabela _wp_posts_"
+        ],
+        [
+            "guid",
+            "varchar(255)",
+            "",
+            "",
+            "Slug do _HumanMadeObject_, igual ao _post_name_ da tabela _wp_posts_"
+        ],
+        [
+            "author",
+            "bigint(20) unsigned",
+            "",
+            "IND",
+            "Identificador do autor do _HumanMadeObject_, igual ao _post_author_ da tabela _wp_posts_"
+        ],
+        ["status", "varchar(20)", "", "IND", "Status do _HumanMadeObject_"],
+        ["password", "varchar(20)", "", "", "Senha do _HumanMadeObject_"],
+        [
+            "created",
+            "datetime",
+            "",
+            "IND",
+            "Data de criação do _HumanMadeObject_, igual ao _post_date_ da tabela _wp_posts_"
+        ],
+
+        ["type", "text", "", "", "Deve ser _HumanMadeObject_"],
+        [
+            "label",
+            "text",
+            "",
+            "",
+            "Nome do _HumanMadeObject_, gerado automaticamente baseado na coluna _identified_by_"
+        ],
+        [
+            "identified_by",
+            "JSON",
+            "",
+            "",
+            "Um array de objetos JSON que podem ser _Name_ ou _Identifier_"
+        ],
+        [
+            "referred_to_by",
+            "JSON",
+            "",
+            "",
+            "Um array de objetos JSON _Statement_"
+        ],
+        [
+            "equivalent",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON em que cada um é uma referência a um recurso externo equivalente"
+        ],
+        [
+            "attributed_by",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON _AttributeAssignment_ que define um atributo a este conceito"
+        ],
+
+        [
+            "dimension",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON _Dimension_ que define a dimensão deste _HumanMadeObject_"
+        ],
+        [
+            "produced_by",
+            "JSON",
+            "",
+            "",
+            "Um objeto JSON _Production_ que define a produção deste _HumanMadeObject_"
+        ],
+        [
+            "destroyed_by",
+            "JSON",
+            "",
+            "",
+            "Um objeto JSON _Destruction_ que define a destruição deste _HumanMadeObject_"
+        ],
+        [
+            "removed_by",
+            "JSON",
+            "",
+            "",
+            "Um objeto JSON _PartRemoval_ que define a remoção deste _HumanMadeObject_ de um outro _HumanMadeObject_"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

@@ -12,10 +12,11 @@
         "declarationMap": true,
         "preserveSymlinks": true,
         "declarationDir": "./dist/types",
+        "types": ["@elucidario/pkg-mdorim", "@elucidario/pkg-types"],
         "paths": {
             "@/*": ["./src/*"],
-            "@elucidario/pkg-types": [
-                "./node_modules/@elucidario/pkg-types/dist/index.d.ts"
+            "@elucidario/pkg-mdorim": [
+                "./node_modules/@elucidario/pkg-mdorim/lib"
             ]
         }
     },

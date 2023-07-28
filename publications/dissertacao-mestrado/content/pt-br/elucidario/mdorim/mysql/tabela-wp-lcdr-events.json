@@ -1,0 +1,119 @@
+{
+    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_events_ do sistema",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Chave"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
+        [
+            "id",
+            "bigint(20) unsigned",
+            "auto_increment",
+            "PRI IND",
+            "Identificador único do _Event_"
+        ],
+        [
+            "slug",
+            "varchar(200)",
+            "",
+            "IND",
+            "Slug do _Event_, igual ao _post_name_ da tabela _wp_posts_"
+        ],
+        [
+            "guid",
+            "varchar(255)",
+            "",
+            "",
+            "Slug do _Event_, igual ao _post_name_ da tabela _wp_posts_"
+        ],
+        [
+            "author",
+            "bigint(20) unsigned",
+            "",
+            "IND",
+            "Identificador do autor do _Event_, igual ao _post_author_ da tabela _wp_posts_"
+        ],
+        ["status", "varchar(20)", "", "IND", "Status do _Event_"],
+        ["password", "varchar(20)", "", "", "Senha do _Event_"],
+        [
+            "created",
+            "datetime",
+            "",
+            "IND",
+            "Data de criação do _Event_, igual ao _post_date_ da tabela _wp_posts_"
+        ],
+
+        [
+            "type",
+            "text",
+            "",
+            "",
+            "Tipo do _Event_, pode ser _Event_ ou _Activity_"
+        ],
+        [
+            "label",
+            "text",
+            "",
+            "",
+            "Nome do _Event_, gerado automaticamente baseado na coluna _identified_by_"
+        ],
+        [
+            "identified_by",
+            "JSON",
+            "",
+            "",
+            "Um array de objetos JSON que podem ser _Name_ ou _Identifier_"
+        ],
+        [
+            "referred_to_by",
+            "JSON",
+            "",
+            "",
+            "Um array de objetos JSON _Statement_"
+        ],
+        [
+            "equivalent",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON em que cada um é uma referência a um recurso externo equivalente"
+        ],
+        [
+            "attributed_by",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON _AttributeAssignment_ que atribui um atributo a este conceito"
+        ],
+        [
+            "timespan",
+            "JSON",
+            "",
+            "",
+            "Um objeto JSON _TimeSpan_ que define um período de tempo"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

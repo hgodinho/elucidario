@@ -1,6 +1,5 @@
 import pkg from "../../package.json" assert { type: "json" };
-import Ajv from "ajv";
-import { dereference } from "@elucidario/pkg-schema-doc";
+import jc from "json-cycle";
 
 import examples from "./examples.mjs";
 import mapping from "./mapping.mjs";
@@ -15,17 +14,12 @@ const mdorim = {
     mapping,
     translations,
     examples,
+    decycle: (obj) => JSON.stringify(jc.decycle(obj)),
+    retrocycle: (obj) => jc.retrocycle(JSON.parse(obj)),
 };
 
 // const ajv = new Ajv({
 //     schemas: { jsonUi, mdorimCore, mdorimObject, mdorimUser },
 // });
 
-// /**
-//  * @typedef MDORIM
-//  */
-export default {
-    ...mdorim,
-    // validate: (schema, data) => ajv.getSchema(schema)(data),
-    dereference,
-};
+export default mdorim;

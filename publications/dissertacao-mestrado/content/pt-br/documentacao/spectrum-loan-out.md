@@ -103,4 +103,4 @@
             - _Use of collections_;
         4. Encerre o caso do empréstimo.
 
-{{table:spectrum/loan-out.json}}
+{{table:documentacao/spectrum/loan-out.json}}
