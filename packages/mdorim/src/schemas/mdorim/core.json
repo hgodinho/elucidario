@@ -101,7 +101,7 @@
             "description": "A `Type` which classifies this entity beyond the class given in the `type` property",
             "type": "array",
             "items": {
-                "$ref": "#/definitions/id"
+                "$ref": "#/definitions/Concept"
             }
         },
         "referred_to_by": {
@@ -389,12 +389,6 @@
                         }
                     ]
                 },
-                "identified_by": {
-                    "$ref": "#/definitions/identified_by"
-                },
-                "classified_as": {
-                    "$ref": "#/definitions/classified_as"
-                },
                 "content": {
                     "$ref": "#/definitions/content"
                 },
@@ -456,12 +450,6 @@
                             "const": "Identifier"
                         }
                     ]
-                },
-                "identified_by": {
-                    "$ref": "#/definitions/identified_by"
-                },
-                "classified_as": {
-                    "$ref": "#/definitions/classified_as"
                 },
                 "content": {
                     "$ref": "#/definitions/content"

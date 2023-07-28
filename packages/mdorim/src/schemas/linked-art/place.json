@@ -36,6 +36,7 @@
                 }
             ]
         },
+
         "representation": {
             "$ref": "core.json#/definitions/representationProp"
         },

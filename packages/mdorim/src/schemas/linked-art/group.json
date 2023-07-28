@@ -16,6 +16,7 @@
                 { "title": "Specific", "type": "string", "const": "Group" }
             ]
         },
+
         "_label": { "$ref": "core.json#/definitions/labelProp" },
         "identified_by": { "$ref": "core.json#/definitions/identified_byProp" },
         "classified_as": { "$ref": "core.json#/definitions/classified_asProp" },
@@ -36,6 +37,7 @@
                 }
             ]
         },
+
         "representation": {
             "$ref": "core.json#/definitions/representationProp"
         },

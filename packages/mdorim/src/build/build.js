@@ -5,7 +5,6 @@ import { build, getPaths } from "@elucidario/pkg-paths";
 
 import { buildDocs } from "./docs.js";
 import { buildSchemas } from "./schemas.js";
-import { dereferenceSchemas } from "./dereference.js";
 import { buildTypes } from "./types.js";
 import { buildTranslations } from "./translations.js";
 import { buildMapping } from "./mapping.js";
@@ -20,7 +19,7 @@ const __dirname = path.resolve(packages, "mdorim", "src");
 const outStatic = path.resolve(packages, "mdorim", "static", "mdorim");
 
 const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(packages, "mdorim", "package.json"))
+    fs.readFileSync(path.resolve(packages, "mdorim", "package.json")),
 );
 
 /**
@@ -51,7 +50,6 @@ export const buildMdorim = async () => {
                     if (options.clean) await clean(packageJson, outStatic);
                     if (options.schema) {
                         await buildSchemas(packageJson, __dirname, outStatic);
-                        // await dereferenceSchemas(packageJson, __dirname);
                     }
                     if (options.examples)
                         await buildExamples(packageJson, __dirname, outStatic);
@@ -61,13 +59,13 @@ export const buildMdorim = async () => {
                         await buildTranslations(
                             packageJson,
                             __dirname,
-                            outStatic
+                            outStatic,
                         );
 
                     if (options.docs) await buildDocs(packageJson, __dirname);
                     if (options.test) await test(packageJson);
                     // if (options.types) await buildTypes(packageJson, __dirname);
-                }
+                },
             );
         });
 

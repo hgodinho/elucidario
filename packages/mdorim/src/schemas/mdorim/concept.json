@@ -1,8 +1,8 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "$id": "https://elucidario.art/mdorim/schemas/mdorim/object.json",
-    "title": "Human-Made Object Schema",
-    "description": "_crm:E22\\_Human-Made\\_Object_\nA human-made object, part thereof, or a natural object with value imbued through interaction with human culture.\nSee: [API](https://linked.art/api/1.0/endpoint/object/) | [Model](https://linked.art/model/object/)",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/concept.json",
+    "title": "Concept",
+    "description": "@todo",
     "type": "object",
     "properties": {
         "identified_by": {
