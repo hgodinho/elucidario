@@ -1,8 +1,7 @@
 import fs from "fs";
 import path from "path";
-
-import { readContents } from "@elucidario/pkg-paths";
 import { pubGenRemarkProcessor } from "@elucidario/pkg-pub-gen/lib/remark/processor.js";
+import { readContents } from "@elucidario/pkg-paths";
 
 const outDocs = "docs";
 
@@ -11,8 +10,15 @@ const outDocs = "docs";
  */
 export const buildDocs = async (pkg, __dirname) => {
     if (!pkg) throw new Error("No package.json provided");
-    const pages = readContents(path.join(__dirname, "pages"), ["md"]);
+    // const pages = readContents(path.join(__dirname, "pages"), ["md"]);
+    const pages = readContents({
+        dirPath: path.join(__dirname, "docs"),
+        extensions: ["md"],
+        index: false,
+        package: pkg,
+    });
     return Promise.all(
+        // write pages
         Object.entries(pages).map(async ([name, page]) => {
             const newFile = await pubGenRemarkProcessor(page, {
                 pubGen: {
@@ -28,15 +34,21 @@ export const buildDocs = async (pkg, __dirname) => {
                             type: "error",
                             defaultLog: true,
                         });
-                }
+                },
             );
+        }),
+        // write sidebars
+        (() => {
+            if (!fs.existsSync(outDocs)) {
+                fs.mkdirSync(outDocs);
+            }
             const sidebar = fs.readFileSync(
                 path.join(__dirname, "sidebars.cjs"),
-                "utf8"
+                "utf8",
             );
             const localSidebar = fs.readFileSync(
                 path.join(__dirname, "localSidebars.cjs"),
-                "utf8"
+                "utf8",
             );
             fs.writeFile(
                 path.resolve(outDocs, "sidebars.cjs"),
@@ -47,7 +59,7 @@ export const buildDocs = async (pkg, __dirname) => {
                             type: "error",
                             defaultLog: true,
                         });
-                }
+                },
             );
             fs.writeFile(
                 path.resolve(outDocs, "localSidebars.cjs"),
@@ -58,9 +70,9 @@ export const buildDocs = async (pkg, __dirname) => {
                             type: "error",
                             defaultLog: true,
                         });
-                }
+                },
             );
-        }),
-        console.log("Done!", { type: "success" })
+        })(),
+        console.log("Done!", { type: "success" }),
     );
 };

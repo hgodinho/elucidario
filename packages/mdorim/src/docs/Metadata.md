@@ -15,5 +15,3 @@ description: Metadata
 Metadados do modelo
 
 ## Classes
-
-{{json-schema:schemas/metadata.json}}
