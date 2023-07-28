@@ -1,35 +1,10 @@
 {
-    "name": "elucidario/pkg-core",
     "authors": [
         {
-            "name": "hgodinho",
-            "email": "henrique@hgod.in"
+            "email": "henrique@hgod.in",
+            "name": "hgodinho"
         }
     ],
-    "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "0.7.2",
-        "phpcompatibility/phpcompatibility-wp": "*",
-        "wp-coding-standards/wpcs": "2.3.0",
-        "automattic/vipwpcs": "*",
-        "wp-cli/wp-cli-bundle": "*",
-        "squizlabs/php_codesniffer": "^3.7",
-        "php-stubs/wordpress-stubs": "^6.2",
-        "dingo-d/wp-pest-integration-test-setup": "^1.6"
-    },
-    "scripts": {
-        "phpcs": [
-            "phpcs --standard=phpcs.xml.dist --extensions=php --ignore=vendor/ ."
-        ],
-        "phpcbf": [
-            "phpcbf --standard=phpcs.xml.dist --extensions=php --ignore=vendor/ ."
-        ],
-        "test:unit": [
-            "vendor/bin/pest --group=unit"
-        ],
-        "test:integration": [
-            "vendor/bin/pest --group=integration"
-        ]
-    },
     "autoload": {
         "psr-4": {
             "LCDR\\": "./src/php",
@@ -38,12 +13,44 @@
     },
     "config": {
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
             "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
             "pestphp/pest-plugin": true
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/berlindb/core"
+        }
+    ],
+    "name": "elucidario/pkg-core",
     "require": {
-        "opis/json-schema": "^2.3"
+        "opis/json-schema": "^2.3",
+        "berlindb/core": "^2.0.1"
+    },
+    "require-dev": {
+        "automattic/vipwpcs": "*",
+        "dealerdirect/phpcodesniffer-composer-installer": "0.7.2",
+        "dingo-d/wp-pest-integration-test-setup": "^1.6",
+        "php-stubs/wordpress-stubs": "^6.2",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "squizlabs/php_codesniffer": "^3.7",
+        "wp-cli/wp-cli-bundle": "*",
+        "wp-coding-standards/wpcs": "2.3.0"
+    },
+    "scripts": {
+        "phpcbf": [
+            "phpcbf --standard=phpcs.xml.dist --extensions=php --ignore=vendor/ ."
+        ],
+        "phpcs": [
+            "phpcs --standard=phpcs.xml.dist --extensions=php --ignore=vendor/ ."
+        ],
+        "test:integration": [
+            "vendor/bin/pest --group=integration"
+        ],
+        "test:unit": [
+            "vendor/bin/pest --group=unit"
+        ]
     }
 }

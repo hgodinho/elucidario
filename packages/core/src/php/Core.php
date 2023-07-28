@@ -26,11 +26,11 @@ class Core {
 	public $options;
 
 	/**
-	 * DB Schema.
+	 * DB.
 	 *
-	 * @var \LCDR\DB\Schema
+	 * @var \LCDR\DB\Core
 	 */
-	public $db_schema;
+	protected $db;
 
 	/**
 	 * Schema.
@@ -43,7 +43,7 @@ class Core {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->db_schema = new \LCDR\DB\Schema();
+		$this->db = new \LCDR\DB\Core();
 		$this->options = new \LCDR\Options\Core();
 		$this->schema = new \LCDR\Mdorim\Schema();
 
