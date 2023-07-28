@@ -72,13 +72,13 @@
     "log": {
         "scope": "php",
         "prefix": "log",
-        "description": "LCDR\\Debug\\::log",
-        "body": "\\LCDR\\Debug::log( ${1:msg}, ${2:title}, __METHOD__, __LINE__ );"
+        "description": "LCDR\\Utils\\Debug\\::log",
+        "body": "\\LCDR\\Utils\\Debug::log( ${1:msg}, ${2:title}, __METHOD__, __LINE__ );"
     },
     "dump": {
         "scope": "php",
         "prefix": "dump",
-        "description": "LCDR\\Debug\\::dump",
-        "body": "\\LCDR\\Debug::dump( ${1:msg}, __CLASS__, __METHOD__, __LINE__, ${2:true} );"
+        "description": "LCDR\\Utils\\Debug\\::dump",
+        "body": "\\LCDR\\Utils\\Debug::dump( ${1:msg}, __CLASS__, __METHOD__, __LINE__, ${2:true} );"
     }
 }

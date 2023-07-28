@@ -370,6 +370,9 @@ importers:
       ajv:
         specifier: '6'
         version: 6.12.6
+      json-cycle:
+        specifier: ^1.5.0
+        version: 1.5.0
     devDependencies:
       '@babel/plugin-transform-json-strings':
         specifier: ^7.22.5
@@ -2389,7 +2392,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.5
-      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-plugin-utils': 7.21.5
 
   /@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.22.8):
     resolution: {integrity: sha512-Yqfm+XDx0+Prh3VSeEQCPU81yC+JWZ2pDPFSS4ZdpfZhp4MkFMaDC1UqseovEKwSUpnIL7+vK+Clp7bfh0iD7g==}
@@ -2397,7 +2400,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.8
-      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-plugin-utils': 7.21.5
     dev: true
 
   /@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.21.8):
@@ -19551,6 +19554,11 @@ packages:
 
   /json-buffer@3.0.0:
     resolution: {integrity: sha512-CuUqjv0FUZIdXkHPI8MezCnFCdaTAacej1TZYulLoAg1h/PhwkdXFN4V/gzY4g+fMBCOV2xF+rp7t2XD2ns/NQ==}
+    dev: false
+
+  /json-cycle@1.5.0:
+    resolution: {integrity: sha512-GOehvd5PO2FeZ5T4c+RxobeT5a1PiGpF4u9/3+UvrMU4bhnVqzJY7hm39wg8PDCqkU91fWGH8qjWR4bn+wgq9w==}
+    engines: {node: '>= 4'}
     dev: false
 
   /json-parse-better-errors@1.0.2:
