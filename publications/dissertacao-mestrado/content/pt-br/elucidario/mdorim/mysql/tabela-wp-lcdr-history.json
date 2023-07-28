@@ -1,0 +1,96 @@
+{
+    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_history_ do sistema",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Chave"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
+        [
+            "id",
+            "bigint(20)",
+            "auto_increment",
+            "PRI",
+            "Identificador único do registro"
+        ],
+        [
+            "event_type",
+            "varchar(20)",
+            "",
+            "",
+            "Tipo de evento no histórico de edição, podendo ser _Creation_ ou _Edition_"
+        ],
+        ["timestamp", "datetime", "", "", "Data e hora do evento"],
+        [
+            "entity_type",
+            "varchar(20)",
+            "",
+            "",
+            "Tipo de entidade que sofreu a alteração."
+        ],
+        [
+            "entity_id",
+            "bigint(20)",
+            "",
+            "",
+            "Identificador único da entidade que sofreu a alteração."
+        ],
+        [
+            "user_id",
+            "bigint(20)",
+            "",
+            "",
+            "Identificador único do usuário que realizou a alteração."
+        ],
+        [
+            "property",
+            "varchar(200)",
+            "",
+            "",
+            "Nome da propriedade que sofreu a alteração."
+        ],
+        [
+            "related_event",
+            "bigint(20)",
+            "",
+            "",
+            "Identificador único de outro evento a que este evento está relacionado."
+        ],
+        [
+            "previous",
+            "longtext",
+            "",
+            "",
+            "Valor antigo da propriedade que sofreu a alteração."
+        ],
+        [
+            "current",
+            "longtext",
+            "",
+            "",
+            "Valor novo da propriedade que sofreu a alteração."
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

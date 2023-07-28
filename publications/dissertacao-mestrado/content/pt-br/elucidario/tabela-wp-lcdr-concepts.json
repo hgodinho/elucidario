@@ -15,7 +15,7 @@
         },
         {
             "type": "string",
-            "name": "Key"
+            "name": "Chave"
         },
         {
             "type": "string",
@@ -23,7 +23,7 @@
         }
     ],
     "data": [
-        ["Coluna", "Tipo", "Extra", "Key", "Descrição"],
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
         [
             "id",
             "bigint(20)",
@@ -36,36 +36,35 @@
             "text",
             "",
             "",
-            "Nome do Concept, gerado automaticamente baseado na coluna identified_by"
+            "Nome do Concept, gerado automaticamente baseado na coluna _identified_by_"
         ],
         [
             "identified_by",
             "JSON",
             "",
             "",
-            "Um array de JSON que representam as identificações do conceito"
+            "Um array de objetos JSON que podem ser _Name_ ou _Identifier_"
         ],
         [
             "referred_to_by",
             "JSON",
             "",
             "",
-            "Um array de JSON que representam as descrições do conceito"
+            "Um array de objetos JSON _Statement_"
         ],
         [
             "equivalent",
             "JSON",
             "",
             "",
-            "Um array de JSON em que cada um é uma referência a uma entidade externa equivalente ao conceito"
+            "Um array de JSON em que cada um é uma referência a um recurso externo equivalente"
         ],
-        ["created_at", "datetime", "", "", "Data de criação do registro"],
         [
-            "updated_at",
-            "datetime",
+            "attributed_by",
+            "JSON",
             "",
             "",
-            "Data da última atualização do registro"
+            "Um array de JSON _AttributeAssignment_ que atribui um atributo a este conceito"
         ]
     ],
     "note": {

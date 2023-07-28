@@ -26,4 +26,4 @@
         5. Se o dono deixa para identificação, realize a tarefa no tempo acordado e vá para _Object exit_;
         6. Se o objeto chega anonimamente, lide de acordo com a política da instituição;
 
-{{table:spectrum/obj-entry.json}}
+{{table:documentacao/spectrum/obj-entry.json}}

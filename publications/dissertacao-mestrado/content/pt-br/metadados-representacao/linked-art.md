@@ -93,25 +93,25 @@ Um objeto com uma propriedade "name" do tipo string pode ser representado em JSO
 
 A API do Linked Art é dividida em duas partes: _Shared Constructs_, ou Estruturas Compartilhadas (EC), e _Entity Endpoints_, Endpoints de Entidades (EE). Como as propriedades definidas no Linked Art se repetem pelas EC e EE, separamos as propriedades em dois quadros distintos para facilitar a visualização. No primeiro, apresentamos as propriedades que são obrigatórias nas EE e, com exceção de "@context" e "id", também são obrigatórias em todas as EC. No segundo, apresentamos as propriedades que podem ou não serem utilizadas em mais de uma EC ou EE. Após os quadros, apresentamos as EC e EE:
 
-{{table:linked-art/common-properties.json}}
+{{table:metadados-representacao/linked-art/common-properties.json}}
 
-{{table:linked-art/properties.json}}
+{{table:metadados-representacao/linked-art/properties.json}}
 
 _Shared Constructs_ são estruturas de dados definidas no Linked Art que são utilizadas por mais de um endpoint. São elas [@linked-art2021.7]:
 
 -   _Dimensions_ - dimensões de um recurso físico ou digital, com uma unidade e um tipo de dimensão;
     Suas propriedades são:
 
-    {{table:linked-art/dimensions.json}}
+    {{table:metadados-representacao/linked-art/dimensions.json}}
 
-    {{table:linked-art/measurement.json}}
+    {{table:metadados-representacao/linked-art/measurement.json}}
 
 -   _Identifiers_ - identificadores de um recurso, como um número de catálogo ou um número de inventário;
     Suas propriedades são:
 
-    {{table:linked-art/identifiers.json}}
+    {{table:metadados-representacao/linked-art/identifiers.json}}
 
-    {{table:linked-art/identifiers-assignments.json}}
+    {{table:metadados-representacao/linked-art/identifiers-assignments.json}}
 
 -   _Monetary Amounts_ - similares a _Dimensions_, mas para valores monetários, no caso a propriedade _Type_ é definida como _MonetaryAmount_, e não possui a propriedade _assigned_by_;
 
@@ -130,73 +130,73 @@ Os EE são [@linked-art2021.5]:
 
     Os _Concepts_ possuem as seguintes propriedades:
 
-    {{table:linked-art/concept.json}}
+    {{table:metadados-representacao/linked-art/concept.json}}
 
-    {{table:linked-art/concept-creation.json}}
+    {{table:metadados-representacao/linked-art/concept-creation.json}}
 
 2.  **Digital Object** - imagens, vídeos, áudios, documentos, webpages, ou outros recursos digitais;
 
     Os _Digital Objects_ possuem as seguintes propriedades:
 
-    {{table:linked-art/digital.json}}
+    {{table:metadados-representacao/linked-art/digital.json}}
 
-    {{table:linked-art/digital-creation.json}}
+    {{table:metadados-representacao/linked-art/digital-creation.json}}
 
-    {{table:linked-art/digital-service.json}}
+    {{table:metadados-representacao/linked-art/digital-service.json}}
 
 3.  **Event** - eventos e atividades não específicas que estão relacionadas, mas não são parte de outra entidade;
 
     Os _Events_ possuem as seguintes propriedades:
 
-    {{table:linked-art/event.json}}
+    {{table:metadados-representacao/linked-art/event.json}}
 
 4.  **Groups** - grupos de pessoas, organizações, ou outras entidades;
 
     Os _Groups_ possuem as seguintes propriedades:
 
-    {{table:linked-art/group.json}}
+    {{table:metadados-representacao/linked-art/group.json}}
 
 5.  **People** - pessoas;
 
     _People_ possuem as seguintes propriedades:
 
-    {{table:linked-art/people.json}}
+    {{table:metadados-representacao/linked-art/people.json}}
 
 6.  **Physical Object** - objetos físicos, incluindo obras de arte, artefatos, edifícios, partes de objetos, entre outros;
 
     _Physical Objects_ possuem as seguintes propriedades:
 
-    {{table:linked-art/object.json}}
+    {{table:metadados-representacao/linked-art/object.json}}
 
 7.  **Place** - locais;
 
     _Places_ possuem as seguintes propriedades:
 
-    {{table:linked-art/place.json}}
+    {{table:metadados-representacao/linked-art/place.json}}
 
 8.  **Provenance Activity** - atividades de proveniência;
 
     _Provenance Activities_ possuem as seguintes propriedades:
 
-    {{table:linked-art/provenance.json}}
+    {{table:metadados-representacao/linked-art/provenance.json}}
 
 9.  **Sets** - conjuntos de entidades;
 
     _Sets_ possuem as seguintes propriedades:
 
-    {{table:linked-art/set.json}}
+    {{table:metadados-representacao/linked-art/set.json}}
 
 10. **Textual Work** - obras textuais que merecem descrição como entidades únicas, como conteúdo de livro ou artigos, entre outros:
 
     _Textual Works_ possuem as seguintes propriedades:
 
-    {{table:linked-art/textual.json}}
+    {{table:metadados-representacao/linked-art/textual.json}}
 
 11. **Visual Work** - conteúdo imagético que merece descrição como entidades únicas, como a imagem exibida em uma pintura ou desenho, entre outros.
 
     _Visual Works_ possuem as seguintes propriedades:
 
-    {{table:linked-art/visual.json}}
+    {{table:metadados-representacao/linked-art/visual.json}}
 
 ###### Intersecções entre Linked-art e Spectrum
 

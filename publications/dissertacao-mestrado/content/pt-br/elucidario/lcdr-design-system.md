@@ -16,7 +16,7 @@ Como vimos no "@elucidario/pkg-mdorim", os metadados do modelo são descritos em
 
 Para a definição do SD utilizaremos o mesmo formato definido no MDORIM com algumas camadas extras para melhorar a experiência de desenvolvimento. Sendo uma delas o mapeamento entre os tipos de dados primitivos e tags HTML com seus atributos. Para componentes mais complexos, como "array" desenvolvemos um componente React exclusivo que permite a adição, remoção e reordenação de itens. O quadro a seguir descreve o mapeamento realizado, em que "schema type" é o tipo de dado definido no JSON-Schema; "schema format" representa o formato de dado de uma string no JSON-Schema; "schema extra" representa qualquer outra propriedade do vocabulário JSON-Schema; "html tag" é a tag html relacionada no mapeamento, pode vir acompanhada de um sinal ">" representando uma hierarquia entre tags html ou componentes React; "input type" é o tipo de input HTML utilizado; "attributes" são os atributos da tag html; "descrição" é uma breve descrição do mapeamento realizado.
 
-{{table:design-system/json-schema-html.json}}
+{{table:elucidario/design-system/json-schema-html.json}}
 
 <!-- Como o JSON-Schema não foi criado para ser utilizado por usuários finais, mas sim por desenvolvedores e máquinas, o vocabulário não possui suporte para localização das strings "title" e "description", portanto no JSON-Schema essas propriedades devem ser escritas em inglês, logo não podemos utilizá-las para gerar a UI, uma vez que devemos dar suporte à outros idiomas como português e espanhol. Para resolver esse problema, criamos um arquivo JSON paralelo que mapeia cada propriedade do MDORIM à um objeto que permite a internacionalização dos textos para a UI, como o nome da propriedade, descrição, mensagens de erro e sucesso, etc. Este objeto também contém uma propriedade "component" que permite a definição de um componente React específico para a renderização desta propriedade no MDORIM, essa função é útil no caso de algumas exceções em que não foi utilizado o mapeamento padrão (json-schema -> HTML), mas sim foi realizada a criação de um componente próprio para renderização e edição desta propriedade. Este objeto pode ser descrito em JSON-Schema da seguinte forma:
 
@@ -53,18 +53,18 @@ Criamos um componente chamado `Field`, construído a partir da tag `fieldset` do
 
 Podemos representar a anatomia do componente `Field` da seguinte forma:
 
-![Anatomia do componente `Field`](./anatomia-Field.png)
+![Anatomia do componente `Field`](./elucidario/anatomia-Field.png)
 
 Para a validação de dados, além do feedback visual é necessário que o `Field` informe ao usuário a mensagem da validação, seja sucesso ou erro:
 
-![Feedback de erro do componente `Field`](./anatomia-Field-error.png)
+![Feedback de erro do componente `Field`](./elucidario/anatomia-Field-error.png)
 
-![Feedback de sucesso do componente `Field`](./anatomia-Field-success.png)
+![Feedback de sucesso do componente `Field`](./elucidario/anatomia-Field-success.png)
 
 No caso de `object` o `Field` é capaz de aninhar outros `Field`s:
 
-![Anatomia do componente `Field` com `object`](./anatomia-Field-object.png)
+![Anatomia do componente `Field` com `object`](./elucidario/anatomia-Field-object.png)
 
 Assim como o `array` é capaz de adicionar, remover e reordenar `Field`s:
 
-![Anatomia do componente `Field` com `array`](./anatomia-Field-array.png)
+![Anatomia do componente `Field` com `array`](./elucidario/anatomia-Field-array.png)

@@ -4,7 +4,7 @@ As unidades de informação do Spectrum são divididas em 3 grupos:
 
 Consistem em informações sobre o objeto, e são divididas em 18 tipos de informações diferentes:
 
-{{table:spectrum/spectrum-object-information-groups.json}}
+{{table:metadados-representacao/spectrum/spectrum-object-information-groups.json}}
 
 2.  Procedural information groups
 

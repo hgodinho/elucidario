@@ -44,4 +44,4 @@
         -   _Brief description_;
         -   _Any other information_.
 
-{{table:spectrum/acquisition.json}}
+{{table:documentacao/spectrum/acquisition.json}}

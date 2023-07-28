@@ -98,4 +98,4 @@
 
         4. Confirme que todas as condições foram cumpridas e feche o registro do empréstimo;
 
-{{table:spectrum/loan-in.json}}
+{{table:documentacao/spectrum/loan-in.json}}

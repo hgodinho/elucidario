@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Descrição a tabela MySQL _wp_lcdr_ do sistema",
+    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_options_ do sistema",
     "fields": [
         {
             "type": "string",
@@ -15,7 +15,7 @@
         },
         {
             "type": "string",
-            "name": "Key"
+            "name": "Chave"
         },
         {
             "type": "string",
@@ -23,7 +23,7 @@
         }
     ],
     "data": [
-        ["Coluna", "Tipo", "Extra", "Key", "Descrição"],
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
         [
             "id",
             "bigint(20)",
@@ -32,7 +32,7 @@
             "Identificador único do registro"
         ],
         ["name", "varchar(64)", "", "UNI", "Nome da configuração"],
-        ["value", "longtext", "", "", "Valor da configuração"]
+        ["value", "JSON", "", "", "Valor da configuração"]
     ],
     "note": {
         "label": "Fonte",

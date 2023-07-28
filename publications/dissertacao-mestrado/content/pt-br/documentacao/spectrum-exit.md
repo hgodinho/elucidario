@@ -22,4 +22,4 @@
 
     8. Retorne para o procedimento que levou a saída do objeto.
 
-{{table:spectrum/obj-exit.json}}
+{{table:documentacao/spectrum/obj-exit.json}}
