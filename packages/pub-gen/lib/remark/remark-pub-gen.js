@@ -9,6 +9,12 @@ import { toMD, bold, codeBlock } from "@elucidario/pkg-docusaurus-md";
 import { getPaths } from "../getPaths.js";
 import { tableMarkdown } from "./table.js";
 
+import packageJson from "../../package.json" assert { type: "json" };
+
+import { Console } from "@elucidario/pkg-console";
+
+const console = new Console(packageJson);
+
 const paths = getPaths();
 
 import { engine } from "../reference/csl-engine.js";
@@ -52,17 +58,6 @@ export default function remarkPubGen(options) {
                 const { action, optionsString, filePath, fileOptions } =
                     parseValue(value);
 
-                // console.log({
-                //     action,
-                //     optionsString,
-                //     filePath,
-                //     fileOptions,
-                // });
-                // verify if value contain ; and split
-                // if (value.includes(";")) {
-                //     const
-                // }
-
                 /**
                  * Table
                  */
@@ -74,19 +69,34 @@ export default function remarkPubGen(options) {
                  * Schema
                  */
                 if ("json-schema" === action) {
-                    const schemaData = JSON.parse(
-                        fs.readFileSync(path.resolve(options.path, filePath))
-                    );
-                    let schemaTable = {};
-
                     try {
-                        schemaTable = entityPage(schemaData, "pt-BR");
-                    } catch (error) {
-                        console.log(error);
-                    }
+                        let schemaData = {};
+                        try {
+                            schemaData = JSON.parse(
+                                fs.readFileSync(
+                                    path.resolve(options.path, filePath)
+                                )
+                            );
+                        } catch (error) {
+                            throw new Error(
+                                `Error reading schema in ${filePath} ${error.message}`
+                            );
+                        }
 
-                    node.value = schemaTable;
-                    node.type = "html";
+                        let schemaTable = {};
+                        try {
+                            schemaTable = entityPage(schemaData, "pt-BR");
+                        } catch (error) {
+                            throw new Error(
+                                `Error generation entityPage in ${filePath} ${error.message}`
+                            );
+                        }
+
+                        node.value = schemaTable;
+                        node.type = "html";
+                    } catch (err) {
+                        console.log({ err }, { defaultLog: true });
+                    }
                 }
 
                 /**

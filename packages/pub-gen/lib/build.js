@@ -9,6 +9,7 @@ import { readContents, build } from "@elucidario/pkg-paths";
 import { getPaths } from "./getPaths.js";
 import { pubGenRemarkProcessor } from "./remark/processor.js";
 import { engine } from "./reference/csl-engine.js";
+import { toMD } from "@elucidario/pkg-docusaurus-md";
 
 const paths = getPaths();
 
@@ -21,27 +22,31 @@ const paths = getPaths();
  * @param {Console} args.console
  */
 const writeImage = async ({ srcPath, publication, lang, console }) => {
-    if (isEmpty(srcPath)) return;
-    const imagePath = path.parse(srcPath);
-    const distPath = path.resolve(
-        paths.publications,
-        publication,
-        "dist",
-        lang,
-        imagePath.base
-    );
-    fs.copyFileSync(srcPath, distPath);
-    console.log(
-        {
-            type: "img",
-            when: new Date().toLocaleString(),
-        },
-        {
-            defaultLog: true,
-            title: `Image ${imagePath.base} copied!`,
-            type: "success",
-        }
-    );
+    if (isEmpty(srcPath) || typeof srcPath === "object") return;
+    try {
+        const imagePath = path.parse(srcPath);
+        const distPath = path.resolve(
+            paths.publications,
+            publication,
+            "dist",
+            lang,
+            imagePath.base
+        );
+        fs.copyFileSync(srcPath, distPath);
+        console.log(
+            {
+                type: "img",
+                when: new Date().toLocaleString(),
+            },
+            {
+                defaultLog: true,
+                title: `Image ${imagePath.base} copied!`,
+                type: "success",
+            }
+        );
+    } catch (error) {
+        throw new Error(`error writing image at writeImage: ${error}`);
+    }
 };
 
 /**
@@ -97,6 +102,30 @@ const writeImages = async ({ srcPath, publication, lang, console }) => {
 };
 
 /**
+ *  Merge MD
+ * @param {string|object} content
+ * @returns {string}
+ */
+export const mergeMd = (content) => {
+    const deepMerge = (obj) => {
+        return Object.entries(obj).reduce((acc, [title, content]) => {
+            if (typeof content === "string") {
+                return acc + content + "\n\n";
+            } else if (typeof content === "object") {
+                const nestedContent = deepMerge(content);
+                return toMD([acc, nestedContent]);
+            } else {
+                return acc;
+            }
+        }, "");
+    };
+    if (typeof content === "object") {
+        return deepMerge(content);
+    }
+    return content;
+};
+
+/**
  * Write Docs
  * @param {Object} args
  * @param {string} args.distPath
@@ -123,19 +152,12 @@ const writeDocs = async ({
         log: false,
     });
 
-    // console.log(mdContent);
-
     try {
         return await Promise.all(
             Object.entries(mdContent).map(async ([name, content]) => {
                 // If content is an object, it's a multi-file content, so we need to join it
                 let Path = path.resolve(srcPath);
-
-                if (typeof content === "object") {
-                    content = Object.values(content).join("\n\n");
-                    Path = path.resolve(srcPath, name);
-                }
-
+                content = mergeMd(content);
                 const newFile = await pubGenRemarkProcessor(content, {
                     pubGen: {
                         publication,
