@@ -12,7 +12,7 @@ export const dereference = async (
             options as $RefParserOptions
         ) as JSONSchema7;
     } catch (e: unknown) {
-        console.log(e);
+        throw new Error(e as string);
     }
     return schema;
 };
