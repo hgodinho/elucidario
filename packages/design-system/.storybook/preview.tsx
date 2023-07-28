@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react";
 import { withThemeByDataAttribute } from "@storybook/addon-styling";
+import React from "react";
 
 import "../dist/output.css";
 

@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
-
 import * as components from "@/components";
+
 import type { FieldProps, MappingProps } from "@elucidario/pkg-types";
+import React, { useMemo } from "react";
+
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 export const Mapping = ({ version, mapping }: MappingProps) => {
     return (
