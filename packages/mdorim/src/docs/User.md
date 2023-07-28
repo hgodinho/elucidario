@@ -15,5 +15,3 @@ description: User
 Usuário do sistema
 
 ## Classes
-
-{{json-schema:schemas/User.json}}

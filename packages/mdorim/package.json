@@ -25,7 +25,7 @@
         "translations"
     ],
     "scripts": {
-        "build": "pnpm buildScript -c -s -e -t -m && pnpm test",
+        "build": "pnpm buildScript -c -s -e -t -m -d && pnpm test",
         "buildScript": "node src/build/build.js",
         "clean:docs": "rm -rf docs/*",
         "clean:static": "rm -rf static/*",

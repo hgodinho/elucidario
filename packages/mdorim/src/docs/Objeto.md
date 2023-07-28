@@ -14,5 +14,3 @@ description: Object
 Objeto
 
 ## Classes
-
-{{json-schema:schemas/Object.json}}
