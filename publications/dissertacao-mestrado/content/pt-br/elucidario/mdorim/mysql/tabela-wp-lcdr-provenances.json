@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_places_ do sistema",
+    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_provenance_ do sistema",
     "fields": [
         {
             "type": "string",
@@ -28,52 +28,70 @@
             "id",
             "bigint(20) unsigned",
             "auto_increment",
-            "PRI IND",
-            "Identificador único do _Place_"
+            "PRI",
+            "Identificador único da _ProvenanceActivity_"
         ],
         [
-            "slug",
-            "varchar(200)",
+            "name",
+            "varchar(255)",
             "",
-            "IND",
-            "Slug do _Place_, igual ao _post_name_ da tabela _wp_posts_"
+            "UNIQUE",
+            "Slug da _ProvenanceActivity_, igual ao _post_name_ da tabela _wp_posts_"
         ],
         [
             "guid",
             "varchar(255)",
             "",
             "",
-            "Slug do _Place_, igual ao _post_name_ da tabela _wp_posts_"
+            "Identificador único da _ProvenanceActivity_ no sistema, igual ao _guid_ da tabela _wp_posts_"
         ],
         [
             "author",
             "bigint(20) unsigned",
             "",
-            "IND",
-            "Identificador do autor do _Place_, igual ao _post_author_ da tabela _wp_posts_"
+            "INDEX",
+            "Identificador do autor da _ProvenanceActivity_, igual ao _post_author_ da tabela _wp_posts_"
         ],
-        ["status", "varchar(20)", "", "IND", "Status do _Place_"],
-        ["password", "varchar(20)", "", "", "Senha do _Place_"],
+        [
+            "status",
+            "varchar(30)",
+            "",
+            "INDEX",
+            "Status da _ProvenanceActivity_ no sistema"
+        ],
+        [
+            "password",
+            "char(20)",
+            "",
+            "",
+            "Senha para visualização da _ProvenanceActivity_"
+        ],
         [
             "created",
             "datetime",
             "",
-            "IND",
-            "Data de criação do _Place_, igual ao _post_date_ da tabela _wp_posts_"
+            "INDEX",
+            "Data de criação da _ProvenanceActivity_, igual ao _post_date_ da tabela _wp_posts_"
         ],
 
-        ["type", "text", "", "", "Deve ser _Place_"],
+        [
+            "type",
+            "varchar(60)",
+            "",
+            "",
+            "Tipo da _ProvenanceActivity_, pode ser _Type_, _Material_, _Language_, _Currency_, _MeasurementUnit_"
+        ],
         [
             "label",
-            "text",
+            "varchar(255)",
             "",
             "",
-            "Nome do _Place_, gerado automaticamente baseado na coluna _identified_by_"
+            "Nome da _ProvenanceActivity_, gerado automaticamente baseado na coluna _identified_by_"
         ],
         [
             "identified_by",
             "JSON",
-            "",
+            "NOT NULL",
             "",
             "Um array de objetos JSON que podem ser _Name_ ou _Identifier_"
         ],
@@ -96,15 +114,16 @@
             "JSON",
             "",
             "",
-            "Um array de JSON _AttributeAssignment_ que define um atributo a este conceito"
+            "Um array de JSON _AttributeAssignment_ que define um atributo a <ESTA ENTIDADE>"
         ],
 
+        ["timespan", "JSON", "", "", "Um objeto JSON _TimeSpan_"],
         [
-            "defined_by",
-            "string",
+            "part",
+            "JSON",
             "",
             "",
-            "Uma string com WKT ou GeoJSON que define a geometria do _Place_"
+            "Um array de objetos JSON que seja um evento de proveniência, como _Acquisition_, _Payment_, _TransferOfCustody_, _Encounter_, _RightAcquisition_, _Move_ e _Promise_"
         ]
     ],
     "note": {

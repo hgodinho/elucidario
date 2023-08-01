@@ -9,8 +9,8 @@ background: transparent
 ```mermaid
     erDiagram
         wp_lcdr_concepts {
-            int id
-            string slug
+            int concept_id
+            string name
             string guid
             int author
             string status

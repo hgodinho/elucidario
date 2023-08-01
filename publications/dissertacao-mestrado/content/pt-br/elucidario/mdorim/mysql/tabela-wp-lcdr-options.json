@@ -31,7 +31,7 @@
             "PRI",
             "Identificador único do registro"
         ],
-        ["name", "varchar(64)", "", "UNI", "Nome da configuração"],
+        ["name", "varchar(64)", "", "UNIQUE", "Nome da configuração"],
         ["value", "JSON", "", "", "Valor da configuração"]
     ],
     "note": {
