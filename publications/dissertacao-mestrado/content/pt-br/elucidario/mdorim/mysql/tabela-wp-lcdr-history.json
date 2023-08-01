@@ -35,7 +35,7 @@
             "event_type",
             "varchar(20)",
             "",
-            "",
+            "INDEX",
             "Tipo de evento no histórico de edição, podendo ser _Creation_ ou _Edition_"
         ],
         ["timestamp", "datetime", "", "", "Data e hora do evento"],
@@ -43,21 +43,21 @@
             "entity_type",
             "varchar(20)",
             "",
-            "",
+            "INDEX",
             "Tipo de entidade que sofreu a alteração."
         ],
         [
             "entity_id",
             "bigint(20)",
             "",
-            "",
+            "INDEX",
             "Identificador único da entidade que sofreu a alteração."
         ],
         [
             "user_id",
             "bigint(20)",
             "",
-            "",
+            "INDEX",
             "Identificador único do usuário que realizou a alteração."
         ],
         [
@@ -71,7 +71,7 @@
             "related_event",
             "bigint(20)",
             "",
-            "",
+            "INDEX",
             "Identificador único de outro evento a que este evento está relacionado."
         ],
         [

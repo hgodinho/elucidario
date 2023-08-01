@@ -25,17 +25,17 @@
     "data": [
         ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
         [
-            "id",
+            "agent_id",
             "bigint(20) unsigned",
             "auto_increment",
-            "PRI IND",
+            "PRI",
             "Identificador único do _Agent_"
         ],
         [
-            "slug",
-            "varchar(200)",
+            "name",
+            "varchar(255)",
             "",
-            "IND",
+            "UNIQUE",
             "Slug do _Agent_, igual ao _post_name_ da tabela _wp_posts_"
         ],
         [
@@ -43,35 +43,35 @@
             "varchar(255)",
             "",
             "",
-            "Slug do _Agent_, igual ao _post_name_ da tabela _wp_posts_"
+            "Identificador único do _Agent_ no sistema, igual ao _guid_ da tabela _wp_posts_"
         ],
         [
             "author",
             "bigint(20) unsigned",
             "",
-            "IND",
+            "INDEX",
             "Identificador do autor do _Agent_, igual ao _post_author_ da tabela _wp_posts_"
         ],
-        ["status", "varchar(20)", "", "IND", "Status do _Agent_"],
-        ["password", "varchar(20)", "", "", "Senha do _Agent_"],
+        ["status", "varchar(30)", "", "INDEX", "Status do _Agent_ no sistema"],
+        ["password", "char(20)", "", "", "Senha para visualização do _Agent_"],
         [
             "created",
             "datetime",
             "",
-            "IND",
+            "INDEX",
             "Data de criação do _Agent_, igual ao _post_date_ da tabela _wp_posts_"
         ],
 
         [
             "type",
-            "text",
+            "varchar(60)",
             "",
             "",
-            "Tipo do _Agent_, pode ser _Agent_, _Person_, _Organization_ ou _Group_"
+            "Tipo do _Agent_, pode ser _Type_, _Material_, _Language_, _Currency_, _MeasurementUnit_"
         ],
         [
             "label",
-            "text",
+            "varchar(255)",
             "",
             "",
             "Nome do _Agent_, gerado automaticamente baseado na coluna _identified_by_"
@@ -79,7 +79,7 @@
         [
             "identified_by",
             "JSON",
-            "",
+            "NOT NULL",
             "",
             "Um array de objetos JSON que podem ser _Name_ ou _Identifier_"
         ],
@@ -102,16 +102,11 @@
             "JSON",
             "",
             "",
-            "Um array de JSON _AttributeAssignment_ que define um atributo a este conceito"
+            "Um array de JSON _AttributeAssignment_ que define um atributo a <ESTA ENTIDADE>"
         ],
 
-        [
-            "contact_point",
-            "JSON",
-            "",
-            "",
-            "Um array de JSON _Identifier_ que define um ponto de contato deste conceito"
-        ],
+        ["contact_point", "JSON", "", "", "Um array de JSON _Identifier_"],
+
         [
             "begin_of_existence",
             "JSON",

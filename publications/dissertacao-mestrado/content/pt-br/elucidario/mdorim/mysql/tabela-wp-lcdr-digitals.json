@@ -25,17 +25,17 @@
     "data": [
         ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
         [
-            "id",
+            "digital_id",
             "bigint(20) unsigned",
             "auto_increment",
-            "PRI IND",
+            "PRI",
             "Identificador único do _DigitalObject_"
         ],
         [
-            "slug",
-            "varchar(200)",
+            "name",
+            "varchar(255)",
             "",
-            "IND",
+            "UNIQUE",
             "Slug do _DigitalObject_, igual ao _post_name_ da tabela _wp_posts_"
         ],
         [
@@ -43,28 +43,47 @@
             "varchar(255)",
             "",
             "",
-            "Slug do _DigitalObject_, igual ao _post_name_ da tabela _wp_posts_"
+            "Identificador único do _DigitalObject_ no sistema, igual ao _guid_ da tabela _wp_posts_"
         ],
         [
             "author",
             "bigint(20) unsigned",
             "",
-            "IND",
+            "INDEX",
             "Identificador do autor do _DigitalObject_, igual ao _post_author_ da tabela _wp_posts_"
         ],
-        ["status", "varchar(20)", "", "IND", "Status do _DigitalObject_"],
-        ["password", "varchar(20)", "", "", "Senha do _DigitalObject_"],
+        [
+            "status",
+            "varchar(30)",
+            "",
+            "INDEX",
+            "Status do _DigitalObject_ no sistema"
+        ],
+        [
+            "password",
+            "char(20)",
+            "",
+            "",
+            "Senha para visualização do _DigitalObject_"
+        ],
         [
             "created",
             "datetime",
             "",
-            "IND",
+            "INDEX",
             "Data de criação do _DigitalObject_, igual ao _post_date_ da tabela _wp_posts_"
         ],
 
         [
+            "type",
+            "varchar(60)",
+            "",
+            "",
+            "Tipo do _DigitalObject_, pode ser _Type_, _Material_, _Language_, _Currency_, _MeasurementUnit_"
+        ],
+        [
             "label",
-            "text",
+            "varchar(255)",
             "",
             "",
             "Nome do _DigitalObject_, gerado automaticamente baseado na coluna _identified_by_"
@@ -72,7 +91,7 @@
         [
             "identified_by",
             "JSON",
-            "",
+            "NOT NULL",
             "",
             "Um array de objetos JSON que podem ser _Name_ ou _Identifier_"
         ],
@@ -95,37 +114,31 @@
             "JSON",
             "",
             "",
-            "Um array de JSON _AttributeAssignment_ que atribui um atributo a este conceito"
+            "Um array de JSON _AttributeAssignment_ que define um atributo a <ESTA ENTIDADE>"
         ],
+
         [
             "dimension",
             "JSON",
             "",
             "",
-            "Um array de JSON _Dimension_ que descreve uma dimensão deste _DigitalObject_"
+            "Um array de JSON _Dimension_ que descreve as dimensões <DESTA ENTIDADE>"
         ],
-        ["format", "string", "", "", "O tipo de mídia do _DigitalObject_"],
+        [
+            "format",
+            "varchar(60)",
+            "",
+            "",
+            "Formato de mídia <DESTA ENTIDADE>, por exemplo: _application/pdf_, _image/jpeg_, _video/mp4_, etc."
+        ],
         [
             "digitally_available_via",
             "JSON",
             "",
             "",
-            "Um array de JSON _DigitalService_ que descreve a localização digital deste _DigitalObject_"
+            "Um array de JSON _DigitalService_"
         ],
-        [
-            "used_for",
-            "JSON",
-            "",
-            "",
-            "Um array de JSON _Activity_ que descreve o uso deste _DigitalObject_"
-        ],
-        [
-            "creation",
-            "JSON",
-            "",
-            "",
-            "Um objeto JSON _Creation_ que descreve a criação deste _DigitalObject_"
-        ]
+        ["created_by", "JSON", "", "", "Um objeto JSON _Creation_"]
     ],
     "note": {
         "label": "Fonte",

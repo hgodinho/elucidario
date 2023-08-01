@@ -53,18 +53,18 @@ Criamos um componente chamado `Field`, construído a partir da tag `fieldset` do
 
 Podemos representar a anatomia do componente `Field` da seguinte forma:
 
-![Anatomia do componente `Field`](./elucidario/anatomia-Field.png)
+![Anatomia do componente `Field`](./anatomia-Field.png)
 
 Para a validação de dados, além do feedback visual é necessário que o `Field` informe ao usuário a mensagem da validação, seja sucesso ou erro:
 
-![Feedback de erro do componente `Field`](./elucidario/anatomia-Field-error.png)
+![Feedback de erro do componente `Field`](./anatomia-Field-error.png)
 
-![Feedback de sucesso do componente `Field`](./elucidario/anatomia-Field-success.png)
+![Feedback de sucesso do componente `Field`](./anatomia-Field-success.png)
 
 No caso de `object` o `Field` é capaz de aninhar outros `Field`s:
 
-![Anatomia do componente `Field` com `object`](./elucidario/anatomia-Field-object.png)
+![Anatomia do componente `Field` com `object`](./anatomia-Field-object.png)
 
 Assim como o `array` é capaz de adicionar, remover e reordenar `Field`s:
 
-![Anatomia do componente `Field` com `array`](./elucidario/anatomia-Field-array.png)
+![Anatomia do componente `Field` com `array`](./anatomia-Field-array.png)

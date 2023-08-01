@@ -25,53 +25,53 @@
     "data": [
         ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
         [
-            "concept_id",
+            "id",
             "bigint(20) unsigned",
             "auto_increment",
             "PRI",
-            "Identificador único do _Concept_"
+            "Identificador único <DA ENTIDADE>"
         ],
         [
             "name",
             "varchar(255)",
             "",
             "UNIQUE",
-            "Slug do _Concept_, igual ao _post_name_ da tabela _wp_posts_"
+            "Slug <DA ENTIDADE>, igual ao _post_name_ da tabela _wp_posts_"
         ],
         [
             "guid",
             "varchar(255)",
             "",
             "",
-            "Identificador único do _Concept_ no sistema, igual ao _guid_ da tabela _wp_posts_"
+            "Identificador único <DA ENTIDADE> no sistema, igual ao _guid_ da tabela _wp_posts_"
         ],
         [
             "author",
             "bigint(20) unsigned",
             "",
             "INDEX",
-            "Identificador do autor do _Concept_, igual ao _post_author_ da tabela _wp_posts_"
+            "Identificador do autor <DA ENTIDADE>, igual ao _post_author_ da tabela _wp_posts_"
         ],
         [
             "status",
             "varchar(30)",
             "",
             "INDEX",
-            "Status do _Concept_ no sistema"
+            "Status <DA ENTIDADE> no sistema"
         ],
         [
             "password",
             "char(20)",
             "",
             "",
-            "Senha para visualização do _Concept_"
+            "Senha para visualização <DA ENTIDADE>"
         ],
         [
             "created",
             "datetime",
             "",
             "INDEX",
-            "Data de criação do _Concept_, igual ao _post_date_ da tabela _wp_posts_"
+            "Data de criação <DA ENTIDADE>, igual ao _post_date_ da tabela _wp_posts_"
         ],
 
         [
@@ -79,14 +79,14 @@
             "varchar(60)",
             "",
             "",
-            "Tipo do _Concept_, pode ser _Type_, _Material_, _Language_, _Currency_, _MeasurementUnit_"
+            "Tipo <DA ENTIDADE>, pode ser _Type_, _Material_, _Language_, _Currency_, _MeasurementUnit_"
         ],
         [
             "label",
             "varchar(255)",
             "",
             "",
-            "Nome do _Concept_, gerado automaticamente baseado na coluna _identified_by_"
+            "Nome <DA ENTIDADE>, gerado automaticamente baseado na coluna _identified_by_"
         ],
         [
             "identified_by",
@@ -114,9 +114,46 @@
             "JSON",
             "",
             "",
-            "Um array de JSON _AttributeAssignment_ que define um atributo a este conceito"
+            "Um array de JSON _AttributeAssignment_ que define um atributo a <ESTA ENTIDADE>"
         ],
-        ["created_by", "JSON", "", "", "Um objeto JSON _Creation_"]
+
+        [
+            "dimension",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON _Dimension_ que descreve as dimensões <DESTA ENTIDADE>"
+        ],
+        [
+            "format",
+            "varchar(60)",
+            "",
+            "",
+            "Formato de mídia <DESTA ENTIDADE>, por exemplo: _application/pdf_, _image/jpeg_, _video/mp4_, etc."
+        ],
+        [
+            "digitally_available_via",
+            "JSON",
+            "",
+            "",
+            "Um array de JSON _DigitalService_"
+        ],
+        ["created_by", "JSON", "", "", "Um objeto JSON _Creation_"],
+        ["contact_point", "JSON", "", "", "Um array de JSON _Identifier_"],
+
+        ["timespan", "JSON", "", "", "Um objeto JSON _TimeSpan_"],
+        [
+            "part",
+            "JSON",
+            "",
+            "",
+            "Um array de objetos JSON que seja um evento de proveniência, como _Acquisition_, _Payment_, _TransferOfCustody_, _Encounter_, _RightAcquisition_, _Move_ e _Promise_"
+        ],
+        ["produced_by", "JSON", "", "", "Um objeto JSON _Production_"],
+        ["destroyed_by", "JSON", "", "", "Um objeto JSON _Destruction_"],
+        ["removed_y", "JSON", "", "", "Um objeto JSON _PartRemoval_"],
+        ["defined_by", "varchar(255)", "", "", ""],
+        ["content", "JSON", "", "", ""]
     ],
     "note": {
         "label": "Fonte",

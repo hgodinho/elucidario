@@ -23,7 +23,7 @@ background: transparent
 
         wp_lcdr_history }|--|{ wp_lcdr_history : "related_event"
 
-        wp_lcdr_entity-name }|--|{ wp_lcdr_history : "entity_id & entity_type"
+        wp_lcdr_ENTITY-NAME }|--|{ wp_lcdr_history : "entity_id & entity_type"
 
         wp_users }|--|{ wp_lcdr_history : "user_id"
 ```
