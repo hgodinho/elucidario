@@ -9,11 +9,13 @@
 
 namespace LCDR\Mdorim\History;
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'LCDR_PATH' ) )
+if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
+}
 
 final class Event {
 	/**

@@ -8,11 +8,13 @@
 
 namespace LCDR\Mdorim;
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'LCDR_PATH' ) )
+if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
+}
 
 final class Meta {
 	/**
@@ -54,7 +56,6 @@ final class Meta {
 	 * Status.
 	 *
 	 * @var string
-	 * 
 	 */
 	public $status;
 

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Notices class.
  *
@@ -9,12 +8,17 @@
 
 namespace LCDR\Utils;
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'LCDR_PATH' ) )
+if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
+}
 
+/**
+ * Notices class.
+ */
 class Notices {
 	/**
 	 * Tipo de notice
@@ -99,10 +103,10 @@ class Notices {
 			array_push( $classes, $type );
 
 			// if notice type is different than error or warning than notice is dismissible.
-			if ( ! in_array( $this->type, array( 'error', 'warning' ) ) ) {
+			if ( ! in_array( $this->type, array( 'error', 'warning' ), true ) ) {
 				array_push( $classes, 'is-dismissible' );
 			}
 		}
-		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( implode( ' ', $classes ) ), $this->message );
+		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( implode( ' ', $classes ) ), esc_attr( $this->message ) );
 	}
 }

@@ -16,11 +16,13 @@ use \Opis\JsonSchema\{
 
 use \Opis\JsonSchema\Errors\ErrorFormatter;
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'LCDR_PATH' ) )
+if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
+}
 
 /**
  * Schema class.
@@ -35,16 +37,13 @@ class Schema {
 
 	/**
 	 * JSON-Schema
-	 * 
+	 *
 	 * @var array
 	 */
 	protected $schemas;
 
 	/**
 	 * Constructor.
-	 * 
-	 * @param string $type Schema type.
-	 * @param object|null $data Schema data.
 	 */
 	public function __construct() {
 		$this->init_validator();
@@ -52,8 +51,6 @@ class Schema {
 
 	/**
 	 * Initialize validator.
-	 * 
-	 * @return void
 	 */
 	public function init_validator() {
 		$this->validator = new Validator();
@@ -65,10 +62,10 @@ class Schema {
 
 	/**
 	 * Validate data against specified schema.
-	 * 
+	 *
 	 * @param string $schema
-	 * @param mixed $data
-	 * 
+	 * @param mixed  $data
+	 *
 	 * @return bool
 	 */
 	public function validate( string $schema, mixed $data = null ) {
@@ -78,16 +75,12 @@ class Schema {
 			return true;
 		}
 		$errors = ( new ErrorFormatter() )->format( $result->error() );
-		var_dump( $errors );
 		return false;
-	}
-
-	public function select( string $schema_name ) {
 	}
 
 	/**
 	 * Get validator.
-	 * 
+	 *
 	 * @return Validator
 	 */
 	public function get_validator() {
@@ -96,7 +89,7 @@ class Schema {
 
 	/**
 	 * Get id.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function id_map( $id ) {
@@ -106,28 +99,28 @@ class Schema {
 
 	/**
 	 * Set schema.
-	 * 
+	 *
 	 * @return void
 	 */
 	// public function set_schema() {
-	// 	try {
-	// 		$this->schema = json_decode(
-	// 			file_get_contents(
-	// 				LCDR_PATH
-	// 				. 'node_modules/@elucidario/pkg-mdorim/static/mdorim/schemas/mdorim/'
-	// 				. lcdr_camel_to_snake( $this->type )
-	// 				. '.json'
-	// 			)
-	// 		);
-	// 	} catch (\Exception $err) {
-	// 		$this->schema = null;
-	// 		throw new \Exception( 'Schema not found.' );
-	// 	}
+	// try {
+	// $this->schema = json_decode(
+	// file_get_contents(
+	// LCDR_PATH
+	// . 'node_modules/@elucidario/pkg-mdorim/static/mdorim/schemas/mdorim/'
+	// . lcdr_camel_to_snake( $this->type )
+	// . '.json'
+	// )
+	// );
+	// } catch (\Exception $err) {
+	// $this->schema = null;
+	// throw new \Exception( 'Schema not found.' );
+	// }
 	// }
 
 	/**
 	 * Get schemas.
-	 * 
+	 *
 	 * @return array
 	 */
 	public function get_schemas() {

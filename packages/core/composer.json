@@ -41,10 +41,10 @@
     },
     "scripts": {
         "phpcbf": [
-            "phpcbf --standard=phpcs.xml.dist --extensions=php --ignore=vendor/ ."
+            "phpcbf --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php"
         ],
         "phpcs": [
-            "phpcs --standard=phpcs.xml.dist --extensions=php --ignore=vendor/ ."
+            "phpcs --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php"
         ],
         "test:integration": [
             "vendor/bin/pest --group=integration"
