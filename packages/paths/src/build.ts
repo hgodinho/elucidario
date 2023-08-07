@@ -1,17 +1,20 @@
-import { debounce } from "lodash-es";
+import type {
+    BuildCallbackProps,
+    BuildOptions,
+    FNCallbackProps,
+} from "@elucidario/pkg-types";
 
-import type { BuildOptions, BuildCallbackProps, FNCallbackProps } from "@elucidario/pkg-types";
 import { Console } from "@elucidario/pkg-console";
-
+import { debounce } from "lodash-es";
 import fs from "fs";
+import { getPaths } from "./getPaths";
 import path from "path";
 
-import { getPaths } from "./getPaths";
 const { packages } = getPaths();
 
 export const build = async (
     options: BuildOptions,
-    callback: (props: BuildCallbackProps) => Promise<void>
+    callback: (props: BuildCallbackProps) => Promise<Buffer>,
 ) => {
     try {
         if (!callback) throw new Error("callback is required");
@@ -25,7 +28,7 @@ export const build = async (
                 });
                 await callback({ options });
             } catch (err: any) {
-                throw new Error(err)
+                throw new Error(err);
             }
         };
 
@@ -41,10 +44,19 @@ export const build = async (
                         fs.watch(
                             path.resolve(options.watchSrc),
                             { recursive: true, encoding: "buffer" },
-                            () => debounce(
-                                async (event: string, filename: string) => await fn({ event, filename }),
-                                500
-                            )
+                            debounce(
+                                async (
+                                    event: string,
+                                    filename: string | Buffer | null,
+                                ) =>
+                                    await fn({
+                                        event,
+                                        filename: filename
+                                            ? filename.toString()
+                                            : "",
+                                    }),
+                                500,
+                            ),
                         );
                         break;
 
@@ -53,10 +65,19 @@ export const build = async (
                             fs.watch(
                                 path.resolve(src),
                                 { recursive: true, encoding: "buffer" },
-                                () => debounce(
-                                    async (event: string, filename: string) => await fn({ event, filename }),
-                                    500
-                                )
+                                debounce(
+                                    async (
+                                        event: string,
+                                        filename: string | Buffer | null,
+                                    ) =>
+                                        await fn({
+                                            event,
+                                            filename: filename
+                                                ? filename.toString()
+                                                : "",
+                                        }),
+                                    500,
+                                ),
                             );
                         });
                 }
@@ -64,12 +85,12 @@ export const build = async (
                 throw new Error(err);
             }
         }
-    }
-
-    catch (err: any) {
-        const packageJson = JSON.parse(fs.readFileSync(
-            path.resolve(packages, 'paths', "package.json")
-        ).toString());
+    } catch (err: any) {
+        const packageJson = JSON.parse(
+            fs
+                .readFileSync(path.resolve(packages, "paths", "package.json"))
+                .toString(),
+        );
         const console = new Console(packageJson);
         console.log(err, { type: "error", defaultLog: true, title: "Error" });
     }
