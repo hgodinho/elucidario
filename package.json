@@ -16,6 +16,7 @@
         "docusaurus": "lerna run docusaurus",
         "graph": "pnpm nx graph",
         "link": "lerna link",
+        "lint": "lerna run lint",
         "prepare": "husky install",
         "pub-gen": "pub-gen",
         "serve": "lerna run serve",
@@ -27,7 +28,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "test"
+            "pre-commit": "pre-commit"
         }
     },
     "config": {
