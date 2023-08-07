@@ -52,45 +52,28 @@ test( '\LCDR\DB\Query\Relationships->get_relationships()', function () {
 	expect( $test )->toBeArray();
 } );
 
-test( '\LCDR\DB\Query\Relationships->get_item()', function () {
+test( '\LCDR\DB\Query\Relationships->get_relationship()', function () {
 	global $relationship_id;
 	$relationships = new \LCDR\DB\Query\Relationships();
-	$test = $relationships->get_item( $relationship_id );
+	$test = $relationships->get_relationship( $relationship_id );
 
 	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\Relationship::class);
 } );
 
-// test( '\LCDR\DB\Query\Relationships->update_item()', function () {
-// 	global $relationship_id;
-// 	$relationships = new \LCDR\DB\Query\Relationships();
-// 	$test = $relationships->update_item( $relationship_id, array(
-// 		'name' => 'test',
-// 		'value' => 'test_2',
-// 	) );
+test( '\LCDR\DB\Query\Relationships->update_relationship()', function () {
+	global $relationship_id;
+	$relationships = new \LCDR\DB\Query\Relationships();
+	$test = $relationships->update_relationship( $relationship_id, array(
+		'predicate' => 'classified_as',
+	) );
 
-// 	expect( $test )->toBeNumeric();
-// } );
+	expect( $test )->toBeNumeric();
+} );
 
-// test( 'LCDR\DB\Query\Relationships->update_option()', function () {
-// 	global $random;
-// 	$relationships = new \LCDR\DB\Query\Relationships();
-// 	$test = $relationships->update_option( 'test', $random );
+test( '\LCDR\DB\Query\Relationships->delete_relationship()', function () {
+	global $relationship_id;
+	$relationships = new \LCDR\DB\Query\Relationships();
+	$test = $relationships->delete_relationship( $relationship_id );
 
-// 	expect( $test )->toBeTrue();
-// } );
-
-// test( '\LCDR\DB\Query\Relationships->get_option()', function () {
-// 	global $random;
-// 	$relationships = new \LCDR\DB\Query\Relationships();
-// 	$test = $relationships->get_option( 'test' );
-
-// 	expect( $test )->toEqual( $random );
-// } );
-
-// test( '\LCDR\DB\Query\Relationships->delete_item()', function () {
-// 	global $relationship_id;
-// 	$relationships = new \LCDR\DB\Query\Relationships();
-// 	$test = $relationships->delete_item( $relationship_id );
-
-// 	expect( $test )->toBeNumeric();
-// } );
+	expect( $test )->toBeNumeric();
+} );

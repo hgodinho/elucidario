@@ -51,6 +51,14 @@ class Relationships extends Query {
 	protected $item_shape = '\\LCDR\\DB\\Row\\Relationship';
 
 	/**
+	 *                  __    ___
+	 *     ____  __  __/ /_  / (_)____
+	 *    / __ \/ / / / __ \/ / / ___/
+	 *   / /_/ / /_/ / /_/ / / / /__
+	 *  / .___/\__,_/_.___/_/_/\___/
+	 * /_/
+	 */
+	/**
 	 * Get entities
 	 *
 	 * @param array $args Arguments to query the database.
@@ -60,6 +68,18 @@ class Relationships extends Query {
 		$items = $this->query( $args );
 
 		return $items;
+	}
+
+	/**
+	 * Get entity
+	 *
+	 * @param int $relationship_id
+	 * @return \LCDR\DB\Interfaces\Relationship
+	 */
+	public function get_relationship( $relationship_id ) {
+		$item = $this->get_item( $relationship_id );
+
+		return $item;
 	}
 
 	/**
@@ -81,12 +101,51 @@ class Relationships extends Query {
 	}
 
 	/**
+	 * Update relationship
+	 *
+	 * @param int $relationship_id Relationship ID.
+	 * @param array $args
+	 * @return bool|int False on failure, the ID of the inserted entity otherwise.
+	 */
+	public function update_relationship( $relationship_id, $args = array() ) {
+		$args = $this->parse_args( $args );
+
+		/**
+		 * Filter the arguments before adding the entity.
+		 *
+		 * @wp-filter lcdr_update_{this->item_name}_args
+		 */
+		return parent::update_item(
+			$relationship_id,
+			apply_filters( lcdr_hook( array( 'update', $this->item_name, 'args' ) ), $args )
+		);
+	}
+
+	/**
+	 * Delete relationship
+	 *
+	 * @param int $relationship_id Relationship ID.
+	 * @return bool|int False on failure, the ID of the inserted entity otherwise.
+	 */
+	public function delete_relationship( $relationship_id ) {
+		return parent::delete_item( $relationship_id );
+	}
+
+	/**
+	 *                       __            __           __
+	 *     ____  _________  / /____  _____/ /____  ____/ /
+	 *    / __ \/ ___/ __ \/ __/ _ \/ ___/ __/ _ \/ __  /
+	 *   / /_/ / /  / /_/ / /_/  __/ /__/ /_/  __/ /_/ /
+	 *  / .___/_/   \____/\__/\___/\___/\__/\___/\__,_/
+	 * /_/
+	 */
+	/**
 	 * Parse args
 	 *
 	 * @param array $args Arguments to parse.
 	 * @return mixed Parsed arguments.
 	 */
-	public function parse_args( array $args ) {
+	protected function parse_args( array $args ) {
 		$parsed = array();
 
 		foreach ( $args as $key => $value ) {
@@ -116,7 +175,7 @@ class Relationships extends Query {
 	 * @param mixed  $data Data to sanitize.
 	 * @return mixed Sanitized data.
 	 */
-	public function sanitize_data( string $key, mixed $data ) {
+	protected function sanitize_data( string $key, mixed $data ) {
 		/**
 		 * Filter the data before saving it to the database.
 		 *
