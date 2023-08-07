@@ -16,12 +16,19 @@
         "docusaurus": "lerna run docusaurus",
         "graph": "pnpm nx graph",
         "link": "lerna link",
+        "prepare": "husky install",
         "pub-gen": "pub-gen",
         "serve": "lerna run serve",
         "start": "lerna run start",
         "swizzle": "lerna run swizzle",
+        "test": "lerna run test --stream",
         "typecheck": "tsc",
         "versionUp": "lerna version --no-private --conventional-commits --create-release github"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "test"
+        }
     },
     "config": {
         "commitizen": {
@@ -37,6 +44,7 @@
         "commitizen": "^4.3.0",
         "conventional-changelog": "^4.0.0",
         "eslint": "^8.44.0",
+        "husky": "^8.0.0",
         "lerna": "^7.1.1",
         "prettier": "^3.0.0",
         "typescript": "^5.1.6"
