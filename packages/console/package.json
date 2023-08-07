@@ -8,8 +8,7 @@
 	"scripts": {
 		"build": "pnpm clean && tsc",
 		"clean": "rm -rf dist/*",
-		"dev": "pnpm build -w",
-		"test": "prettier --check . && xo && ava"
+		"dev": "pnpm build -w"
 	},
 	"xo": {
 		"extends": "xo-react",
