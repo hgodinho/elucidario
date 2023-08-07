@@ -37,20 +37,14 @@
         "phpcompatibility/phpcompatibility-wp": "*",
         "squizlabs/php_codesniffer": "^3.7",
         "wp-cli/wp-cli-bundle": "*",
-        "wp-coding-standards/wpcs": "2.3.0"
+        "wp-coding-standards/wpcs": "2.3.0",
+        "theseer/phpdox": "*"
     },
     "scripts": {
-        "phpcbf": [
-            "phpcbf --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php"
-        ],
-        "phpcs": [
-            "phpcs --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php"
-        ],
-        "test:integration": [
-            "vendor/bin/pest --group=integration"
-        ],
-        "test:unit": [
-            "vendor/bin/pest --group=unit"
-        ]
+        "phpcbf": "phpcbf --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php",
+        "phpcs": "phpcs --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php",
+        "test:integration": "vendor/bin/pest --group=integration",
+        "test:unit": "vendor/bin/pest --group=unit",
+        "doc": "vendor/bin/phpdox"
     }
 }

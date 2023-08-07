@@ -10,7 +10,8 @@
     "scripts": {
         "index": "node ./.bin/create-index.js",
         "make-pot": "node ./.bin/make-pot.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "pnpm .bin/test.sh",
+        "lint": "pnpm .bin/lint.sh"
     },
     "dependencies": {
         "@elucidario/pkg-mdorim": "workspace:^",

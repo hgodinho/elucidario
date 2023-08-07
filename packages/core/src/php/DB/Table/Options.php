@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Option class.
  *
@@ -9,23 +8,28 @@
 
 namespace LCDR\DB\Table;
 
-use \BerlinDB\Database\Table;
-
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'LCDR_PATH' ) )
+if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
+}
 
+/**
+ * Option table class.
+ */
 class Options extends Table {
+	/**
+	 * Table name.
+	 *
+	 * @var string
+	 */
 	protected $name = 'options';
 
-	protected $db_version_key = 'lcdr_db_version';
-
-	protected $db_version = '1.0.0';
-
-	protected $prefix = 'lcdr';
-
+	/**
+	 * Table schema.
+	 */
 	protected function set_schema() {
 		$this->schema = "
             id    bigint(20) unsigned NOT NULL AUTO_INCREMENT,

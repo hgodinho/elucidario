@@ -54,7 +54,7 @@ test( '\LCDR\DB\Query\Options->get_item()', function () {
 	$options = new \LCDR\DB\Query\Options();
 	$test = $options->get_item( $item_id );
 
-	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\Options::class);
+	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\Option::class);
 	expect( $test->name )->toBe( 'test' );
 	expect( $test->value )->toBe( 'test' );
 } );
@@ -70,7 +70,7 @@ test( '\LCDR\DB\Query\Options->update_item()', function () {
 	expect( $test )->toBeNumeric();
 } );
 
-test( 'LCDR\DB\Query\Options->update_option()', function () {
+test( '\LCDR\DB\Query\Options->update_option()', function () {
 	global $random;
 	$options = new \LCDR\DB\Query\Options();
 	$test = $options->update_option( 'test', $random );

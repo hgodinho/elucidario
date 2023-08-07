@@ -1,8 +1,13 @@
 <?php
-
 /**
- * Elucidário.art
- *
+ * 
+ *         __           _     __           _                   __
+ *   ___  / /_  _______(_)___/ /___ ______(_)___   ____ ______/ /_
+ *  / _ \/ / / / / ___/ / __  / __ `/ ___/ / __ \ / __ `/ ___/ __/
+ * /  __/ / /_/ / /__/ / /_/ / /_/ / /  / / /_/ // /_/ / /  / /_
+ * \___/_/\__,_/\___/_/\__,_/\__,_/_/  /_/\____(_)__,_/_/   \__/
+ * 
+ * 
  * @package @elucidario/pkg-core
  */
 
@@ -41,4 +46,5 @@ require LCDR_PATH . 'vendor/autoload.php';
 require LCDR_PATH . 'src/php/functions.php';
 
 global $lcdr;
+
 $lcdr = new LCDR\Core();

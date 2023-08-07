@@ -43,6 +43,13 @@ class Schema {
 	protected $schemas;
 
 	/**
+	 * Errors.
+	 *
+	 * @var array
+	 */
+	public $errors;
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -52,7 +59,7 @@ class Schema {
 	/**
 	 * Initialize validator.
 	 */
-	public function init_validator() {
+	private function init_validator() {
 		$this->validator = new Validator();
 		$this->validator->resolver()->registerPrefix(
 			'https://elucidario.art/mdorim',
@@ -68,14 +75,18 @@ class Schema {
 	 *
 	 * @return bool
 	 */
-	public function validate( string $schema, mixed $data = null ) {
+	public function validate( string $schema, mixed $data = null, array $options = array() ) {
 		/** @var ValidationResult $result  */
-		$result = $this->get_validator()->validate( $data, $this->id_map( $schema ) );
+		$result = $this->get_validator()->validate( $data, $this->id_map( $schema, $options ) );
 		if ( $result->isValid() ) {
 			return true;
 		}
-		$errors = ( new ErrorFormatter() )->format( $result->error() );
-		return false;
+
+		echo '<pre>';
+		print_r( ( new ErrorFormatter() )->format( $result->error() ) );
+		echo '</pre>';
+
+		throw new \Exception( __( 'Schema not valid.', 'lcdr' ) );
 	}
 
 	/**
@@ -92,8 +103,13 @@ class Schema {
 	 *
 	 * @return string
 	 */
-	public function id_map( $id ) {
+	public function id_map( string $id, $options = array() ) {
 		$id_map = "https://elucidario.art/mdorim/{$id}.json";
+
+		if ( isset( $options['map']['query'] ) ) {
+			$id_map .= '#/' . implode( '/', $options['map']['query'] );
+		}
+
 		return $id_map;
 	}
 

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Options class.
  *
@@ -11,35 +10,45 @@ namespace LCDR\DB\Schema;
 
 use \BerlinDB\Database\Schema;
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'LCDR_PATH' ) )
+if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
+}
 
+/**
+ * Options schema class.
+ */
 class Options extends Schema {
-	public $columns = [ 
-		'id' => [ 
-			'name' => 'id',
-			'type' => 'bigint',
-			'length' => 20,
-			'unsigned' => true,
-			'primary' => true,
+	/**
+	 * Columns.
+	 *
+	 * @var array
+	 */
+	public $columns = array(
+		'id'    => array(
+			'name'       => 'id',
+			'type'       => 'bigint',
+			'length'     => 20,
+			'unsigned'   => true,
+			'primary'    => true,
 			'allow_null' => false,
-			'extra' => 'auto_increment',
-		],
-		'name' => [ 
-			'name' => 'name',
-			'type' => 'varchar',
-			'length' => 127,
-			'default' => '',
+			'extra'      => 'auto_increment',
+		),
+		'name'  => array(
+			'name'       => 'name',
+			'type'       => 'varchar',
+			'length'     => 127,
+			'default'    => '',
 			'allow_null' => false,
-		],
-		'value' => [ 
-			'name' => 'value',
-			'type' => 'json',
+		),
+		'value' => array(
+			'name'       => 'value',
+			'type'       => 'json',
 			'allow_null' => false,
-		],
-	];
+		),
+	);
 
 }
