@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Core class.
  *
@@ -17,6 +16,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
 
+/**
+ * Core class.
+ */
 class Core {
 	/**
 	 * Options.
@@ -43,9 +45,9 @@ class Core {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->db = new \LCDR\DB\Core();
+		$this->db      = new \LCDR\DB\Core();
 		$this->options = new \LCDR\Options\Core();
-		$this->schema = new \LCDR\Mdorim\Schema();
+		$this->schema  = new \LCDR\Mdorim\Schema();
 
 		add_action( 'init', array( $this, 'textdomain' ) );
 	}

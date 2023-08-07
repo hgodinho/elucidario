@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Config class.
  *
@@ -9,14 +8,21 @@
 
 namespace LCDR\Options;
 
-if (!defined('ABSPATH')) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
-if (!defined('LCDR_PATH')) exit;
+if ( ! defined( 'LCDR_PATH' ) ) {
+	exit;
+}
 
-if (!class_exists('\LCDR\Options\Config')) {
-    class Config {
-        public function __construct() {
-            // \LCDR\Debug::dump('ola mundo', __CLASS__, __METHOD__, __LINE__, true);
-        }
-    }
+/**
+ * Config class.
+ */
+class Config {
+	/**
+	 * Construtor.
+	 */
+	public function __construct() {
+	}
 }

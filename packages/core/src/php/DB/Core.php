@@ -1,35 +1,53 @@
 <?php
-
 /**
  * Core class for the database.
- * 
+ *
  * @since 0.2.0
  * @package elucidario/pkg-core
  */
 
 namespace LCDR\DB;
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'LCDR_PATH' ) )
+if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
+}
 
+/**
+ * Core DB Class
+ *
+ * Controls all the database tables.
+ */
 final class Core {
-	public $table_names = [ 
-		'options' => '\\LCDR\\DB\\Table\\Options',
-	];
+	/**
+	 * Table names.
+	 *
+	 * @var array
+	 */
+	public $table_names = array(
+		'options'       => '\\LCDR\\DB\\Table\\Options',
+		'entities'      => '\\LCDR\\DB\\Table\\Entities',
+		'relationships' => '\\LCDR\\DB\\Table\\Relationships',
+	);
 
-	protected $tables = [];
+	/**
+	 * Tables.
+	 *
+	 * @var array
+	 */
+	protected $tables = array();
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->init_db();
+		$this->init_tables();
 		$this->install_tables();
 
-		add_action( lcdr_hook( [ 'uninstall' ] ), array( $this, 'uninstall_tables' ) );
+		add_action( lcdr_hook( array( 'uninstall' ) ), array( $this, 'uninstall_tables' ) );
 	}
 
 	/**
@@ -37,7 +55,7 @@ final class Core {
 	 *
 	 * @return void
 	 */
-	public function init_db() {
+	public function init_tables() {
 		foreach ( $this->table_names as $table_name => $table ) {
 			$this->tables[ $table_name ] = new $table();
 		}

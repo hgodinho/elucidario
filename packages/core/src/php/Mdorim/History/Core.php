@@ -9,19 +9,21 @@
 
 namespace LCDR\Mdorim\History;
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'LCDR_PATH' ) )
+if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
+}
 
 final class Core {
 	/**
 	 * Events.
-	 * 
+	 *
 	 * @var \LCDR\Mdorim\History\Event[]
 	 */
-	public $events = [];
+	public $events = array();
 
 	/**
 	 * Constructor.
@@ -34,7 +36,7 @@ final class Core {
 
 	/**
 	 * Add event.
-	 * 
+	 *
 	 * @param \LCDR\Mdorim\History\Event[] $events
 	 * @return void
 	 */
@@ -58,9 +60,12 @@ final class Core {
 	 * @return \LCDR\Mdorim\History\Event
 	 */
 	public function get_event( int $event_id ) {
-		return array_filter( $this->events, function ($event) use ($event_id) {
-			return $event->ID === $event_id;
-		} )[0];
+		return array_filter(
+			$this->events,
+			function ( $event ) use ( $event_id ) {
+				return $event->ID === $event_id;
+			}
+		)[0];
 	}
 
 	/**
@@ -70,8 +75,11 @@ final class Core {
 	 * @return void
 	 */
 	public function remove_event( int|array $event_id ) {
-		$this->events = array_filter( $this->events, function ($event) use ($event_id) {
-			return ! in_array( $event->ID, (array) $event_id );
-		} );
+		$this->events = array_filter(
+			$this->events,
+			function ( $event ) use ( $event_id ) {
+				return ! in_array( $event->ID, (array) $event_id );
+			}
+		);
 	}
 }

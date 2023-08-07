@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Debug class.
  *
@@ -11,12 +10,17 @@ namespace LCDR\Utils;
 
 use DateTimeZone;
 
-if ( ! defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
 
-if ( ! defined( 'LCDR_PATH' ) )
+if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
+}
 
+/**
+ * Debug class.
+ */
 class Debug {
 	/**
 	 * Var Dump especial que cita a classe, método, linha
@@ -28,7 +32,7 @@ class Debug {
 	 * @param string  $line | __LINE__.
 	 * @param boolean $die | Die WordPress on true - defaults to true.
 	 * @return void
-	 * 
+	 *
 	 * **obs:** para esse método funcionar mais fluidamente é recomendável criar
 	 * snippet de código do chamado para o método no vscode passando as
 	 * constantes mágicas:
@@ -60,7 +64,7 @@ class Debug {
 			$wp = 'breathing.';
 		}
 
-		$highlight_string = highlight_string( "<?php " . var_export( $var, true ) . "; ?>", true );
+		$highlight_string = highlight_string( '<?php ' . var_export( $var, true ) . '; ?>', true );
 
 		echo '<p><strong>Class: ' . $class . ' | ';
 		echo 'Method: ' . $method . ' | ';
@@ -80,14 +84,14 @@ class Debug {
 	/**
 	 * Log
 	 *
-	 * @param $msg
-	 * @param string $title
-	 * @param string $method
-	 * @param string $line
+	 * @param $msg | Mensagem a ser logada.
+	 * @param string $title | Título do log.
+	 * @param string $method | __METHOD__.
+	 * @param string $line | __LINE__.
 	 * @return void
 	 */
 	public static function log( $msg, $title, $method, $line ) {
-		$date = new \DateTime( "now", new DateTimeZone( 'America/Sao_Paulo' ) );
+		$date = new \DateTime( 'now', new DateTimeZone( 'America/Sao_Paulo' ) );
 		$date = $date->format( 'Y-m-d H:i:s' );
 		if ( is_bool( $msg ) ) {
 			$msg = print( $msg );
@@ -98,7 +102,7 @@ class Debug {
 			'@method: **' . $method . "**\n<br>" .
 			'@linha: **' . $line . "**\n<br>**" .
 			$title . "**\n\n```php\n" . $msg . "\n```\n\n---\n\n";
-		Debug::file_force_contents( LCDR_PATH . 'log', $log );
+		self::file_force_contents( LCDR_PATH . 'log', $log );
 	}
 
 	/**
@@ -106,8 +110,8 @@ class Debug {
 	 *
 	 * cria a pasta se não houver.
 	 *
-	 * @param string $dir
-	 * @param mixed  $contents
+	 * @param string $dir | Diretório.
+	 * @param mixed  $contents | Conteúdo.
 	 * @return void
 	 */
 	public static function file_force_contents( $dir, $contents ) {

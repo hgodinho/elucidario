@@ -17,7 +17,6 @@ test( '\LCDR\Mdorim\Schema', function () {
 
 test( '\LCDR\Mdorim\Schema->init_validator() && get_validator()', function () {
 	$schema = new \LCDR\Mdorim\Schema();
-	$schema->init_validator();
 	expect( $schema->get_validator() )->toBeInstanceOf( \Opis\JsonSchema\Validator::class);
 } );
 
