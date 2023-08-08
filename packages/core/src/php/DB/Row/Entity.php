@@ -197,7 +197,10 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		if ( ! property_exists( $this, $property ) ) {
 			throw new \Exception( __( 'Property does not exist.', 'lcdr' ) );
 		}
-		if ( in_array( $property, lcdr_get_json_properties() ) ) {
+		if ( in_array( $property, lcdr_get_json_properties(), true ) ) {
+			return json_decode( $this->{$property} );
+		}
+		if ( in_array( $property, lcdr_get_relationships_names(), true ) ) {
 			return json_decode( $this->{$property} );
 		}
 		return $this->{$property};

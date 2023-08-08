@@ -1,6 +1,6 @@
 <?php
 /**
- * Option class.
+ * Relationship class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -19,15 +19,15 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 }
 
 /**
- * Option row class.
+ * Relationship row class.
  */
 class Relationship extends Row implements \LCDR\DB\Interfaces\Relationship {
 	/**
-	 * Option ID.
+	 * Relationship ID.
 	 *
 	 * @var int
 	 */
-	public int $id = 0;
+	public int $rel_id = 0;
 
 	/**
 	 * Subject.
@@ -55,7 +55,7 @@ class Relationship extends Row implements \LCDR\DB\Interfaces\Relationship {
 	 *
 	 * @var integer
 	 */
-	public int $order = 0;
+	public int $rel_order = 0;
 
 	/**
 	 * Constructor.
@@ -65,10 +65,10 @@ class Relationship extends Row implements \LCDR\DB\Interfaces\Relationship {
 	public function __construct( $item = null ) {
 		parent::__construct( $item );
 
-		$this->id        = (int) $this->rel_id;
+		$this->rel_id    = (int) $this->rel_id;
 		$this->subject   = (int) $this->subject;
 		$this->predicate = (string) $this->predicate;
 		$this->object    = (int) $this->object;
-		$this->order     = (int) $this->rel_order;
+		$this->rel_order = (int) $this->rel_order;
 	}
 }

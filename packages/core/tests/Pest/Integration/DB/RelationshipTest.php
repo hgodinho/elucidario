@@ -15,11 +15,6 @@ $random = substr( md5( rand() ), 0, 7 );
 
 beforeAll( function () use (&$db) {
 	$db = new \LCDR\DB\Core();
-	$relationship = new \LCDR\DB\Query\Relationships();
-	$all = $relationship->get_relationships();
-	foreach ( $all as $item ) {
-		$relationship->delete_item( $item->entity_id );
-	}
 } );
 
 afterAll( function () use (&$db) {
@@ -45,19 +40,55 @@ test( '\LCDR\DB\Query\Relationships->add_relationship()', function () {
 	expect( $relationship_id )->toBeNumeric();
 } );
 
-test( '\LCDR\DB\Query\Relationships->get_relationships()', function () {
-	$relationships = new \LCDR\DB\Query\Relationships();
-	$test = $relationships->get_relationships();
+test( '\LCDR\DB\Query\Relationships->add_relationships()', function () {
+	$relationship = new \LCDR\DB\Query\Relationships();
 
-	expect( $test )->toBeArray();
+	$relationships = $relationship->add_relationships(
+		array(
+			array(
+				'object' => 1,
+				'predicate' => 'classified_as',
+				'subject' => 2,
+				'order' => 0
+			),
+			array(
+				'object' => 1,
+				'predicate' => 'carried_out_by',
+				'subject' => 2,
+				'order' => 0
+			),
+			array(
+				'object' => 1,
+				'predicate' => 'residence',
+				'subject' => 2,
+				'order' => 0
+			),
+			array(
+				'object' => 1,
+				'predicate' => 'current_custodian',
+				'subject' => 2,
+				'order' => 0
+			),
+		),
+	);
+
+	expect( $relationships )->toBeArray();
 } );
 
 test( '\LCDR\DB\Query\Relationships->get_relationship()', function () {
 	global $relationship_id;
 	$relationships = new \LCDR\DB\Query\Relationships();
+
 	$test = $relationships->get_relationship( $relationship_id );
 
 	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\Relationship::class);
+} );
+
+test( '\LCDR\DB\Query\Relationships->get_relationships()', function () {
+	$relationships = new \LCDR\DB\Query\Relationships();
+	$test = $relationships->get_relationships();
+
+	expect( $test )->toBeArray();
 } );
 
 test( '\LCDR\DB\Query\Relationships->update_relationship()', function () {
@@ -70,10 +101,39 @@ test( '\LCDR\DB\Query\Relationships->update_relationship()', function () {
 	expect( $test )->toBeNumeric();
 } );
 
+test( '\LCDR\DB\Query\Relationships->update_relationships()', function () {
+	$query = new \LCDR\DB\Query\Relationships();
+
+	$relationships = $query->get_relationships();
+
+	$relationships = array_map( function ($item) {
+		return array(
+			'rel_id' => $item->rel_id,
+			'predicate' => 'classified_as',
+		);
+	}, $relationships );
+
+	$updated = $query->update_relationships( $relationships );
+
+	expect( $updated )->toBeArray();
+} );
+
 test( '\LCDR\DB\Query\Relationships->delete_relationship()', function () {
 	global $relationship_id;
 	$relationships = new \LCDR\DB\Query\Relationships();
 	$test = $relationships->delete_relationship( $relationship_id );
 
 	expect( $test )->toBeNumeric();
+} );
+
+test( '\LCDR\DB\Query\Relationships->delete_relationships()', function () {
+	$relationships = new \LCDR\DB\Query\Relationships();
+
+	$to_delete = array_map( function ($rel) {
+		return $rel->rel_id;
+	}, $relationships->get_relationships() );
+
+	$test = $relationships->delete_relationships( $to_delete );
+
+	expect( $test )->toBeArray();
 } );

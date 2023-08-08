@@ -124,7 +124,7 @@ class Entities extends Query {
 	/**
 	 * Delete entity
 	 *
-	 * @param integer $entity_id
+	 * @param integer $entity_id Entity ID.
 	 * @return bool|int False on failure, the ID of the deleted entity otherwise.
 	 */
 	public function delete_entity( int $entity_id ) {
@@ -190,13 +190,13 @@ class Entities extends Query {
 	/**
 	 * Maybe encode data
 	 *
-	 * @param string $key
-	 * @param mixed  $data
+	 * @param string $key Property name.
+	 * @param mixed  $data Data of the property.
 	 * @return mixed
 	 */
 	protected function maybe_encode_data( $key, $data ) {
-		if ( in_array( $key, lcdr_get_json_properties() ) ) {
-			return json_encode( $data );
+		if ( in_array( $key, lcdr_get_json_properties(), true ) ) {
+			return wp_json_encode( $data );
 		}
 		return $data;
 	}

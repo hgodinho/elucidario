@@ -136,6 +136,53 @@ function lcdr_get_json_properties() {
 }
 
 /**
+ * Return the plugin field names that use relationships tables in the database
+ *
+ * @return array
+ */
+function lcdr_get_relationships_names() {
+	return array(
+		'classified_as',
+		'referred_to_by',
+		'representation',
+		'member_of',
+		'subject_of',
+		'part_of',
+		'conforms_to',
+		'access_point',
+		'digitally_carries',
+		'digitally_shows',
+		'used_for',
+		'carried_out',
+		'residence',
+		'took_place_at',
+		'caused_by',
+		'carried_out_by',
+		'used_specific_object',
+		'influenced_by',
+		'technique',
+		'digitally_shown_by',
+		'shown_by',
+		'about',
+		'represents',
+		'represents_instance_of_type',
+		'made_of',
+		'current_owner',
+		'current_custodian',
+		'current_permanent_custodian',
+		'current_location',
+		'shows',
+		'carries',
+		'approximated_by',
+		'language',
+		'digitally_carried_by',
+		'carried_by',
+		'refers_to',
+		'broader',
+	);
+}
+
+/**
  * Set lcdr option
  *
  * @param string $option Option name.

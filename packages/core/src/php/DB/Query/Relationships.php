@@ -71,9 +71,9 @@ class Relationships extends Query {
 	}
 
 	/**
-	 * Get entity
+	 * Get relationship
 	 *
-	 * @param int $relationship_id
+	 * @param int $relationship_id Relationship ID.
 	 * @return \LCDR\DB\Interfaces\Relationship
 	 */
 	public function get_relationship( $relationship_id ) {
@@ -83,15 +83,35 @@ class Relationships extends Query {
 	}
 
 	/**
-	 * Add entity
+	 * Get relationships by entity id
 	 *
-	 * @param array $args Arguments to add the entity.
-	 * @return bool|int False on failure, the ID of the inserted entity otherwise.
+	 * @param int $entity_id Entity ID.
+	 * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
+	 */
+	public function get_relationships_by_entity_id( $entity_id ) {
+		$items = $this->query(
+			array(
+				'search_columns' => array(
+					'object',
+					'subject',
+				),
+				'search'         => $entity_id,
+			)
+		);
+
+		return $items;
+	}
+
+	/**
+	 * Add relationship
+	 *
+	 * @param array $args Arguments to add the relationship.
+	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
 	public function add_relationship( $args = array() ) {
 		$args = $this->parse_args( $args );
 		/**
-		 * Filter the arguments before adding the entity.
+		 * Filter the arguments before adding the relationship.
 		 *
 		 * @wp-filter lcdr_add_{this->item_name}_args
 		 */
@@ -101,17 +121,31 @@ class Relationships extends Query {
 	}
 
 	/**
+	 * Add multiple relationships
+	 *
+	 * @param array $relationships Array of arguments to add the relationships.
+	 * @return array Array of IDs of the inserted relationships.
+	 */
+	public function add_relationships( $relationships = array() ) {
+		$added = array();
+		foreach ( $relationships as $relationship ) {
+			$added[] = $this->add_relationship( $relationship );
+		}
+		return $added;
+	}
+
+	/**
 	 * Update relationship
 	 *
-	 * @param int $relationship_id Relationship ID.
-	 * @param array $args
-	 * @return bool|int False on failure, the ID of the inserted entity otherwise.
+	 * @param int   $relationship_id Relationship ID.
+	 * @param array $args Updated args.
+	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
 	public function update_relationship( $relationship_id, $args = array() ) {
 		$args = $this->parse_args( $args );
 
 		/**
-		 * Filter the arguments before adding the entity.
+		 * Filter the arguments before adding the relationship.
 		 *
 		 * @wp-filter lcdr_update_{this->item_name}_args
 		 */
@@ -122,13 +156,42 @@ class Relationships extends Query {
 	}
 
 	/**
+	 * Update multiple relationships
+	 *
+	 * @param array $relationships Array of arguments to update the relationships.
+	 * @return array Array of IDs of the updated relationships.
+	 */
+	public function update_relationships( $relationships = array() ) {
+		$updated = array();
+		foreach ( $relationships as $relationship_id => $relationship ) {
+			$updated[] = $this->update_relationship( $relationship_id, $relationship );
+		}
+		return $updated;
+	}
+
+	/**
 	 * Delete relationship
 	 *
 	 * @param int $relationship_id Relationship ID.
-	 * @return bool|int False on failure, the ID of the inserted entity otherwise.
+	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
 	public function delete_relationship( $relationship_id ) {
 		return parent::delete_item( $relationship_id );
+	}
+
+	/**
+	 * Delete relationships
+	 *
+	 * @param array $relationships Relationships ids.
+	 * @return array
+	 */
+	public function delete_relationships( $relationships = array() ) {
+		return array_map(
+			function ( $relationship ) {
+				return $this->delete_relationship( $relationship );
+			},
+			$relationships
+		);
 	}
 
 	/**
@@ -144,6 +207,7 @@ class Relationships extends Query {
 	 *
 	 * @param array $args Arguments to parse.
 	 * @return mixed Parsed arguments.
+	 * @throws \Exception If predicate is not a valid relationship name.
 	 */
 	protected function parse_args( array $args ) {
 		$parsed = array();
@@ -155,6 +219,18 @@ class Relationships extends Query {
 		if ( isset( $parsed['order'] ) ) {
 			$parsed['rel_order'] = $parsed['order'];
 			unset( $parsed['order'] );
+		}
+
+		if ( in_array( 'predicate', $parsed, true ) ) {
+			if ( ! in_array( $parsed['predicate'], lcdr_get_relationships_names(), true ) ) {
+				throw new \Exception(
+					sprintf(
+						/* translators: %s predicate value */
+						__( '%s is not a valid relationship name.', 'lcdr' ),
+						$parsed['predicate']
+					)
+				);
+			}
 		}
 
 		/**
