@@ -107,13 +107,30 @@ class Entities extends Query {
 			 * Filter the arguments before adding the entity.
 			 *
 			 * @wp-filter lcdr_add_{this->item_name}_args
+			 * @param array $args Arguments to add the entity.
+			 * @return array
 			 */
 			apply_filters( lcdr_hook( array( 'add', $this->item_name, 'args' ) ), $args['columns'] )
 		);
-		$item_id = $this->parse_item_id( $item_id );
+		$item_id = lcdr_parse_item_id( $item_id );
 
 		// add relationships.
-		$this->add_relationships( $item_id, $args['relationships'] );
+		$this->add_relationships(
+			$item_id,
+			/**
+			 * Filter the relationships before adding the entity.
+			 *
+			 * @wp-filter lcdr_add_{this->item_name}_relationships
+			 * @param array $relationships Relationships.
+			 * @param int   $item_id       Item ID.
+			 * @return array
+			 */
+			apply_filters(
+				lcdr_hook( array( 'add', $this->item_name, 'relationships' ) ),
+				$args['relationships'],
+				$item_id
+			)
+		);
 
 		return $item_id;
 	}
@@ -151,7 +168,20 @@ class Entities extends Query {
 		if ( $args['relationships'] ) {
 			$add    = array();
 			$update = array();
-			foreach ( $args['relationships'] as $key => $new_relationships ) {
+			/**
+			 * Filter the relationships before updating the entity.
+			 *
+			 * @wp-filter lcdr_update_{this->item_name}_relationships
+			 * @param array $relationships Relationships.
+			 * @param \LCDR\DB\Interfaces\Entity $entity Entity.
+			 * @return array
+			 */
+			$relationships = apply_filters(
+				lcdr_hook( array( 'update', $this->item_name, 'relationships' ) ),
+				$args['relationships'],
+				$entity
+			);
+			foreach ( $relationships as $key => $new_relationships ) {
 				$old_relationships = $entity->get_property( $key );
 
 				// remove relationships.
@@ -168,14 +198,21 @@ class Entities extends Query {
 			$this->update_relationships( $entity_id, $update );
 		}
 
-		/**
-		 * Filter the arguments before adding the entity.
-		 *
-		 * @wp-filter lcdr_update_{this->item_name}_args
-		 */
 		return $this->update_item(
 			$entity_id,
-			apply_filters( lcdr_hook( array( 'update', $this->item_name, 'args' ) ), $args['columns'] )
+			/**
+			 * Filter the arguments before adding the entity.
+			 *
+			 * @wp-filter lcdr_update_{this->item_name}_args
+			 * @param array $args Arguments to update the entity.
+			 * @param \LCDR\DB\Interfaces\Entity $entity Entity.
+			 * @return array
+			 */
+			apply_filters(
+				lcdr_hook( array( 'update', $this->item_name, 'args' ) ),
+				$args['columns'],
+				$entity
+			)
 		);
 	}
 
@@ -186,7 +223,19 @@ class Entities extends Query {
 	 * @return bool|int False on failure, the ID of the deleted entity otherwise.
 	 */
 	public function delete_entity( int $entity_id ) {
-		return $this->delete_item( $entity_id );
+		return $this->delete_item(
+			/**
+			 * Filter the entity ID before deleting it.
+			 *
+			 * @wp-filter lcdr_delete_{this->item_name}
+			 * @param int $entity_id Entity ID.
+			 * @return int
+			 */
+			apply_filters(
+				lcdr_hook( array( 'delete', $this->item_name ) ),
+				$entity_id
+			)
+		);
 	}
 
 	/**
@@ -246,17 +295,9 @@ class Entities extends Query {
 			}
 		}
 
-		/**
-		 * Filter the arguments after sanitizing them.
-		 *
-		 * @wp-filter lcdr_parse_{this->item_name}_query_args
-		 */
-		return apply_filters(
-			lcdr_hook( array( 'parse', $this->item_name, 'query', 'args' ) ),
-			array(
-				'columns'       => ! empty( $columns ) ? $columns : null,
-				'relationships' => ! empty( $relationships ) ? $relationships : null,
-			)
+		return array(
+			'columns'       => ! empty( $columns ) ? $columns : null,
+			'relationships' => ! empty( $relationships ) ? $relationships : null,
 		);
 	}
 
@@ -271,12 +312,7 @@ class Entities extends Query {
 		// maybe encode data to json.
 		$data = $this->maybe_encode_data( $key, $data );
 
-		/**
-		 * Filter the data before saving it to the database.
-		 *
-		 * @wp-filter lcdr_sanitize_data_{key}
-		 */
-		return apply_filters( lcdr_hook( array( 'sanitize', 'data', $key ) ), $data );
+		return $data;
 	}
 
 	/**
@@ -301,16 +337,6 @@ class Entities extends Query {
 	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
 	 * /_/
 	 */
-	/**
-	 * Parse item ID
-	 *
-	 * @param mixed $item_id Item ID.
-	 * @return int|false
-	 */
-	private function parse_item_id( mixed $item_id ) {
-		return is_numeric( $item_id ) ? absint( $item_id ) : false;
-	}
-
 	/**
 	 * Parse relationships
 	 *
