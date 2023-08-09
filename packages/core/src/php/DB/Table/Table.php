@@ -16,6 +16,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
 
+/**
+ * Abstract table class.
+ */
 abstract class Table extends \BerlinDB\Database\Table {
 	/**
 	 * Table version key.

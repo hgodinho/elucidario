@@ -28,6 +28,24 @@ class Concept extends Entity {
 	public array $broader = array();
 
 	/**
+	 * Allowed properties
+	 *
+	 * @var array
+	 */
+	public array $allowed_properties = array(
+		'identified_by',
+		'classified_as',
+		'referred_to_by',
+		'equivalent',
+		'representation',
+		'member_of',
+		'subject_of',
+		'attributed_by',
+		'created_by',
+		'broader',
+	);
+
+	/**
 	 * Constructor.
 	 *
 	 * @param array $item Item.

@@ -43,14 +43,13 @@ test( 'lcdr_get_option', function () {
 } );
 
 test( 'lcdr_json_file', function () {
-	expect( lcdr_json_file( LCDR_PATH . 'node_modules/@elucidario/pkg-mdorim/static/mdorim/schemas/mdorim/core.json' ) )->toBeArray();
+	expect( lcdr_json_file( 'node_modules/@elucidario/pkg-mdorim/static/mdorim/schemas/mdorim/core.json' ) )->toBeArray();
 } );
 
 test( 'lcdr_get_json_properties', function () {
 	expect( lcdr_get_json_properties() )->toBe(
 		array(
 			'identified_by',
-			'referred_to_by',
 			'equivalent',
 			'attributed_by',
 			'dimension',
@@ -66,6 +65,152 @@ test( 'lcdr_get_json_properties', function () {
 			'produced_by',
 			'destroyed_by',
 			'removed_by',
+		)
+	);
+} );
+
+test( 'lcdr_get_columns_names', function () {
+	expect( lcdr_get_columns_names() )->toBe(
+		array(
+			'entity_id',
+			'name',
+			'guid',
+			'author',
+			'status',
+			'password',
+			'created',
+			'type',
+			'label',
+			'identified_by',
+			'equivalent',
+			'attributed_by',
+			'dimension',
+			'digitally_available_via',
+			'created_by',
+			'contact_point',
+			'formed_by',
+			'dissolved_by',
+			'born',
+			'died',
+			'timespan',
+			'part',
+			'produced_by',
+			'destroyed_by',
+			'removed_by',
+		)
+	);
+} );
+
+test( 'lcdr_get_relationships_names', function () {
+	expect( lcdr_get_relationships_names() )->toBe(
+		array(
+			'classified_as',
+			'referred_to_by',
+			'representation',
+			'member_of',
+			'subject_of',
+			'part_of',
+			'conforms_to',
+			'access_point',
+			'digitally_carries',
+			'digitally_shows',
+			'used_for',
+			'carried_out',
+			'residence',
+			'took_place_at',
+			'caused_by',
+			'carried_out_by',
+			'used_specific_object',
+			'influenced_by',
+			'technique',
+			'digitally_shown_by',
+			'shown_by',
+			'about',
+			'represents',
+			'represents_instance_of_type',
+			'made_of',
+			'current_owner',
+			'current_custodian',
+			'current_permanent_custodian',
+			'current_location',
+			'shows',
+			'carries',
+			'approximated_by',
+			'language',
+			'digitally_carried_by',
+			'carried_by',
+			'refers_to',
+			'broader'
+		)
+	);
+} );
+
+test( 'lcdr_get_valid_properties', function () {
+	expect( lcdr_get_valid_properties() )->toBe(
+		array(
+			'entity_id',
+			'name',
+			'guid',
+			'author',
+			'status',
+			'password',
+			'created',
+			'type',
+			'label',
+			'identified_by',
+			'equivalent',
+			'attributed_by',
+			'dimension',
+			'digitally_available_via',
+			'created_by',
+			'contact_point',
+			'formed_by',
+			'dissolved_by',
+			'born',
+			'died',
+			'timespan',
+			'part',
+			'produced_by',
+			'destroyed_by',
+			'removed_by',
+			'classified_as',
+			'referred_to_by',
+			'representation',
+			'member_of',
+			'subject_of',
+			'part_of',
+			'conforms_to',
+			'access_point',
+			'digitally_carries',
+			'digitally_shows',
+			'used_for',
+			'carried_out',
+			'residence',
+			'took_place_at',
+			'caused_by',
+			'carried_out_by',
+			'used_specific_object',
+			'influenced_by',
+			'technique',
+			'digitally_shown_by',
+			'shown_by',
+			'about',
+			'represents',
+			'represents_instance_of_type',
+			'made_of',
+			'current_owner',
+			'current_custodian',
+			'current_permanent_custodian',
+			'current_location',
+			'shows',
+			'carries',
+			'approximated_by',
+			'language',
+			'digitally_carried_by',
+			'carried_by',
+			'refers_to',
+			'broader',
+			'referred_to_by'
 		)
 	);
 } );

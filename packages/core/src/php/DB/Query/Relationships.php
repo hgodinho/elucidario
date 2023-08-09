@@ -23,11 +23,18 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  */
 class Relationships extends Query {
 	/**
+	 * Prefix for the table name
+	 *
+	 * @var string
+	 */
+	protected $prefix = 'lcdr';
+
+	/**
 	 * Name of the table
 	 *
 	 * @var string
 	 */
-	protected $table_name = 'lcdr_relationships';
+	protected $table_name = 'relationships';
 
 	/**
 	 * Database version key
@@ -51,6 +58,14 @@ class Relationships extends Query {
 	protected $item_shape = '\\LCDR\\DB\\Row\\Relationship';
 
 	/**
+	 *                  __    ___
+	 *     ____  __  __/ /_  / (_)____
+	 *    / __ \/ / / / __ \/ / / ___/
+	 *   / /_/ / /_/ / /_/ / / / /__
+	 *  / .___/\__,_/_.___/_/_/\___/
+	 * /_/
+	 */
+	/**
 	 * Get entities
 	 *
 	 * @param array $args Arguments to query the database.
@@ -63,30 +78,158 @@ class Relationships extends Query {
 	}
 
 	/**
-	 * Add entity
+	 * Get relationship
 	 *
-	 * @param array $args Arguments to add the entity.
-	 * @return bool|int False on failure, the ID of the inserted entity otherwise.
+	 * @param int $relationship_id Relationship ID.
+	 * @return \LCDR\DB\Interfaces\Relationship
+	 */
+	public function get_relationship( $relationship_id ) {
+		$item = $this->get_item( $relationship_id );
+
+		return $item;
+	}
+
+	/**
+	 * Get relationships by entity id
+	 *
+	 * @param int $entity_id Entity ID.
+	 * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
+	 */
+	public function get_relationships_by_entity_id( $entity_id ) {
+		add_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
+		$items = $this->query(
+			array(
+				'order'   => 'ASC',
+				'subject' => $entity_id,
+				'object'  => $entity_id,
+			),
+		);
+		remove_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
+		return $items;
+	}
+
+	/**
+	 * Filter query clauses
+	 *
+	 * @param array $clauses Query clauses.
+	 * @return array
+	 */
+	public function filter_query_clauses( $clauses = array() ) {
+		$clauses['where'] = str_replace( 'AND', 'OR', $clauses['where'] );
+		return $clauses;
+	}
+
+	/**
+	 * Add relationship
+	 *
+	 * @param array $args Arguments to add the relationship.
+	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
 	public function add_relationship( $args = array() ) {
 		$args = $this->parse_args( $args );
+
 		/**
-		 * Filter the arguments before adding the entity.
+		 * Filter the arguments before adding the relationship.
 		 *
 		 * @wp-filter lcdr_add_{this->item_name}_args
 		 */
-		return parent::add_item(
+		$rel_id = parent::add_item(
 			apply_filters( lcdr_hook( array( 'add', $this->item_name, 'args' ) ), $args )
+		);
+
+		return $this->parse_item_id( $rel_id );
+	}
+
+	/**
+	 * Add multiple relationships
+	 *
+	 * @param array $relationships Array of arguments to add the relationships.
+	 * @return array Array of IDs of the inserted relationships.
+	 */
+	public function add_relationships( $relationships = array() ) {
+		$added = array();
+		foreach ( $relationships as $relationship ) {
+			$added[] = $this->add_relationship( $relationship );
+		}
+		return $added;
+	}
+
+	/**
+	 * Update relationship
+	 *
+	 * @param int   $relationship_id Relationship ID.
+	 * @param array $args Updated args.
+	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
+	 */
+	public function update_relationship( $relationship_id, $args = array() ) {
+		$args = $this->parse_args( $args );
+
+		/**
+		 * Filter the arguments before adding the relationship.
+		 *
+		 * @wp-filter lcdr_update_{this->item_name}_args
+		 */
+		return parent::update_item(
+			$relationship_id,
+			apply_filters( lcdr_hook( array( 'update', $this->item_name, 'args' ) ), $args )
 		);
 	}
 
+	/**
+	 * Update multiple relationships
+	 *
+	 * @param array $relationships Array of arguments to update the relationships.
+	 * @return array Array of IDs of the updated relationships.
+	 */
+	public function update_relationships( $relationships = array() ) {
+		$updated = array();
+		foreach ( $relationships as $relationship_id => $relationship ) {
+			$updated[] = $this->update_relationship( $relationship_id, $relationship );
+		}
+		return $updated;
+	}
+
+	/**
+	 * Delete relationship
+	 *
+	 * @param int $relationship_id Relationship ID.
+	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
+	 */
+	public function delete_relationship( $relationship_id ) {
+		return parent::delete_item( $relationship_id );
+	}
+
+	/**
+	 * Delete relationships
+	 *
+	 * @param array $relationships Relationships ids.
+	 * @return array
+	 */
+	public function delete_relationships( $relationships = array() ) {
+		return array_map(
+			function ( $relationship ) {
+				return $this->delete_relationship( $relationship );
+			},
+			$relationships
+		);
+	}
+
+	/**
+	 *                       __            __           __
+	 *     ____  _________  / /____  _____/ /____  ____/ /
+	 *    / __ \/ ___/ __ \/ __/ _ \/ ___/ __/ _ \/ __  /
+	 *   / /_/ / /  / /_/ / /_/  __/ /__/ /_/  __/ /_/ /
+	 *  / .___/_/   \____/\__/\___/\___/\__/\___/\__,_/
+	 * /_/
+	 */
 	/**
 	 * Parse args
 	 *
 	 * @param array $args Arguments to parse.
 	 * @return mixed Parsed arguments.
+	 * @throws \Exception If predicate is not a valid relationship name.
 	 */
-	public function parse_args( array $args ) {
+	protected function parse_args( array $args ) {
 		$parsed = array();
 
 		foreach ( $args as $key => $value ) {
@@ -96,6 +239,18 @@ class Relationships extends Query {
 		if ( isset( $parsed['order'] ) ) {
 			$parsed['rel_order'] = $parsed['order'];
 			unset( $parsed['order'] );
+		}
+
+		if ( in_array( 'predicate', $parsed, true ) ) {
+			if ( ! in_array( $parsed['predicate'], lcdr_get_relationships_names(), true ) ) {
+				throw new \Exception(
+					sprintf(
+						/* translators: %s predicate value */
+						__( '%s is not a valid relationship name.', 'lcdr' ),
+						$parsed['predicate']
+					)
+				);
+			}
 		}
 
 		/**
@@ -116,12 +271,22 @@ class Relationships extends Query {
 	 * @param mixed  $data Data to sanitize.
 	 * @return mixed Sanitized data.
 	 */
-	public function sanitize_data( string $key, mixed $data ) {
+	protected function sanitize_data( string $key, mixed $data ) {
 		/**
 		 * Filter the data before saving it to the database.
 		 *
 		 * @wp-filter lcdr_sanitize_data_{key}
 		 */
 		return apply_filters( lcdr_hook( array( 'sanitize_data', $key ) ), $data );
+	}
+
+	/**
+	 * Parse item ID
+	 *
+	 * @param mixed $item_id Item ID.
+	 * @return int|false
+	 */
+	private function parse_item_id( mixed $item_id ) {
+		return is_numeric( $item_id ) ? absint( $item_id ) : false;
 	}
 }

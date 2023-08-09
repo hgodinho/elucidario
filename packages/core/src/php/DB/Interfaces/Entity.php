@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Entity interface.
  *
@@ -18,10 +17,10 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 }
 
 interface Entity {
-
 	/**
 	 * Get the entity property.
 	 *
+	 * @param string $property Property name.
 	 * @return mixed
 	 */
 	public function get_property( string $property ): mixed;

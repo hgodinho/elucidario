@@ -28,8 +28,8 @@ class Relationships extends Schema {
 	 * @var array
 	 */
 	public $columns = array(
-		'relationship_id' => array(
-			'name'       => 'relationship_id',
+		'rel_id'    => array(
+			'name'       => 'rel_id',
 			'type'       => 'bigint',
 			'length'     => 20,
 			'unsigned'   => true,
@@ -37,7 +37,7 @@ class Relationships extends Schema {
 			'allow_null' => false,
 			'extra'      => 'auto_increment',
 		),
-		'subject'         => array(
+		'subject'   => array(
 			'name'       => 'subject',
 			'type'       => 'bigint',
 			'length'     => 20,
@@ -46,14 +46,14 @@ class Relationships extends Schema {
 			'searchable' => true,
 			'sortable'   => true,
 		),
-		'predicate'       => array(
+		'predicate' => array(
 			'name'       => 'predicate',
 			'type'       => 'varchar',
 			'length'     => 30,
 			'default'    => '',
 			'allow_null' => false,
 		),
-		'object'          => array(
+		'object'    => array(
 			'name'       => 'object',
 			'type'       => 'bigint',
 			'length'     => 20,
@@ -63,7 +63,7 @@ class Relationships extends Schema {
 			'searchable' => true,
 			'sortable'   => true,
 		),
-		'rel_order'       => array(
+		'rel_order' => array(
 			'name'       => 'rel_order',
 			'type'       => 'int',
 			'length'     => 11,
