@@ -22,13 +22,19 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  * Entity row class.
  */
 abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
-
+	/**
+	 *                __
+	 *    _________  / /_  ______ ___  ____  _____
+	 *   / ___/ __ \/ / / / / __ `__ \/ __ \/ ___/
+	 *  / /__/ /_/ / / /_/ / / / / / / / / (__  )
+	 *  \___/\____/_/\__,_/_/ /_/ /_/_/ /_/____/
+	 */
 	/**
 	 * Entity ID.
 	 *
 	 * @var int
 	 */
-	public int $id = 0;
+	public int $entity_id = 0;
 
 	/**
 	 * Entity name.
@@ -96,14 +102,30 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	public mixed $identified_by = null;
 
 	/**
-	 * Entity description.
+	 * Entity equivalent.
 	 *
 	 * JSON encoded.
 	 *
 	 * @var mixed
 	 */
-	public mixed $classified_as = null;
+	public mixed $equivalent = null;
 
+	/**
+	 * Entity attributed by.
+	 *
+	 * JSON encoded.
+	 *
+	 * @var mixed
+	 */
+	public mixed $attributed_by = null;
+
+	/**
+	 *               __      __  _
+	 *    ________  / /___ _/ /_(_)___  ____  _____
+	 *   / ___/ _ \/ / __ `/ __/ / __ \/ __ \/ ___/
+	 *  / /  /  __/ / /_/ / /_/ / /_/ / / / (__  )
+	 * /_/   \___/_/\__,_/\__/_/\____/_/ /_/____/
+	 */
 	/**
 	 * Entity referred to by.
 	 *
@@ -114,13 +136,13 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	public mixed $referred_to_by = null;
 
 	/**
-	 * Entity equivalent.
+	 * Entity description.
 	 *
 	 * JSON encoded.
 	 *
 	 * @var mixed
 	 */
-	public mixed $equivalent = null;
+	public mixed $classified_as = null;
 
 	/**
 	 * Entity representation.
@@ -150,13 +172,25 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	public mixed $subject_of = null;
 
 	/**
-	 * Entity attributed by.
-	 *
-	 * JSON encoded.
-	 *
-	 * @var mixed
+	 *      _       __                        __
+	 *     (_)___  / /____  _________  ____ _/ /
+	 *    / / __ \/ __/ _ \/ ___/ __ \/ __ `/ /
+	 *   / / / / / /_/  __/ /  / / / / /_/ / /
+	 *  /_/_/ /_/\__/\___/_/  /_/ /_/\__,_/_/
 	 */
-	public mixed $attributed_by = null;
+	/**
+	 * Entity relationships.
+	 *
+	 * @var \LCDR\DB\Interfaces\Relationship[]
+	 */
+	private array $relationships;
+
+	/**
+	 * Allowed properties
+	 *
+	 * @var array
+	 */
+	public array $allowed_properties = array();
 
 	/**
 	 *                  __    ___
@@ -175,15 +209,17 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		parent::__construct( $item );
 
 		// properties.
-		$this->id       = (int) $this->entity_id;
-		$this->type     = (string) $this->type;
-		$this->name     = (string) $this->name;
-		$this->guid     = (string) $this->guid;
-		$this->author   = (int) $this->author;
-		$this->status   = (string) $this->status;
-		$this->password = (string) $this->password;
-		$this->created  = false === $this->created ? 0 : strtotime( $this->created );
-		$this->label    = (string) $this->label;
+		$this->entity_id = (int) $this->entity_id;
+		$this->type      = (string) $this->type;
+		$this->name      = (string) $this->name;
+		$this->guid      = (string) $this->guid;
+		$this->author    = (int) $this->author;
+		$this->status    = (string) $this->status;
+		$this->password  = (string) $this->password;
+		$this->created   = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
+		$this->label     = (string) $this->label;
+
+		$this->init_relationships();
 	}
 
 	/**
@@ -194,15 +230,67 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 * @throws \Exception If property does not exist.
 	 */
 	public function get_property( string $property ): mixed {
-		if ( ! property_exists( $this, $property ) ) {
+		if ( ! in_array( $property, lcdr_get_valid_properties(), true ) ) {
 			throw new \Exception( __( 'Property does not exist.', 'lcdr' ) );
 		}
 		if ( in_array( $property, lcdr_get_json_properties(), true ) ) {
 			return json_decode( $this->{$property} );
 		}
-		if ( in_array( $property, lcdr_get_relationships_names(), true ) ) {
-			return json_decode( $this->{$property} );
-		}
 		return $this->{$property};
+	}
+
+	/**
+	 * Get the entity relationships.
+	 *
+	 * @return array
+	 */
+	public function get_relationships(): array {
+		return $this->relationships;
+	}
+
+	/**
+	 *                       __            __           __
+	 *     ____  _________  / /____  _____/ /____  ____/ /
+	 *    / __ \/ ___/ __ \/ __/ _ \/ ___/ __/ _ \/ __  /
+	 *   / /_/ / /  / /_/ / /_/  __/ /__/ /_/  __/ /_/ /
+	 *  / .___/_/   \____/\__/\___/\___/\__/\___/\__,_/
+	 * /_/
+	 */
+	/**
+	 * Initialize relationships.
+	 *
+	 * @return void
+	 */
+	protected function init_relationships() {
+		$query               = new \LCDR\DB\Query\Relationships(
+			array(
+				'fields'   => 'ids',
+				'order_by' => 'rel_order',
+			)
+		);
+		$this->relationships = $query->get_relationships_by_entity_id( $this->entity_id );
+		foreach ( $this->allowed_properties as $property ) {
+			if ( in_array( $property, lcdr_get_relationships_names(), true ) ) {
+				$this->{$property} = $this->get_relationships_by_predicate( $property );
+			}
+		}
+	}
+
+	/**
+	 * Get relationships by predicate.
+	 *
+	 * @param string $predicate Predicate.
+	 * @return array
+	 */
+	protected function get_relationships_by_predicate( string $predicate ) {
+		return array_map(
+			function ( $relationship ) {
+				if ( $relationship->object === $this->entity_id ) {
+					return $relationship->subject;
+				}
+				return $relationship->object;
+			},
+			wp_list_filter( $this->relationships, array( 'predicate' => $predicate ) )
+		);
 	}
 }

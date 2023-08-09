@@ -90,12 +90,12 @@ function lcdr_snake_to_camel( $input ) {
 /**
  * Return a json file
  *
- * @param string $file
+ * @param string $file File path.
  * @return array
  * @since 0.2.0
  */
 function lcdr_json_file( $file ) {
-	$json = file_get_contents( $file );
+	$json = file_get_contents( LCDR_PATH . $file ); // phpcs:ignore
 	return json_decode( $json, true );
 }
 
@@ -116,7 +116,6 @@ function lcdr_json_file( $file ) {
 function lcdr_get_json_properties() {
 	return array(
 		'identified_by',
-		'referred_to_by',
 		'equivalent',
 		'attributed_by',
 		'dimension',
@@ -136,9 +135,33 @@ function lcdr_get_json_properties() {
 }
 
 /**
+ * Return the core plugin field names that are stored in columns in the database
+ *
+ * @return array
+ * @since 0.2.0
+ */
+function lcdr_get_columns_names() {
+	return array_merge(
+		array(
+			'entity_id',
+			'name',
+			'guid',
+			'author',
+			'status',
+			'password',
+			'created',
+			'type',
+			'label',
+		),
+		lcdr_get_json_properties(),
+	);
+}
+
+/**
  * Return the plugin field names that use relationships tables in the database
  *
  * @return array
+ * @since 0.2.0
  */
 function lcdr_get_relationships_names() {
 	return array(
@@ -179,6 +202,27 @@ function lcdr_get_relationships_names() {
 		'carried_by',
 		'refers_to',
 		'broader',
+	);
+}
+
+/**
+ * Return the valid plugin properties names
+ *
+ * @return array
+ * @since 0.2.0
+ */
+function lcdr_get_valid_properties() {
+	/* @wp-filter lcdr_valid_properties Filter the valid properties names. */
+	return apply_filters(
+		lcdr_hook(
+			array( 'valid', 'properties' )
+		),
+		array_merge(
+			lcdr_get_columns_names(),
+			lcdr_get_relationships_names(),
+			// pass referred_to_by isolated because it is a special case (column + relationship).
+			array( 'referred_to_by' )
+		)
 	);
 }
 

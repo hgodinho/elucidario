@@ -52,9 +52,9 @@ test( '\LCDR\DB\Query\Relationships->add_relationships()', function () {
 				'order' => 0
 			),
 			array(
-				'object' => 1,
+				'object' => 2,
 				'predicate' => 'carried_out_by',
-				'subject' => 2,
+				'subject' => 1,
 				'order' => 0
 			),
 			array(
@@ -64,9 +64,9 @@ test( '\LCDR\DB\Query\Relationships->add_relationships()', function () {
 				'order' => 0
 			),
 			array(
-				'object' => 1,
+				'object' => 2,
 				'predicate' => 'current_custodian',
-				'subject' => 2,
+				'subject' => 1,
 				'order' => 0
 			),
 		),

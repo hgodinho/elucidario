@@ -23,11 +23,18 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  */
 class Relationships extends Query {
 	/**
+	 * Prefix for the table name
+	 *
+	 * @var string
+	 */
+	protected $prefix = 'lcdr';
+
+	/**
 	 * Name of the table
 	 *
 	 * @var string
 	 */
-	protected $table_name = 'lcdr_relationships';
+	protected $table_name = 'relationships';
 
 	/**
 	 * Database version key
@@ -89,17 +96,27 @@ class Relationships extends Query {
 	 * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
 	 */
 	public function get_relationships_by_entity_id( $entity_id ) {
+		add_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
 		$items = $this->query(
 			array(
-				'search_columns' => array(
-					'object',
-					'subject',
-				),
-				'search'         => $entity_id,
-			)
+				'order'   => 'ASC',
+				'subject' => $entity_id,
+				'object'  => $entity_id,
+			),
 		);
-
+		remove_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
 		return $items;
+	}
+
+	/**
+	 * Filter query clauses
+	 *
+	 * @param array $clauses Query clauses.
+	 * @return array
+	 */
+	public function filter_query_clauses( $clauses = array() ) {
+		$clauses['where'] = str_replace( 'AND', 'OR', $clauses['where'] );
+		return $clauses;
 	}
 
 	/**
@@ -110,14 +127,17 @@ class Relationships extends Query {
 	 */
 	public function add_relationship( $args = array() ) {
 		$args = $this->parse_args( $args );
+
 		/**
 		 * Filter the arguments before adding the relationship.
 		 *
 		 * @wp-filter lcdr_add_{this->item_name}_args
 		 */
-		return parent::add_item(
+		$rel_id = parent::add_item(
 			apply_filters( lcdr_hook( array( 'add', $this->item_name, 'args' ) ), $args )
 		);
+
+		return $this->parse_item_id( $rel_id );
 	}
 
 	/**
@@ -258,5 +278,15 @@ class Relationships extends Query {
 		 * @wp-filter lcdr_sanitize_data_{key}
 		 */
 		return apply_filters( lcdr_hook( array( 'sanitize_data', $key ) ), $data );
+	}
+
+	/**
+	 * Parse item ID
+	 *
+	 * @param mixed $item_id Item ID.
+	 * @return int|false
+	 */
+	private function parse_item_id( mixed $item_id ) {
+		return is_numeric( $item_id ) ? absint( $item_id ) : false;
 	}
 }
