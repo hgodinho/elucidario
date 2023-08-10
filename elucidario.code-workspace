@@ -130,6 +130,9 @@
         ],
         "terminal.integrated.tabs.enabled": true,
         "typescript.tsdk": "node_modules\\typescript\\lib",
-        "cSpell.language": "en,pt-BR,es-ES,pt"
+        "cSpell.language": "en,pt-BR,es-ES,pt",
+        "intelephense.environment.phpVersion": "8.0.29",
+        "php.version": "8.1.10",
+        "php.format.rules.alignConsecutiveAssignments": false
     }
 }

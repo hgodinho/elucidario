@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_digitals_ do sistema",
+    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_entities_ do sistema",
     "fields": [
         {
             "type": "string",
@@ -25,69 +25,58 @@
     "data": [
         ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
         [
-            "digital_id",
+            "entity_id",
             "bigint(20) unsigned",
             "auto_increment",
             "PRI",
-            "Identificador único do _DigitalObject_"
+            "Identificador único da entidade"
         ],
         [
             "name",
             "varchar(255)",
             "",
             "UNIQUE",
-            "Slug do _DigitalObject_, igual ao _post_name_ da tabela _wp_posts_"
+            "Slug da entidade, igual ao _post_name_ da tabela _wp_posts_"
         ],
         [
             "guid",
             "varchar(255)",
             "",
             "",
-            "Identificador único do _DigitalObject_ no sistema, igual ao _guid_ da tabela _wp_posts_"
+            "Identificador Único Global da entidade no sistema"
         ],
         [
             "author",
             "bigint(20) unsigned",
             "",
             "INDEX",
-            "Identificador do autor do _DigitalObject_, igual ao _post_author_ da tabela _wp_posts_"
+            "ID do autor da entidade, igual ao _post_author_ da tabela _wp_posts_"
         ],
-        [
-            "status",
-            "varchar(30)",
-            "",
-            "INDEX",
-            "Status do _DigitalObject_ no sistema"
-        ],
+        ["status", "varchar(20)", "", "INDEX", "Status da entidade no sistema"],
         [
             "password",
-            "char(20)",
+            "varchar(255)",
             "",
             "",
-            "Senha para visualização do _DigitalObject_"
+            "Senha para visualização da entidade"
         ],
         [
             "created",
             "datetime",
-            "",
+            "default: 0000-00-00 00:00:00",
             "INDEX",
-            "Data de criação do _DigitalObject_, igual ao _post_date_ da tabela _wp_posts_"
+            "Data de criação da entidade, igual ao _post_date_ da tabela _wp_posts_"
+        ],
+        [
+            "modified",
+            "datetime",
+            "default: 0000-00-00 00:00:00",
+            "INDEX",
+            "Data de modificação da entidade, igual ao _post_modified_ da tabela _wp_posts_"
         ],
 
-        [
-            "type",
-            "varchar(60)",
-            "",
-            "",
-            "Tipo do _DigitalObject_, pode ser _Type_, _Material_, _Language_, _Currency_, _MeasurementUnit_"
-        ],
-        [
-            "label",
-            "varchar(255)",
-            "",
-            "",
-            "Nome do _DigitalObject_, gerado automaticamente baseado na coluna _identified_by_"
-        ],
+        ["type", "varchar(60)", "NOT NULL", "", "Tipo da entidade"],
+        ["label", "varchar(255)", "", "", "Nome da entidade"],
         [
             "identified_by",
             "JSON",
@@ -114,9 +103,8 @@
             "JSON",
             "",
             "",
-            "Um array de JSON _AttributeAssignment_ que define um atributo a <ESTA ENTIDADE>"
+            "Um array de JSON _AttributeAssignment_ que define um atributo a esta entidade"
         ],
-
         [
             "dimension",
             "JSON",
@@ -138,7 +126,36 @@
             "",
             "Um array de JSON _DigitalService_"
         ],
-        ["created_by", "JSON", "", "", "Um objeto JSON _Creation_"]
+        ["created_by", "JSON", "", "", "Um objeto JSON _Creation_"],
+        ["contact_point", "JSON", "", "", "Um array de JSON _Identifier_"],
+        [
+            "begin_of_existence",
+            "JSON",
+            "",
+            "",
+            "Um objeto JSON que pode ser _Birth_ ou _Formation_"
+        ],
+        [
+            "end_of_existence",
+            "JSON",
+            "",
+            "",
+            "Um objeto JSON que pode ser _Death_ ou _Dissolution_"
+        ],
+
+        ["timespan", "JSON", "", "", "Um objeto JSON _TimeSpan_"],
+        [
+            "part",
+            "JSON",
+            "",
+            "",
+            "Um array de objetos JSON que seja um evento de proveniência, como _Acquisition_, _Payment_, _TransferOfCustody_, _Encounter_, _RightAcquisition_, _Move_ e _Promise_"
+        ],
+        ["produced_by", "JSON", "", "", "Um objeto JSON _Production_"],
+        ["destroyed_by", "JSON", "", "", "Um objeto JSON _Destruction_"],
+        ["removed_by", "JSON", "", "", "Um objeto JSON _PartRemoval_"],
+        ["defined_by", "varchar(255)", "", "", ""],
+        ["content", "longtext", "", "", ""]
     ],
     "note": {
         "label": "Fonte",

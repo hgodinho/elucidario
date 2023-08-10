@@ -25,37 +25,36 @@
     "data": [
         ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
         [
-            "id",
-            "bigint(20)",
+            "history_id",
+            "bigint(20) unsigned",
             "auto_increment",
             "PRI",
             "Identificador único do registro"
         ],
         [
-            "event_type",
+            "type",
             "varchar(20)",
             "",
             "INDEX",
             "Tipo de evento no histórico de edição, podendo ser _Creation_ ou _Edition_"
         ],
-        ["timestamp", "datetime", "", "", "Data e hora do evento"],
         [
-            "entity_type",
-            "varchar(20)",
-            "",
+            "timestamp",
+            "datetime",
+            "NOT NULL default: 0000-00-00 00:00:00",
             "INDEX",
-            "Tipo de entidade que sofreu a alteração."
+            "Data e hora do evento"
         ],
         [
             "entity_id",
-            "bigint(20)",
-            "",
+            "bigint(20) unsigned",
+            "NOT NULL",
             "INDEX",
             "Identificador único da entidade que sofreu a alteração."
         ],
         [
             "user_id",
-            "bigint(20)",
+            "bigint(20) unsigned",
             "",
             "INDEX",
             "Identificador único do usuário que realizou a alteração."
@@ -80,13 +79,6 @@
             "",
             "",
             "Valor antigo da propriedade que sofreu a alteração."
-        ],
-        [
-            "current",
-            "longtext",
-            "",
-            "",
-            "Valor novo da propriedade que sofreu a alteração."
         ]
     ],
     "note": {

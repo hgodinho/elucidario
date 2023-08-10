@@ -439,6 +439,26 @@
             "id": "my-sql2023",
             "slug": "chapter-11-data-types",
             "path": "<references>/my-sql2023_chapter-11-data-types.json"
+        },
+        {
+            "id": "typicode2018",
+            "slug": "husky-commit",
+            "path": "<references>/typicode2018_husky-commit.json"
+        },
+        {
+            "id": "microsoft2023.2",
+            "slug": "guid-estrutura",
+            "path": "<references>/microsoft2023.2_guid-estrutura.json"
+        },
+        {
+            "id": "word-press2023",
+            "slug": "escaping-data",
+            "path": "<references>/word-press2023_escaping-data.json"
+        },
+        {
+            "id": "word-press2023.1",
+            "slug": "sanitizing-data",
+            "path": "<references>/word-press2023.1_sanitizing-data.json"
         }
     ]
 }

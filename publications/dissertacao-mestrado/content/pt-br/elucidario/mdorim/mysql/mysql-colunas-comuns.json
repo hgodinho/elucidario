@@ -141,6 +141,21 @@
         ["created_by", "JSON", "", "", "Um objeto JSON _Creation_"],
         ["contact_point", "JSON", "", "", "Um array de JSON _Identifier_"],
 
+        [
+            "begin_of_existence",
+            "JSON",
+            "",
+            "",
+            "Um objeto JSON que pode ser _Birth_ ou _Formation_"
+        ],
+        [
+            "end_of_existence",
+            "JSON",
+            "",
+            "",
+            "Um objeto JSON que pode ser _Death_ ou _Dissolution_"
+        ],
+
         ["timespan", "JSON", "", "", "Um objeto JSON _TimeSpan_"],
         [
             "part",
@@ -153,7 +168,7 @@
         ["destroyed_by", "JSON", "", "", "Um objeto JSON _Destruction_"],
         ["removed_y", "JSON", "", "", "Um objeto JSON _PartRemoval_"],
         ["defined_by", "varchar(255)", "", "", ""],
-        ["content", "JSON", "", "", ""]
+        ["content", "varchar(255)", "", "", ""]
     ],
     "note": {
         "label": "Fonte",
