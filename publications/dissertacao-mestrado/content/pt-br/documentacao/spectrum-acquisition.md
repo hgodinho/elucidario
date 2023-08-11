@@ -28,7 +28,7 @@
 
         -   A política deve especificar o formato de numeração e marcação.
             Registro de informações:
-        -   Ver Quadro X a seguir.
+        -   Ver Quadro 2 a seguir.
             Se o objeto for um presente, envie agradecimentos e um recibo:
         -   Inclua informações sobre como o objeto pode ser acessado no futuro.
 

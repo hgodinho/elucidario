@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Propriedades do Mdorim separadas por tipo",
+    "title": "{{count:charts;legend=Propriedades do Mdorim separadas por tipo.}}",
     "fields": [
         {
             "type": "string",

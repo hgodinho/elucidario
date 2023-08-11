@@ -1,6 +1,6 @@
 ---
-filename: "concept"
-title: "Fig.x - Diagrama ER das tabelas MySQL do Mdorim"
+filename: "mysql"
+title: "{{count:figures;legend=Diagrama ER das tabelas MySQL do Mdorim.}}"
 source: "**Fonte:** Elaborado pelo autor."
 width: 1920
 background: transparent

@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Propriedades de _Visual_",
+    "title": "{{count:charts;legend=Propriedades de _Visual_.}}",
     "fields": [
         {
             "type": "string",

@@ -24,7 +24,7 @@
         -   _Data da medida do ambiente_.
 
     3.  Registre a localização dos objetos:
-        Ver Quadro X a seguir.
+        Ver Quadro 3 a seguir.
 
     4.  Movimentação de objetos
         Geralmente ocorre em decorrência de outro procedimento Spectrum.
@@ -51,7 +51,7 @@
                 Providencia devida documentação para acompanhar o objeto:
             -   Transporte e confirme a chegada do objeto:
             -   Atualize o registro do objeto e de controle de movimentação:
-        -   Ver Quadro X a seguir;
+        -   Ver Quadro 4 a seguir;
         -   Retorne ao procedimento que iniciou a movimentação.
 
 {{table:documentacao/spectrum/location.json}}

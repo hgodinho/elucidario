@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Propriedades de _People_",
+    "title": "{{count:charts;legend=Propriedades de _People_.}}",
     "fields": [
         {
             "type": "string",

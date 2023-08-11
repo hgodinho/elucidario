@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_concepts_ do sistema",
+    "title": "{{count:charts;legend=Descrição da tabela MySQL _wp_lcdr_concepts_ do sistema.}}",
     "fields": [
         {
             "type": "string",

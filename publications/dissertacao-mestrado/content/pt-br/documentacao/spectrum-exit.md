@@ -16,7 +16,7 @@
 
         - Grupo de informações _Movement information_
 
-    6. Registre informações sobre a saída do objeto, como descrito no Quadro X a seguir;
+    6. Registre informações sobre a saída do objeto, como descrito no Quadro 6 a seguir;
 
     7. Atualize _Insurance and indemnity_ se necessário;
 

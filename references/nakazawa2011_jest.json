@@ -1,0 +1,23 @@
+{
+    "id": "nakazawa2011",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "jest",
+    "_create": "2023-07-30T23:50:33.248Z",
+    "_update": "2023-07-30T23:50:33.248Z",
+    "type": "webpage",
+    "title": "Jest",
+    "author": [
+        {
+            "family": "Nakazawa",
+            "given": "Cristoph"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-07-30"
+    },
+    "issued": {
+        "raw": "2011"
+    },
+    "URL": "https://jestjs.io"
+}

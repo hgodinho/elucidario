@@ -1,0 +1,19 @@
+{
+    "id": "microsoft2023.2",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "guid-estrutura",
+    "_create": "2023-08-10T04:21:55.451Z",
+    "_update": "2023-08-10T04:21:55.451Z",
+    "type": "webpage",
+    "title": "Guid Estrutura",
+    "author": [
+        {
+            "family": "Microsoft"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-10"
+    },
+    "URL": "https://learn.microsoft.com/pt-br/dotnet/api/system.guid?view=net-7.0"
+}

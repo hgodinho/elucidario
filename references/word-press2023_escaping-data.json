@@ -1,0 +1,19 @@
+{
+    "id": "word-press2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "escaping-data",
+    "_create": "2023-08-10T15:21:41.558Z",
+    "_update": "2023-08-10T15:21:41.558Z",
+    "type": "webpage",
+    "title": "Escaping Data",
+    "author": [
+        {
+            "family": "WordPress"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-10"
+    },
+    "URL": "https://developer.wordpress.org/apis/security/escaping/"
+}

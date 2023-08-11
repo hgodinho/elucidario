@@ -1,0 +1,23 @@
+{
+    "id": "bergmann2001",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "php-unit",
+    "_create": "2023-07-31T00:07:19.159Z",
+    "_update": "2023-07-31T00:07:19.159Z",
+    "type": "webpage",
+    "title": "PHPUnit",
+    "author": [
+        {
+            "family": "Bergmann",
+            "given": "Sebastian"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-07-30"
+    },
+    "issued": {
+        "raw": "2001-11-27"
+    },
+    "URL": "https://phpunit.de"
+}

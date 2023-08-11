@@ -53,18 +53,28 @@ Criamos um componente chamado `Field`, construído a partir da tag `fieldset` do
 
 Podemos representar a anatomia do componente `Field` da seguinte forma:
 
-![Anatomia do componente `Field`](./anatomia-Field.png)
+**{{count:figures;legend=Anatomia do componente "Field".}}**
 
-Para a validação de dados, além do feedback visual é necessário que o `Field` informe ao usuário a mensagem da validação, seja sucesso ou erro:
+![**Fonte:** Elaborado pelo autor.](./anatomia-Field.png)
 
-![Feedback de erro do componente `Field`](./anatomia-Field-error.png)
+Para a validação de dados, além do feedback visual é necessário que o _Field_ informe ao usuário a mensagem da validação, seja sucesso ou erro:
 
-![Feedback de sucesso do componente `Field`](./anatomia-Field-success.png)
+**{{count:figures;legend=Feedback de erro do componente "Field".}}**
 
-No caso de `object` o `Field` é capaz de aninhar outros `Field`s:
+![**Fonte:** Elaborado pelo autor.](./anatomia-Field-error.png)
 
-![Anatomia do componente `Field` com `object`](./anatomia-Field-object.png)
+**{{count:figures;legend=Feedback de sucesso do componente "Field".}}**
 
-Assim como o `array` é capaz de adicionar, remover e reordenar `Field`s:
+![**Fonte:** Elaborado pelo autor.](./anatomia-Field-success.png)
 
-![Anatomia do componente `Field` com `array`](./anatomia-Field-array.png)
+No caso de `object` o _Field_ é capaz de aninhar outros _Fields_:
+
+**{{count:figures;legend=Anatomia do componente "Field" com "object".}}**
+
+![**Fonte:** Elaborado pelo autor.](./anatomia-Field-object.png)
+
+Assim como o `array` é capaz de adicionar, remover e reordenar _Fields_:
+
+**{{count:figures;legend=Anatomia do componente "Field" com "array".}}**
+
+![**Fonte:** Elaborado pelo autor.](./anatomia-Field-array.png)

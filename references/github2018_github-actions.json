@@ -1,0 +1,22 @@
+{
+    "id": "github2018",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "github-actions",
+    "_create": "2023-07-30T23:59:22.544Z",
+    "_update": "2023-07-30T23:59:22.544Z",
+    "type": "webpage",
+    "title": "Github Actions",
+    "author": [
+        {
+            "family": "Github"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-07-30"
+    },
+    "issued": {
+        "raw": "2018"
+    },
+    "URL": "https://docs.github.com/en/actions"
+}

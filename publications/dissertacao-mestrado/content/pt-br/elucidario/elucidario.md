@@ -48,11 +48,9 @@ As principais linguagens de programação utilizadas no código-fonte do Elucid�
 
 Utilizamos o Versionamento Semântico (_Semantic Versioning_ ou _SemVer_) [@sem-ver2023] para controle de versão dos pacotes, onde cada pacote possui uma versão independente. O SemVer define três tipos diferentes de incrementação de versão: _major_, _minor_ e _patch_. O _major_ é incrementado quando há mudanças incompatíveis na API, o _minor_ é incrementado quando há adição de funcionalidades compatíveis com versões anteriores, e o _patch_ é incrementado quando há correção de _bugs_ compatíveis com versões anteriores.
 
-**Figura 9.1: Versionamento Semântico**
+**{{count:figures;legend=Versionamento Semântico}}**
 
-![Versionamento semântico](./SemVer.png)
-
-**Fonte:** elaborado pelo autor.
+![**Fonte**: Elaborado pelo autor, com base no SemVer.org](./SemVer.png)
 
 No nosso contexto, cada pacote pode operar de maneira isolada, mas são integrados e distribuídos em um único pacote final, o plugin para WordPress Elucidário.art.
 

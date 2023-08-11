@@ -10,7 +10,7 @@
         -   Se necessário atualizar informações de seguro e indenização vá para _Insurance and indemnity_
 
     1.  Crie um registro e um recibo:
-        Ver Quadro X a seguir.
+        Ver Quadro 1 a seguir.
 
         1. Verifique e registre as condições do objeto e quaisquer riscos associados
 

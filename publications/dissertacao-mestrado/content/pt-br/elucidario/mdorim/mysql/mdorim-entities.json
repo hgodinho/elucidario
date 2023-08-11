@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Colunas e predicados (relacionamentos) de cada Entidade do Mdorim",
+    "title": "{{count:charts;legend=Colunas e predicados (relacionamentos) de cada Entidade do Mdorim.}}",
     "fields": [
         {
             "type": "string",

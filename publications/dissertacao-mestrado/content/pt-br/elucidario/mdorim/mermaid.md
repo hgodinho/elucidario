@@ -1,6 +1,6 @@
 ---
 filename: "concept"
-title: "Fig.x - Mapa mental do Mdorim"
+title: "{{count:figures;legend=Mapa mental do Mdorim}}"
 source: "**Fonte:** Elaborado pelo autor."
 width: 1920
 background: transparent

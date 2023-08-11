@@ -1,5 +1,5 @@
 {
-    "title": "Quadro 2: Exemplo de tabulação do metadado do Spectrum _Object name_",
+    "title": "{{count:charts;legend=Exemplo de tabulação do metadado do Spectrum _Object name_.}}",
     "fields": [
         {
             "type": "string",

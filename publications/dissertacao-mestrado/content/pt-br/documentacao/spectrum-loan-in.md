@@ -18,7 +18,7 @@
             - Breve descrição do objeto;
             - Informações sobre o seguro e indenização;
 
-        3. Registre detalhes da solicitação como descrito no Quadro X a seguir:
+        3. Registre detalhes da solicitação como descrito no Quadro 7 a seguir:
 
         4. Mantenha um registro atualizado do status do empréstimo;
 

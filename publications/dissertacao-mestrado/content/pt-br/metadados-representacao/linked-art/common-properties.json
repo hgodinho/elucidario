@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Propriedades comuns do Linked Art",
+    "title": "{{count:charts;legend=Propriedades comuns do Linked Art.}}",
     "fields": [
         {
             "type": "string",

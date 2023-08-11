@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Descrição da tabela MySQL _wp_lcdr_relationships_ do sistema",
+    "title": "{{count:charts;legend=Descrição da tabela MySQL _wp_lcdr_relationships_ do sistema.}}",
     "fields": [
         {
             "type": "string",
@@ -43,7 +43,7 @@
             "varchar(30)",
             "NOT NULL",
             "INDEX",
-            "Predicado da relação, pode ser qualquer uma das propriedades listadas como propriedade de relacionamento no quadro X."
+            "Predicado da relação, pode ser qualquer uma das propriedades listadas como propriedade de relacionamento no Quadro 34."
         ],
         [
             "object",
