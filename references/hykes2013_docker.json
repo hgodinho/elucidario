@@ -1,0 +1,23 @@
+{
+    "id": "hykes2013",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "docker",
+    "_create": "2023-07-31T00:00:53.354Z",
+    "_update": "2023-07-31T00:00:53.354Z",
+    "type": "webpage",
+    "title": "Docker",
+    "author": [
+        {
+            "family": "Hykes",
+            "given": "Solomon"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-07-30"
+    },
+    "issued": {
+        "raw": "2013"
+    },
+    "URL": "https://www.docker.com"
+}

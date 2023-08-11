@@ -1,0 +1,23 @@
+{
+    "id": "maduro2021",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "pest",
+    "_create": "2023-07-31T00:11:39.365Z",
+    "_update": "2023-07-31T00:11:39.365Z",
+    "type": "webpage",
+    "title": "Pest",
+    "author": [
+        {
+            "family": "Maduro",
+            "given": "Nuno"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-07-30"
+    },
+    "issued": {
+        "raw": "2021-01-03"
+    },
+    "URL": "https://pestphp.com"
+}

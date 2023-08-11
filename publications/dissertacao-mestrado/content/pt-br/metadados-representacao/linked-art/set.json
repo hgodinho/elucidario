@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Propriedades de _Set_",
+    "title": "{{count:charts;legend=Propriedades de _Set_.}}",
     "fields": [
         {
             "type": "string",

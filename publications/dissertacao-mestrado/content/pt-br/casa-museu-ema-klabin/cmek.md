@@ -2,11 +2,9 @@
 
 A Casa Museu Ema Klabin é uma casa museu de colecionador localizada na Rua Portugal, 43 do bairro Jardim Europa em São Paulo, SP.
 
-**Fig. 1. Fachada da Casa Museu Ema Klabin vista do Jardim.**
+**{{count:images;legend=Fachada da Casa Museu Ema Klabin vista do Jardim.}}**
 
-![Fachada da Casa Museu Ema Klabin vista do Jardim. Foto de Nelson Kon.](fachada-nelson-kon-2022.jpg)
-
-Foto de Nelson Kon, 2022.
+![Foto de Nelson Kon, 2022.](fachada-nelson-kon-2022.jpg)
 
 Ema Klabin (1907 - 1994) foi uma mecenas e colecionadora de arte, filha de Hessel Klabin, um dos sócios-fundadores da empresa hoje conhecida como Klabin S.A., de papel e celulose. Em 1946, antes de seu falecimento, Hessel doou todos seus bens para as duas filhas (Ema e Eva Klabin), inclusive sua parte da empresa [@costa2007, p.81-82]. Paulo de Freitas Costa, curador da Casa Museu Ema Klabin, descreve Ema em seu livro "Sinfonia de Objetos" [@costa2007, p. 84] como uma "grande apreciadora de música e de arte, leitora voraz e frequentadora assídua de concertos e apresentações de teatro, ópera e balé, bem como de exposições em museus e galerias", Paulo também menciona a atuação ativa de Ema no setor cultural paulistano:
 
@@ -18,43 +16,35 @@ Costa (2007) define quatro movimentos da coleção de Ema, sendo o primeiro "A t
 
 "Ainda dentro da tradição europeia, mas em contraponto à cultura ocidental, está o conjunto de peças orientais reunidas por Ema Klabin" [@costa2007, p.101]. Este movimento da coleção ainda pode ser subdividido pela intenção pela qual foram colecionados em três conjuntos: "objetos decorativos feitos no oriente para o mercado europeu, os souvenirs de viagem e as peças arqueológicas";
 
-**Fig. 2 Salão da Casa Museu Ema Klabin**
+**{{count:images;legend=Salão da Casa Museu Ema Klabin.}}**
 
-![Salão da Casa Museu Ema Klabin](salao-nelson-kon-2022.jpg)
+![Foto de Nelson Kon, 2022.](salao-nelson-kon-2022.jpg)
 
-Foto de Nelson Kon, 2022.
-
-Na figura 2, em primeiro plano vemos a coleção de bronzes chineses, com peças do século XIV ac como o Recipiente para aquecimento de vinho ritual (jue) da Dinastia Shang (o segundo da direita para esquerda). No centro do salão, em cima da mesa uma cópia de estudo de uma ânfora, provavelmente realizada em Roma no século XIX. Ao fundo o quadro Triunfo de Baco e Ariadne de Giovanni Battista Gaulli (Il Baciccio) de 1675.
+Na Imagem 2, em primeiro plano vemos a coleção de bronzes chineses, com peças do século XIV ac como o Recipiente para aquecimento de vinho ritual (jue) da Dinastia Shang (o segundo da direita para esquerda). No centro do salão, em cima da mesa uma cópia de estudo de uma ânfora, provavelmente realizada em Roma no século XIX. Ao fundo o quadro Triunfo de Baco e Ariadne de Giovanni Battista Gaulli (Il Baciccio) de 1675.
 
 Conforme Costa (2007), o segundo movimento "Raízes brasileiras" apresenta temas totalmente novos, relacionados ao nosso passado imperial e colonial, explorando os elementos artísticos brasileiros. As primeiras peças brasileiras a entrar na coleção de Ema são as imagens do Bom Jesus da Lapa, da Santa Luzia, da Nossa Senhora Divina Pastora e da Nossa Senhora da Assunção, que foram expostas inicialmente na exposição Imagens Religiosas Brasileiras, realizada em comemoração ao IV Centenário da Cidade de São Paulo, junto com mais outras exposições que buscavam entender a formação da nação brasileira a partir de referências paulistas [@costa2007, p.106]. Costa destaca que a formação da coleção brasileira de Ema se caracteriza por um olhar estrangeiro, embora Ema tenha nascido no Rio de Janeiro, é filha de imigrantes e teve sua educação realizada na Europa "para Ema, talvez, uma Virgem Maria de nosso barroco fosse tão distante quanto uma Guanyin chinesa do século XVII" [@costa2007, p. 108];
 
-**Fig. 3 Detalhe da Sala de Jantar da Casa Museu Ema Klabin. Foto de Nelson Kon.**
+**{{count:images;legend=Detalhe da Sala de Jantar da Casa Museu Ema Klabin. Foto de Nelson Kon.}}**
 
-![Detalhe da Sala de Jantar da Casa Museu Ema Klabin.](sala-jantar-nelson-kon-2022.jpg)
+![Foto de Nelson Kon, 2022.](sala-jantar-nelson-kon-2022.jpg)
 
-Foto de Nelson Kon, 2022.
-
-Na Figura 3 ao centro vemos um armário-vitrine do século XX construído com fragmentos de talhas do Mestre Valentim da Fonseca, dentro dela vemos diversas imagens sacras. Ao lado, a direta, vemos uma placa misular do século XIX também do Mestre Valentim da Fonseca, logo abaixo vemos a Imagem de Santana Mestra do século XVIII. À esquerda do armário vitrine, Vaso com Flores de Maurice de Vlaminck e Natureza morta com limões e xícara de Pierre-Auguste Renoir.
+Na Imagem 3 ao centro vemos um armário-vitrine do século XX construído com fragmentos de talhas do Mestre Valentim da Fonseca, dentro dela vemos diversas imagens sacras. Ao lado, a direta, vemos uma placa misular do século XIX também do Mestre Valentim da Fonseca, logo abaixo vemos a Imagem de Santana Mestra do século XVIII. À esquerda do armário vitrine, Vaso com Flores de Maurice de Vlaminck e Natureza morta com limões e xícara de Pierre-Auguste Renoir.
 
 O terceiro movimento "Aproximações com o Modernismo tem seu início no ano de 1961, "quando Ema, recém-instalada em sua nova casa no Jardim Europa, assume um papel mais significativo no cenário cultural da cidade" [@costa2007, p.113]. Este movimento se caracteriza pela entrada de obras representativas do modernismo brasileiro. Neste período Ema se empenhou na organização de leilões em prol da construção do Hospital Israelita Albert Einstein, "que tiveram papel importante na consolidação do mercado de arte moderna brasileira" [@costa2007, p.113]. As aquisições realmente significativas deste movimento ocorreram no final da década de 1960, quando Ema se envolveu na criação do Museu Lasar Segall, e adquiriu três telas do artista: Retrato Feminino (1927), Retrato de Lucy (1937) e Natureza-morta com frutas (1938).
 
-**Fig. 4 Detalhe do quarto principal da Casa Museu Ema Klabin.**
+**{{count:images;legend=Detalhe do quarto principal da Casa Museu Ema Klabin.}}**
 
-![Detalhe do quarto principal da Casa Museu Ema Klabin](quarto-nelson-kon-2022.jpg)
+![Foto de Nelson Kon, 2022.](quarto-nelson-kon-2022.jpg)
 
-Foto de Nelson Kon, 2022.
-
-Na Figura 4 vemos o Retrato Feminino de Emiliano Di Cavalcanti de 1955 à esquerda, Rebanho em Repouso de 1944 de Lasar Segall à direita do espelho, e mais à direita a tela Galos de Cândido Portinari de 1940.
+Na Imagem 4 vemos o Retrato Feminino de Emiliano Di Cavalcanti de 1955 à esquerda, Rebanho em Repouso de 1944 de Lasar Segall à direita do espelho, e mais à direita a tela Galos de Cândido Portinari de 1940.
 
 Em 1972, Ema e sua irmã Eva, preocupadas com o destino de suas coleções, convidam Karl Katz, especialista em arte e arqueologia e membro do conselho do Metropolitan Museum de Nova Iorque, para contribuir com um projeto para as coleções, inciando assim o quarto movimento da coleção "Últimas aquisições - novas direções". Após a visita, Katz apresentou uma proposta de catalogação das duas coleções e sugeriu a criação de um ‘Centro de Altos Estudos em Museologia’ no Brasil" [@costa2007, p.121], mas somente a ideia de transformar as casas em museu prevaleceu. A partir deste momento, Ema volta seus olhares para obras que "‘coroassem’ a coleção ou, melhor dizendo, seu ‘museu’" [@costa2007, p.121 aspas do autor], momento que adquiriu sua primeira obra de Marc Chagall, _À la Campagne_, em 1972, obra que se tornaria a mais valiosa da coleção. Seguindo a mesma lógica, Ema passa a buscar obras de altíssimo valor em leilões da casa Sotheby’s de Londres: "de uma só vez, adquiriu telas de Chaim Soutine, Pierre-Auguste Renoir e Maurice de Vlaminck. Essas obras entraram para a coleção justamente no final de 1978, quando ela acabara de registrar oficialmente sua Fundação" [@costa2007, p. 122].
 
-**Fig. 5 Detalhe da sala de música da Casa Museu Ema Klabin**
+**{{count:images;legend=Detalhe da sala de música da Casa Museu Ema Klabin}}**
 
-![Detalhe da sala de música da Casa Museu Ema Klabin](sala-musica-nelson-kon-2022.jpg)
+![Foto de Nelson Kon, 2022.](sala-musica-nelson-kon-2022.jpg)
 
-Foto de Nelson Kon, 2022.
-
-Na figura 5 vemos em destaque a tela _À la Campagne_ de Marc Chagall de 1925, à sua esquerda o relógio de piso francês do século XVIII.
+Na Imagem 5 vemos em destaque a tela _À la Campagne_ de Marc Chagall de 1925, à sua esquerda o relógio de piso francês do século XVIII.
 
 ## 8.1 A documentação da coleção Ema Klabin
 

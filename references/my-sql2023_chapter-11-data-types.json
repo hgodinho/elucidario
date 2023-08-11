@@ -1,0 +1,22 @@
+{
+    "id": "my-sql2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "chapter-11-data-types",
+    "_create": "2023-07-31T03:41:18.483Z",
+    "_update": "2023-07-31T03:41:18.483Z",
+    "type": "webpage",
+    "title": "Chapter 11 Data Types",
+    "author": [
+        {
+            "family": "MySQL"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-07-30"
+    },
+    "issued": {
+        "raw": "2023"
+    },
+    "URL": "https://dev.mysql.com/doc/refman/8.0/en/data-types.html"
+}

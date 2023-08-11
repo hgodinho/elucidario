@@ -1,0 +1,24 @@
+{
+    "id": "d-arcus2010",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "citation-style-language-repository",
+    "_create": "2023-07-30T23:30:28.919Z",
+    "_update": "2023-07-30T23:30:28.920Z",
+    "type": "webpage",
+    "title": "Citation Style Language Repository",
+    "author": [
+        {
+            "family": "D'Arcus",
+            "given": "Bruce"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-07-30"
+    },
+    "issued": {
+        "raw": "2010"
+    },
+    "language": "en",
+    "URL": "https://github.com/citation-style-language"
+}

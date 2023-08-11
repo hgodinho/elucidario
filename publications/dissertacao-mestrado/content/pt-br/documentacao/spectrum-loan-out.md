@@ -6,7 +6,7 @@
 
         1. Crie um caso para o pedido de empréstimo;
 
-        2. Verifique os detalhes do pedido como descrito no Quadro X a seguir;
+        2. Verifique os detalhes do pedido como descrito no Quadro 8 a seguir;
 
         3. Considere o pedido de empréstimo;
 

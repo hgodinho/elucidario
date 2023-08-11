@@ -100,6 +100,16 @@ function lcdr_json_file( $file ) {
 }
 
 /**
+ * Return parsed item id
+ *
+ * @param mixed $id Item id.
+ * @return int|bool
+ */
+function lcdr_parse_item_id( mixed $id ) {
+	return is_numeric( $id ) ? absint( $id ) : false;
+}
+
+/**
  *    ______         __           ___             _____         __
  *   / ____/  ___   / /_         ( _ )           / ___/  ___   / /_
  *  / / __   / _ \ / __/        / __ \/|         \__ \  / _ \ / __/

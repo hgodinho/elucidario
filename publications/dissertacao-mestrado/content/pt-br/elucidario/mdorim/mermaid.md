@@ -1,6 +1,36 @@
+---
+filename: "concept"
+title: "{{count:figures;legend=Mapa mental do Mdorim}}"
+source: "**Fonte:** Elaborado pelo autor."
+width: 1920
+background: transparent
+---
+
 ```mermaid
     mindmap
-        root((Elucidário))
+        root)"`**Mdorim**`"(
+            Entidades(("`Entidades
+            Linked Art`"))
+                Objetos
+                Conceitos
+                Objetos Digitais
+                Referências
+                Representações
+                Procedimentos(("`Procedimentos
+                Spectrum`"))
+                    Entrada de Objetos
+                    Aquisição e Adesão
+                    Controle de Movimentação
+                    Inventário
+                    Catalogação
+                    Saída de Objeto
+                    Entrada de Empréstimo
+                    Saída de Empréstimo
+                Agentes
+                Lugares
+                Eventos
+                Conjuntos
+                Proveniências
             Opções
                 Importar
                 Exportar
@@ -12,24 +42,4 @@
                 Departamentos
                 Níveis de permissão
             Histórico de Edições
-            Procedimentos
-                ObjectEntry
-                AcquisitionAccessioning
-                LocationControl
-                Inventory
-                Cataloguing
-                ObjectExit
-                LoanIn
-                LoanOut
-            LinkedArt
-                Objetos
-                Conceitos
-                ObjetosDigitais
-                TextualWorks
-                VisualWorks
-                Agents
-                Places
-                Events
-                Sets
-                ProvenanceActivities
 ```

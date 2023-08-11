@@ -1,6 +1,6 @@
 ---
 filename: "classes-mdorim"
-title: "Fig.x - Modelo de Dados para Organização e Representação da Informação Museológica"
+title: "{{count:figures;legend=Modelo de Dados para Organização e Representação da Informação Museológica}}"
 source: "**Fonte:** Elaborado pelo autor."
 width: 1920
 background: transparent

@@ -128,16 +128,18 @@ class Relationships extends Query {
 	public function add_relationship( $args = array() ) {
 		$args = $this->parse_args( $args );
 
-		/**
-		 * Filter the arguments before adding the relationship.
-		 *
-		 * @wp-filter lcdr_add_{this->item_name}_args
-		 */
 		$rel_id = parent::add_item(
+			/**
+			 * Filter the arguments before adding the relationship.
+			 *
+			 * @wp-filter lcdr_add_{this->item_name}_args
+			 * @param array $args Arguments to add the relationship.
+			 * @return array
+			 */
 			apply_filters( lcdr_hook( array( 'add', $this->item_name, 'args' ) ), $args )
 		);
 
-		return $this->parse_item_id( $rel_id );
+		return lcdr_parse_item_id( $rel_id );
 	}
 
 	/**
@@ -164,14 +166,17 @@ class Relationships extends Query {
 	public function update_relationship( $relationship_id, $args = array() ) {
 		$args = $this->parse_args( $args );
 
-		/**
-		 * Filter the arguments before adding the relationship.
-		 *
-		 * @wp-filter lcdr_update_{this->item_name}_args
-		 */
 		return parent::update_item(
 			$relationship_id,
-			apply_filters( lcdr_hook( array( 'update', $this->item_name, 'args' ) ), $args )
+			/**
+			 * Filter the arguments before adding the relationship.
+			 *
+			 * @wp-filter lcdr_update_{this->item_name}_args
+			 * @param array $args Arguments to add the relationship.
+			 * @param int   $relationship_id Relationship ID.
+			 * @return array
+			 */
+			apply_filters( lcdr_hook( array( 'update', $this->item_name, 'args' ) ), $args, $relationship_id )
 		);
 	}
 
@@ -196,7 +201,19 @@ class Relationships extends Query {
 	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
 	public function delete_relationship( $relationship_id ) {
-		return parent::delete_item( $relationship_id );
+		return parent::delete_item(
+			/**
+			 * Filter the arguments before deleting the relationship.
+			 *
+			 * @wp-filter lcdr_delete_{this->item_name}
+			 * @param int $relationship_id Relationship ID.
+			 * @return int
+			 */
+			apply_filters(
+				lcdr_hook( array( 'delete', $this->item_name ) ),
+				$relationship_id
+			)
+		);
 	}
 
 	/**
@@ -253,15 +270,7 @@ class Relationships extends Query {
 			}
 		}
 
-		/**
-		 * Filter the arguments after sanitizing them.
-		 *
-		 * @wp-filter lcdr_parse_{this->item_name}_query_args
-		 */
-		return apply_filters(
-			lcdr_hook( array( 'parse', $this->item_name, 'query', 'args' ) ),
-			$parsed
-		);
+		return $parsed;
 	}
 
 	/**
@@ -272,21 +281,7 @@ class Relationships extends Query {
 	 * @return mixed Sanitized data.
 	 */
 	protected function sanitize_data( string $key, mixed $data ) {
-		/**
-		 * Filter the data before saving it to the database.
-		 *
-		 * @wp-filter lcdr_sanitize_data_{key}
-		 */
-		return apply_filters( lcdr_hook( array( 'sanitize_data', $key ) ), $data );
-	}
-
-	/**
-	 * Parse item ID
-	 *
-	 * @param mixed $item_id Item ID.
-	 * @return int|false
-	 */
-	private function parse_item_id( mixed $item_id ) {
-		return is_numeric( $item_id ) ? absint( $item_id ) : false;
+		// TODO: sanitize data.
+		return $data;
 	}
 }

@@ -1,0 +1,22 @@
+{
+    "id": "cypress2017",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "cypress",
+    "_create": "2023-07-30T23:55:50.061Z",
+    "_update": "2023-07-30T23:55:50.061Z",
+    "type": "webpage",
+    "title": "Cypress",
+    "author": [
+        {
+            "family": "Cypress"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-07-30"
+    },
+    "issued": {
+        "raw": "2017"
+    },
+    "URL": "https://www.cypress.io"
+}

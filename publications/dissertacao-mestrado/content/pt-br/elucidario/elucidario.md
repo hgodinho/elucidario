@@ -48,11 +48,9 @@ As principais linguagens de programação utilizadas no código-fonte do Elucid�
 
 Utilizamos o Versionamento Semântico (_Semantic Versioning_ ou _SemVer_) [@sem-ver2023] para controle de versão dos pacotes, onde cada pacote possui uma versão independente. O SemVer define três tipos diferentes de incrementação de versão: _major_, _minor_ e _patch_. O _major_ é incrementado quando há mudanças incompatíveis na API, o _minor_ é incrementado quando há adição de funcionalidades compatíveis com versões anteriores, e o _patch_ é incrementado quando há correção de _bugs_ compatíveis com versões anteriores.
 
-**Figura 9.1: Versionamento Semântico**
+**{{count:figures;legend=Versionamento Semântico}}**
 
-![Versionamento semântico](./SemVer.png)
-
-**Fonte:** elaborado pelo autor.
+![**Fonte**: Elaborado pelo autor, com base no SemVer.org](./SemVer.png)
 
 No nosso contexto, cada pacote pode operar de maneira isolada, mas são integrados e distribuídos em um único pacote final, o plugin para WordPress Elucidário.art.
 
@@ -87,6 +85,10 @@ Os pacotes principais do diretório _packages_ são:
 -   "@elucidario/pkg-design-system" - Pacote que define o sistema de design utilizado no aplicativo;
 -   "@elucidario/pkg-blocks" - Pacote que define os blocos Gutemberg utilizados no WordPress;
 
-Uma parte importante para assegurar a qualidade do código-fonte é a realização de testes automatizados. Para isso, utilizamos o _framework_ de testes Jest [@nakazawa2011] para testes unitários e de integração, e o _framework_ Cypress [@cypress2017] para testes end-to-end nos códigos-fontes escritos em JavaScript ou Typescript, para os códigos escritos em PHP utilizaremos o framework PHPUnit [@bergmann2001] e a biblioteca Pest [@maduro2021]. Os testes são executados em um ambiente de integração contínua (_CI_) utilizando o GitHub Actions [@github2018] e o Docker [@hykes2013].
+Uma parte importante para assegurar a qualidade do código-fonte é a realização de testes automatizados. Para isso, utilizamos o _framework_ de testes Jest [@nakazawa2011] para testes unitários e de integração, e o _framework_ Cypress [@cypress2017] para testes end-to-end nos códigos-fontes escritos em JavaScript ou Typescript. Para os códigos escritos em PHP utilizaremos o framework PHPUnit [@bergmann2001] e a biblioteca Pest [@maduro2021]. Os testes são executados em um ambiente de integração contínua (_CI_) utilizando a biblioteca Husky [@typicode2018] e GitHub Actions [@github2018].
 
-A seguir apresentamos os principais pacotes individualmente e descrevendo-os em três partes: escopo de uso do pacote; descrição de suas funcionalidades, implementação e estrutura, a descrição pode conter diagramas UML e tabelas para melhor representação de seu conteúdo; e por fim, os testes, em que apresentamos como os testes foram executados e seus resultados para garantir a qualidade do pacote.
+A seguir apresentamos os principais pacotes individualmente, descrevendo-os em três partes:
+
+1. Escopo de uso do pacote;
+2. Descrição de suas funcionalidades, implementação e estrutura. A descrição pode conter diagramas UML e tabelas para melhor representação de seu conteúdo;
+3. Como os testes foram executados e seus resultados para garantir a qualidade de cada pacote.

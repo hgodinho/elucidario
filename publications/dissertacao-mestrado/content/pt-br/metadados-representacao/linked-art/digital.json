@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Propriedades de _Digital_",
+    "title": "{{count:charts;legend=Propriedades de _Digital_.}}",
     "fields": [
         {
             "type": "string",

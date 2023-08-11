@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Object information groups do Spectrum",
+    "title": "{{count:charts;legend=Object information groups do Spectrum}}",
     "fields": [
         {
             "type": "string",

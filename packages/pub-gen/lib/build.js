@@ -107,22 +107,21 @@ const writeImages = async ({ srcPath, publication, lang, console }) => {
  * @returns {string}
  */
 export const mergeMd = (content) => {
-    const deepMerge = (obj) => {
-        return Object.entries(obj).reduce((acc, [title, content]) => {
-            if (typeof content === "string") {
-                return acc + content + "\n\n";
-            } else if (typeof content === "object") {
-                const nestedContent = deepMerge(content);
-                return toMD([acc, nestedContent]);
-            } else {
-                return acc;
-            }
-        }, "");
-    };
     if (typeof content === "object") {
-        return deepMerge(content);
+        return toMD([
+            Object.entries(content).reduce((acc, [title, content]) => {
+                if (typeof content === "string") {
+                    return toMD([acc, content]);
+                } else if (typeof content === "object") {
+                    const nestedContent = mergeMd(content);
+                    return toMD([acc, nestedContent]);
+                } else {
+                    return toMD([acc]);
+                }
+            }, ""),
+        ]);
     }
-    return content;
+    return toMD([content]);
 };
 
 /**
@@ -153,6 +152,12 @@ const writeDocs = async ({
     });
 
     try {
+        const index = {
+            images: [],
+            tables: [],
+            figures: [],
+            charts: [],
+        };
         return await Promise.all(
             Object.entries(mdContent).map(async ([name, content]) => {
                 // If content is an object, it's a multi-file content, so we need to join it
@@ -164,6 +169,7 @@ const writeDocs = async ({
                         lang,
                         style,
                         path: Path,
+                        index,
                         distPath: path.resolve(
                             paths.publications,
                             publication,
@@ -182,7 +188,8 @@ const writeDocs = async ({
                     type: "md",
                     when: new Date().toLocaleString(),
                 };
-            })
+            }),
+            console.log({ index }, { defaultLog: true, type: "info" })
         );
     } catch (error) {
         throw new Error(`error writing docs at writeDocs: ${error}`);

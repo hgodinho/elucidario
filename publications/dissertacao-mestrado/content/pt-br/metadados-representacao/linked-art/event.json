@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Propriedades de _Event_",
+    "title": "{{count:charts;legend=Propriedades de _Event_.}}",
     "fields": [
         {
             "type": "string",

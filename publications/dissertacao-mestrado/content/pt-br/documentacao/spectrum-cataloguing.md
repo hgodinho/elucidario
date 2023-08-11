@@ -16,7 +16,7 @@
 
         2.  Adicione outras informações disponíveis
 
-            1.  Adicione as informações como descrita no Quadro x a seguir;
+            1.  Adicione as informações como descrita no Quadro 5 a seguir;
 
             2.  Verifique se as informações registradas atendem o seu alvo mínimo de informações.
                 -   Relacionado com _Audit_;

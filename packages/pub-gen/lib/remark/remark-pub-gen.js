@@ -51,6 +51,28 @@ export const parseValue = (value) => {
 export default function remarkPubGen(options) {
     return async function transformer(tree) {
         const tables = [];
+        const index = {
+            images: [],
+            tables: [],
+            figures: [],
+            charts: [],
+        };
+        const labels = {
+            images: "Imagem",
+            tables: "Tabela",
+            figures: "Figura",
+            charts: "Quadro",
+        };
+
+        // push and return the length of the array
+        const pushToIndex = (index, type, value) => {
+            index[type].push(value);
+            return index[type].length;
+        };
+        const counter = (index, path, options) => {
+            const length = pushToIndex(index, path, options.legend);
+            return `${labels[path]} ${length}: ${options.legend}`;
+        };
 
         visit(tree, "text", (node) => {
             if (node.value.startsWith("{{") && node.value.endsWith("}}")) {
@@ -149,8 +171,22 @@ export default function remarkPubGen(options) {
 
                     mermaidOptions += "}";
 
+                    let label = "";
+                    if (title.startsWith("{{")) {
+                        const value = title.replace("{{", "").replace("}}", "");
+                        const parsed = parseValue(value);
+                        if ("count" === parsed.action) {
+                            label = counter(
+                                options.index,
+                                parsed.filePath,
+                                parsed.fileOptions
+                            );
+                        }
+                    } else {
+                        label = title;
+                    }
                     const mermaidContent = toMD([
-                        bold(replaceRegexHandlebars(title, fileOptions)),
+                        bold(replaceRegexHandlebars(label, fileOptions)),
                         content.replace("mermaid", mermaidOptions),
                         source || "",
                     ]);
@@ -177,17 +213,34 @@ export default function remarkPubGen(options) {
                     node.value = codeContent;
                     node.type = "html";
                 }
+
+                if ("count" === action) {
+                    node.value = counter(options.index, filePath, fileOptions);
+                }
             }
         });
 
         // parse tables
-
         const promises = tables.map(async ({ node, value }) => {
             const { filePath } = parseValue(value);
 
             const tableData = JSON.parse(
                 fs.readFileSync(path.resolve(options.path, filePath))
             );
+
+            if (tableData.title.startsWith("{{")) {
+                const value = tableData.title
+                    .replace("{{", "")
+                    .replace("}}", "");
+                const parsed = parseValue(value);
+                if ("count" === parsed.action) {
+                    tableData.title = counter(
+                        options.index,
+                        parsed.filePath,
+                        parsed.fileOptions
+                    );
+                }
+            }
             const tableMd = await tableMarkdown(tableData, "-").then(
                 (md) => md
             );
@@ -248,6 +301,17 @@ export default function remarkPubGen(options) {
                 node.value = citations;
             } catch (error) {
                 console.log(error);
+            }
+        });
+
+        visit(tree, "image", (node) => {
+            if (node.alt.startsWith("{{")) {
+                const value = node.alt.replace("{{", "").replace("}}", "");
+                const { action, filePath, fileOptions } = parseValue(value);
+
+                if ("count" === action) {
+                    node.alt = counter(options.index, filePath, fileOptions);
+                }
             }
         });
     };

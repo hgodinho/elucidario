@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Propriedades de _Textual_",
+    "title": "{{count:charts;legend=Propriedades de _Textual_.}}",
     "fields": [
         {
             "type": "string",

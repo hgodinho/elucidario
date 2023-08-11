@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Grupos de informação para aquisição de objetos",
+    "title": "{{count:charts;legend=Grupos de informação para aquisição de objetos}}",
     "fields": [
         {
             "type": "string",

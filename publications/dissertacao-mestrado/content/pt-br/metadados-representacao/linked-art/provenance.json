@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Propriedades de _Provenance_",
+    "title": "{{count:charts;legend=Propriedades de _Provenance_.}}",
     "fields": [
         {
             "type": "string",
