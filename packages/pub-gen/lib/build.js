@@ -153,6 +153,12 @@ const writeDocs = async ({
     });
 
     try {
+        const index = {
+            images: [],
+            tables: [],
+            figures: [],
+            charts: [],
+        };
         return await Promise.all(
             Object.entries(mdContent).map(async ([name, content]) => {
                 // If content is an object, it's a multi-file content, so we need to join it
@@ -164,6 +170,7 @@ const writeDocs = async ({
                         lang,
                         style,
                         path: Path,
+                        index,
                         distPath: path.resolve(
                             paths.publications,
                             publication,
@@ -182,7 +189,8 @@ const writeDocs = async ({
                     type: "md",
                     when: new Date().toLocaleString(),
                 };
-            })
+            }),
+            console.log({ index }, { defaultLog: true, type: "info" })
         );
     } catch (error) {
         throw new Error(`error writing docs at writeDocs: ${error}`);

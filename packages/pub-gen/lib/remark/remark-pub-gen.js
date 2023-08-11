@@ -63,15 +63,15 @@ export default function remarkPubGen(options) {
             figures: "Figura",
             charts: "Quadro",
         };
+
         // push and return the length of the array
-        const pushToIndex = (type, value) => {
+        const pushToIndex = (index, type, value) => {
             index[type].push(value);
             return index[type].length;
         };
-
-        const counter = (path, options) => {
-            const index = pushToIndex(path, options.legend);
-            return `${labels[path]} ${index}: ${options.legend}`;
+        const counter = (index, path, options) => {
+            const length = pushToIndex(index, path, options.legend);
+            return `${labels[path]} ${length}: ${options.legend}`;
         };
 
         visit(tree, "text", (node) => {
@@ -177,6 +177,7 @@ export default function remarkPubGen(options) {
                         const parsed = parseValue(value);
                         if ("count" === parsed.action) {
                             label = counter(
+                                options.index,
                                 parsed.filePath,
                                 parsed.fileOptions
                             );
@@ -214,7 +215,7 @@ export default function remarkPubGen(options) {
                 }
 
                 if ("count" === action) {
-                    node.value = counter(filePath, fileOptions);
+                    node.value = counter(options.index, filePath, fileOptions);
                 }
             }
         });
@@ -234,6 +235,7 @@ export default function remarkPubGen(options) {
                 const parsed = parseValue(value);
                 if ("count" === parsed.action) {
                     tableData.title = counter(
+                        options.index,
                         parsed.filePath,
                         parsed.fileOptions
                     );
@@ -308,7 +310,7 @@ export default function remarkPubGen(options) {
                 const { action, filePath, fileOptions } = parseValue(value);
 
                 if ("count" === action) {
-                    node.alt = counter(filePath, fileOptions);
+                    node.alt = counter(options.index, filePath, fileOptions);
                 }
             }
         });
