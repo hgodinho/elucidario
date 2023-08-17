@@ -1,10 +1,10 @@
 {
     "files": [
         "mdorim.md",
-        "mysql.md",
         "modelo.md",
-        "traducoes.md",
+        "mysql.md",
         "mapeamento.md",
+        "traducoes.md",
         "testes.md"
     ]
 }

@@ -9,37 +9,27 @@ background: transparent
 ```mermaid
     mindmap
         root)"`**Mdorim**`"(
-            Entidades(("`Entidades
-            Linked Art`"))
+            Entidades(("`Linked Art`"))
                 Objetos
                 Conceitos
                 Objetos Digitais
                 Referências
                 Representações
+                Pessoas
+                Grupos
                 Procedimentos(("`Procedimentos
                 Spectrum`"))
-                    Entrada de Objetos
-                    Aquisição e Adesão
-                    Controle de Movimentação
-                    Inventário
-                    Catalogação
-                    Saída de Objeto
-                    Entrada de Empréstimo
-                    Saída de Empréstimo
-                Agentes
-                Lugares
                 Eventos
+                    Proveniências
+                Lugares
                 Conjuntos
-                Proveniências
             Opções
                 Importar
                 Exportar
                 Configurações
                     Geral
-                    Idiomas
                     Integrações
             Usuários
-                Departamentos
                 Níveis de permissão
             Histórico de Edições
 ```
