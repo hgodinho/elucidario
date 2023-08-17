@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Descrição da tabela MySQL _wp_lcdr_relationships_ do sistema.}}",
+    "title": "{{count:charts;legend=Descrição da tabela MySQL _wp_lcdr_procedure_entity_ do sistema.}}",
     "fields": [
         {
             "type": "string",
@@ -32,33 +32,20 @@
             "Identificador único da relação"
         ],
         [
-            "subject",
+            "entity_id",
             "bigint(20) unsigned",
             "NOT NULL",
             "KEY",
-            "Identificador único da entidade que é o sujeito da relação"
+            "ID da entidade"
         ],
         [
-            "predicate",
-            "varchar(50)",
-            "NOT NULL",
-            "KEY",
-            "Predicado da relação, pode ser qualquer uma das propriedades listadas como propriedade de relacionamento no Quadro 34."
-        ],
-        [
-            "object",
+            "procedure_id",
             "bigint(20) unsigned",
             "NOT NULL",
             "KEY",
-            "Identificador único da entidade que é o objeto da relação"
+            "ID do procedimento"
         ],
-        [
-            "rel_order",
-            "int(11)",
-            "NOT NULL",
-            "KEY",
-            "Ordem da relação, para o caso de uma entidade ter mais de uma relação"
-        ]
+        ["rel_order", "int(11)", "NOT NULL", "KEY", "Ordem da relação"]
     ],
     "note": {
         "label": "Fonte",

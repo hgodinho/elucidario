@@ -1,0 +1,62 @@
+{
+    "title": "{{count:charts;legend=Descrição da tabela MySQL _wp_lcdr_mapping_ do sistema.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Chave"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
+        [
+            "mapping_id",
+            "bigint(20) unsigned",
+            "auto_increment",
+            "PRI",
+            "Identificador único do registro"
+        ],
+        [
+            "name",
+            "varchar(255)",
+            "NOT NULL",
+            "KEY",
+            "Nome do mapeamento em kebab-case"
+        ],
+        ["title", "varchar(255)", "NOT NULL", "KEY", "Título do mapeamento"],
+        ["description", "longtext", "", "", "Descrição do mapeamento"],
+        [
+            "created",
+            "datetime",
+            "NOT NULL default: 0000-00-00 00:00:00",
+            "KEY",
+            "Data e hora de criação do registro"
+        ],
+        [
+            "modified",
+            "datetime",
+            "NOT NULL default: 0000-00-00 00:00:00",
+            "KEY",
+            "Data e hora da última modificação do registro"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

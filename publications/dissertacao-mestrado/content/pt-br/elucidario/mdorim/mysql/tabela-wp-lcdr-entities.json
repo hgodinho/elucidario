@@ -42,17 +42,17 @@
             "guid",
             "varchar(255)",
             "",
-            "",
+            "UNIQUE",
             "Identificador Único Global da entidade no sistema"
         ],
         [
             "author",
             "bigint(20) unsigned",
             "",
-            "INDEX",
+            "KEY",
             "ID do autor da entidade, igual ao _post_author_ da tabela _wp_posts_"
         ],
-        ["status", "varchar(20)", "", "INDEX", "Status da entidade no sistema"],
+        ["status", "varchar(20)", "", "KEY", "Status da entidade no sistema"],
         [
             "password",
             "varchar(255)",
@@ -64,14 +64,14 @@
             "created",
             "datetime",
             "default: 0000-00-00 00:00:00",
-            "INDEX",
+            "KEY",
             "Data de criação da entidade, igual ao _post_date_ da tabela _wp_posts_"
         ],
         [
             "modified",
             "datetime",
             "default: 0000-00-00 00:00:00",
-            "INDEX",
+            "KEY",
             "Data de modificação da entidade, igual ao _post_modified_ da tabela _wp_posts_"
         ],
 
