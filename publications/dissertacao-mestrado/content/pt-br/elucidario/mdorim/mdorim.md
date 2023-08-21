@@ -6,9 +6,8 @@ O Modelo de Dados para Organização e Representação da Informação Museológ
 
 **Descrição**
 
-O Mdorim é composto por quatro partes principais:
+O Mdorim é composto por três partes principais:
 
 1. Modelo: Modelo de dados para representação das entidades e fluxos de trabalho baseados nos contextos de uso do sistema: leitura e escrita;
 2. MySQL Schema: Esquemas de tabelas MySQL para armazenamento dos dados;
-3. Interface de Mapeamento: Mapeamento do modelo para o Linked Art e Spectrum. Como o Linked Art é baseado no CIDOC CRM, o mapeamento também é válido para o CIDOC CRM;
-4. Interface de Tradução: Tradução dos rótulos e descrições dos metadados do modelo para português, e habilitação da tradução para outros idiomas;
+3. Interfaces: Interface para tradução dos rótulos e descrições dos metadados do modelo para português com habilitação da tradução para outros idiomas e interface de mapeamento dos dados em Linked Art para outros modelos.

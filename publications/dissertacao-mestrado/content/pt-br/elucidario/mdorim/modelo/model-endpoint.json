@@ -22,39 +22,39 @@
         ["Entidade", "_Endpoint_", "Métodos", "Descrição"],
         [
             "`Concept`, `Digital`, `Event`, `Group`, `Object`, `People`, `Place`, `Provenance`, `Set`, `Textual`, `Visual`",
-            "/lcdr/v1/{entidade_plural}",
+            "/lcdr/v1/{plural}",
             "`GET`, `POST`, `PUT`, `DELETE`",
-            "Coleção de entidades Linked Art. Substitua {entidade_plural} pelo plural da entidade desejada no idioma configurado."
+            "Coleção de entidades Linked Art. Substitua {plural} pelo plural da entidade desejada no idioma configurado."
         ],
         [
             "`Concept`, `Digital`, `Event`, `Group`, `Object`, `People`, `Place`, `Provenance`, `Set`, `Textual`, `Visual`",
-            "/lcdr/v1/{entidade_singular}/{id}",
+            "/lcdr/v1/{singular}/{id}",
             "`GET`, `POST`, `PUT`, `DELETE`",
-            "Entidade Linked Art específica. Substitua {entidade_singular} pelo singular da entidade desejada no idioma configurado."
+            "Entidade Linked Art específica. Substitua {singular} pelo singular da entidade desejada no idioma configurado."
         ],
         [
             "`Procedure`",
             "/lcdr/v1/procedimentos",
             "`GET`, `POST`, `PUT`, `DELETE`",
-            "Coleção de procedimentos."
+            "Coleção de procedimentos. A string `procedimentos` pode ser alterada para o idioma configurado."
         ],
         [
             "`Procedure`",
             "/lcdr/v1/procedimento/{id}",
             "`GET`, `POST`, `PUT`, `DELETE`",
-            "Procedimento específico."
+            "Procedimento específico. A string `procedimento` pode ser alterada para o idioma configurado."
         ],
         [
             "`Option`",
             "/lcdr/v1/opcao/{name}",
             "`GET`, `POST`, `PUT`, `DELETE`",
-            "Opção específica do sistema."
+            "Opção específica do sistema. A string `opcao` pode ser alterada para o idioma configurado."
         ],
         [
             "`History`",
             "/lcdr/v1/{entidade}/{id}/edicoes",
             "`GET`",
-            "Histórico de edições de uma entidade. Substitua {entidade} pelo tipo de entidade no idioma configurado, e {id} para a ID da entidade."
+            "Histórico de edições de uma entidade. Substitua {entidade} pelo tipo de entidade no idioma configurado, e {id} para a ID da entidade. A string `edicoes` pode ser alterada para o idioma configurado."
         ]
     ],
     "note": {

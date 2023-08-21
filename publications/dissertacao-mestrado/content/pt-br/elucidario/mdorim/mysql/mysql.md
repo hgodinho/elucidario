@@ -13,6 +13,8 @@ background: transparent
             string name
             string title
             string description
+            string version
+            int author
             datetime create
             datetime modified
         }

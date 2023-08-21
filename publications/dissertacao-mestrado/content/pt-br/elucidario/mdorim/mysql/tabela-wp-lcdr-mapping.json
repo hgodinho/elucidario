@@ -41,6 +41,14 @@
         ["title", "varchar(255)", "NOT NULL", "KEY", "Título do mapeamento"],
         ["description", "longtext", "", "", "Descrição do mapeamento"],
         [
+            "author",
+            "bigint(20) unsigned",
+            "",
+            "KEY",
+            "ID do autor do mapeamento"
+        ],
+        ["version", "varchar(20)", "", "", "Versão do mapeamento"],
+        [
             "created",
             "datetime",
             "NOT NULL default: 0000-00-00 00:00:00",

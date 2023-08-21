@@ -1,0 +1,63 @@
+{
+    "title": "{{count:charts;legend=Entidade `PropMap` do modelo.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigido"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigido", "Descrição"],
+        ["map_id", "int", "sim", "ID do mapeamento de uma propriedade."],
+        ["description", "string", "", "Descrição do mapeamento"],
+        ["prop_name", "string", "sim", "Nome da propriedade alvo"],
+        ["entity_type", "string", "sim", "Tipo da propriedade alvo"],
+        [
+            "external_prop_name",
+            "string",
+            "sim",
+            "Nome da propriedade de origem"
+        ],
+        ["external_prop_uri", "string", "sim", "URI da propriedade de origem"],
+        [
+            "external_prop_type",
+            "string",
+            "sim",
+            "Tipo de dado da propriedade de origem"
+        ],
+        [
+            "map_value",
+            "string\\|boolean\\|integer\\|array\\|object",
+            "sim",
+            "Valor mapeados da propriedade"
+        ],
+        [
+            "editable",
+            "boolean",
+            "não",
+            "Se a propriedade pode ser editada na UI do sistema"
+        ],
+        [
+            "status",
+            "string",
+            "sim",
+            "Status do mapeamento, pode ser `active` ou `inactive`"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

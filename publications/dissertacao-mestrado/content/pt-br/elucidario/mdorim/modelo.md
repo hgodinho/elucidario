@@ -95,13 +95,13 @@ O usuário `admin` tem acesso total ao sistema e tem todas as capacidades de adm
 
 {{mermaid:elucidario/mdorim/mermaid.md}}
 
-A figura 11 demonstra o Mdorim como um todo, em preto vemos as entidades principais do modelo que foram baseadas no Linked Art, e ainda no preto e com formato circular vemos os procedimentos que também tem seu _endpoint_ no modelo. Em roxo vemos a Entidade `Option` e suas possibilidades de uso. Em cinza os usuários e os níveis de permissão e, por fim, em marrom a entidade `History`.
+A figura 12 demonstra o Mdorim como um todo, em preto vemos as entidades principais do modelo que foram baseadas no Linked Art, e ainda no preto e com formato circular vemos os procedimentos que também tem seu _endpoint_ no modelo. Em roxo vemos a Entidade `Option` e suas possibilidades de uso. Em cinza os usuários e os níveis de permissão e, por fim, em marrom a entidade `History`.
 
-A URI de acesso às entidades segue a mesma do WordPress [@word-press9999.1], utilizamos a rota `wp-json` e adicionamos uma nova rota `lcdr/v1` para identificar a API do Elucidário.art, em que `lcdr` é uma abreviação para ocupar menos espaço na URI e `v1` é a versão da API, ficando com a rota final: `{protocolo}://{dominio}/wp-json/lcdr/v1/`, com os _endpoints_ a partir desta rota. O protocolo pode ser tanto `http` quanto `https`, embora seja recomendado o uso de `https` para garantir a segurança das informações. O domínio é o endereço do site, por exemplo, `elucidario.art`, e o _endpoint_ é a rota que define a entidade e a ação que será realizada, por exemplo, `lcdr/v1/object` para obter todos os `Object` armazenados no sistema. Os _endpoints_ são definidos pelo idioma selecionado nas configurações do WordPress, a entidade `Concept` com o WordPress configurado em português teria a rota `lcdr/v1/conceitos` para requisições de todos os conceitos armazenados no sistema e `lcdr/v1/conceito/{id}` para requisições de um conceito específico. A tabela a seguir apresenta os _endpoints_ definidos para cada entidade do modelo:
+A URI de acesso às entidades segue a mesma do WordPress [@word-press9999.1], utilizamos a rota principal `/wp-json/` e adicionamos uma nova rota `/lcdr/v1/` para identificar a API do Elucidário.art, em que `lcdr` é uma abreviação e `v1` é a versão da API, ficando com a rota final: `{protocolo}://{dominio}/wp-json/lcdr/v1/`, com os _endpoints_ a partir desta rota. O protocolo pode ser tanto `http` quanto `https`, embora seja recomendado o uso de `https` para garantir a segurança das informações. O domínio é o endereço do site, por exemplo: `elucidario.art` ou `emaklabin.org.br`, e o _endpoint_ é a rota que define a entidade e a ação que será realizada, por exemplo, `/lcdr/v1/objects` para obter todos os `Object` armazenados no sistema. Os _endpoints_ são definidos pelo idioma selecionado nas configurações do WordPress, por exemplo, a entidade `Concept` com o WordPress configurado em português teria a rota `lcdr/v1/conceitos` para requisições de todos os conceitos armazenados no sistema e `lcdr/v1/conceito/{id}` para requisições de um conceito específico. A tabela a seguir apresenta os _endpoints_ definidos para cada entidade do modelo, juntamente com os métodos HTTP e uma descrição.
 
 {{table:elucidario/mdorim/modelo/model-endpoint.json}}
 
-As entidades do modelo seguem as mesmas do Linked Art (Ver capítulo 6), portanto possuem todas suas propriedades e mais as descritas a seguir. São elas: `Concept`, `Digital`, `Event`, `Provenance`, `Group`, `Person`, `Object`, `Place`, `Set`, `Textual` e `Visual`.
+As entidades principais do modelo seguem as mesmas do Linked Art (Ver capítulo 6), portanto possuem todas suas propriedades e mais as descritas a seguir. São elas: `Concept`, `Digital`, `Event`, `Provenance`, `Group`, `Person`, `Object`, `Place`, `Set`, `Textual` e `Visual`.
 
 {{table:elucidario/mdorim/modelo/model-entity.json}}
 
@@ -122,3 +122,15 @@ O `History` é composto por uma série de objetos `HistoryEvent` que representam
 {{table:elucidario/mdorim/modelo/model-history.json}}
 
 {{table:elucidario/mdorim/modelo/model-history-event.json}}
+
+A interface de mapeamento também é baseada em JSON-Schema, com o intuito de oferecer ao usuário uma maneira de criar seus próprios mapeamentos dentro do Elucidário.art. A interface é utilizada para as funções de importação e exportação de dado, e também oferecem mais contexto à UI dando uma referência ao usuário de possíveis mapeamentos pertencentes ao campo que está preenchendo.
+
+{{table:elucidario/mdorim/modelo/model-mapping.json}}
+
+{{table:elucidario/mdorim/modelo/model-prop-map.json}}
+
+A propriedade `map_value` do objeto `PropMap` registra um valor padrão que pode ser utilizado para preencher automaticamente os campos de informação no momento da criação de uma entidade, por exemplo, se estamos tentando representar o metadado `title` do Dublin Core utilizando a propriedade `identified_by` do Linked Art, podemos definir um valor padrão para `classified_as` no objeto `Identifier` com a URI `http://purl.org/dc/elements/1.1/title` do Dublin Core e `aat:300417209` (_full titles_) no AAT:
+
+{{code:elucidario/mdorim/mysql/mdorim-prop-map.json}}
+
+No Linked Art, a propriedade `identified_by` deve receber obrigatoriamente um valor para `content`, mas como no nosso mapeamento estamos criando valores pré-preenchidos, deixamos que o usuário preencha o restante das informações e usamos os valores preenchidos previamente para popular a UI.

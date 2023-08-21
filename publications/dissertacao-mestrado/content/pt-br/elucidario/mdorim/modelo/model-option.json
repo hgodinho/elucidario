@@ -22,8 +22,13 @@
         ["Nome", "Tipo", "Exigido", "Descrição"],
         ["id", "int", "sim", "ID da opção"],
         ["name", "string", "sim", "Nome da opção"],
-        ["value", "string", "", "Valor da opção em formato string"],
-        ["schema", "object", "", "Schema para validação da opção inserida"]
+        ["value", "string", "sim", "Valor da opção em formato string"],
+        [
+            "schema",
+            "object",
+            "sim",
+            "Esquema (JSON-Schema) para validação da opção inserida"
+        ]
     ],
     "note": {
         "label": "Fonte",
