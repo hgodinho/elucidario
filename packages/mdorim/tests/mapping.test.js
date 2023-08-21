@@ -5,7 +5,7 @@ import mdorim from "../lib/mjs/index";
 expect.extend(
     matchersWithOptions({
         schemas: [mdorim.schemas.mapping],
-    })
+    }),
 );
 
 describe("Validate Schemas", () => {
@@ -15,9 +15,9 @@ describe("Validate Schemas", () => {
 });
 
 describe("Validate mapping schema with data", () => {
-    test("identified_by mapping must be valid", () => {
-        expect(mdorim.mapping.identified_by).toMatchSchema(
-            mdorim.schemas.mapping
+    test("Mapping must be valid", () => {
+        expect(mdorim.mapping.mapping_test).toMatchSchema(
+            mdorim.schemas.mapping,
         );
     });
 });

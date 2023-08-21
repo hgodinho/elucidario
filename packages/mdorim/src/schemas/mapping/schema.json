@@ -2,79 +2,176 @@
     "$schema": "http://json-schema.org/schema",
     "$id": "https://elucidario.art/mdorim/schemas/mapping/schema.json",
     "title": "Mapping",
-    "description": "Describe the mapping between MDORIM and other metadata standards. Includes also a mapping to be used for the UI of Elucidário.art, that maps to the components library of @elucidario/pkg-design-system.",
+    "description": "Describe a interface to declare property mappings between two data models in the context of Elucidário.art.",
     "type": "object",
     "version": "0.1.0",
     "properties": {
+        "mapping_id": {
+            "type": "integer",
+            "title": "Mapping ID",
+            "description": "Unique identifier of the mapping."
+        },
+        "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Name of the mapping in kebab-case."
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Title of the mapping."
+        },
+        "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "Description of the mapping."
+        },
+        "author": {
+            "type": "integer",
+            "title": "Author",
+            "description": "ID of the Author of the mapping."
+        },
+
+        "standard": {
+            "type": "string",
+            "title": "Standard",
+            "description": "Name of the standard to be mapped."
+        },
+
+        "standard_uri": {
+            "type": "string",
+            "title": "Standard URI",
+            "description": "URI of the standard to be mapped."
+        },
+
         "version": {
             "description": "Version of schema file. Use semantic versioning: MAJOR.MINOR.PATCH.",
             "type": "string",
             "pattern": "^\\d+\\.\\d+\\.\\d+$"
         },
+        "created": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created",
+            "description": "Date and time of creation of the mapping."
+        },
+        "modified": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Modified",
+            "description": "Date and time of last modification of the mapping."
+        },
         "mapping": {
             "type": "array",
             "items": {
-                "type": "object",
-                "properties": {
-                    "standard": {
-                        "$ref": "#/definitions/standard"
-                    },
-                    "metadata": {
-                        "type": "string",
-                        "title": "Metadata",
-                        "description": "The metadata field of the standard to be mapped to."
-                    },
-                    "link": {
-                        "type": "string",
-                        "title": "link",
-                        "description": "Link to the documentation of the mapped field."
-                    },
-                    "description": {
-                        "type": "string",
-                        "title": "Description",
-                        "description": "Description of the mapping."
-                    }
-                },
-                "required": ["standard", "metadata"],
-                "additionalProperties": false
+                "$ref": "#/definitions/prop_map"
             }
         }
     },
-    "required": ["version", "mapping"],
+    "required": [
+        "version",
+        "name",
+        "title",
+        "author",
+        "standard",
+        "created",
+        "modified",
+        "mapping"
+    ],
     "additionalProperties": false,
     "definitions": {
-        "standard": {
-            "type": "string",
-            "anyOf": [
-                {
-                    "title": "Linked Art",
-                    "enum": ["la"]
+        "prop_map": {
+            "type": "object",
+            "properties": {
+                "map_id": {
+                    "type": "integer",
+                    "title": "ID",
+                    "description": "Unique identifier of the mapping."
                 },
-                {
-                    "title": "CIDOC-CRM",
-                    "enum": ["crm"]
+
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Description of the mapping."
                 },
-                {
-                    "title": "Dublin Core",
-                    "enum": ["dc"]
+
+                "prop_name": {
+                    "type": "string",
+                    "title": "Property Name",
+                    "description": "Name of the target property."
                 },
-                {
-                    "title": "Europeana Data Model",
-                    "enum": ["edm"]
+
+                "entity_type": {
+                    "type": "string",
+                    "title": "Entity Type",
+                    "description": "Entity type mapping target."
                 },
-                {
-                    "title": "Schema.org",
-                    "enum": ["schema"]
+
+                "external_prop_name": {
+                    "type": "string",
+                    "title": "External Property Name",
+                    "description": "Name of the source property."
                 },
-                {
-                    "title": "WordPress",
-                    "enum": ["wp"]
+
+                "external_prop_uri": {
+                    "type": "string",
+                    "title": "External Property URI",
+                    "description": "URI of the source property."
                 },
-                {
-                    "title": "Elucidário.art UI",
-                    "enum": ["ui"]
+
+                "external_prop_type": {
+                    "type": "string",
+                    "title": "External Property Type",
+                    "description": "Type of the source property."
+                },
+
+                "map_value": {
+                    "title": "Map Value",
+                    "description": "Default mapped value.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "array"
+                        },
+                        {
+                            "type": "object"
+                        }
+                    ]
+                },
+
+                "editable": {
+                    "type": "boolean",
+                    "title": "Editable",
+                    "description": "If the mapped value is editable.",
+                    "default": true
+                },
+
+                "status": {
+                    "type": "string",
+                    "title": "Status",
+                    "description": "Status of the mapping.",
+                    "enum": ["active", "inactive"],
+                    "default": "active"
                 }
-            ]
+            },
+            "required": [
+                "map_id",
+                "prop_name",
+                "entity_type",
+                "external_prop_name",
+                "external_prop_type",
+                "map_value",
+                "status"
+            ],
+            "additionalProperties": false
         }
     }
 }
