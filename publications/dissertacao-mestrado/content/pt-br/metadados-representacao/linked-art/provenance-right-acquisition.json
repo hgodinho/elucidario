@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Propriedades de _Creation_.}}",
+    "title": "{{count:charts;legend=Propriedades de _RightAcquisition_.}}",
     "fields": [
         {
             "type": "string",
@@ -24,13 +24,23 @@
             "type",
             "string",
             "obrigatório",
-            "O tipo da classe que deve ser _Creation_"
+            "O tipo deve ser _RightAcquisition_."
         ],
-        ["timespan", "array", "opcional", ""],
-        ["influenced_by", "array", "opcional", ""]
+        [
+            "establishes",
+            "array",
+            "obrigatório",
+            "Um array de objetos _Right_ descrito abaixo."
+        ],
+        [
+            "invalidate",
+            "array",
+            "opcional",
+            "Um array de objetos _Right_ descrito abaixo."
+        ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Concept Creation_ do Linked Art [@linked-art2021.6]"
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _RightAcquisition_ do Linked Art"
     }
 }

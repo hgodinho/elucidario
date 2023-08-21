@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Propriedades de _Dimensions_.}}",
+    "title": "{{count:charts;legend=Propriedades de _Dimension_.}}",
     "fields": [
         {
             "type": "string",
@@ -17,12 +17,12 @@
     "data": [
         ["Nome", "Exigência", "Descrição"],
         ["id", "opcional", ""],
-        ["type", "requerido", "DEVE ser _Dimension_"],
+        ["type", "obrigatório", "DEVE ser _Dimension_"],
         ["_label", "recomendado", ""],
-        ["value", "requerido", "O valor numérico da dimensão"],
+        ["value", "obrigatório", "O valor numérico da dimensão"],
         [
             "unit",
-            "requerido",
+            "obrigatório",
             "A unidade para a dimensão, que DEVE seguir os requisitos de _MeasurementUnit_, que é uma extensão de _Type_"
         ],
         ["classified_as", "recomendado", ""],
@@ -41,11 +41,11 @@
         [
             "assigned_by",
             "opcional",
-            "DEVE seguir os requisitos de _Measurements_"
+            "Um array de objetos _Measurement_ descrito a seguir"
         ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Properties of Dimensions_ do Linked Art [@linked-art2021.8]"
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Dimensions_ do Linked Art [@linked-art2021.8]"
     }
 }

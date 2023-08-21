@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Propriedades de _Digital Service_.}}",
+    "title": "{{count:charts;legend=Propriedades de _DigitalService_.}}",
     "fields": [
         {
             "type": "string",
@@ -20,12 +20,13 @@
     ],
     "data": [
         ["Nome", "Tipo", "Exigência", "Descrição"],
+        ["id", "string", "obrigatório", ""],
         ["type", "string", "obrigatório", "O tipo deve ser _DigitalService_."],
         ["access_point", "array", "opcional", ""],
         ["conforms_to", "array", "opcional", ""]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Digital Service_ do Linked Art [@linked-art2021.10]"
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _DigitalService_ do Linked Art [@linked-art2021.10]"
     }
 }

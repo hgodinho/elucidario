@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Propriedades de _Creation_.}}",
+    "title": "{{count:charts;legend=Propriedades de _Encounter_.}}",
     "fields": [
         {
             "type": "string",
@@ -20,17 +20,16 @@
     ],
     "data": [
         ["Nome", "Tipo", "Exigência", "Descrição"],
+        ["type", "string", "obrigatório", "O tipo deve ser _Encounter_."],
         [
-            "type",
-            "string",
+            "encountered",
+            "array",
             "obrigatório",
-            "O tipo da classe que deve ser _Creation_"
-        ],
-        ["timespan", "array", "opcional", ""],
-        ["influenced_by", "array", "opcional", ""]
+            "Um array de referências a entidade _PhysicalObject__."
+        ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Concept Creation_ do Linked Art [@linked-art2021.6]"
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Encounter_ do Linked Art"
     }
 }

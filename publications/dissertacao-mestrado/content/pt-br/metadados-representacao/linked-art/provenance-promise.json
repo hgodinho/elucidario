@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Propriedades de _Creation_.}}",
+    "title": "{{count:charts;legend=Propriedades de _Activity_.}}",
     "fields": [
         {
             "type": "string",
@@ -20,17 +20,16 @@
     ],
     "data": [
         ["Nome", "Tipo", "Exigência", "Descrição"],
+        ["type", "string", "obrigatório", "O tipo deve ser _Activity_."],
         [
-            "type",
-            "string",
+            "classified_as",
+            "array",
             "obrigatório",
-            "O tipo da classe que deve ser _Creation_"
-        ],
-        ["timespan", "array", "opcional", ""],
-        ["influenced_by", "array", "opcional", ""]
+            "Um array de objetos JSON, como a propriedade comum classified_as, porém um dos itens deve ter o valor http://vocab.getty.edu/aat/300435599 para distinguir esta entidade como uma promessa."
+        ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Concept Creation_ do Linked Art [@linked-art2021.6]"
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Activity_ do Linked Art"
     }
 }

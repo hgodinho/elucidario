@@ -23,7 +23,7 @@
         [
             "type",
             "string",
-            "requerido",
+            "obrigatório",
             "O tipo deve ser _Period_, _Event_ ou _Activity_."
         ],
         ["representation", "array", "opcional", ""],
@@ -46,6 +46,6 @@
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Object_ do Linked Art"
+        "content": "Elaborado pelo autor. Metadados utilizados na entidade _Object_ do Linked Art"
     }
 }
