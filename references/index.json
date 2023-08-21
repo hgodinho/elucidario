@@ -604,6 +604,11 @@
             "id": "american-express2022",
             "slug": "jest-json-schema",
             "path": "<references>/american-express2022_jest-json-schema.json"
+        },
+        {
+            "id": "andersson2021",
+            "slug": "the-inter-font-family",
+            "path": "<references>/andersson2021_the-inter-font-family.json"
         }
     ]
 }
