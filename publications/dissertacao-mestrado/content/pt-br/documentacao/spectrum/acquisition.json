@@ -12,14 +12,29 @@
     ],
     "data": [
         ["Grupo de informação", "Exigência"],
-        ["Object identification information", "requerido"],
-        ["Acquisition information", "requerido"],
-        ["Object history and association information", "requerido"],
-        ["Object use information", "requerido"],
-        ["Object owners contribution information", "requerido"]
+        [
+            "_Informação de identificação do objeto_ (_Object identification information_)",
+            "obrigatório"
+        ],
+        [
+            "_Informação de aquisição_ (_Acquisition information_)",
+            "obrigatório"
+        ],
+        [
+            "_Histórico do objeto e informações de associação_ (_Object history and association information_)",
+            "obrigatório"
+        ],
+        [
+            "_Informações de uso do objeto_ (_Object use information",
+            "obrigatório"
+        ],
+        [
+            "_Informações de contribuição dos proprietário do objeto_ (_Object owners contribution information_)",
+            "obrigatório"
+        ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Grupos de informação para o procedimento _Acquisition and accessioning_ do Spectrum 5."
+        "content": "Elaborado pelo autor. Grupos de informação para o procedimento _Aquisição e adesão_ do Spectrum 5."
     }
 }
