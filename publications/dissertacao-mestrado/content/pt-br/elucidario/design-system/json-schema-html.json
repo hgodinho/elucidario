@@ -3,42 +3,42 @@
     "fields": [
         {
             "type": "string",
-            "name": "schema type"
+            "name": "Schema tipo"
         },
         {
             "type": "string",
-            "name": "schema format"
+            "name": "Schema formato"
         },
         {
             "type": "string",
-            "name": "schema extra"
+            "name": "Schema extra"
         },
         {
             "type": "string",
-            "name": "html tag"
+            "name": "HTML tag"
         },
         {
             "type": "string",
-            "name": "input type"
+            "name": "Input tipo"
         },
         {
             "type": "string",
-            "name": "attributes"
+            "name": "Atributos"
         },
         {
             "type": "string",
-            "name": "descrição"
+            "name": "Descrição"
         }
     ],
     "data": [
         [
-            "schema type",
-            "schema format",
-            "schema extra",
-            "html tag",
-            "input type",
-            "attributes",
-            "descrição"
+            "Schema tipo",
+            "Schema formato",
+            "Schema extra",
+            "HTML tag",
+            "Input tipo",
+            "Atributos",
+            "Descrição"
         ],
         ["string", "", "", "input", "text", "", "Texto livre"],
         [
