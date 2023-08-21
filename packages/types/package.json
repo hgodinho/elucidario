@@ -1,24 +1,26 @@
 {
-  "name": "@elucidario/pkg-types",
-  "version": "0.2.0",
-  "description": "Tipagem do Elucidário.art",
-  "license": "MIT",
-  "author": "Henrique Godinho <ola@hgod.in>",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "pnpm clear && tsc",
-    "clear": "rm -rf dist/*",
-    "dev": "pnpm clear && tsc -w"
-  },
-  "devDependencies": {
-    "@elucidario/pkg-tsconfig": "workspace:^",
-    "@types/node": "^18.15.11",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
-    "typescript": "^5.1.3"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+    "name": "@elucidario/pkg-types",
+    "version": "0.2.0",
+    "description": "Tipagem do Elucidário.art",
+    "license": "MIT",
+    "author": "Henrique Godinho <ola@hgod.in>",
+    "type": "module",
+    "main": "",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "pnpm clear && tsc",
+        "clear": "rm -rf dist/*",
+        "dev": "pnpm clear && tsc -w"
+    },
+    "devDependencies": {
+        "@elucidario/pkg-tsconfig": "workspace:^",
+        "@types/node": "^18.15.11",
+        "@types/react": "^18.2.14",
+        "@types/react-dom": "^18.2.6",
+        "typescript": "^5.1.3"
+    },
+    "peerDependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    }
 }
