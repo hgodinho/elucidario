@@ -1,0 +1,19 @@
+{
+    "id": "word-press9999",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linking-and-embedding",
+    "_create": "2023-08-15T05:19:19.081Z",
+    "_update": "2023-08-15T05:19:19.081Z",
+    "type": "webpage",
+    "title": "Linking and Embedding",
+    "author": [
+        {
+            "family": "WordPress"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-15"
+    },
+    "URL": "https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/"
+}

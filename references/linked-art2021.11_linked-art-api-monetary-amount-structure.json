@@ -1,0 +1,22 @@
+{
+    "id": "linked-art2021.11",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-art-api-monetary-amount-structure",
+    "_create": "2023-08-14T03:39:15.421Z",
+    "_update": "2023-08-14T03:39:15.421Z",
+    "type": "webpage",
+    "title": "Linked Art API: Monetary Amount Structure",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-14"
+    },
+    "issued": {
+        "raw": "2021"
+    },
+    "URL": "https://linked.art/api/1.0/shared/money/"
+}

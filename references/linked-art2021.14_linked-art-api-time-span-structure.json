@@ -1,0 +1,22 @@
+{
+    "id": "linked-art2021.14",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-art-api-time-span-structure",
+    "_create": "2023-08-14T04:02:39.812Z",
+    "_update": "2023-08-14T04:02:39.812Z",
+    "type": "webpage",
+    "title": "Linked Art API: TimeSpan Structure",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-14"
+    },
+    "issued": {
+        "raw": "2021"
+    },
+    "URL": "https://linked.art/api/1.0/shared/timespan/"
+}

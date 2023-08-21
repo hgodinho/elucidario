@@ -1,0 +1,35 @@
+{
+    "id": "harpring2022",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "categories-for-the-descriptions-of-works-of-art",
+    "_create": "2023-08-20T17:45:24.895Z",
+    "_update": "2023-08-20T17:45:24.895Z",
+    "type": "webpage",
+    "title": "Categories for the Descriptions of Works of Art",
+    "publisher": "J. Paul Getty Trust, College Art Association",
+    "publisher-place": "Estados Unidos da América",
+    "editor": [
+        {
+            "family": "Harpring",
+            "given": "Patricia"
+        },
+        {
+            "family": "Baca",
+            "given": "Murtha"
+        }
+    ],
+    "reviewed-author": [
+        {
+            "family": "Harpring",
+            "given": "Patricia"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-20"
+    },
+    "issued": {
+        "raw": "2022"
+    },
+    "URL": "https://www.getty.edu/research/publications/electronic_publications/cdwa/"
+}
