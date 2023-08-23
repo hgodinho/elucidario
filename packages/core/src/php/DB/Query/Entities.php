@@ -23,6 +23,15 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  */
 class Entities extends Query {
 	/**
+	 *     __             _ __
+	 *    / /__________ _(_) /______
+	 *   / __/ ___/ __ `/ / __/ ___/
+	 *  / /_/ /  / /_/ / / /_(__  )
+	 *  \__/_/   \__,_/_/\__/____/
+	 */
+	use \LCDR\Utils\debug;
+
+	/**
 	 * Prefix for the table name
 	 *
 	 * @var string
@@ -93,6 +102,7 @@ class Entities extends Query {
 	 *
 	 * @param array $args Arguments to add the entity.
 	 * @return bool|int False on failure, the ID of the inserted entity otherwise.
+	 * @throws \Exception If there were errors while adding the entity.
 	 */
 	public function add_entity( $args = array() ) {
 		$args = $this->parse_args( $args );
@@ -158,6 +168,7 @@ class Entities extends Query {
 	 */
 	public function update_entity( int $entity_id, $args = array() ) {
 		$update = true;
+
 		$entity = $this->get_entity( $entity_id );
 		if ( ! $entity ) {
 			$update = false;
@@ -168,6 +179,7 @@ class Entities extends Query {
 		if ( $args['relationships'] ) {
 			$add    = array();
 			$update = array();
+
 			/**
 			 * Filter the relationships before updating the entity.
 			 *
@@ -181,21 +193,22 @@ class Entities extends Query {
 				$args['relationships'],
 				$entity
 			);
+
 			foreach ( $relationships as $key => $new_relationships ) {
 				$old_relationships = $entity->get_property( $key );
 
 				// remove relationships.
-				$to_remove = array_diff( $old_relationships, $new_relationships );
+				$to_remove = array_values( array_diff( $old_relationships, $new_relationships ) );
 				$this->remove_relationships( $entity_id, $key, $to_remove );
 
 				// prepare for add relationships.
-				$to_add      = array_diff( $new_relationships, $old_relationships );
-				$add[ $key ] = $to_add;
-
+				$to_add         = array_values( array_diff( $new_relationships, $old_relationships ) );
+				$add[ $key ]    = $to_add;
 				$update[ $key ] = array_diff( $new_relationships, $to_add );
 			}
-			$this->add_relationships( $entity_id, $add );
+
 			$this->update_relationships( $entity_id, $update );
+			$this->add_relationships( $entity_id, $add );
 		}
 
 		return $this->update_item(
@@ -271,7 +284,9 @@ class Entities extends Query {
 			}
 		}
 
-		$columns       = array();
+		$columns       = array(
+			'guid' => isset( $args['guid'] ) ? $args['guid'] : wp_generate_uuid4(),
+		);
 		$relationships = array();
 
 		foreach ( $args as $key => $value ) {
@@ -280,6 +295,17 @@ class Entities extends Query {
 					$columns[ $key ] = $this->sanitize_data( $key, $value );
 				} elseif ( in_array( $key, lcdr_get_relationships_names(), true ) ) {
 					$relationships[ $key ] = $this->sanitize_data( $key, $value );
+				} elseif ( in_array( $key, lcdr_get_mixed_names(), true ) ) {
+					$mixed = $this->parse_mixed_args( $key, $value );
+
+					foreach ( $mixed as $name => $col_or_rel ) {
+						if ( 'columns' === $name ) {
+							$columns[ $key ] = $this->sanitize_data( $key, $col_or_rel );
+						}
+						if ( 'relationships' === $name ) {
+							$relationships[ $key ] = $col_or_rel;
+						}
+					}
 				} else {
 					// ignore unknown keys.
 					return;
@@ -326,6 +352,11 @@ class Entities extends Query {
 		if ( in_array( $key, lcdr_get_json_properties(), true ) ) {
 			return wp_json_encode( $data );
 		}
+		if ( in_array( $key, lcdr_get_mixed_names(), true ) ) {
+			if ( is_object( $data ) || is_array( $data ) ) {
+				return wp_json_encode( $data );
+			}
+		}
 		return $data;
 	}
 
@@ -338,6 +369,27 @@ class Entities extends Query {
 	 * /_/
 	 */
 	/**
+	 * Parse mixed args, used for properties that can be either a column or a relationship.
+	 *
+	 * @param string $key Key of the data.
+	 * @param array  $args Data to parse.
+	 * @return array
+	 */
+	private function parse_mixed_args( string $key, array $args ) {
+		$mixed = array();
+		foreach ( $args as $arg ) {
+			if ( is_object( $arg ) ) {
+				$mixed['columns'][] = $arg;
+
+			}
+			if ( is_numeric( $arg ) ) {
+				$mixed['relationships'][] = $arg;
+			}
+		}
+		return $mixed;
+	}
+
+	/**
 	 * Parse relationships
 	 *
 	 * @param int   $item_id Item ID.
@@ -348,6 +400,7 @@ class Entities extends Query {
 		if ( ! $relationships ) {
 			return false;
 		}
+
 		$parsed = array();
 		foreach ( $relationships as $key => $relationship ) {
 			$index = 0;
@@ -390,12 +443,9 @@ class Entities extends Query {
 		if ( ! $relationships ) {
 			return false;
 		}
+
 		$query = new \LCDR\DB\Query\Relationships();
-		$added = array();
-		foreach ( $relationships as $relationship ) {
-			$added[] = $query->add_relationship( $relationship );
-		}
-		return $added;
+		return $query->add_relationships( $relationships );
 	}
 
 	/**
@@ -407,10 +457,27 @@ class Entities extends Query {
 	 */
 	private function update_relationships( int $item_id, mixed $relationships ) {
 		$relationships = $this->parse_relationships( $item_id, $relationships );
+
 		if ( ! $relationships ) {
 			return false;
 		}
+
 		$query = new \LCDR\DB\Query\Relationships();
+		$index = 0;
+		foreach ( $relationships as $relationship ) {
+			$stored                            = \wp_list_filter(
+				$query->get_relationships_by_entity_id( $item_id, $relationship['predicate'] ),
+				array(
+					'object'    => $relationship['object'],
+					'subject'   => $relationship['subject'],
+					'predicate' => $relationship['predicate'],
+				)
+			);
+			$to_update                         = array_pop( $stored );
+			$relationships[ $index ]['rel_id'] = $to_update->rel_id;
+			$index++;
+		}
+
 		return $query->update_relationships( $relationships );
 	}
 
@@ -427,6 +494,7 @@ class Entities extends Query {
 			return false;
 		}
 		$query = new \LCDR\DB\Query\Relationships();
+
 		foreach ( $relationships as $relationship ) {
 			$rel_to_del = $query->get_results(
 				array(

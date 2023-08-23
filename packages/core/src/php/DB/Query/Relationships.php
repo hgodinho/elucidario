@@ -23,6 +23,15 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  */
 class Relationships extends Query {
 	/**
+	 *     __             _ __
+	 *    / /__________ _(_) /______
+	 *   / __/ ___/ __ `/ / __/ ___/
+	 *  / /_/ /  / /_/ / / /_(__  )
+	 *  \__/_/   \__,_/_/\__/____/
+	 */
+	use \LCDR\Utils\debug;
+
+	/**
 	 * Prefix for the table name
 	 *
 	 * @var string
@@ -85,17 +94,17 @@ class Relationships extends Query {
 	 */
 	public function get_relationship( $relationship_id ) {
 		$item = $this->get_item( $relationship_id );
-
 		return $item;
 	}
 
 	/**
 	 * Get relationships by entity id
 	 *
-	 * @param int $entity_id Entity ID.
+	 * @param int         $entity_id Entity ID.
+	 * @param string|null $predicate Predicate.
 	 * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
 	 */
-	public function get_relationships_by_entity_id( $entity_id ) {
+	public function get_relationships_by_entity_id( $entity_id, $predicate = null ) {
 		add_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
 		$items = $this->query(
 			array(
@@ -105,6 +114,14 @@ class Relationships extends Query {
 			),
 		);
 		remove_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
+		if ( $predicate ) {
+			$items = array_filter(
+				$items,
+				function ( $item ) use ( $predicate ) {
+					return $item->predicate === $predicate;
+				}
+			);
+		}
 		return $items;
 	}
 
@@ -159,12 +176,20 @@ class Relationships extends Query {
 	/**
 	 * Update relationship
 	 *
-	 * @param int   $relationship_id Relationship ID.
 	 * @param array $args Updated args.
 	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
-	public function update_relationship( $relationship_id, $args = array() ) {
-		$args = $this->parse_args( $args );
+	public function update_relationship( $args = array() ) {
+		$args            = $this->parse_args( $args );
+		$relationship_id = false;
+
+		if ( isset( $args['rel_id'] ) ) {
+			$relationship_id = $args['rel_id'];
+		}
+
+		if ( ! $relationship_id ) {
+			return $this->add_relationship( $args );
+		}
 
 		return parent::update_item(
 			$relationship_id,
@@ -173,7 +198,7 @@ class Relationships extends Query {
 			 *
 			 * @wp-filter lcdr_update_{this->item_name}_args
 			 * @param array $args Arguments to add the relationship.
-			 * @param int   $relationship_id Relationship ID.
+			 * @param int   $relationship->rel_id Relationship ID.
 			 * @return array
 			 */
 			apply_filters( lcdr_hook( array( 'update', $this->item_name, 'args' ) ), $args, $relationship_id )
@@ -188,9 +213,10 @@ class Relationships extends Query {
 	 */
 	public function update_relationships( $relationships = array() ) {
 		$updated = array();
-		foreach ( $relationships as $relationship_id => $relationship ) {
-			$updated[] = $this->update_relationship( $relationship_id, $relationship );
+		foreach ( $relationships as $relationship ) {
+			$updated[] = $this->update_relationship( $relationship );
 		}
+
 		return $updated;
 	}
 
@@ -258,18 +284,26 @@ class Relationships extends Query {
 			unset( $parsed['order'] );
 		}
 
-		if ( in_array( 'predicate', $parsed, true ) ) {
-			if ( ! in_array( $parsed['predicate'], lcdr_get_relationships_names(), true ) ) {
-				throw new \Exception(
+		if ( isset( $parsed['predicate'] ) ) {
+			$relationships = array_merge(
+				lcdr_get_relationships_names(),
+				lcdr_get_mixed_names()
+			);
+			if ( ! in_array( $parsed['predicate'], $relationships, true ) ) {
+				$this->dump(
+					'cli',
 					sprintf(
 						/* translators: %s predicate value */
 						__( '%s is not a valid relationship name.', 'lcdr' ),
 						$parsed['predicate']
-					)
+					),
+					__CLASS__,
+					__METHOD__,
+					__LINE__,
+					true
 				);
 			}
 		}
-
 		return $parsed;
 	}
 

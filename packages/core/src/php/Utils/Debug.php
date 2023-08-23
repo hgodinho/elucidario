@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Debug class.
  */
-class Debug {
+trait debug {
 	/**
 	 * Var Dump especial que cita a classe, método, linha
 	 * e `die()` o WordPress por padrão
@@ -57,26 +57,53 @@ class Debug {
 	 *
 	 * @echo mixed
 	 */
-	public static function dump( $var, $class, $method, $line, $die = true ) {
+	public static function dump( $type, $var, $class, $method, $line, $die = true ) {
 		if ( true === $die ) {
 			$wp = 'dead.';
 		} else {
 			$wp = 'breathing.';
 		}
+		switch ( $type ) {
+			case 'browser':
+				self::browser_dump( $var, $class, $method, $line, $wp );
+				break;
+			case 'cli':
+			default:
+				self::cli_dump( $var, $class, $method, $line, $wp );
+				break;
+		}
+	}
 
-		$highlight_string = highlight_string( '<?php ' . var_export( $var, true ) . '; ?>', true );
-
+	public static function browser_dump( $var, $class, $method, $line, $wp ) {
+		$var = highlight_string( '<?php ' . var_export( $var, true ) . '; ?>', true );
 		echo '<p><strong>Class: ' . $class . ' | ';
 		echo 'Method: ' . $method . ' | ';
 		echo 'Line: ' . $line . ' | ';
 		echo 'WordPress: ' . $wp;
 		echo '</strong></p>';
+
+		echo '<p><strong>--- start</strong></p>';
 		echo '<pre>';
-		var_dump( $highlight_string );
+		var_dump( $var );
 		echo '</pre>';
 		echo '<p><strong>--- end</strong></p>';
 
-		if ( true === $die ) {
+		if ( 'dead.' === $wp ) {
+			wp_die();
+		}
+	}
+
+	public static function cli_dump( $var, $class, $method, $line, $wp = true ) {
+		echo "\nClass: " . $class . " | ";
+		echo "Method: " . $method . " | ";
+		echo "Line: " . $line . " | ";
+		echo "WordPress: " . $wp . "\n\n";
+
+		echo "--- start\n";
+		var_dump( $var );
+		echo "--- end\n\n";
+
+		if ( "dead." === $wp ) {
 			wp_die();
 		}
 	}

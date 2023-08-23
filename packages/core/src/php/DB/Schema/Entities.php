@@ -85,6 +85,18 @@ class Entities extends Schema {
 			'created'    => true,
 			'searchable' => true,
 			'sortable'   => true,
+			'default'    => '0000-00-00 00:00:00',
+		),
+		'modified'                => array(
+			'name'       => 'modified',
+			'type'       => 'datetime',
+			'date_query' => true,
+			'unsigned'   => true,
+			'allow_null' => false,
+			'modified'   => true,
+			'searchable' => true,
+			'sortable'   => true,
+			'default'    => '0000-00-00 00:00:00',
 		),
 		'type'                    => array(
 			'name'       => 'type',
