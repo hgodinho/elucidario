@@ -39,11 +39,18 @@ class Relationships extends Query {
 	protected $prefix = 'lcdr';
 
 	/**
-	 * Name of the table
+	 * Table name
 	 *
 	 * @var string
 	 */
 	protected $table_name = 'relationships';
+
+	/**
+	 * Item name
+	 *
+	 * @var string
+	 */
+	protected $item_name = 'relationship';
 
 	/**
 	 * Database version key

@@ -35,7 +35,7 @@ class Entities extends Table {
 		$this->schema = "
             entity_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
             name varchar(255) NOT NULL DEFAULT '',
-            guid varchar(255) NOT NULL DEFAULT '',
+            guid varchar(40) NOT NULL DEFAULT '',
             author bigint(20) unsigned NOT NULL DEFAULT '0',
             status varchar(20) NOT NULL DEFAULT 'publish',
             password varchar(255),
