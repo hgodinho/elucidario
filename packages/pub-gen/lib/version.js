@@ -197,7 +197,9 @@ export const version = async (args) => {
         console.log("Adding changes to git...");
         await git.add(publicationPath);
         console.log("Committing changes to git...");
-        await git.commit(`chore(${publication}) ${newVersion} ${message}`);
+        await git.commit(`chore(${publication}) ${newVersion} ${message}`, {
+            "--no-verify": true,
+        });
         if (push) {
             console.log("Pushing changes to remote...");
             await git.push();
