@@ -1,6 +1,6 @@
 <?php
 /**
- * Option class.
+ * Entity class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -30,6 +30,7 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 *  \__/_/   \__,_/_/\__/____/
 	 */
 	use \LCDR\Utils\debug;
+	use \LCDR\DB\Row\Row;
 
 	/**
 	 *                __
@@ -229,22 +230,6 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 
 		$this->init_relationships();
 		$this->init_mixed();
-	}
-
-	/**
-	 * Get the entity property.
-	 *
-	 * @param string $property Property.
-	 * @return mixed|boolean Boolean false if property is not valid.
-	 */
-	public function get_property( string $property ): mixed {
-		if ( ! in_array( $property, lcdr_get_valid_properties(), true ) ) {
-			return false;
-		}
-		if ( in_array( $property, lcdr_get_json_properties(), true ) ) {
-			return json_decode( $this->{$property} );
-		}
-		return $this->{$property};
 	}
 
 	/**

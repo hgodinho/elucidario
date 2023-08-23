@@ -39,11 +39,18 @@ class Entities extends Query {
 	protected $prefix = 'lcdr';
 
 	/**
-	 * Name of the table
+	 * Table name
 	 *
 	 * @var string
 	 */
 	protected $table_name = 'entities';
+
+	/**
+	 * Item name
+	 *
+	 * @var string
+	 */
+	protected $item_name = 'entity';
 
 	/**
 	 * Database version key
@@ -278,9 +285,6 @@ class Entities extends Query {
 			}
 			if ( ! isset( $args['author'] ) ) {
 				throw new \Exception( __( 'The data must have an author.', 'lcdr' ) );
-			}
-			if ( ! isset( $args['identified_by'] ) ) {
-				throw new \Exception( __( 'The data must have an identifier.', 'lcdr' ) );
 			}
 		}
 
