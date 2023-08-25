@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Relationships schema class.
  */
-class Relationships extends Schema {
+final class Relationships extends Schema {
 	/**
 	 * Columns.
 	 *

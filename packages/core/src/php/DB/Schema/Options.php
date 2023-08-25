@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Options schema class.
  */
-class Options extends Schema {
+final class Options extends Schema {
 	/**
 	 * Columns.
 	 *

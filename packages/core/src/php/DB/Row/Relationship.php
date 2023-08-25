@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Relationship row class.
  */
-class Relationship extends Row implements \LCDR\DB\Interfaces\Relationship {
+final class Relationship extends Row implements \LCDR\DB\Interfaces\Relationship {
 	/**
 	 * Relationship ID.
 	 *

@@ -184,7 +184,7 @@ class Entities extends Query {
 		$args = $this->parse_args( $args, $update );
 
 		if ( $args['relationships'] ) {
-			$add = array();
+			$add    = array();
 			$update = array();
 
 			/**
@@ -209,8 +209,8 @@ class Entities extends Query {
 				$this->remove_relationships( $entity_id, $key, $to_remove );
 
 				// prepare for add relationships.
-				$to_add = array_values( array_diff( $new_relationships, $old_relationships ) );
-				$add[ $key ] = $to_add;
+				$to_add         = array_values( array_diff( $new_relationships, $old_relationships ) );
+				$add[ $key ]    = $to_add;
 				$update[ $key ] = array_diff( $new_relationships, $to_add );
 			}
 
@@ -288,7 +288,7 @@ class Entities extends Query {
 			}
 		}
 
-		$columns = array(
+		$columns       = array(
 			'guid' => isset( $args['guid'] ) ? $args['guid'] : wp_generate_uuid4(),
 		);
 		$relationships = array();
@@ -314,7 +314,7 @@ class Entities extends Query {
 					// ignore unknown keys.
 					return;
 				}
-			} catch (\Exception $e) {
+			} catch ( \Exception $e ) {
 				throw new \Exception(
 					sprintf(
 						/* translators: %s: key */
@@ -326,7 +326,7 @@ class Entities extends Query {
 		}
 
 		return array(
-			'columns' => ! empty( $columns ) ? $columns : null,
+			'columns'       => ! empty( $columns ) ? $columns : null,
 			'relationships' => ! empty( $relationships ) ? $relationships : null,
 		);
 	}
@@ -428,10 +428,10 @@ class Entities extends Query {
 	 */
 	private function mount_relationship( $subject_id, $predicate, $object_id, $order = 0 ) {
 		return array(
-			'subject' => $subject_id,
+			'subject'   => $subject_id,
 			'predicate' => $predicate,
-			'object' => $object_id,
-			'order' => $order,
+			'object'    => $object_id,
+			'order'     => $order,
 		);
 	}
 
@@ -469,15 +469,15 @@ class Entities extends Query {
 		$query = new \LCDR\DB\Query\Relationships();
 		$index = 0;
 		foreach ( $relationships as $relationship ) {
-			$stored = \wp_list_filter(
+			$stored                            = \wp_list_filter(
 				$query->get_relationships_by_entity_id( $item_id, $relationship['predicate'] ),
 				array(
-					'object' => $relationship['object'],
-					'subject' => $relationship['subject'],
+					'object'    => $relationship['object'],
+					'subject'   => $relationship['subject'],
 					'predicate' => $relationship['predicate'],
 				)
 			);
-			$to_update = array_pop( $stored );
+			$to_update                         = array_pop( $stored );
 			$relationships[ $index ]['rel_id'] = $to_update->rel_id;
 			$index++;
 		}
@@ -505,15 +505,15 @@ class Entities extends Query {
 					'rel_id',
 				),
 				array(
-					'subject' => $entity_id,
+					'subject'   => $entity_id,
 					'predicate' => $predicate,
-					'object' => $relationship,
+					'object'    => $relationship,
 				)
 			);
 
 			$query->delete_relationships(
 				array_map(
-					function ($del) {
+					function ( $del ) {
 						return $del->rel_id;
 					},
 					$rel_to_del

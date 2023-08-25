@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Options query class.
  */
-class Options extends Query {
+final class Options extends Query {
 	/**
 	 * Name of the table
 	 *

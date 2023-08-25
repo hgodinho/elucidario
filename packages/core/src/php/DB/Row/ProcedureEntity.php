@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * ProcedureEntity row class.
  */
-class ProcedureEntity extends Row {
+final class ProcedureEntity extends Row {
 	/**
 	 * ProcedureEntity ID.
 	 *

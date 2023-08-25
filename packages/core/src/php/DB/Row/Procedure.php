@@ -138,15 +138,15 @@ final class Procedure extends Row {
 
 		// properties.
 		$this->procedure_id = (int) $this->procedure_id;
-		$this->type = (string) $this->type;
-		$this->guid = (string) $this->guid;
-		$this->description = (string) $this->description;
-		$this->author = (int) $this->author;
-		$this->created = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
-		$this->modified = false === $this->modified ? 0 : wp_date( get_option( 'date_format' ), $this->modified );
-		$this->status = (string) $this->status;
-		$this->schedule = json_decode( $this->schedule );
-		$this->entities = $this->init_entities();
+		$this->type         = (string) $this->type;
+		$this->guid         = (string) $this->guid;
+		$this->description  = (string) $this->description;
+		$this->author       = (int) $this->author;
+		$this->created      = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
+		$this->modified     = false === $this->modified ? 0 : wp_date( get_option( 'date_format' ), $this->modified );
+		$this->status       = (string) $this->status;
+		$this->schedule     = json_decode( $this->schedule );
+		$this->entities     = $this->init_entities();
 	}
 
 	/**
@@ -174,7 +174,7 @@ final class Procedure extends Row {
 	 */
 	private function init_entities() {
 		$procedures_entities = new \LCDR\DB\Query\ProceduresEntities();
-		$relationships = $procedures_entities->get_relationships( array( 'procedure_id' => $this->procedure_id ) );
+		$relationships       = $procedures_entities->get_relationships( array( 'procedure_id' => $this->procedure_id ) );
 
 		$entities = \wp_list_pluck( $relationships, 'entity_id' );
 

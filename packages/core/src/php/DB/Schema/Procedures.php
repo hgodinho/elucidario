@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Procedures schema class.
  */
-class Procedures extends Schema {
+final class Procedures extends Schema {
 	/**
 	 * Columns.
 	 *

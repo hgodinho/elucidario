@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Procedures query class.
  */
-class Procedures extends Query {
+final class Procedures extends Query {
 	/**
 	 *     __             _ __
 	 *    / /__________ _(_) /______
@@ -286,7 +286,7 @@ class Procedures extends Query {
 	 * Add procedure entities
 	 *
 	 * @param integer $item_id
-	 * @param array $entities
+	 * @param array   $entities
 	 * @return void
 	 */
 	private function add_procedure_entities( int $item_id, array $entities ) {
@@ -296,10 +296,10 @@ class Procedures extends Query {
 		$entities = array_values( $entities );
 
 		$entities = array_map(
-			function ($entity_id) use ($item_id) {
+			function ( $entity_id ) use ( $item_id ) {
 				return array(
 					'procedure_id' => $item_id,
-					'entity_id' => $entity_id,
+					'entity_id'    => $entity_id,
 				);
 			},
 			$entities

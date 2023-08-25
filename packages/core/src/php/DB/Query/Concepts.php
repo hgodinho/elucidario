@@ -19,7 +19,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Concepts query class.
  */
-class Concepts extends Entities {
+final class Concepts extends Entities {
 	/**
 	 * Name of the item
 	 *

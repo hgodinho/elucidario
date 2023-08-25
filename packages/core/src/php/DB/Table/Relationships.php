@@ -19,7 +19,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Relationships table class.
  */
-class Relationships extends Table {
+final class Relationships extends Table {
 	/**
 	 * Table name.
 	 *

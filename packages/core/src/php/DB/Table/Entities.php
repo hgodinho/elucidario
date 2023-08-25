@@ -19,7 +19,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Entities table class.
  */
-class Entities extends Table {
+final class Entities extends Table {
 	/**
 	 * Table name.
 	 *

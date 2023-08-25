@@ -19,7 +19,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Procedures table class.
  */
-class Procedures extends Table {
+final class Procedures extends Table {
 	/**
 	 * Table name.
 	 *

@@ -212,14 +212,14 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		parent::__construct( $this->trim_keys( $item ) );
 		// properties.
 		$this->entity_id = (int) $this->entity_id;
-		$this->type = (string) $this->type;
-		$this->name = (string) $this->name;
-		$this->guid = (string) $this->guid;
-		$this->author = (int) $this->author;
-		$this->status = (string) $this->status;
-		$this->password = (string) $this->password;
-		$this->created = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
-		$this->label = (string) $this->label;
+		$this->type      = (string) $this->type;
+		$this->name      = (string) $this->name;
+		$this->guid      = (string) $this->guid;
+		$this->author    = (int) $this->author;
+		$this->status    = (string) $this->status;
+		$this->password  = (string) $this->password;
+		$this->created   = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
+		$this->label     = (string) $this->label;
 
 		$this->init_relationships();
 		$this->init_mixed();
@@ -249,20 +249,20 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 * @return void
 	 */
 	protected function init_relationships() {
-		$query = new \LCDR\DB\Query\Relationships(
+		$query               = new \LCDR\DB\Query\Relationships(
 			array(
-				'fields' => 'ids',
+				'fields'   => 'ids',
 				'order_by' => 'rel_order',
 			)
 		);
 		$this->relationships = $query->get_relationships_by_entity_id( $this->entity_id );
-		$allowed = $this->allowed_properties ?? array();
+		$allowed             = $this->allowed_properties ?? array();
 		foreach ( $allowed as $property ) {
 			$relationships = array_merge(
 				lcdr_get_relationships_names(),
 			);
 			if ( in_array( $property, $relationships, true ) ) {
-				$property = trim( $property );
+				$property          = trim( $property );
 				$this->{$property} = $this->get_relationships_by_predicate( $property );
 			}
 		}
@@ -275,8 +275,8 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 */
 	protected function init_mixed() {
 		foreach ( lcdr_get_mixed_names() as $mixed ) {
-			${$mixed} = $this->{$mixed} ? json_decode( $this->{$mixed} ) : null;
-			$init = array_merge(
+			${$mixed}       = $this->{$mixed} ? json_decode( $this->{$mixed} ) : null;
+			$init           = array_merge(
 				array(),
 				${$mixed} ?? array(),
 				$this->get_relationships_by_predicate( $mixed ) ?? array()
@@ -296,7 +296,7 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 
 		return array_values(
 			array_map(
-				function ($relationship) {
+				function ( $relationship ) {
 					if ( $relationship->subject === $this->entity_id ) {
 						return $relationship->object;
 					}

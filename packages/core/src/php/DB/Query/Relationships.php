@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Entities query class.
  */
-class Relationships extends Query {
+final class Relationships extends Query {
 	/**
 	 *     __             _ __
 	 *    / /__________ _(_) /______

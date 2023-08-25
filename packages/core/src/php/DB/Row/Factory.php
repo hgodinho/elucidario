@@ -35,7 +35,7 @@ final class Factory {
 		}
 		if ( is_int( $item ) ) {
 			$entities = new \LCDR\DB\Query\Entities();
-			$entity = $entities->get_entity( $item );
+			$entity   = $entities->get_entity( $item );
 		}
 
 		switch ( $entity->type ) {

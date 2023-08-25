@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Entities query class.
  */
-class ProceduresEntities extends Query {
+final class ProceduresEntities extends Query {
 	/**
 	 *     __             _ __
 	 *    / /__________ _(_) /______
@@ -105,42 +105,42 @@ class ProceduresEntities extends Query {
 	}
 
 	// /**
-	//  * Get relationships by entity id
-	//  *
-	//  * @param int         $entity_id Entity ID.
-	//  * @param string|null $predicate Predicate.
-	//  * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
-	//  */
+	// * Get relationships by entity id
+	// *
+	// * @param int         $entity_id Entity ID.
+	// * @param string|null $predicate Predicate.
+	// * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
+	// */
 	// public function get_relationships_by_entity_id( $entity_id, $predicate = null ) {
-	// 	add_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
-	// 	$items = $this->query(
-	// 		array(
-	// 			'order'   => 'ASC',
-	// 			'subject' => $entity_id,
-	// 			'object'  => $entity_id,
-	// 		),
-	// 	);
-	// 	remove_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
-	// 	if ( $predicate ) {
-	// 		$items = array_filter(
-	// 			$items,
-	// 			function ( $item ) use ( $predicate ) {
-	// 				return $item->predicate === $predicate;
-	// 			}
-	// 		);
-	// 	}
-	// 	return $items;
+	// add_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
+	// $items = $this->query(
+	// array(
+	// 'order'   => 'ASC',
+	// 'subject' => $entity_id,
+	// 'object'  => $entity_id,
+	// ),
+	// );
+	// remove_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
+	// if ( $predicate ) {
+	// $items = array_filter(
+	// $items,
+	// function ( $item ) use ( $predicate ) {
+	// return $item->predicate === $predicate;
+	// }
+	// );
+	// }
+	// return $items;
 	// }
 
 	// /**
-	//  * Filter query clauses
-	//  *
-	//  * @param array $clauses Query clauses.
-	//  * @return array
-	//  */
+	// * Filter query clauses
+	// *
+	// * @param array $clauses Query clauses.
+	// * @return array
+	// */
 	// public function filter_query_clauses( $clauses = array() ) {
-	// 	$clauses['where'] = str_replace( 'AND', 'OR', $clauses['where'] );
-	// 	return $clauses;
+	// $clauses['where'] = str_replace( 'AND', 'OR', $clauses['where'] );
+	// return $clauses;
 	// }
 
 	/**
@@ -187,7 +187,7 @@ class ProceduresEntities extends Query {
 	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
 	public function update_relationship( $args = array() ) {
-		$args = $this->parse_args( $args );
+		$args            = $this->parse_args( $args );
 		$relationship_id = false;
 
 		if ( isset( $args['rel_id'] ) ) {
@@ -257,7 +257,7 @@ class ProceduresEntities extends Query {
 	 */
 	public function delete_relationships( $relationships = array() ) {
 		return array_map(
-			function ($relationship) {
+			function ( $relationship ) {
 				return $this->delete_relationship( $relationship );
 			},
 			$relationships
