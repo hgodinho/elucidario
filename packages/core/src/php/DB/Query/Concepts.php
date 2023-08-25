@@ -1,6 +1,6 @@
 <?php
 /**
- * Options class.
+ * Concepts class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core

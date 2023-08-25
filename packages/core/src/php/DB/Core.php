@@ -28,9 +28,11 @@ final class Core {
 	 * @var array
 	 */
 	public $table_names = array(
-		'options'       => '\\LCDR\\DB\\Table\\Options',
-		'entities'      => '\\LCDR\\DB\\Table\\Entities',
-		'relationships' => '\\LCDR\\DB\\Table\\Relationships',
+		'options'             => '\\LCDR\\DB\\Table\\Options',
+		'entities'            => '\\LCDR\\DB\\Table\\Entities',
+		'relationships'       => '\\LCDR\\DB\\Table\\Relationships',
+		'procedures'          => '\\LCDR\\DB\\Table\\Procedures',
+		'procedures_entities' => '\\LCDR\\DB\\Table\\ProceduresEntities',
 	);
 
 	/**

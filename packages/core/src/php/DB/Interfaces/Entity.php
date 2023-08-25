@@ -8,14 +8,6 @@
 
 namespace LCDR\DB\Interfaces;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
-if ( ! defined( 'LCDR_PATH' ) ) {
-	exit;
-}
-
 interface Entity {
 	/**
 	 * Get the entity property.

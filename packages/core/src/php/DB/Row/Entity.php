@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Entity row class.
  */
-abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
+class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	/**
 	 *     __             _ __
 	 *    / /__________ _(_) /______
@@ -196,13 +196,6 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	private array $relationships;
 
 	/**
-	 * Allowed properties
-	 *
-	 * @var array
-	 */
-	public array $allowed_properties = array();
-
-	/**
 	 *                  __    ___
 	 *     ____  __  __/ /_  / (_)____
 	 *    / __ \/ / / / __ \/ / / ___/
@@ -216,21 +209,22 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 * @param mixed $item Item.
 	 */
 	public function __construct( $item = null ) {
-		parent::__construct( $item );
+		parent::__construct( $this->trim_keys( $item ) );
 		// properties.
 		$this->entity_id = (int) $this->entity_id;
-		$this->type      = (string) $this->type;
-		$this->name      = (string) $this->name;
-		$this->guid      = (string) $this->guid;
-		$this->author    = (int) $this->author;
-		$this->status    = (string) $this->status;
-		$this->password  = (string) $this->password;
-		$this->created   = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
-		$this->label     = (string) $this->label;
+		$this->type = (string) $this->type;
+		$this->name = (string) $this->name;
+		$this->guid = (string) $this->guid;
+		$this->author = (int) $this->author;
+		$this->status = (string) $this->status;
+		$this->password = (string) $this->password;
+		$this->created = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
+		$this->label = (string) $this->label;
 
 		$this->init_relationships();
 		$this->init_mixed();
 	}
+
 
 	/**
 	 * Get the entity relationships.
@@ -255,19 +249,20 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 * @return void
 	 */
 	protected function init_relationships() {
-		$query               = new \LCDR\DB\Query\Relationships(
+		$query = new \LCDR\DB\Query\Relationships(
 			array(
-				'fields'   => 'ids',
+				'fields' => 'ids',
 				'order_by' => 'rel_order',
 			)
 		);
 		$this->relationships = $query->get_relationships_by_entity_id( $this->entity_id );
-
-		foreach ( $this->allowed_properties as $property ) {
+		$allowed = $this->allowed_properties ?? array();
+		foreach ( $allowed as $property ) {
 			$relationships = array_merge(
 				lcdr_get_relationships_names(),
 			);
 			if ( in_array( $property, $relationships, true ) ) {
+				$property = trim( $property );
 				$this->{$property} = $this->get_relationships_by_predicate( $property );
 			}
 		}
@@ -280,8 +275,8 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 */
 	protected function init_mixed() {
 		foreach ( lcdr_get_mixed_names() as $mixed ) {
-			${$mixed}       = json_decode( $this->{$mixed} );
-			$init           = array_merge(
+			${$mixed} = $this->{$mixed} ? json_decode( $this->{$mixed} ) : null;
+			$init = array_merge(
 				array(),
 				${$mixed} ?? array(),
 				$this->get_relationships_by_predicate( $mixed ) ?? array()
@@ -301,7 +296,7 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 
 		return array_values(
 			array_map(
-				function ( $relationship ) {
+				function ($relationship) {
 					if ( $relationship->subject === $this->entity_id ) {
 						return $relationship->object;
 					}
@@ -310,5 +305,31 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 				$relationships
 			)
 		);
+	}
+
+
+	/**
+	 *                 _             __
+	 *     ____  _____(_)   ______ _/ /____
+	 *    / __ \/ ___/ / | / / __ `/ __/ _ \
+	 *   / /_/ / /  / /| |/ / /_/ / /_/  __/
+	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
+	 * /_/
+	 */
+	/**
+	 * Trim $item keys.
+	 *
+	 * @param array|\LCDR\DB\Interfaces\Entity $item
+	 * @return array
+	 */
+	private function trim_keys( $item ) {
+		if ( ! is_array( $item ) ) {
+			$item = (array) $item;
+		}
+		$newArray = array();
+		foreach ( $item as $key => $value ) {
+			$newArray[ trim( $key ) ] = $value;
+		}
+		return $newArray;
 	}
 }

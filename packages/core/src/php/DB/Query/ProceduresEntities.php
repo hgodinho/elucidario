@@ -1,6 +1,6 @@
 <?php
 /**
- * Relationships class.
+ * Options class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Entities query class.
  */
-class Relationships extends Query {
+class ProceduresEntities extends Query {
 	/**
 	 *     __             _ __
 	 *    / /__________ _(_) /______
@@ -43,14 +43,14 @@ class Relationships extends Query {
 	 *
 	 * @var string
 	 */
-	protected $table_name = 'relationships';
+	protected $table_name = 'procedures_entities';
 
 	/**
 	 * Item name
 	 *
 	 * @var string
 	 */
-	protected $item_name = 'relationship';
+	protected $item_name = 'procedure_entity';
 
 	/**
 	 * Database version key
@@ -64,14 +64,14 @@ class Relationships extends Query {
 	 *
 	 * @var string
 	 */
-	protected $table_schema = '\\LCDR\\DB\\Schema\\Relationships';
+	protected $table_schema = '\\LCDR\\DB\\Schema\\ProceduresEntities';
 
 	/**
 	 * Name of the class to use for each item
 	 *
 	 * @var string
 	 */
-	protected $item_shape = '\\LCDR\\DB\\Row\\Relationship';
+	protected $item_shape = '\\LCDR\\DB\\Row\\ProcedureEntity';
 
 	/**
 	 *                  __    ___
@@ -104,44 +104,44 @@ class Relationships extends Query {
 		return $item;
 	}
 
-	/**
-	 * Get relationships by entity id
-	 *
-	 * @param int         $entity_id Entity ID.
-	 * @param string|null $predicate Predicate.
-	 * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
-	 */
-	public function get_relationships_by_entity_id( $entity_id, $predicate = null ) {
-		add_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
-		$items = $this->query(
-			array(
-				'order'   => 'ASC',
-				'subject' => $entity_id,
-				'object'  => $entity_id,
-			),
-		);
-		remove_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
-		if ( $predicate ) {
-			$items = array_filter(
-				$items,
-				function ( $item ) use ( $predicate ) {
-					return $item->predicate === $predicate;
-				}
-			);
-		}
-		return $items;
-	}
+	// /**
+	//  * Get relationships by entity id
+	//  *
+	//  * @param int         $entity_id Entity ID.
+	//  * @param string|null $predicate Predicate.
+	//  * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
+	//  */
+	// public function get_relationships_by_entity_id( $entity_id, $predicate = null ) {
+	// 	add_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
+	// 	$items = $this->query(
+	// 		array(
+	// 			'order'   => 'ASC',
+	// 			'subject' => $entity_id,
+	// 			'object'  => $entity_id,
+	// 		),
+	// 	);
+	// 	remove_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
+	// 	if ( $predicate ) {
+	// 		$items = array_filter(
+	// 			$items,
+	// 			function ( $item ) use ( $predicate ) {
+	// 				return $item->predicate === $predicate;
+	// 			}
+	// 		);
+	// 	}
+	// 	return $items;
+	// }
 
-	/**
-	 * Filter query clauses
-	 *
-	 * @param array $clauses Query clauses.
-	 * @return array
-	 */
-	public function filter_query_clauses( $clauses = array() ) {
-		$clauses['where'] = str_replace( 'AND', 'OR', $clauses['where'] );
-		return $clauses;
-	}
+	// /**
+	//  * Filter query clauses
+	//  *
+	//  * @param array $clauses Query clauses.
+	//  * @return array
+	//  */
+	// public function filter_query_clauses( $clauses = array() ) {
+	// 	$clauses['where'] = str_replace( 'AND', 'OR', $clauses['where'] );
+	// 	return $clauses;
+	// }
 
 	/**
 	 * Add relationship
@@ -187,7 +187,7 @@ class Relationships extends Query {
 	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
 	public function update_relationship( $args = array() ) {
-		$args            = $this->parse_args( $args );
+		$args = $this->parse_args( $args );
 		$relationship_id = false;
 
 		if ( isset( $args['rel_id'] ) ) {
@@ -252,12 +252,12 @@ class Relationships extends Query {
 	/**
 	 * Delete relationships
 	 *
-	 * @param array $relationships Relationships ids.
+	 * @param array $relationships ProceduresEntities ids.
 	 * @return array
 	 */
 	public function delete_relationships( $relationships = array() ) {
 		return array_map(
-			function ( $relationship ) {
+			function ($relationship) {
 				return $this->delete_relationship( $relationship );
 			},
 			$relationships
@@ -291,26 +291,6 @@ class Relationships extends Query {
 			unset( $parsed['order'] );
 		}
 
-		if ( isset( $parsed['predicate'] ) ) {
-			$relationships = array_merge(
-				lcdr_get_relationships_names(),
-				lcdr_get_mixed_names()
-			);
-			if ( ! in_array( $parsed['predicate'], $relationships, true ) ) {
-				$this->dump(
-					'cli',
-					sprintf(
-						/* translators: %s predicate value */
-						__( '%s is not a valid relationship name.', 'lcdr' ),
-						$parsed['predicate']
-					),
-					__CLASS__,
-					__METHOD__,
-					__LINE__,
-					true
-				);
-			}
-		}
 		return $parsed;
 	}
 
