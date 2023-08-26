@@ -1,6 +1,6 @@
 import React from "react";
 import { MultipleProps } from "@elucidario/pkg-types"
-import { Button } from "../button";
+import { Button } from "../../button";
 import { Field } from "../field";
 
 export const Multiple = ({ schema, fields }: MultipleProps) => {
