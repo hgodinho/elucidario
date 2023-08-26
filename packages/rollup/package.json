@@ -1,6 +1,6 @@
 {
   "name": "@elucidario/pkg-rollup",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "rollup.config.js",
   "license": "MIT",
   "type": "module",

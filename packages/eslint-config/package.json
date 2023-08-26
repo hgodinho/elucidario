@@ -1,6 +1,6 @@
 {
   "name": "@elucidario/pkg-eslint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Configurações eslint compartilhadas",
   "license": "MIT",
   "author": "Henrique Godinho <henrique@hgod.in>",

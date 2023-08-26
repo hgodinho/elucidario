@@ -1,6 +1,6 @@
 {
   "name": "@elucidario/pkg-pub-gen",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Gerador de publicações para o Elucidário.art",
   "homepage": "https://github.com/hgodinho/elucidario/packages/pub-gen#readme",
   "bugs": {

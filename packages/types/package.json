@@ -1,6 +1,6 @@
 {
     "name": "@elucidario/pkg-types",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Tipagem do Elucidário.art",
     "license": "MIT",
     "author": "Henrique Godinho <ola@hgod.in>",

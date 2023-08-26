@@ -1,6 +1,6 @@
 {
     "name": "@elucidario/pkg-docusaurus-md",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Markdown generator for Docusaurus",
     "license": "MIT",
     "author": "Henrique Godinho <ola@hgod.in>",
