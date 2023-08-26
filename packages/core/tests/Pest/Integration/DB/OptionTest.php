@@ -31,17 +31,6 @@ test( '\LCDR\DB\Query\Options class', function () {
 	expect( $query )->toBeInstanceOf( \LCDR\DB\Query\Options::class);
 } );
 
-test( '\LCDR\DB\Query\Options->add_item()', function () {
-	global $item_id;
-	$options = new \LCDR\DB\Query\Options();
-	$item_id = $options->add_item( array(
-		'name' => 'test',
-		'value' => 'test',
-	) );
-
-	expect( $item_id )->toBeNumeric();
-} );
-
 test( '\LCDR\DB\Query\Options->get_options()', function () {
 	$options = new \LCDR\DB\Query\Options();
 	$test = $options->get_options();
@@ -49,28 +38,7 @@ test( '\LCDR\DB\Query\Options->get_options()', function () {
 	expect( $test )->toBeArray();
 } );
 
-test( '\LCDR\DB\Query\Options->get_item()', function () {
-	global $item_id;
-	$options = new \LCDR\DB\Query\Options();
-	$test = $options->get_item( $item_id );
-
-	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\Option::class);
-	expect( $test->name )->toBe( 'test' );
-	expect( $test->value )->toBe( 'test' );
-} );
-
-test( '\LCDR\DB\Query\Options->update_item()', function () {
-	global $item_id;
-	$options = new \LCDR\DB\Query\Options();
-	$test = $options->update_item( $item_id, array(
-		'name' => 'test',
-		'value' => 'test_2',
-	) );
-
-	expect( $test )->toBeNumeric();
-} );
-
-test( '\LCDR\DB\Query\Options->update_option()', function () {
+test( '\LCDR\DB\Query\Options->update_option() with unknown name insert a new option', function () {
 	global $random;
 	$options = new \LCDR\DB\Query\Options();
 	$test = $options->update_option( 'test', $random );
@@ -78,18 +46,38 @@ test( '\LCDR\DB\Query\Options->update_option()', function () {
 	expect( $test )->toBeTrue();
 } );
 
+test( '\LCDR\DB\Query\Options->update_option() with equal value returns false', function () {
+	global $random;
+	$options = new \LCDR\DB\Query\Options();
+	$test = $options->update_option( 'test', $random );
+	expect( $test )->toBeFalse();
+} );
+
+test( '\LCDR\DB\Query\Options->update_option() with known name update the option', function () {
+	$options = new \LCDR\DB\Query\Options();
+	$test = $options->update_option( 'test', 'banana' );
+
+	expect( $test )->toBeTruthy();
+} );
+
 test( '\LCDR\DB\Query\Options->get_option()', function () {
 	global $random;
 	$options = new \LCDR\DB\Query\Options();
 	$test = $options->get_option( 'test' );
 
-	expect( $test )->toEqual( $random );
+	expect( $test )->toEqual( 'banana' );
 } );
 
-test( '\LCDR\DB\Query\Options->delete_item()', function () {
-	global $item_id;
+test( '\LCDR\DB\Query\Options->delete_option() with known option', function () {
 	$options = new \LCDR\DB\Query\Options();
-	$test = $options->delete_item( $item_id );
+	$test = $options->delete_option( 'test' );
 
-	expect( $test )->toBeNumeric();
+	expect( $test )->toBeTruthy();
+} );
+
+test( '\LCDR\DB\Query\Options->delete_option() with unknown option', function () {
+	$options = new \LCDR\DB\Query\Options();
+	$test = $options->delete_option( 'test' );
+
+	expect( $test )->toBeFalse();
 } );

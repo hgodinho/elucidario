@@ -112,11 +112,10 @@ class Entities extends Query {
 	 * @throws \Exception If there were errors while adding the entity.
 	 */
 	public function add_entity( $args = array() ) {
-		$args = $this->parse_args( $args );
-
-		// return false if there are no columns to add, as we won't have an ID to return.
-		if ( empty( $args['columns'] ) ) {
-			return false;
+		try {
+			$args = $this->parse_args( $args );
+		} catch ( \Exception $e ) {
+			throw $e;
 		}
 
 		$item_id = $this->add_item(
@@ -172,13 +171,14 @@ class Entities extends Query {
 	 * @param int   $entity_id ID of the entity.
 	 * @param array $args Arguments to update the entity.
 	 * @return bool|int False on failure, the ID of the updated entity otherwise.
+	 * @throws \Exception If no entity was found.
 	 */
 	public function update_entity( int $entity_id, $args = array() ) {
 		$update = true;
 
 		$entity = $this->get_entity( $entity_id );
 		if ( ! $entity ) {
-			$update = false;
+			throw new \Exception( __( 'Entity not found.', 'lcdr' ) );
 		}
 
 		$args = $this->parse_args( $args, $update );
@@ -283,47 +283,31 @@ class Entities extends Query {
 			if ( ! isset( $args['name'] ) ) {
 				throw new \Exception( __( 'The data must have a name.', 'lcdr' ) );
 			}
-			if ( ! isset( $args['author'] ) ) {
-				throw new \Exception( __( 'The data must have an author.', 'lcdr' ) );
-			}
 		}
 
-		$columns       = array(
-			'guid' => isset( $args['guid'] ) ? $args['guid'] : wp_generate_uuid4(),
-		);
+		$columns       = array();
 		$relationships = array();
-
 		foreach ( $args as $key => $value ) {
-			try {
-				if ( in_array( $key, lcdr_get_columns_names(), true ) ) {
-					$columns[ $key ] = $this->sanitize_data( $key, $value );
-				} elseif ( in_array( $key, lcdr_get_relationships_names(), true ) ) {
-					$relationships[ $key ] = $this->sanitize_data( $key, $value );
-				} elseif ( in_array( $key, lcdr_get_mixed_names(), true ) ) {
-					$mixed = $this->parse_mixed_args( $key, $value );
-
-					foreach ( $mixed as $name => $col_or_rel ) {
-						if ( 'columns' === $name ) {
-							$columns[ $key ] = $this->sanitize_data( $key, $col_or_rel );
-						}
-						if ( 'relationships' === $name ) {
-							$relationships[ $key ] = $col_or_rel;
-						}
+			if ( in_array( $key, lcdr_get_columns_names(), true ) ) {
+				$columns[ $key ] = $this->sanitize_data( $key, $value );
+			}
+			if ( in_array( $key, lcdr_get_relationships_names(), true ) ) {
+				$relationships[ $key ] = $this->sanitize_data( $key, $value );
+			}
+			if ( in_array( $key, lcdr_get_mixed_names(), true ) ) {
+				$mixed = $this->parse_mixed_args( $key, $value );
+				foreach ( $mixed as $name => $col_or_rel ) {
+					if ( 'columns' === $name ) {
+						$columns[ $key ] = $this->sanitize_data( $key, $col_or_rel );
 					}
-				} else {
-					// ignore unknown keys.
-					return;
+					if ( 'relationships' === $name ) {
+						$relationships[ $key ] = $col_or_rel;
+					}
 				}
-			} catch ( \Exception $e ) {
-				throw new \Exception(
-					sprintf(
-						/* translators: %s: key */
-						__( 'Error while sanitizing data for key "%s".', 'lcdr' ),
-						$key
-					)
-				);
 			}
 		}
+		$columns['guid']   = isset( $columns['guid'] ) ? $columns['guid'] : \wp_generate_uuid4();
+		$columns['author'] = isset( $columns['author'] ) ? $columns['author'] : \get_current_user_id();
 
 		return array(
 			'columns'       => ! empty( $columns ) ? $columns : null,

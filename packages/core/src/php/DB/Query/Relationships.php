@@ -183,19 +183,15 @@ final class Relationships extends Query {
 	/**
 	 * Update relationship
 	 *
+	 * @param int   $relationship_id Relationship ID.
 	 * @param array $args Updated args.
 	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
-	public function update_relationship( $args = array() ) {
-		$args            = $this->parse_args( $args );
-		$relationship_id = false;
+	public function update_relationship( int $relationship_id, $args = array() ) {
+		$args = $this->parse_args( $args );
 
-		if ( isset( $args['rel_id'] ) ) {
-			$relationship_id = $args['rel_id'];
-		}
-
-		if ( ! $relationship_id ) {
-			return $this->add_relationship( $args );
+		if ( empty( $relationship_id ) ) {
+			throw new \Exception( __( 'Relationship ID is required.', 'lcdr' ) );
 		}
 
 		return parent::update_item(
@@ -221,9 +217,13 @@ final class Relationships extends Query {
 	public function update_relationships( $relationships = array() ) {
 		$updated = array();
 		foreach ( $relationships as $relationship ) {
-			$updated[] = $this->update_relationship( $relationship );
+			$id = false;
+			if ( isset( $relationship['rel_id'] ) ) {
+				$id = $relationship['rel_id'];
+				unset( $relationship['rel_id'] );
+			}
+			$updated[] = $this->update_relationship( $id, $relationship );
 		}
-
 		return $updated;
 	}
 
@@ -297,17 +297,12 @@ final class Relationships extends Query {
 				lcdr_get_mixed_names()
 			);
 			if ( ! in_array( $parsed['predicate'], $relationships, true ) ) {
-				$this->dump(
-					'cli',
+				throw new \Exception(
 					sprintf(
-						/* translators: %s predicate value */
+					/* translators: %s predicate value */
 						__( '%s is not a valid relationship name.', 'lcdr' ),
 						$parsed['predicate']
-					),
-					__CLASS__,
-					__METHOD__,
-					__LINE__,
-					true
+					)
 				);
 			}
 		}

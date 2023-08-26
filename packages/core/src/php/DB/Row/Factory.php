@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Factory row class.
  *
@@ -16,13 +15,16 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
 
+/**
+ * Final class Factory
+ */
 final class Factory {
 	use \LCDR\Utils\debug;
 
 	/**
 	 * Create a new entity.
 	 *
-	 * @param mixed $item
+	 * @param mixed $item Item to create.
 	 * @return \LCDR\DB\Interfaces\Entity|false
 	 */
 	public static function create( mixed $item ) {

@@ -176,6 +176,49 @@ test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 	);
 } );
 
+
+test( '\LCDR\DB\Query\Concepts->add_entity() no type', function () {
+
+	expect(
+		function () {
+			$concept_query = new \LCDR\DB\Query\Concepts();
+			$concept_query->add_entity(
+				array(
+					'name' => 'relation-test',
+					'author' => 1,
+					'identified_by' => array(
+						(object) array(
+							'type' => 'Identifier',
+							'content' => 'Teste 2',
+						),
+					),
+				)
+			);
+		}
+	)->toThrow( \Exception::class, 'The data must have a type.' );
+} );
+
+test( '\LCDR\DB\Query\Concepts->add_entity() no name', function () {
+
+	expect(
+		function () {
+			$concept_query = new \LCDR\DB\Query\Concepts();
+			$concept_query->add_entity(
+				array(
+					'type' => 'Type',
+					'author' => 1,
+					'identified_by' => array(
+						(object) array(
+							'type' => 'Identifier',
+							'content' => 'Teste 2',
+						),
+					),
+				)
+			);
+		}
+	)->toThrow( \Exception::class, 'The data must have a name.' );
+} );
+
 test( '\LCDR\DB\Query\Concepts->get_entity() must return valid relationships', function () {
 	global $concept_id;
 
@@ -201,7 +244,7 @@ test( '\LCDR\DB\Query\Concepts->get_entity()', function () {
 	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\Concept::class);
 } );
 
-test( '\LCDR\DB\Query\Concepts->update_item()', function () {
+test( '\LCDR\DB\Query\Concepts->update_entity()', function () {
 	global $concept_id;
 	global $concept_ids;
 
@@ -226,6 +269,23 @@ test( '\LCDR\DB\Query\Concepts->update_item()', function () {
 
 	expect( $test )->toBeNumeric();
 	expect( $updated->get_property( 'classified_as' ) )->toMatchArray( $classified_as );
+} );
+
+test( '\LCDR\DB\Query\Concepts->update_entity() wrong id throws exception', function () {
+	expect( function () {
+		$concepts = new \LCDR\DB\Query\Concepts();
+		$test = $concepts->update_entity(
+			0,
+			array(
+				'identified_by' => array(
+					(object) array(
+						'type' => 'Identifier',
+						'content' => 'Teste 3',
+					),
+				),
+			)
+		);
+	} )->toThrow( \Exception::class, 'Entity not found.' );
 } );
 
 test( '\LCDR\DB\Row\Concept->get_property()', function () {
