@@ -94,7 +94,8 @@ test( '\LCDR\DB\Query\Relationships->get_relationships()', function () {
 test( '\LCDR\DB\Query\Relationships->update_relationship()', function () {
 	global $relationship_id;
 	$relationships = new \LCDR\DB\Query\Relationships();
-	$test = $relationships->update_relationship( $relationship_id, array(
+	$test = $relationships->update_relationship( array(
+		'rel_id' => $relationship_id,
 		'predicate' => 'classified_as',
 	) );
 

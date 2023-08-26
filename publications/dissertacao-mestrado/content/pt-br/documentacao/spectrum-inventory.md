@@ -19,14 +19,14 @@
             6. _Current owner_;
             7. _Recording date_.
         2.  Crie um plano para obter as informações que faltam.
-            -   Va para e volte de _Documentation planning_.
+            - Va para e volte de _Documentation planning_.
 
     3.  Produzindo um inventário
 
-        1. Vá para as localizações que está inventariando e liste todo objeto neste local.
-        2. Verifique se o objeto possui uma marcação de numeração ou etiqueta
+        1.  Vá para as localizações que está inventariando e liste todo objeto neste local.
+        2.  Verifique se o objeto possui uma marcação de numeração ou etiqueta
             1. Caso não possua, atribua um número temporário;
-        3. Atualize ou crie um registro para objetos que possuem marcação ou etiqueta;
+        3.  Atualize ou crie um registro para objetos que possuem marcação ou etiqueta;
 
     4.  Verifique por discrepâncias entre o inventário e o registro
 
@@ -37,4 +37,4 @@
 
     5.  Resolução de problemas pendentes
 
-        -   Decida como lidar com os objetos que não foram identificados;
+        - Decida como lidar com os objetos que não foram identificados;

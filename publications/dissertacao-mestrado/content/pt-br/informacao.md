@@ -1,4 +1,4 @@
-# 5. A Informação
+# 3. A Informação
 
 Esta pesquisa se insere no domínio da Ciência da Informação por ter como objeto a informação museológica que necessita ser descrita, representada e recuperada no âmbito dos Sistemas de Informação da Casa Museu Ema Klabin. Para uma melhor compreensão desta informação museológica é necessário definirmos o termo informação.
 
@@ -14,7 +14,7 @@ Ainda sobre a interdisciplinaridade da informação, Capurro e Hjorland (2007) u
 
 Saracevic (1996) afirma que entre pioneiros da CI "havia engenheiros, bibliotecários, químicos, linguistas, filósofos, psicólogos, matemáticos, cientistas da computação, homens de negócios e outros vindos de diferentes profissões ou ciências" [@saracevic1996, p.48], mas cita quatro campos que desenvolveram uma relação com a informação mais contundente: biblioteconomia, ciência da computação, ciência cognitiva e comunicação. Em relação a biblioteconomia, Saracevic (1996) esclarece que o ponto central de conexão entre as áreas seria justamente o "papel social e sua preocupação comum com os problemas da efetiva utilização dos registros gráficos" [@saracevic1996 p.49] e expõe cinco diferenças entre as áreas que garantem sua separação como áreas independentes de estudo:
 
-> 1 seleção dos problemas propostos e a forma de sua definição; 2 questões teóricas apresentadas e os modelos explicativos introduzidos; 3 natureza e grau de experimentação e desenvolvimento empírico, assim como o conhecimento prático/competências derivadas; 4 instrumentos e enfoques usados; e 5 a natureza e a força das relações interdisciplinares estabelecidas e sua dependência para o avanço e evolução dos enfoques interdisciplinares. [@saracevic1996, p.49].
+> 1 - seleção dos problemas propostos e a forma de sua definição; 2 - questões teóricas apresentadas e os modelos explicativos introduzidos; 3 - natureza e grau de experimentação e desenvolvimento empírico, assim como o conhecimento prático/competências derivadas; 4 - instrumentos e enfoques usados; e 5 - a natureza e a força das relações interdisciplinares estabelecidas e sua dependência para o avanço e evolução dos enfoques interdisciplinares. [@saracevic1996, p.49].
 
 Em relação à Ciência da Computação, Saracevic esclarece que a base comum com a CI "reside na aplicação dos computadores e da computação na recuperação da informação, assim como nos produtos, serviços e redes associados" [@saracevic1996, p.50]. Já em relação à Ciência Cognitiva, que é a ciência que estuda os processos cognitivos, o conhecimento e a inteligência, uma relação forte com a CI fica a cargo da Inteligência Artificial (IA) que pode ser definida:
 

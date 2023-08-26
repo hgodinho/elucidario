@@ -26,25 +26,5 @@
             "lang": "en-US",
             "content": "An embedded statement about this entity, or a reference to a text that refers to the entity"
         }
-    ],
-    "messages": [
-        {
-            "code": "referred_to_by.error.missing",
-            "type": "error",
-            "content": [
-                {
-                    "lang": "pt-BR",
-                    "content": ""
-                },
-                {
-                    "lang": "es-ES",
-                    "content": ""
-                },
-                {
-                    "lang": "en-US",
-                    "content": ""
-                }
-            ]
-        }
     ]
 }

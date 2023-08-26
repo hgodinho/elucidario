@@ -37,10 +37,15 @@
         ["influenced_by", "array", "opcional", ""],
         ["carried_out_by", "array", "opcional", ""],
         ["used_specific_object", "array", "opcional", ""],
-        ["part", "array", "obrigatório", ""]
+        [
+            "part",
+            "array",
+            "obrigatório",
+            "Deve ser um dos seguintes objetos descritos a seguir _Acquisition_, _Payment_, _TransferOfCustody_, _Encounter_, _RightAcquisition_, _Move_, _Promise_, _Right_"
+        ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Provenance_ do Linked Art"
+        "content": "Elaborado pelo autor. Metadados utilizados na entidade _Provenance_ do Linked Art"
     }
 }

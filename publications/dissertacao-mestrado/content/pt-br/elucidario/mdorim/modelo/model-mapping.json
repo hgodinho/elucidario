@@ -1,0 +1,38 @@
+{
+    "title": "{{count:charts;legend=Entidade `Mapping` do modelo.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigido"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigido", "Descrição"],
+        ["mapping_id", "int", "sim", "ID do mapeamento."],
+        ["name", "string", "sim", "Nome do mapeamento em _kebab-case_"],
+        ["title", "string", "sim", "Título do mapeamento"],
+        ["description", "string", "", "Descrição do mapeamento"],
+        ["author", "int", "sim", "ID do autor do mapeamento"],
+        ["standard", "string", "sim", "Nome do modelo que será mapeado"],
+        ["standard_uri", "string", "sim", "URI do modelo que será mapeado"],
+        ["created", "datetime", "sim", "Data de criação do mapeamento"],
+        ["modified", "datetime", "sim", "Data de atualização do mapeamento"],
+        ["mapping", "`PropMap[]`", "sim", "Propriedades mapeadas"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

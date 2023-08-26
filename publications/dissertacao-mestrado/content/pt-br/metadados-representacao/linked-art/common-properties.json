@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Propriedades comuns do Linked Art.}}",
+    "title": "{{count:charts;legend=Propriedades comuns e obrigatórias do Linked Art.}}",
     "fields": [
         {
             "type": "string",
@@ -66,6 +66,6 @@
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução das propriedades do Linked Art [@linked-art2021.1]"
+        "content": "Elaborado pelo autor. Propriedades comuns do Linked Art [@linked-art2021.1]"
     }
 }

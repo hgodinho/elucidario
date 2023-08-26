@@ -21,7 +21,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Option row class.
  */
-class Option extends Row {
+final class Option extends Row {
 	/**
 	 * Option ID.
 	 *

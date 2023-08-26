@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Object information groups do Spectrum}}",
+    "title": "{{count:charts;legend=Grupos de informação de objeto (_Object information groups_)}}",
     "fields": [
         {
             "type": "string",
@@ -7,86 +7,86 @@
         },
         {
             "type": "string",
-            "name": "Descrição"
+            "name": "Metadados"
         }
     ],
     "data": [
-        ["Nome", "Descrição"],
+        ["Nome", "Metadados"],
         [
-            "**Informação de identificação do objeto**",
-            "Usado para registrar informações básicas sobre um objeto"
+            "**Informação de identificação do objeto** (_Object Identification Information_)",
+            "Object number, Other number, Other number type, Number of objects, Object name, Object name currency, Object name level, Object name note, Object name system, Object name type, Object name/title language, Title, Object name/title language, Title translation, Title type, Brief description, Comments, Distinguishing features, Responsible department/section"
         ],
         [
-            "**Informação de descrição do objeto**",
-            "Usado para descrever um objeto como necessário"
+            "**Informação de descrição do objeto** (_Object Description Information_)",
+            "Age, Age qualifier, Age unit, Color, Content - activity, Content - concept, Content - date, Content - description, Content - event name, Content - event name type, Content - language, Content - note, Content - object, Content - object type, Content - organization (Org), Content - other, Content - other type, Content - people (Peo), Content - person (Per), Content - place (Pla), Content - position, Content - script, Copy number, Dimension, Dimension measured part, Dimension value, Dimension value date, Dimension measurement unit, Dimension value qualifier, Edition number, Form, Inscription content, Inscriber (Org, Peo, Per), Inscription date, Inscription description, Inscription interpretation, Inscription language, Inscription method, Inscription position, Inscription script, Inscription translation, Inscription transliteration, Inscription type, Material, Material component, Material component note, Material name, Material source, Object status, Phase, Physical description, Sex, Style, Technical attribute, Technical attribute measurement, Technical attribute measurement unit, Object component name, Object component information"
         ],
         [
-            "**Informação de localização do objeto**",
-            "Usado para registrar onde o objeto está localizado"
+            "**Informação de localização do objeto** (_Object Location Information_)",
+            "Current location, Location date, Current location fitness, Current location note, Normal location, Previous location, Previous location begin date, Previous location end date"
         ],
         [
-            "**Informação de exigências do objeto**",
-            "Usado para registrar quaisquer exigências que o objeto possa ter"
+            "**Informação de exigências do objeto** (_Object Requirement Information_)",
+            "Display recommendations, Environmental recommendations, Handling recommendations, Packing recommendations, Security recommendations, Special requirements, Storage recommendations, Salvage priority code, Salvage priority code date, Legal/license requirements, Legal/license requirements held, Legal/license requirements held begin date, Legal/license requirements held end date, Legal/license requirements held number, Legal/license requirements held renewal date"
         ],
         [
-            "**Informação de produção do objeto**",
-            "Usado para registrar os aspectos da produção do objeto"
+            "**Informação de produção do objeto** (_Object Production Information_)",
+            "Object production date, Object production note, Object production organization (Org), Object production people (Peo), Object production person (Per), Object production place (Pla), Object production reason, Technique, Technique type"
         ],
         [
-            "**Informação sobre o histórico e associação do objeto**",
-            "Usado para registrar o histórico e a associação do objeto"
+            "**Informação sobre o histórico e associação do objeto** (_Object History and Association Information_)",
+            "Associated activity, Associated activity note, Associated concept, Associated cultural affinity, Associated date, Associated event date, Associated event name, Associated event name type, Associated event organization (Org), Associated event people (Peo), Associated event person (Per), Associated event place (Pla), Associated object, Associated object type, Associated organization (Org), Associated people (Peo), Associated person (Per), Associated place (Pla), Association note, Association type, Object history note, Owner (Org, Per), Ownership access, Ownership category, Ownership dates, Ownership exchange method, Ownership exchange note, Ownership exchange price, Ownership place (Pla), Related object number,Related object association, Related object note, Usage,Usage note"
         ],
         [
-            "**Informação sobre a coleta do objeto**",
-            "Usado para registrar informações sobre a coleta de campo do objeto, por exemplo durante uma escavação arqueológica"
+            "**Informação sobre a coleta do objeto** (_Object Collection Information_)",
+            "Field collection event reference number, Field collection number, Field collection date, Field, collection event name, Field collection method, Field collection note, Field collection place (Pla), Field collection source (Org, Peo, Per), Field collector (Org, Per), Geological complex name, Habitat, Habitat note, Stratigraphic unit name, Stratigraphic unit type, Stratigraphic unit note"
         ],
         [
-            "**Informação sobre os direitos do objeto**",
-            "Usado para registrar informações sobre os direitos do objeto, como reproduções, textos criados para um uso específico, e quem quer que seja que os detenha"
+            "**Informação sobre os direitos do objeto** (Rights Information_)",
+            "Right reference number, Right type, Right holder (Org, Peo, Per), Right holder's contact (Org, Per), Right begin date, Right end date, Right note"
         ],
         [
-            "**Informação sobre os direitos de entrada do objeto**",
-            "Usado para registrar informações sobre os direitos do objeto obtidos pela sua organização de outros"
+            "**Informação sobre os direitos de entrada do objeto** (_Rights in Information_)",
+            "Rights in reference number, Rights in type, Rights in consent status, Rights in consent status date, Rights in begin date, Rights in end date, Rights in note"
         ],
         [
-            "**Informação sobre os direitos de saída do objeto**",
-            "Usado para registrar informações sobre os direitos do objeto cedidos por sua organização a outros"
+            "**Informação sobre os direitos de saída do objeto** (_Rights out Information_)",
+            "Rights out reference number, Rights out type, Rights out requester, Rights out consent status, Rights out consent status date, Rights out authorizer, Rights out authorization date, Rights out begin date, Rights out end date, Rights out notes"
         ],
         [
-            "**Informação sobre as condições e avaliação técnica do objeto**",
-            "Usado para registrar informações sobre os aspectos de condições e avaliações técnicas de um objeto"
+            "**Informação sobre as condições e avaliação técnica do objeto** (_Object condition and technical assessment information_)",
+            "Completeness, Completeness date, Completeness note, Condition, Condition date, Condition note, Conservation treatment priority, Environmental condition note, Environmental condition note date, Next condition check/assessment date, Technical assessment, Technical assessment date, Hazard, Hazard date, Hazards note"
         ],
         [
-            "**Informação sobre as conservação e tratamento do objeto**",
-            "Usado para registrar informações sobre os aspectos de conservação e tratamento de um objeto"
+            "**Informação sobre as conservação e tratamento do objeto** (_Object conservation and treatment information_)",
+            "Treatment report, Treatment begin date, Treatment end date, Conservation material, Conservation note"
         ],
         [
-            "**Informação de contribuição do proprietário do objeto**",
-            "Usado para registrar informações sobre um objeto contribuído pelo proprietário anterior de um objeto"
+            "**Informação de contribuição do proprietário do objeto** (_Object owner contribution information_)",
+            "Owner's personal experience, Owner's personal response, Owner's reference, Owner's contribution, note"
         ],
         [
-            "**Informação de uso da informação**",
-            "Usado para registrar o uso das informações sobre um objeto e reproduções, também registra textos para o uso, como no caso de textos de exposições, e dados associados ao uso, como condições do ambiente"
+            "**Informação de uso da informação** (_Use information_)",
+            "Credit line, Use status, Use status date, Text reference number, Text, Text audience, Text author, Text date, Text language, Text note, Text reason, Use measurement type, Use measurement value, Use measurement value unit, Use measurement value qualifier, Use measurement date, Use note, Use restriction, Use restriction date, Use restriction note"
         ],
         [
-            "**Informação de valoração do objeto**",
-            "Usado para registrar o resultado específico de uma valoração de um objeto, como uma valoração de seguro, uma valoração de mercado, ou uma valoração de doação"
+            "**Informação de valoração do objeto** (_Object valuation information_)",
+            "Object valuation, Object valuation date, Object valuation type, Object valuation note, Object valuation reason, Object valuation renewal date"
         ],
         [
-            "**Informação de contribuição do usuário do objeto**",
-            "Usado para registrar informações sobre um objeto contribuído pelo usuário do objeto"
+            "**Informação de contribuição do usuário do objeto** (_Object user contribution information_)",
+            "User's reference, User's role, User's personal experience, User's personal response, User's contribution note"
         ],
         [
-            "**Informação de revisão de coleção de objetos**",
-            "Usado para registrar informações sobre os resultados de objetos específicos de uma revisão"
+            "**Informação de revisão de coleção de objetos** (_Object collection review information_)",
+            "Collections review criterion, Collections review result, Collections review result date, Collections review action"
         ],
         [
-            "**Informação sobre auditoria**",
-            "Usado para registrar informações sobre os resultados de de uma auditoria"
+            "**Informação sobre auditoria** (_Object Audit information_)",
+            "Object audit category, Object audit date, Object audit information unit, Object audit note, Object audit result"
         ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de Object information groups do Spectrum."
+        "content": "Elaborado pelo autor baseado em _Object information groups_ do Spectrum (2017)."
     }
 }

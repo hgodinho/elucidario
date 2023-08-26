@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-    bootstrap="tests/bootstrap.php"
-    colors="true"
->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd" bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Unit Test Suite">
             <directory>./tests/Pest/Unit/</directory>
@@ -16,13 +12,13 @@
         <env name="TEST" value="true" force="true" />
         <env name="WP_TESTS_DIR" value="wp/tests/phpunit" />
         <server name="DB_NAME" value="wp_pest_test_db" />
-        <server name="DB_USER" value="root" />
+        <server name=" " value="root" />
         <server name="DB_PASSWORD" value="" />
         <server name="DB_HOST" value="localhost" />
     </php>
-    <coverage processUncoveredFiles="true">
+    <coverage>
         <include>
-            <directory suffix=".php">./src</directory>
+            <directory suffix=".php">./src/php</directory>
         </include>
         <report>
             <clover outputFile="tests/Pest/coverage/clover.xml" />

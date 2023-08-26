@@ -1,0 +1,32 @@
+{
+    "title": "{{count:charts;legend=Propriedades de _Type/Currency/Language/Material/MeasurementUnit_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        [
+            "type",
+            "obrigatório",
+            "DEVE ser _Type_, _Currency_, _Language_, _Material_ ou _MeasurementUnit_"
+        ],
+        ["_label", "recomendado", ""],
+        ["classified_as", "recomendado", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Type/Currency/Language/Material/MeasurementUnit_ do Linked Art [@linked-art2021.15]"
+    }
+}

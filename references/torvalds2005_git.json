@@ -1,0 +1,27 @@
+{
+    "id": "torvalds2005",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "git",
+    "_create": "2023-08-13T22:54:15.505Z",
+    "_update": "2023-08-13T22:54:15.506Z",
+    "type": "webpage",
+    "title": "Git",
+    "author": [
+        {
+            "family": "Torvalds",
+            "given": "Linus"
+        },
+        {
+            "family": "Hamano",
+            "given": "Junio"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-13"
+    },
+    "issued": {
+        "raw": "2005-04-07"
+    },
+    "URL": "https://git-scm.com"
+}

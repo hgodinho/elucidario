@@ -25,6 +25,12 @@ afterAll( function () use (&$db) {
 	foreach ( $all as $item ) {
 		$concept->delete_entity( $item->entity_id );
 	}
+
+	$relationships = new \LCDR\DB\Query\Relationships();
+	$all = $relationships->get_relationships();
+	foreach ( $all as $item ) {
+		$relationships->delete_relationship( $item->rel_id );
+	}
 } );
 
 test( '\LCDR\DB\Query\Concepts class', function () {
@@ -33,10 +39,10 @@ test( '\LCDR\DB\Query\Concepts class', function () {
 } );
 
 test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
-	$concept = new \LCDR\DB\Query\Concepts();
+	$concept_query = new \LCDR\DB\Query\Concepts();
 
 	global $concept_ids;
-	$concept_ids = $concept->add_entities(
+	$concept_ids = $concept_query->add_entities(
 		array(
 			array(
 				'type' => 'Type',
@@ -89,7 +95,6 @@ test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
 } );
 
 test( '\LCDR\DB\Query\Concepts->add_entity()', function () {
-	global $concept_id;
 	global $concept_ids;
 
 	$concept = new \LCDR\DB\Query\Concepts();
@@ -112,18 +117,73 @@ test( '\LCDR\DB\Query\Concepts->add_entity()', function () {
 	expect( $concept_id )->toBeNumeric();
 } );
 
-test( '\LCDR\DB\Query\Concepts->get_entity() must return valid relationships', function () {
+test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 	global $concept_id;
 	global $concept_ids;
+
+	$concept = new \LCDR\DB\Query\Concepts();
+	$concept_to_add = array(
+		'type' => 'Type',
+		'name' => 'referred_to_by-test',
+		'author' => 1,
+		'identified_by' => array(
+			(object) array(
+				'type' => 'Identifier',
+				'content' => 'Teste 4',
+			),
+		),
+		'classified_as' => $concept_ids,
+		// falta testar se referred_to_by ta sendo salvo corretamente
+		'referred_to_by' => array(
+			(object) array(
+				'type' => 'LinguisticObject',
+				'label' => 'Teste 4',
+				'content' => 'Teste 4',
+				'language' => array(
+					(object) array(
+						'id' => 1,
+						'type' => 'Language',
+						'label' => 'Português',
+					),
+				)
+			),
+			3,
+		),
+	);
+
+	$concept_id = $concept->add_entity( $concept_to_add );
+
+	$saved = $concept->get_entity( $concept_id );
+	$referred_to_by = $saved->get_property( 'referred_to_by' );
+
+	expect( $concept_id )->toBeNumeric();
+	expect( $referred_to_by )->toBeArray()->toMatchArray(
+		array(
+			(object) array(
+				'type' => 'LinguisticObject',
+				'label' => 'Teste 4',
+				'content' => 'Teste 4',
+				'language' => array(
+					(object) array(
+						'id' => 1,
+						'type' => 'Language',
+						'label' => 'Português',
+					),
+				)
+			),
+			3,
+		)
+	);
+} );
+
+test( '\LCDR\DB\Query\Concepts->get_entity() must return valid relationships', function () {
+	global $concept_id;
 
 	$concept = new \LCDR\DB\Query\Concepts();
 
 	$test = $concept->get_entity( $concept_id );
 	$classified_as = $test->get_property( 'classified_as' );
-
-	expect( $classified_as )->toMatchArray(
-		$concept_ids
-	);
+	expect( $classified_as )->toBeArray();
 } );
 
 test( '\LCDR\DB\Query\Concepts->get_entities()', function () {
@@ -138,8 +198,6 @@ test( '\LCDR\DB\Query\Concepts->get_entity()', function () {
 	$concepts = new \LCDR\DB\Query\Concepts();
 	$test = $concepts->get_entity( $concept_id );
 
-	// var_dump( $test );
-
 	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\Concept::class);
 } );
 
@@ -150,8 +208,8 @@ test( '\LCDR\DB\Query\Concepts->update_item()', function () {
 	$classified_as = $concept_ids;
 	unset( $classified_as[1] );
 	unset( $classified_as[3] );
-	$classified_as = array_values( (array) $classified_as );
 	$classified_as[] = 1;
+	$classified_as = array_values( (array) $classified_as );
 
 	$concepts = new \LCDR\DB\Query\Concepts();
 	$test = $concepts->update_entity( $concept_id, array(

@@ -1,4 +1,4 @@
-Linked Art é uma comunidade formada por representantes de instituições ao redor do mundo como The Canadian Heritage Information Network (CHIN), J. Paul Getty Trust, The Frick Collection, Europeana, Louvre, Rijksmuseum, The Victoria and Albert Museum, entre outras, com o objetivo de criar um modelo compartilhado baseado em _Linked Open Data_ para descrever Arte [@linked-art2021.1; @linked-art2021.2]. O projeto é coordenado por um quadro editorial em que Robert Sanderson (Yale University) e Emmanuelle Delmas-Glass (Yale Center for British Art) compartilham o posto de co-presidentes.
+Já o Linked Art é uma comunidade formada por representantes de instituições ao redor do mundo como The Canadian Heritage Information Network (CHIN), J. Paul Getty Trust, The Frick Collection, Europeana, Louvre, Rijksmuseum, The Victoria and Albert Museum, entre outras, com o objetivo de criar um modelo compartilhado baseado em _Linked Open Data_ para descrever Arte [@linked-art2021.1; @linked-art2021.2]. O projeto é coordenado por um quadro editorial em que Robert Sanderson (Yale University) e Emmanuelle Delmas-Glass (Yale Center for British Art) compartilham o posto de co-presidentes.
 
 A comunidade Linked Art parte do conceito da usabilidade para a audiência correta, em que o maior público interessado em "dados" seriam os desenvolvedores que poderiam criar interfaces para o público final. Desdobrando esta ideia em cinco princípios de design, temos:
 
@@ -76,128 +76,142 @@ As camadas de restrições são [@fielding2000]:
 > 4. Interface uniforme: a característica principal que distingue a arquitetura REST de outra arquitetura de rede é a interface uniforme entre componentes. As implementações são dissociadas dos serviços que fornecem, o que incentiva a evolução independente; e
 > 5. Sistema em camadas: ao compor a arquitetura em camadas hierárquicas, restringimos os componentes a não irem além de seus escopos.
 
-<!-- O Linked Art também apresenta os schemas definidos no formato JSON-Schema, utilizado para descrever e validar estruturas de dados JSON [@droettboom2020]. Com o JSON-Schema é possível descrever diferentes tipos de dados, como números, strings, objetos, arrays, booleanos e nulos. Além disso, é possível definir restrições para os dados, como o tamanho máximo de uma string, o intervalo de valores de um número, ou o número de itens em um array, entre outras [@droettboom2020].
-
-Um objeto com uma propriedade "name" do tipo string pode ser representado em JSON-Schema da seguinte forma:
-
-```json
-{
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string"
-        }
-    }
-}
-``` -->
-
-A API do Linked Art é dividida em duas partes: _Shared Constructs_, ou Estruturas Compartilhadas (EC), e _Entity Endpoints_, Endpoints de Entidades (EE). Como as propriedades definidas no Linked Art se repetem pelas EC e EE, separamos as propriedades em dois quadros distintos para facilitar a visualização. No primeiro, apresentamos as propriedades que são obrigatórias nas EE e, com exceção de "@context" e "id", também são obrigatórias em todas as EC. No segundo, apresentamos as propriedades que podem ou não serem utilizadas em mais de uma EC ou EE. Após os quadros, apresentamos as EC e EE:
+A API do Linked Art é dividida em duas partes: _Shared Constructs_, ou Estruturas Compartilhadas (EC), e _Entity Endpoints_, Endpoints de Entidades (EE). Como as propriedades definidas no Linked Art se repetem pelas EC e EE, separamos as propriedades em dois quadros distintos para facilitar a visualização. No primeiro, apresentamos as propriedades que são obrigatórias nas EE e, com exceção de "@context" e "id", também são obrigatórias em todas as EC. No segundo, apresentamos as propriedades que podem ou não serem utilizadas em mais de uma EC ou EE. Após os quadros, apresentamos as EC e EE. Propriedades exclusivas de cada EC ou EE serão apresentadas em seus respectivos quadros.
 
 {{table:metadados-representacao/linked-art/common-properties.json}}
 
 {{table:metadados-representacao/linked-art/properties.json}}
 
-_Shared Constructs_ são estruturas de dados definidas no Linked Art que são utilizadas por mais de um endpoint. São elas [@linked-art2021.7]:
+As EC são estruturas de dados definidas no Linked Art que são utilizadas por mais de um endpoint. São objetos JSON que por sua vez utilizam as propriedades definidas nos quadros anteriores, além de apresentar algumas novas propriedades exclusivas. São elas [@linked-art2021.7]:
 
--   _Dimensions_ - dimensões de um recurso físico ou digital, com uma unidade e um tipo de dimensão;
-    Suas propriedades são:
+{{table:metadados-representacao/linked-art/dimensions.json}}
 
-    {{table:metadados-representacao/linked-art/dimensions.json}}
+{{table:metadados-representacao/linked-art/measurement.json}}
 
-    {{table:metadados-representacao/linked-art/measurement.json}}
+- _Dimension_ - dimensões de um recurso físico ou digital, com uma unidade e um tipo de dimensão;
 
--   _Identifiers_ - identificadores de um recurso, como um número de catálogo ou um número de inventário;
-    Suas propriedades são:
+{{table:metadados-representacao/linked-art/identifiers.json}}
 
-    {{table:metadados-representacao/linked-art/identifiers.json}}
+{{table:metadados-representacao/linked-art/identifiers-assignments.json}}
 
-    {{table:metadados-representacao/linked-art/identifiers-assignments.json}}
+- _Identifier_ - identificadores de um recurso, como um número de catálogo ou um número de inventário;
 
--   _Monetary Amounts_ - similares a _Dimensions_, mas para valores monetários, no caso a propriedade _Type_ é definida como _MonetaryAmount_, e não possui a propriedade _assigned_by_;
+{{table:metadados-representacao/linked-art/monetary.json}}
 
--   _Names_ - definir
+- _Monetary Amount_ - similares a _Dimensions_, mas para valores monetários, no caso a propriedade _Type_ é definida como _MonetaryAmount_, os objetos _MonetaryAmounts_ são usados somente nas Atividades de Proveniência;
 
--   _Statements_ - definir
--   _TimeSpans_ - definir
--   _Types/Concepts_ - definir
--   _Relationships_ - definir
--   _Entity References_ - definir
--   _Assignments_ - definir
+{{table:metadados-representacao/linked-art/name.json}}
 
-Os EE são [@linked-art2021.5]:
+- _Name_ - Nomes são rótulos linguísticos para uma entidade. Eles podem ser nomes de pessoas, títulos de obras, nomes de lugares, etc.;
 
-1.  **Concept** - tipos, materiais, técnicas, idiomas, entre outros que sejam registros completos, ao contrário de referências externas;
+{{table:metadados-representacao/linked-art/statement.json}}
 
-    Os _Concepts_ possuem as seguintes propriedades:
+- _Statement_ - são expressões do conteúdo ou nota sobre a entidade que esta sendo descrita.
 
-    {{table:metadados-representacao/linked-art/concept.json}}
+{{table:metadados-representacao/linked-art/timespan.json}}
 
-    {{table:metadados-representacao/linked-art/concept-creation.json}}
+- _TimeSpan_ - são intervalos de tempos utilizados para descrever a duração de um evento ou atividade;
 
-2.  **Digital Object** - imagens, vídeos, áudios, documentos, webpages, ou outros recursos digitais;
+{{table:metadados-representacao/linked-art/type.json}}
 
-    Os _Digital Objects_ possuem as seguintes propriedades:
+- _Type/Concept_ - conceitos, como tipos, são partes principais do modelo e estão presentes em praticamente todos os recursos descritos [@linked-art2021.15]. Eles dão acesso a vocabulários controlados externos como o AAT do Getty e outros:
 
-    {{table:metadados-representacao/linked-art/digital.json}}
+{{table:metadados-representacao/linked-art/attribute.json}}
 
-    {{table:metadados-representacao/linked-art/digital-creation.json}}
+- _AttributeAssignment_ - é utilizado para relações entre entidades não declaradas, como relacionamentos interpessoais que são muito complexas para serem descritos semanticamente, ou apenas um conjunto arbitrário de recomendações para outras entidades [@linked-art2021.16].
 
-    {{table:metadados-representacao/linked-art/digital-service.json}}
+{{table:metadados-representacao/linked-art/reference.json}}
 
-3.  **Event** - eventos e atividades não específicas que estão relacionadas, mas não são parte de outra entidade;
+- _Entity Reference_ - como uma API hipermídia, o Linked Art utiliza referências para outras entidades, que podem ser tanto internas quanto externas, como o AAT do Getty, e também são utilizadas para descrever relações entre entidades, como a relação entre uma obra e seu autor, por exemplo. É uma das estruturas mais comuns no modelo, e sempre que falamos sobre uma referência estamos falando de um objeto JSON com essas propriedades.
 
-    Os _Events_ possuem as seguintes propriedades:
+Os EE são as entidades que podem ser descritas pelo Linked Art, e são divididas em 11 tipos. Cada tipo de entidade possui um conjunto de propriedades obrigatórias e opcionais, e descrevem os recursos do patrimônio cultural artístico [@linked-art2021.5]. Como as propriedades comuns do Linked Art, citadas no Quadro 13 se repetem em todas as EE, não serão apresentadas novamente nos quadros a seguir, e as outras propriedades serão apenas referenciadas.
 
-    {{table:metadados-representacao/linked-art/event.json}}
+1. _Concept_ - tipos, materiais, técnicas, idiomas, entre outros que sejam registros completos, ao contrário de referências externas;
 
-4.  **Groups** - grupos de pessoas, organizações, ou outras entidades;
+Os _Concepts_ possuem as seguintes propriedades:
 
-    Os _Groups_ possuem as seguintes propriedades:
+{{table:metadados-representacao/linked-art/concept.json}}
 
-    {{table:metadados-representacao/linked-art/group.json}}
+{{table:metadados-representacao/linked-art/concept-creation.json}}
 
-5.  **People** - pessoas;
+2. _DigitalObject_ - imagens, vídeos, áudios, documentos, webpages, ou outros recursos digitais;
 
-    _People_ possuem as seguintes propriedades:
+Os _DigitalObjects_ possuem as seguintes propriedades:
 
-    {{table:metadados-representacao/linked-art/people.json}}
+{{table:metadados-representacao/linked-art/digital.json}}
 
-6.  **Physical Object** - objetos físicos, incluindo obras de arte, artefatos, edifícios, partes de objetos, entre outros;
+{{table:metadados-representacao/linked-art/digital-service.json}}
 
-    _Physical Objects_ possuem as seguintes propriedades:
+{{table:metadados-representacao/linked-art/digital-creation.json}}
 
-    {{table:metadados-representacao/linked-art/object.json}}
+3. _Event_ - eventos e atividades não específicas que estão relacionadas, mas não são parte de outra entidade [@linked-art2021.18];
 
-7.  **Place** - locais;
+Os _Events_ possuem as seguintes propriedades:
 
-    _Places_ possuem as seguintes propriedades:
+{{table:metadados-representacao/linked-art/event.json}}
 
-    {{table:metadados-representacao/linked-art/place.json}}
+4. _Groups_ - grupos de pessoas, organizações, ou outras entidades similares [@linked-art2021.19];
 
-8.  **Provenance Activity** - atividades de proveniência;
+Os _Groups_ possuem as seguintes propriedades:
 
-    _Provenance Activities_ possuem as seguintes propriedades:
+{{table:metadados-representacao/linked-art/group.json}}
 
-    {{table:metadados-representacao/linked-art/provenance.json}}
+5. _People_ - pessoas [@linked-art2021.20];
 
-9.  **Sets** - conjuntos de entidades;
+_People_ possuem as seguintes propriedades:
 
-    _Sets_ possuem as seguintes propriedades:
+{{table:metadados-representacao/linked-art/people.json}}
 
-    {{table:metadados-representacao/linked-art/set.json}}
+6. _PhysicalObject_ - objetos físicos, incluindo obras de arte, artefatos, edifícios, partes de objetos, entre outros [@linked-art2021.21];
 
-10. **Textual Work** - obras textuais que merecem descrição como entidades únicas, como conteúdo de livro ou artigos, entre outros:
+_PhysicalObjects_ possuem as seguintes propriedades:
 
-    _Textual Works_ possuem as seguintes propriedades:
+{{table:metadados-representacao/linked-art/object.json}}
 
-    {{table:metadados-representacao/linked-art/textual.json}}
+7. _Place_ - locais [@linked-art2021.22];
 
-11. **Visual Work** - conteúdo imagético que merece descrição como entidades únicas, como a imagem exibida em uma pintura ou desenho, entre outros.
+_Places_ possuem as seguintes propriedades:
 
-    _Visual Works_ possuem as seguintes propriedades:
+{{table:metadados-representacao/linked-art/place.json}}
 
-    {{table:metadados-representacao/linked-art/visual.json}}
+8. _ProvenanceActivity_ - atividades de proveniência [@linked-art2021.23];
 
-###### Intersecções entre Linked-art e Spectrum
+_ProvenanceActivities_ possuem as seguintes propriedades:
 
-Como vimos no
+{{table:metadados-representacao/linked-art/provenance.json}}
+
+Os objetos descritos a seguir são opções de entrada para o campo _part_ descrito no objeto _ProvenanceActivity_ acima. Todos eles possuem as propriedades comuns do Linked Art, além de incluírem _timespan_, _took_place_at_, _influenced_by_, _carried_out_by_, _used_specific_object_. Cada um dos objetos também possui propriedades exclusivas, descritas em seu respectivo quadro:
+
+{{table:metadados-representacao/linked-art/provenance-acquisition.json}}
+
+{{table:metadados-representacao/linked-art/provenance-payment.json}}
+
+{{table:metadados-representacao/linked-art/provenance-transfer.json}}
+
+{{table:metadados-representacao/linked-art/provenance-encounter.json}}
+
+{{table:metadados-representacao/linked-art/provenance-right-acquisition.json}}
+
+{{table:metadados-representacao/linked-art/provenance-move.json}}
+
+{{table:metadados-representacao/linked-art/provenance-promise.json}}
+
+{{table:metadados-representacao/linked-art/provenance-rights.json}}
+
+9. _Sets_ - conjuntos de entidades [@linked-art2021.24];
+
+_Sets_ possuem as seguintes propriedades:
+
+{{table:metadados-representacao/linked-art/set.json}}
+
+10. _TextualWork_ - obras textuais que merecem descrição como entidades únicas, como conteúdo de livro ou artigos, entre outros [@linked-art2021.25]:
+
+_TextualWorks_ possuem as seguintes propriedades:
+
+{{table:metadados-representacao/linked-art/textual.json}}
+
+11. _VisualWork_ - conteúdo imagético que merece descrição como entidades únicas, como a imagem exibida em uma pintura ou desenho, entre outros [@linked-art2021.26].
+
+_VisualWorks_ possuem as seguintes propriedades:
+
+{{table:metadados-representacao/linked-art/visual.json}}

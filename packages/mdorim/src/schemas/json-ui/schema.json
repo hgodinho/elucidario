@@ -21,46 +21,9 @@
                     "items": {
                         "$ref": "#/definitions/localizedString"
                     }
-                },
-                "messages": {
-                    "type": "array",
-                    "description": "The messages of the data model, use an array of message objects to support multiple messages.",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "code": {
-                                "type": "string",
-                                "description": "The code of the message, use a dot notation to separate the code into parts, e.g. 'error.name.required'."
-                            },
-                            "type": {
-                                "type": "string",
-                                "description": "The type of the message, use one of the following values: message, error, warn, info, success.",
-                                "enum": [
-                                    "message",
-                                    "error",
-                                    "warn",
-                                    "info",
-                                    "success"
-                                ]
-                            },
-                            "content": {
-                                "type": "array",
-                                "description": "The content of the message, use an array of localized strings to support multiple languages.",
-                                "items": {
-                                    "$ref": "#/definitions/localizedString"
-                                }
-                            }
-                        },
-                        "required": ["code", "type", "content"],
-                        "additionalProperties": false
-                    }
-                },
-                "component": {
-                    "type": "string",
-                    "description": "The component to use to render the data model, if not specified the component is inferred from the data model."
                 }
             },
-            "required": ["label", "description", "messages"],
+            "required": ["label", "description"],
             "additionalProperties": false
         }
     },

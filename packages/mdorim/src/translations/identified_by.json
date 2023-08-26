@@ -26,25 +26,5 @@
             "lang": "en-US",
             "content": "Resource identifier"
         }
-    ],
-    "messages": [
-        {
-            "code": "identified_by.error.missing",
-            "type": "error",
-            "content": [
-                {
-                    "lang": "pt-BR",
-                    "content": "Identificador do recurso não informado"
-                },
-                {
-                    "lang": "es-ES",
-                    "content": "Identificador del recurso no informado"
-                },
-                {
-                    "lang": "en-US",
-                    "content": "Resource identifier not informed"
-                }
-            ]
-        }
     ]
 }

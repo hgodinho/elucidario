@@ -1,0 +1,31 @@
+{
+    "title": "{{count:charts;legend=Propriedades de _Reference_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "obrigatório", "DEVE ser a URI da entidade referenciada"],
+        [
+            "type",
+            "obrigatório",
+            "DEVE ser do mesmo tipo da entidade referenciada"
+        ],
+        ["_label", "recomendado", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Reference_ do Linked Art [@linked-art2021.17]"
+    }
+}

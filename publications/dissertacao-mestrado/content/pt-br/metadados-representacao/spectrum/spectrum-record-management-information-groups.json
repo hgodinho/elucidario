@@ -1,0 +1,32 @@
+{
+    "title": "{{count:charts;legend=Grupos de Informações de Gerenciamento de Registros (_Record Management information groups_)}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Descrição"],
+        [
+            "**Histórico de alterações** (_Amendment history_)",
+            "Unit of information added, Amendment history authorizer, Unit of information scheme, Information source, Information source date, Recorder, Recording date, Recording progress"
+        ],
+        [
+            "**Informações sobre o registro** (_Record information_)",
+            "Record type"
+        ],
+        [
+            "**Uso e provisionamento da informação** (_Use and provision of information_)",
+            "Confidentiality note, Information usage"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor, com base em _Record Management information groups_ do Spectrum (2017)."
+    }
+}

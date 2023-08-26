@@ -474,6 +474,141 @@
             "id": "word-press2023.1",
             "slug": "sanitizing-data",
             "path": "<references>/word-press2023.1_sanitizing-data.json"
+        },
+        {
+            "id": "torvalds2005",
+            "slug": "git",
+            "path": "<references>/torvalds2005_git.json"
+        },
+        {
+            "id": "github2008",
+            "slug": "github",
+            "path": "<references>/github2008_github.json"
+        },
+        {
+            "id": "linked-art2021.11",
+            "slug": "linked-art-api-monetary-amount-structure",
+            "path": "<references>/linked-art2021.11_linked-art-api-monetary-amount-structure.json"
+        },
+        {
+            "id": "linked-art2021.12",
+            "slug": "linked-art-api-name-structure",
+            "path": "<references>/linked-art2021.12_linked-art-api-name-structure.json"
+        },
+        {
+            "id": "linked-art2021.13",
+            "slug": "linked-art-api-statement-structure",
+            "path": "<references>/linked-art2021.13_linked-art-api-statement-structure.json"
+        },
+        {
+            "id": "linked-art2021.14",
+            "slug": "linked-art-api-time-span-structure",
+            "path": "<references>/linked-art2021.14_linked-art-api-time-span-structure.json"
+        },
+        {
+            "id": "linked-art2021.15",
+            "slug": "linked-art-api-type-structure",
+            "path": "<references>/linked-art2021.15_linked-art-api-type-structure.json"
+        },
+        {
+            "id": "linked-art2021.16",
+            "slug": "linked-art-api-assigned-relationship-structure",
+            "path": "<references>/linked-art2021.16_linked-art-api-assigned-relationship-structure.json"
+        },
+        {
+            "id": "linked-art2021.17",
+            "slug": "linked-art-api-reference-structure",
+            "path": "<references>/linked-art2021.17_linked-art-api-reference-structure.json"
+        },
+        {
+            "id": "linked-art2021.18",
+            "slug": "linked-art-api-event",
+            "path": "<references>/linked-art2021.18_linked-art-api-event.json"
+        },
+        {
+            "id": "linked-art2021.19",
+            "slug": "linked-art-api-group",
+            "path": "<references>/linked-art2021.19_linked-art-api-group.json"
+        },
+        {
+            "id": "linked-art2021.20",
+            "slug": "linked-art-api-person",
+            "path": "<references>/linked-art2021.20_linked-art-api-person.json"
+        },
+        {
+            "id": "linked-art2021.21",
+            "slug": "linked-art-api-physical-object-representation",
+            "path": "<references>/linked-art2021.21_linked-art-api-physical-object-representation.json"
+        },
+        {
+            "id": "linked-art2021.22",
+            "slug": "linked-art-api-place",
+            "path": "<references>/linked-art2021.22_linked-art-api-place.json"
+        },
+        {
+            "id": "linked-art2021.23",
+            "slug": "linked-art-api-provenance-activity",
+            "path": "<references>/linked-art2021.23_linked-art-api-provenance-activity.json"
+        },
+        {
+            "id": "linked-art2021.24",
+            "slug": "linked-art-api-set",
+            "path": "<references>/linked-art2021.24_linked-art-api-set.json"
+        },
+        {
+            "id": "linked-art2021.25",
+            "slug": "linked-art-api-textual-work",
+            "path": "<references>/linked-art2021.25_linked-art-api-textual-work.json"
+        },
+        {
+            "id": "linked-art2021.26",
+            "slug": "linked-art-api-visual-work",
+            "path": "<references>/linked-art2021.26_linked-art-api-visual-work.json"
+        },
+        {
+            "id": "word-press9999",
+            "slug": "linking-and-embedding",
+            "path": "<references>/word-press9999_linking-and-embedding.json"
+        },
+        {
+            "id": "linked-art2021.27",
+            "slug": "linked-art-api-protocol",
+            "path": "<references>/linked-art2021.27_linked-art-api-protocol.json"
+        },
+        {
+            "id": "linked-art2021.28",
+            "slug": "api-design-principles-and-requirements",
+            "path": "<references>/linked-art2021.28_api-design-principles-and-requirements.json"
+        },
+        {
+            "id": "word-press9999.1",
+            "slug": "word-press-rest-api-key-concepts",
+            "path": "<references>/word-press9999.1_word-press-rest-api-key-concepts.json"
+        },
+        {
+            "id": "baca2006.1",
+            "slug": "cataloguing-cultural-objects-cco",
+            "path": "<references>/baca2006.1_cataloguing-cultural-objects-cco.json"
+        },
+        {
+            "id": "harpring2022",
+            "slug": "categories-for-the-descriptions-of-works-of-art",
+            "path": "<references>/harpring2022_categories-for-the-descriptions-of-works-of-art.json"
+        },
+        {
+            "id": "cetic-br2022",
+            "slug": "pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2022",
+            "path": "<references>/cetic-br2022_pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2022.json"
+        },
+        {
+            "id": "american-express2022",
+            "slug": "jest-json-schema",
+            "path": "<references>/american-express2022_jest-json-schema.json"
+        },
+        {
+            "id": "andersson2021",
+            "slug": "the-inter-font-family",
+            "path": "<references>/andersson2021_the-inter-font-family.json"
         }
     ]
 }

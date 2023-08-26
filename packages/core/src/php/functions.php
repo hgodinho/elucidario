@@ -145,21 +145,33 @@ function lcdr_get_json_properties() {
 }
 
 /**
+ * Return the plugin field names that are stored in columns in the database
+ *
+ * @return array   Array of field names
+ * @since 0.2.0
+ */
+function lcdr_get_internal_properties() {
+	return array(
+		'entity_id',
+		'name',
+		'guid',
+		'author',
+		'status',
+		'password',
+		'created',
+	);
+}
+
+/**
  * Return the core plugin field names that are stored in columns in the database
  *
- * @return array
+ * @return array  Array of field names
  * @since 0.2.0
  */
 function lcdr_get_columns_names() {
 	return array_merge(
+		lcdr_get_internal_properties(),
 		array(
-			'entity_id',
-			'name',
-			'guid',
-			'author',
-			'status',
-			'password',
-			'created',
 			'type',
 			'label',
 		),
@@ -176,7 +188,6 @@ function lcdr_get_columns_names() {
 function lcdr_get_relationships_names() {
 	return array(
 		'classified_as',
-		'referred_to_by',
 		'representation',
 		'member_of',
 		'subject_of',
@@ -216,6 +227,17 @@ function lcdr_get_relationships_names() {
 }
 
 /**
+ * Return the plugin field names that use mixed tables in the database
+ *
+ * @return array
+ */
+function lcdr_get_mixed_names() {
+	return array(
+		'referred_to_by',
+	);
+}
+
+/**
  * Return the valid plugin properties names
  *
  * @return array
@@ -230,8 +252,7 @@ function lcdr_get_valid_properties() {
 		array_merge(
 			lcdr_get_columns_names(),
 			lcdr_get_relationships_names(),
-			// pass referred_to_by isolated because it is a special case (column + relationship).
-			array( 'referred_to_by' )
+			lcdr_get_mixed_names(),
 		)
 	);
 }

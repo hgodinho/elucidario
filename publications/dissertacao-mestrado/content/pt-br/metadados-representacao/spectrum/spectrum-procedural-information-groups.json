@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Object procedural groups do Spectrum}}",
+    "title": "{{count:charts;legend=Grupos de informações procedimentais (_Procedural information groups_)}}",
     "fields": [
         {
             "type": "string",
@@ -13,88 +13,116 @@
     "data": [
         ["Nome", "Descrição"],
         [
-            "**Informações de entrada de objeto**",
-            "Usado para registrar um evento de entrada de objeto"
+            "**Informações de entrada de objeto** (_Object entry information_)",
+            "Entry number, Entry date, Entry method, Entry reason, Entry manager, Current owner, (Org, Peo, Per), Depositor (Org, Per), Depositor's requirements, Entry note, Packing note, Return date"
         ],
         [
-            "**Informações de aquisição de objeto**",
-            "Usado para registrar um evento de aquisição de objeto"
+            "**Informações de aquisição de objeto** (_Acquisition information_)",
+            "Acquisition reference number, Accession date, Acquisition authorizer (Per), Acquisition authorization date, Acquisition date, Acquisition funding, Acquisition funding source (Org, Per), Acquisition funding source provisos, Acquisition method, Acquisition note, Acquisition provisos, Acquisition reason, Acquisition source (Org, Peo, Per), Group purchase price, Object offer price, Object purchaser offer price, Object purchase price, Original object purchase price,     Original object purchase price denomination, Transfer of title number"
         ],
         [
-            "**Informações de movimentação de objeto**",
-            "Usado para registrar um evento de movimentação de objeto"
+            "**Informações de movimentação de objeto** (_Movement information_)",
+            "Movement reference number, Movement authorizer (Per), Movement authorization date, Movement contact (Per), Movement method, Movement note, Movement reason, Planned removal date, Removal date, Shipper (Org, Per), Shipper's contact (Per), Shipping note, Organization courier (Per)"
         ],
         [
-            "**Informações de saída de objeto**",
-            "Usado para registrar um evento de saída do objeto"
+            "**Informações de saída de objeto** (_Object exit information_)",
+            "Exit reference number, Delivery date, Exit authorizer (Per), Exit authorization date, Exit date, Exit destination (Org, Per), Exit method, Exit note, Exit reason, Expected return date, Expected return method"
         ],
         [
-            "**Informações de entrada de empréstimos do objeto**",
-            "Usado para registrar um evento de entrada de empréstimo do objeto"
+            "**Informações de entrada de empréstimos do objeto** (_Loan in information_)",
+            "Loan in reference number, Loan in reason, Lender (Org, Peo, Per), Lender's authorizer (Org, Per), Lender's authorization date, Lender's contact, Loan in begin date, Loan in end date, Loan in contact (Org, Per), Loan in conditions, Loan in note, Loan in status, Loan in status date"
         ],
         [
-            "**Informações de saída de empréstimos do objeto**",
-            "Usado para registrar um evento de saída de empréstimo do objeto"
+            "**Informações de saída de empréstimos do objeto** (_Loan out information_)",
+            "Loan out reference number, Loan out authorizer (Per), Loan out authorization date, Borrower (Org, Per), Borrower's contact (Org, Per), Borrower's status, Special conditions of loan, Loan out begin date, Loan out end date, Loan out reason, Loan out note, Loaned object status, Loaned object status date"
         ],
         [
-            "**Informações sobre as verificações técnicas de condições**",
-            "Usado para registrar um evento de avaliação de condição técnica"
+            "**Informações sobre as verificações técnicas de condições** (_Conditional check\technical assessment information_)",
+            "Condition check/assessment reference number, Condition checker/assessor (Per), Condition check/assessment reason, Condition check/assessment date, Condition check/assessment method, Condition check/assessment note"
         ],
         [
-            "**Informações sobre conservação e tratamento**",
-            "Usado para registrar um evento de conservação e tratamento"
+            "**Informações sobre conservação e tratamento** (_Conservation and treatment information_)",
+            "Conservation reference number, Conservation authorizer (Per), Conservation authorization date, Conservation method, Conservator (Org, Per), Recall date"
         ],
         [
-            "**Informação de valoração**",
-            "Usado para registrar um evento de valoração"
+            "**Informação de valoração** (_Valuation information_)",
+            "Valuation reference number, Valuation authorizer (Per), Valuation authorization date, Valuer (Org, Per)"
         ],
         [
-            "**Informação de seguro**",
-            "Usado para registrar um evento de seguro"
+            "**Informação de seguro** (_Insurance information_)",
+            "Insurance reference number, Insurer (Org, Per), Insurance policy number, Insurance amount, Insurance authorizer (Per), Insurance authorization date, Insurance begin, date, Insurance end date, Insurance note, Insurance renewal date"
         ],
         [
-            "**Informação de indenização**",
-            "Usado para registrar um evento de indenização"
+            "**Informação de indenização** (_Indemnity information_)",
+            "Indemnity reference number, Indemnifier (Org), Indemnity authorizer (Per), Indemnity authorization date, Indemnity request date, Indemnity confirmation date, Indemnity note, Indemnity begin date, Indemnity end date, Indemnity renewal date, Object minimum liability sum"
         ],
         [
-            "**Informação de perdas e danos**",
-            "Usado para registrar um evento de perdas e danos"
+            "**Informação de perdas e danos** (_Damage/loss information_)",
+            "Damage/loss reference number, Damage/loss date, Damage/loss reporter (Per), Damage/loss method, Damage/loss note"
         ],
         [
-            "**Informação de descarte**",
-            "Usado para registrar um evento de descarte"
+            "**Informação de descarte** (_Disposal information_)",
+            "Disposal reference number, Disposal reason, Disposal authorizer (Per), Disposal authorization date, Disposal method, Deaccession date, Disposal date, Disposal new object number, Disposal note, Disposal price, Disposal provisos, Disposal recipient (Org, Peo, Per), Group disposal price"
         ],
         [
-            "**Informação de uso das coleções**",
-            "Usado para registrar um evento de uso das coleções"
+            "**Informação de uso das coleções** (_Use of collections information_)",
+            "Use reference number, Use request note, Use type, Use authorizer (Per), Use authorization date, Use title, Use begin date, Use end date, User (Org, Per),     User's contact (Per), Use organizer (Org, Per), Use venue (Pla), Use provisos, Use result"
         ],
         [
-            "**Informação de auditoria**",
-            "Usado para registrar um evento de auditoria"
+            "**Informação de auditoria** (_Audit information_)",
+            "Audit reference number, Audit method, Audit authorizer (Per), Audit authorization date, Audit type, Auditor (Org, Per)"
         ],
         [
-            "**Informação de revisão de coleção**",
-            "Usado para registrar um evento de revisão de coleção"
+            "**Informação de revisão de coleção** (_Collection review information_)",
+            "Collections review reference number, Collections review authorizer, Collections review authorization date, Collections review title, Collections review reason, Collections review type, Collections review method, Collections review manager, Collections review note, Collections review status, Collections review status date, Collections review begin date, Collections review end date"
         ],
         [
-            "**Unidades procedurais comuns**",
-            "Este grupo lista todas as unidades generalizadas na organização que são usadas para descrever um procedimento Spectrum"
+            "**Unidades procedimentais comuns** (_Common procedural units_)",
+            "Authorizer (Per), Authorization date, Cost, Cost note, Procedure begin date, Procedure end date, Procedure manager, Procedure note, Procedure title, Reason, Request, Request date, Requester (Org, Per), Requested action date, Scheduled begin date, Scheduled end date, Status, Status date, Status review date"
         ],
         [
-            "**Informação de processo**",
-            "Usado para modelar qualquer processo que seja criado pela organização que pretenda registrar informação sobre"
+            "**Informação de processo** (_Process information_)",
+            "Process reference number, Process date, Process method, Process note, Process person/organization (Per, Org)"
         ],
         [
-            "**Informação de reprodução**",
-            "Usado para registrar informações sobre uma reprodução"
+            "**Informação de reprodução** (_Reproduction information_)",
+            "Reproduction number, Current reproduction location, Reproduction creator (Org, Per), Reproduction date, Reproduction description, Reproduction format, Reproduction status, Reproduction type, Reproduction reason, Reproduction requester (Org, Per)"
         ],
         [
-            "**Informação de reprodução**",
-            "Usado para registrar informações sobre uma reprodução"
+            "**Informações de endereço** (_Address information_)",
+            "Address - text, Address - place, Address - postcode, Address - e-mail, Address - fax number, Address - telephone number, Address type"
+        ],
+        [
+            "**Informações de data** (_Date information_)",
+            "Date - association, Date - earliest/single, Date - earliest/single certainty, Date - earliest/single qualifier, Date - latest, Date - latest certainty, Date - latest qualifier, Date - period, Date text"
+        ],
+        [
+            "**Informações de localização** (_Location information_)",
+            "Location reference name/number, Location type, Location address, Location access note, Location condition note, Location condition note date, Location security note, Environment measurement type, Environment measurement value, Environment measurement value unit, Environment measurement value qualifier, Environment measurement date"
+        ],
+        [
+            "**Informações sobre organização** (_Organization information_)",
+            "Organization's reference number, Organization's address, Organization's additions to name, Organization's contact name, Organization's foundation date, Organization's foundation place, Organization's dissolution date, Organization's function, Organization's group, Organization's history, Organization's MDA code, Organization's main body, Organization's sub-body, Organization's association"
+        ],
+        [
+            "**Informações sobre pessoas** (_People information_)",
+            "People's culture, People's association, People's group, People's linguistic group"
+        ],
+        [
+            "**Informações sobre pessoa** (_Person information_)",
+            "Person's reference number, Person's forenames, Person's surname, Person's title, Person's additions to name, Person's initials, Person's salutation, Person's address, Person's birth date, Person's place of birth, Person's death date, Person's place of death, Person's biographical note, Person's gender, Person's association, Person's group, Person's name notes, Person's nationality, Person's occupation, Person's school/style"
+        ],
+        [
+            "**Informações sobre local** (_Place information_)",
+            "Place reference number, Place reference number type, Place name, Place name type, Place association, Place context, Place context date, Place context level, Place coordinates, Place coordinates qualifier, Place coordinates type, Place environmental details, Place feature, Place feature date, Place feature type, Place note, Place owner, Place position, Place status, Place type system"
+        ],
+        [
+            "**Informações sobre referências** (_Reference information_)",
+            "Place reference number, Place reference number type, Place name, Place name type, Place association, Place context, Place context date, Place context level, Place coordinates, Place coordinates qualifier, Place coordinates type, Place, environmental details, Place feature, Place feature date, Place feature type, Place note, Place owner, Place position, Place status, Place type system"
         ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de Object procedural groups do Spectrum."
+        "content": "Elaborado pelo autor, com base em _Object procedural groups_ do Spectrum (2017)."
     }
 }

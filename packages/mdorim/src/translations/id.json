@@ -26,25 +26,5 @@
             "lang": "en-US",
             "content": "Entity unique identifier"
         }
-    ],
-    "messages": [
-        {
-            "code": "id.error.missing",
-            "type": "error",
-            "content": [
-                {
-                    "lang": "pt-BR",
-                    "content": "O campo ID é obrigatório"
-                },
-                {
-                    "lang": "es-ES",
-                    "content": "El campo ID es obligatorio"
-                },
-                {
-                    "lang": "en-US",
-                    "content": "The ID field is required"
-                }
-            ]
-        }
     ]
 }

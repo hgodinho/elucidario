@@ -157,6 +157,7 @@ export default function remarkPubGen(options) {
                         theme,
                         background,
                         format,
+                        type,
                     } = data;
 
                     let mermaidOptions = "{.mermaid";
@@ -185,11 +186,22 @@ export default function remarkPubGen(options) {
                     } else {
                         label = title;
                     }
-                    const mermaidContent = toMD([
-                        bold(replaceRegexHandlebars(label, fileOptions)),
-                        content.replace("mermaid", mermaidOptions),
-                        source || "",
-                    ]);
+                    const mermaidContent =
+                        type !== "mindmap"
+                            ? toMD([
+                                  bold(
+                                      replaceRegexHandlebars(label, fileOptions)
+                                  ),
+                                  content.replace("mermaid", mermaidOptions),
+                                  source || "",
+                              ])
+                            : toMD([
+                                  bold(
+                                      replaceRegexHandlebars(label, fileOptions)
+                                  ),
+                                  content,
+                                  source || "",
+                              ]);
 
                     node.value = mermaidContent;
                     node.type = "html";

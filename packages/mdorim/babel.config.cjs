@@ -10,5 +10,8 @@ module.exports = {
             },
         ],
     ],
-    plugins: ["@babel/plugin-transform-json-strings"],
+    plugins: [
+        "@babel/plugin-syntax-import-attributes",
+        "@babel/plugin-transform-json-strings",
+    ],
 };

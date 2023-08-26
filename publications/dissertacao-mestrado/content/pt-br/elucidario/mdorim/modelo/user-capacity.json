@@ -1,0 +1,59 @@
+{
+    "title": "{{count:charts;legend=Tipos de usuário e capacidades por tipo de usuário.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Capacidades"
+        },
+        {
+            "type": "string",
+            "name": "Admin"
+        },
+        {
+            "type": "string",
+            "name": "Curadoria"
+        },
+        {
+            "type": "string",
+            "name": "Museologia"
+        },
+        {
+            "type": "string",
+            "name": "Assistência"
+        },
+        {
+            "type": "string",
+            "name": "Pesquisa"
+        },
+        {
+            "type": "string",
+            "name": "Público"
+        }
+    ],
+    "data": [
+        [
+            "Capacidades",
+            "Admin",
+            "Curadoria",
+            "Museologia",
+            "Assistência",
+            "Pesquisa",
+            "Público"
+        ],
+        ["sistema", "sim", "", "", "", "", ""],
+        ["`create_users`", "sim", "sim", "sim", "", "", ""],
+        ["`see`", "sim", "sim", "sim", "sim", "sim", "sim"],
+        ["`create`", "sim", "sim", "sim", "sim", "sim", ""],
+        ["`edit_own`", "sim", "sim", "sim", "sim", "sim", ""],
+        ["`edit_others`", "sim", "sim", "sim", "sim", "sim", ""],
+        ["`edit_published`", "sim", "sim", "sim", "sim", "", ""],
+        ["`delete_own`", "sim", "sim", "sim", "sim", "", ""],
+        ["`delete_others`", "sim", "sim", "sim", "", "", ""],
+        ["`publish_own`", "sim", "sim", "sim", "", "", ""],
+        ["`publish_others`", "sim", "sim", "sim", "", "", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

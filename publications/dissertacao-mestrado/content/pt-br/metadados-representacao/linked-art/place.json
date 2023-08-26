@@ -20,7 +20,7 @@
     ],
     "data": [
         ["Nome", "Tipo", "Exigência", "Descrição"],
-        ["type", "string", "requerido", "O tipo deve ser _Place_."],
+        ["type", "string", "obrigatório", "O tipo deve ser _Place_."],
         ["representation", "array", "opcional", ""],
         ["member_of", "array", "opcional", ""],
         ["subject_of", "array", "opcional", ""],
@@ -31,6 +31,6 @@
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Place_ do Linked Art"
+        "content": "Elaborado pelo autor. Metadados utilizados na entidade _Place_ do Linked Art"
     }
 }

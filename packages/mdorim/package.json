@@ -33,6 +33,7 @@
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
     },
     "dependencies": {
+        "@babel/plugin-syntax-import-attributes": "^7.22.5",
         "ajv": "6",
         "json-cycle": "^1.5.0"
     },

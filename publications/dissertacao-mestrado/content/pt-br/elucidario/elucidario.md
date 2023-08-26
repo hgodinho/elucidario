@@ -1,4 +1,4 @@
-# 9. Elucidario.art
+# 7. Elucidario.art
 
 Em linhas gerais o Elucidário.art é um _Collection Management System_. A abreviação CMS é majoritariamente conhecida com um outro significado: _Content Management System_, devido a popularidade de plataformas como WordPress, Joomla, Drupal, etc. O Elucidário.art é um CMS para coleções de arte, ou seja, é um sistema de gerenciamento de coleções de arte, ou um _Content Management System_ especializado. Portanto utilizaremos a abreviação CMS para nos referirmos ao Elucidário como um _Collection Management System_. Este termo também é utilizado por instituições como _Collections Trust_ e ICOM para referir-se a esta modalidade de software.
 
@@ -22,6 +22,8 @@ Para o entendimento das seções a seguir, é importante primeiro definirmos alg
 
 **Docker** [@hykes2013]: é uma plataforma de código aberto para desenvolvimento, envio e execução de aplicativos. O Docker permite que os desenvolvedores empacotem um aplicativo com todas as partes de que ele precisa, como bibliotecas e outras dependências, e enviem tudo como um pacote. Ao fazer isso, graças à padronização, o Docker permite que o aplicativo seja executado em qualquer lugar, seja em um notebook, em um servidor físico, em uma máquina virtual ou em um ambiente em nuvem.
 
+**_Endpoint_**: é um ponto de acesso de uma API, ou seja, uma URI que define um recurso e suas operações, por exemplo: "<https://exemplo.com/wp-json/lcdr/v1/objetos>", em que `/lcdr/v1/objetos` é o _endpoint_ para o recurso "objetos" da API.
+
 **_Front-end_**: é o conjunto de tecnologias e ferramentas utilizadas para construção da interface de usuário. É a parte do sistema que é visível para o usuário, esta diretamente relacionada a _User Interface_ (UI).
 
 **_Headless_**: é utilizado para referir-se a sistemas que não possuem uma interface de usuário final (UI), mas possuem uma API Rest para leitura e escrita. Um sistema _headless_ pode ser utilizado como _back-end_ para um sistema _front-end_, e sua API pode ser utilizada para construção de interfaces de usuário em diferentes plataformas, como aplicações web, mobile, etc.
@@ -38,23 +40,25 @@ Para o entendimento das seções a seguir, é importante primeiro definirmos alg
 
 **_Representational State Transfer_ API (REST-API)**: é um conjunto de padrões de comunicação hipermídia entre sistemas que utiliza o protocolo HTTP para realizar requisições e respostas.
 
+**Rota (_Route_)**: é um endereço de um recurso em um sistema. Por exemplo, o endereço "<https://exemplo.com>" é uma rota para o recurso "home" do sistema.
+
 **Usuário final**: é o usuário que interage com o sistema. É o usuário que acessa o endereço '<https://exemplo.com>'.
 
 **WAI-ARIA**: é um conjunto de atributos que podem ser adicionados a tags HTML para melhorar a acessibilidade de um sistema. O termo WAI-ARIA é uma abreviação de "_Web Accessibility Initiative - Accessible Rich Internet Applications_" [@w-3-c2022].
 
-## 9.1. O Repositório
+## 7.1. O Repositório
 
-As principais linguagens de programação utilizadas no código-fonte do Elucidário.art são PHP 8.2 [@php2022], TypeScript [@microsoft2023], JavaScript [@mdn2022] e JSON [@ietf2017], e estão estruturadas em um repositório utilizando a arquitetura _monorepo_, ou seja, um repositório que contém múltiplos projetos [@narwhal-technologies-inc2022]. Optamos por utilizar esta arquitetura para facilitar o desenvolvimento e a manutenção do código-fonte, pois, desta forma, podemos reutilizar pacotes em diferentes projetos, como em aplicações, bibliotecas, plugins, temas, etc. Esta arquitetura também pode ser chamada de micro-serviços (_microservices_), onde cada pacote é um serviço que pode ser utilizado em diferentes projetos. Esta arquitetura de software permite que cada pacote seja desenvolvido, testado e publicado de maneira independente, o que facilita a manutenção e garante a evolução independente de cada pacote.
+As principais linguagens de programação utilizadas no código-fonte do Elucidário.art são PHP 7.2 [@php2022], TypeScript [@microsoft2023], JavaScript [@mdn2022] e JSON [@ietf2017], e, estão estruturadas em um repositório utilizando a arquitetura _monorepo_, ou seja, um repositório que contém múltiplos projetos [@narwhal-technologies-inc2022]. Optamos por utilizar esta arquitetura para facilitar o desenvolvimento e a manutenção do código-fonte, pois desta forma podemos reutilizar pacotes em diferentes projetos, como em bibliotecas, plugins, temas, etc. Esta arquitetura também pode ser chamada de micro-serviços (_microservices_), onde cada pacote é um serviço que pode ser desenvolvido, testado e publicado de maneira independente, o que facilita a manutenção e estimula a evolução independente de cada pacote.
 
-Utilizamos o Versionamento Semântico (_Semantic Versioning_ ou _SemVer_) [@sem-ver2023] para controle de versão dos pacotes, onde cada pacote possui uma versão independente. O SemVer define três tipos diferentes de incrementação de versão: _major_, _minor_ e _patch_. O _major_ é incrementado quando há mudanças incompatíveis na API, o _minor_ é incrementado quando há adição de funcionalidades compatíveis com versões anteriores, e o _patch_ é incrementado quando há correção de _bugs_ compatíveis com versões anteriores.
+Utilizamos o Git [@torvalds2005] para o controle de versão dos pacotes, o GitHub [@github2008] para hospedagem do repositório e o Versionamento Semântico (_Semantic Versioning_ ou _SemVer_) [@sem-ver2023] para definição das versões públicas dos pacotes. O SemVer define três tipos diferentes de incrementação de versão: _major_, _minor_ e _patch_. O _major_ é incrementado quando há mudanças incompatíveis na API, ou seja, quando a forma de usar as suas funções, métodos, classes, e etc, são alteradas; o _minor_ é incrementado quando há adição de funcionalidades compatíveis com versões anteriores; e o _patch_ é incrementado quando há correção de _bugs_, também compatíveis com versões anteriores.
 
-**{{count:figures;legend=Versionamento Semântico}}**
+**{{count:figures;legend=Exemplo do Versionamento Semântico (SemVer)}}**
 
 ![**Fonte**: Elaborado pelo autor, com base no SemVer.org](./SemVer.png)
 
-No nosso contexto, cada pacote pode operar de maneira isolada, mas são integrados e distribuídos em um único pacote final, o plugin para WordPress Elucidário.art.
+Para assegurarmos a qualidade do código-fonte, e se seus objetivos estão sendo atingidos, criamos um conjunto de testes automatizados para cada um dos pacotes, configurados especificamente para cada linguagem de programação e ambiente. Estes testes rodam automaticamente no ambiente local a cada nova alteração no código-fonte adicionada ao controle de versão utilizando a biblioteca Husky [@typicode2018], e em um ambiente de integração contínua (_CI_) (sincronização remota) utilizando o GitHub Actions [@github2018].
 
-O repositório pode ser acessado no link <https://github.com/hgodinho/elucidario> e, em resumo, é organizado da seguinte forma:
+O repositório pode ser acessado no link <https://github.com/hgodinho/elucidario> e é organizado da seguinte forma:
 
 ```bash
 elucidario
@@ -64,7 +68,7 @@ elucidario
 ├── references
 ```
 
-O diretório "_packages_" contém os pacotes que podem ser reutilizados tanto por outros pacotes, como por aplicações. Todos os pacotes definidos nesta pasta seguem o padrão de nome "@elucidario/pkg-\<nome-pacote\>".
+O diretório "_packages_" contém os pacotes que podem ser reutilizados, tanto por outros pacotes, como por aplicações. Todos os pacotes definidos nesta pasta seguem o padrão de nome "@elucidario/pkg-\<nome-pacote\>".
 
 No diretório "_apps_", se encontram as aplicações, como um ambiente de desenvolvimento completo utilizando Docker para testes locais e o site da documentação disponível em <http://elucidario.art/doc>. Os pacotes nesta pasta seguem o padrão de nome "@elucidario/app-\<nome-pacote\>".
 
@@ -74,21 +78,19 @@ No diretório "_references_" contém referências utilizadas no desenvolvimento 
 
 Todos os pacotes nos diretórios `apps` e `packages` foram construídos levando em conta os seguintes princípios de design, ou técnicas de programação:
 
--   a11y (_accessibility_) - quando aplicável o pacote deve seguir as regras de acessibilidade apropriadas para o contexto;
--   i10n (_localization_) - quando aplicável o pacote deve implementar o suporte a localização dos idiomas português, espanhol e inglês, seguindo esta ordem de prioridade;
--   i18n (_internationalization_) - quando aplicável o pacote deve implementar o suporte a internacionalização, e o processo de localização deve ser devidamente documentado;
+- a11y (_accessibility_) - quando aplicável o pacote deve seguir as regras de acessibilidade apropriadas para o contexto;
+- i10n (_localization_) - quando aplicável o pacote deve implementar o suporte a localização dos idiomas português, espanhol e inglês, seguindo esta ordem de prioridade;
+- i18n (_internationalization_) - quando aplicável o pacote deve implementar o suporte a internacionalização, e o processo de localização deve ser devidamente documentado;
 
 Os pacotes principais do diretório _packages_ são:
 
--   "@elucidario/pkg-core" - Pacote principal do Elucidário.art, integra os demais pacotes e define as funcionalidades principais do sistema, como banco de dados, rotas, páginas administrativas, configurações, usuários, permissões de usuários, etc;
--   "@elucidario/pkg-mdorim" - Pacote que define o modelo de dados utilizado no sistema;
--   "@elucidario/pkg-design-system" - Pacote que define o sistema de design utilizado no aplicativo;
--   "@elucidario/pkg-blocks" - Pacote que define os blocos Gutemberg utilizados no WordPress;
-
-Uma parte importante para assegurar a qualidade do código-fonte é a realização de testes automatizados. Para isso, utilizamos o _framework_ de testes Jest [@nakazawa2011] para testes unitários e de integração, e o _framework_ Cypress [@cypress2017] para testes end-to-end nos códigos-fontes escritos em JavaScript ou Typescript. Para os códigos escritos em PHP utilizaremos o framework PHPUnit [@bergmann2001] e a biblioteca Pest [@maduro2021]. Os testes são executados em um ambiente de integração contínua (_CI_) utilizando a biblioteca Husky [@typicode2018] e GitHub Actions [@github2018].
+- "@elucidario/pkg-mdorim" - Pacote que define o modelo de dados utilizado no sistema;
+- "@elucidario/pkg-design-system" - Pacote que define o sistema de design utilizado no aplicativo;
+- "@elucidario/pkg-core" - Pacote principal do Elucidário.art, integra os demais pacotes e define as funcionalidades principais do sistema, como banco de dados, rotas, páginas administrativas, configurações, usuários, permissões de usuários, etc;
+<!-- - "@elucidario/pkg-blocks" - Pacote que define os blocos Gutemberg utilizados no WordPress; -->
 
 A seguir apresentamos os principais pacotes individualmente, descrevendo-os em três partes:
 
 1. Escopo de uso do pacote;
-2. Descrição de suas funcionalidades, implementação e estrutura. A descrição pode conter diagramas UML e tabelas para melhor representação de seu conteúdo;
+2. Descrição de suas funcionalidades, implementação e estrutura. As descrições contém diagramas UML e tabelas para melhor representação de seu conteúdo;
 3. Como os testes foram executados e seus resultados para garantir a qualidade de cada pacote.

@@ -1,0 +1,25 @@
+{
+    "id": "cetic-br2022",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2022",
+    "_create": "2023-08-20T19:41:18.066Z",
+    "_update": "2023-08-20T19:41:18.066Z",
+    "type": "webpage",
+    "title": "Pesquisa sobre o uso das tecnologias de informação e comunicação nos equipamentos culturais brasileiros: TIC Cultura 2022.",
+    "container-title": "Núcleo de Informação e Coordenação do Ponto BR",
+    "publisher": "Comitê Gestor da Internet no Brasil",
+    "publisher-place": "São Paulo",
+    "author": [
+        {
+            "family": "CETIC.BR"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-20"
+    },
+    "issued": {
+        "raw": "2023"
+    },
+    "URL": "https://www.cetic.br/pt/pesquisa/cultura/indicadores/"
+}

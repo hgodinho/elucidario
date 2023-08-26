@@ -12,10 +12,19 @@
     ],
     "data": [
         ["Grupo de informação", "Exigência"],
-        ["Loan in", "opcional"],
-        ["Object identification information", "requerido"],
-        ["Object description information", "requerido"],
-        ["Object entry information", "requerido"]
+        ["_Informação de entrada de empréstimos_ (_Loan in_)", "opcional"],
+        [
+            "_Informações de identificação do objeto_ (_Object identification information_)",
+            "obrigatório"
+        ],
+        [
+            "_Informações de descrição do objeto_ (_Object description information_)",
+            "obrigatório"
+        ],
+        [
+            "_Informações de entrada do objeto_ (_Object entry information_)",
+            "obrigatório"
+        ]
     ],
     "note": {
         "label": "Fonte",

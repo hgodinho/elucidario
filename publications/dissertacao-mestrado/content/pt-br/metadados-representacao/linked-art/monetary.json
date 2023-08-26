@@ -1,0 +1,46 @@
+{
+    "title": "{{count:charts;legend=Propriedades de _MonetaryAmount_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        ["type", "obrigatório", "DEVE ser _MonetaryAmount_"],
+        ["_label", "recomendado", ""],
+        ["value", "obrigatório", "O valor numérico"],
+        [
+            "currency",
+            "obrigatório",
+            "O código da moeda, e DEVE ser um objeto _Currency_"
+        ],
+        ["classified_as", "recomendado", ""],
+        ["identified_by", "recomendado", "Somente _Name_"],
+        [
+            "upper_value_limit",
+            "opcional",
+            "Um número que representa o valor máximo da quantia monetária"
+        ],
+        [
+            "lower_value_limit",
+            "opcional",
+            "Um número que representa o valor mínimo da quantia monetária"
+        ],
+        ["referred_to_by", "opcional", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _MonetaryAmount_ do Linked Art [@linked-art2021.11]"
+    }
+}

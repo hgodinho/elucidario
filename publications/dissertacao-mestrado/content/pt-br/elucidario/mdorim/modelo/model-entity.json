@@ -1,0 +1,47 @@
+{
+    "title": "{{count:charts;legend=Propriedades básicas de uma entidade Linked Art no Mdorim}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigido"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigido", "Descrição"],
+        ["entity_id", "int", "sim", "ID da entidade"],
+        ["name", "string", "sim", "Nome da entidade"],
+        [
+            "guid",
+            "string",
+            "sim",
+            "Identificador Global Exclusivo (GUID) da entidade"
+        ],
+        ["author", "int", "sim", "ID do autor da entidade"],
+        ["status", "string", "sim", "Status da entidade no sistema"],
+        [
+            "password",
+            "string",
+            "não",
+            "Senha para acesso à entidade, utilizada pela API"
+        ],
+        ["created", "datetime", "sim", "Data de criação da entidade"],
+        ["modified", "datetime", "sim", "Data de modificação da entidade"],
+        ["history", "`History`", "sim", "Histórico de edição da entidade"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

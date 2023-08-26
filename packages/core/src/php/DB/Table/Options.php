@@ -19,7 +19,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Option table class.
  */
-class Options extends Table {
+final class Options extends Table {
 	/**
 	 * Table name.
 	 *

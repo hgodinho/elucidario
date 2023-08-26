@@ -19,7 +19,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Relationships table class.
  */
-class Relationships extends Table {
+final class Relationships extends Table {
 	/**
 	 * Table name.
 	 *
@@ -38,10 +38,10 @@ class Relationships extends Table {
             object bigint(20) unsigned NOT NULL,
             rel_order int(11) NOT NULL,
             PRIMARY KEY (rel_id),
-            INDEX subject (subject),
-            INDEX predicate (predicate),
-            INDEX object (object),
-            INDEX rel_order (rel_order)
+            KEY subject (subject),
+            KEY predicate (predicate),
+            KEY object (object),
+            KEY rel_order (rel_order)
         ';
 	}
 }

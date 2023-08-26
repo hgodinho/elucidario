@@ -1,0 +1,42 @@
+{
+    "title": "{{count:charts;legend=Propriedades de _AttributeAssignment_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        ["type", "obrigatório", "DEVE ser _AttributeAssignment_"],
+        ["_label", "recomendado", ""],
+        ["content", "obrigatório", "O conteúdo _string_ do nome"],
+        ["classified_as", "recomendado", ""],
+        ["referred_to_by", "opcional", ""],
+        ["carried_out_by", "opcional", ""],
+        ["timespan", "opcional", ""],
+        [
+            "assigned",
+            "obrigatório",
+            "Um array de objetos json que sejam referências a outra entidade relacionada a esta"
+        ],
+        [
+            "assigned_property",
+            "opcional",
+            "Uma URI para a relação entre a entidade principal e a entidade referenciada em _assigned_"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _AttributeAssignment_ do Linked Art [@linked-art2021.16]"
+    }
+}

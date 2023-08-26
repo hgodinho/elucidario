@@ -17,7 +17,7 @@
     "data": [
         ["Nome", "Exigência", "Descrição"],
         ["id", "opcional", ""],
-        ["type", "requerido", "DEVE ser _AttributeAssignment_"],
+        ["type", "obrigatório", "DEVE ser _AttributeAssignment_"],
         ["_label", "recomendado", ""],
         ["classified_as", "recomendado", ""],
         ["carried_out_by", "recomendado", ""],
@@ -31,6 +31,6 @@
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Properties of Identifiers Assignments_ do Linked Art [@linked-art2021.9]"
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Identifiers Assignments_ do Linked Art [@linked-art2021.9]"
     }
 }

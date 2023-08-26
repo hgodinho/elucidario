@@ -1,6 +1,6 @@
 <?php
 /**
- * Option class.
+ * Entity class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -21,7 +21,17 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Entity row class.
  */
-abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
+class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
+	/**
+	 *     __             _ __
+	 *    / /__________ _(_) /______
+	 *   / __/ ___/ __ `/ / __/ ___/
+	 *  / /_/ /  / /_/ / / /_(__  )
+	 *  \__/_/   \__,_/_/\__/____/
+	 */
+	use \LCDR\Utils\debug;
+	use \LCDR\DB\Row\Row;
+
 	/**
 	 *                __
 	 *    _________  / /_  ______ ___  ____  _____
@@ -186,13 +196,6 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	private array $relationships;
 
 	/**
-	 * Allowed properties
-	 *
-	 * @var array
-	 */
-	public array $allowed_properties = array();
-
-	/**
 	 *                  __    ___
 	 *     ____  __  __/ /_  / (_)____
 	 *    / __ \/ / / / __ \/ / / ___/
@@ -206,8 +209,7 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 * @param mixed $item Item.
 	 */
 	public function __construct( $item = null ) {
-		parent::__construct( $item );
-
+		parent::__construct( $this->trim_keys( $item ) );
 		// properties.
 		$this->entity_id = (int) $this->entity_id;
 		$this->type      = (string) $this->type;
@@ -220,24 +222,9 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		$this->label     = (string) $this->label;
 
 		$this->init_relationships();
+		$this->init_mixed();
 	}
 
-	/**
-	 * Get the entity property.
-	 *
-	 * @param string $property Property.
-	 * @return mixed
-	 * @throws \Exception If property does not exist.
-	 */
-	public function get_property( string $property ): mixed {
-		if ( ! in_array( $property, lcdr_get_valid_properties(), true ) ) {
-			throw new \Exception( __( 'Property does not exist.', 'lcdr' ) );
-		}
-		if ( in_array( $property, lcdr_get_json_properties(), true ) ) {
-			return json_decode( $this->{$property} );
-		}
-		return $this->{$property};
-	}
 
 	/**
 	 * Get the entity relationships.
@@ -269,10 +256,32 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 			)
 		);
 		$this->relationships = $query->get_relationships_by_entity_id( $this->entity_id );
-		foreach ( $this->allowed_properties as $property ) {
-			if ( in_array( $property, lcdr_get_relationships_names(), true ) ) {
+		$allowed             = $this->allowed_properties ?? array();
+		foreach ( $allowed as $property ) {
+			$relationships = array_merge(
+				lcdr_get_relationships_names(),
+			);
+			if ( in_array( $property, $relationships, true ) ) {
+				$property          = trim( $property );
 				$this->{$property} = $this->get_relationships_by_predicate( $property );
 			}
+		}
+	}
+
+	/**
+	 * Initialize mixed properties.
+	 *
+	 * @return void
+	 */
+	protected function init_mixed() {
+		foreach ( lcdr_get_mixed_names() as $mixed ) {
+			${$mixed}       = $this->{$mixed} ? json_decode( $this->{$mixed} ) : null;
+			$init           = array_merge(
+				array(),
+				${$mixed} ?? array(),
+				$this->get_relationships_by_predicate( $mixed ) ?? array()
+			);
+			$this->{$mixed} = $init;
 		}
 	}
 
@@ -283,14 +292,44 @@ abstract class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 * @return array
 	 */
 	protected function get_relationships_by_predicate( string $predicate ) {
-		return array_map(
-			function ( $relationship ) {
-				if ( $relationship->object === $this->entity_id ) {
+		$relationships = \wp_list_filter( $this->relationships, array( 'predicate' => $predicate ) );
+
+		return array_values(
+			array_map(
+				function ( $relationship ) {
+					if ( $relationship->subject === $this->entity_id ) {
+						return $relationship->object;
+					}
 					return $relationship->subject;
-				}
-				return $relationship->object;
-			},
-			wp_list_filter( $this->relationships, array( 'predicate' => $predicate ) )
+				},
+				$relationships
+			)
 		);
+	}
+
+
+	/**
+	 *                 _             __
+	 *     ____  _____(_)   ______ _/ /____
+	 *    / __ \/ ___/ / | / / __ `/ __/ _ \
+	 *   / /_/ / /  / /| |/ / /_/ / /_/  __/
+	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
+	 * /_/
+	 */
+	/**
+	 * Trim $item keys.
+	 *
+	 * @param array|\LCDR\DB\Interfaces\Entity $item
+	 * @return array
+	 */
+	private function trim_keys( $item ) {
+		if ( ! is_array( $item ) ) {
+			$item = (array) $item;
+		}
+		$newArray = array();
+		foreach ( $item as $key => $value ) {
+			$newArray[ trim( $key ) ] = $value;
+		}
+		return $newArray;
 	}
 }

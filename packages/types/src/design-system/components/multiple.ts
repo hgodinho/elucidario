@@ -1,6 +1,7 @@
-import { Component } from "./generic"
+import { HTMLAttributes } from "react";
+import { BoxProps } from "./box";
 
-export type MultipleProps = Omit<Component, 'as'> & {
+export type MultipleProps = BoxProps<HTMLAttributes<HTMLDivElement>> & {
     schema?: Record<string, any>;
     fields?: {
         id: string;

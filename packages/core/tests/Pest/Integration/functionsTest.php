@@ -105,7 +105,6 @@ test( 'lcdr_get_relationships_names', function () {
 	expect( lcdr_get_relationships_names() )->toBe(
 		array(
 			'classified_as',
-			'referred_to_by',
 			'representation',
 			'member_of',
 			'subject_of',
@@ -174,7 +173,6 @@ test( 'lcdr_get_valid_properties', function () {
 			'destroyed_by',
 			'removed_by',
 			'classified_as',
-			'referred_to_by',
 			'representation',
 			'member_of',
 			'subject_of',

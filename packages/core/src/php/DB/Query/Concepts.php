@@ -1,6 +1,6 @@
 <?php
 /**
- * Options class.
+ * Concepts class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -19,7 +19,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Concepts query class.
  */
-class Concepts extends Entities {
+final class Concepts extends Entities {
 	/**
 	 * Name of the item
 	 *

@@ -1,0 +1,23 @@
+{
+    "id": "andersson2021",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "the-inter-font-family",
+    "_create": "2023-08-21T04:04:02.161Z",
+    "_update": "2023-08-21T04:04:02.161Z",
+    "type": "webpage",
+    "title": "The Inter font family",
+    "author": [
+        {
+            "family": "Andersson",
+            "given": "Rasmus"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-21"
+    },
+    "issued": {
+        "raw": "2017"
+    },
+    "url": "https://rsms.me/inter/"
+}

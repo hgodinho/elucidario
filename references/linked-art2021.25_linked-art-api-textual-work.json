@@ -1,0 +1,22 @@
+{
+    "id": "linked-art2021.25",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "linked-art-api-textual-work",
+    "_create": "2023-08-14T06:27:33.248Z",
+    "_update": "2023-08-14T06:27:33.248Z",
+    "type": "webpage",
+    "title": "Linked Art API: Textual Work",
+    "author": [
+        {
+            "family": "Linked Art"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-14"
+    },
+    "issued": {
+        "raw": "2021"
+    },
+    "URL": "https://linked.art/api/1.0/endpoint/textual_work/"
+}

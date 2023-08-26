@@ -1,0 +1,51 @@
+{
+    "identified_by": [
+        {
+            "type": "Identifier",
+            "_label": "M-0785",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300404626",
+                    "_label": "identification number"
+                }
+            ],
+            "content": "M-0785"
+        },
+        {
+            "type": "Name",
+            "_label": "No campo",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300417204",
+                    "_label": "original titles"
+                }
+            ],
+            "content": "No campo",
+            "language": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300440719",
+                    "type": "Language",
+                    "_label": "Brazilian portuguese"
+                }
+            ]
+        },
+        {
+            "type": "Name",
+            "_label": "À La campagne",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300417204",
+                    "_label": "original titles"
+                }
+            ],
+            "content": "À La campagne",
+            "language": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300388306",
+                    "type": "Language",
+                    "_label": "French"
+                }
+            ]
+        }
+    ]
+}

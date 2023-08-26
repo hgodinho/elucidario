@@ -1,0 +1,19 @@
+{
+    "identified_by": [
+        {
+            "type": "Identifier",
+            "classified_as": [
+                {
+                    "id": "http://purl.org/dc/elements/1.1/title",
+                    "_label": "Title",
+                    "type": "Type"
+                },
+                {
+                    "id": "http://vocab.getty.edu/aat/300417209",
+                    "_label": "Full titles",
+                    "type": "Type"
+                }
+            ]
+        }
+    ]
+}

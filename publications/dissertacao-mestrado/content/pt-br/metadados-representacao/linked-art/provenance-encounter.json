@@ -1,0 +1,35 @@
+{
+    "title": "{{count:charts;legend=Propriedades de _Encounter_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        ["type", "string", "obrigatório", "O tipo deve ser _Encounter_."],
+        [
+            "encountered",
+            "array",
+            "obrigatório",
+            "Um array de referências a entidade _PhysicalObject__."
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Encounter_ do Linked Art"
+    }
+}

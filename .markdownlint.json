@@ -1,12 +1,13 @@
 {
-    "MD024": { "siblings_only": true },
     "MD013": false,
-    "MD036": false,
-    "MD041": false,
+    "MD024": { "siblings_only": true },
+    "MD029": false,
     "MD030": {
         "ul_multi": 2,
         "ul_single": 1,
         "ol_multi": 2,
         "ol_single": 1
-    }
+    },
+    "MD036": false,
+    "MD041": false
 }

@@ -1,0 +1,19 @@
+{
+    "id": "word-press9999.1",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "word-press-rest-api-key-concepts",
+    "_create": "2023-08-16T05:36:38.366Z",
+    "_update": "2023-08-16T05:36:38.366Z",
+    "type": "webpage",
+    "title": "WordPress Rest API Key Concepts",
+    "author": [
+        {
+            "family": "WordPress"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-08-16"
+    },
+    "URL": "https://developer.wordpress.org/rest-api/key-concepts/"
+}

@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Propriedades de _Identifiers_.}}",
+    "title": "{{count:charts;legend=Propriedades de _Identifier_.}}",
     "fields": [
         {
             "type": "string",
@@ -17,19 +17,19 @@
     "data": [
         ["Nome", "Exigência", "Descrição"],
         ["id", "opcional", ""],
-        ["type", "requerido", "DEVE ser _Identifier_"],
+        ["type", "obrigatório", "DEVE ser _Identifier_"],
         ["_label", "recomendado", ""],
-        ["content", "requerido", "O conteúdo _string_ do identificador"],
+        ["content", "obrigatório", "O conteúdo _string_ do identificador"],
         ["classified_as", "recomendado", ""],
         ["referred_to_by", "opcional", ""],
         [
             "assigned_by",
             "opcional",
-            "Um _array_ de objetos JSON, cada um dos quais DEVEM seguir os requisitos para _Identifier Assignments_"
+            "Um _array_ de objetos JSON, cada um dos quais DEVEM seguir os requisitos para _IdentifierAssignment_"
         ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Properties of Identifiers Assignments_ do Linked Art [@linked-art2021.9]"
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Identifier_ do Linked Art [@linked-art2021.9]"
     }
 }

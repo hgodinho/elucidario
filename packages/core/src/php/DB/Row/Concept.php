@@ -19,7 +19,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Concept row class.
  */
-class Concept extends Entity {
+final class Concept extends Entity {
 	/**
 	 * Broader concepts.
 	 *

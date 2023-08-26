@@ -3,27 +3,30 @@
     Entrada de objetos no museu por qualquer motivo [@collections-trust2017.6].
 
     1.  Preparação para a entrada:
-        Relacionado a _Acquisition and accessioning_ e _Loans in_
+       Relacionado a **Aquisição e adesão** e **Entrada de empréstimos**
+
         A preparação pode ser simples como avisar alguém que irá receber, ou durar anos como no caso de coleções arqueológicas.
 
-        -   Se necessário arranjar transporte vá para _Location and movement control_;
-        -   Se necessário atualizar informações de seguro e indenização vá para _Insurance and indemnity_
+        - Se necessário arranjar transporte vá para **Localização e controle de movimentação**;
+        - Se necessário atualizar informações de seguro e indenização vá para **Seguro e indenização**
 
     1.  Crie um registro e um recibo:
+
         Ver Quadro 1 a seguir.
 
-        1. Verifique e registre as condições do objeto e quaisquer riscos associados
+        1.  Verifique e registre as condições do objeto e quaisquer riscos associados:
 
-            - Vá para _Conditional checking and technical assessment_, - Vá para _Reproduction_
+            - Vá para **Verificação de condições e avaliação técnica**;
+            - Vá para **Reprodução**.
 
-        2. Envie ou entregue uma cópia do registro de entrada.
+        2.  Envie ou entregue uma cópia do registro de entrada.
 
     1.  Processando objetos recém chegados:
-        1. Marque o objeto com um marcador temporário com o _Entry number_ ou _Loan in reference number_;
-        2. Registre a primeira localização dos objetos - _Location and movement control_;
-        3. Se o objeto é uma aquisição planejada ou entrada de empréstimos, volte ao procedimento relevante _Acquisition and accessioning_ ou _Loans in_;
-        4. Se o objeto chega inesperadamente, considere a oferta e vá para _Acquisition and accessioning_;
-        5. Se o dono deixa para identificação, realize a tarefa no tempo acordado e vá para _Object exit_;
-        6. Se o objeto chega anonimamente, lide de acordo com a política da instituição;
+        1. Marque o objeto com um marcador temporário com o _Número de referência a entrada de empréstimos_;
+        2. Registre a primeira localização dos objetos - **Localização e controle de movimentação**;
+        3. Se o objeto é uma aquisição planejada ou entrada de empréstimos - volte ao procedimento relevante **Aquisição e adesão** ou **Entrada de empréstimos**;
+        4. Se o objeto chega inesperadamente - considere a oferta e vá para **Aquisição e adesão**;
+        5. Se o dono deixa para identificação - realize a tarefa no tempo acordado e vá para **Saída de objeto**;
+        6. Se o objeto chega anonimamente - lide de acordo com a política da instituição;
 
 {{table:documentacao/spectrum/obj-entry.json}}

@@ -1,0 +1,24 @@
+{
+    "id": "baca2006.1",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "cataloguing-cultural-objects-cco",
+    "_create": "2023-08-20T17:40:17.615Z",
+    "_update": "2023-08-20T17:40:17.615Z",
+    "type": "book",
+    "title": "Cataloguing Cultural Objects (CCO)",
+    "publisher": "Visual Resources Association",
+    "publisher-place": "Estados Unidos da América",
+    "number-of-pages": "407",
+    "ISBN": "978-0-8389-3564-4",
+    "editor": [
+        {
+            "family": "Baca",
+            "given": "Murtha"
+        }
+    ],
+    "issued": {
+        "raw": "2006"
+    },
+    "URL": "https://www.vraweb.org/s/CatalogingCulturalObjectsFullv2.pdf"
+}

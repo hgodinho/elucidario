@@ -23,7 +23,6 @@
         ["type", "string", "obrigatório", "O tipo deve ser _DigitalObject_."],
         ["member_of", "array", "opcional", ""],
         ["attributed_by", "array", "opcional", ""],
-        ["subject_of", "array", "opcional", ""],
         ["dimension", "array", "opcional", ""],
         ["part_of", "array", "opcional", ""],
         ["format", "array", "opcional", ""],
@@ -34,7 +33,7 @@
             "digitally_available_via",
             "array",
             "opcional",
-            "Um array de objetos JSON, em que cada um deles deve seguir o formato do _Digital Service_ descrito a seguir"
+            "Um array de objetos JSON, em que cada um deles deve seguir o formato do _DigitalService_ descrito a seguir"
         ],
         ["access_point", "array", "opcional", ""],
         [
@@ -47,11 +46,11 @@
             "used_for",
             "array",
             "opcional",
-            "Um array de objetos JSON, em que cada um deles representa uma _Publication Activity_, como descrita a seguir"
+            "Um array de objetos JSON, em que cada um deles representa uma _PublicationActivity_, como descrita a seguir"
         ]
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor. Tradução de _Digital_ do Linked Art [@linked-art2021.10]"
+        "content": "Elaborado pelo autor. Metadados utilizados na entidade _Digital_ do Linked Art [@linked-art2021.10]"
     }
 }

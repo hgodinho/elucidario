@@ -1,0 +1,88 @@
+{
+    "title": "{{count:charts;legend=Comparação entre os modelos de dados Object ID (1997), Esquema de metadados para descrição de obras de arte em museus brasileiros (EMDOAMB) (2020), Spectrum (2022) e Linked Art (2021).}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Pontos de comparação"
+        },
+        {
+            "type": "string",
+            "name": "Object ID"
+        },
+        {
+            "type": "string",
+            "name": "EMDOAMB"
+        },
+        {
+            "type": "string",
+            "name": "Spectrum"
+        },
+        {
+            "type": "string",
+            "name": "Linked art"
+        }
+    ],
+    "data": [
+        [
+            "Pontos de comparação",
+            "Object ID",
+            "EMDOAMB",
+            "Spectrum",
+            "Linked art"
+        ],
+        [
+            "Descrição",
+            "Elaborada a partir de um esforço do Getty Information Institute que coletou resposta de 84 instituições museológicas ao redor do munda para estabelecer um padrão mínimo de dados de representação de obras de arte",
+            "Criado pela Camila Aparecida da Silva, pesquisadora brasileira da USP (2020), com base nos modelos CDWA, Categorias de Informação do CIDOC-ICOM e nos grupos de informações do Spectrum. Seu foco principal é ser uma proposta de modelo de dados para representação de obras de arte em museus brasileiros",
+            "Procedimentos e unidades de informação para documentação museológica",
+            "Modelo de dados para aplicações para representação de informações sobre obras de artes em museus com foco na interoperabilidade entre sistemas"
+        ],
+        [
+            "Origem",
+            "Lançado em 1997, é promovida por instituições como FBI, Scotland Yard, Interpol e organizações como Unesco e WCO.",
+            "Publicado em 2020 como resultado de uma pesquisa de doutorado da USP",
+            "Reino unido",
+            "Multi-institucional"
+        ],
+        ["Versão", "não se aplica", "não se aplica", "5.1", "0.8.0"],
+        [
+            "Mantenedores",
+            "Embora tenha sido criado pelo Getty Information Institute, o modelo foi mantido de 1999 a 2004 pelo _Council for the Prevention of Art Theft_ (CoPAT) no Reino Unido, em 2005 o ICOM assina um acordo com J. Paul Getty Trust para uso não exclusivo do modelo, mantendo a licença deste então",
+            "Camila Aparecida da Silva",
+            "Collections Trust",
+            "Grupo de Trabalho Linked Art - CIDOC-ICOM"
+        ],
+        [
+            "Principais utilizadores",
+            "J. Paul Getty Trust, European Commission, National Museum of World Cultures Foundation (NMVW - Países Baixos)",
+            "não se aplica, pois é um modelo de dados proposto para uso em museus brasileiros",
+            "Todos os museus acreditados à Collections Trust no Reino Unido",
+            "Getty, MoMA, Rijksmuseum"
+        ],
+        [
+            "Principais utilizadores no Brasil",
+            "não encontrado",
+            "não encontrado",
+            "Pinacoteca de São Paulo, Museu do Café, Museu da Imigração",
+            "não encontrado"
+        ],
+        [
+            "Formato",
+            "Ficha ou tabela simples",
+            "Ficha ou tabela simples",
+            "Não definido, estrutura \"flat\". Apresenta metadados especializados para cada tipo de informação descrita, pode ser definido em fichas ou tabelas",
+            "JSON-LD. Apresenta metadados mais genéricos e abrangentes, porém que permitem a contextualização mais precisa com o uso de vocabulários controlados"
+        ],
+        [
+            "Dimensão",
+            "O Object ID define 9 categorias de informações e 4 passos para documentação",
+            "O EMDOAMB define 9 grupos de informações e 25 unidades de informação para descrição e representação de obras de arte brasileiras",
+            "O Spectrum define 21 procedimentos para gestão museológica e 546 metadados para representação dos objetos e entidades relacionadas, que são divididos em três grupos: object information, procedural information e record management information",
+            "O Linked Art apresenta 11 entidades principais para representação da informação museológica e mais 27 classes complementares. O modelo também apresenta 91 metadados diferentes que são utilizados para descrever as classes e entidades"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}
