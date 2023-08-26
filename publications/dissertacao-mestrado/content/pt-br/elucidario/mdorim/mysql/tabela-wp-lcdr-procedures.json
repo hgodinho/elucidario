@@ -32,6 +32,13 @@
             "ID do procedimento"
         ],
         ["type", "varchar(64)", "", "KEY", "Tipo de procedimento"],
+        [
+            "guid",
+            "varchar(255)",
+            "",
+            "UNIQUE",
+            "Identificador Único Global do procedimento no sistema"
+        ],
         ["description", "longtext", "", "", "Descrição do procedimento"],
         [
             "author",

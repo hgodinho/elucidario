@@ -228,9 +228,6 @@ final class Procedures extends Query {
 			if ( ! isset( $args['type'] ) ) {
 				throw new \Exception( __( 'The data must have a type.', 'lcdr' ) );
 			}
-			if ( ! isset( $args['author'] ) ) {
-				throw new \Exception( __( 'The data must have an author.', 'lcdr' ) );
-			}
 		}
 
 		foreach ( $args as $key => $value ) {
@@ -249,28 +246,7 @@ final class Procedures extends Query {
 	 * @return mixed Sanitized data.
 	 */
 	protected function sanitize_data( string $key, mixed $data ) {
-		// maybe encode data to json.
-		$data = $this->maybe_encode_data( $key, $data );
-
-		return $data;
-	}
-
-	/**
-	 * Maybe encode data
-	 *
-	 * @param string $key Property name.
-	 * @param mixed  $data Data of the property.
-	 * @return mixed
-	 */
-	protected function maybe_encode_data( $key, $data ) {
-		// if ( in_array( $key, lcdr_get_json_properties(), true ) ) {
-		// return wp_json_encode( $data );
-		// }
-		// if ( in_array( $key, lcdr_get_mixed_names(), true ) ) {
-		// if ( is_object( $data ) || is_array( $data ) ) {
-		// return wp_json_encode( $data );
-		// }
-		// }
+		// todo sanitize data.
 		return $data;
 	}
 
@@ -285,8 +261,8 @@ final class Procedures extends Query {
 	/**
 	 * Add procedure entities
 	 *
-	 * @param integer $item_id
-	 * @param array   $entities
+	 * @param integer $item_id Procedure ID.
+	 * @param array   $entities Entities to add.
 	 * @return void
 	 */
 	private function add_procedure_entities( int $item_id, array $entities ) {

@@ -33,6 +33,8 @@ final class Core {
 		'relationships'       => '\\LCDR\\DB\\Table\\Relationships',
 		'procedures'          => '\\LCDR\\DB\\Table\\Procedures',
 		'procedures_entities' => '\\LCDR\\DB\\Table\\ProceduresEntities',
+		'mappings'            => '\\LCDR\\DB\\Table\\Mappings',
+		'props_maps'          => '\\LCDR\\DB\\Table\\PropsMaps',
 	);
 
 	/**

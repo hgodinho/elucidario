@@ -40,6 +40,20 @@ test( '\LCDR\DB\Query\Relationships->add_relationship()', function () {
 	expect( $relationship_id )->toBeNumeric();
 } );
 
+test( '\LCDR\DB\Query\Relationships->add_relationship() with wrong predicate throws exception', function () {
+	expect( function () {
+		$relationship = new \LCDR\DB\Query\Relationships();
+		$relationship->add_relationship(
+			array(
+				'object' => 1,
+				'predicate' => 'banana',
+				'subject' => 2,
+				'order' => 0
+			)
+		);
+	} )->toThrow( \Exception::class, 'banana is not a valid relationship name.' );
+} );
+
 test( '\LCDR\DB\Query\Relationships->add_relationships()', function () {
 	$relationship = new \LCDR\DB\Query\Relationships();
 
@@ -94,12 +108,26 @@ test( '\LCDR\DB\Query\Relationships->get_relationships()', function () {
 test( '\LCDR\DB\Query\Relationships->update_relationship()', function () {
 	global $relationship_id;
 	$relationships = new \LCDR\DB\Query\Relationships();
-	$test = $relationships->update_relationship( array(
-		'rel_id' => $relationship_id,
-		'predicate' => 'classified_as',
-	) );
+	$test = $relationships->update_relationship(
+		$relationship_id,
+		array(
+			'predicate' => 'classified_as',
+		)
+	);
 
 	expect( $test )->toBeNumeric();
+} );
+
+test( '\LCDR\DB\Query\Relationships->update_relationship() with no ID throws exception', function () {
+	expect( function () {
+		$relationships = new \LCDR\DB\Query\Relationships();
+		$test = $relationships->update_relationship(
+			0,
+			array(
+				'predicate' => 'classified_as',
+			)
+		);
+	} )->toThrow( \Exception::class, 'Relationship ID is required.' );
 } );
 
 test( '\LCDR\DB\Query\Relationships->update_relationships()', function () {

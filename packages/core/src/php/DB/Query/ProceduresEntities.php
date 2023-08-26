@@ -104,45 +104,6 @@ final class ProceduresEntities extends Query {
 		return $item;
 	}
 
-	// /**
-	// * Get relationships by entity id
-	// *
-	// * @param int         $entity_id Entity ID.
-	// * @param string|null $predicate Predicate.
-	// * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
-	// */
-	// public function get_relationships_by_entity_id( $entity_id, $predicate = null ) {
-	// add_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
-	// $items = $this->query(
-	// array(
-	// 'order'   => 'ASC',
-	// 'subject' => $entity_id,
-	// 'object'  => $entity_id,
-	// ),
-	// );
-	// remove_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
-	// if ( $predicate ) {
-	// $items = array_filter(
-	// $items,
-	// function ( $item ) use ( $predicate ) {
-	// return $item->predicate === $predicate;
-	// }
-	// );
-	// }
-	// return $items;
-	// }
-
-	// /**
-	// * Filter query clauses
-	// *
-	// * @param array $clauses Query clauses.
-	// * @return array
-	// */
-	// public function filter_query_clauses( $clauses = array() ) {
-	// $clauses['where'] = str_replace( 'AND', 'OR', $clauses['where'] );
-	// return $clauses;
-	// }
-
 	/**
 	 * Add relationship
 	 *
@@ -183,19 +144,16 @@ final class ProceduresEntities extends Query {
 	/**
 	 * Update relationship
 	 *
+	 * @param int   $relationship_id Relationship ID.
 	 * @param array $args Updated args.
 	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
+	 * @throws \Exception If relationship ID is empty.
 	 */
-	public function update_relationship( $args = array() ) {
-		$args            = $this->parse_args( $args );
-		$relationship_id = false;
+	public function update_relationship( int $relationship_id, $args = array() ) {
+		$args = $this->parse_args( $args );
 
-		if ( isset( $args['rel_id'] ) ) {
-			$relationship_id = $args['rel_id'];
-		}
-
-		if ( ! $relationship_id ) {
-			return $this->add_relationship( $args );
+		if ( empty( $relationship_id ) ) {
+			throw new \Exception( __( 'Relationship ID is required.', 'lcdr' ) );
 		}
 
 		return parent::update_item(
@@ -221,7 +179,12 @@ final class ProceduresEntities extends Query {
 	public function update_relationships( $relationships = array() ) {
 		$updated = array();
 		foreach ( $relationships as $relationship ) {
-			$updated[] = $this->update_relationship( $relationship );
+			$id = false;
+			if ( isset( $relationship['rel_id'] ) ) {
+				$id = $relationship['rel_id'];
+				unset( $relationship['rel_id'] );
+			}
+			$updated[] = $this->update_relationship( $id, $relationship );
 		}
 
 		return $updated;

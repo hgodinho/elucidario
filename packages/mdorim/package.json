@@ -1,6 +1,6 @@
 {
     "name": "@elucidario/pkg-mdorim",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Modelo de Dados para Organização e Representação da Informação Museológica, utilizado pelo Elucidário.art.",
     "homepage": "https://elucidario.art/mdorim",
     "license": "MIT",

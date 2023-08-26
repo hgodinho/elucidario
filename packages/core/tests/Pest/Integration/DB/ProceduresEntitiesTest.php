@@ -84,12 +84,26 @@ test( '\LCDR\DB\Query\ProceduresEntities->get_relationships()', function () {
 test( '\LCDR\DB\Query\ProceduresEntities->update_relationship()', function () {
 	global $proc_entity_id;
 	$relationships = new \LCDR\DB\Query\ProceduresEntities();
-	$test = $relationships->update_relationship( array(
-		'rel_id' => $proc_entity_id,
-		'entity_id' => 4,
-	) );
-
+	$test = $relationships->update_relationship(
+		$proc_entity_id,
+		array(
+			'entity_id' => 4,
+		)
+	);
 	expect( $test )->toBeNumeric();
+} );
+
+test( '\LCDR\DB\Query\ProceduresEntities->update_relationship() without ID throws exception', function () {
+
+	expect( function () {
+		$relationships = new \LCDR\DB\Query\ProceduresEntities();
+		$test = $relationships->update_relationship(
+			0,
+			array(
+				'entity_id' => 4,
+			)
+		);
+	} )->toThrow( \Exception::class, 'Relationship ID is required.' );
 } );
 
 

@@ -76,15 +76,10 @@ final class Options extends Query {
 	 * Get an option.
 	 *
 	 * @param string $option The name of the option.
-	 * @param mixed  $default The default value to return if the option does not exist.
-	 * @return mixed The value of the option, or the default value if the option does not exist.
+	 * @return mixed The value of the option.
 	 */
-	public function get_option( string $option, mixed $default = '' ) {
+	public function get_option( string $option ) {
 		$item = $this->get_item_by( 'name', $option );
-
-		if ( ! $item ) {
-			return $default;
-		}
 		return $item->value;
 	}
 
@@ -127,16 +122,26 @@ final class Options extends Query {
 				return false;
 			}
 		}
-		$update = $this->update_item(
+		return $this->update_item(
 			$item->id,
 			array(
 				'name'  => $option,
 				'value' => $value,
 			)
 		);
-		if ( 1 === $update ) {
-			return true;
+	}
+
+	/**
+	 * Delete an option.
+	 *
+	 * @param string $option The name of the option.
+	 * @return bool
+	 */
+	public function delete_option( string $option ) {
+		$item = $this->get_item_by( 'name', $option );
+		if ( $item ) {
+			return $this->delete_item( $item->id );
 		}
-		return $update;
+		return false;
 	}
 }

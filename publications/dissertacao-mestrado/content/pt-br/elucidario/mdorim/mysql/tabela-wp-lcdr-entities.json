@@ -35,7 +35,7 @@
             "name",
             "varchar(255)",
             "",
-            "UNIQUE",
+            "KEY",
             "Slug da entidade, igual ao _post_name_ da tabela _wp_posts_"
         ],
         [
