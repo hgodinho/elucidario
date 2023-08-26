@@ -23,7 +23,7 @@
         ["id", "int", "sim", "ID do procedimento"],
         ["type", "string", "sim", "Tipo de procedimento"],
         ["description", "string", "não", "Descrição do procedimento"],
-        ["user", "int", "sim", "ID do usuário que criou o procedimento"],
+        ["author", "int", "sim", "ID do usuário que criou o procedimento"],
         ["created", "datetime", "sim", "Data de criação do procedimento"],
         ["modified", "datetime", "sim", "Data de atualização do procedimento"],
         [

@@ -8,6 +8,7 @@ coverage
 publications/teste
 
 lerna-debug.log
+.bin/set_gh_token.sh
 
 # ensure no secrets are committed
 credentials.json
