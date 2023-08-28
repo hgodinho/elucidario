@@ -319,17 +319,17 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	/**
 	 * Trim $item keys.
 	 *
-	 * @param array|\LCDR\DB\Interfaces\Entity $item
+	 * @param array|\LCDR\DB\Interfaces\Entity $item Item.
 	 * @return array
 	 */
 	private function trim_keys( $item ) {
 		if ( ! is_array( $item ) ) {
 			$item = (array) $item;
 		}
-		$newArray = array();
+		$new_array = array();
 		foreach ( $item as $key => $value ) {
-			$newArray[ trim( $key ) ] = $value;
+			$new_array[ trim( $key ) ] = $value;
 		}
-		return $newArray;
+		return $new_array;
 	}
 }
