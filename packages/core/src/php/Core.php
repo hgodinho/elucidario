@@ -21,6 +21,13 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  */
 class Core {
 	/**
+	 * Instance.
+	 *
+	 * @var \LCDR\Core
+	 */
+	private static $instance;
+
+	/**
 	 * Options.
 	 *
 	 * @var \LCDR\Options\Core
@@ -42,14 +49,31 @@ class Core {
 	public $schema;
 
 	/**
-	 * Constructor.
+	 * Users.
+	 *
+	 * @var \LCDR\Users\Core
 	 */
-	public function __construct() {
-		$this->db      = new \LCDR\DB\Core();
-		$this->options = new \LCDR\Options\Core();
-		$this->schema  = new \LCDR\Mdorim\Schema();
+	public $users;
 
-		add_action( 'init', array( $this, 'textdomain' ) );
+	/**
+	 *                  __    ___
+	 *     ____  __  __/ /_  / (_)____
+	 *    / __ \/ / / / __ \/ / / ___/
+	 *   / /_/ / /_/ / /_/ / / / /__
+	 *  / .___/\__,_/_.___/_/_/\___/
+	 * /_/
+	 */
+	/**
+	 * Get instance.
+	 *
+	 * @return \LCDR\Core
+	 */
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
 	}
 
 	/**
@@ -61,5 +85,25 @@ class Core {
 		$domain = 'lcdr';
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 		\load_textdomain( $domain, LCDR_PATH . "languages/php-{$domain}-{$locale}.mo" );
+	}
+
+	/**
+	 *                 _             __
+	 *     ____  _____(_)   ______ _/ /____
+	 *    / __ \/ ___/ / | / / __ `/ __/ _ \
+	 *   / /_/ / /  / /| |/ / /_/ / /_/  __/
+	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
+	 * /_/
+	 */
+	/**
+	 * Constructor.
+	 */
+	final private function __construct() {
+		$this->db      = \LCDR\DB\Core::get_instance();
+		$this->options = new \LCDR\Options\Core();
+		$this->schema  = new \LCDR\Mdorim\Schema();
+		$this->users   = \LCDR\Users\Core::get_instance();
+
+		add_action( 'init', array( $this, 'textdomain' ) );
 	}
 }

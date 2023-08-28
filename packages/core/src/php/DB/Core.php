@@ -23,11 +23,18 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  */
 final class Core {
 	/**
+	 * Instance.
+	 *
+	 * @var \LCDR\DB\Core
+	 */
+	private static $instance = null;
+
+	/**
 	 * Table names.
 	 *
 	 * @var array
 	 */
-	public $table_names = array(
+	public static $tables_names = array(
 		'options'             => '\\LCDR\\DB\\Table\\Options',
 		'entities'            => '\\LCDR\\DB\\Table\\Entities',
 		'relationships'       => '\\LCDR\\DB\\Table\\Relationships',
@@ -45,6 +52,14 @@ final class Core {
 	protected $tables = array();
 
 	/**
+	 *                  __    ___
+	 *     ____  __  __/ /_  / (_)____
+	 *    / __ \/ / / / __ \/ / / ___/
+	 *   / /_/ / /_/ / /_/ / / / /__
+	 *  / .___/\__,_/_.___/_/_/\___/
+	 * /_/
+	 */
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -55,13 +70,25 @@ final class Core {
 	}
 
 	/**
+	 * Get the instance.
+	 *
+	 * @return \LCDR\DB\Core
+	 */
+	public static function get_instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	/**
 	 * Initialize the database.
 	 *
 	 * @return void
 	 */
 	public function init_tables() {
-		foreach ( $this->table_names as $table_name => $table ) {
-			$this->tables[ $table_name ] = new $table();
+		foreach ( $this::$tables_names as $name => $table ) {
+			$this->tables[ $name ] = new $table();
 		}
 	}
 
@@ -90,4 +117,14 @@ final class Core {
 			}
 		}
 	}
+
+	/**
+	 *                 _             __
+	 *     ____  _____(_)   ______ _/ /____
+	 *    / __ \/ ___/ / | / / __ `/ __/ _ \
+	 *   / /_/ / /  / /| |/ / /_/ / /_/  __/
+	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
+	 * /_/
+	 */
+
 }
