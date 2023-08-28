@@ -110,6 +110,16 @@ function lcdr_parse_item_id( mixed $id ) {
 }
 
 /**
+ * Return if $thing is an instance of \LCDR\Error
+ *
+ * @param mixed $thing Thing.
+ * @return bool
+ */
+function is_lcdr_error( $thing ) {
+	return is_wp_error( $thing ) && $thing instanceof \LCDR\Error\Base;
+}
+
+/**
  *    ______         __           ___             _____         __
  *   / ____/  ___   / /_         ( _ )           / ___/  ___   / /_
  *  / / __   / _ \ / __/        / __ \/|         \__ \  / _ \ / __/
@@ -275,12 +285,11 @@ function lcdr_set_option( $option, $value ) {
  * Get lcdr option
  *
  * @param string $option  Option name.
- * @param mixed  $default Default value.
  *
  * @return mixed Option value.
  * @since 0.2.0
  */
-function lcdr_get_option( $option, $default = '' ) {
+function lcdr_get_option( $option ) {
 	$query = new \LCDR\DB\Query\Options();
-	return $query->get_option( $option, $default );
+	return $query->get_option( $option );
 }
