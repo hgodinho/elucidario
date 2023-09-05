@@ -8,13 +8,14 @@
 
 namespace LCDR\Utils;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Notices class.

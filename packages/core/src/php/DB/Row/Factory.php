@@ -25,11 +25,14 @@ final class Factory {
 	 * Create a new entity.
 	 *
 	 * @param mixed $item Item to create.
-	 * @return \LCDR\DB\Interfaces\Entity|false
+	 * @return \LCDR\DB\Interfaces\Entity|\LCDR\Error\Factory
 	 */
 	public static function create( mixed $item ) {
+		if ( empty( $item ) ) {
+			return new \LCDR\Error\Factory( 'empty_item' );
+		}
 		$entity = null;
-		if ( $item instanceof \LCDR\DB\Interfaces\Entity ) {
+		if ( $item instanceof \LCDR\DB\Row\Entity ) {
 			$entity = $item;
 		}
 		if ( is_array( $item ) ) {
@@ -39,14 +42,24 @@ final class Factory {
 			$entities = new \LCDR\DB\Query\Entities();
 			$entity   = $entities->get_entity( $item );
 		}
-
-		switch ( $entity->type ) {
-			case 'Concept':
-			case 'Type':
-				$concept = new \LCDR\DB\Row\Concept( $entity );
-				return $concept;
-			default:
-				return false;
+		$error = new \LCDR\Error\Factory(
+			'unknown_type',
+			array(
+				'item'   => $item,
+				'entity' => $entity,
+			)
+		);
+		if ( $entity instanceof \LCDR\DB\Row\Entity ) {
+			switch ( $entity->type ) {
+				case 'Concept':
+				case 'Type':
+					$concept = new \LCDR\DB\Row\Concept( (array) $entity );
+					return $concept;
+				default:
+					return $error;
+			}
 		}
+		return $error;
 	}
+
 }

@@ -10,13 +10,14 @@ namespace LCDR\DB\Row;
 
 use \BerlinDB\Database\Row;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Entity row class.
@@ -257,10 +258,10 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		);
 		$this->relationships = $query->get_relationships_by_entity_id( $this->entity_id );
 		$allowed             = $this->allowed_properties ?? array();
+		$relationships       = array_merge(
+			lcdr_get_relationships_names(),
+		);
 		foreach ( $allowed as $property ) {
-			$relationships = array_merge(
-				lcdr_get_relationships_names(),
-			);
 			if ( in_array( $property, $relationships, true ) ) {
 				$property          = trim( $property );
 				$this->{$property} = $this->get_relationships_by_predicate( $property );
@@ -297,6 +298,7 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		return array_values(
 			array_map(
 				function ( $relationship ) {
+					$relationship = $this->parse_relationship_ids( $relationship );
 					if ( $relationship->subject === $this->entity_id ) {
 						return $relationship->object;
 					}
@@ -307,7 +309,6 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		);
 	}
 
-
 	/**
 	 *                 _             __
 	 *     ____  _____(_)   ______ _/ /____
@@ -316,6 +317,29 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
 	 * /_/
 	 */
+	/**
+	 * Parse relationship ids.
+	 *
+	 * @param mixed $relationship Relationship.
+	 * @return object
+	 */
+	private function parse_relationship_ids( $relationship ) {
+		if ( is_object( $relationship ) ) {
+			$relationship = (array) $relationship;
+		}
+		if ( is_array( $relationship ) ) {
+			$relationship = array_map(
+				function ( $item ) {
+					return lcdr_parse_item_id( $item );
+				},
+				$relationship
+			);
+		} else {
+			$relationship = lcdr_parse_item_id( $relationship );
+		}
+		return (object) $relationship;
+	}
+
 	/**
 	 * Trim $item keys.
 	 *

@@ -16,13 +16,14 @@ use \Opis\JsonSchema\{
 
 use \Opis\JsonSchema\Errors\ErrorFormatter;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Schema class.

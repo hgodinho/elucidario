@@ -8,24 +8,28 @@
 
 namespace LCDR;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Core class.
  */
 class Core {
 	/**
-	 * Instance.
-	 *
-	 * @var \LCDR\Core
+	 *     __             _ __
+	 *    / /__________ _(_) /______
+	 *   / __/ ___/ __ `/ / __/ ___/
+	 *  / /_/ /  / /_/ / / /_(__  )
+	 *  \__/_/   \__,_/_/\__/____/
 	 */
-	private static $instance;
+	use \LCDR\Utils\singleton;
+	use \LCDR\Utils\debug;
 
 	/**
 	 * Options.
@@ -56,6 +60,12 @@ class Core {
 	public $users;
 
 	/**
+	 *
+	 * @var \LCDR\Rest\Core
+	 */
+	public $rest;
+
+	/**
 	 *                  __    ___
 	 *     ____  __  __/ /_  / (_)____
 	 *    / __ \/ / / / __ \/ / / ___/
@@ -63,19 +73,6 @@ class Core {
 	 *  / .___/\__,_/_.___/_/_/\___/
 	 * /_/
 	 */
-	/**
-	 * Get instance.
-	 *
-	 * @return \LCDR\Core
-	 */
-	public static function get_instance() {
-		if ( ! isset( self::$instance ) ) {
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
-
 	/**
 	 * Load textdomain.
 	 *
@@ -103,6 +100,7 @@ class Core {
 		$this->options = new \LCDR\Options\Core();
 		$this->schema  = new \LCDR\Mdorim\Schema();
 		$this->users   = \LCDR\Users\Core::get_instance();
+		$this->rest    = \LCDR\Rest\Core::get_instance();
 
 		add_action( 'init', array( $this, 'textdomain' ) );
 	}

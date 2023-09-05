@@ -8,18 +8,29 @@
 
 namespace LCDR\Users;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Core Users Class
  */
 class Core {
+	/**
+	 *     __             _ __
+	 *    / /__________ _(_) /______
+	 *   / __/ ___/ __ `/ / __/ ___/
+	 *  / /_/ /  / /_/ / / /_(__  )
+	 *  \__/_/   \__,_/_/\__/____/
+	 */
+	use \LCDR\Utils\singleton;
+	use \LCDR\Utils\debug;
+
 	/**
 	 * User capabilities version.
 	 *
@@ -45,22 +56,6 @@ class Core {
 	);
 
 	/**
-	 * Instance.
-	 *
-	 * @var \LCDR\Users\Core
-	 */
-	private static $instance = null;
-
-	/**
-	 *     __             _ __
-	 *    / /__________ _(_) /______
-	 *   / __/ ___/ __ `/ / __/ ___/
-	 *  / /_/ /  / /_/ / / /_(__  )
-	 *  \__/_/   \__,_/_/\__/____/
-	 */
-	use \LCDR\Utils\debug;
-
-	/**
 	 * Roles.
 	 *
 	 * @var array
@@ -75,14 +70,6 @@ class Core {
 	 *  / .___/\__,_/_.___/_/_/\___/
 	 * /_/
 	 */
-	public static function get_instance() {
-		if ( null === self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
-
 	/**
 	 * Initialize the users roles.
 	 *

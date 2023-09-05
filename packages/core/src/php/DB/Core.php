@@ -8,13 +8,14 @@
 
 namespace LCDR\DB;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Core DB Class
@@ -23,11 +24,13 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  */
 final class Core {
 	/**
-	 * Instance.
-	 *
-	 * @var \LCDR\DB\Core
+	 *     __             _ __
+	 *    / /__________ _(_) /______
+	 *   / __/ ___/ __ `/ / __/ ___/
+	 *  / /_/ /  / /_/ / / /_(__  )
+	 *  \__/_/   \__,_/_/\__/____/
 	 */
-	private static $instance = null;
+	use \LCDR\Utils\singleton;
 
 	/**
 	 * Table names.
@@ -70,18 +73,6 @@ final class Core {
 	}
 
 	/**
-	 * Get the instance.
-	 *
-	 * @return \LCDR\DB\Core
-	 */
-	public static function get_instance() {
-		if ( null === self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
-	/**
 	 * Initialize the database.
 	 *
 	 * @return void
@@ -117,14 +108,4 @@ final class Core {
 			}
 		}
 	}
-
-	/**
-	 *                 _             __
-	 *     ____  _____(_)   ______ _/ /____
-	 *    / __ \/ ___/ / | / / __ `/ __/ _ \
-	 *   / /_/ / /  / /| |/ / /_/ / /_/  __/
-	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
-	 * /_/
-	 */
-
 }

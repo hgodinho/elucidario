@@ -103,10 +103,29 @@ function lcdr_json_file( $file ) {
  * Return parsed item id
  *
  * @param mixed $id Item id.
- * @return int|bool
+ * @return \LCDR\Error\Error|int|false
  */
 function lcdr_parse_item_id( mixed $id ) {
+	if ( is_lcdr_error( $id ) ) {
+		return $id;
+	}
 	return is_numeric( $id ) ? absint( $id ) : false;
+}
+
+/**
+ * Return slug for entity
+ *
+ * @param \LCDR\DB\Row\Entity $entity
+ * @return string
+ */
+function lcdr_unique_entity_slug( $entity ) {
+	$slug = sanitize_title( $entity->name );
+	if ( in_array( $entity->status, array( 'draft', 'pending', 'auto-draft' ), true ) ) {
+		return $slug;
+	}
+	$query = new \LCDR\DB\Query\Entities();
+	$slug  = $query->unique_slug( $slug, $entity->entity_id );
+	return $slug;
 }
 
 /**
@@ -126,6 +145,29 @@ function is_lcdr_error( $thing ) {
  * / /_/ /  /  __// /_         / /_/  <         ___/ / /  __// /_
  * \____/   \___/ \__/         \____/\/        /____/  \___/ \__/
  */
+/**
+ * Return entity by id
+ *
+ * @param int $entity_id
+ * @return \LCDR\DB\Row\Entity
+ */
+function lcdr_get_entity( $entity_id ) {
+	$query  = new \LCDR\DB\Query\Entities();
+	$entity = $query->get_entity( $entity_id );
+	return \LCDR\DB\Row\Factory::create( $entity );
+}
+
+/**
+ * Insert new entity
+ *
+ * @param array $args
+ * @return int|\LCDR\Error\DB
+ */
+function lcdr_insert_entity( $args ) {
+	$query     = new \LCDR\DB\Query\Entities();
+	$entity_id = $query->add_entity( $args );
+	return lcdr_parse_item_id( $entity_id );
+}
 
 /**
  * Return the plugin field names that are stored in json type in the database
@@ -278,7 +320,7 @@ function lcdr_get_valid_properties() {
  */
 function lcdr_set_option( $option, $value ) {
 	$query = new \LCDR\DB\Query\Options();
-	return $query->update_option( $option, $value );
+	return $query->update_option( $option, \wp_json_encode( $value ) );
 }
 
 /**
@@ -291,5 +333,5 @@ function lcdr_set_option( $option, $value ) {
  */
 function lcdr_get_option( $option ) {
 	$query = new \LCDR\DB\Query\Options();
-	return $query->get_option( $option );
+	return json_decode( $query->get_option( $option ) );
 }
