@@ -45,7 +45,8 @@
     "scripts": {
         "phpcbf": "phpcbf --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php",
         "phpcs": "phpcs --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php",
-        "test:integration": "vendor/bin/pest --group=integration --coverage",
+        "test": "vendor/bin/pest --coverage --coverage-html=tests/coverage",
+        "test:integration": "vendor/bin/pest --group=integration",
         "test:unit": "vendor/bin/pest --group=unit",
         "doc": "vendor/bin/phpdox"
     }

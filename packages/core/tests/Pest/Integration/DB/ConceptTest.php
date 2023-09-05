@@ -96,6 +96,7 @@ test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
 
 test( '\LCDR\DB\Query\Concepts->add_entity()', function () {
 	global $concept_ids;
+	global $concept_id;
 
 	$concept = new \LCDR\DB\Query\Concepts();
 
@@ -118,8 +119,8 @@ test( '\LCDR\DB\Query\Concepts->add_entity()', function () {
 } );
 
 test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
-	global $concept_id;
 	global $concept_ids;
+	global $concept_id;
 
 	$concept = new \LCDR\DB\Query\Concepts();
 	$concept_to_add = array(
@@ -133,7 +134,6 @@ test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 			),
 		),
 		'classified_as' => $concept_ids,
-		// falta testar se referred_to_by ta sendo salvo corretamente
 		'referred_to_by' => array(
 			(object) array(
 				'type' => 'LinguisticObject',

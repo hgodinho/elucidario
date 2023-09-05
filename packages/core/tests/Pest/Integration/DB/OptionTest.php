@@ -61,7 +61,6 @@ test( '\LCDR\DB\Query\Options->update_option() with known name update the option
 } );
 
 test( '\LCDR\DB\Query\Options->get_option()', function () {
-	global $random;
 	$options = new \LCDR\DB\Query\Options();
 	$test = $options->get_option( 'test' );
 

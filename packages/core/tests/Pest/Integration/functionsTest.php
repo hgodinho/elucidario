@@ -212,3 +212,47 @@ test( 'lcdr_get_valid_properties', function () {
 		)
 	);
 } );
+
+test( 'lcdr_get_entity()', function () {
+	$query = new \LCDR\DB\Query\Concepts();
+	global $item_id;
+	$item_id = $query->add_entity( array(
+		'type' => 'Type',
+		'name' => 'relation-test',
+		'author' => 1,
+		'identified_by' => array(
+			(object) array(
+				'type' => 'Identifier',
+				'content' => 'Teste 2',
+			),
+		),
+	) );
+	$entity = lcdr_get_entity( $item_id );
+	$this->assertEquals( $entity->name, 'relation-test' );
+	expect( $entity )->toBeInstanceOf( \LCDR\DB\Row\Entity::class);
+} );
+
+test( 'lcdr_unique_slug()', function () {
+	global $item_id;
+	$entity = lcdr_get_entity( $item_id );
+	$this->assertEquals( lcdr_unique_entity_slug( $entity ), "relation-test-{$item_id}" );
+} );
+
+test( 'lcdr_insert_entity()', function () {
+	global $item_id;
+	$query = new \LCDR\DB\Query\Concepts();
+	$item_id = $query->add_entity( array(
+		'type' => 'Type',
+		'name' => 'relation-test',
+		'author' => 1,
+		'identified_by' => array(
+			(object) array(
+				'type' => 'Identifier',
+				'content' => 'Teste 2',
+			),
+		),
+	) );
+	$entity = lcdr_get_entity( $item_id );
+	$this->assertEquals( $entity->name, 'relation-test' );
+	expect( $entity )->toBeInstanceOf( \LCDR\DB\Row\Entity::class);
+} );
