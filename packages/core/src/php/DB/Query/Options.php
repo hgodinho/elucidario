@@ -10,13 +10,14 @@ namespace LCDR\DB\Query;
 
 use \BerlinDB\Database\Query;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Options query class.

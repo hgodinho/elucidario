@@ -9,13 +9,14 @@
 
 namespace LCDR\Mdorim\History;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 final class Core {
 	/**
@@ -71,10 +72,10 @@ final class Core {
 	/**
 	 * Remove event.
 	 *
-	 * @param integer|array $event_id
+	 * @param mixed $event_id
 	 * @return void
 	 */
-	public function remove_event( int|array $event_id ) {
+	public function remove_event( mixed $event_id ) {
 		$this->events = array_filter(
 			$this->events,
 			function ( $event ) use ( $event_id ) {

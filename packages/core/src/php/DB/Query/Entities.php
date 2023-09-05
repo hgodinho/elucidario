@@ -10,13 +10,14 @@ namespace LCDR\DB\Query;
 
 use \BerlinDB\Database\Query;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Entities query class.
@@ -89,7 +90,6 @@ class Entities extends Query {
 	 */
 	public function get_entities( $args = array() ) {
 		$items = $this->query( $args );
-
 		return $items;
 	}
 
@@ -256,6 +256,33 @@ class Entities extends Query {
 				$entity_id
 			)
 		);
+	}
+
+	/**
+	 * Get unique slug
+	 *
+	 * @param string $slug
+	 * @param int    $entity_id
+	 * @return string
+	 */
+	public function unique_slug( $slug, $entity_id ) {
+		$result = $this->get_results(
+			array(
+				'entity_id',
+			),
+			array(
+				'name'      => $slug,
+				'entity_id' => array(
+					'value'         => $entity_id,
+					'compare_query' => '!=',
+				),
+			)
+		);
+		if ( ! empty( $result ) ) {
+			$slug = $slug . '-' . $entity_id;
+			return $slug;
+		}
+		return $slug;
 	}
 
 	/**
