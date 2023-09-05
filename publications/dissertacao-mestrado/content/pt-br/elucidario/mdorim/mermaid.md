@@ -10,7 +10,15 @@ type: mindmap
 ```mermaid
     mindmap
         root)"**Mdorim**"(
-            Entidades(("`Linked Art`"))
+            Opções
+                Importar
+                Exportar
+                Configurações
+                    Geral
+                    Integrações
+            Mapping
+                PropMap
+            entidades(("Entidades"))
                 Objetos
                 Conceitos
                 Objetos Digitais
@@ -24,12 +32,6 @@ type: mindmap
                     Proveniências
                 Lugares
                 Conjuntos
-            Opções
-                Importar
-                Exportar
-                Configurações
-                    Geral
-                    Integrações
             Usuários
                 Níveis de permissão
             Histórico de Edições
