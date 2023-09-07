@@ -95,7 +95,7 @@ function lcdr_snake_to_camel( $input ) {
  * @since 0.2.0
  */
 function lcdr_json_file( $file ) {
-	$json = file_get_contents( LCDR_PATH . $file ); // phpcs:ignore
+	$json = file_get_contents( $file ); // phpcs:ignore
 	return json_decode( $json, true );
 }
 
@@ -124,7 +124,7 @@ function lcdr_unique_entity_slug( $entity ) {
 		return $slug;
 	}
 	$query = new \LCDR\DB\Query\Entities();
-	$slug  = $query->unique_slug( $slug, $entity->entity_id );
+	$slug = $query->unique_slug( $slug, $entity->entity_id );
 	return $slug;
 }
 
@@ -152,7 +152,7 @@ function is_lcdr_error( $thing ) {
  * @return \LCDR\DB\Row\Entity
  */
 function lcdr_get_entity( $entity_id ) {
-	$query  = new \LCDR\DB\Query\Entities();
+	$query = new \LCDR\DB\Query\Entities();
 	$entity = $query->get_entity( $entity_id );
 	return \LCDR\DB\Row\Factory::create( $entity );
 }
@@ -164,7 +164,7 @@ function lcdr_get_entity( $entity_id ) {
  * @return int|\LCDR\Error\DB
  */
 function lcdr_insert_entity( $args ) {
-	$query     = new \LCDR\DB\Query\Entities();
+	$query = new \LCDR\DB\Query\Entities();
 	$entity_id = $query->add_entity( $args );
 	return lcdr_parse_item_id( $entity_id );
 }

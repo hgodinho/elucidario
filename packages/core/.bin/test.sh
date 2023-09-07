@@ -4,12 +4,12 @@
 
 run_node_tests() {
     echo "Running node tests..."
-    pnpm run test
+    pnpm run jest
 }
 
 run_php_tests() {
     echo "Running php tests..."
-    composer run-script test:integration
+    composer run-script test
 }
 
 # run_node_tests

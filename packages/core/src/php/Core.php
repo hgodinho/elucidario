@@ -46,11 +46,11 @@ class Core {
 	protected $db;
 
 	/**
-	 * Schema.
+	 * Mdorim.
 	 *
-	 * @var \LCDR\Mdorim\Schema
+	 * @var \Mdorim\Core
 	 */
-	public $schema;
+	public $mdorim;
 
 	/**
 	 * Users.
@@ -96,11 +96,11 @@ class Core {
 	 * Constructor.
 	 */
 	final private function __construct() {
-		$this->db      = \LCDR\DB\Core::get_instance();
+		$this->db = \LCDR\DB\Core::get_instance();
 		$this->options = new \LCDR\Options\Core();
-		$this->schema  = new \LCDR\Mdorim\Schema();
-		$this->users   = \LCDR\Users\Core::get_instance();
-		$this->rest    = \LCDR\Rest\Core::get_instance();
+		$this->mdorim = \Mdorim\Core::get_instance();
+		$this->users = \LCDR\Users\Core::get_instance();
+		$this->rest = \LCDR\Rest\Core::get_instance();
 
 		add_action( 'init', array( $this, 'textdomain' ) );
 	}

@@ -1,0 +1,7 @@
+@localhost = http://localhost:8080/wp-json
+@namespace = lcdr/v1
+
+# CONCEPT
+GET {{localhost}}/{{namespace}}/concepts/ HTTP/1.1
+content-type: application/json
+

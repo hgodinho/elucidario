@@ -43,11 +43,13 @@ test( 'lcdr_get_option', function () {
 } );
 
 test( 'lcdr_json_file', function () {
-	expect( lcdr_json_file( 'node_modules/@elucidario/pkg-mdorim/static/mdorim/schemas/mdorim/core.json' ) )->toBeArray();
+	$json = lcdr_json_file( dirname( __FILE__, 3 ) . "/data/json-data.json" );
+	expect( $json )->toBeArray();
 } );
 
 test( 'lcdr_get_json_properties', function () {
-	expect( lcdr_get_json_properties() )->toBe(
+	$properties = lcdr_get_json_properties();
+	expect( $properties )->toBe(
 		array(
 			'identified_by',
 			'equivalent',

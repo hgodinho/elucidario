@@ -8,18 +8,28 @@
 
 namespace LCDR\Error;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * DB Error Class
  */
 class DB extends Base {
+	/**
+	 * Set prefix.
+	 *
+	 * @return string
+	 */
+	public function set_prefix() {
+		return 'db_';
+	}
+
 	/**
 	 * Set possible errors.
 	 *
@@ -27,7 +37,8 @@ class DB extends Base {
 	 */
 	public function set_possible_errors() {
 		return array(
-			'db_error' => __( 'Database error.', 'lcdr' ),
+			'error'  => __( 'Database error.', 'lcdr' ),
+			'insert' => __( 'Database insert error.', 'lcdr' ),
 		);
 	}
 }

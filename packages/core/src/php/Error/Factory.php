@@ -1,6 +1,6 @@
 <?php
 /**
- * User class.
+ * Factory class.
  *
  * @since 0.3.0
  * @package elucidario/pkg-core
@@ -18,16 +18,16 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 // @codeCoverageIgnoreEnd
 
 /**
- * User Error Class
+ * Factory Error Class
  */
-class User extends Base {
+class Factory extends Base {
 	/**
 	 * Set prefix.
 	 *
 	 * @return string
 	 */
 	public function set_prefix() {
-		return 'user_';
+		return 'factory_';
 	}
 
 	/**
@@ -37,8 +37,8 @@ class User extends Base {
 	 */
 	public function set_possible_errors() {
 		return array(
-			'undefined_role' => __( 'Undefined user role.', 'lcdr' ),
-			'unknown_role'   => __( 'Unknown user role.', 'lcdr' ),
+			'empty_item'   => __( 'Sorry, the item is empty.', 'lcdr' ),
+			'unknown_type' => __( 'Sorry, unknown entity type', 'lcdr' ),
 		);
 	}
 }
