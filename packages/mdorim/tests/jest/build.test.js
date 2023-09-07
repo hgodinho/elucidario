@@ -1,4 +1,4 @@
-import { replaceRef } from "../src/build/replaceRef";
+import { replaceRef } from "../../src/build/replaceRef";
 
 test("replaceRef external ref", () => {
     const schema = {

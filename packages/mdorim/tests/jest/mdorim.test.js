@@ -1,11 +1,11 @@
 import { matchersWithOptions } from "jest-json-schema";
 
-import mdorim from "../lib/mjs/index.mjs";
+import mdorim from "../../lib/mjs/index.mjs";
 
 expect.extend(
     matchersWithOptions({
         schemas: [mdorim.schemas.mdorim.core, mdorim.schemas.mdorim.object],
-    })
+    }),
 );
 
 describe("Validate Schemas", () => {
@@ -35,7 +35,7 @@ describe("Validate Schemas", () => {
 describe("Validate Options Schema with data", () => {
     test("Storage Options data must be valid", () => {
         expect(mdorim.examples.storage.Options).toMatchSchema(
-            mdorim.schemas.mdorim.options
+            mdorim.schemas.mdorim.options,
         );
     });
 });

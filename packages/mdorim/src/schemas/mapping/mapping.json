@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/mapping/mapping.json",
+    "title": "Mapping",
+    "description": "Describe a interface to declare property mappings between two data models in the context of Elucidário.art.",
+    "type": "object",
+    "version": "0.1.0",
+    "properties": {
+        "mapping_id": {
+            "type": "integer",
+            "title": "Mapping ID",
+            "description": "Unique identifier of the mapping."
+        },
+        "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Name of the mapping in kebab-case."
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Title of the mapping."
+        },
+        "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "Description of the mapping."
+        },
+        "author": {
+            "type": "integer",
+            "title": "Author",
+            "description": "ID of the Author of the mapping."
+        },
+        "guid": {
+            "$ref": "<local>/core.json#/definitions/guid"
+        },
+
+        "standard": {
+            "type": "string",
+            "title": "Standard",
+            "description": "Name of the standard to be mapped."
+        },
+
+        "standard_uri": {
+            "type": "string",
+            "title": "Standard URI",
+            "description": "URI of the standard to be mapped."
+        },
+
+        "version": {
+            "description": "Version of schema file. Use semantic versioning: MAJOR.MINOR.PATCH.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "created": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created",
+            "description": "Date and time of creation of the mapping."
+        },
+        "modified": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Modified",
+            "description": "Date and time of last modification of the mapping."
+        },
+        "mapping": {
+            "type": "array",
+            "items": {
+                "$ref": "./prop_map.json"
+            }
+        }
+    },
+    "required": [
+        "version",
+        "name",
+        "title",
+        "author",
+        "standard",
+        "created",
+        "modified",
+        "mapping"
+    ],
+    "additionalProperties": false
+}

@@ -1,6 +1,6 @@
 import { matchersWithOptions } from "jest-json-schema";
 
-import mdorim from "../lib/mjs/index";
+import mdorim from "../../lib/mjs/index";
 
 expect.extend(
     matchersWithOptions({
