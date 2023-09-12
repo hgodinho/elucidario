@@ -36,6 +36,57 @@
             "description": "The date the resource was last modified, in the site's timezone.",
             "format": "date-time"
         },
+        "entity_status": {
+            "type": "string",
+            "description": "A named status for the resource.",
+            "enum": [
+                "trash",
+                "pending",
+                "private",
+                "publish",
+                "future",
+                "draft"
+            ]
+        },
+
+        "_fields": {
+            "type": "array",
+            "description": "Array of named fields to return for the resource.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "_embed": {
+            "type": "boolean",
+            "description": "Whether to embed the resource data in the response."
+        },
+
+        "relationship": {
+            "type": "integer",
+            "description": "The id for the related resource."
+        },
+        "relationships": {
+            "type": "array",
+            "description": "The relationships for the resource.",
+            "items": {
+                "$ref": "#/definitions/relationship"
+            }
+        },
+        "mixed_statement": {
+            "type": "array",
+            "description": "The mixed statement for the resource.",
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/definitions/relationship"
+                    },
+                    {
+                        "$ref": "<linked-art>/core.json#/definitions/Statement"
+                    }
+                ]
+            }
+        },
+
         "_meta": {
             "type": "object",
             "description": "WordPress information about the entity.",
@@ -88,22 +139,6 @@
                 "modificacao",
                 "status"
             ]
-        },
-        "label": {
-            "title": "rdfs:label",
-            "description": "A human readable name or label for the entity, intended for developers",
-            "type": "string",
-            "examples": [
-                "Georgia O'Keeffe",
-                "Blue by Georgia O'Keeffe",
-                "New Haven, CT"
-            ]
-        },
-        "type": {
-            "title": "rdf:type",
-            "description": "The class of the entity",
-            "type": "string",
-            "examples": ["Person", "Place", "Type", "HumanMadeObject"]
         }
     }
 }

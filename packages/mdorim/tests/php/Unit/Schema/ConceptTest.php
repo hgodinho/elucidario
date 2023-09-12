@@ -3,18 +3,18 @@
 beforeAll( function () {
 	global $core;
 	$core = \Mdorim\Core::get_instance();
-	global $validator;
-	$validator = \Mdorim\Schema\Validator::get_instance();
+	global $schema;
+	$schema = \Mdorim\Schema\Schemas::get_instance();
 } );
 
 afterAll( function () {
-	global $validator;
-	unset( $validator );
+	global $schema;
+	unset( $schema );
 } );
 
-test( 'schemas/mdorim/concept', function () {
-	global $validator;
-	$validate = $validator->validate( 'schemas/mdorim/concept', (object) array(
+test( 'mdorim/concept', function () {
+	global $schema;
+	$validate = $schema->validate( 'mdorim/concept', (object) array(
 		'entity_id' => 1,
 		'name' => 'concept-test',
 		'guid' => 'acdca5e6-ca0d-4eb7-8a64-ecb59df61395',

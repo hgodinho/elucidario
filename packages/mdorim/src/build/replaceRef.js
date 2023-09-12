@@ -26,7 +26,8 @@ export const replaceRef = (schema, ext = false, ref) => {
             if (newSchema[key].includes("<linked-art>")) {
                 newSchema[key] = newSchema[key].replace(
                     "<linked-art>",
-                    ext ? `https://linked.art/api/1.0/schema` : "linked-art",
+                    ext ? `${ref}/schemas/linked-art` : ".",
+                    // ext ? `https://linked.art/api/1.0/schema` : "linked-art",
                 );
             }
         } else if (typeof newSchema[key] === "object") {

@@ -2,23 +2,21 @@
 /**
  * Schema class.
  *
- * @since 0.1.0
- * @package elucidario/pkg-mdorim
+ * @since 0.3.0
+ * @package elucidario/pkg-core
  */
 
 namespace Mdorim\Schema;
 
 use \Opis\JsonSchema\{
 	Validator as BaseValidator,
-	Errors\ValidationError
+	Errors\ValidationError,
 };
+
 
 use \Opis\JsonSchema\Errors\ErrorFormatter;
 
-/**
- * Schema class.
- */
-class Validator {
+class Schemas {
 	/**
 	 *     __             _ __
 	 *    / /__________ _(_) /______
@@ -26,8 +24,16 @@ class Validator {
 	 *  / /_/ /  / /_/ / / /_(__  )
 	 *  \__/_/   \__,_/_/\__/____/
 	 */
-	use \Mdorim\Traits\Singleton;
-	use \Mdorim\Traits\Debug;
+	use \Mdorim\Traits\Singleton, \Mdorim\Traits\Debug;
+
+	const SCHEMA_PATH = MDORIM_PATH
+		. DIRECTORY_SEPARATOR
+		. "static"
+		. DIRECTORY_SEPARATOR
+		. "mdorim"
+		. DIRECTORY_SEPARATOR
+		. "schemas"
+		. DIRECTORY_SEPARATOR;
 
 	/**
 	 * Schema validator.
@@ -37,13 +43,6 @@ class Validator {
 	public $validator;
 
 	/**
-	 * Errors.
-	 *
-	 * @var array
-	 */
-	public $errors;
-
-	/**
 	 *                  __    ___
 	 *     ____  __  __/ /_  / (_)____
 	 *    / __ \/ / / / __ \/ / / ___/
@@ -51,6 +50,33 @@ class Validator {
 	 *  / .___/\__,_/_.___/_/_/\___/
 	 * /_/
 	 */
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+		$this->init_validator();
+	}
+
+	/**
+	 * Initialize validator.
+	 */
+	public function init_validator() {
+		$this->validator = new BaseValidator();
+		$this->validator->resolver()->registerPrefix(
+			'https://elucidario.art/mdorim/schemas',
+			self::SCHEMA_PATH
+		);
+	}
+
+	/**
+	 * Get id.
+	 *
+	 * @return string
+	 */
+	public function id_map( string $id, $options = array() ) {
+		return sprintf( 'https://elucidario.art/mdorim/schemas/%s.json%s', $id, $this->parse_id_map_options( $options ) );
+	}
+
 	/**
 	 * Validate data against specified schema.
 	 *
@@ -62,7 +88,7 @@ class Validator {
 	 * 
 	 * @throws \Exception
 	 */
-	public function validate( string $schema, mixed $data = null, array $options = array() ) {
+	public function validate( string $schema, mixed $data = null, ?array $options = array() ) {
 		$result = $this->validator->validate( $data, $this->id_map( $schema, $options ) );
 		if ( $result->isValid() ) {
 			return true;
@@ -71,23 +97,15 @@ class Validator {
 	}
 
 	/**
-	 * Get id.
+	 * Returns a schema.
 	 *
-	 * @return string
+	 * @param string $path
+	 * @return array
 	 */
-	public function id_map( string $id, $options = array() ) {
-		return sprintf( 'https://elucidario.art/mdorim/%s.json%s', $id, $this->parse_options( $options ) );
-	}
+	public function get_schema( string $path ) {
+		$path = $this->parse_path( $path );
 
-	/**
-	 * Initialize validator.
-	 */
-	public function init_validator() {
-		$this->validator = new BaseValidator();
-		$this->validator->resolver()->registerPrefix(
-			'https://elucidario.art/mdorim',
-			MDORIM_PATH . '/static/mdorim'
-		);
+		$validator = $this->validator;
 	}
 
 	/**
@@ -99,20 +117,13 @@ class Validator {
 	 * /_/
 	 */
 	/**
-	 * Constructor.
-	 */
-	private function __construct() {
-		$this->init_validator();
-	}
-
-	/**
-	 * Parse options.
+	 * Parse id_map options.
 	 *
 	 * @param array $options Options to parse.
 	 * @param boolean $recursive If is recursive.
 	 * @return void|string Void if empty, string if not.
 	 */
-	private function parse_options( array $options, $recursive = false ) {
+	private function parse_id_map_options( array $options, $recursive = false ) {
 		if ( empty( $options ) ) {
 			return;
 		}
@@ -129,11 +140,26 @@ class Validator {
 				return $uri;
 			} elseif ( ! array_is_list( $value ) ) {
 				$uri .= $key;
-				$uri .= $this->parse_options( $value, true );
+				$uri .= $this->parse_id_map_options( $value, true );
 			}
 		}
 
 		return $uri;
+	}
+
+	/**
+	 * Parses a path.
+	 *
+	 * @param string $path
+	 * @return string
+	 */
+	private function parse_path( string $path ) {
+		if ( str_contains( $path, '/' ) ) {
+			$path = str_replace( '/', DIRECTORY_SEPARATOR, $path );
+		} elseif ( str_contains( $path, '\\' ) ) {
+			$path = str_replace( '\\', DIRECTORY_SEPARATOR, $path );
+		}
+		return self::SCHEMA_PATH . $path . '.json';
 	}
 
 	/**

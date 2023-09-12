@@ -3,18 +3,18 @@
 beforeAll( function () {
 	global $core;
 	$core = \Mdorim\Core::get_instance();
-	global $validator;
-	$validator = \Mdorim\Schema\Validator::get_instance();
+	global $schema;
+	$schema = \Mdorim\Schema\Schemas::get_instance();
 } );
 
 afterAll( function () {
-	global $validator;
-	unset( $validator );
+	global $schema;
+	unset( $schema );
 } );
 
-test( 'schemas/mapping/mapping', function () {
-	global $validator;
-	$validate = $validator->validate( 'schemas/mapping/mapping', (object) array(
+test( 'mapping/mapping', function () {
+	global $schema;
+	$validate = $schema->validate( 'mapping/mapping', (object) array(
 		'mapping_id' => 1,
 		'name' => 'mapeamento-test',
 		'title' => 'Mapeamento teste',

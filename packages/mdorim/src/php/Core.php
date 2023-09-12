@@ -17,15 +17,14 @@ class Core {
 	 *  / /_/ /  / /_/ / / /_(__  )
 	 *  \__/_/   \__,_/_/\__/____/
 	 */
-	use \Mdorim\Traits\Singleton;
-	use \Mdorim\Traits\Debug;
+	use \Mdorim\Traits\Singleton, \Mdorim\Traits\Debug;
 
 	/**
-	 * Schema validator.
+	 * Schemas.
 	 *
-	 * @var \Mdorim\Schema\Validator
+	 * @var \Mdorim\Schema\Schemas
 	 */
-	public $validator;
+	public $schemas;
 
 	/**
 	 * Constructor.
@@ -35,6 +34,6 @@ class Core {
 	}
 
 	private function init() {
-		$this->validator = \Mdorim\Schema\Validator::get_instance();
+		$this->schemas = \Mdorim\Schema\Schemas::get_instance();
 	}
 }

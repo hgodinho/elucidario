@@ -1,66 +1,88 @@
 {
-    "$schema": "http://json-schema.org/schema#",
-    "$id": "https://linked.art/api/1.0/schema/provenance.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/linked-art/provenance.json",
     "title": "Provenance Activity Schema",
     "description": "_crm:E7\\_Activity_\nA broad activity during which the ownership, custody, location or other rights related to one or more objects are changed\nSee: [API](https://linked.art/api/1.0/endpoint/provenance/) | [Model](https://linked.art/model/provenance/)",
     "type": "object",
     "properties": {
-        "@context": { "$ref": "core.json#/definitions/ContextStringOrArray" },
-        "id": { "$ref": "core.json#/definitions/idProp" },
+        "@context": {
+            "$ref": "<linked-art>/core.json#/definitions/ContextStringOrArray"
+        },
+        "id": { "$ref": "<linked-art>/core.json#/definitions/idProp" },
         "type": {
             "allOf": [
                 {
                     "title": "General",
-                    "$ref": "core.json#/definitions/typeProp"
+                    "$ref": "<linked-art>/core.json#/definitions/typeProp"
                 },
                 { "title": "Specific", "type": "string", "const": "Activity" }
             ]
         },
-        "_label": { "$ref": "core.json#/definitions/labelProp" },
-        "identified_by": { "$ref": "core.json#/definitions/identified_byProp" },
-        "classified_as": { "$ref": "core.json#/definitions/classified_asProp" },
+        "_label": { "$ref": "<linked-art>/core.json#/definitions/labelProp" },
+        "identified_by": {
+            "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+        },
+        "classified_as": {
+            "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+        },
         "referred_to_by": {
-            "$ref": "core.json#/definitions/referred_to_byProp"
+            "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
         },
         "equivalent": {
             "allOf": [
                 {
                     "title": "General",
-                    "$ref": "core.json#/definitions/equivalentProp"
+                    "$ref": "<linked-art>/core.json#/definitions/equivalentProp"
                 },
                 {
                     "title": "Specific",
                     "description": "List of equivalent `Activity` entities",
                     "type": "array",
-                    "items": { "$ref": "core.json#/definitions/ActivityRef" }
+                    "items": {
+                        "$ref": "<linked-art>/core.json#/definitions/ActivityRef"
+                    }
                 }
             ]
         },
         "representation": {
-            "$ref": "core.json#/definitions/representationProp"
+            "$ref": "<linked-art>/core.json#/definitions/representationProp"
         },
-        "member_of": { "$ref": "core.json#/definitions/member_ofSetProp" },
-        "subject_of": { "$ref": "core.json#/definitions/subject_ofProp" },
+        "member_of": {
+            "$ref": "<linked-art>/core.json#/definitions/member_ofSetProp"
+        },
+        "subject_of": {
+            "$ref": "<linked-art>/core.json#/definitions/subject_ofProp"
+        },
         "attributed_by": {
-            "$ref": "core.json#/definitions/attributed_byRelProp"
+            "$ref": "<linked-art>/core.json#/definitions/attributed_byRelProp"
         },
 
-        "took_place_at": { "$ref": "core.json#/definitions/took_place_atProp" },
-        "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-        "caused_by": { "$ref": "core.json#/definitions/caused_byProp" },
+        "took_place_at": {
+            "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
+        },
+        "timespan": {
+            "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+        },
+        "caused_by": {
+            "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+        },
         "carried_out_by": {
-            "$ref": "core.json#/definitions/carried_out_byProp"
+            "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
         },
         "used_specific_object": {
-            "$ref": "core.json#/definitions/used_specific_objectProp"
+            "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
         },
-        "influenced_by": { "$ref": "core.json#/definitions/influenced_byProp" },
-        "technique": { "$ref": "core.json#/definitions/techniqueProp" },
+        "influenced_by": {
+            "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
+        },
+        "technique": {
+            "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+        },
 
         "part_of": {
             "title": "crm:P9i_forms_part_of",
             "description": "An identified event or activity which this activity is part of",
-            "$ref": "core.json#/definitions/EventRefOrActivityRef"
+            "$ref": "<linked-art>/core.json#/definitions/EventRefOrActivityRef"
         },
         "part": {
             "title": "crm:P9_consists_of",
@@ -92,7 +114,7 @@
                     "allOf": [
                         {
                             "title": "General",
-                            "$ref": "core.json#/definitions/typeProp"
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
                         },
                         {
                             "title": "Specific",
@@ -101,38 +123,46 @@
                         }
                     ]
                 },
-                "_label": { "$ref": "core.json#/definitions/labelProp" },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
                 "identified_by": {
-                    "$ref": "core.json#/definitions/identified_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
                 },
                 "classified_as": {
-                    "$ref": "core.json#/definitions/classified_asProp"
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
                 },
                 "referred_to_by": {
-                    "$ref": "core.json#/definitions/referred_to_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
                 },
                 "took_place_at": {
-                    "$ref": "core.json#/definitions/took_place_atProp"
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
                 },
-                "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-                "caused_by": { "$ref": "core.json#/definitions/caused_byProp" },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
                 "carried_out_by": {
-                    "$ref": "core.json#/definitions/carried_out_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
                 },
                 "used_specific_object": {
-                    "$ref": "core.json#/definitions/used_specific_objectProp"
+                    "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
                 },
                 "influenced_by": {
-                    "$ref": "core.json#/definitions/influenced_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
                 },
-                "technique": { "$ref": "core.json#/definitions/techniqueProp" },
+                "technique": {
+                    "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+                },
 
                 "transferred_title_from": {
                     "title": "crm:P23_transferred_title_from",
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/PersonRefOrGroupRef"
+                        "$ref": "<linked-art>/core.json#/definitions/PersonRefOrGroupRef"
                     }
                 },
                 "transferred_title_to": {
@@ -140,7 +170,7 @@
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/PersonRefOrGroupRef"
+                        "$ref": "<linked-art>/core.json#/definitions/PersonRefOrGroupRef"
                     }
                 },
                 "transferred_title_of": {
@@ -148,7 +178,7 @@
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/HumanMadeObjectRef"
+                        "$ref": "<linked-art>/core.json#/definitions/HumanMadeObjectRef"
                     }
                 }
             },
@@ -164,7 +194,7 @@
                     "allOf": [
                         {
                             "title": "General",
-                            "$ref": "core.json#/definitions/typeProp"
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
                         },
                         {
                             "title": "Specific",
@@ -173,38 +203,46 @@
                         }
                     ]
                 },
-                "_label": { "$ref": "core.json#/definitions/labelProp" },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
                 "identified_by": {
-                    "$ref": "core.json#/definitions/identified_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
                 },
                 "classified_as": {
-                    "$ref": "core.json#/definitions/classified_asProp"
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
                 },
                 "referred_to_by": {
-                    "$ref": "core.json#/definitions/referred_to_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
                 },
                 "took_place_at": {
-                    "$ref": "core.json#/definitions/took_place_atProp"
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
                 },
-                "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-                "caused_by": { "$ref": "core.json#/definitions/caused_byProp" },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
                 "carried_out_by": {
-                    "$ref": "core.json#/definitions/carried_out_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
                 },
                 "used_specific_object": {
-                    "$ref": "core.json#/definitions/used_specific_objectProp"
+                    "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
                 },
                 "influenced_by": {
-                    "$ref": "core.json#/definitions/influenced_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
                 },
-                "technique": { "$ref": "core.json#/definitions/techniqueProp" },
+                "technique": {
+                    "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+                },
 
                 "transferred_custody_from": {
                     "title": "crm:P28_custody_surrendered_by",
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/PersonRefOrGroupRef"
+                        "$ref": "<linked-art>/core.json#/definitions/PersonRefOrGroupRef"
                     }
                 },
                 "transferred_custody_to": {
@@ -212,7 +250,7 @@
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/PersonRefOrGroupRef"
+                        "$ref": "<linked-art>/core.json#/definitions/PersonRefOrGroupRef"
                     }
                 },
                 "transferred_custody_of": {
@@ -220,7 +258,7 @@
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/HumanMadeObjectRef"
+                        "$ref": "<linked-art>/core.json#/definitions/HumanMadeObjectRef"
                     }
                 }
             },
@@ -236,7 +274,7 @@
                     "allOf": [
                         {
                             "title": "General",
-                            "$ref": "core.json#/definitions/typeProp"
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
                         },
                         {
                             "title": "Specific",
@@ -245,38 +283,46 @@
                         }
                     ]
                 },
-                "_label": { "$ref": "core.json#/definitions/labelProp" },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
                 "identified_by": {
-                    "$ref": "core.json#/definitions/identified_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
                 },
                 "classified_as": {
-                    "$ref": "core.json#/definitions/classified_asProp"
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
                 },
                 "referred_to_by": {
-                    "$ref": "core.json#/definitions/referred_to_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
                 },
                 "took_place_at": {
-                    "$ref": "core.json#/definitions/took_place_atProp"
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
                 },
-                "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-                "caused_by": { "$ref": "core.json#/definitions/caused_byProp" },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
                 "carried_out_by": {
-                    "$ref": "core.json#/definitions/carried_out_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
                 },
                 "used_specific_object": {
-                    "$ref": "core.json#/definitions/used_specific_objectProp"
+                    "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
                 },
                 "influenced_by": {
-                    "$ref": "core.json#/definitions/influenced_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
                 },
-                "technique": { "$ref": "core.json#/definitions/techniqueProp" },
+                "technique": {
+                    "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+                },
 
                 "paid_from": {
                     "title": "la:paid_from",
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/PersonRefOrGroupRef"
+                        "$ref": "<linked-art>/core.json#/definitions/PersonRefOrGroupRef"
                     }
                 },
                 "paid_to": {
@@ -284,13 +330,13 @@
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/PersonRefOrGroupRef"
+                        "$ref": "<linked-art>/core.json#/definitions/PersonRefOrGroupRef"
                     }
                 },
                 "paid_amount": {
                     "title": "la:paid_amount",
                     "description": "",
-                    "$ref": "core.json#/definitions/MonetaryAmount"
+                    "$ref": "<linked-art>/core.json#/definitions/MonetaryAmount"
                 }
             },
             "required": ["type"],
@@ -305,7 +351,7 @@
                     "allOf": [
                         {
                             "title": "General",
-                            "$ref": "core.json#/definitions/typeProp"
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
                         },
                         {
                             "title": "Specific",
@@ -314,42 +360,52 @@
                         }
                     ]
                 },
-                "_label": { "$ref": "core.json#/definitions/labelProp" },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
                 "identified_by": {
-                    "$ref": "core.json#/definitions/identified_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
                 },
                 "classified_as": {
-                    "$ref": "core.json#/definitions/classified_asProp"
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
                 },
                 "referred_to_by": {
-                    "$ref": "core.json#/definitions/referred_to_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
                 },
                 "took_place_at": {
-                    "$ref": "core.json#/definitions/took_place_atProp"
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
                 },
-                "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-                "caused_by": { "$ref": "core.json#/definitions/caused_byProp" },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
                 "carried_out_by": {
-                    "$ref": "core.json#/definitions/carried_out_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
                 },
                 "used_specific_object": {
-                    "$ref": "core.json#/definitions/used_specific_objectProp"
+                    "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
                 },
                 "influenced_by": {
-                    "$ref": "core.json#/definitions/influenced_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
                 },
-                "technique": { "$ref": "core.json#/definitions/techniqueProp" },
+                "technique": {
+                    "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+                },
 
                 "establishes": {
                     "title": "la:establishes",
                     "description": "",
-                    "$ref": "core.json#/definitions/LegalRight"
+                    "$ref": "<linked-art>/core.json#/definitions/LegalRight"
                 },
                 "invalidates": {
                     "title": "la:invalidates",
                     "description": "",
                     "type": "array",
-                    "items": { "$ref": "core.json#/definitions/LegalRight" }
+                    "items": {
+                        "$ref": "<linked-art>/core.json#/definitions/LegalRight"
+                    }
                 }
             },
             "required": ["type", "establishes"],
@@ -364,7 +420,7 @@
                     "allOf": [
                         {
                             "title": "General",
-                            "$ref": "core.json#/definitions/typeProp"
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
                         },
                         {
                             "title": "Specific",
@@ -373,48 +429,56 @@
                         }
                     ]
                 },
-                "_label": { "$ref": "core.json#/definitions/labelProp" },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
                 "identified_by": {
-                    "$ref": "core.json#/definitions/identified_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
                 },
                 "classified_as": {
-                    "$ref": "core.json#/definitions/classified_asProp"
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
                 },
                 "referred_to_by": {
-                    "$ref": "core.json#/definitions/referred_to_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
                 },
                 "took_place_at": {
-                    "$ref": "core.json#/definitions/took_place_atProp"
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
                 },
-                "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-                "caused_by": { "$ref": "core.json#/definitions/caused_byProp" },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
                 "carried_out_by": {
-                    "$ref": "core.json#/definitions/carried_out_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
                 },
                 "used_specific_object": {
-                    "$ref": "core.json#/definitions/used_specific_objectProp"
+                    "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
                 },
                 "influenced_by": {
-                    "$ref": "core.json#/definitions/influenced_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
                 },
-                "technique": { "$ref": "core.json#/definitions/techniqueProp" },
+                "technique": {
+                    "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+                },
 
                 "moved_from": {
                     "title": "crm:P27_moved_from",
                     "description": "",
-                    "$ref": "core.json#/definitions/PlaceRef"
+                    "$ref": "<linked-art>/core.json#/definitions/PlaceRef"
                 },
                 "moved_to": {
                     "title": "crm:P26_moved_to",
                     "description": "",
-                    "$ref": "core.json#/definitions/PlaceRef"
+                    "$ref": "<linked-art>/core.json#/definitions/PlaceRef"
                 },
                 "moved": {
                     "title": "crm:P25_moved",
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/HumanMadeObjectRef"
+                        "$ref": "<linked-art>/core.json#/definitions/HumanMadeObjectRef"
                     }
                 }
             },
@@ -430,7 +494,7 @@
                     "allOf": [
                         {
                             "title": "General",
-                            "$ref": "core.json#/definitions/typeProp"
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
                         },
                         {
                             "title": "Specific",
@@ -439,38 +503,46 @@
                         }
                     ]
                 },
-                "_label": { "$ref": "core.json#/definitions/labelProp" },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
                 "identified_by": {
-                    "$ref": "core.json#/definitions/identified_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
                 },
                 "classified_as": {
-                    "$ref": "core.json#/definitions/classified_asProp"
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
                 },
                 "referred_to_by": {
-                    "$ref": "core.json#/definitions/referred_to_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
                 },
                 "took_place_at": {
-                    "$ref": "core.json#/definitions/took_place_atProp"
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
                 },
-                "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-                "caused_by": { "$ref": "core.json#/definitions/caused_byProp" },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
                 "carried_out_by": {
-                    "$ref": "core.json#/definitions/carried_out_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
                 },
                 "used_specific_object": {
-                    "$ref": "core.json#/definitions/used_specific_objectProp"
+                    "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
                 },
                 "influenced_by": {
-                    "$ref": "core.json#/definitions/influenced_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
                 },
-                "technique": { "$ref": "core.json#/definitions/techniqueProp" },
+                "technique": {
+                    "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+                },
 
                 "encountered": {
                     "title": "sci:O19_has_found_object",
                     "description": "",
                     "type": "array",
                     "items": {
-                        "$ref": "core.json#/definitions/HumanMadeObjectRef"
+                        "$ref": "<linked-art>/core.json#/definitions/HumanMadeObjectRef"
                     }
                 }
             },
@@ -486,7 +558,7 @@
                     "allOf": [
                         {
                             "title": "General",
-                            "$ref": "core.json#/definitions/typeProp"
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
                         },
                         {
                             "title": "Specific",
@@ -495,31 +567,39 @@
                         }
                     ]
                 },
-                "_label": { "$ref": "core.json#/definitions/labelProp" },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
                 "identified_by": {
-                    "$ref": "core.json#/definitions/identified_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
                 },
                 "classified_as": {
-                    "$ref": "core.json#/definitions/classified_asProp"
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
                 },
                 "referred_to_by": {
-                    "$ref": "core.json#/definitions/referred_to_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
                 },
                 "took_place_at": {
-                    "$ref": "core.json#/definitions/took_place_atProp"
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
                 },
-                "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-                "caused_by": { "$ref": "core.json#/definitions/caused_byProp" },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
                 "carried_out_by": {
-                    "$ref": "core.json#/definitions/carried_out_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
                 },
                 "used_specific_object": {
-                    "$ref": "core.json#/definitions/used_specific_objectProp"
+                    "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
                 },
                 "influenced_by": {
-                    "$ref": "core.json#/definitions/influenced_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
                 },
-                "technique": { "$ref": "core.json#/definitions/techniqueProp" }
+                "technique": {
+                    "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+                }
             },
             "required": ["type", "classified_as"],
             "additionalProperties": false
