@@ -82,7 +82,7 @@ test( 'lcdr_get_columns_names', function () {
 			'password',
 			'created',
 			'type',
-			'label',
+			'_label',
 			'identified_by',
 			'equivalent',
 			'attributed_by',
@@ -157,7 +157,7 @@ test( 'lcdr_get_valid_properties', function () {
 			'password',
 			'created',
 			'type',
-			'label',
+			'_label',
 			'identified_by',
 			'equivalent',
 			'attributed_by',
@@ -220,8 +220,9 @@ test( 'lcdr_get_entity()', function () {
 	global $item_id;
 	$item_id = $query->add_entity( array(
 		'type' => 'Type',
-		'name' => 'relation-test',
+		'_label' => 'relation-test',
 		'author' => 1,
+		'status' => 'publish',
 		'identified_by' => array(
 			(object) array(
 				'type' => 'Identifier',
@@ -230,14 +231,14 @@ test( 'lcdr_get_entity()', function () {
 		),
 	) );
 	$entity = lcdr_get_entity( $item_id );
-	$this->assertEquals( $entity->name, 'relation-test' );
+	$this->assertEquals( $entity->type, 'Type' );
 	expect( $entity )->toBeInstanceOf( \LCDR\DB\Row\Entity::class);
 } );
 
-test( 'lcdr_unique_slug()', function () {
+test( 'lcdr_unique_entity_slug()', function () {
 	global $item_id;
 	$entity = lcdr_get_entity( $item_id );
-	$this->assertEquals( lcdr_unique_entity_slug( $entity ), "relation-test-{$item_id}" );
+	expect( lcdr_unique_entity_slug( $entity->entity_id, $entity->_label, $entity->status ) )->toBe( "relation-test-{$item_id}" );
 } );
 
 test( 'lcdr_insert_entity()', function () {
@@ -245,7 +246,7 @@ test( 'lcdr_insert_entity()', function () {
 	$query = new \LCDR\DB\Query\Concepts();
 	$item_id = $query->add_entity( array(
 		'type' => 'Type',
-		'name' => 'relation-test',
+		'_label' => 'relation-test',
 		'author' => 1,
 		'identified_by' => array(
 			(object) array(
@@ -255,6 +256,24 @@ test( 'lcdr_insert_entity()', function () {
 		),
 	) );
 	$entity = lcdr_get_entity( $item_id );
-	$this->assertEquals( $entity->name, 'relation-test' );
+	$this->assertEquals( $entity->type, 'Type' );
 	expect( $entity )->toBeInstanceOf( \LCDR\DB\Row\Entity::class);
+} );
+
+test( 'lcdr_validate_value_from_schema', function () {
+	$value = lcdr_validate_value_from_schema(
+		(Object) array(
+			'@context' => 'https://linked.art/ns/v1/linked-art.json',
+			'id' => 'https://linked.art/example/event/1',
+			'type' => 'Event',
+			'_label' => 'Teste',
+			'identified_by' => array(
+				(object) array(
+					'type' => 'Identifier',
+					'content' => 'Teste 2',
+				),
+			)
+		), 'linked-art/event' );
+
+	expect( $value )->toBeTrue();
 } );

@@ -115,16 +115,22 @@ function lcdr_parse_item_id( mixed $id ) {
 /**
  * Return slug for entity
  *
- * @param \LCDR\DB\Row\Entity $entity
+ * @param int                     $id     Entity id.
+ * @param string                  $label  Label.
+ * @param string                  $status Status.
+ * @param \LCDR\DB\Query\Entities $entity_query Entities Query instance.
  * @return string
  */
-function lcdr_unique_entity_slug( $entity ) {
-	$slug = sanitize_title( $entity->name );
-	if ( in_array( $entity->status, array( 'draft', 'pending', 'auto-draft' ), true ) ) {
+function lcdr_unique_entity_slug( int $id, string $label, string $status, \LCDR\DB\Query\Entities $entity_query = null ): string {
+	$slug = sanitize_title( $label );
+	if ( in_array( $status, array( 'draft', 'pending', 'auto-draft' ), true ) ) {
 		return $slug;
 	}
-	$query = new \LCDR\DB\Query\Entities();
-	$slug = $query->unique_slug( $slug, $entity->entity_id );
+	$query = $entity_query instanceof \LCDR\DB\Query\Entities ? $entity_query : new \LCDR\DB\Query\Entities();
+	if ( empty( $id ) ) {
+		return $slug;
+	}
+	$slug = $query->unique_slug( $slug, $id );
 	return $slug;
 }
 
@@ -139,6 +145,18 @@ function is_lcdr_error( $thing ) {
 }
 
 /**
+ * Validate value from schema
+ *
+ * @param mixed  $value
+ * @param string $schema_name
+ * @return bool|\LCDR\Error\Error
+ */
+function lcdr_validate_value_from_schema( mixed $value, string $schema_name, ?array $options = array() ) {
+	global $lcdr;
+	return $lcdr->mdorim->schemas->validate( $schema_name, $value, $options );
+}
+
+/**
  *    ______         __           ___             _____         __
  *   / ____/  ___   / /_         ( _ )           / ___/  ___   / /_
  *  / / __   / _ \ / __/        / __ \/|         \__ \  / _ \ / __/
@@ -149,10 +167,10 @@ function is_lcdr_error( $thing ) {
  * Return entity by id
  *
  * @param int $entity_id
- * @return \LCDR\DB\Row\Entity
+ * @return \LCDR\DB\Interfaces\Entity
  */
 function lcdr_get_entity( $entity_id ) {
-	$query = new \LCDR\DB\Query\Entities();
+	$query  = new \LCDR\DB\Query\Entities();
 	$entity = $query->get_entity( $entity_id );
 	return \LCDR\DB\Row\Factory::create( $entity );
 }
@@ -164,7 +182,7 @@ function lcdr_get_entity( $entity_id ) {
  * @return int|\LCDR\Error\DB
  */
 function lcdr_insert_entity( $args ) {
-	$query = new \LCDR\DB\Query\Entities();
+	$query     = new \LCDR\DB\Query\Entities();
 	$entity_id = $query->add_entity( $args );
 	return lcdr_parse_item_id( $entity_id );
 }
@@ -225,7 +243,7 @@ function lcdr_get_columns_names() {
 		lcdr_get_internal_properties(),
 		array(
 			'type',
-			'label',
+			'_label',
 		),
 		lcdr_get_json_properties(),
 	);

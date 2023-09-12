@@ -36,7 +36,24 @@ class Concept extends Base {
 	 * @return array
 	 */
 	public function set_schema() {
-		return array();
+		return array(
+			'wp' => array(
+				\WP_REST_Server::READABLE  => array(
+					'schema' => 'mdorim/concept',
+				),
+				\WP_REST_Server::CREATABLE => array(
+					'schema'  => 'mdorim/concept',
+					'options' => array(
+						'definitions' => 'ConceptPost',
+					),
+				),
+			),
+			'la' => array(
+				\WP_REST_Server::READABLE => array(
+					'schema' => 'linked-art/concept',
+				),
+			),
+		);
 	}
 
 	/**

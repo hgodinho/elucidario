@@ -6,8 +6,6 @@ use Yoast\WPTestUtils\WPIntegration\TestCase;
 
 uses( Testcase::class);
 
-// $server = null;
-
 beforeAll( function () {
 	global $wp_rest_server;
 	$wp_rest_server = new \Spy_REST_Server();
@@ -37,7 +35,7 @@ test( 'LCDR\Rest\Routes\Mapping must have method set_schema', function () {
 	expect( $mapping->set_schema() )->toBe( [] );
 } );
 
-test( 'LCDR\Rest\Routes\Mapping must permission_group', function () {
+test( 'LCDR\Rest\Routes\Mapping must have permission_group', function () {
 	$mapping = new \LCDR\Rest\Routes\Mapping();
 	expect( $mapping->set_permission_group() )->toBe( 'mapping' );
 } );

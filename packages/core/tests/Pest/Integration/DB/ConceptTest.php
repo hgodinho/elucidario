@@ -46,7 +46,7 @@ test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
 		array(
 			array(
 				'type' => 'Type',
-				'name' => 'Teste',
+				'_label' => 'Teste',
 				'author' => 1,
 				'identified_by' => array(
 					(object) array(
@@ -57,7 +57,7 @@ test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
 			),
 			array(
 				'type' => 'Type',
-				'name' => 'Banana',
+				'_label' => 'Banana',
 				'author' => 1,
 				'identified_by' => array(
 					(object) array(
@@ -68,7 +68,7 @@ test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
 			),
 			array(
 				'type' => 'Type',
-				'name' => 'Pera',
+				'_label' => 'Pera',
 				'author' => 1,
 				'identified_by' => array(
 					(object) array(
@@ -79,7 +79,7 @@ test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
 			),
 			array(
 				'type' => 'Type',
-				'name' => 'Uva',
+				'_label' => 'Uva',
 				'author' => 1,
 				'identified_by' => array(
 					(object) array(
@@ -103,7 +103,7 @@ test( '\LCDR\DB\Query\Concepts->add_entity()', function () {
 	$concept_id = $concept->add_entity(
 		array(
 			'type' => 'Type',
-			'name' => 'relation-test',
+			'_label' => 'relation-test',
 			'author' => 1,
 			'identified_by' => array(
 				(object) array(
@@ -125,7 +125,7 @@ test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 	$concept = new \LCDR\DB\Query\Concepts();
 	$concept_to_add = array(
 		'type' => 'Type',
-		'name' => 'referred_to_by-test',
+		'_label' => 'Referred to by test',
 		'author' => 1,
 		'identified_by' => array(
 			(object) array(
@@ -137,13 +137,13 @@ test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 		'referred_to_by' => array(
 			(object) array(
 				'type' => 'LinguisticObject',
-				'label' => 'Teste 4',
+				'_label' => 'Teste 4',
 				'content' => 'Teste 4',
 				'language' => array(
 					(object) array(
 						'id' => 1,
 						'type' => 'Language',
-						'label' => 'Português',
+						'_label' => 'Português',
 					),
 				)
 			),
@@ -152,22 +152,21 @@ test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 	);
 
 	$concept_id = $concept->add_entity( $concept_to_add );
-
+	expect( $concept_id )->toBeNumeric();
 	$saved = $concept->get_entity( $concept_id );
 	$referred_to_by = $saved->get_property( 'referred_to_by' );
-
 	expect( $concept_id )->toBeNumeric();
 	expect( $referred_to_by )->toBeArray()->toMatchArray(
 		array(
 			(object) array(
 				'type' => 'LinguisticObject',
-				'label' => 'Teste 4',
+				'_label' => 'Teste 4',
 				'content' => 'Teste 4',
 				'language' => array(
 					(object) array(
 						'id' => 1,
 						'type' => 'Language',
-						'label' => 'Português',
+						'_label' => 'Português',
 					),
 				)
 			),
@@ -178,13 +177,12 @@ test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 
 
 test( '\LCDR\DB\Query\Concepts->add_entity() no type', function () {
-
 	expect(
 		function () {
 			$concept_query = new \LCDR\DB\Query\Concepts();
 			$concept_query->add_entity(
 				array(
-					'name' => 'relation-test',
+					'_label' => 'relation-test',
 					'author' => 1,
 					'identified_by' => array(
 						(object) array(
@@ -198,7 +196,7 @@ test( '\LCDR\DB\Query\Concepts->add_entity() no type', function () {
 	)->toThrow( \Exception::class, 'The data must have a type.' );
 } );
 
-test( '\LCDR\DB\Query\Concepts->add_entity() no name', function () {
+test( '\LCDR\DB\Query\Concepts->add_entity() no _label', function () {
 
 	expect(
 		function () {
@@ -216,7 +214,7 @@ test( '\LCDR\DB\Query\Concepts->add_entity() no name', function () {
 				)
 			);
 		}
-	)->toThrow( \Exception::class, 'The data must have a name.' );
+	)->toThrow( \Exception::class, 'The data must have a _label.' );
 } );
 
 test( '\LCDR\DB\Query\Concepts->get_entity() must return valid relationships', function () {
@@ -242,6 +240,8 @@ test( '\LCDR\DB\Query\Concepts->get_entity()', function () {
 	$test = $concepts->get_entity( $concept_id );
 
 	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\Concept::class);
+	expect( $test->get_property( '_label' ) )->toBe( 'Referred to by test' );
+	expect( $test->get_property( 'name' ) )->toBe( 'referred-to-by-test' );
 } );
 
 test( '\LCDR\DB\Query\Concepts->update_entity()', function () {

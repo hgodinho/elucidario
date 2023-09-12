@@ -11,24 +11,48 @@ class BaseTestCase extends \LCDR\Rest\Routes\Base {
 		return 'tests';
 	}
 	public function set_schema() {
-		return array();
+		return array(
+			'wp' => array(
+				\WP_REST_Server::CREATABLE => array(
+					'schema' => 'mdorim/concept',
+					'options' => array(
+						'definitions' => 'ConceptPost'
+					)
+				),
+				\WP_REST_Server::READABLE => array(
+					'schema' => 'mdorim/concept',
+				)
+			),
+			'la' => array(
+				\WP_REST_Server::READABLE => array(
+					'schema' => 'linked-art/concept',
+				),
+			)
+		);
 	}
 	public function set_permission_group() {
 		return 'entities';
 	}
+	public function prepare_item_for_database( $request ) {
+		return parent::prepare_item_for_database( $request );
+	}
 }
 
-
 beforeAll( function () {
-	global $wp_rest_server, $item_id;
-	$wp_rest_server = new \Spy_REST_Server();
+	global $core, $wp_rest_server, $item_id;
 
+	$core = new \LCDR\Core();
+	do_action( 'init' );
+	wp_set_current_user( 1 );
+
+	$wp_rest_server = new \Spy_REST_Server();
 	$query = new \LCDR\DB\Query\Concepts();
 	$item_id = $query->add_entity(
 		array(
 			'type' => 'Type',
-			'name' => 'relation-test',
+			'_label' => 'Relation test',
 			'author' => 1,
+			'status' => 'publish',
 			'identified_by' => array(
 				(object) array(
 					'type' => 'Identifier',
@@ -43,6 +67,7 @@ beforeAll( function () {
 		$base->register_routes();
 	} );
 	do_action( 'rest_api_init' );
+
 } );
 
 afterAll( function () {
@@ -82,7 +107,6 @@ test( 'BaseTestCase->get_item_permissions_check() should return true for public 
 	$base = new BaseTestCase();
 	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/tests/{$item_id}" );
 	$request->set_param( 'id', $item_id );
-	// $request->set_param( 'context', 'edit' );
 	$result = $base->get_item_permissions_check( $request );
 	expect( $result )->toBeTrue();
 } );
@@ -92,7 +116,7 @@ test( 'BaseTestCase->get_item_permissions_check() should return ERROR for status
 	$item_id = $query->add_entity(
 		array(
 			'type' => 'Type',
-			'name' => 'relation-test',
+			'_label' => 'relation-test',
 			'author' => 1,
 			'identified_by' => array(
 				(object) array(
@@ -140,7 +164,7 @@ test( 'BaseTestCase->get_item_permissions_check() should return ERROR with wrong
 	$query = new \LCDR\DB\Query\Concepts();
 	$item_id = $query->add_entity( array(
 		'type' => 'Type',
-		'name' => 'relation-test',
+		'_label' => 'relation-test',
 		'author' => 1,
 		'identified_by' => array(
 			(object) array(
@@ -171,6 +195,48 @@ test( 'BaseTestCase->get_items_permissions_check() should return ERROR with cont
 	$request->set_param( 'context', 'edit' );
 	$result = $base->get_items_permissions_check( $request );
 	expect( $result )->toBeInstanceOf( \LCDR\Error\Rest::class);
+} );
+
+test( 'BaseTestCase->get_route() true for collection', function () {
+	global $item_id;
+	$base = new BaseTestCase();
+	$result = $base->get_route( $item_id, true );
+	expect( $result )->toBe( 'lcdr/v1/tests' );
+} );
+
+test( 'BaseTestCase->get_route() false for collection', function () {
+	global $item_id;
+	$base = new BaseTestCase();
+	$result = $base->get_route( $item_id );
+	expect( $result )->toBe( "lcdr/v1/tests/{$item_id}" );
+} );
+
+test( 'BaseTestCase->prepare_item_for_database()', function () {
+	$base = new BaseTestCase();
+	$request = new \WP_REST_Request( 'POST', "/lcdr/v1/tests/" );
+	wp_set_current_user( 1 );
+
+	$request->set_body_params(
+		array(
+			'type' => 'Type',
+			'_label' => 'Relation test',
+			'author' => 1,
+			'status' => 'publish',
+			'identified_by' => array(
+				(object) array(
+					'type' => 'Identifier',
+					'content' => 'Teste 2',
+				),
+			),
+		)
+	);
+	$result = $base->prepare_item_for_database( $request );
+	expect( $result )->toBeObject();
+	expect( $result->author )->toBe( 1 );
+	expect( $result->status )->toBe( 'publish' );
+	expect( $result->type )->toBe( 'Type' );
+	expect( $result->_label )->toBe( 'Relation test' );
+	expect( $result->identified_by )->toBeArray();
 } );
 
 test( 'BaseTestCase->create_item_permissions_check() should return ERROR if request has ID', function () {

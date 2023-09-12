@@ -181,7 +181,8 @@ class Entities extends Query {
 			throw new \Exception( __( 'Entity not found.', 'lcdr' ) );
 		}
 
-		$args = $this->parse_args( $args, $update );
+		$args['entity_id'] = $entity_id;
+		$args              = $this->parse_args( $args, $update );
 
 		if ( $args['relationships'] ) {
 			$add    = array();
@@ -307,8 +308,11 @@ class Entities extends Query {
 			if ( ! isset( $args['type'] ) ) {
 				throw new \Exception( __( 'The data must have a type.', 'lcdr' ) );
 			}
-			if ( ! isset( $args['name'] ) ) {
-				throw new \Exception( __( 'The data must have a name.', 'lcdr' ) );
+			if ( ! isset( $args['_label'] ) ) {
+				throw new \Exception( __( 'The data must have a _label.', 'lcdr' ) );
+			}
+			if ( ! isset( $args['identified_by'] ) ) {
+				throw new \Exception( __( 'The data must have a identified_by.', 'lcdr' ) );
 			}
 		}
 
@@ -333,8 +337,51 @@ class Entities extends Query {
 				}
 			}
 		}
-		$columns['guid']   = isset( $columns['guid'] ) ? $columns['guid'] : \wp_generate_uuid4();
-		$columns['author'] = isset( $columns['author'] ) ? $columns['author'] : \get_current_user_id();
+
+		$entity = null;
+		if ( isset( $columns['entity_id'] ) && ! empty( $columns['entity_id'] ) ) {
+			$entity = $this->get_entity( $columns['entity_id'] );
+		}
+
+		// Defaults
+		// Column GUID.
+		if ( ! isset( $columns['guid'] ) && $entity ) {
+			$columns['guid'] = $entity->guid;
+		} elseif ( ! isset( $columns['guid'] ) && ! $entity ) {
+			$columns['guid'] = \wp_generate_uuid4();
+		}
+
+		// Column Author.
+		if ( ! isset( $columns['author'] ) && $entity ) {
+			$columns['author'] = $entity->author;
+		} elseif ( ! isset( $columns['author'] ) && ! $entity ) {
+			$columns['author'] = \get_current_user_id();
+		}
+
+		// Column Status.
+		// $columns['status'] = isset( $columns['status'] ) ? $columns['status'] : 'draft';
+		if ( ! isset( $columns['status'] ) && $entity ) {
+			$columns['status'] = $entity->status;
+		} elseif ( ! isset( $columns['status'] ) && ! $entity ) {
+			$columns['status'] = 'draft';
+		}
+
+		// Correct the label to the pattern used in database without the underscore.
+		if ( ! isset( $columns['label'] ) && isset( $columns['_label'] ) ) {
+			$columns['label'] = $columns['_label'];
+			unset( $columns['_label'] );
+		}
+
+		// If the name is not previously set, set it based on the label property.
+		if ( ! isset( $columns['name'] ) && $entity ) {
+			$columns['name'] = $entity->name;
+		} elseif ( ! isset( $columns['name'] ) && ! $entity ) {
+			$columns['name'] = lcdr_unique_entity_slug(
+				isset( $columns['entity_id'] ) ? (int) $columns['entity_id'] : 0,
+				$columns['label'],
+				$columns['status']
+			);
+		}
 
 		return array(
 			'columns'       => ! empty( $columns ) ? $columns : null,

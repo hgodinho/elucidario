@@ -26,25 +26,37 @@ final class Concept extends Entity {
 	 *
 	 * @var array
 	 */
-	public array $broader = array();
+	public $broader = array();
 
 	/**
 	 * Allowed properties
 	 *
 	 * @var array
 	 */
-	public array $allowed_properties = array(
-		'identified_by',
-		'classified_as',
-		'referred_to_by',
-		'equivalent',
-		'representation',
-		'member_of',
-		'subject_of',
-		'attributed_by',
-		'created_by',
-		'broader',
-	);
+	public function set_allowed_properties() {
+		return array(
+			'entity_id',
+			'name',
+			'guid',
+			'created',
+			'modified',
+			'password',
+			'author',
+			'status',
+			'_label',
+			'type',
+			'identified_by',
+			'classified_as',
+			'referred_to_by',
+			'equivalent',
+			'representation',
+			'member_of',
+			'subject_of',
+			'attributed_by',
+			'created_by',
+			'broader',
+		);
+	}
 
 	/**
 	 * Constructor.
@@ -53,7 +65,6 @@ final class Concept extends Entity {
 	 */
 	public function __construct( $item = null ) {
 		parent::__construct( $item );
-
 		$this->broader = (array) $this->broader;
 	}
 }

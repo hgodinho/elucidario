@@ -45,11 +45,14 @@ class Rest extends Base {
 			'forbidden_context'           => __( 'Sorry, you are not allowed to edit this kind of entity.', 'lcdr' ),
 			'delete_forbidden'            => __( 'Sorry, you are not allowed to delete this kind of entity.', 'lcdr' ),
 			'incorrect_password'          => __( 'Sorry, the password to see this entity is incorrect.', 'lcdr' ),
+			'private_publish'             => __( 'Sorry, you are not allowed to publish this kind of entity privately.', 'lcdr' ),
+			'publish'                     => __( 'Sorry, you are not allowed to publish this kind of entity.', 'lcdr' ),
 			// 404.
 			'not_found'                   => __( 'Sorry, this entity does not exist.', 'lcdr' ),
 			// 400.
 			'invalid_content_type'        => __( 'Sorry, the content type is invalid.', 'lcdr' ),
 			'create_invalid_content_type' => __( 'Sorry, the only type allowed for creation is WordPress, you don\'t need to pass this header for POST/PUT/PATCH methods.', 'lcdr' ),
+			'invalid_author'              => __( 'Sorry, the author is invalid.', 'lcdr' ),
 			// extra.
 			'invalid_id'                  => __( 'Sorry, this ID is invalid.', 'lcdr' ),
 			'already_exists'              => __( 'Sorry, this entity already exists.', 'lcdr' ),

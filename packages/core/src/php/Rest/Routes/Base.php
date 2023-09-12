@@ -59,6 +59,13 @@ abstract class Base extends \WP_REST_Controller {
 	public $permission_group = '';
 
 	/**
+	 * Schema name.
+	 *
+	 * @var string
+	 */
+	public $schema_name = '';
+
+	/**
 	 *                  __    ___
 	 *     ____  __  __/ /_  / (_)____
 	 *    / __ \/ / / / __ \/ / / ___/
@@ -70,6 +77,7 @@ abstract class Base extends \WP_REST_Controller {
 	 * Constructor.
 	 */
 	public function __construct() {
+		$this->schema_name      = $this->set_schema();
 		$this->permission_group = $this->set_permission_group();
 		$this->routes           = $this->set_routes();
 		$this->rest_base        = $this->set_base();
@@ -135,13 +143,62 @@ abstract class Base extends \WP_REST_Controller {
 		);
 	}
 
-	public function get_item_schema() {
-		if ( ! empty( $this->schema ) ) {
-			return $this->add_additional_fields_schema( $this->schema );
+	public function get_route( $id, $collection = false ) {
+		if ( $collection ) {
+			return implode( '/', array( $this->namespace, $this->rest_base ) );
+		} else {
+			return implode( '/', array( $this->namespace, $this->rest_base, $id ) );
 		}
-		$this->schema = $this->set_schema();
+	}
 
-		$this->dump( 'cli', $this->schema, __CLASS__, __METHOD__, __LINE__, false );
+	/**
+	 * Get fields for response.
+	 *
+	 * @param \LCDR\\DB\Interfaces\Entity $item    Entity object.
+	 * @param \WP_REST_Request            $request Request object.
+	 *
+	 * @return string[]
+	 */
+	public function get_lcdr_fields_for_response( $item, $request ) {
+		$wp_fields          = $this->get_fields_for_response( $request );
+		$request_fields     = $request->get_param( '_fields' );
+		$allowed_properties = $item->get_allowed_properties();
+		$fields             = array();
+
+		if ( $request_fields ) {
+			$fields = array_intersect( $request_fields, $allowed_properties );
+		} elseif ( empty( $request_fields ) && ! empty( $wp_fields ) ) {
+			$fields = $allowed_properties;
+		}
+
+		return array_merge( $wp_fields, $fields );
+	}
+
+
+	/**
+	 * Validate header.
+	 *
+	 * @param \WP_REST_Request $request
+	 * @return string|\LCDR\Error\Rest
+	 */
+	public function content_negotiation_request( $request ) {
+		$type = $request->get_header( 'accept' );
+
+		if ( ! $type ) {
+			return 'wp';
+		}
+
+		$type = $this->parse_linked_art_content_type( $type );
+
+		if ( is_lcdr_error( $type ) ) {
+			return $type;
+		}
+
+		if ( 'la' === $type ) {
+			return $type;
+		}
+
+		return 'wp';
 	}
 
 	/**
@@ -168,8 +225,8 @@ abstract class Base extends \WP_REST_Controller {
 				array( 'status' => 400 )
 			);
 		}
+
 		// content-type is wp — continue
-		$this->dump( 'cli', $content_type, __CLASS__, __METHOD__, __LINE__, false );
 
 		if ( ! empty( $request['id'] ) ) {
 			return new \LCDR\Error\Rest(
@@ -182,18 +239,6 @@ abstract class Base extends \WP_REST_Controller {
 
 		if ( is_lcdr_error( $prepared_entity ) ) {
 			return $prepared_entity;
-		}
-
-		if ( ! empty( $prepared_entity->name )
-			&& ! empty( $prepared_entity->status )
-			&& in_array( $prepared_entity->status, array( 'draft', 'pending' ), true )
-		) {
-			/*
-			 * `lcdr_unique_entity_slug()` returns the same slug for 'draft' or 'pending' posts.
-			 *
-			 * To ensure that a unique slug is generated, pass the entity data with the 'publish' status.
-			 */
-			$prepared_entity->name = lcdr_unique_entity_slug( $prepared_entity );
 		}
 
 		$entity_id = lcdr_insert_entity( (array) $prepared_entity );
@@ -220,9 +265,10 @@ abstract class Base extends \WP_REST_Controller {
 		 */
 		$this->rest_insert_hook( $entity, $request, true );
 
-		$schema = $this->get_item_schema();
-
 		$entity = $this->get_entity( $entity_id );
+		if ( is_lcdr_error( $entity ) ) {
+			return $entity;
+		}
 
 		$request->set_param( 'context', 'edit' );
 
@@ -245,6 +291,220 @@ abstract class Base extends \WP_REST_Controller {
 		$this->dump( 'cli', $response, __CLASS__, __METHOD__, __LINE__, false );
 
 		return $response;
+	}
+
+	/**
+	 *                                             __  _
+	 *     ____  ________  ____  ____ __________ _/ /_(_)___  ____  _____
+	 *    / __ \/ ___/ _ \/ __ \/ __ `/ ___/ __ `/ __/ / __ \/ __ \/ ___/
+	 *   / /_/ / /  /  __/ /_/ / /_/ / /  / /_/ / /_/ / /_/ / / / (__  )
+	 *  / .___/_/   \___/ .___/\__,_/_/   \__,_/\__/_/\____/_/ /_/____/
+	 * /_/             /_/
+	 */
+	/**
+	 * Prepares a single entity output for response.
+	 *
+	 * @param \LCDR\DB\Interfaces\Entity $item    Post object.
+	 * @param \WP_REST_Request           $request Request object.
+	 * @return \WP_REST_Response         Response object.
+	 */
+	public function prepare_item_for_response( $item, $request ) {
+		// Restores the more descriptive, specific name for use within this method.
+		$entity = $item;
+
+		$fields = $this->get_lcdr_fields_for_response( $item, $request );
+
+		// Base fields for every entity.
+		$data = array();
+
+		foreach ( $fields as $field ) {
+			if ( rest_is_field_included( $field, $fields ) ) {
+				switch ( $field ) {
+					// guid.
+					case 'guid':
+						$data[ $field ] = apply_filters( 'get_the_guid', $entity->guid, $entity->entity_id );
+						break;
+
+					// default.
+					default:
+						$data[ $field ] = $entity->$field;
+						break;
+				}
+			}
+		}
+
+		// if ( rest_is_field_included( 'date', $fields ) ) {
+		// $data['date'] = $this->prepare_date_response( $post->post_date_gmt, $post->post_date );
+		// }
+		// if ( rest_is_field_included( 'modified', $fields ) ) {
+		// $data['modified'] = $this->prepare_date_response( $post->post_modified_gmt, $post->post_modified );
+		// }
+		// if ( rest_is_field_included( 'link', $fields ) ) {
+		// $data['link'] = get_permalink( $post->ID );
+		// }
+
+		// $has_password_filter = false;
+
+		// if ( $this->can_access_password_content( $post, $request ) ) {
+		// $this->password_check_passed[ $post->ID ] = true;
+		// Allow access to the post, permissions already checked before.
+		// add_filter( 'post_password_required', array( $this, 'check_password_required' ), 10, 2 );
+
+		// $has_password_filter = true;
+		// }
+
+		// if ( $has_password_filter ) {
+		// Reset filter.
+		// remove_filter( 'post_password_required', array( $this, 'check_password_required' ) );
+		// }
+
+		$context = ! empty( $request['context'] ) ? $request['context'] : 'view';
+
+		$data = $this->add_additional_fields_to_object( $data, $request );
+		$data = $this->filter_response_by_context( $data, $context );
+
+		// Wrap the data in a response object.
+		$response = rest_ensure_response( $data );
+
+		if ( rest_is_field_included( '_links', $fields ) || rest_is_field_included( '_embedded', $fields ) ) {
+			$links = $this->prepare_links( $entity );
+			$response->add_links( $links );
+		}
+
+		/**
+		 * Filters the post data for a REST API response.
+		 *
+		 * The dynamic portion of the hook name, `$this->rest_base`, refers to the rest_base.
+		 *
+		 * @param \WP_REST_Response           $response The response object.
+		 * @param \LCDR\DB\Interfaces\Entity  $entity     Post object.
+		 * @param \WP_REST_Request            $request  Request object.
+		 */
+		return apply_filters( "rest_prepare_{$this->rest_base}", $response, $entity, $request );
+	}
+
+	/**
+	 * Prepares links for the request.
+	 *
+	 * @param \LCDR\DB\Interfaces\Entity $entity Entity object.
+	 * @return array Links for the given entity.
+	 */
+	protected function prepare_links( $entity ) {
+		// Entity meta.
+		$links = array(
+			'self'       => array(
+				'href' => rest_url( $this->get_route( $entity->entity_id ) ),
+			),
+			'collection' => array(
+				'href' => rest_url( $this->get_route( $entity->entity_id, true ) ),
+			),
+			'author'     => array(
+				'href'       => rest_url( 'wp/v2/users/' . $entity->author ),
+				'embeddable' => true,
+			),
+			// 'about' => array(
+			// 'href' => rest_url( 'wp/v2/types/' . $this->post_type ),
+			// ),
+		);
+
+		// @todo add links to related entities
+
+		return $links;
+	}
+
+
+	/**
+	 * Prepares one item for create or update operation.
+	 *
+	 * @since 4.7.0
+	 *
+	 * @param \WP_REST_Request $request Request object.
+	 * @return object|\LCDR\Error\Rest The prepared item, or Error object on failure.
+	 */
+	protected function prepare_item_for_database( $request ) {
+		$prepared       = new \stdClass();
+		$current_status = '';
+
+		// Validate data against schema.
+		$valid       = null;
+		$schema_name = $this->get_schema_name( $request );
+		$params      = $request->get_body_params();
+		try {
+			$valid = lcdr_validate_value_from_schema(
+				(object) $params,
+				$schema_name['schema'],
+				isset( $schema_name['options'] ) ? $schema_name['options'] : array()
+			);
+		} catch ( \Exception $e ) {
+			$valid = new \LCDR\Error\Schema(
+				$e->getMessage(),
+				array(
+					'status'   => 400,
+					'received' => $params,
+				)
+			);
+		}
+		if ( is_lcdr_error( $valid ) ) {
+			return $valid;
+		}
+
+		// Mount prepared object.
+		foreach ( $params as $key => $value ) {
+			switch ( $key ) {
+				// Entity ID.
+				case 'entity_id':
+					$existing = $this->get_entity( (int) $value );
+					if ( is_lcdr_error( $existing ) ) {
+						return $existing;
+					}
+
+					$prepared->entity_id = $existing->entity_id;
+					$current_status      = $existing->status;
+					break;
+
+				// Author.
+				case 'author':
+					$author = (int) $value;
+					if ( get_current_user_id() !== $author ) {
+						$user_obj = get_userdata( $author );
+						if ( ! $user_obj ) {
+							return new \LCDR\Error\Rest(
+								'invalid_author',
+								array( 'status' => 400 )
+							);
+						}
+					}
+					$prepared->author = $author;
+					break;
+
+				// Status.
+				case 'status':
+					if ( ! $current_status || $current_status !== $value ) {
+						$status = $this->handle_status_param( $value );
+						if ( is_lcdr_error( $status ) ) {
+							return $status;
+						}
+						$prepared->status = $status;
+					}
+					break;
+
+				// Default.
+				default:
+					$prepared->$key = $value;
+					break;
+			}
+		}
+
+		/**
+		 * Filters a entity before it is inserted via the REST API.
+		 *
+		 * The dynamic portion of the hook name is `$this->rest_base`.
+		 *
+		 * @param \stdClass        $prepared An object representing a single post prepared
+		 *                                       for inserting or updating the database.
+		 * @param \WP_REST_Request $request       Request object.
+		 */
+		return apply_filters( lcdr_hook( array( 'rest', 'pre', 'insert', $this->rest_base ) ), $prepared, $request );
 	}
 
 	/**                                _           _
@@ -341,7 +601,7 @@ abstract class Base extends \WP_REST_Controller {
 	 * @param \LCDR\DB\Row\Entity $entity Post object.
 	 * @return true|\LCDR\Error\Rest True if the entity can be read, error object otherwise.
 	 */
-	public function check_read_permission( $entity ) {
+	protected function check_read_permission( $entity ) {
 		// Is the entity readable?
 		if ( 'publish' === $entity->status || current_user_can( lcdr_hook( array( 'see', $this->permission_group ) ), $entity->ID ) ) {
 			return true;
@@ -362,6 +622,43 @@ abstract class Base extends \WP_REST_Controller {
 		return current_user_can( lcdr_hook( array( 'edit', $this->permission_group ) ), $entity->entity_id );
 	}
 
+
+	/**
+	 * Checks if the user can access password-protected content.
+	 *
+	 * This method determines whether we need to override the regular password
+	 * check in core with a filter.
+	 *
+	 * @param \LCDR\DB\Interfaces\Entity $entity    Post to check against.
+	 * @param \WP_REST_Request           $request Request data to check.
+	 * @return bool True if the user can access password-protected content, otherwise false.
+	 */
+	public function can_access_password_content( $entity, $request ) {
+		if ( empty( $entity->password ) ) {
+			// No filter required.
+			return false;
+		}
+
+		/*
+		 * Users always gets access to password protected content in the edit
+		 * context if they have the `edit_post` meta capability.
+		 */
+		if (
+			'edit' === $request['context'] &&
+			current_user_can( lcdr_hook( array( 'edit', $this->permission_group ) ), $entity->entity_id )
+		) {
+			return true;
+		}
+
+		// No password, no auth.
+		if ( empty( $request['password'] ) ) {
+			return false;
+		}
+
+		// Double-check the request password.
+		return hash_equals( $entity->password, $request['password'] );
+	}
+
 	/**
 	 *                       __            __           __
 	 *     ____  _________  / /____  _____/ /____  ____/ /
@@ -371,178 +668,39 @@ abstract class Base extends \WP_REST_Controller {
 	 * /_/
 	 */
 	/**
-	 * Prepares one item for create or update operation.
+	 * Determines validity and normalizes the given status parameter.
 	 *
-	 * @since 4.7.0
-	 *
-	 * @param \WP_REST_Request $request Request object.
-	 * @return object|\LCDR\Error\Rest The prepared item, or Error object on failure.
+	 * @param string $status Status.
+	 * @return string|\LCDR\Error\Rest Status or \LCDR\Error\Rest if lacking the proper permission.
 	 */
-	protected function prepare_item_for_database( $request ) {
-		$prepared       = new \stdClass();
-		$current_status = '';
-
-		// Entity ID.
-		if ( isset( $request['id'] ) ) {
-			$existing = $this->get_entity( $request['id'] );
-			if ( is_lcdr_error( $existing ) ) {
-				return $existing;
-			}
-
-			$prepared->entity_id = $existing->entity_id;
-			$current_status      = $existing->status;
-		}
-
-		$schema = $this->get_item_schema();
-
-		$this->dump( 'cli', $schema, __CLASS__, __METHOD__, __LINE__, false );
-
-		// Post title.
-		if ( ! empty( $schema['properties']['title'] ) && isset( $request['title'] ) ) {
-			if ( is_string( $request['title'] ) ) {
-				$prepared->post_title = $request['title'];
-			} elseif ( ! empty( $request['title']['raw'] ) ) {
-				$prepared->post_title = $request['title']['raw'];
-			}
-		}
-
-		// Post content.
-		if ( ! empty( $schema['properties']['content'] ) && isset( $request['content'] ) ) {
-			if ( is_string( $request['content'] ) ) {
-				$prepared->post_content = $request['content'];
-			} elseif ( isset( $request['content']['raw'] ) ) {
-				$prepared->post_content = $request['content']['raw'];
-			}
-		}
-
-		// Post excerpt.
-		if ( ! empty( $schema['properties']['excerpt'] ) && isset( $request['excerpt'] ) ) {
-			if ( is_string( $request['excerpt'] ) ) {
-				$prepared->post_excerpt = $request['excerpt'];
-			} elseif ( isset( $request['excerpt']['raw'] ) ) {
-				$prepared->post_excerpt = $request['excerpt']['raw'];
-			}
-		}
-
-		// Post status.
-		if (
-			! empty( $schema['properties']['status'] ) &&
-			isset( $request['status'] ) &&
-			( ! $current_status || $current_status !== $request['status'] )
-		) {
-			$status = $this->handle_status_param( $request['status'], $post_type );
-
-			if ( is_wp_error( $status ) ) {
-				return $status;
-			}
-
-			$prepared->post_status = $status;
-		}
-
-		// Post date.
-		if ( ! empty( $schema['properties']['date'] ) && ! empty( $request['date'] ) ) {
-			$current_date = isset( $prepared->ID ) ? get_post( $prepared->ID )->post_date : false;
-			$date_data    = rest_get_date_with_gmt( $request['date'] );
-
-			if ( ! empty( $date_data ) && $current_date !== $date_data[0] ) {
-				list( $prepared->post_date, $prepared->post_date_gmt ) = $date_data;
-				$prepared->edit_date                                   = true;
-			}
-		} elseif ( ! empty( $schema['properties']['date_gmt'] ) && ! empty( $request['date_gmt'] ) ) {
-			$current_date = isset( $prepared->ID ) ? get_post( $prepared->ID )->post_date_gmt : false;
-			$date_data    = rest_get_date_with_gmt( $request['date_gmt'], true );
-
-			if ( ! empty( $date_data ) && $current_date !== $date_data[1] ) {
-				list( $prepared->post_date, $prepared->post_date_gmt ) = $date_data;
-				$prepared->edit_date                                   = true;
-			}
-		}
-
-		// Sending a null date or date_gmt value resets date and date_gmt to their
-		// default values (`0000-00-00 00:00:00`).
-		if (
-			( ! empty( $schema['properties']['date_gmt'] ) && $request->has_param( 'date_gmt' ) && null === $request['date_gmt'] ) ||
-			( ! empty( $schema['properties']['date'] ) && $request->has_param( 'date' ) && null === $request['date'] )
-		) {
-			$prepared->post_date_gmt = null;
-			$prepared->post_date     = null;
-		}
-
-		// Post slug.
-		if ( ! empty( $schema['properties']['slug'] ) && isset( $request['slug'] ) ) {
-			$prepared->post_name = $request['slug'];
-		}
-
-		// Author.
-		if ( ! empty( $schema['properties']['author'] ) && ! empty( $request['author'] ) ) {
-			$post_author = (int) $request['author'];
-
-			if ( get_current_user_id() !== $post_author ) {
-				$user_obj = get_userdata( $post_author );
-
-				if ( ! $user_obj ) {
-					return new WP_Error(
-						'rest_invalid_author',
-						__( 'Invalid author ID.' ),
-						array( 'status' => 400 )
+	protected function handle_status_param( $status ) {
+		switch ( $status ) {
+			case 'draft':
+			case 'pending':
+				break;
+			case 'private':
+				if ( ! current_user_can( lcdr_hook( array( 'publish', $this->permission_group ) ) ) ) {
+					return new \LCDR\Error\Rest(
+						'private_publish',
+						array( 'status' => rest_authorization_required_code() )
 					);
 				}
-			}
-
-			$prepared->post_author = $post_author;
-		}
-
-		// Post password.
-		if ( ! empty( $schema['properties']['password'] ) && isset( $request['password'] ) ) {
-			$prepared->post_password = $request['password'];
-
-			if ( '' !== $request['password'] ) {
-				if ( ! empty( $schema['properties']['sticky'] ) && ! empty( $request['sticky'] ) ) {
-					return new WP_Error(
-						'rest_invalid_field',
-						__( 'A post can not be sticky and have a password.' ),
-						array( 'status' => 400 )
+				break;
+			case 'publish':
+			case 'future':
+				if ( ! current_user_can( lcdr_hook( array( 'publish', $this->permission_group ) ) ) ) {
+					return new \LCDR\Error\Rest(
+						'publish',
+						array( 'status' => rest_authorization_required_code() )
 					);
 				}
-
-				if ( ! empty( $prepared->ID ) && is_sticky( $prepared->ID ) ) {
-					return new WP_Error(
-						'rest_invalid_field',
-						__( 'A sticky post can not be password protected.' ),
-						array( 'status' => 400 )
-					);
-				}
-			}
+				break;
+			default:
+				$status = 'draft';
+				break;
 		}
 
-		// Comment status.
-		if ( ! empty( $schema['properties']['comment_status'] ) && ! empty( $request['comment_status'] ) ) {
-			$prepared->comment_status = $request['comment_status'];
-		}
-
-		// Ping status.
-		if ( ! empty( $schema['properties']['ping_status'] ) && ! empty( $request['ping_status'] ) ) {
-			$prepared->ping_status = $request['ping_status'];
-		}
-
-		/**
-		 * Filters a post before it is inserted via the REST API.
-		 *
-		 * The dynamic portion of the hook name, `$this->post_type`, refers to the post type slug.
-		 *
-		 * Possible hook names include:
-		 *
-		 *  - `rest_pre_insert_post`
-		 *  - `rest_pre_insert_page`
-		 *  - `rest_pre_insert_attachment`
-		 *
-		 * @since 4.7.0
-		 *
-		 * @param stdClass        $prepared An object representing a single post prepared
-		 *                                       for inserting or updating the database.
-		 * @param WP_REST_Request $request       Request object.
-		 */
-		return apply_filters( "rest_pre_insert_{$this->post_type}", $prepared, $request );
+		return $status;
 	}
 
 	/**
@@ -599,31 +757,23 @@ abstract class Base extends \WP_REST_Controller {
 	}
 
 	/**
-	 * Validate header.
+	 * Get schema name.
 	 *
 	 * @param \WP_REST_Request $request
-	 * @return string|\LCDR\Error\Rest
+	 * @return array
 	 */
-	public function content_negotiation_request( $request ) {
-		$type = $request->get_header( 'accept' );
-
-		if ( ! $type ) {
-			return 'wp';
-		}
-
-		$type = $this->parse_linked_art_content_type( $type );
-
-		if ( is_lcdr_error( $type ) ) {
-			return $type;
-		}
-
-		if ( 'la' === $type ) {
-			return $type;
-		}
-
-		return 'wp';
+	protected function get_schema_name( $request = null ) {
+		$content_type = $this->content_negotiation_request( $request );
+		$method       = $request->get_method();
+		return $this->schema_name[ $content_type ][ $method ];
 	}
 
+	/**
+	 * Parse linked art content type.
+	 *
+	 * @param string $type
+	 * @return string|\LCDR\Error\Rest
+	 */
 	protected function parse_linked_art_content_type( $type ) {
 		$error = new \LCDR\Error\Rest(
 			'invalid_content_type',
@@ -661,9 +811,30 @@ abstract class Base extends \WP_REST_Controller {
 	abstract public function set_base();
 
 	/**
-	 * Set schema.
+	 * Set schema_names.
 	 *
 	 * @return array
+	 *
+	 * @example
+	 * ```php
+	 * array(
+	 *      'wp' => array(
+	 *          'GET' => array(
+	 *              'schema'  => '',
+	 *              'options' => array(),
+	 *           ),
+	 *          'POST' => array(
+	 *               'schema'  => '',
+	 *               'options' => array(),
+	 *      ),
+	 *      'la' => array(
+	 *          'GET' => array(
+	 *              'schema'  => '',
+	 *              'options' => array(),
+	 *          ),
+	 *      ),
+	 * );
+	 * ```
 	 */
 	abstract public function set_schema();
 

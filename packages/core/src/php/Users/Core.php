@@ -51,8 +51,7 @@ class Core {
 		'edit_published',
 		'delete_own',
 		'delete_others',
-		'publish_own',
-		'publish_others',
+		'publish',
 	);
 
 	/**
@@ -109,9 +108,9 @@ class Core {
 
 		$museologist = $curator;
 
-		$assistant = $this->remove_items_from_capabilities( array( 'delete_others', 'publish_own', 'publish_others' ) );
+		$assistant = $this->remove_items_from_capabilities( array( 'delete_others', 'publish' ) );
 
-		$researcher = $this->remove_items_from_capabilities( array( 'edit_published', 'delete_own', 'delete_others', 'publish_own', 'publish_others' ) );
+		$researcher = $this->remove_items_from_capabilities( array( 'edit_published', 'delete_own', 'delete_others', 'publish' ) );
 
 		switch ( $role ) {
 			case 'curator':

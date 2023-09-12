@@ -12,7 +12,7 @@ uses( TestCase::class);
 $db;
 $data_entity_to_test_against = array(
 	'type' => 'Type',
-	'name' => 'relation-test',
+	'_label' => 'relation-test',
 	'author' => 1,
 	'identified_by' => array(
 		(object) array(
@@ -28,9 +28,6 @@ beforeAll( function () {
 	$db = new \LCDR\DB\Core();
 	$entity_query = new \LCDR\DB\Query\Entities();
 	$entity_to_test_against = $entity_query->add_entity( $data_entity_to_test_against );
-} );
-
-afterAll( function () {
 } );
 
 test( '\LCDR\DB\Row\Factory::create() with empty array data return Error', function () {

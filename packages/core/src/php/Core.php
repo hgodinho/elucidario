@@ -28,8 +28,7 @@ class Core {
 	 *  / /_/ /  / /_/ / / /_(__  )
 	 *  \__/_/   \__,_/_/\__/____/
 	 */
-	use \LCDR\Utils\singleton;
-	use \LCDR\Utils\debug;
+	use \LCDR\Utils\singleton, \LCDR\Utils\debug;
 
 	/**
 	 * Options.
@@ -74,6 +73,19 @@ class Core {
 	 * /_/
 	 */
 	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+		$this->mdorim = \Mdorim\Core::get_instance();
+		$this->users  = \LCDR\Users\Core::get_instance();
+		$this->db     = \LCDR\DB\Core::get_instance();
+		$this->rest   = \LCDR\Rest\Core::get_instance();
+		// $this->options = new \LCDR\Options\Core();
+
+		add_action( 'init', array( $this, 'textdomain' ) );
+	}
+
+	/**
 	 * Load textdomain.
 	 *
 	 * @return void
@@ -92,16 +104,4 @@ class Core {
 	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
 	 * /_/
 	 */
-	/**
-	 * Constructor.
-	 */
-	final private function __construct() {
-		$this->db = \LCDR\DB\Core::get_instance();
-		$this->options = new \LCDR\Options\Core();
-		$this->mdorim = \Mdorim\Core::get_instance();
-		$this->users = \LCDR\Users\Core::get_instance();
-		$this->rest = \LCDR\Rest\Core::get_instance();
-
-		add_action( 'init', array( $this, 'textdomain' ) );
-	}
 }

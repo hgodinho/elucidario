@@ -19,6 +19,13 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 
 trait Row {
 	/**
+	 * Allowed properties.
+	 *
+	 * @var array
+	 */
+	public $allowed_properties;
+
+	/**
 	 * Get the entity property.
 	 *
 	 * @param string $property Property.
@@ -32,5 +39,14 @@ trait Row {
 			return json_decode( $this->{$property} );
 		}
 		return $this->{$property};
+	}
+
+	/**
+	 * Get the allowed properties.
+	 *
+	 * @return array
+	 */
+	public function get_allowed_properties(): array {
+		return $this->allowed_properties;
 	}
 }

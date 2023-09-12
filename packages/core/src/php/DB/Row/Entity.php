@@ -101,7 +101,7 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 *
 	 * @var string
 	 */
-	public string $label = '';
+	public string $_label = '';
 
 	/**
 	 * Entity identifiers.
@@ -211,6 +211,9 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 */
 	public function __construct( $item = null ) {
 		parent::__construct( $this->trim_keys( $item ) );
+
+		$this->allowed_properties = $this->set_allowed_properties();
+
 		// properties.
 		$this->entity_id = (int) $this->entity_id;
 		$this->type      = (string) $this->type;
@@ -220,7 +223,7 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		$this->status    = (string) $this->status;
 		$this->password  = (string) $this->password;
 		$this->created   = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
-		$this->label     = (string) $this->label;
+		$this->_label    = (string) $this->label;
 
 		$this->init_relationships();
 		$this->init_mixed();
@@ -234,6 +237,15 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 */
 	public function get_relationships(): array {
 		return $this->relationships;
+	}
+
+	/**
+	 * Set the entity allowed properties.
+	 *
+	 * @return array
+	 */
+	public function set_allowed_properties() {
+		return array();
 	}
 
 	/**

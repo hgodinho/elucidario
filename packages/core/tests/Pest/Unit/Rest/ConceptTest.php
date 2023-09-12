@@ -2,6 +2,7 @@
 
 namespace LCDR\Tests\Pest\Unit\Rest;
 
+use WP_REST_Response;
 use Yoast\WPTestUtils\WPIntegration\TestCase;
 
 uses( Testcase::class);
@@ -32,7 +33,24 @@ test( '\LCDR\Rest\Routes\Concept must have base', function () {
 
 test( '\LCDR\Rest\Routes\Concept must have method set_schema', function () {
 	$concept = new \LCDR\Rest\Routes\Concept();
-	expect( $concept->set_schema() )->toBe( [] );
+	expect( $concept->set_schema() )->toMatchArray( array(
+		'wp' => array(
+			'GET' => array(
+				'schema' => 'mdorim/concept',
+			),
+			'POST' => array(
+				'schema' => 'mdorim/concept',
+				'options' => array(
+					'definitions' => 'ConceptPost'
+				)
+			),
+		),
+		'la' => array(
+			'GET' => array(
+				'schema' => 'linked-art/concept',
+			),
+		),
+	) );
 } );
 
 test( '\LCDR\Rest\Routes\Concept must have permission_group', function () {
@@ -44,9 +62,22 @@ test( '\LCDR\Rest\Routes\Concept->create_item()', function () {
 	wp_set_current_user( 1 );
 	$base = new \LCDR\Rest\Routes\Concept();
 	$request = new \WP_REST_Request( 'POST', "/lcdr/v1/concepts/" );
-	$request->set_body( json_encode( array( 'author' => 1, 'name' => 'test' ) ) );
+	$request->set_body_params(
+		array(
+			'type' => 'Type',
+			'author' => 1,
+			'_label' => 'Teste',
+			'identified_by' => array(
+				(object) array(
+					'type' => 'Identifier',
+					'content' => 'Teste 2',
+				),
+			),
+		)
+	);
 	$request->set_param( 'author', 1 );
 	$result = $base->create_item( $request );
-	var_dump( 'test result', $result );
-	expect( $result )->toBeInstanceOf( \LCDR\DB\Row\Concept::class);
-} )->skip();
+
+	expect( $result )->toBeInstanceOf( WP_REST_Response::class);
+	expect( $result->data['name'] )->toBe( 'teste' );
+} );
