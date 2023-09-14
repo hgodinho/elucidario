@@ -13,18 +13,18 @@ class BaseTestCase extends \LCDR\Rest\Routes\Base {
 	public function set_schema() {
 		return array(
 			'wp' => array(
-				\WP_REST_Server::CREATABLE => array(
+				'edit' => array(
 					'schema' => 'mdorim/concept',
 					'options' => array(
 						'definitions' => 'ConceptPost'
 					)
 				),
-				\WP_REST_Server::READABLE => array(
+				'view' => array(
 					'schema' => 'mdorim/concept',
 				)
 			),
 			'la' => array(
-				\WP_REST_Server::READABLE => array(
+				'view' => array(
 					'schema' => 'linked-art/concept',
 				),
 			)
@@ -35,6 +35,12 @@ class BaseTestCase extends \LCDR\Rest\Routes\Base {
 	}
 	public function prepare_item_for_database( $request ) {
 		return parent::prepare_item_for_database( $request );
+	}
+	public function get_lcdr_fields_for_response( $entity, $request ) {
+		return parent::get_lcdr_fields_for_response( $entity, $request );
+	}
+	public function handle_status_param( $status = '' ) {
+		return parent::handle_status_param( $status );
 	}
 }
 
@@ -211,6 +217,59 @@ test( 'BaseTestCase->get_route() false for collection', function () {
 	expect( $result )->toBe( "lcdr/v1/tests/{$item_id}" );
 } );
 
+test( 'BaseTestCase->get_lcdr_fields_for_response', function () {
+	global $item_id;
+	$entity = lcdr_get_entity( $item_id );
+	$request = new \WP_REST_Request( 'POST', "/lcdr/v1/tests/" );
+	$request->set_body_params(
+		array(
+			'_fields' => array(
+				'entity_id',
+				'type',
+				'identified_by',
+			)
+		)
+	);
+	$base = new BaseTestCase();
+	$result = $base->get_lcdr_fields_for_response( $entity, $request );
+	expect( $result )->toMatchArray( array(
+		'entity_id',
+		'type',
+		'identified_by'
+	) );
+} );
+
+test( 'BaseTestCase->get_lcdr_fields_for_response no fields', function () {
+	global $item_id;
+	$entity = lcdr_get_entity( $item_id );
+	$request = new \WP_REST_Request( 'POST', "/lcdr/v1/tests/" );
+	$base = new BaseTestCase();
+	$result = $base->get_lcdr_fields_for_response( $entity, $request );
+	expect( $result )->toMatchArray( array(
+		'_links',
+		'entity_id',
+		'name',
+		'guid',
+		'created',
+		'modified',
+		'password',
+		'author',
+		'status',
+		'_label',
+		'type',
+		'identified_by',
+		'classified_as',
+		'referred_to_by',
+		'equivalent',
+		'representation',
+		'member_of',
+		'subject_of',
+		'attributed_by',
+		'created_by',
+		'broader',
+	) );
+} );
+
 test( 'BaseTestCase->prepare_item_for_database()', function () {
 	$base = new BaseTestCase();
 	$request = new \WP_REST_Request( 'POST', "/lcdr/v1/tests/" );
@@ -302,4 +361,34 @@ test( 'BaseTestCase->content_negotiation_request() linked art type return la', f
 	$request->set_param( 'author', 9999 );
 	$result = $base->content_negotiation_request( $request );
 	expect( $result )->toBe( 'la' );
+} );
+
+test( 'BaseTestCase->handle_status_param', function () {
+	wp_set_current_user( 9999 );
+	$base = new BaseTestCase();
+	$result = $base->handle_status_param( 'draft' );
+	expect( $result )->toBe( 'draft' );
+
+	$result = $base->handle_status_param( 'pending' );
+	expect( $result )->toBe( 'pending' );
+
+	$result = $base->handle_status_param( 'default' );
+	expect( $result )->toBe( 'draft' );
+
+	wp_set_current_user( 1 );
+} );
+
+test( 'BaseTestCase->handle_status_param Errors', function () {
+	wp_set_current_user( 9999 );
+	$base = new BaseTestCase();
+	$result = $base->handle_status_param( 'private' );
+	expect( $result )->toBeInstanceOf( \LCDR\Error\Error::class);
+
+	$result = $base->handle_status_param( 'publish' );
+	expect( $result )->toBeInstanceOf( \LCDR\Error\Error::class);
+
+	$result = $base->handle_status_param( 'future' );
+	expect( $result )->toBeInstanceOf( \LCDR\Error\Error::class);
+
+	wp_set_current_user( 1 );
 } );

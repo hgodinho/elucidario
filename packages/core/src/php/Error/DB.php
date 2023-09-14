@@ -39,6 +39,7 @@ class DB extends Base {
 		return array(
 			'error'  => __( 'Database error.', 'lcdr' ),
 			'insert' => __( 'Database insert error.', 'lcdr' ),
+			'update' => __( 'Database update error.', 'lcdr' ),
 		);
 	}
 }

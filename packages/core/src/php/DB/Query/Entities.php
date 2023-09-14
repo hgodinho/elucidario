@@ -97,10 +97,13 @@ class Entities extends Query {
 	 * Get entity
 	 *
 	 * @param int $entity_id ID of the entity.
-	 * @return bool|\LCDR\DB\Interfaces\Entity False on failure, the entity otherwise.
+	 * @return \LCDR\Error\Error|\LCDR\DB\Interfaces\Entity False on failure, the entity otherwise.
 	 */
 	public function get_entity( int $entity_id ) {
 		$item = $this->get_item_by( 'entity_id', $entity_id );
+		if ( ! $item ) {
+			return new \LCDR\Error\DB( 'insert' );
+		}
 		return $item;
 	}
 
@@ -170,15 +173,14 @@ class Entities extends Query {
 	 *
 	 * @param int   $entity_id ID of the entity.
 	 * @param array $args Arguments to update the entity.
-	 * @return bool|int False on failure, the ID of the updated entity otherwise.
-	 * @throws \Exception If no entity was found.
+	 * @return \LCDR\Error\Error|int Error on failure, the ID of the updated entity otherwise.
 	 */
 	public function update_entity( int $entity_id, $args = array() ) {
 		$update = true;
 
 		$entity = $this->get_entity( $entity_id );
-		if ( ! $entity ) {
-			throw new \Exception( __( 'Entity not found.', 'lcdr' ) );
+		if ( is_lcdr_error( $entity ) ) {
+			return $entity;
 		}
 
 		$args['entity_id'] = $entity_id;
@@ -341,6 +343,9 @@ class Entities extends Query {
 		$entity = null;
 		if ( isset( $columns['entity_id'] ) && ! empty( $columns['entity_id'] ) ) {
 			$entity = $this->get_entity( $columns['entity_id'] );
+		}
+		if ( is_lcdr_error( $entity ) ) {
+			return $entity;
 		}
 
 		// Defaults

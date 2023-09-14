@@ -147,8 +147,9 @@ function is_lcdr_error( $thing ) {
 /**
  * Validate value from schema
  *
- * @param mixed  $value
- * @param string $schema_name
+ * @param mixed  $value Value.
+ * @param string $schema_name Schema name.
+ * @param array  $options Options.
  * @return bool|\LCDR\Error\Error
  */
 function lcdr_validate_value_from_schema( mixed $value, string $schema_name, ?array $options = array() ) {
@@ -157,16 +158,16 @@ function lcdr_validate_value_from_schema( mixed $value, string $schema_name, ?ar
 }
 
 /**
- *    ______         __           ___             _____         __
- *   / ____/  ___   / /_         ( _ )           / ___/  ___   / /_
- *  / / __   / _ \ / __/        / __ \/|         \__ \  / _ \ / __/
- * / /_/ /  /  __// /_         / /_/  <         ___/ / /  __// /_
- * \____/   \___/ \__/         \____/\/        /____/  \___/ \__/
+ *    ______               __
+ *   / ____/______  ______/ /
+ *  / /   / ___/ / / / __  /
+ * / /___/ /  / /_/ / /_/ /
+ * \____/_/   \__,_/\__,_/
  */
 /**
  * Return entity by id
  *
- * @param int $entity_id
+ * @param int $entity_id Entity id.
  * @return \LCDR\DB\Interfaces\Entity
  */
 function lcdr_get_entity( $entity_id ) {
@@ -178,7 +179,7 @@ function lcdr_get_entity( $entity_id ) {
 /**
  * Insert new entity
  *
- * @param array $args
+ * @param array $args Entity args.
  * @return int|\LCDR\Error\DB
  */
 function lcdr_insert_entity( $args ) {
@@ -187,6 +188,63 @@ function lcdr_insert_entity( $args ) {
 	return lcdr_parse_item_id( $entity_id );
 }
 
+/**
+ * Update entity
+ *
+ * @param int   $entity_id Entity id.
+ * @param array $args Entity args.
+ * @return \LCDR\DB\Interfaces\Entity|int|\LCDR\Error\DB
+ */
+function lcdr_update_entity( $entity_id, $args ) {
+	$query   = new \LCDR\DB\Query\Entities();
+	$updated = $query->update_entity( $entity_id, $args );
+	if ( is_lcdr_error( $updated ) ) {
+		return $updated;
+	}
+	if ( $updated ) {
+		return lcdr_get_entity( $entity_id );
+	} else {
+		return (int) $updated;
+	}
+}
+
+/**
+ * Delete entity
+ *
+ * @param int $entity_id Entity id.
+ * @return bool
+ */
+function lcdr_delete_entity( $entity_id ) {
+	$query   = new \LCDR\DB\Query\Entities();
+	$deleted = $query->delete_entity( $entity_id );
+	return (bool) $deleted;
+}
+
+/**
+ * Return entities
+ *
+ * @param array   $args Query args.
+ * @param boolean $count Count.
+ * @return array
+ */
+function lcdr_get_entities( $args, $count = false ) {
+	$query = new \LCDR\DB\Query\Entities();
+	if ( $count && ! isset( $args['count'] ) ) {
+		$args['count'] = true;
+		$entities      = $query->get_entities( $args );
+		return $entities;
+	}
+	$entities = $query->get_entities( $args );
+	return array_map( '\LCDR\DB\Row\Factory::create', $entities );
+}
+
+/**
+ *    ______         __           ___             _____         __
+ *   / ____/  ___   / /_         ( _ )           / ___/  ___   / /_
+ *  / / __   / _ \ / __/        / __ \/|         \__ \  / _ \ / __/
+ * / /_/ /  /  __// /_         / /_/  <         ___/ / /  __// /_
+ * \____/   \___/ \__/         \____/\/        /____/  \___/ \__/
+ */
 /**
  * Return the plugin field names that are stored in json type in the database
  *

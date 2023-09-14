@@ -38,10 +38,10 @@ class Concept extends Base {
 	public function set_schema() {
 		return array(
 			'wp' => array(
-				\WP_REST_Server::READABLE  => array(
+				'view' => array(
 					'schema' => 'mdorim/concept',
 				),
-				\WP_REST_Server::CREATABLE => array(
+				'edit' => array(
 					'schema'  => 'mdorim/concept',
 					'options' => array(
 						'definitions' => 'ConceptPost',
@@ -49,7 +49,7 @@ class Concept extends Base {
 				),
 			),
 			'la' => array(
-				\WP_REST_Server::READABLE => array(
+				'view' => array(
 					'schema' => 'linked-art/concept',
 				),
 			),

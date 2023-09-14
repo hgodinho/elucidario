@@ -153,26 +153,11 @@ test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 
 	$concept_id = $concept->add_entity( $concept_to_add );
 	expect( $concept_id )->toBeNumeric();
+
 	$saved = $concept->get_entity( $concept_id );
+
 	$referred_to_by = $saved->get_property( 'referred_to_by' );
-	expect( $concept_id )->toBeNumeric();
-	expect( $referred_to_by )->toBeArray()->toMatchArray(
-		array(
-			(object) array(
-				'type' => 'LinguisticObject',
-				'_label' => 'Teste 4',
-				'content' => 'Teste 4',
-				'language' => array(
-					(object) array(
-						'id' => 1,
-						'type' => 'Language',
-						'_label' => 'Português',
-					),
-				)
-			),
-			3,
-		)
-	);
+	expect( $referred_to_by )->toBeArray()->toMatchArray( $concept_to_add['referred_to_by'] );
 } );
 
 
@@ -272,20 +257,14 @@ test( '\LCDR\DB\Query\Concepts->update_entity()', function () {
 } );
 
 test( '\LCDR\DB\Query\Concepts->update_entity() wrong id throws exception', function () {
-	expect( function () {
-		$concepts = new \LCDR\DB\Query\Concepts();
-		$test = $concepts->update_entity(
-			0,
-			array(
-				'identified_by' => array(
-					(object) array(
-						'type' => 'Identifier',
-						'content' => 'Teste 3',
-					),
-				),
-			)
-		);
-	} )->toThrow( \Exception::class, 'Entity not found.' );
+	$concepts = new \LCDR\DB\Query\Concepts();
+	$test = $concepts->update_entity(
+		0,
+		array(
+			'type' => 'Concept',
+		)
+	);
+	expect( $test )->toBeInstanceOf( \LCDR\Error\Error::class);
 } );
 
 test( '\LCDR\DB\Row\Concept->get_property()', function () {

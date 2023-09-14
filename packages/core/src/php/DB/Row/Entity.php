@@ -223,7 +223,7 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		$this->status    = (string) $this->status;
 		$this->password  = (string) $this->password;
 		$this->created   = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
-		$this->_label    = (string) $this->label;
+		$this->_label = (string) $this->label; // phpcs:ignore
 
 		$this->init_relationships();
 		$this->init_mixed();
