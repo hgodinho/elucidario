@@ -1,0 +1,38 @@
+{
+    "title": "{{count:charts;legend=`Mapping` Entity.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Name"
+        },
+        {
+            "type": "string",
+            "name": "Type"
+        },
+        {
+            "type": "string",
+            "name": "Required"
+        },
+        {
+            "type": "string",
+            "name": "Description"
+        }
+    ],
+    "data": [
+        ["Name", "Type", "Required", "Description"],
+        ["mapping_id", "int", "yes", "Mapping ID."],
+        ["title", "string", "yes", "Mapping title"],
+        ["description", "string", "", "Mapping description"],
+        ["author", "int", "yes", "Mapping author ID"],
+        ["standard", "string", "yes", "Mapped standard name"],
+        ["standard_uri", "string", "yes", "Mapped standard URI"],
+        ["version", "string", "yes", "Mapping version"],
+        ["created", "datetime", "yes", "Creation date"],
+        ["modified", "datetime", "yes", "Update date"],
+        ["mapping", "`PropMap[]`", "yes", "Mapped properties"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Created by the author."
+    }
+}

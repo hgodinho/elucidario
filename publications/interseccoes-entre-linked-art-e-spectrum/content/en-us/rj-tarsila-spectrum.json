@@ -1,5 +1,5 @@
 {
-    "title": "{{count:figures;legend=Representação da identificação da obra Rio de Janeiro de Tarsila do Amaral utilizando Spectrum}}",
+    "title": "{{count:figures;legend=Representation of the identification of the painting Rio de Janeiro by Tarsila do Amaral using Spectrum}}",
     "fields": [
         {
             "type": "string",
@@ -18,7 +18,7 @@
         ["_Title language_", "Português-brasileiro"]
     ],
     "note": {
-        "label": "Fonte",
-        "content": "Elaborado pelo autor."
+        "label": "Source",
+        "content": "Developed by the author."
     }
 }

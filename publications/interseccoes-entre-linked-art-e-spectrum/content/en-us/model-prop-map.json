@@ -1,0 +1,43 @@
+{
+    "title": "{{count:charts;legend=`PropMap` Entity.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Name"
+        },
+        {
+            "type": "string",
+            "name": "Type"
+        },
+        {
+            "type": "string",
+            "name": "Required"
+        },
+        {
+            "type": "string",
+            "name": "Description"
+        }
+    ],
+    "data": [
+        ["Name", "Type", "Required", "Description"],
+        ["map_id", "int", "yes", "Mapped property ID"],
+        ["description", "string", "", "Mapped property description"],
+        ["prop_name", "string", "yes", "Target property name"],
+        ["entity_type", "string", "yes", "Target property type"],
+        ["external_prop_name", "string", "yes", "Origin property name"],
+        ["external_prop_uri", "string", "", "Origin property URI"],
+        ["external_prop_type", "string", "yes", "Origin property type"],
+        ["map_value", "any", "yes", "Mapped property value"],
+        [
+            "editable",
+            "boolean",
+            "",
+            "Indicates if the mapped property is editable"
+        ],
+        ["status", "string", "yes", "Mapped property status (active, inactive)"]
+    ],
+    "note": {
+        "label": "Source",
+        "content": "Developed by the author."
+    }
+}

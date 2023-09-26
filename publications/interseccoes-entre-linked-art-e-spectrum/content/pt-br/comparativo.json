@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Comparação entre Linked Art e Spectrum",
+    "title": "{{count:charts;legend=Comparação entre Spectrum (2022) e Linked Art (2021).}}",
     "fields": [
         {
             "type": "string",
@@ -36,11 +36,11 @@
         [
             "Principais utilizadores no Brasil",
             "Pinacoteca de São Paulo, Museu do Café, Museu da Imigração",
-            "Não encontrado"
+            "não encontrado"
         ],
         [
             "Formato",
-            "Não definido, estrutura \"flat\". Apresenta metadados especializados para cada tipo de informação descrita",
+            "Não definido, estrutura \"flat\". Apresenta metadados especializados para cada tipo de informação descrita, pode ser definido em fichas ou tabelas",
             "JSON-LD. Apresenta metadados mais genéricos e abrangentes, porém que permitem a contextualização mais precisa com o uso de vocabulários controlados"
         ],
         [

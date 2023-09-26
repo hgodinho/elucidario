@@ -1,3 +1,10 @@
 {
-    "files": ["summary.md", "introduction.md"]
+    "files": [
+        "summary.md",
+        "introduction.md",
+        "mdorim-mermaid.md",
+        "mdorim.md",
+        "intersections.md",
+        "conclusions.md"
+    ]
 }

@@ -1,0 +1,54 @@
+{
+    "title": "{{count:charts;legend=`Procedure` Entity.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Name"
+        },
+        {
+            "type": "string",
+            "name": "Type"
+        },
+        {
+            "type": "string",
+            "name": "Required"
+        },
+        {
+            "type": "string",
+            "name": "Description"
+        }
+    ],
+    "data": [
+        ["Name", "Type", "Required", "Description"],
+        ["id", "int", "yes", "Procedure ID"],
+        [
+            "type",
+            "string",
+            "yes",
+            "Procedure Type (one of the 21 Spectrum procedures)"
+        ],
+        ["description", "string", "", "Procedure description"],
+        ["author", "int", "yes", "Procedure author ID"],
+        ["created", "datetime", "yes", "Creation date"],
+        ["modified", "datetime", "yes", "Update date"],
+        [
+            "status",
+            "string",
+            "yes",
+            "Procedure status, which may be `draft`, `pending`, `done` or `scheduled`"
+        ],
+        ["related_entities", "array", "", "Related entities"],
+        [
+            "schedule",
+            "object",
+            "",
+            "`Schedule` object that defines the procedure execution schedule"
+        ],
+        ["data", "JSON", "yes", "Procedure data"],
+        ["history", "`History`", "yes", "History"]
+    ],
+    "note": {
+        "label": "Source",
+        "content": "Developed by the author."
+    }
+}
