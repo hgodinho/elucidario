@@ -46,8 +46,8 @@
             "sim",
             "sim",
             "sim",
-            "",
-            "",
+            "`list_users`",
+            "`list_users`",
             ""
         ],
         [
@@ -97,8 +97,7 @@
             ""
         ],
         ["`delete_others`", "todos", "todos", "todos", "", "", ""],
-        ["`publish_own`", "todos", "todos", "todos", "", "", ""],
-        ["`publish_others`", "todos", "todos", "todos", "", "", ""]
+        ["`publish`", "todos", "todos", "todos", "", "", ""]
     ],
     "note": {
         "label": "Fonte",

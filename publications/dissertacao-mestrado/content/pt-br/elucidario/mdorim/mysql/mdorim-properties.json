@@ -14,7 +14,7 @@
         ["Tipo", "Propriedades"],
         [
             "**Internas**: propriedades utilizadas internamente pelo sistema para seu devido funcionamento",
-            "entity_id, name, guid, author, status, password, created, modified"
+            "entity_id, name, guid, author, status, password, created, modified, history"
         ],
         [
             "**Valor**: propriedades do Linked Art utilizadas como colunas que armazenam valores de texto, números, datas, objetos, arrays, etc no Mdorim",

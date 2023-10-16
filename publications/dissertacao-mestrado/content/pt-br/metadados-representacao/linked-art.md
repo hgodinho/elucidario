@@ -82,7 +82,7 @@ A API do Linked Art é dividida em duas partes: _Shared Constructs_, ou Estrutur
 
 {{table:metadados-representacao/linked-art/properties.json}}
 
-As EC são estruturas de dados definidas no Linked Art que são utilizadas por mais de um endpoint. São objetos JSON que por sua vez utilizam as propriedades definidas nos quadros anteriores, além de apresentar algumas novas propriedades exclusivas. São elas [@linked-art2021.7]:
+As EC são estruturas de dados definidas no Linked Art que são utilizadas por mais de um endpoint. São objetos JSON que por sua vez utilizam as propriedades definidas nos quadros anteriores, além de apresentar algumas propriedades exclusivas. São elas [@linked-art2021.7]:
 
 {{table:metadados-representacao/linked-art/dimensions.json}}
 

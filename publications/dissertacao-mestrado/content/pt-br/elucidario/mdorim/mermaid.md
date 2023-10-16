@@ -16,9 +16,10 @@ type: mindmap
                 Configurações
                     Geral
                     Integrações
-            Mapping
-                PropMap
-            entidades(("Entidades"))
+            Procedimentos(("Procedimentos
+            Spectrum"))
+            entidades(("Entidades
+            Linked Art"))
                 Objetos
                 Conceitos
                 Objetos Digitais
@@ -26,13 +27,16 @@ type: mindmap
                 Representações
                 Pessoas
                 Grupos
-                Procedimentos(("`Procedimentos
-                Spectrum`"))
                 Eventos
                     Proveniências
                 Lugares
                 Conjuntos
+            Mapeamento
+                Propriedades
             Usuários
-                Níveis de permissão
+                Curadoria
+                Museologia
+                Assistência
+                Pesquisa
             Histórico de Edições
 ```

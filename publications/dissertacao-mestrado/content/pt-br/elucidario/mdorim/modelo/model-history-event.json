@@ -36,12 +36,7 @@
             "sim",
             "Nome da propriedade que passou pela edição"
         ],
-        [
-            "related_event",
-            "int",
-            "não",
-            "ID de um evento de edição relacionado"
-        ],
+        ["related_event", "int", "", "ID de um evento de edição relacionado"],
         ["current", "any", "sim", "Valor atual da propriedade"],
         ["previous", "any", "sim", "Valor anterior da propriedade"]
     ],

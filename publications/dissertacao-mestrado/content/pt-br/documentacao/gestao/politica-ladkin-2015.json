@@ -1,0 +1,24 @@
+{
+    "title": "{{count:charts;legend=Política de Gestão de Acervo - Gestão de Acervos (LADKIN, 2015)}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Etapa"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Etapa", "Descrição"],
+        [
+            "Criação de uma política de gestão de acervo",
+            "Deve abordar uma ampla variedades de assunto, como: missão e objetivo do museu; código de ética; registro; aquisição; direito e propriedade de uso; material sensível e protegido; avaliação e autenticação; desincorporação e descarte; retorno e restituição; catalogação, numeração e marcação; inventário; empréstimo; relatório de condições e glossário/padrões; documentação; preservação de coleções; armazenamento de coleções; manuseio e movimentação de coleções; fotografia; prevenção de desastres; seguro; acesso às coleções; segurança; exposições; ambiente controlado; monitoramento de coleções em exposição; embalagem e transporte; pesquisa; coleta de campo; procedimentos internos; pesquisadores e acadêmicos visitantes; análise destrutiva; coleções particulares e uso pessoal de coleções; conservação preventiva; e conservação."
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor com base em LADKIN, Nicola. (2015). Gestão de Acervo."
+    }
+}

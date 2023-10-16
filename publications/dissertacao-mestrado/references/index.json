@@ -594,6 +594,11 @@
             "id": "andersson2021",
             "slug": "the-inter-font-family",
             "path": "<references>/andersson2021_the-inter-font-family.json"
+        },
+        {
+            "id": "sveidqvist2023",
+            "slug": "mermaid-diagramming-and-charting-tool",
+            "path": "<references>/sveidqvist2023_mermaid-diagramming-and-charting-tool.json"
         }
     ]
 }
