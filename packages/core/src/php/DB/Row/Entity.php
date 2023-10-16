@@ -10,13 +10,14 @@ namespace LCDR\DB\Row;
 
 use \BerlinDB\Database\Row;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Entity row class.
@@ -100,7 +101,7 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 *
 	 * @var string
 	 */
-	public string $label = '';
+	public string $_label = '';
 
 	/**
 	 * Entity identifiers.
@@ -210,6 +211,9 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 */
 	public function __construct( $item = null ) {
 		parent::__construct( $this->trim_keys( $item ) );
+
+		$this->allowed_properties = $this->set_allowed_properties();
+
 		// properties.
 		$this->entity_id = (int) $this->entity_id;
 		$this->type      = (string) $this->type;
@@ -219,7 +223,7 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		$this->status    = (string) $this->status;
 		$this->password  = (string) $this->password;
 		$this->created   = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
-		$this->label     = (string) $this->label;
+		$this->_label = (string) $this->label; // phpcs:ignore
 
 		$this->init_relationships();
 		$this->init_mixed();
@@ -233,6 +237,15 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 */
 	public function get_relationships(): array {
 		return $this->relationships;
+	}
+
+	/**
+	 * Set the entity allowed properties.
+	 *
+	 * @return array
+	 */
+	public function set_allowed_properties() {
+		return array();
 	}
 
 	/**
@@ -257,10 +270,10 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		);
 		$this->relationships = $query->get_relationships_by_entity_id( $this->entity_id );
 		$allowed             = $this->allowed_properties ?? array();
+		$relationships       = array_merge(
+			lcdr_get_relationships_names(),
+		);
 		foreach ( $allowed as $property ) {
-			$relationships = array_merge(
-				lcdr_get_relationships_names(),
-			);
 			if ( in_array( $property, $relationships, true ) ) {
 				$property          = trim( $property );
 				$this->{$property} = $this->get_relationships_by_predicate( $property );
@@ -297,6 +310,7 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		return array_values(
 			array_map(
 				function ( $relationship ) {
+					$relationship = $this->parse_relationship_ids( $relationship );
 					if ( $relationship->subject === $this->entity_id ) {
 						return $relationship->object;
 					}
@@ -307,7 +321,6 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		);
 	}
 
-
 	/**
 	 *                 _             __
 	 *     ____  _____(_)   ______ _/ /____
@@ -317,19 +330,42 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 * /_/
 	 */
 	/**
+	 * Parse relationship ids.
+	 *
+	 * @param mixed $relationship Relationship.
+	 * @return object
+	 */
+	private function parse_relationship_ids( $relationship ) {
+		if ( is_object( $relationship ) ) {
+			$relationship = (array) $relationship;
+		}
+		if ( is_array( $relationship ) ) {
+			$relationship = array_map(
+				function ( $item ) {
+					return lcdr_parse_item_id( $item );
+				},
+				$relationship
+			);
+		} else {
+			$relationship = lcdr_parse_item_id( $relationship );
+		}
+		return (object) $relationship;
+	}
+
+	/**
 	 * Trim $item keys.
 	 *
-	 * @param array|\LCDR\DB\Interfaces\Entity $item
+	 * @param array|\LCDR\DB\Interfaces\Entity $item Item.
 	 * @return array
 	 */
 	private function trim_keys( $item ) {
 		if ( ! is_array( $item ) ) {
 			$item = (array) $item;
 		}
-		$newArray = array();
+		$new_array = array();
 		foreach ( $item as $key => $value ) {
-			$newArray[ trim( $key ) ] = $value;
+			$new_array[ trim( $key ) ] = $value;
 		}
-		return $newArray;
+		return $new_array;
 	}
 }

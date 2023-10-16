@@ -47,4 +47,4 @@ require LCDR_PATH . 'src/php/functions.php';
 
 global $lcdr;
 
-$lcdr = new LCDR\Core();
+$lcdr = LCDR\Core::get_instance();

@@ -10,7 +10,16 @@ type: mindmap
 ```mermaid
     mindmap
         root)"**Mdorim**"(
-            Entidades(("`Linked Art`"))
+            Opções
+                Importar
+                Exportar
+                Configurações
+                    Geral
+                    Integrações
+            Procedimentos(("Procedimentos
+            Spectrum"))
+            entidades(("Entidades
+            Linked Art"))
                 Objetos
                 Conceitos
                 Objetos Digitais
@@ -18,19 +27,16 @@ type: mindmap
                 Representações
                 Pessoas
                 Grupos
-                Procedimentos(("`Procedimentos
-                Spectrum`"))
                 Eventos
                     Proveniências
                 Lugares
                 Conjuntos
-            Opções
-                Importar
-                Exportar
-                Configurações
-                    Geral
-                    Integrações
+            Mapeamento
+                Propriedades
             Usuários
-                Níveis de permissão
+                Curadoria
+                Museologia
+                Assistência
+                Pesquisa
             Histórico de Edições
 ```

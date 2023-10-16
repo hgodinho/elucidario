@@ -8,13 +8,14 @@
 
 namespace LCDR\DB;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Core DB Class
@@ -23,11 +24,20 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  */
 final class Core {
 	/**
+	 *     __             _ __
+	 *    / /__________ _(_) /______
+	 *   / __/ ___/ __ `/ / __/ ___/
+	 *  / /_/ /  / /_/ / / /_(__  )
+	 *  \__/_/   \__,_/_/\__/____/
+	 */
+	use \LCDR\Utils\singleton;
+
+	/**
 	 * Table names.
 	 *
 	 * @var array
 	 */
-	public $table_names = array(
+	public static $tables_names = array(
 		'options'             => '\\LCDR\\DB\\Table\\Options',
 		'entities'            => '\\LCDR\\DB\\Table\\Entities',
 		'relationships'       => '\\LCDR\\DB\\Table\\Relationships',
@@ -45,6 +55,14 @@ final class Core {
 	protected $tables = array();
 
 	/**
+	 *                  __    ___
+	 *     ____  __  __/ /_  / (_)____
+	 *    / __ \/ / / / __ \/ / / ___/
+	 *   / /_/ / /_/ / /_/ / / / /__
+	 *  / .___/\__,_/_.___/_/_/\___/
+	 * /_/
+	 */
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -60,8 +78,8 @@ final class Core {
 	 * @return void
 	 */
 	public function init_tables() {
-		foreach ( $this->table_names as $table_name => $table ) {
-			$this->tables[ $table_name ] = new $table();
+		foreach ( $this::$tables_names as $name => $table ) {
+			$this->tables[ $name ] = new $table();
 		}
 	}
 

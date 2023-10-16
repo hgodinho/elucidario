@@ -95,7 +95,7 @@ function lcdr_snake_to_camel( $input ) {
  * @since 0.2.0
  */
 function lcdr_json_file( $file ) {
-	$json = file_get_contents( LCDR_PATH . $file ); // phpcs:ignore
+	$json = file_get_contents( $file ); // phpcs:ignore
 	return json_decode( $json, true );
 }
 
@@ -103,10 +103,139 @@ function lcdr_json_file( $file ) {
  * Return parsed item id
  *
  * @param mixed $id Item id.
- * @return int|bool
+ * @return \LCDR\Error\Error|int|false
  */
 function lcdr_parse_item_id( mixed $id ) {
+	if ( is_lcdr_error( $id ) ) {
+		return $id;
+	}
 	return is_numeric( $id ) ? absint( $id ) : false;
+}
+
+/**
+ * Return slug for entity
+ *
+ * @param int                     $id     Entity id.
+ * @param string                  $label  Label.
+ * @param string                  $status Status.
+ * @param \LCDR\DB\Query\Entities $entity_query Entities Query instance.
+ * @return string
+ */
+function lcdr_unique_entity_slug( int $id, string $label, string $status, \LCDR\DB\Query\Entities $entity_query = null ): string {
+	$slug = sanitize_title( $label );
+	if ( in_array( $status, array( 'draft', 'pending', 'auto-draft' ), true ) ) {
+		return $slug;
+	}
+	$query = $entity_query instanceof \LCDR\DB\Query\Entities ? $entity_query : new \LCDR\DB\Query\Entities();
+	if ( empty( $id ) ) {
+		return $slug;
+	}
+	$slug = $query->unique_slug( $slug, $id );
+	return $slug;
+}
+
+/**
+ * Return if $thing is an instance of \LCDR\Error
+ *
+ * @param mixed $thing Thing.
+ * @return bool
+ */
+function is_lcdr_error( $thing ) {
+	return is_wp_error( $thing ) && $thing instanceof \LCDR\Error\Base;
+}
+
+/**
+ * Validate value from schema
+ *
+ * @param mixed  $value Value.
+ * @param string $schema_name Schema name.
+ * @param array  $options Options.
+ * @return bool|\LCDR\Error\Error
+ */
+function lcdr_validate_value_from_schema( mixed $value, string $schema_name, ?array $options = array() ) {
+	global $lcdr;
+	return $lcdr->mdorim->schemas->validate( $schema_name, $value, $options );
+}
+
+/**
+ *    ______               __
+ *   / ____/______  ______/ /
+ *  / /   / ___/ / / / __  /
+ * / /___/ /  / /_/ / /_/ /
+ * \____/_/   \__,_/\__,_/
+ */
+/**
+ * Return entity by id
+ *
+ * @param int $entity_id Entity id.
+ * @return \LCDR\DB\Interfaces\Entity
+ */
+function lcdr_get_entity( $entity_id ) {
+	$query  = new \LCDR\DB\Query\Entities();
+	$entity = $query->get_entity( $entity_id );
+	return \LCDR\DB\Row\Factory::create( $entity );
+}
+
+/**
+ * Insert new entity
+ *
+ * @param array $args Entity args.
+ * @return int|\LCDR\Error\DB
+ */
+function lcdr_insert_entity( $args ) {
+	$query     = new \LCDR\DB\Query\Entities();
+	$entity_id = $query->add_entity( $args );
+	return lcdr_parse_item_id( $entity_id );
+}
+
+/**
+ * Update entity
+ *
+ * @param int   $entity_id Entity id.
+ * @param array $args Entity args.
+ * @return \LCDR\DB\Interfaces\Entity|int|\LCDR\Error\DB
+ */
+function lcdr_update_entity( $entity_id, $args ) {
+	$query   = new \LCDR\DB\Query\Entities();
+	$updated = $query->update_entity( $entity_id, $args );
+	if ( is_lcdr_error( $updated ) ) {
+		return $updated;
+	}
+	if ( $updated ) {
+		return lcdr_get_entity( $entity_id );
+	} else {
+		return (int) $updated;
+	}
+}
+
+/**
+ * Delete entity
+ *
+ * @param int $entity_id Entity id.
+ * @return bool
+ */
+function lcdr_delete_entity( $entity_id ) {
+	$query   = new \LCDR\DB\Query\Entities();
+	$deleted = $query->delete_entity( $entity_id );
+	return (bool) $deleted;
+}
+
+/**
+ * Return entities
+ *
+ * @param array   $args Query args.
+ * @param boolean $count Count.
+ * @return array
+ */
+function lcdr_get_entities( $args, $count = false ) {
+	$query = new \LCDR\DB\Query\Entities();
+	if ( $count && ! isset( $args['count'] ) ) {
+		$args['count'] = true;
+		$entities      = $query->get_entities( $args );
+		return $entities;
+	}
+	$entities = $query->get_entities( $args );
+	return array_map( '\LCDR\DB\Row\Factory::create', $entities );
 }
 
 /**
@@ -116,7 +245,6 @@ function lcdr_parse_item_id( mixed $id ) {
  * / /_/ /  /  __// /_         / /_/  <         ___/ / /  __// /_
  * \____/   \___/ \__/         \____/\/        /____/  \___/ \__/
  */
-
 /**
  * Return the plugin field names that are stored in json type in the database
  *
@@ -173,7 +301,7 @@ function lcdr_get_columns_names() {
 		lcdr_get_internal_properties(),
 		array(
 			'type',
-			'label',
+			'_label',
 		),
 		lcdr_get_json_properties(),
 	);
@@ -268,19 +396,18 @@ function lcdr_get_valid_properties() {
  */
 function lcdr_set_option( $option, $value ) {
 	$query = new \LCDR\DB\Query\Options();
-	return $query->update_option( $option, $value );
+	return $query->update_option( $option, \wp_json_encode( $value ) );
 }
 
 /**
  * Get lcdr option
  *
  * @param string $option  Option name.
- * @param mixed  $default Default value.
  *
  * @return mixed Option value.
  * @since 0.2.0
  */
-function lcdr_get_option( $option, $default = '' ) {
+function lcdr_get_option( $option ) {
 	$query = new \LCDR\DB\Query\Options();
-	return $query->get_option( $option, $default );
+	return json_decode( $query->get_option( $option ) );
 }

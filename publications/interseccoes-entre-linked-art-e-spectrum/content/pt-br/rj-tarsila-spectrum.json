@@ -1,5 +1,5 @@
 {
-    "title": "Quadro X: Representação da identificação da obra Rio de Janeiro de Tarsila do Amaral utilizando Spectrum",
+    "title": "{{count:figures;legend=Representação da identificação da obra Rio de Janeiro de Tarsila do Amaral utilizando Spectrum}}",
     "fields": [
         {
             "type": "string",
@@ -15,7 +15,7 @@
         ["_Object Name_", "Rio de Janeiro"],
         ["_Object Number_", "M-0821"],
         ["_Title_", "Rio de Janeiro"],
-        ["_Other Number_", "..."]
+        ["_Title language_", "Português-brasileiro"]
     ],
     "note": {
         "label": "Fonte",

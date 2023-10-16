@@ -1,0 +1,48 @@
+{
+    "title": "{{count:charts;legend=Procedimentos para Gestão de Acervo - Gestão de Acervos (LADKIN, 2015)}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Etapa"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Etapa", "Descrição"],
+        [
+            "Registo",
+            "Diz respeito à política e aos procedimentos, como o objeto foi adquirido, como é administrado, rastreado e às vezes descartado."
+        ],
+        [
+            "Aquisição e incorporações",
+            "Doação, legado, compra, troca, coleta, etc."
+        ],
+        [
+            "Desincorporação e descarte",
+            "Desincorporação é o processo de remoção permanente de um objeto do registro e do acervo, o descarte é a remoção física do museu para um local externo."
+        ],
+        [
+            "Catalogação, numeração e marcação",
+            "Catalogação é o processo de documentação e descrição das informações de um objeto, numeração é a atribuição de um número de identificação único e marcação é a aplicação de um número de identificação único no objeto."
+        ],
+        [
+            "Empréstimos",
+            "É o processo de realocação temporária da um objeto, seja ela de entrada ou saída."
+        ],
+        [
+            "Relatórios de condição",
+            "É o documento que descreve o estado de conservação de um objeto, geralmente é feito quando um objeto é incorporado, desincorporado ou emprestado, e também pode ser feito periodicamente."
+        ],
+        [
+            "Documentação",
+            "Registro de informações sobre um objeto, como sua história, condição, localização, etc."
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor com base em LADKIN, Nicola. (2015). Gestão de Acervo."
+    }
+}

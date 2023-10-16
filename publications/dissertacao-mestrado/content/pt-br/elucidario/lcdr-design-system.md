@@ -1,4 +1,4 @@
-### 9.1.2 @elucidario/pkg-design-system
+### 7.1.2 @elucidario/pkg-design-system
 
 **Escopo**
 

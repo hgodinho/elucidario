@@ -10,13 +10,14 @@ namespace LCDR\DB\Schema;
 
 use \BerlinDB\Database\Schema;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Options schema class.

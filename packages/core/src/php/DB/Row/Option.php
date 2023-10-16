@@ -10,13 +10,14 @@ namespace LCDR\DB\Row;
 
 use \BerlinDB\Database\Row;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Option row class.

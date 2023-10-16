@@ -1,4 +1,4 @@
-### 9.1.1 @elucidario/pkg-mdorim
+### 7.1.1 @elucidario/pkg-mdorim
 
 **Escopo**
 
@@ -8,6 +8,6 @@ O Modelo de Dados para Organização e Representação da Informação Museológ
 
 O Mdorim é composto por três partes principais:
 
-1. Modelo: Modelo de dados para representação das entidades e fluxos de trabalho baseados nos contextos de uso do sistema: leitura e escrita;
-2. MySQL Schema: Esquemas de tabelas MySQL para armazenamento dos dados;
-3. Interfaces: Interface para tradução dos rótulos e descrições dos metadados do modelo para português com habilitação da tradução para outros idiomas e interface de mapeamento dos dados em Linked Art para outros modelos.
+1. **Modelo de dados** para representação das entidades e fluxos de trabalho baseados nos contextos de uso do sistema: leitura e escrita;
+2. **MySQL Schema**: Esquemas de tabelas MySQL para armazenamento dos dados;
+3. **Interface para tradução** dos rótulos e descrições dos metadados do modelo para português com habilitação da tradução para outros idiomas.

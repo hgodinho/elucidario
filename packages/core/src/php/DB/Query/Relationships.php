@@ -10,13 +10,14 @@ namespace LCDR\DB\Query;
 
 use \BerlinDB\Database\Query;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Entities query class.
@@ -98,6 +99,8 @@ final class Relationships extends Query {
 	 *
 	 * @param int $relationship_id Relationship ID.
 	 * @return \LCDR\DB\Interfaces\Relationship
+	 *
+	 * @todo parse args
 	 */
 	public function get_relationship( $relationship_id ) {
 		$item = $this->get_item( $relationship_id );
@@ -108,11 +111,15 @@ final class Relationships extends Query {
 	 * Get relationships by entity id
 	 *
 	 * @param int         $entity_id Entity ID.
-	 * @param string|null $predicate Predicate.
+	 * @param string|null $predicate Predicate, if null, all relationships are returned.
 	 * @return \LCDR\DB\Interfaces\Relationship[] Array of relationships
+	 *
+	 * @todo parse args
 	 */
 	public function get_relationships_by_entity_id( $entity_id, $predicate = null ) {
+		// Filter the query clauses to change the AND operator to OR.
 		add_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
+		// Make the query.
 		$items = $this->query(
 			array(
 				'order'   => 'ASC',
@@ -120,7 +127,9 @@ final class Relationships extends Query {
 				'object'  => $entity_id,
 			),
 		);
+		// Remove the filter.
 		remove_filter( lcdr_hook( array( $this->item_name_plural, 'query', 'clauses' ) ), array( $this, 'filter_query_clauses' ) );
+		// Filter by predicate, if any.
 		if ( $predicate ) {
 			$items = array_filter(
 				$items,
@@ -135,8 +144,13 @@ final class Relationships extends Query {
 	/**
 	 * Filter query clauses
 	 *
+	 * Change the AND operator to OR, used to query relationships by entity id (subject or object).
+	 * It is primarily used by the method `get_relationships_by_entity_id`.
+	 *
 	 * @param array $clauses Query clauses.
 	 * @return array
+	 *
+	 * @todo parse args
 	 */
 	public function filter_query_clauses( $clauses = array() ) {
 		$clauses['where'] = str_replace( 'AND', 'OR', $clauses['where'] );
@@ -150,8 +164,7 @@ final class Relationships extends Query {
 	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
 	 */
 	public function add_relationship( $args = array() ) {
-		$args = $this->parse_args( $args );
-
+		$args   = $this->parse_args( $args );
 		$rel_id = parent::add_item(
 			/**
 			 * Filter the arguments before adding the relationship.
@@ -281,7 +294,6 @@ final class Relationships extends Query {
 	 */
 	protected function parse_args( array $args ) {
 		$parsed = array();
-
 		foreach ( $args as $key => $value ) {
 			$parsed[ $key ] = $this->sanitize_data( $key, $value );
 		}
@@ -299,7 +311,7 @@ final class Relationships extends Query {
 			if ( ! in_array( $parsed['predicate'], $relationships, true ) ) {
 				throw new \Exception(
 					sprintf(
-					/* translators: %s predicate value */
+						/* translators: %s predicate value */
 						__( '%s is not a valid relationship name.', 'lcdr' ),
 						$parsed['predicate']
 					)

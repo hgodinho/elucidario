@@ -1,0 +1,56 @@
+{
+    "title": "{{count:charts;legend=Comparação entre Spectrum (2022) e Linked Art (2021).}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Pontos de comparação"
+        },
+        {
+            "type": "string",
+            "name": "Spectrum"
+        },
+        {
+            "type": "string",
+            "name": "Linked art"
+        }
+    ],
+    "data": [
+        ["Pontos de comparação", "Spectrum", "Linked art"],
+        [
+            "Descrição",
+            "Procedimentos e unidades de informação para documentação museológica",
+            "Modelo de dados para aplicações para representação de informações sobre obras de artes em museus com foco na interoperabilidade entre sistemas"
+        ],
+        ["Origem", "Reino unido", "Multi-institucional"],
+        ["Versão", "5.1", "0.8.0"],
+        [
+            "Mantenedores",
+            "Collections Trust",
+            "Grupo de Trabalho Linked Art - CIDOC-ICOM"
+        ],
+        [
+            "Principais utilizadores",
+            "Todos os museus acreditados à Collections Trust no Reino Unido",
+            "Getty, MoMA, Rijksmuseum"
+        ],
+        [
+            "Principais utilizadores no Brasil",
+            "Pinacoteca de São Paulo, Museu do Café, Museu da Imigração",
+            "não encontrado"
+        ],
+        [
+            "Formato",
+            "Não definido, estrutura \"flat\". Apresenta metadados especializados para cada tipo de informação descrita, pode ser definido em fichas ou tabelas",
+            "JSON-LD. Apresenta metadados mais genéricos e abrangentes, porém que permitem a contextualização mais precisa com o uso de vocabulários controlados"
+        ],
+        [
+            "Dimensão",
+            "O Spectrum define 21 procedimentos para gestão museológica e 546 metadados para representação dos objetos e entidades relacionadas, que são divididos em três grupos: object information, procedural information e record management information",
+            "O Linked Art apresenta 11 entidades principais para representação da informação museológica e mais 27 classes complementares. O modelo também apresenta 91 metadados diferentes que são utilizados para descrever as classes e entidades"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

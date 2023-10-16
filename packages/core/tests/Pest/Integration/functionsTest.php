@@ -43,11 +43,13 @@ test( 'lcdr_get_option', function () {
 } );
 
 test( 'lcdr_json_file', function () {
-	expect( lcdr_json_file( 'node_modules/@elucidario/pkg-mdorim/static/mdorim/schemas/mdorim/core.json' ) )->toBeArray();
+	$json = lcdr_json_file( dirname( __FILE__, 3 ) . "/data/json-data.json" );
+	expect( $json )->toBeArray();
 } );
 
 test( 'lcdr_get_json_properties', function () {
-	expect( lcdr_get_json_properties() )->toBe(
+	$properties = lcdr_get_json_properties();
+	expect( $properties )->toBe(
 		array(
 			'identified_by',
 			'equivalent',
@@ -80,7 +82,7 @@ test( 'lcdr_get_columns_names', function () {
 			'password',
 			'created',
 			'type',
-			'label',
+			'_label',
 			'identified_by',
 			'equivalent',
 			'attributed_by',
@@ -155,7 +157,7 @@ test( 'lcdr_get_valid_properties', function () {
 			'password',
 			'created',
 			'type',
-			'label',
+			'_label',
 			'identified_by',
 			'equivalent',
 			'attributed_by',
@@ -211,4 +213,67 @@ test( 'lcdr_get_valid_properties', function () {
 			'referred_to_by'
 		)
 	);
+} );
+
+test( 'lcdr_get_entity()', function () {
+	$query = new \LCDR\DB\Query\Concepts();
+	global $item_id;
+	$item_id = $query->add_entity( array(
+		'type' => 'Type',
+		'_label' => 'relation-test',
+		'author' => 1,
+		'status' => 'publish',
+		'identified_by' => array(
+			(object) array(
+				'type' => 'Identifier',
+				'content' => 'Teste 2',
+			),
+		),
+	) );
+	$entity = lcdr_get_entity( $item_id );
+	$this->assertEquals( $entity->type, 'Type' );
+	expect( $entity )->toBeInstanceOf( \LCDR\DB\Row\Entity::class);
+} );
+
+test( 'lcdr_unique_entity_slug()', function () {
+	global $item_id;
+	$entity = lcdr_get_entity( $item_id );
+	expect( lcdr_unique_entity_slug( $entity->entity_id, $entity->_label, $entity->status ) )->toBe( "relation-test-{$item_id}" );
+} );
+
+test( 'lcdr_insert_entity()', function () {
+	global $item_id;
+	$query = new \LCDR\DB\Query\Concepts();
+	$item_id = $query->add_entity( array(
+		'type' => 'Type',
+		'_label' => 'relation-test',
+		'author' => 1,
+		'identified_by' => array(
+			(object) array(
+				'type' => 'Identifier',
+				'content' => 'Teste 2',
+			),
+		),
+	) );
+	$entity = lcdr_get_entity( $item_id );
+	$this->assertEquals( $entity->type, 'Type' );
+	expect( $entity )->toBeInstanceOf( \LCDR\DB\Row\Entity::class);
+} );
+
+test( 'lcdr_validate_value_from_schema', function () {
+	$value = lcdr_validate_value_from_schema(
+		(Object) array(
+			'@context' => 'https://linked.art/ns/v1/linked-art.json',
+			'id' => 'https://linked.art/example/event/1',
+			'type' => 'Event',
+			'_label' => 'Teste',
+			'identified_by' => array(
+				(object) array(
+					'type' => 'Identifier',
+					'content' => 'Teste 2',
+				),
+			)
+		), 'linked-art/event' );
+
+	expect( $value )->toBeTrue();
 } );

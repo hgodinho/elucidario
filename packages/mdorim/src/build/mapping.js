@@ -26,7 +26,7 @@ export const buildMapping = async (pkg, __dirname, outStatic) => {
             path.resolve(outStatic),
             "mapping.json",
             JSON.stringify(mapping, null, 4),
-            pkg
+            pkg,
         );
     } catch (err) {
         console.log(err, { type: "error", defaultLog: true, title: "Error" });

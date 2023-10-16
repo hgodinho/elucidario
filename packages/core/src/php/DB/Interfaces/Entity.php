@@ -16,4 +16,11 @@ interface Entity {
 	 * @return mixed
 	 */
 	public function get_property( string $property ): mixed;
+
+	/**
+	 * Get the allowed properties.
+	 *
+	 * @return array
+	 */
+	public function get_allowed_properties(): array;
 }

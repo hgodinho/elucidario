@@ -8,18 +8,28 @@
 
 namespace LCDR;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Core class.
  */
 class Core {
+	/**
+	 *     __             _ __
+	 *    / /__________ _(_) /______
+	 *   / __/ ___/ __ `/ / __/ ___/
+	 *  / /_/ /  / /_/ / / /_(__  )
+	 *  \__/_/   \__,_/_/\__/____/
+	 */
+	use \LCDR\Utils\singleton, \LCDR\Utils\debug;
+
 	/**
 	 * Options.
 	 *
@@ -35,19 +45,42 @@ class Core {
 	protected $db;
 
 	/**
-	 * Schema.
+	 * Mdorim.
 	 *
-	 * @var \LCDR\Mdorim\Schema
+	 * @var \Mdorim\Core
 	 */
-	public $schema;
+	public $mdorim;
 
+	/**
+	 * Users.
+	 *
+	 * @var \LCDR\Users\Core
+	 */
+	public $users;
+
+	/**
+	 *
+	 * @var \LCDR\Rest\Core
+	 */
+	public $rest;
+
+	/**
+	 *                  __    ___
+	 *     ____  __  __/ /_  / (_)____
+	 *    / __ \/ / / / __ \/ / / ___/
+	 *   / /_/ / /_/ / /_/ / / / /__
+	 *  / .___/\__,_/_.___/_/_/\___/
+	 * /_/
+	 */
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->db      = new \LCDR\DB\Core();
-		$this->options = new \LCDR\Options\Core();
-		$this->schema  = new \LCDR\Mdorim\Schema();
+		$this->mdorim = \Mdorim\Core::get_instance();
+		$this->users  = \LCDR\Users\Core::get_instance();
+		$this->db     = \LCDR\DB\Core::get_instance();
+		$this->rest   = \LCDR\Rest\Core::get_instance();
+		// $this->options = new \LCDR\Options\Core();
 
 		add_action( 'init', array( $this, 'textdomain' ) );
 	}
@@ -62,4 +95,13 @@ class Core {
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 		\load_textdomain( $domain, LCDR_PATH . "languages/php-{$domain}-{$locale}.mo" );
 	}
+
+	/**
+	 *                 _             __
+	 *     ____  _____(_)   ______ _/ /____
+	 *    / __ \/ ___/ / | / / __ `/ __/ _ \
+	 *   / /_/ / /  / /| |/ / /_/ / /_/  __/
+	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
+	 * /_/
+	 */
 }

@@ -1,53 +1,71 @@
 {
-    "$schema": "http://json-schema.org/schema#",
-    "$id": "https://linked.art/api/1.0/schema/person.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/linked-art/person.json",
     "title": "Person Schema",
     "description": "_crm:E21\\_Person_\nA human.\nSee: [API](https://linked.art/api/1.0/endpoint/person/) | [Model](https://linked.art/model/actor/)",
     "type": "object",
     "properties": {
-        "@context": { "$ref": "core.json#/definitions/ContextStringOrArray" },
-        "id": { "$ref": "core.json#/definitions/idProp" },
+        "@context": {
+            "$ref": "<linked-art>/core.json#/definitions/ContextStringOrArray"
+        },
+        "id": { "$ref": "<linked-art>/core.json#/definitions/idProp" },
         "type": {
             "allOf": [
                 {
                     "title": "General",
-                    "$ref": "core.json#/definitions/typeProp"
+                    "$ref": "<linked-art>/core.json#/definitions/typeProp"
                 },
                 { "title": "Specific", "type": "string", "const": "Person" }
             ]
         },
-        "_label": { "$ref": "core.json#/definitions/labelProp" },
-        "identified_by": { "$ref": "core.json#/definitions/identified_byProp" },
-        "classified_as": { "$ref": "core.json#/definitions/classified_asProp" },
+        "_label": { "$ref": "<linked-art>/core.json#/definitions/labelProp" },
+        "identified_by": {
+            "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+        },
+        "classified_as": {
+            "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+        },
         "referred_to_by": {
-            "$ref": "core.json#/definitions/referred_to_byProp"
+            "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
         },
         "equivalent": {
             "allOf": [
                 {
                     "title": "General",
-                    "$ref": "core.json#/definitions/equivalentProp"
+                    "$ref": "<linked-art>/core.json#/definitions/equivalentProp"
                 },
                 {
                     "title": "Specific",
                     "description": "List of `Person` entities",
                     "type": "array",
-                    "items": { "$ref": "core.json#/definitions/PersonRef" }
+                    "items": {
+                        "$ref": "<linked-art>/core.json#/definitions/PersonRef"
+                    }
                 }
             ]
         },
         "representation": {
-            "$ref": "core.json#/definitions/representationProp"
+            "$ref": "<linked-art>/core.json#/definitions/representationProp"
         },
-        "member_of": { "$ref": "core.json#/definitions/member_ofGroupProp" },
-        "subject_of": { "$ref": "core.json#/definitions/subject_ofProp" },
+        "member_of": {
+            "$ref": "<linked-art>/core.json#/definitions/member_ofGroupProp"
+        },
+        "subject_of": {
+            "$ref": "<linked-art>/core.json#/definitions/subject_ofProp"
+        },
         "attributed_by": {
-            "$ref": "core.json#/definitions/attributed_byRelProp"
+            "$ref": "<linked-art>/core.json#/definitions/attributed_byRelProp"
         },
 
-        "carried_out": { "$ref": "core.json#/definitions/carried_outProp" },
-        "contact_point": { "$ref": "core.json#/definitions/contact_pointProp" },
-        "residence": { "$ref": "core.json#/definitions/residenceProp" },
+        "carried_out": {
+            "$ref": "<linked-art>/core.json#/definitions/carried_outProp"
+        },
+        "contact_point": {
+            "$ref": "<linked-art>/core.json#/definitions/contact_pointProp"
+        },
+        "residence": {
+            "$ref": "<linked-art>/core.json#/definitions/residenceProp"
+        },
 
         "born": {
             "title": "crm:P98i_was_born",
@@ -70,7 +88,7 @@
                     "allOf": [
                         {
                             "title": "General",
-                            "$ref": "core.json#/definitions/typeProp"
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
                         },
                         {
                             "title": "Specific",
@@ -79,21 +97,27 @@
                         }
                     ]
                 },
-                "_label": { "$ref": "core.json#/definitions/labelProp" },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
                 "identified_by": {
-                    "$ref": "core.json#/definitions/identified_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
                 },
                 "classified_as": {
-                    "$ref": "core.json#/definitions/classified_asProp"
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
                 },
                 "referred_to_by": {
-                    "$ref": "core.json#/definitions/referred_to_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
                 },
                 "took_place_at": {
-                    "$ref": "core.json#/definitions/took_place_atProp"
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
                 },
-                "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-                "caused_by": { "$ref": "core.json#/definitions/caused_byProp" }
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                }
             }
         },
         "Death": {
@@ -105,7 +129,7 @@
                     "allOf": [
                         {
                             "title": "General",
-                            "$ref": "core.json#/definitions/typeProp"
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
                         },
                         {
                             "title": "Specific",
@@ -114,21 +138,27 @@
                         }
                     ]
                 },
-                "_label": { "$ref": "core.json#/definitions/labelProp" },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
                 "identified_by": {
-                    "$ref": "core.json#/definitions/identified_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
                 },
                 "classified_as": {
-                    "$ref": "core.json#/definitions/classified_asProp"
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
                 },
                 "referred_to_by": {
-                    "$ref": "core.json#/definitions/referred_to_byProp"
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
                 },
                 "took_place_at": {
-                    "$ref": "core.json#/definitions/took_place_atProp"
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
                 },
-                "timespan": { "$ref": "core.json#/definitions/timespanProp" },
-                "caused_by": { "$ref": "core.json#/definitions/caused_byProp" }
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                }
             }
         }
     },

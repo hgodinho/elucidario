@@ -1,0 +1,40 @@
+{
+    "title": "{{count:charts;legend=Acesso do público ao Acervo - Gestão de Acervos (LADKIN, 2015)}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Etapa"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Etapa", "Descrição"],
+        [
+            "Segurança",
+            "Controle de acesso físico do público, funcionários e prestadores de serviço ao acervo."
+        ],
+        [
+            "Salas e galerias de exibição e exposição",
+            "As salas podem ser de exposição de curta ou longa duração, podem expor recortes ou coleções completas, e estão expostas a diferentes riscos de segurança, como roubo, vandalismo, incêndio, inundação, entre outros."
+        ],
+        [
+            "Monitoramento das coleções expostas",
+            "As galerias devem ser inspecionadas regularmente para controle do ambiente e a proteção das coleções."
+        ],
+        [
+            "Materiais próprios para exibição",
+            "Os materiais indicados para armazenar as obras podem ser usados na montagem e apresentação de um exposição."
+        ],
+        [
+            "Empacotamento e envio",
+            "Consiste na parte de montagem de exposição, empacotar e transportar as coleções de um local para outro."
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor com base em LADKIN, Nicola. (2015). Gestão de Acervo."
+    }
+}

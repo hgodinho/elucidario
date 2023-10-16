@@ -1,0 +1,56 @@
+{
+    "title": "{{count:charts;legend=Comparison between Spectrum (2022) and Linked Art (2021).}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Comparison points"
+        },
+        {
+            "type": "string",
+            "name": "Spectrum"
+        },
+        {
+            "type": "string",
+            "name": "Linked art"
+        }
+    ],
+    "data": [
+        ["Comparison points", "Spectrum", "Linked art"],
+        [
+            "Description",
+            "Procedures and units of information for the management of museum collections",
+            "Data model for applications to represent information cultural heritage with a focus on interoperability between systems"
+        ],
+        ["Origin", "United Kingdom", "Multi-institutional"],
+        ["Version", "5.1", "0.8.0"],
+        [
+            "Maintainers",
+            "Collections Trust",
+            "Linked Art Working Group - CIDOC-ICOM"
+        ],
+        [
+            "Main users",
+            "All Collections Trust accredited museums in the UK",
+            "Getty, MoMA, Rijksmuseum"
+        ],
+        [
+            "Main users in Brazil",
+            "Pinacoteca de São Paulo, Museu do Café, Museu da Imigração",
+            "not found"
+        ],
+        [
+            "Format",
+            "Not defined, \"flat\" structure. Presents specialized metadata for each type of information described, can be defined in files or tables",
+            "JSON-LD. It presents more generic and comprehensive metadata, but allows more precise contextualization with the use of controlled vocabularies"
+        ],
+        [
+            "Dimensão",
+            "Spectrum defines 21 procedures for museum management and 546 metadata for representing objects and related entities, which are divided into three groups: object information, procedural information and record management information",
+            "Linked Art presents 11 main entities for representing cultural heritage information and 27 additional classes. The model also presents 91 different metadata that are used to describe classes and entities"
+        ]
+    ],
+    "note": {
+        "label": "Source",
+        "content": "Developed by the author."
+    }
+}

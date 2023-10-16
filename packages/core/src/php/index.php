@@ -15,5 +15,4 @@
  * Text Domain:       <!TEXT_DOMAIN>
  * Domain Path:       <!DOMAIN_PATH>
  */
-
 require_once __DIR__ . '/lcdr.php';

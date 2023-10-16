@@ -1,0 +1,30 @@
+{
+    "identified_by": [
+        {
+            "type": "Identifier",
+            "_label": "Accession Number",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300404621",
+                    "_label": "Accession Number"
+                }
+            ],
+            "content": "M-0821"
+        },
+        {
+            "type": "Name",
+            "_label": "Title",
+            "classified_as": [
+                {
+                    "id": "http://vocab.getty.edu/aat/300404621",
+                    "_label": "Title"
+                }
+            ],
+            "content": "Rio de Janeiro",
+            "language": {
+                "type": "Language",
+                "_label": "Português brasileiro"
+            }
+        }
+    ]
+}

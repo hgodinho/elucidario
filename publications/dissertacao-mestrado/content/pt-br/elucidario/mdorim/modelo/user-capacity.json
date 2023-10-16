@@ -41,16 +41,63 @@
             "Público"
         ],
         ["sistema", "sim", "", "", "", "", ""],
-        ["`create_users`", "sim", "sim", "sim", "", "", ""],
-        ["`see`", "sim", "sim", "sim", "sim", "sim", "sim"],
-        ["`create`", "sim", "sim", "sim", "sim", "sim", ""],
-        ["`edit_own`", "sim", "sim", "sim", "sim", "sim", ""],
-        ["`edit_others`", "sim", "sim", "sim", "sim", "sim", ""],
-        ["`edit_published`", "sim", "sim", "sim", "sim", "", ""],
-        ["`delete_own`", "sim", "sim", "sim", "sim", "", ""],
-        ["`delete_others`", "sim", "sim", "sim", "", "", ""],
-        ["`publish_own`", "sim", "sim", "sim", "", "", ""],
-        ["`publish_others`", "sim", "sim", "sim", "", "", ""]
+        [
+            "`create_users`, `delete_users`, `list_users`",
+            "sim",
+            "sim",
+            "sim",
+            "`list_users`",
+            "`list_users`",
+            ""
+        ],
+        [
+            "`see`",
+            "todos",
+            "todos",
+            "todos",
+            "todos",
+            "todos",
+            "`entities`, `mapping`"
+        ],
+        [
+            "`create`",
+            "todos",
+            "todos",
+            "todos",
+            "`entities`, `procedures`, `mapping`",
+            "`entities`, `mapping`",
+            ""
+        ],
+        [
+            "`edit_own`",
+            "todos",
+            "todos",
+            "todos",
+            "`entities`, `procedures`, `mapping`",
+            "`entities`, `mapping`",
+            ""
+        ],
+        [
+            "`edit_others`",
+            "todos",
+            "todos",
+            "todos",
+            "`entities`, `procedures`, `mapping`",
+            "`entities`, `mapping`",
+            ""
+        ],
+        ["`edit_published`", "todos", "todos", "todos", "`entities`", "", ""],
+        [
+            "`delete_own`",
+            "todos",
+            "todos",
+            "todos",
+            "`entities`, `procedures`, `mapping`",
+            "",
+            ""
+        ],
+        ["`delete_others`", "todos", "todos", "todos", "", "", ""],
+        ["`publish`", "todos", "todos", "todos", "", "", ""]
     ],
     "note": {
         "label": "Fonte",

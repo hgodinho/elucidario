@@ -10,13 +10,14 @@ namespace LCDR\DB\Query;
 
 use \BerlinDB\Database\Query;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 /**
  * Options query class.
@@ -80,7 +81,7 @@ final class Options extends Query {
 	 */
 	public function get_option( string $option ) {
 		$item = $this->get_item_by( 'name', $option );
-		return $item->value;
+		return $item ? $item->value : false;
 	}
 
 	/**

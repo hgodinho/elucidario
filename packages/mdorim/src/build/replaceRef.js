@@ -16,10 +16,18 @@ export const replaceRef = (schema, ext = false, ref) => {
                     ext ? `${ref}/schemas/mdorim` : ".",
                 );
             }
+            if (newSchema[key].includes("<mapping>")) {
+                if (ext && !ref) throw new Error("No ref provided");
+                newSchema[key] = newSchema[key].replace(
+                    "<local>",
+                    ext ? `${ref}/schemas/mapping` : ".",
+                );
+            }
             if (newSchema[key].includes("<linked-art>")) {
                 newSchema[key] = newSchema[key].replace(
                     "<linked-art>",
-                    ext ? `https://linked.art/api/1.0/schema` : "linked-art",
+                    ext ? `${ref}/schemas/linked-art` : ".",
+                    // ext ? `https://linked.art/api/1.0/schema` : "linked-art",
                 );
             }
         } else if (typeof newSchema[key] === "object") {

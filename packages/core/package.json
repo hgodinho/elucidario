@@ -12,6 +12,7 @@
         "make-pot": "node ./.bin/make-pot.js",
         "test": "pnpm .bin/test.sh",
         "lint": "pnpm .bin/lint.sh",
+        "jest": "jest --coverage",
         "db:reset-test": "rm -r ./wp/src/wp-content/database"
     },
     "dependencies": {

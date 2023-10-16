@@ -20,7 +20,17 @@
                     "_label": "Title"
                 }
             ],
-            "content": "Rio de Janeiro"
+            "content": "Rio de Janeiro",
+            "language": {
+                "type": "Language",
+                "_label": "Português brasileiro",
+                "classified_as": [
+                    {
+                        "id": "http://vocab.getty.edu/aat/300440719",
+                        "_label": "Brazilian portuguese"
+                    }
+                ]
+            }
         }
     ]
 }

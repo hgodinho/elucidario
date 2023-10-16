@@ -10,14 +10,6 @@ namespace LCDR\Utils;
 
 use DateTimeZone;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
-if ( ! defined( 'LCDR_PATH' ) ) {
-	exit;
-}
-
 /**
  * Debug class.
  */

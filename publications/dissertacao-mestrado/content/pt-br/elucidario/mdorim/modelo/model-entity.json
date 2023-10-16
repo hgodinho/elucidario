@@ -23,17 +23,17 @@
         ["entity_id", "int", "sim", "ID da entidade"],
         ["name", "string", "sim", "Nome da entidade"],
         [
-            "guid",
+            "uuid",
             "string",
             "sim",
-            "Identificador Global Exclusivo (GUID) da entidade"
+            "Identificador Único Universal (UUID) da entidade"
         ],
         ["author", "int", "sim", "ID do autor da entidade"],
         ["status", "string", "sim", "Status da entidade no sistema"],
         [
             "password",
             "string",
-            "não",
+            "",
             "Senha para acesso à entidade, utilizada pela API"
         ],
         ["created", "datetime", "sim", "Data de criação da entidade"],

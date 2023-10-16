@@ -3,12 +3,15 @@
     "_links": {
         "concepts": [
             {
+                "id": 1,
                 "href": "http://exemplo.com/wp-json/lcdr/v1/concepts/1"
             },
             {
+                "id": 2,
                 "href": "http://exemplo.com/wp-json/lcdr/v1/concepts/2"
             },
             {
+                "id": 3,
                 "href": "http://exemplo.com/wp-json/lcdr/v1/concepts/3"
             }
         ]

@@ -46,7 +46,7 @@
         [
             "editable",
             "boolean",
-            "não",
+            "",
             "Se a propriedade pode ser editada na UI do sistema"
         ],
         [

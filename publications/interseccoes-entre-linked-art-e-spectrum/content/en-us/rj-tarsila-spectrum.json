@@ -1,0 +1,24 @@
+{
+    "title": "{{count:figures;legend=Representation of the identification of the painting Rio de Janeiro by Tarsila do Amaral using Spectrum}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Metadado"
+        },
+        {
+            "type": "string",
+            "name": "Valor"
+        }
+    ],
+    "data": [
+        ["Metadado", "Valor"],
+        ["_Object Name_", "Rio de Janeiro"],
+        ["_Object Number_", "M-0821"],
+        ["_Title_", "Rio de Janeiro"],
+        ["_Title language_", "Português-brasileiro"]
+    ],
+    "note": {
+        "label": "Source",
+        "content": "Developed by the author."
+    }
+}

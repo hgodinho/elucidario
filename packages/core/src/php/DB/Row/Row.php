@@ -8,15 +8,23 @@
 
 namespace LCDR\DB\Row;
 
+// @codeCoverageIgnoreStart
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 if ( ! defined( 'LCDR_PATH' ) ) {
 	exit;
 }
+// @codeCoverageIgnoreEnd
 
 trait Row {
+	/**
+	 * Allowed properties.
+	 *
+	 * @var array
+	 */
+	public $allowed_properties;
+
 	/**
 	 * Get the entity property.
 	 *
@@ -31,5 +39,14 @@ trait Row {
 			return json_decode( $this->{$property} );
 		}
 		return $this->{$property};
+	}
+
+	/**
+	 * Get the allowed properties.
+	 *
+	 * @return array
+	 */
+	public function get_allowed_properties(): array {
+		return $this->allowed_properties;
 	}
 }

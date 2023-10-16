@@ -26,7 +26,7 @@ Para o entendimento das seções a seguir, é importante primeiro definirmos alg
 
 **_Front-end_**: é o conjunto de tecnologias e ferramentas utilizadas para construção da interface de usuário. É a parte do sistema que é visível para o usuário, esta diretamente relacionada a _User Interface_ (UI).
 
-**_Headless_**: é utilizado para referir-se a sistemas que não possuem uma interface de usuário final (UI), mas possuem uma API Rest para leitura e escrita. Um sistema _headless_ pode ser utilizado como _back-end_ para um sistema _front-end_, e sua API pode ser utilizada para construção de interfaces de usuário em diferentes plataformas, como aplicações web, mobile, etc.
+**_Headless_**: é utilizado para referir-se a sistemas que não possuem uma interface de usuário final (UI), mas possuem uma API Rest para leitura e escrita. Um sistema _headless_ pode ser utilizado como _back-end_ para um sistema _front-end_, e sua API pode ser utilizada para alimentar interfaces de usuário em diferentes plataformas, como aplicações web, mobile, etc.
 
 **i18n (internationalization)**: é a internacionalização de um sistema, ou seja, a adaptação de um sistema para diferentes idiomas e culturas. O termo i18n é uma abreviação de "_internationalization_" que contém 18 letras entre a letra "i" e a letra "n".
 
@@ -48,7 +48,7 @@ Para o entendimento das seções a seguir, é importante primeiro definirmos alg
 
 ## 7.1. O Repositório
 
-As principais linguagens de programação utilizadas no código-fonte do Elucidário.art são PHP 7.2 [@php2022], TypeScript [@microsoft2023], JavaScript [@mdn2022] e JSON [@ietf2017], e, estão estruturadas em um repositório utilizando a arquitetura _monorepo_, ou seja, um repositório que contém múltiplos projetos [@narwhal-technologies-inc2022]. Optamos por utilizar esta arquitetura para facilitar o desenvolvimento e a manutenção do código-fonte, pois desta forma podemos reutilizar pacotes em diferentes projetos, como em bibliotecas, plugins, temas, etc. Esta arquitetura também pode ser chamada de micro-serviços (_microservices_), onde cada pacote é um serviço que pode ser desenvolvido, testado e publicado de maneira independente, o que facilita a manutenção e estimula a evolução independente de cada pacote.
+As principais linguagens de programação utilizadas no código-fonte do Elucidário.art são PHP 8.2 [@php2022], TypeScript [@microsoft2023], JavaScript [@mdn2022] e JSON [@ietf2017], e, estão estruturadas em um repositório utilizando a arquitetura _monorepo_, ou seja, um repositório que contém múltiplos projetos [@narwhal-technologies-inc2022]. Optamos por utilizar esta arquitetura para facilitar o desenvolvimento e a manutenção do código-fonte, pois desta forma podemos reutilizar pacotes em diferentes projetos, como em bibliotecas, plugins, temas, etc. Esta arquitetura também pode ser chamada de micro-serviços (_microservices_), onde cada pacote é um serviço que pode ser desenvolvido, testado e publicado de maneira independente, o que facilita a manutenção e estimula a evolução independente de cada pacote.
 
 Utilizamos o Git [@torvalds2005] para o controle de versão dos pacotes, o GitHub [@github2008] para hospedagem do repositório e o Versionamento Semântico (_Semantic Versioning_ ou _SemVer_) [@sem-ver2023] para definição das versões públicas dos pacotes. O SemVer define três tipos diferentes de incrementação de versão: _major_, _minor_ e _patch_. O _major_ é incrementado quando há mudanças incompatíveis na API, ou seja, quando a forma de usar as suas funções, métodos, classes, e etc, são alteradas; o _minor_ é incrementado quando há adição de funcionalidades compatíveis com versões anteriores; e o _patch_ é incrementado quando há correção de _bugs_, também compatíveis com versões anteriores.
 
@@ -58,7 +58,7 @@ Utilizamos o Git [@torvalds2005] para o controle de versão dos pacotes, o GitHu
 
 Para assegurarmos a qualidade do código-fonte, e se seus objetivos estão sendo atingidos, criamos um conjunto de testes automatizados para cada um dos pacotes, configurados especificamente para cada linguagem de programação e ambiente. Estes testes rodam automaticamente no ambiente local a cada nova alteração no código-fonte adicionada ao controle de versão utilizando a biblioteca Husky [@typicode2018], e em um ambiente de integração contínua (_CI_) (sincronização remota) utilizando o GitHub Actions [@github2018].
 
-O repositório pode ser acessado no link <https://github.com/hgodinho/elucidario> e é organizado da seguinte forma:
+O repositório pode ser acessado no link <https://github.com/hgodinho/elucidario> e, em resumo, é organizado da seguinte forma:
 
 ```bash
 elucidario
@@ -66,11 +66,12 @@ elucidario
 ├── apps
 ├── publications
 ├── references
+├── ...
 ```
 
 O diretório "_packages_" contém os pacotes que podem ser reutilizados, tanto por outros pacotes, como por aplicações. Todos os pacotes definidos nesta pasta seguem o padrão de nome "@elucidario/pkg-\<nome-pacote\>".
 
-No diretório "_apps_", se encontram as aplicações, como um ambiente de desenvolvimento completo utilizando Docker para testes locais e o site da documentação disponível em <http://elucidario.art/doc>. Os pacotes nesta pasta seguem o padrão de nome "@elucidario/app-\<nome-pacote\>".
+No diretório "_apps_", se encontram as aplicações, como um ambiente de desenvolvimento completo utilizando Docker para testes locais e o site do Elucidário.art disponível em <http://elucidario.art/>. Os pacotes nesta pasta seguem o padrão de nome "@elucidario/app-\<nome-pacote\>".
 
 O diretório "_publications_" contém as publicações referentes ao Elucidário.art, como a dissertação de mestrado e outros artigos desenvolvidos ao longo da pesquisa. Os pacotes nesta pasta seguem o padrão de nome "@elucidario/pub-\<nome-pacote\>".
 

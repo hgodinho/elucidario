@@ -1,0 +1,3 @@
+# Conclusões
+
+O Mdorim é um modelo de dados para uso no plugin Elucidário.art em desenvolvimento e com previsão de lançamento até o fim deste ano. O modelo foi desenvolvido para ser flexível e permitir a representação e descrição de Coleções de Arte pertencentes a Museus. O modelo foi desenvolvido com base em dois padrões: Linked Art e Spectrum. O Linked Art foi escolhido por ser um padrão para descrever o patrimônio cultural, e é responsável pela descrição das entidades do Mdorim. Já o Spectrum foi escolhido por conta dos procedimentos que são utilizados para representar os fluxos de trabalho do Elucidario.art.

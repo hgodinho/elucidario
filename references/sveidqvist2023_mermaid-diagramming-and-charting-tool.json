@@ -1,0 +1,24 @@
+{
+    "id": "sveidqvist2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "mermaid-diagramming-and-charting-tool",
+    "_create": "2023-09-06T03:58:12.218Z",
+    "_update": "2023-09-06T03:58:12.218Z",
+    "type": "webpage",
+    "title": "Mermaid Diagramming and charting tool",
+    "author": [
+        {
+            "family": "Sveidqvist",
+            "given": "Knut"
+        },
+        {
+            "family": "Vinod",
+            "given": "Sidharth"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-09-06"
+    },
+    "url": "https://mermaid.js.org"
+}

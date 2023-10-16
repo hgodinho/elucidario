@@ -12,7 +12,7 @@ uses( TestCase::class);
 $db;
 $data_entity_to_test_against = array(
 	'type' => 'Type',
-	'name' => 'relation-test',
+	'_label' => 'relation-test',
 	'author' => 1,
 	'identified_by' => array(
 		(object) array(
@@ -30,8 +30,9 @@ beforeAll( function () {
 	$entity_to_test_against = $entity_query->add_entity( $data_entity_to_test_against );
 } );
 
-afterAll( function () {
-
+test( '\LCDR\DB\Row\Factory::create() with empty array data return Error', function () {
+	$entity = \LCDR\DB\Row\Factory::create( array() );
+	expect( $entity )->toBeInstanceOf( \LCDR\Error\Factory::class);
 } );
 
 test( '\LCDR\DB\Row\Factory::create() with array data', function () {
@@ -40,8 +41,16 @@ test( '\LCDR\DB\Row\Factory::create() with array data', function () {
 	expect( $entity )->toBeInstanceOf( \LCDR\DB\Row\Concept::class);
 } );
 
-test( '\LCDR\DB\Row\Factory::create() with object data', function () {
+test( '\LCDR\DB\Row\Factory::create() with int (ID) data', function () {
 	global $entity_to_test_against;
 	$entity = \LCDR\DB\Row\Factory::create( $entity_to_test_against );
+	expect( $entity )->toBeInstanceOf( \LCDR\DB\Row\Concept::class);
+} );
+
+test( '\LCDR\DB\Row\Factory::create() with \LCDR\DB\Row\Entity data', function () {
+	global $entity_to_test_against;
+	$entity_query = new \LCDR\DB\Query\Entities();
+	$entity_to_test = $entity_query->get_entity( $entity_to_test_against );
+	$entity = \LCDR\DB\Row\Factory::create( $entity_to_test );
 	expect( $entity )->toBeInstanceOf( \LCDR\DB\Row\Concept::class);
 } );

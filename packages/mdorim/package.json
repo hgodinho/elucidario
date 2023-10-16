@@ -29,8 +29,9 @@
         "buildScript": "node src/build/build.js",
         "clean:docs": "rm -rf docs/*",
         "clean:static": "rm -rf static/*",
-        "dev": "pnpm buildScript -c -s -e -t -m -w --test",
-        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
+        "dev": "pnpm buildScript -c -s -e -t -m -w",
+        "jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
+        "test": "pnpm .bin/test.sh"
     },
     "dependencies": {
         "@babel/plugin-syntax-import-attributes": "^7.22.5",

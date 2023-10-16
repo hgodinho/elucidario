@@ -38,8 +38,23 @@
             "KEY",
             "Nome do mapeamento em kebab-case"
         ],
+        [
+            "guid",
+            "varchar(255)",
+            "",
+            "UNIQUE",
+            "Identificador Único Global da entidade no sistema"
+        ],
         ["title", "varchar(255)", "NOT NULL", "KEY", "Título do mapeamento"],
+        [
+            "standard",
+            "varchar(255)",
+            "NOT NULL",
+            "KEY",
+            "Nome do modelo mapeado"
+        ],
         ["description", "longtext", "", "", "Descrição do mapeamento"],
+        ["uri", "varchar(255)", "", "", "URI do modelo mapeado"],
         [
             "author",
             "bigint(20) unsigned",

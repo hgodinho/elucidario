@@ -27,6 +27,7 @@
         ["author", "int", "sim", "ID do autor do mapeamento"],
         ["standard", "string", "sim", "Nome do modelo que será mapeado"],
         ["standard_uri", "string", "sim", "URI do modelo que será mapeado"],
+        ["version", "string", "sim", "Versão do mapeamento"],
         ["created", "datetime", "sim", "Data de criação do mapeamento"],
         ["modified", "datetime", "sim", "Data de atualização do mapeamento"],
         ["mapping", "`PropMap[]`", "sim", "Propriedades mapeadas"]

@@ -1,4 +1,4 @@
-# 5. Documentação museológica
+# 5. Gestão e Documentação museológica
 
 > O documento é suporte que evidencia algo a alguém e que, ao passar por um processo técnico específico, manifesta seu potencial informativo. Ele é o meio que nos traz a informação e, assim, permite que o indivíduo produza conhecimentos diversos. [@padilha2014 p.14]
 
@@ -10,4 +10,16 @@ Na ausência de uma autoridade nacional para definir o escopo de trabalho dos mu
 
 Já no decreto nº 8.124 de 17 de outubro de 2013 assinado pela então presidenta Dilma Rousseff, que regulamenta os dispositivos da lei nº 11.904, decreta no artigo 23, item IV, letra c, que o Plano Museológico deve conter um programa de acervos e que este programa abranja “o processamento técnico e o gerenciamento dos diferentes tipos de acervos da instituição, incluídos os de origem arquivística e bibliográfica”.
 
-Ainda, como esclarecido por [@padilha2014 p.36], a documentação museológica pode ser de dois vieses: documentação do objeto e a documentação das práticas administrativas. "O primeiro trata da compilação dos dados e do tratamento informacional extraídos de cada objeto adquirido pelo museu, enquanto que o segundo considera toda a documentação produzida pela instituição para legitimar suas práticas desenvolvidas" [@padilha2014 p.36]. Seguimos aqui o primeiro viés, o da documentação do objeto.
+A publicação "Como gerir um museu: Manual Prático" organizada pelo ICOM em parceria com a UNESCO (2014), e traduzida para o português pela ACAM Portinari - Secretaria de Cultura do Estado de São Paulo (2015) apresenta diversos textos de autores diferentes abordando aspectos da gestão de um museu, passando pela gestão do acervo, atendimento aos visitantes, comunicação, segurança e entre outros assuntos. O texto "Gestão de Acervo" de Nicola Ladkin foca nas políticas, procedimentos, preservação, acesso e pesquisa do acervo. Apresentamos a seguir quadros que compilam os principais pontos de gestão de acervo apresentados por Ladkin.
+
+{{table:documentacao/gestao/politica-ladkin-2015.json}}
+
+{{table:documentacao/gestao/procedimentos-ladkin-2015.json}}
+
+{{table:documentacao/gestao/preservacao-ladkin-2015.json}}
+
+{{table:documentacao/gestao/acesso-ladkin-2015.json}}
+
+{{table:documentacao/gestao/pesquisa-ladkin-2015.json}}
+
+Ainda, como esclarecido por Padilha (2014, p.36), a documentação museológica pode ser de dois vieses: documentação do objeto e a documentação das práticas administrativas. "O primeiro trata da compilação dos dados e do tratamento informacional extraídos de cada objeto adquirido pelo museu, enquanto que o segundo considera toda a documentação produzida pela instituição para legitimar suas práticas desenvolvidas" [@padilha2014 p.36]. Seguimos aqui o primeiro viés, o da documentação do objeto.

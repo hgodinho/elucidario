@@ -22,12 +22,17 @@
         {
             "type": "vcs",
             "url": "https://github.com/berlindb/core"
+        },
+        {
+            "type": "path",
+            "url": "../mdorim"
         }
     ],
     "name": "elucidario/pkg-core",
     "require": {
         "opis/json-schema": "^2.3",
-        "berlindb/core": "^2.0.1"
+        "berlindb/core": "@dev",
+        "elucidario/pkg-mdorim": "@dev"
     },
     "require-dev": {
         "automattic/vipwpcs": "*",
@@ -45,7 +50,8 @@
     "scripts": {
         "phpcbf": "phpcbf --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php",
         "phpcs": "phpcs --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php",
-        "test:integration": "vendor/bin/pest --group=integration --coverage",
+        "test": "vendor/bin/pest --coverage",
+        "test:integration": "vendor/bin/pest --group=integration",
         "test:unit": "vendor/bin/pest --group=unit",
         "doc": "vendor/bin/phpdox"
     }

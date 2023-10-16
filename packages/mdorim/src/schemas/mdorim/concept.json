@@ -5,26 +5,222 @@
     "description": "@todo",
     "type": "object",
     "properties": {
+        "entity_id": {
+            "$ref": "<local>/core.json#/definitions/entity_id"
+        },
+        "name": {
+            "$ref": "<local>/core.json#/definitions/name"
+        },
+        "guid": {
+            "$ref": "<local>/core.json#/definitions/guid"
+        },
+        "author": {
+            "$ref": "<local>/core.json#/definitions/author"
+        },
+        "status": {
+            "$ref": "<local>/core.json#/definitions/status"
+        },
+        "password": {
+            "$ref": "<local>/core.json#/definitions/password"
+        },
+        "created": {
+            "$ref": "<local>/core.json#/definitions/created"
+        },
+        "modified": {
+            "$ref": "<local>/core.json#/definitions/updated"
+        },
+
+        "type": {
+            "$ref": "<linked-art>/core.json#/definitions/typeProp",
+            "enum": ["Concept", "Type"]
+        },
+        "_label": {
+            "$ref": "<linked-art>/core.json#/definitions/labelProp"
+        },
         "identified_by": {
-            "$ref": "<local>/core.json#/definitions/identified_by"
+            "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+        },
+        "referred_to_by": {
+            "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+        },
+        "equivalent": {
+            "$ref": "<linked-art>/core.json#/definitions/equivalentProp"
+        },
+        "attributed_by": {
+            "$ref": "<linked-art>/core.json#/definitions/attributed_byProp"
         },
         "classified_as": {
-            "$ref": "<local>/core.json#/definitions/classified_as"
+            "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+        },
+        "created_by": {
+            "title": "crm:P94i_was_created_by",
+            "$ref": "#/definitions/Creation"
+        },
+        "representation": {
+            "$ref": "<linked-art>/core.json#/definitions/representationProp"
+        },
+        "member_of": {
+            "$ref": "<linked-art>/core.json#/definitions/member_ofSetProp"
+        },
+        "subject_of": {
+            "$ref": "<linked-art>/core.json#/definitions/subject_ofProp"
+        },
+        "broader": {
+            "$ref": "#/definitions/broaderProp"
+        },
+
+        "history": {
+            "$ref": "<local>/history.json"
+        },
+
+        "_fields": {
+            "$ref": "<local>/core.json#/definitions/_fields"
+        },
+        "_embed": {
+            "$ref": "<local>/core.json#/definitions/_embed"
         }
     },
-    "required": ["identified_by", "classified_as"],
+    "required": ["entity_id", "name", "guid", "author", "identified_by"],
     "additionalProperties": false,
     "definitions": {
-        "StorageObject": {
+        "broaderProp": {
+            "title": "rdf:type",
+            "description": "A reference to one or more `Type`",
+            "type": "array",
+            "items": {
+                "$ref": "<linked-art>/core.json#/definitions/Concept"
+            }
+        },
+        "Creation": {
+            "title": "crm:E65_Creation",
+            "description": "The creation of the Concept",
             "type": "object",
             "properties": {
-                "identified_by": {
-                    "$ref": "<local>/core.json#/definitions/identified_by"
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "const": "Creation"
+                        }
+                    ]
                 },
-                "_meta": {
-                    "$ref": "<local>/core.json#/definitions/_meta"
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
+                "identified_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+                },
+                "classified_as": {
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+                },
+                "referred_to_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+                },
+                "took_place_at": {
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
+                },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
+                "carried_out_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
+                },
+                "used_specific_object": {
+                    "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
+                },
+                "influenced_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
+                },
+                "technique": {
+                    "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+                },
+                "part_of": {
+                    "title": "crm:P9i_forms_part_of",
+                    "description": "An identified event or activity which this activity is part of",
+                    "$ref": "<linked-art>/core.json#/definitions/EventRefOrActivityRef"
                 }
             }
+        },
+        "ConceptPost": {
+            "title": "ConceptPost",
+            "description": "A Concept to be created",
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "<local>/core.json#/definitions/author"
+                },
+                "password": {
+                    "$ref": "<local>/core.json#/definitions/password"
+                },
+                "status": {
+                    "$ref": "<local>/core.json#/definitions/entity_status"
+                },
+
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "enum": ["Concept", "Type"]
+                        }
+                    ]
+                },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
+                "identified_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+                },
+
+                "referred_to_by": {
+                    "$ref": "<local>/core.json#/definitions/mixed_statement"
+                },
+                "equivalent": {
+                    "$ref": "<local>/core.json#/definitions/relationships"
+                },
+                "attributed_by": {
+                    "$ref": "<local>/core.json#/definitions/relationships"
+                },
+                "classified_as": {
+                    "$ref": "<local>/core.json#/definitions/relationships"
+                },
+                "created_by": {
+                    "$ref": "<local>/core.json#/definitions/relationships"
+                },
+                "representation": {
+                    "$ref": "<local>/core.json#/definitions/relationships"
+                },
+                "member_of": {
+                    "$ref": "<local>/core.json#/definitions/relationships"
+                },
+                "subject_of": {
+                    "$ref": "<local>/core.json#/definitions/relationships"
+                },
+                "broader": {
+                    "$ref": "<local>/core.json#/definitions/relationships"
+                },
+
+                "_fields": {
+                    "$ref": "<local>/core.json#/definitions/_fields"
+                },
+                "_embed": {
+                    "$ref": "<local>/core.json#/definitions/_embed"
+                }
+            },
+            "required": ["type", "_label", "identified_by"],
+            "additionalProperties": false
         }
     }
 }
