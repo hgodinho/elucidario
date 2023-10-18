@@ -37,9 +37,12 @@ class DB extends Base {
 	 */
 	public function set_possible_errors() {
 		return array(
-			'error'  => __( 'Database error.', 'lcdr' ),
-			'insert' => __( 'Database insert error.', 'lcdr' ),
-			'update' => __( 'Database update error.', 'lcdr' ),
+			'error'           => __( 'Database error.', 'lcdr' ),
+			'insert'          => __( 'Database insert error.', 'lcdr' ),
+			'update'          => __( 'Database update error.', 'lcdr' ),
+			'get'             => __( 'Database get error.', 'lcdr' ),
+			'not_implemented' => __( 'Not implemented.', 'lcdr' ),
+			'invalid'         => __( 'Invalid.', 'lcdr' ),
 		);
 	}
 }

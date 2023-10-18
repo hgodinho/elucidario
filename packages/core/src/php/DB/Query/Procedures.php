@@ -234,7 +234,7 @@ final class Procedures extends Query {
 		foreach ( $args as $key => $value ) {
 			$args[ $key ] = $this->sanitize_data( $key, $value );
 		}
-		$args['guid'] = isset( $args['guid'] ) ? $args['guid'] : wp_generate_uuid4();
+		$args['uuid'] = isset( $args['uuid'] ) ? $args['uuid'] : wp_generate_uuid4();
 
 		return $args;
 	}

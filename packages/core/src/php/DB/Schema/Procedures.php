@@ -45,12 +45,13 @@ final class Procedures extends Schema {
 			'searchable' => true,
 			'sortable'   => true,
 		),
-		'guid'         => array(
-			'name'       => 'guid',
+		'uuid'         => array(
+			'name'       => 'uuid',
 			'type'       => 'varchar',
 			'length'     => 40,
 			'default'    => '',
 			'allow_null' => false,
+			'uuid'       => true,
 		),
 		'description'  => array(
 			'name'    => 'description',

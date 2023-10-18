@@ -239,11 +239,35 @@ function lcdr_get_entities( $args, $count = false ) {
 }
 
 /**
- *    ______         __           ___             _____         __
- *   / ____/  ___   / /_         ( _ )           / ___/  ___   / /_
- *  / / __   / _ \ / __/        / __ \/|         \__ \  / _ \ / __/
- * / /_/ /  /  __// /_         / /_/  <         ___/ / /  __// /_
- * \____/   \___/ \__/         \____/\/        /____/  \___/ \__/
+ * Return mapping by id
+ *
+ * @param int $mapping_id Entity id.
+ * @return \LCDR\DB\Interfaces\Entity
+ */
+function lcdr_get_mapping( $mapping_id ) {
+	$query  = new \LCDR\DB\Query\Mappings();
+	$entity = $query->get_mapping( $mapping_id );
+	return $entity;
+}
+
+/**
+ * Insert new mapping
+ *
+ * @param array $args Mapping args.
+ * @return int|\LCDR\Error\DB
+ */
+function lcdr_insert_mapping( $args ) {
+	$query      = new \LCDR\DB\Query\Mappings();
+	$mapping_id = $query->add_mapping( $args );
+	return lcdr_parse_item_id( $mapping_id );
+}
+
+/**
+ *    ______       __       ___         _____         __
+ *   / ____/___   / /_     ( _ )       / ___/ ___   / /_
+ *  / / __ / _ \ / __/    / __ \/|     \__ \ / _ \ / __/
+ * / /_/ //  __// /_     / /_/  <     ___/ //  __// /_
+ * \____/ \___/ \__/     \____/\/    /____/ \___/ \__/
  */
 /**
  * Return the plugin field names that are stored in json type in the database
@@ -280,7 +304,6 @@ function lcdr_get_json_properties() {
  */
 function lcdr_get_internal_properties() {
 	return array(
-		'entity_id',
 		'name',
 		'guid',
 		'author',
@@ -293,18 +316,38 @@ function lcdr_get_internal_properties() {
 /**
  * Return the core plugin field names that are stored in columns in the database
  *
+ * @param string $type Type 'entity', 'mapping', 'prop_map', 'procedures'.
+ *
  * @return array  Array of field names
  * @since 0.2.0
  */
-function lcdr_get_columns_names() {
-	return array_merge(
-		lcdr_get_internal_properties(),
-		array(
-			'type',
-			'_label',
-		),
-		lcdr_get_json_properties(),
-	);
+function lcdr_get_columns_names( $type = 'entity' ) {
+	switch ( $type ) {
+		case 'mapping':
+			return array_merge(
+				lcdr_get_internal_properties(),
+				array(
+					'mapping_id',
+					'title',
+					'standard',
+					'description',
+					'uri',
+					'version',
+				),
+			);
+
+		case 'entity':
+		default:
+			return array_merge(
+				lcdr_get_internal_properties(),
+				array(
+					'entity_id',
+					'type',
+					'_label',
+				),
+				lcdr_get_json_properties(),
+			);
+	}
 }
 
 /**

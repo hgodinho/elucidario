@@ -55,11 +55,11 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	public string $name = '';
 
 	/**
-	 * Entity guid.
+	 * Entity uuid.
 	 *
 	 * @var string
 	 */
-	public string $guid = '';
+	public string $uuid = '';
 
 	/**
 	 * Entity author.
@@ -218,11 +218,12 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 		$this->entity_id = (int) $this->entity_id;
 		$this->type      = (string) $this->type;
 		$this->name      = (string) $this->name;
-		$this->guid      = (string) $this->guid;
+		$this->uuid      = (string) $this->uuid;
 		$this->author    = (int) $this->author;
 		$this->status    = (string) $this->status;
 		$this->password  = (string) $this->password;
 		$this->created   = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
+		$this->modified  = false === $this->modified ? 0 : wp_date( get_option( 'date_format' ), $this->created );
 		$this->_label = (string) $this->label; // phpcs:ignore
 
 		$this->init_relationships();
@@ -242,10 +243,10 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	/**
 	 * Set the entity allowed properties.
 	 *
-	 * @return array
+	 * @return array|\LCDR\Error\Error
 	 */
 	public function set_allowed_properties() {
-		return array();
+		return new \LCDR\Error\DB( 'not_implemented' );
 	}
 
 	/**

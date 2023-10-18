@@ -99,10 +99,36 @@ class Entities extends Query {
 	 * @param int $entity_id ID of the entity.
 	 * @return \LCDR\Error\Error|\LCDR\DB\Interfaces\Entity False on failure, the entity otherwise.
 	 */
-	public function get_entity( int $entity_id ) {
-		$item = $this->get_item_by( 'entity_id', $entity_id );
+	public function get_entity( $entity_id ) {
+		if ( empty( $entity_id ) || ! $entity_id || ! is_numeric( $entity_id ) ) {
+			return new \LCDR\Error\DB(
+				'invalid',
+				array(
+					'invalid' => array(
+						'entity_id' => $entity_id,
+					),
+				)
+			);
+		}
+		try {
+			$item = $this->get_item_by( 'entity_id', (int) $entity_id );
+		} catch ( \Exception $e ) {
+			$this->dump(
+				'cli',
+				array(
+					'code'    => $e->getCode(),
+					'message' => $e->getMessage(),
+					'file'    => $e->getFile(),
+				),
+				__CLASS__,
+				__METHOD__,
+				__LINE__,
+				false
+			);
+			// $this->log( $e->getTrace(), 'error', __METHOD__, __LINE__ );
+		}
 		if ( ! $item ) {
-			return new \LCDR\Error\DB( 'insert' );
+			return new \LCDR\Error\DB( 'get' );
 		}
 		return $item;
 	}
@@ -175,7 +201,7 @@ class Entities extends Query {
 	 * @param array $args Arguments to update the entity.
 	 * @return \LCDR\Error\Error|int Error on failure, the ID of the updated entity otherwise.
 	 */
-	public function update_entity( int $entity_id, $args = array() ) {
+	public function update_entity( $entity_id, $args = array() ) {
 		$update = true;
 
 		$entity = $this->get_entity( $entity_id );
@@ -349,11 +375,11 @@ class Entities extends Query {
 		}
 
 		// Defaults
-		// Column GUID.
-		if ( ! isset( $columns['guid'] ) && $entity ) {
-			$columns['guid'] = $entity->guid;
-		} elseif ( ! isset( $columns['guid'] ) && ! $entity ) {
-			$columns['guid'] = \wp_generate_uuid4();
+		// Column UUID.
+		if ( ! isset( $columns['uuid'] ) && $entity ) {
+			$columns['uuid'] = $entity->uuid;
+		} elseif ( ! isset( $columns['uuid'] ) && ! $entity ) {
+			$columns['uuid'] = \wp_generate_uuid4();
 		}
 
 		// Column Author.

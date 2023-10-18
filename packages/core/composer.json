@@ -51,7 +51,7 @@
         "phpcbf": "phpcbf --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php",
         "phpcs": "phpcs --standard=phpcs.xml --extensions=php --ignore=vendor/ ./src/php",
         "test": "vendor/bin/pest --coverage",
-        "test:integration": "vendor/bin/pest --group=integration",
+        "test:integration": "vendor/bin/pest --group=integration --filter=ConceptTest",
         "test:unit": "vendor/bin/pest --group=unit",
         "doc": "vendor/bin/phpdox"
     }

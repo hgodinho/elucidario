@@ -36,7 +36,7 @@ final class Entities extends Table {
 		$this->schema = "
             entity_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
             name varchar(255) NOT NULL DEFAULT '',
-            guid varchar(40) NOT NULL DEFAULT '',
+            uuid varchar(40) NOT NULL DEFAULT '',
             author bigint(20) unsigned NOT NULL DEFAULT '0',
             status varchar(20) NOT NULL DEFAULT 'publish',
             password varchar(255),
@@ -64,7 +64,7 @@ final class Entities extends Table {
             content varchar(255),
             PRIMARY KEY  (entity_id),
             KEY name (name),
-            UNIQUE KEY guid (guid),
+            UNIQUE KEY uuid (uuid),
             KEY author (author),
             KEY label (label),
             KEY status (status),

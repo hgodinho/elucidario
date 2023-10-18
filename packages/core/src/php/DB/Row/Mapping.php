@@ -22,7 +22,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Mapping row class.
  */
-final class Mapping extends Row {
+final class Mapping extends Row implements \LCDR\DB\Interfaces\Entity {
 	/**
 	 *     __             _ __
 	 *    / /__________ _(_) /______
@@ -30,7 +30,7 @@ final class Mapping extends Row {
 	 *  / /_/ /  / /_/ / / /_(__  )
 	 *  \__/_/   \__,_/_/\__/____/
 	 */
-	use \LCDR\Utils\debug;
+	use \LCDR\Utils\debug, \LCDR\DB\Row\Row;
 
 	/**
 	 *                __
@@ -103,15 +103,6 @@ final class Mapping extends Row {
 	public array $mappings = array();
 
 	/**
-	 *      _       __                        __
-	 *     (_)___  / /____  _________  ____ _/ /
-	 *    / / __ \/ __/ _ \/ ___/ __ \/ __ `/ /
-	 *   / / / / / /_/  __/ /  / / / / /_/ / /
-	 *  /_/_/ /_/\__/\___/_/  /_/ /_/\__,_/_/
-	 */
-
-
-	/**
 	 *                  __    ___
 	 *     ____  __  __/ /_  / (_)____
 	 *    / __ \/ / / / __ \/ / / ___/
@@ -126,11 +117,14 @@ final class Mapping extends Row {
 	 */
 	public function __construct( $item = null ) {
 		parent::__construct( $item );
+		$this->allowed_properties = $this->set_allowed_properties();
 
 		// properties.
 		$this->mapping_id  = (int) $this->mapping_id;
 		$this->name        = (string) $this->name;
 		$this->title       = (string) $this->title;
+		$this->standard    = (string) $this->standard;
+		$this->uri         = (string) $this->uri;
 		$this->author      = (int) $this->author;
 		$this->version     = (string) $this->version;
 		$this->created     = false === $this->created ? 0 : wp_date( get_option( 'date_format' ), $this->created );
@@ -140,13 +134,26 @@ final class Mapping extends Row {
 	}
 
 	/**
-	 *                       __            __           __
-	 *     ____  _________  / /____  _____/ /____  ____/ /
-	 *    / __ \/ ___/ __ \/ __/ _ \/ ___/ __/ _ \/ __  /
-	 *   / /_/ / /  / /_/ / /_/  __/ /__/ /_/  __/ /_/ /
-	 *  / .___/_/   \____/\__/\___/\___/\__/\___/\__,_/
-	 * /_/
+	 * Set allowed properties.
+	 *
+	 * @return array
 	 */
+	public function set_allowed_properties() {
+		return array(
+			'mapping_id',
+			'name',
+			'guid',
+			'author',
+			'created',
+			'modified',
+			'title',
+			'standard',
+			'uri',
+			'version',
+			'description',
+			'mappings',
+		);
+	}
 
 	/**
 	 *                 _             __

@@ -113,7 +113,7 @@ class Mappings extends Query {
 	 * @throws \Exception If there were errors while adding the mapping.
 	 */
 	public function add_mapping( $args = array() ) {
-		$args = $this->parse_args( $args );
+		$columns = $this->parse_args( $args );
 
 		$item_id = $this->add_item(
 			/**
@@ -123,9 +123,11 @@ class Mappings extends Query {
 			 * @param array $args Arguments to add the mapping.
 			 * @return array
 			 */
-			apply_filters( lcdr_hook( array( 'add', $this->item_name, 'args' ) ), $args )
+			apply_filters( lcdr_hook( array( 'add', $this->item_name, 'args' ) ), $columns )
 		);
 		$item_id = lcdr_parse_item_id( $item_id );
+
+		$this->add_props_maps( $item_id, $args );
 
 		return $item_id;
 	}
@@ -158,8 +160,9 @@ class Mappings extends Query {
 		}
 
 		$mapping = $this->get_mapping( $mapping_id );
-		if ( ! $mapping ) {
-			$update = false;
+
+		if ( ! $mapping || is_lcdr_error( $mapping ) ) {
+			return $mapping;
 		}
 
 		$args = $this->parse_args( $args, $update );
@@ -225,21 +228,85 @@ class Mappings extends Query {
 	 */
 	protected function parse_args( array $args, $update = false ) {
 		if ( ! $update ) {
-			if ( ! isset( $args['name'] ) ) {
-				throw new \Exception( __( 'The data must have a name.', 'lcdr' ) );
-			}
 			if ( ! isset( $args['title'] ) ) {
 				throw new \Exception( __( 'The data must have a title.', 'lcdr' ) );
 			}
+			if ( ! isset( $args['standard'] ) ) {
+				throw new \Exception( __( 'The data must have a standard.', 'lcdr' ) );
+			}
 		}
 
+		$columns = array();
 		foreach ( $args as $key => $value ) {
-			$args[ $key ] = $this->sanitize_data( $key, $value );
+			if ( in_array( $key, lcdr_get_columns_names( 'mapping' ), true ) ) {
+				$columns[ $key ] = $this->sanitize_data( $key, $value );
+			}
 		}
 
-		$args['author'] = isset( $args['author'] ) ? $args['author'] : get_current_user_id();
+		$mapping = null;
+		if ( isset( $columns['mapping_id'] ) && ! empty( $columns['mapping_id'] ) ) {
+			$mapping = $this->get_mapping( $columns['mapping_id'] );
+		}
+		if ( is_lcdr_error( $mapping ) ) {
+			return $mapping;
+		}
 
-		return $args;
+		// Column UUID.
+		if ( ! isset( $columns['uuid'] ) && $mapping ) {
+			$columns['uuid'] = $mapping->uuid;
+		} elseif ( ! isset( $columns['uuid'] ) && ! $mapping ) {
+			$columns['uuid'] = \wp_generate_uuid4();
+		}
+
+		// Column Author.
+		if ( ! isset( $columns['author'] ) && $mapping ) {
+			$columns['author'] = $mapping->author;
+		} elseif ( ! isset( $columns['author'] ) && ! $mapping ) {
+			$columns['author'] = \get_current_user_id();
+		}
+
+		// Column Status.
+		if ( ! isset( $columns['status'] ) && $mapping ) {
+			$columns['status'] = $mapping->status;
+		} elseif ( ! isset( $columns['status'] ) && ! $mapping ) {
+			$columns['status'] = 'active';
+		}
+
+		// If the name is not previously set, set it based on the title property.
+		if ( ! isset( $columns['name'] ) && $mapping ) {
+			$columns['name'] = $mapping->name;
+		} elseif ( ! isset( $columns['name'] ) && ! $mapping ) {
+			$columns['name'] = lcdr_unique_entity_slug(
+				isset( $columns['mapping_id'] ) ? (int) $columns['mapping_id'] : 0,
+				$columns['title'],
+				$columns['status']
+			);
+		}
+
+		return $columns;
+	}
+
+	public function add_props_maps( $mapping_id, $args ) {
+		$mapping = array();
+		if ( ! isset( $args['mapping'] ) ) {
+			return false;
+		} else {
+			$mapping = $args['mapping'];
+		}
+		if ( is_array( $args ) ) {
+			$mapping = array_map(
+				function ( $item ) use ( $mapping_id ) {
+					$item               = (array) $item;
+					$item['mapping_id'] = $mapping_id;
+					return $item;
+				},
+				$mapping
+			);
+		} else {
+			$mapping['mapping_id'] = $mapping_id;
+		}
+		$query = new \LCDR\DB\Query\PropsMaps();
+		return $query->add_props_maps( $mapping );
 	}
 
 	/**
@@ -253,13 +320,4 @@ class Mappings extends Query {
 		// todo - sanitize data.
 		return $data;
 	}
-
-	/**
-	 *                 _             __
-	 *     ____  _____(_)   ______ _/ /____
-	 *    / __ \/ ___/ / | / / __ `/ __/ _ \
-	 *   / /_/ / /  / /| |/ / /_/ / /_/  __/
-	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
-	 * /_/
-	 */
 }

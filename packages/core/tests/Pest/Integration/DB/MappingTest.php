@@ -9,15 +9,16 @@ if ( isUnitTest() ) {
 }
 uses( TestCase::class);
 
-$db;
 $random = substr( md5( rand() ), 0, 7 );
 $mapping_id = 0;
 
-beforeAll( function () use (&$db) {
+beforeAll( function () {
+	global $db;
 	$db = new \LCDR\DB\Core();
 } );
 
-afterAll( function () use (&$db) {
+afterAll( function () {
+	global $db;
 	$db->uninstall_tables();
 } );
 
@@ -27,16 +28,17 @@ test( '\LCDR\DB\Query\Mappings class', function () {
 	expect( $query )->toBeInstanceOf( \LCDR\DB\Query\Mappings::class);
 } );
 
-
 test( '\LCDR\DB\Query\Mappings->add_mapping()', function () {
 	$mapping_query = new \LCDR\DB\Query\Mappings();
 
 	global $mapping_id;
 
+	\wp_set_current_user( 1 );
 	$mapping_id = $mapping_query->add_mapping(
 		array(
-			'name' => 'teste-de-mapeamento',
 			'title' => 'Teste de mapeamento',
+			'standard' => 'Spectrum',
+			'uri' => 'https://elucidario.art/mdorim/concept/1',
 			'description' => 'Teste de mapeamento',
 			'version' => '1.0.0',
 		)
@@ -50,89 +52,38 @@ test( '\LCDR\DB\Query\Mappings->add_mapping() and props_maps', function () {
 
 	$mapping_id = $mapping_query->add_mapping(
 		array(
-			'name' => 'teste-de-mapeamento',
 			'title' => 'Teste de mapeamento',
+			'standard' => 'Spectrum',
 			'description' => 'Teste de mapeamento',
 			'version' => '1.0.0',
+            'mapping' => array(
+				array(
+					'description' => 'mapeamento-test',
+					'prop_name' => 'identified_by',
+
+					'entity_type' => 'Type',
+					'external_prop_name' => 'name',
+					'external_prop_type' => 'string',
+					'external_prop_description' => 'Description',
+					'external_prop_uri' => 'http://www.w3.org/2000/01/rdf-schema#label',
+
+					"map_value" => (object) array(
+						"type" => "Identifier",
+						"classified_as" => array(
+							(object) array(
+								"type" => "Type",
+								"id" => "https://elucidario.art/mdorim/concept/1",
+								"_label" => "concept-test"
+							)
+						),
+					),
+
+					"editable" => true,
+				)
+			),
 		)
 	);
 	expect( $mapping_id )->toBeInt();
-
-	$props_maps_query = new \LCDR\DB\Query\PropsMaps();
-	$props_maps_query->add_props_maps( array(
-		array(
-			'mapping_id' => $mapping_id,
-			'entity_type' => 'Concept',
-			'prop_name' => 'identified_by',
-			'description' => 'Teste de mapeamento',
-			'external_prop_name' => 'Title',
-			'external_prop_description' => 'Titulo descricao',
-			'external_prop_uri' => 'https://example.com',
-			'external_prop_type' => 'string',
-			'map_value' => (object) array(
-				'type' => 'Identifier',
-				'classified_as' => array(
-					(object) array(
-						'id' => 'http://purl.org/dc/elements/1.1/title',
-						'type' => 'Type',
-						'value' => 'Title'
-					),
-					(object) array(
-						'id' => 'http://vocab.getty.edu/aat/300417209',
-						'type' => 'Type',
-						'value' => 'Full Title'
-					),
-				)
-			),
-			'editable' => false,
-			'status' => 'active'
-		),
-		array(
-			'mapping_id' => $mapping_id,
-			'entity_type' => 'Concept',
-			'prop_name' => 'identified_by',
-			'description' => 'Teste de mapeamento',
-			'external_prop_name' => 'Title',
-			'external_prop_description' => 'Titulo descricao',
-			'external_prop_uri' => 'https://example.com',
-			'external_prop_type' => 'string',
-			'map_value' => (object) array(
-				'type' => 'Identifier',
-				'classified_as' => array(
-					(object) array(
-						'id' => 'http://purl.org/dc/elements/1.1/title',
-						'type' => 'Type',
-						'value' => 'Title'
-					),
-					(object) array(
-						'id' => 'http://vocab.getty.edu/aat/300417209',
-						'type' => 'Type',
-						'value' => 'Full Title'
-					),
-				)
-			),
-			'editable' => false,
-			'status' => 'active'
-		)
-	) );
-	$props_maps = $mapping_query->get_mapping( $mapping_id );
-	expect( $props_maps->mappings )->toBeArray();
-} );
-
-
-test( '\LCDR\DB\Query\Mappings->add_mapping() no name', function () {
-	expect(
-		function () {
-			$map_query = new \LCDR\DB\Query\Mappings();
-			$map_query->add_mapping(
-				array(
-					'title' => 'Teste de mapeamento',
-					'description' => 'Teste de mapeamento',
-					'version' => '1.0.0',
-				)
-			);
-		}
-	)->toThrow( \Exception::class, 'The data must have a name.' );
 } );
 
 test( '\LCDR\DB\Query\Mappings->add_mapping() no title', function () {
@@ -141,16 +92,34 @@ test( '\LCDR\DB\Query\Mappings->add_mapping() no title', function () {
 			$map_query = new \LCDR\DB\Query\Mappings();
 			$map_query->add_mapping(
 				array(
-					'name' => 'teste-de-mapeamento',
 					'description' => 'Teste de mapeamento',
 					'version' => '1.0.0',
+					'standard' => (object) array(
+						'name' => 'teste-de-mapeamento',
+						'uri' => 'Teste de mapeamento',
+						'description' => 'Teste de mapeamento',
+					),
 				)
 			);
 		}
 	)->toThrow( \Exception::class, 'The data must have a title.' );
 } );
 
-test( '\LCDR\DB\Query\Mappings->get_procedure()', function () {
+test( '\LCDR\DB\Query\Mappings->add_mapping() no standard', function () {
+	expect(
+		function () {
+			$map_query = new \LCDR\DB\Query\Mappings();
+			$map_query->add_mapping(
+				array(
+					'title' => 'Teste de mapeamento',
+					'description' => 'Teste de mapeamento',
+				)
+			);
+		}
+	)->toThrow( \Exception::class, 'The data must have a standard.' );
+} );
+
+test( '\LCDR\DB\Query\Mappings->get_mapping()', function () {
 	$mapping_query = new \LCDR\DB\Query\Mappings();
 
 	global $mapping_id;
@@ -174,22 +143,22 @@ test( '\LCDR\DB\Query\Mappings->add_mappings()', function () {
 	$mappings = $mapping_query->add_mappings(
 		array(
 			array(
-				'name' => 'teste-de-mapeamento',
 				'title' => 'Teste de mapeamento',
 				'description' => 'Teste de mapeamento',
 				'version' => '1.0.0',
+				'standard' => 'Spectrum',
 			),
 			array(
-				'name' => 'teste-de-mapeamento',
 				'title' => 'Teste de mapeamento',
 				'description' => 'Teste de mapeamento',
 				'version' => '1.0.0',
+				'standard' => 'Spectrum',
 			),
 			array(
-				'name' => 'teste-de-mapeamento',
 				'title' => 'Teste de mapeamento',
 				'description' => 'Teste de mapeamento',
 				'version' => '1.0.0',
+				'standard' => 'Spectrum',
 			),
 		)
 	);
@@ -246,7 +215,6 @@ test( '\LCDR\DB\Query\Mappings->update_mapping() return false wrong ID', functio
 	$mapping = $mapping_query->update_mapping(
 		999,
 		array(
-			'name' => 'mapeamento-atualizado',
 			'title' => 'mapeamento atualizado',
 			'description' => 'Mapeamento atualizado',
 			'version' => '1.0.0',

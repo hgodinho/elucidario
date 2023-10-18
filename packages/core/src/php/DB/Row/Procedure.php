@@ -22,7 +22,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Procedure row class.
  */
-final class Procedure extends Row {
+final class Procedure extends Row implements \LCDR\DB\Interfaces\Entity {
 	/**
 	 *     __             _ __
 	 *    / /__________ _(_) /______
@@ -30,7 +30,7 @@ final class Procedure extends Row {
 	 *  / /_/ /  / /_/ / / /_(__  )
 	 *  \__/_/   \__,_/_/\__/____/
 	 */
-	use \LCDR\Utils\debug;
+	use \LCDR\Utils\debug, \LCDR\DB\Row\Row;
 
 	/**
 	 *                __
@@ -111,16 +111,6 @@ final class Procedure extends Row {
 	 */
 	public mixed $entities = array();
 
-
-	/**
-	 *      _       __                        __
-	 *     (_)___  / /____  _________  ____ _/ /
-	 *    / / __ \/ __/ _ \/ ___/ __ \/ __ `/ /
-	 *   / / / / / /_/  __/ /  / / / / /_/ / /
-	 *  /_/_/ /_/\__/\___/_/  /_/ /_/\__,_/_/
-	 */
-
-
 	/**
 	 *                  __    ___
 	 *     ____  __  __/ /_  / (_)____
@@ -150,15 +140,20 @@ final class Procedure extends Row {
 		$this->entities     = $this->init_entities();
 	}
 
-	/**
-	 *                       __            __           __
-	 *     ____  _________  / /____  _____/ /____  ____/ /
-	 *    / __ \/ ___/ __ \/ __/ _ \/ ___/ __/ _ \/ __  /
-	 *   / /_/ / /  / /_/ / /_/  __/ /__/ /_/  __/ /_/ /
-	 *  / .___/_/   \____/\__/\___/\___/\__/\___/\__,_/
-	 * /_/
-	 */
-
+	public function set_allowed_properties() {
+		return array(
+			'procedure_id',
+			'type',
+			'guid',
+			'description',
+			'author',
+			'created',
+			'modified',
+			'status',
+			'schedule',
+			'entities',
+		);
+	}
 
 	/**
 	 *                 _             __

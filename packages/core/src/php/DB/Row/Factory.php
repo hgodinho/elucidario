@@ -38,7 +38,7 @@ final class Factory {
 		if ( is_array( $item ) ) {
 			$entity = new \LCDR\DB\Row\Entity( $item );
 		}
-		if ( is_int( $item ) ) {
+		if ( is_int( $item ) && $item > 0 ) {
 			$entities = new \LCDR\DB\Query\Entities();
 			$entity   = $entities->get_entity( $item );
 		}

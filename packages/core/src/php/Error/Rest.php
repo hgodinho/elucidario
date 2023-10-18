@@ -47,6 +47,7 @@ class Rest extends Base {
 			'incorrect_password'              => __( 'Sorry, the password to see this entity is incorrect.', 'lcdr' ),
 			'private_publish'                 => __( 'Sorry, you are not allowed to publish this kind of entity privately.', 'lcdr' ),
 			'publish'                         => __( 'Sorry, you are not allowed to publish this kind of entity.', 'lcdr' ),
+			'switch_status'                   => __( 'Sorry, you are not allowed to switch the status of this kind of entity.', 'lcdr' ),
 			'cannot_edit_others'              => __( 'Sorry, you cannot edit entities created by other users.', 'lcdr' ),
 			'user_cannot_delete_post'         => __( 'Sorry, you are not allowed to delete this post.', 'lcdr' ),
 			// 404.
@@ -68,6 +69,7 @@ class Rest extends Base {
 			'cannot_delete'                   => __( 'Sorry, this entity cannot be deleted.', 'lcdr' ),
 			// 501.
 			'trash_not_supported'             => __( 'Sorry, this entity does not support trash.', 'lcdr' ),
+			'not_implemented'                 => __( 'Sorry, this method is not implemented.', 'lcdr' ),
 		);
 	}
 }

@@ -9,16 +9,14 @@ if ( isUnitTest() ) {
 }
 uses( TestCase::class);
 
-$db;
-$concept_id = false;
-$concept_ids = false;
-$random = substr( md5( rand() ), 0, 7 );
-
-beforeAll( function () use (&$db) {
+beforeAll( function () {
+	global $db, $random;
 	$db = new \LCDR\DB\Core();
+	$random = substr( md5( rand() ), 0, 7 );
 } );
 
-afterAll( function () use (&$db) {
+afterAll( function () {
+	global $db;
 	$db->uninstall_tables();
 	$concept = new \LCDR\DB\Query\Concepts();
 	$all = $concept->get_entities();
@@ -96,7 +94,6 @@ test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
 
 test( '\LCDR\DB\Query\Concepts->add_entity()', function () {
 	global $concept_ids;
-	global $concept_id;
 
 	$concept = new \LCDR\DB\Query\Concepts();
 
@@ -116,11 +113,11 @@ test( '\LCDR\DB\Query\Concepts->add_entity()', function () {
 	);
 
 	expect( $concept_id )->toBeNumeric();
+	expect( $concept_id )->toBeGreaterThan( 0 );
 } );
 
 test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
-	global $concept_ids;
-	global $concept_id;
+	global $concept_ids, $concept_id;
 
 	$concept = new \LCDR\DB\Query\Concepts();
 	$concept_to_add = array(
@@ -153,13 +150,14 @@ test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 
 	$concept_id = $concept->add_entity( $concept_to_add );
 	expect( $concept_id )->toBeNumeric();
+	expect( $concept_id )->toBeGreaterThan( 0 );
+	// var_dump( [ '$concept_id' => $concept_id ] );
 
 	$saved = $concept->get_entity( $concept_id );
-
+	// var_dump( [ $concept_id => $saved ] );
 	$referred_to_by = $saved->get_property( 'referred_to_by' );
 	expect( $referred_to_by )->toBeArray()->toMatchArray( $concept_to_add['referred_to_by'] );
 } );
-
 
 test( '\LCDR\DB\Query\Concepts->add_entity() no type', function () {
 	expect(
@@ -206,7 +204,6 @@ test( '\LCDR\DB\Query\Concepts->get_entity() must return valid relationships', f
 	global $concept_id;
 
 	$concept = new \LCDR\DB\Query\Concepts();
-
 	$test = $concept->get_entity( $concept_id );
 	$classified_as = $test->get_property( 'classified_as' );
 	expect( $classified_as )->toBeArray();

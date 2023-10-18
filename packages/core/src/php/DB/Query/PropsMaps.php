@@ -242,7 +242,7 @@ class PropsMaps extends Query {
 	 *
 	 * @throws \Exception If the prop_map doesn't have one of the required fields.
 	 */
-	protected function parse_args( array $args, $update = false ) {
+	public function parse_args( array $args, $update = false ) {
 		if ( ! $update ) {
 			if ( ! isset( $args['mapping_id'] ) ) {
 				throw new \Exception( __( 'The data must have a mapping_id.', 'lcdr' ) );

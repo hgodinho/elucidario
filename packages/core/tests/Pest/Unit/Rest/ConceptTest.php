@@ -34,7 +34,7 @@ test( '\LCDR\Rest\Routes\Concept must have base', function () {
 test( '\LCDR\Rest\Routes\Concept must have method set_schema', function () {
 	$concept = new \LCDR\Rest\Routes\Concept();
 	expect( $concept->set_schema() )->toMatchArray( array(
-		'wp' => array(
+		'mdorim' => array(
 			'view' => array(
 				'schema' => 'mdorim/concept',
 			),
