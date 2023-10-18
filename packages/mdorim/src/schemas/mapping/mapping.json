@@ -7,14 +7,10 @@
     "version": "0.1.0",
     "properties": {
         "mapping_id": {
-            "type": "integer",
-            "title": "Mapping ID",
-            "description": "Unique identifier of the mapping."
+            "$ref": "<local>/core.json#/definitions/entity_id"
         },
         "name": {
-            "type": "string",
-            "title": "Name",
-            "description": "Name of the mapping in kebab-case."
+            "$ref": "<local>/core.json#/definitions/name"
         },
         "title": {
             "type": "string",
@@ -32,26 +28,19 @@
             "description": "ID of the Author of the mapping."
         },
         "guid": {
-            "$ref": "<local>/core.json#/definitions/guid"
+            "$ref": "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/guid"
         },
 
         "standard": {
-            "type": "string",
-            "title": "Standard",
-            "description": "Name of the standard to be mapped."
-        },
-
-        "standard_uri": {
-            "type": "string",
-            "title": "Standard URI",
-            "description": "URI of the standard to be mapped."
+            "$ref": "#/definitions/Standard"
         },
 
         "version": {
-            "description": "Version of schema file. Use semantic versioning: MAJOR.MINOR.PATCH.",
+            "description": "Version of the mapping. Use semantic versioning: MAJOR.MINOR.PATCH.",
             "type": "string",
             "pattern": "^\\d+\\.\\d+\\.\\d+$"
         },
+
         "created": {
             "type": "string",
             "format": "date-time",
@@ -71,15 +60,70 @@
             }
         }
     },
-    "required": [
-        "version",
-        "name",
-        "title",
-        "author",
-        "standard",
-        "created",
-        "modified",
-        "mapping"
-    ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "definitions": {
+        "Standard": {
+            "type": "object",
+            "title": "Standard",
+            "description": "Standard to be mapped.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "Name of the standard to be mapped."
+                },
+                "uri": {
+                    "type": "string",
+                    "title": "URI",
+                    "description": "URI of the standard to be mapped."
+                }
+            },
+            "additionalProperties": false,
+            "required": ["name"]
+        },
+        "MappingPost": {
+            "title": "MappingPost",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "Name of the mapping in kebab-case."
+                },
+                "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "description": "Title of the mapping."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Description of the mapping."
+                },
+                "author": {
+                    "type": "integer",
+                    "title": "Author",
+                    "description": "ID of the Author of the mapping."
+                },
+
+                "standard": {
+                    "$ref": "#/definitions/Standard"
+                },
+
+                "version": {
+                    "description": "Version of schema file. Use semantic versioning: MAJOR.MINOR.PATCH.",
+                    "type": "string",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                },
+                "mapping": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "./prop_map.json#/definitions/PropMapPost"
+                    }
+                }
+            },
+            "required": ["title", "standard", "mapping"],
+            "additionalProperties": false
+        }
+    }
 }

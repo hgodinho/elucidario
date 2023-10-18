@@ -71,6 +71,7 @@ test( 'validate() method should return true with right data and right schema', f
 		'name' => 'concept-test',
 		'guid' => 'acdca5e6-ca0d-4eb7-8a64-ecb59df61395',
 		'author' => 1,
+		'type' => 'Concept',
 		'identified_by' => array(
 			(object) array(
 				'type' => 'Identifier',
