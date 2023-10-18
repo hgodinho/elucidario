@@ -82,7 +82,7 @@ Um outro problema é a representação dos itens nas BDs Filemaker, que estão i
 
 ![**Fonte**: Aba do estado de conservação de uma peça no Filemaker](filemaker-m0021.png)
 
-Este metadado poderia ser facilmente representado por uma matriz de objetos, em que o objeto contém as propriedades data, observação, e usuário, em uma arquitetura da informação baseada em eventos, em que o usuário adicionaria novos estados de conservação sempre com a mesma estrutura.
+Este metadado poderia ser facilmente representado por uma matriz de objetos, em que o objeto contém as propriedades data, observação, e usuário, em uma arquitetura da informação baseada em eventos, em que o usuário adiciona novos estados de conservação sempre com a mesma estrutura.
 
 Na imagem anterior também podemos ver os campos de "Criador" e "Modificador" no rodapé da tela, o campo de Modificador também apresenta problemas, pois registra somente o último modificador, ou seja, não existe no sistema uma forma de armazenar todo o histórico de atualizações nas BDs, o que torna impossível uma auditoria dos dados.
 
