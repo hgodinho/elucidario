@@ -51,12 +51,6 @@ export const parseValue = (value) => {
 export default function remarkPubGen(options) {
     return async function transformer(tree) {
         const tables = [];
-        const index = {
-            images: [],
-            tables: [],
-            figures: [],
-            charts: [],
-        };
         const labels = {
             images: "Imagem",
             tables: "Tabela",
@@ -226,6 +220,10 @@ export default function remarkPubGen(options) {
                     node.type = "html";
                 }
 
+                /**
+                 * Counter
+                 * {{count:{{type}}=./src/...;legend=...}}
+                 */
                 if ("count" === action) {
                     node.value = counter(options.index, filePath, fileOptions);
                 }

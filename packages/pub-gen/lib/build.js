@@ -9,7 +9,7 @@ import { readContents, build } from "@elucidario/pkg-paths";
 import { getPaths } from "./getPaths.js";
 import { pubGenRemarkProcessor } from "./remark/processor.js";
 import { engine } from "./reference/csl-engine.js";
-import { toMD } from "@elucidario/pkg-docusaurus-md";
+import { toMD, heading, list } from "@elucidario/pkg-docusaurus-md";
 
 const paths = getPaths();
 
@@ -189,11 +189,71 @@ const writeDocs = async ({
                     when: new Date().toLocaleString(),
                 };
             }),
-            console.log({ index }, { defaultLog: true, type: "info" })
+            // console.log({ index }, { defaultLog: true, type: "info" }),
+            writeIndexFiles({ index, publication, lang, style, version })
         );
     } catch (error) {
         throw new Error(`error writing docs at writeDocs: ${error}`);
     }
+};
+
+const writeIndexFiles = async ({
+    index,
+    publication,
+    lang,
+    style,
+    version,
+}) => {
+    const build = ({ type, title, items }) => {
+        const header = heading(1, title);
+        const body = list(items, true);
+        const md = toMD([header, body]);
+        fs.writeFileSync(
+            path.resolve(
+                paths.publications,
+                publication,
+                "dist",
+                lang,
+                `${type}.md`
+            ),
+            md
+        );
+    };
+
+    Object.entries(index).map(async ([type, files]) => {
+        if (files.length === 0) return;
+
+        switch (type) {
+            case "images":
+                build({
+                    type,
+                    title: "Lista de imagens",
+                    items: files,
+                });
+                break;
+            case "tables":
+                build({
+                    type,
+                    title: "Lista de tabelas",
+                    items: files,
+                });
+                break;
+            case "figures":
+                build({
+                    type,
+                    title: "Lista de figuras",
+                    items: files,
+                });
+                break;
+            case "charts":
+                build({
+                    type,
+                    title: "Lista de quadros",
+                    items: files,
+                });
+                break;
+        }
+    });
 };
 
 /**
