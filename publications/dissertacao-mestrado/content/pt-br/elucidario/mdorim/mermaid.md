@@ -10,33 +10,33 @@ type: mindmap
 ```mermaid
     mindmap
         root)"**Mdorim**"(
-            Opções
-                Importar
-                Exportar
-                Configurações
-                    Geral
-                    Integrações
-            Procedimentos(("Procedimentos
-            Spectrum"))
-            entidades(("Entidades
-            Linked Art"))
-                Objetos
-                Conceitos
-                Objetos Digitais
-                Referências
-                Representações
-                Pessoas
-                Grupos
-                Eventos
-                    Proveniências
-                Lugares
-                Conjuntos
-            Mapeamento
-                Propriedades
-            Usuários
-                Curadoria
-                Museologia
-                Assistência
-                Pesquisa
-            Histórico de Edições
+            Options
+                Import
+                Export
+                Settings
+                    General
+                    Integration
+            Procedures(("Spectrum
+            Procedures"))
+            entities(("Linked Art
+            Entities"))
+                Object
+                Concept
+                DigitalObject
+                Textual
+                Visual
+                Person
+                Group
+                Event
+                    Provenience
+                Place
+                Set
+            Mapping
+                PropMap
+            Users
+                Curator
+                Museologist
+                Assistant
+                Researcher
+            History
 ```

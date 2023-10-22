@@ -30,7 +30,7 @@
             "status",
             "string",
             "sim",
-            "Status do procedimento, pode ser `draft`, `active`, `inactive`, `pending` ou `scheduled`"
+            "Status do procedimento, pode ser `draft`, `concluded`, `active`, `inactive`, `pending` ou `scheduled`"
         ],
         ["related_entities", "array", "", "Entidades relacionadas"],
         [

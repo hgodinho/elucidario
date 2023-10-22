@@ -6,9 +6,10 @@ O Mdorim também é utilizado pelo plugin para gerar a UI administrativa para ed
 
 Fonte: Elaborado pelo autor.
 
-Em `definitions`, definimos um objeto `localizedString` que contém as propriedades `lang` e `content`, ambas obrigatórias. A propriedade `lang` deve seguir a RFC 5646[^1] e a propriedade `content` deve ser uma string no idioma definido em `lang`.
+Em `definitions`, definimos um objeto `localizedString` que contém as propriedades `lang` e `content`, ambas obrigatórias. A propriedade `lang` deve seguir a RFC 5646
+[^1] e a propriedade `content` deve ser uma string no idioma definido em `lang`.
 
-A propriedade `patternProperties` define o padrão de nome de cada propriedade do Linked Art para o mapeamento, no caso utilizamos o padrão Regex[^1] `^_?[a-z][a-z0-9_]*$`, em que:
+A propriedade `patternProperties` define o padrão de nome de cada propriedade do Linked Art para o mapeamento, no caso utilizamos o padrão Regex `^_?[a-z][a-z0-9_]*$`, em que:
 
 - `^_?` - a propriedade pode iniciar opcionalmente com o caractere "\_";
 - `[a-z]` - a propriedade deve iniciar com uma letra minúscula;
@@ -21,8 +22,10 @@ Com este padrão conseguimos selecionar qualquer nome de propriedade do Linked A
 - `messages`: array de objetos que possuem as propriedades `code`, `type` e `content`, em que `code` é o código da mensagem, `type` é o tipo da mensagem (_error_, _success_, _warning_, _info_) e `content` é um array de objetos `localizedString` que definem a mensagem em diferentes idiomas;
 - `component`: _string_ que define o nome do componente React que será utilizado para renderização e edição do metadado, esta propriedade tem prioridade acima do tipo definido em "type" no JSON-Schema.
 
-Utilizando este esquema, o metadado "identified_by" do Linked Art pode ser traduzido da seguinte forma:
+Utilizando este esquema, o metadado `identified_by` do Linked Art pode ser traduzido da seguinte forma:
 
 {{code:../../../../packages/mdorim/src/translations/identified_by.json}}
 
 Esta interface de tradução é utilizada somente no código, em que novos arquivos JSON são adicionados para cada idioma que se deseja dar suporte. Cada novo idioma deve conter uma suite de testes adicionais para validação do formato.
+
+[^1]: <https://datatracker.ietf.org/doc/html/rfc5646>
