@@ -335,6 +335,145 @@
                     "$ref": "<linked-art>/core.json#/definitions/HumanMadeObjectRef"
                 }
             }
+        },
+        "ObjectPost": {
+            "title": "ObjectPost",
+            "description": "A Object to be created",
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "<local>/core.json#/definitions/author"
+                },
+                "password": {
+                    "$ref": "<local>/core.json#/definitions/password"
+                },
+                "status": {
+                    "$ref": "<local>/core.json#/definitions/entity_status"
+                },
+
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "const": "HumanMadeObject"
+                        }
+                    ]
+                },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
+
+                "identified_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+                },
+                "classified_as": {
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+                },
+                "referred_to_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+                },
+                "equivalent": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/equivalentProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "description": "List of `HumanMadeObject` entities",
+                            "type": "array",
+                            "items": {
+                                "$ref": "<linked-art>/core.json#/definitions/HumanMadeObjectRef"
+                            }
+                        }
+                    ]
+                },
+
+                "representation": {
+                    "$ref": "<linked-art>/core.json#/definitions/representationProp"
+                },
+                "member_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/member_ofSetProp"
+                },
+                "subject_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/subject_ofProp"
+                },
+                "attributed_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/attributed_byRelProp"
+                },
+
+                "dimension": {
+                    "$ref": "<linked-art>/core.json#/definitions/dimensionProp"
+                },
+                "made_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/made_ofProp"
+                },
+                "part_of": {
+                    "title": "crm:P46i_forms_part_of",
+                    "description": "Another Human-Made Object of which this Object is part",
+                    "$ref": "<linked-art>/core.json#/definitions/HumanMadeObjectRef"
+                },
+
+                "part": {
+                    "title": "**Should objects have any parts embedded?**",
+                    "type": "array",
+                    "items": {
+                        "$ref": "<linked-art>/core.json#/definitions/HumanMadeObjectPart"
+                    }
+                },
+
+                "current_owner": {
+                    "$ref": "<linked-art>/core.json#/definitions/current_ownerProp"
+                },
+                "current_custodian": {
+                    "$ref": "<linked-art>/core.json#/definitions/current_custodianProp"
+                },
+                "current_permanent_custodian": {
+                    "$ref": "<linked-art>/core.json#/definitions/current_permanent_custodianProp"
+                },
+                "current_location": {
+                    "$ref": "<linked-art>/core.json#/definitions/current_locationProp"
+                },
+                "used_for": {
+                    "$ref": "<linked-art>/core.json#/definitions/used_forProp"
+                },
+                "shows": {
+                    "$ref": "<linked-art>/core.json#/definitions/showsProp"
+                },
+                "carries": {
+                    "$ref": "<linked-art>/core.json#/definitions/carriesProp"
+                },
+
+                "produced_by": {
+                    "title": "crm:P108i_was_produced_by",
+                    "description": "The `Production` activity which created this object",
+                    "$ref": "#/definitions/Production"
+                },
+                "destroyed_by": {
+                    "title": "crm:P13i_was_destroyed_by",
+                    "description": "The `Destruction` event in which this object was destroyed",
+                    "$ref": "#/definitions/Destruction"
+                },
+                "removed_by": {
+                    "title": "crm:P113i_was_removed_by",
+                    "description": "One or more `PartRemoval` activities in which this object was removed from another object",
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/PartRemoval" }
+                },
+
+                "_fields": {
+                    "$ref": "<local>/core.json#/definitions/_fields"
+                },
+                "_embed": {
+                    "$ref": "<local>/core.json#/definitions/_embed"
+                }
+            },
+            "additionalProperties": false
         }
     }
 }

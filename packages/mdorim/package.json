@@ -15,7 +15,7 @@
             "require": "./lib/cjs/index.cjs"
         }
     },
-    "main": "lib//mjs/index.mjs",
+    "main": "lib/mjs/index.mjs",
     "types": "lib/types.d.ts",
     "files": [
         "dist",
@@ -25,7 +25,7 @@
         "translations"
     ],
     "scripts": {
-        "build": "pnpm buildScript -c -s -e -t -m -d && pnpm test",
+        "build": "pnpm buildScript -c -s -e -t -d && pnpm test",
         "buildScript": "node src/build/build.js",
         "clean:docs": "rm -rf docs/*",
         "clean:static": "rm -rf static/*",
