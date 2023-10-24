@@ -1,0 +1,19 @@
+{
+    "id": "spec9999",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "the-8-point-grid",
+    "_create": "2023-10-24T02:34:44.338Z",
+    "_update": "2023-10-24T02:34:44.338Z",
+    "type": "webpage",
+    "title": "The 8-Point Grid",
+    "author": [
+        {
+            "family": "Spec"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-10-23"
+    },
+    "URL": "https://spec.fm/specifics/8-pt-grid"
+}

@@ -1,0 +1,23 @@
+{
+    "id": "frost2013",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "atomic-design",
+    "_create": "2023-10-24T01:20:35.363Z",
+    "_update": "2023-10-24T01:20:35.363Z",
+    "type": "webpage",
+    "title": "Atomic Design",
+    "author": [
+        {
+            "family": "Frost",
+            "given": "Brad"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-10-23"
+    },
+    "issued": {
+        "raw": "2013"
+    },
+    "URL": "https://atomicdesign.bradfrost.com/table-of-contents/"
+}

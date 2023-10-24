@@ -1,0 +1,22 @@
+{
+    "id": "pnpm2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "pnpm",
+    "_create": "2023-10-23T23:15:36.300Z",
+    "_update": "2023-10-23T23:15:36.300Z",
+    "type": "webpage",
+    "title": "PNPM",
+    "author": [
+        {
+            "family": "PNPM"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-10-23"
+    },
+    "issued": {
+        "raw": "2023"
+    },
+    "URL": "https://pnpm.io/pt/"
+}

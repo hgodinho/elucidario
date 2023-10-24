@@ -1,0 +1,27 @@
+{
+    "id": "adermann2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "composer",
+    "_create": "2023-10-23T23:17:36.491Z",
+    "_update": "2023-10-23T23:17:36.491Z",
+    "type": "webpage",
+    "title": "Composer",
+    "author": [
+        {
+            "family": "Adermann",
+            "given": "Nils"
+        },
+        {
+            "family": "Boggiano",
+            "given": "Jordi"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-10-23"
+    },
+    "issued": {
+        "raw": "2023"
+    },
+    "URL": "https://getcomposer.org/"
+}

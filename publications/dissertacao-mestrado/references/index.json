@@ -599,6 +599,51 @@
             "id": "sveidqvist2023",
             "slug": "mermaid-diagramming-and-charting-tool",
             "path": "<references>/sveidqvist2023_mermaid-diagramming-and-charting-tool.json"
+        },
+        {
+            "id": "opis2022",
+            "slug": "opis-json-schema",
+            "path": "<references>/opis2022_opis-json-schema.json"
+        },
+        {
+            "id": "jacoby2022",
+            "slug": "berlin-db",
+            "path": "<references>/jacoby2022_berlin-db.json"
+        },
+        {
+            "id": "node-js2023",
+            "slug": "node-js",
+            "path": "<references>/node-js2023_node-js.json"
+        },
+        {
+            "id": "pnpm2023",
+            "slug": "pnpm",
+            "path": "<references>/pnpm2023_pnpm.json"
+        },
+        {
+            "id": "adermann2023",
+            "slug": "composer",
+            "path": "<references>/adermann2023_composer.json"
+        },
+        {
+            "id": "lerna2023",
+            "slug": "lerna",
+            "path": "<references>/lerna2023_lerna.json"
+        },
+        {
+            "id": "storybook2023",
+            "slug": "storybook",
+            "path": "<references>/storybook2023_storybook.json"
+        },
+        {
+            "id": "frost2013",
+            "slug": "atomic-design",
+            "path": "<references>/frost2013_atomic-design.json"
+        },
+        {
+            "id": "spec9999",
+            "slug": "the-8-point-grid",
+            "path": "<references>/spec9999_the-8-point-grid.json"
         }
     ]
 }

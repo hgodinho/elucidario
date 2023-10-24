@@ -1,0 +1,22 @@
+{
+    "id": "lerna2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "lerna",
+    "_create": "2023-10-23T23:20:13.508Z",
+    "_update": "2023-10-23T23:20:13.508Z",
+    "type": "webpage",
+    "title": "Lerna",
+    "author": [
+        {
+            "family": "Lerna"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-10-23"
+    },
+    "issued": {
+        "raw": "2023"
+    },
+    "URL": "https://lerna.js.org/"
+}
