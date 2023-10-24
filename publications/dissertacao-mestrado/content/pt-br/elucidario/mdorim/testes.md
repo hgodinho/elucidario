@@ -9,3 +9,5 @@ Para cada schema definido no pacote foi definido dois testes unitários, um que 
 {{code:elucidario/mdorim/teste-exemplo.php}}
 
 Fonte: Elaborado pelo autor.
+
+Os testes podem ser executados rodando o comando `composer test` ou `pnpm test` na raiz do pacote.
