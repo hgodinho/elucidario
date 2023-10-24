@@ -1,0 +1,22 @@
+{
+    "id": "opis2022",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "opis-json-schema",
+    "_create": "2023-10-22T19:42:15.119Z",
+    "_update": "2023-10-22T19:42:15.119Z",
+    "type": "webpage",
+    "title": "Opis JSON Schema",
+    "author": [
+        {
+            "family": "Opis"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-10-22"
+    },
+    "issued": {
+        "raw": "2022"
+    },
+    "URL": "https://github.com/opis/json-schema"
+}

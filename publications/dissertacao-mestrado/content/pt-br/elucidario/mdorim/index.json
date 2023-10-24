@@ -1,3 +1,9 @@
 {
-    "files": ["mdorim.md", "modelo.md", "mysql.md", "traducoes.md", "testes.md"]
+    "files": [
+        "mdorim.md",
+        "modelo.md",
+        "traducoes.md",
+        "validacao.md",
+        "testes.md"
+    ]
 }

@@ -51,12 +51,6 @@ export const parseValue = (value) => {
 export default function remarkPubGen(options) {
     return async function transformer(tree) {
         const tables = [];
-        const index = {
-            images: [],
-            tables: [],
-            figures: [],
-            charts: [],
-        };
         const labels = {
             images: "Imagem",
             tables: "Tabela",
@@ -84,7 +78,26 @@ export default function remarkPubGen(options) {
                  * Table
                  */
                 if ("table" === action) {
-                    tables.push({ node, value });
+                    const { filePath } = parseValue(value);
+
+                    const tableData = JSON.parse(
+                        fs.readFileSync(path.resolve(options.path, filePath))
+                    );
+
+                    if (tableData.title.startsWith("{{")) {
+                        const value = tableData.title
+                            .replace("{{", "")
+                            .replace("}}", "");
+                        const parsed = parseValue(value);
+                        if ("count" === parsed.action) {
+                            tableData.title = counter(
+                                options.index,
+                                parsed.filePath,
+                                parsed.fileOptions
+                            );
+                        }
+                    }
+                    tables.push({ node, value, tableData });
                 }
 
                 /**
@@ -226,6 +239,25 @@ export default function remarkPubGen(options) {
                     node.type = "html";
                 }
 
+                /**
+                 * Embed
+                 * {{embed:./src/...}}
+                 */
+                if ("embed" === action) {
+                    const embedData = fs
+                        .readFileSync(path.resolve(options.path, filePath))
+                        .toString();
+
+                    const embedContent = toMD([embedData]);
+
+                    node.value = embedContent;
+                    node.type = "html";
+                }
+
+                /**
+                 * Counter
+                 * {{count:{{type}}=./src/...;legend=...}}
+                 */
                 if ("count" === action) {
                     node.value = counter(options.index, filePath, fileOptions);
                 }
@@ -233,26 +265,7 @@ export default function remarkPubGen(options) {
         });
 
         // parse tables
-        const promises = tables.map(async ({ node, value }) => {
-            const { filePath } = parseValue(value);
-
-            const tableData = JSON.parse(
-                fs.readFileSync(path.resolve(options.path, filePath))
-            );
-
-            if (tableData.title.startsWith("{{")) {
-                const value = tableData.title
-                    .replace("{{", "")
-                    .replace("}}", "");
-                const parsed = parseValue(value);
-                if ("count" === parsed.action) {
-                    tableData.title = counter(
-                        options.index,
-                        parsed.filePath,
-                        parsed.fileOptions
-                    );
-                }
-            }
+        const promises = tables.map(async ({ node, value, tableData }) => {
             const tableMd = await tableMarkdown(tableData, "-").then(
                 (md) => md
             );

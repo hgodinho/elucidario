@@ -1,9 +1,3 @@
 {
-    "files": [
-        "elucidario.md",
-        "mdorim",
-        "lcdr-design-system.md",
-        "lcdr-core.md",
-        "elucidario-cmek.md"
-    ]
+    "files": ["elucidario.md", "mdorim", "design-system", "core", "cmek"]
 }

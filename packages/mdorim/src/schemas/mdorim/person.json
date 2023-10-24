@@ -1,0 +1,233 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/linked-art/person.json",
+    "title": "Person Schema",
+    "description": "_crm:E21\\_Person_\nA human.\nSee: [API](https://linked.art/api/1.0/endpoint/person/) | [Model](https://linked.art/model/actor/)",
+    "type": "object",
+    "properties": {
+        "entity_id": {
+            "$ref": "<local>/core.json#/definitions/entity_id"
+        },
+        "name": {
+            "$ref": "<local>/core.json#/definitions/name"
+        },
+        "guid": {
+            "$ref": "<local>/core.json#/definitions/guid"
+        },
+        "author": {
+            "$ref": "<local>/core.json#/definitions/author"
+        },
+        "status": {
+            "$ref": "<local>/core.json#/definitions/status"
+        },
+        "password": {
+            "$ref": "<local>/core.json#/definitions/password"
+        },
+        "created": {
+            "$ref": "<local>/core.json#/definitions/created"
+        },
+        "modified": {
+            "$ref": "<local>/core.json#/definitions/updated"
+        },
+
+        "type": {
+            "allOf": [
+                {
+                    "title": "General",
+                    "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                },
+                { "title": "Specific", "type": "string", "const": "Person" }
+            ]
+        },
+        "_label": { "$ref": "<linked-art>/core.json#/definitions/labelProp" },
+        "identified_by": {
+            "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+        },
+        "classified_as": {
+            "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+        },
+        "referred_to_by": {
+            "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+        },
+        "equivalent": {
+            "allOf": [
+                {
+                    "title": "General",
+                    "$ref": "<linked-art>/core.json#/definitions/equivalentProp"
+                },
+                {
+                    "title": "Specific",
+                    "description": "List of `Person` entities",
+                    "type": "array",
+                    "items": {
+                        "$ref": "<linked-art>/core.json#/definitions/PersonRef"
+                    }
+                }
+            ]
+        },
+        "representation": {
+            "$ref": "<linked-art>/core.json#/definitions/representationProp"
+        },
+        "member_of": {
+            "$ref": "<linked-art>/core.json#/definitions/member_ofGroupProp"
+        },
+        "subject_of": {
+            "$ref": "<linked-art>/core.json#/definitions/subject_ofProp"
+        },
+        "attributed_by": {
+            "$ref": "<linked-art>/core.json#/definitions/attributed_byRelProp"
+        },
+
+        "carried_out": {
+            "$ref": "<linked-art>/core.json#/definitions/carried_outProp"
+        },
+        "contact_point": {
+            "$ref": "<linked-art>/core.json#/definitions/contact_pointProp"
+        },
+        "residence": {
+            "$ref": "<linked-art>/core.json#/definitions/residenceProp"
+        },
+
+        "born": {
+            "title": "crm:P98i_was_born",
+            "description": "The event in which this Person was born",
+            "$ref": "#/definitions/Birth"
+        },
+        "died": {
+            "title": "crm:P100i_died_in",
+            "description": "The event in which this Person died",
+            "$ref": "#/definitions/Death"
+        },
+
+        "history": {
+            "$ref": "<local>/history.json"
+        },
+
+        "_fields": {
+            "$ref": "<local>/core.json#/definitions/_fields"
+        },
+        "_embed": {
+            "$ref": "<local>/core.json#/definitions/_embed"
+        }
+    },
+    "definitions": {
+        "Formation": {
+            "title": "crm:E66_Formation",
+            "description": "The activity which formed or created the Group",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "const": "Formation"
+                        }
+                    ]
+                },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
+                "identified_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+                },
+                "classified_as": {
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+                },
+                "referred_to_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+                },
+
+                "took_place_at": {
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
+                },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
+                "carried_out_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/carried_out_byProp"
+                },
+                "used_specific_object": {
+                    "$ref": "<linked-art>/core.json#/definitions/used_specific_objectProp"
+                },
+                "influenced_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
+                },
+                "technique": {
+                    "$ref": "<linked-art>/core.json#/definitions/techniqueProp"
+                },
+
+                "part_of": {
+                    "title": "crm:P9i_forms_part_of",
+                    "description": "An identified event or activity which this formation is part of",
+                    "$ref": "<linked-art>/core.json#/definitions/EventRefOrActivityRef"
+                }
+            }
+        },
+        "Dissolution": {
+            "title": "crm:E68_Dissolution",
+            "description": "The event which dissolved or ended the Group",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "const": "Dissolution"
+                        }
+                    ]
+                },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
+                "identified_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+                },
+                "classified_as": {
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+                },
+                "referred_to_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+                },
+                "took_place_at": {
+                    "$ref": "<linked-art>/core.json#/definitions/took_place_atProp"
+                },
+                "timespan": {
+                    "$ref": "<linked-art>/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/caused_byProp"
+                },
+                "influenced_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/influenced_byProp"
+                },
+                "part_of": {
+                    "title": "crm:P9i_forms_part_of",
+                    "description": "An identified event or activity which this dissolution is part of",
+                    "$ref": "<linked-art>/core.json#/definitions/EventRefOrActivityRef"
+                }
+            }
+        }
+    },
+    "required": [
+        "entity_id",
+        "name",
+        "guid",
+        "author",
+        "type",
+        "identified_by"
+    ],
+    "additionalProperties": false
+}

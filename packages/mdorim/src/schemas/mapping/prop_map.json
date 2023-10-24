@@ -33,22 +33,8 @@
             "description": "Entity type mapping target."
         },
 
-        "external_prop_name": {
-            "type": "string",
-            "title": "External Property Name",
-            "description": "Name of the source property."
-        },
-
-        "external_prop_uri": {
-            "type": "string",
-            "title": "External Property URI",
-            "description": "URI of the source property."
-        },
-
-        "external_prop_type": {
-            "type": "string",
-            "title": "External Property Type",
-            "description": "Type of the source property."
+        "external": {
+            "$ref": "#/definitions/External"
         },
 
         "map_value": {
@@ -88,14 +74,100 @@
             "default": "active"
         }
     },
-    "required": [
-        "map_id",
-        "prop_name",
-        "entity_type",
-        "external_prop_name",
-        "external_prop_type",
-        "map_value",
-        "status"
-    ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "definitions": {
+        "External": {
+            "type": "object",
+            "title": "External",
+            "description": "External source of the mapping.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "External Property Name",
+                    "description": "Name of the source property."
+                },
+                "uri": {
+                    "type": "string",
+                    "title": "External Property URI",
+                    "description": "URI of the source property."
+                },
+                "type": {
+                    "type": "string",
+                    "title": "External Property Type",
+                    "description": "Type of the source property."
+                }
+            },
+            "additionalProperties": false,
+            "required": ["name", "type"]
+        },
+        "PropMapPost": {
+            "title": "PropMapPost",
+            "type": "object",
+            "properties": {
+                "prop_name": {
+                    "type": "string",
+                    "title": "Property Name",
+                    "description": "Name of the target property."
+                },
+                "entity_type": {
+                    "type": "string",
+                    "title": "Entity Type",
+                    "description": "Entity type mapping target."
+                },
+
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Description of the mapping."
+                },
+
+                "external": {
+                    "$ref": "#/definitions/External"
+                },
+
+                "map_value": {
+                    "title": "Map Value",
+                    "description": "Default mapped value.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "array"
+                        },
+                        {
+                            "type": "object"
+                        }
+                    ]
+                },
+
+                "editable": {
+                    "type": "boolean",
+                    "title": "Editable",
+                    "description": "If the mapped value is editable.",
+                    "default": true
+                },
+                "status": {
+                    "type": "string",
+                    "title": "Status",
+                    "description": "Status of the mapping.",
+                    "enum": ["active", "inactive", "trash"]
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "prop_name",
+                "entity_type",
+                "external",
+                "map_value",
+                "editable"
+            ]
+        }
+    }
 }

@@ -30,7 +30,7 @@ final class PropMap extends Row {
 	 *  / /_/ /  / /_/ / / /_(__  )
 	 *  \__/_/   \__,_/_/\__/____/
 	 */
-	use \LCDR\Utils\debug;
+	use \LCDR\Utils\debug, \LCDR\DB\Row\Row;
 
 	/**
 	 *                __
@@ -147,6 +147,7 @@ final class PropMap extends Row {
 	 */
 	public function __construct( $item = null ) {
 		parent::__construct( $item );
+		$this->allowed_properties = $this->set_allowed_properties();
 
 		// properties.
 		$this->map_id                    = (int) $this->map_id;
@@ -163,21 +164,20 @@ final class PropMap extends Row {
 		$this->status                    = (string) $this->status;
 	}
 
-	/**
-	 *                       __            __           __
-	 *     ____  _________  / /____  _____/ /____  ____/ /
-	 *    / __ \/ ___/ __ \/ __/ _ \/ ___/ __/ _ \/ __  /
-	 *   / /_/ / /  / /_/ / /_/  __/ /__/ /_/  __/ /_/ /
-	 *  / .___/_/   \____/\__/\___/\___/\__/\___/\__,_/
-	 * /_/
-	 */
-
-	/**
-	 *                 _             __
-	 *     ____  _____(_)   ______ _/ /____
-	 *    / __ \/ ___/ / | / / __ `/ __/ _ \
-	 *   / /_/ / /  / /| |/ / /_/ / /_/  __/
-	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
-	 * /_/
-	 */
+	public function set_allowed_properties() {
+		return array(
+			'map_id',
+			'mapping_id',
+			'prop_name',
+			'description',
+			'entity_type',
+			'external_prop_name',
+			'external_prop_description',
+			'external_prop_uri',
+			'external_prop_type',
+			'map_value',
+			'editable',
+			'status',
+		);
+	}
 }

@@ -80,7 +80,14 @@
             "$ref": "<local>/core.json#/definitions/_embed"
         }
     },
-    "required": ["entity_id", "name", "guid", "author", "identified_by"],
+    "required": [
+        "entity_id",
+        "name",
+        "guid",
+        "author",
+        "type",
+        "identified_by"
+    ],
     "additionalProperties": false,
     "definitions": {
         "broaderProp": {
@@ -219,7 +226,6 @@
                     "$ref": "<local>/core.json#/definitions/_embed"
                 }
             },
-            "required": ["type", "_label", "identified_by"],
             "additionalProperties": false
         }
     }

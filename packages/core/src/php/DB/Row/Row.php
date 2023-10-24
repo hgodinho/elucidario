@@ -49,4 +49,11 @@ trait Row {
 	public function get_allowed_properties(): array {
 		return $this->allowed_properties;
 	}
+
+	/**
+	 * Set the allowed properties.
+	 *
+	 * @return array
+	 */
+	abstract function set_allowed_properties();
 }

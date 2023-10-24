@@ -1,0 +1,23 @@
+{
+    "id": "jacoby2022",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "berlin-db",
+    "_create": "2023-10-23T01:26:03.284Z",
+    "_update": "2023-10-23T01:26:03.284Z",
+    "type": "webpage",
+    "title": "BerlinDB",
+    "author": [
+        {
+            "family": "Jacoby",
+            "given": "John Jame"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-10-22"
+    },
+    "issued": {
+        "raw": "2022"
+    },
+    "URL": "https://github.com/berlindb/core"
+}

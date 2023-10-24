@@ -21,13 +21,6 @@ test( '\Mdorim\Schema\Schemas::get_instance()', function () {
 	expect( $core->schemas )->toBeInstanceOf( \Mdorim\Schema\Schemas::class);
 } );
 
-// test( '\Mdorim\Schema\Schema::get_schema()', function () {
-// 	global $core;
-// 	$schema = $core->schemas->get_schema( 'mdorim/concept' );
-
-// } );
-
-
 test( '\Mdorim\Schema\Schemas class init_validator() method', function () {
 	global $schema;
 	$schema->init_validator();
@@ -71,6 +64,7 @@ test( 'validate() method should return true with right data and right schema', f
 		'name' => 'concept-test',
 		'guid' => 'acdca5e6-ca0d-4eb7-8a64-ecb59df61395',
 		'author' => 1,
+		'type' => 'Concept',
 		'identified_by' => array(
 			(object) array(
 				'type' => 'Identifier',
@@ -92,16 +86,7 @@ test( 'validate() method should throw exception with wrong data', function () {
 		function () {
 			global $schema;
 			$schema->validate( 'mdorim/concept', (object) array(
-				'identified_by' => array(
-					(object) array(
-						'xablau' => 'Identifier',
-					)
-				),
 				'clafied_as' => array(
-					(object) array(
-						'type' => 'Type',
-						'id' => 1,
-					)
 				),
 			) );
 		}

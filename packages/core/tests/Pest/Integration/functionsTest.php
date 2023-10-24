@@ -72,15 +72,15 @@ test( 'lcdr_get_json_properties', function () {
 } );
 
 test( 'lcdr_get_columns_names', function () {
-	expect( lcdr_get_columns_names() )->toBe(
+	expect( lcdr_get_columns_names() )->toMatchArray(
 		array(
-			'entity_id',
 			'name',
 			'guid',
 			'author',
 			'status',
 			'password',
 			'created',
+			'entity_id',
 			'type',
 			'_label',
 			'identified_by',
@@ -99,6 +99,25 @@ test( 'lcdr_get_columns_names', function () {
 			'produced_by',
 			'destroyed_by',
 			'removed_by',
+		)
+	);
+} );
+
+test( 'lcdr_get_columns_names("mapping")', function () {
+	expect( lcdr_get_columns_names( "mapping" ) )->toMatchArray(
+		array(
+			'name',
+			'guid',
+			'author',
+			'status',
+			'password',
+			'created',
+			'mapping_id',
+			'title',
+			'standard',
+			'description',
+			'uri',
+			'version',
 		)
 	);
 } );
@@ -149,13 +168,13 @@ test( 'lcdr_get_relationships_names', function () {
 test( 'lcdr_get_valid_properties', function () {
 	expect( lcdr_get_valid_properties() )->toBe(
 		array(
-			'entity_id',
 			'name',
 			'guid',
 			'author',
 			'status',
 			'password',
 			'created',
+			'entity_id',
 			'type',
 			'_label',
 			'identified_by',

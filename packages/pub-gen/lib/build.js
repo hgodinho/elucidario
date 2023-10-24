@@ -9,7 +9,7 @@ import { readContents, build } from "@elucidario/pkg-paths";
 import { getPaths } from "./getPaths.js";
 import { pubGenRemarkProcessor } from "./remark/processor.js";
 import { engine } from "./reference/csl-engine.js";
-import { toMD } from "@elucidario/pkg-docusaurus-md";
+import { toMD, heading, list } from "@elucidario/pkg-docusaurus-md";
 
 const paths = getPaths();
 
@@ -132,6 +132,7 @@ export const mergeMd = (content) => {
  * @param {string} args.style
  * @param {string} args.publication
  * @param {string} args.version
+ * @param {Object} args.attachmentIndex
  * @param {string} args.srcPath
  * @param {string} args.distPath
  * @returns {Promise<Array<Object>>}
@@ -141,6 +142,7 @@ const writeDocs = async ({
     lang,
     style,
     version,
+    attachmentIndex,
     srcPath,
     distPath,
 }) => {
@@ -152,12 +154,6 @@ const writeDocs = async ({
     });
 
     try {
-        const index = {
-            images: [],
-            tables: [],
-            figures: [],
-            charts: [],
-        };
         return await Promise.all(
             Object.entries(mdContent).map(async ([name, content]) => {
                 // If content is an object, it's a multi-file content, so we need to join it
@@ -169,7 +165,7 @@ const writeDocs = async ({
                         lang,
                         style,
                         path: Path,
-                        index,
+                        index: attachmentIndex,
                         distPath: path.resolve(
                             paths.publications,
                             publication,
@@ -189,11 +185,77 @@ const writeDocs = async ({
                     when: new Date().toLocaleString(),
                 };
             }),
-            console.log({ index }, { defaultLog: true, type: "info" })
+
+            writeIndexFiles({
+                index: attachmentIndex,
+                publication,
+                lang,
+                style,
+                version,
+            })
         );
     } catch (error) {
         throw new Error(`error writing docs at writeDocs: ${error}`);
     }
+};
+
+const writeIndexFiles = async ({
+    index,
+    publication,
+    lang,
+    style,
+    version,
+}) => {
+    const build = ({ type, title, items }) => {
+        const header = heading(1, title);
+        const body = list(items, true);
+        const md = toMD([header, body]);
+        fs.writeFileSync(
+            path.resolve(
+                paths.publications,
+                publication,
+                "dist",
+                lang,
+                `${type}.md`
+            ),
+            md
+        );
+    };
+
+    Object.entries(index).map(async ([type, files]) => {
+        if (files.length === 0) return;
+
+        switch (type) {
+            case "images":
+                build({
+                    type,
+                    title: "Lista de imagens",
+                    items: files,
+                });
+                break;
+            case "tables":
+                build({
+                    type,
+                    title: "Lista de tabelas",
+                    items: files,
+                });
+                break;
+            case "figures":
+                build({
+                    type,
+                    title: "Lista de figuras",
+                    items: files,
+                });
+                break;
+            case "charts":
+                build({
+                    type,
+                    title: "Lista de quadros",
+                    items: files,
+                });
+                break;
+        }
+    });
 };
 
 /**
@@ -224,6 +286,27 @@ const buildDocs = async ({
     fs.existsSync(path.resolve(distPath, lang)) ||
         fs.mkdirSync(path.resolve(distPath, lang), { recursive: true });
 
+    const attachmentIndex = {
+        images: [],
+        tables: [],
+        figures: [],
+        charts: [],
+    };
+
+    // Cria documentação
+    const docs = await writeDocs({
+        srcPath,
+        publication,
+        lang,
+        style,
+        version,
+        attachmentIndex,
+        distPath,
+    });
+
+    // copia imagens
+    const images = await writeImages({ publication, srcPath, lang, console });
+
     // se não houver um index.json no srcPath,
     // cria um index.json com os nomes dos arquivos
     // se houver, adiciona references ao index.json
@@ -231,6 +314,22 @@ const buildDocs = async ({
         const index = JSON.parse(
             fs.readFileSync(path.resolve(srcPath, "index.json"))
         );
+
+        const attachmentKeys = Object.keys(attachmentIndex)
+            .map((key) => {
+                if (attachmentIndex[key].length > 0) return key;
+            })
+            .filter((key) => key !== undefined);
+
+        let position = 0;
+        let offset = 2;
+        if (attachmentKeys.length > 0) {
+            attachmentKeys.forEach((key) => {
+                if (!index.files.includes(key))
+                    index.files.splice(position + offset, 0, key);
+                position++;
+            });
+        }
 
         if (!index.files.includes("references")) index.files.push("references");
 
@@ -255,19 +354,6 @@ const buildDocs = async ({
             })
         );
     }
-
-    // Cria documentação
-    const docs = await writeDocs({
-        srcPath,
-        publication,
-        lang,
-        style,
-        version,
-        distPath,
-    });
-
-    // copia imagens
-    const images = await writeImages({ publication, srcPath, lang, console });
 };
 
 /**

@@ -20,8 +20,10 @@ test( 'mapping/mapping', function () {
 		'title' => 'Mapeamento teste',
 		'guid' => 'acdca5e6-ca0d-4eb7-8a64-ecb59df61395',
 		'author' => 1,
-		'standard' => 'spectrum',
-		'standard_uri' => 'https://elucidario.art/mdorim/spectrum',
+		'standard' => (object) array(
+			'name' => 'spectrum',
+			'uri' => 'https://elucidario.art/mdorim/spectrum',
+		),
 		'version' => '1.0.0',
 		'created' => '2018-11-13T20:20:39+00:00',
 		'modified' => '2018-11-13T20:20:39+00:00',
@@ -32,9 +34,11 @@ test( 'mapping/mapping', function () {
 				'guid' => 'acdca5e6-ca0d-4eb7-8a64-ecb59df61395',
 				'prop_name' => 'identified_by',
 				'entity_type' => 'Type',
-				'external_prop_name' => 'name',
-				'external_prop_type' => 'string',
-				'external_prop_uri' => 'http://www.w3.org/2000/01/rdf-schema#label',
+				'external' => (object) array(
+					'name' => 'name',
+					'type' => 'string',
+					'uri' => 'http://www.w3.org/2000/01/rdf-schema#label',
+				),
 				"map_value" => (object) array(
 					"type" => "Identifier",
 					"classified_as" => array(

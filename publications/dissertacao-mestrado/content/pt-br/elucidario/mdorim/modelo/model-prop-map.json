@@ -30,7 +30,7 @@
             "sim",
             "Nome da propriedade de origem"
         ],
-        ["external_prop_uri", "string", "sim", "URI da propriedade de origem"],
+        ["external_prop_uri", "string", "", "URI da propriedade de origem"],
         [
             "external_prop_type",
             "string",

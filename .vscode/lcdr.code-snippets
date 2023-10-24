@@ -80,5 +80,78 @@
         "prefix": "dump",
         "description": "$this->dump",
         "body": "\\$this->dump( ${1:'cli'}, ${2:msg}, __CLASS__, __METHOD__, __LINE__, ${3:false} );"
+    },
+    "banner_traits": {
+        "scope": "php,js,ts,css,scss,html,md",
+        "prefix": "banner_traits",
+        "description": "Banner Traits",
+        "body": [
+            "/**",
+            "*     __             _ __",
+            "*    / /__________ _(_) /______",
+            "*   / __/ ___/ __ `/ / __/ ___/",
+            "*  / /_/ /  / /_/ / / /_(__  )",
+            "*  \\__/_/   \\__,_/_/\\__/____/",
+            "*/"
+        ]
+    },
+    "banner_public": {
+        "scope": "php,js,ts,css,scss,html,md",
+        "prefix": "banner_public",
+        "description": "Banner Public",
+        "body": [
+            "/**",
+            "*                  __    ___",
+            "*     ____  __  __/ /_  / (_)____",
+            "*    / __ \\/ / / / __ \\/ / / ___/",
+            "*   / /_/ / /_/ / /_/ / / / /__",
+            "*  / .___/\\__,_/_.___/_/_/\\___/",
+            "* /_/",
+            "*/"
+        ]
+    },
+    "banner_private": {
+        "scope": "php,js,ts,css,scss,html,md",
+        "prefix": "banner_private",
+        "description": "Banner Private",
+        "body": [
+            "/**",
+            "*                 _             __",
+            "*     ____  _____(_)   ______ _/ /____",
+            "*    / __ \\/ ___/ / | / / __ `/ __/ _ \\",
+            "*   / /_/ / /  / /| |/ / /_/ / /_/  __/",
+            "*  / .___/_/  /_/ |___/\\__,_/\\__/\\___/",
+            "* /_/",
+            "*/"
+        ]
+    },
+    "banner_protected": {
+        "scope": "php,js,ts,css,scss,html,md",
+        "prefix": "banner_protected",
+        "description": "Banner Protected",
+        "body": [
+            "/**",
+            " *                       __            __           __",
+            " *     ____  _________  / /____  _____/ /____  ____/ /",
+            " *    / __ \\/ ___/ __ \\/ __/ _ \\/ ___/ __/ _ \\/ __  /",
+            " *   / /_/ / /  / /_/ / /_/  __/ /__/ /_/  __/ /_/ /",
+            " *  / .___/_/   \\____/\\__/\\___/\\___/\\__/\\___/\\__,_/",
+            " * /_/",
+            " */"
+        ]
+    },
+    "banner_abstract": {
+        "scope": "php,js,ts,css,scss,html,md",
+        "prefix": "banner_abstract",
+        "description": "Banner Abstract",
+        "body": [
+            "/**",
+            " *          __         __                  __ ",
+            " *   ____ _/ /_  _____/ /__________ ______/ /_",
+            " *  / __ `/ __ \\/ ___/ __/ ___/ __ `/ ___/ __/",
+            " * / /_/ / /_/ (__  ) /_/ /  / /_/ / /__/ /_  ",
+            " * \\__,_/_.___/____/\\__/_/   \\__,_/\\___/\\__/",
+            " */"
+        ]
     }
 }

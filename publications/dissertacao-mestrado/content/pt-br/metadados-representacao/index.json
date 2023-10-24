@@ -1,8 +1,8 @@
 {
     "files": [
         "metadados-de-representacao.md",
-        "spectrum-information-requirements.md",
-        "linked-art.md",
-        "interseccoes.md"
+        "spectrum",
+        "linked-art",
+        "interseccoes"
     ]
 }

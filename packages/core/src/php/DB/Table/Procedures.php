@@ -35,7 +35,7 @@ final class Procedures extends Table {
 		$this->schema = "
             procedure_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
             type varchar(64),
-            guid varchar(40) NOT NULL DEFAULT '',
+            uuid varchar(40) NOT NULL DEFAULT '',
             description longtext,
             author bigint(20) unsigned NOT NULL,
             created datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -44,6 +44,7 @@ final class Procedures extends Table {
             schedule JSON,
             PRIMARY KEY (procedure_id),
             KEY type (type),
+            KEY uuid (uuid),
             KEY author (author),
             KEY created (created),
             KEY modified (modified),

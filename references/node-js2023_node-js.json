@@ -1,0 +1,22 @@
+{
+    "id": "node-js2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "node-js",
+    "_create": "2023-10-23T23:14:17.218Z",
+    "_update": "2023-10-23T23:14:17.218Z",
+    "type": "webpage",
+    "title": "NodeJs",
+    "author": [
+        {
+            "family": "NodeJs"
+        }
+    ],
+    "accessed": {
+        "raw": "2023-10-23"
+    },
+    "issued": {
+        "raw": "2023"
+    },
+    "URL": "https://nodejs.org/en"
+}

@@ -20,7 +20,7 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 /**
  * Concept Base Rest Class
  */
-class Concept extends Base {
+class Concept extends \LCDR\Rest\Routes\Abstracts\Entities {
 	/**
 	 * Set base.
 	 *
@@ -37,7 +37,7 @@ class Concept extends Base {
 	 */
 	public function set_schema() {
 		return array(
-			'wp' => array(
+			'mdorim' => array(
 				'view' => array(
 					'schema' => 'mdorim/concept',
 				),
@@ -48,20 +48,11 @@ class Concept extends Base {
 					),
 				),
 			),
-			'la' => array(
+			'la'     => array(
 				'view' => array(
 					'schema' => 'linked-art/concept',
 				),
 			),
 		);
-	}
-
-	/**
-	 * Set permission group.
-	 *
-	 * @return string
-	 */
-	public function set_permission_group() {
-		return 'entities';
 	}
 }

@@ -6,13 +6,13 @@ use Yoast\WPTestUtils\WPIntegration\TestCase;
 
 uses( Testcase::class);
 
-class BaseTestCase extends \LCDR\Rest\Routes\Base {
+class BaseTestCase extends \LCDR\Rest\Routes\Abstracts\Entities {
 	public function set_base() {
 		return 'tests';
 	}
 	public function set_schema() {
 		return array(
-			'wp' => array(
+			'mdorim' => array(
 				'edit' => array(
 					'schema' => 'mdorim/concept',
 					'options' => array(
@@ -29,9 +29,6 @@ class BaseTestCase extends \LCDR\Rest\Routes\Base {
 				),
 			)
 		);
-	}
-	public function set_permission_group() {
-		return 'entities';
 	}
 	public function prepare_item_for_database( $request ) {
 		return parent::prepare_item_for_database( $request );
@@ -142,8 +139,7 @@ test( 'BaseTestCase->get_item_permissions_check() should return ERROR for status
 
 test( 'BaseTestCase->get_item_permissions_check() should return ERROR with id 0', function () {
 	$base = new BaseTestCase();
-	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/tests/0/" );
-	$request->set_param( 'id', 0 );
+	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/tests/0" );
 	$result = $base->get_item_permissions_check( $request );
 	expect( $result )->toBeInstanceOf( \LCDR\Error\Rest::class);
 } );
@@ -151,7 +147,6 @@ test( 'BaseTestCase->get_item_permissions_check() should return ERROR with id 0'
 test( 'BaseTestCase->get_item_permissions_check() should return ERROR with wrong id', function () {
 	$base = new BaseTestCase();
 	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/tests/99999/" );
-	$request->set_param( 'id', 99999 );
 	$result = $base->get_item_permissions_check( $request );
 	expect( $result )->toBeInstanceOf( \LCDR\Error\Rest::class);
 } );
@@ -160,7 +155,6 @@ test( 'BaseTestCase->get_item_permissions_check() should return ERROR with conte
 	global $item_id;
 	$base = new BaseTestCase();
 	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/tests/{$item_id}" );
-	$request->set_param( 'id', $item_id );
 	$request->set_param( 'context', 'edit' );
 	$result = $base->get_item_permissions_check( $request );
 	expect( $result )->toBeInstanceOf( \LCDR\Error\Rest::class);
@@ -344,13 +338,13 @@ test( 'BaseTestCase->content_negotiation_request() wrong type return error', fun
 	expect( $result )->toBeInstanceOf( \LCDR\Error\Rest::class);
 } );
 
-test( 'BaseTestCase->content_negotiation_request() null type return wp', function () {
+test( 'BaseTestCase->content_negotiation_request() null type return mdorim', function () {
 	$base = new BaseTestCase();
 	$request = new \WP_REST_Request( 'POST', "/lcdr/v1/tests/" );
 	$request->set_body( json_encode( array( 'author' => 9999 ) ) );
 	$request->set_param( 'author', 9999 );
 	$result = $base->content_negotiation_request( $request );
-	expect( $result )->toBe( 'wp' );
+	expect( $result )->toBe( 'mdorim' );
 } );
 
 test( 'BaseTestCase->content_negotiation_request() linked art type return la', function () {

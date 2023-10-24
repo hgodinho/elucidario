@@ -3,11 +3,11 @@
     "fields": [
         {
             "type": "string",
-            "name": "Schema tipo"
+            "name": "Tipo schema"
         },
         {
             "type": "string",
-            "name": "Schema formato"
+            "name": "Formato schema"
         },
         {
             "type": "string",
@@ -15,11 +15,11 @@
         },
         {
             "type": "string",
-            "name": "HTML tag"
+            "name": "Tag HTML"
         },
         {
             "type": "string",
-            "name": "Input tipo"
+            "name": "Tipo input"
         },
         {
             "type": "string",
@@ -32,11 +32,11 @@
     ],
     "data": [
         [
-            "Schema tipo",
-            "Schema formato",
+            "Tipo schema",
+            "Formato schema",
             "Schema extra",
-            "HTML tag",
-            "Input tipo",
+            "Tag HTML",
+            "Tipo input",
             "Atributos",
             "Descrição"
         ],
@@ -81,25 +81,7 @@
             "min \\| max \\| step",
             "Número"
         ],
-        ["boolean", "", "", "input", "checkbox", "", "Caixa de seleção"],
-        [
-            "object",
-            "",
-            "",
-            "fieldset > \\<qualquer outra propriedade\\>",
-            "",
-            "",
-            "Objeto composto por propriedades"
-        ],
-        [
-            "array",
-            "",
-            "",
-            "fieldset > componente Array",
-            "",
-            "",
-            "Array de itens"
-        ]
+        ["boolean", "", "", "input", "checkbox", "", "Caixa de seleção"]
     ],
     "note": {
         "label": "Fonte",

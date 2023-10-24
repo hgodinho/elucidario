@@ -46,6 +46,14 @@ class Mappings extends Schema {
 			'sortable'   => true,
 			'allow_null' => false,
 		),
+		'uuid'        => array(
+			'name'       => 'uuid',
+			'type'       => 'varchar',
+			'length'     => 40,
+			'default'    => '',
+			'allow_null' => false,
+			'uuid'       => true,
+		),
 		'title'       => array(
 			'name'       => 'title',
 			'type'       => 'varchar',
@@ -54,6 +62,20 @@ class Mappings extends Schema {
 			'searchable' => true,
 			'sortable'   => true,
 			'allow_null' => false,
+		),
+		'standard'    => array(
+			'name'       => 'standard',
+			'type'       => 'varchar',
+			'length'     => 255,
+			'default'    => '',
+			'searchable' => true,
+			'sortable'   => true,
+			'allow_null' => false,
+		),
+		'uri'         => array(
+			'name'   => 'uri',
+			'type'   => 'varchar',
+			'length' => 255,
 		),
 		'description' => array(
 			'name'    => 'description',

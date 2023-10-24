@@ -1,0 +1,22 @@
+{
+    "id": "storybook2023",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "storybook",
+    "_create": "2023-10-24T00:01:25.053Z",
+    "_update": "2023-10-24T00:01:25.053Z",
+    "type": "webpage",
+    "title": "Storybook",
+    "author": [
+        {
+            "family": "Storybook"
+        }
+    ],
+    "issued": {
+        "raw": "2023"
+    },
+    "accessed": {
+        "raw": "2023-10-23"
+    },
+    "URL": "https://storybook.js.org/"
+}
