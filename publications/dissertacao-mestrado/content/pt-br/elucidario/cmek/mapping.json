@@ -1,0 +1,65 @@
+{
+    "mapping_id": 1,
+    "name": "museologico-mdorim",
+    "title": "BD Museológica da Casa Museu Ema Klabin para Mdorim/Linked Art",
+    "description": "Descreve o mapeamento entre a BD Museológica utilizada pela Casa Museu Ema Klabin para documentar sua coleção para o modelo Mdorim utilizado pelo Elucidário.art",
+    "author": 1,
+    "standard": "BD Museológica Casa Museu Ema Klabin",
+    "version": "1.0",
+    "created": "2023-10-23",
+    "modified": "2023-10-23",
+    "mapping": [
+        {
+            "map_id": 1,
+            "prop_name": "identified_by",
+            "entity_type": "Object",
+            "external_prop_name": "NomeTítulo",
+            "external_prop_type": "string",
+            "map_value": [
+                {
+                    "type": "Name",
+                    "content": "<valor a ser preenchido pelo usuário>",
+                    "classified_as": [
+                        {
+                            "id": "https://vocab.getty.edu/aat/300417199",
+                            "label": "descriptive titles"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "map_id": 34,
+            "prop_name": "attributed_by",
+            "entity_type": "Object",
+            "external_prop_name": "LocalizaçãoOriginal",
+            "external_prop_type": "string",
+            "map_value": [
+                {
+                    "type": "AttributeAssignment",
+                    "classified_as": [
+                        {
+                            "type": "Concept",
+                            "id": "https://vocab.getty.edu/aat/300248479",
+                            "_label": "location (physical position)"
+                        }
+                    ],
+                    "identified_by": [
+                        {
+                            "type": "Name",
+                            "content": "Localização Original",
+                            "classified_as": [
+                                {
+                                    "type": "Concept",
+                                    "id": "https://vocab.getty.edu/aat/300404669",
+                                    "_label": "display information"
+                                }
+                            ]
+                        }
+                    ],
+                    "assigned": "<valor a ser preenchido pelo usuário>"
+                }
+            ]
+        }
+    ]
+}

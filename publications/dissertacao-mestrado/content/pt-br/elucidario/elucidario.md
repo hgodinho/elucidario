@@ -14,7 +14,7 @@ Para o entendimento das seções a seguir, é importante primeiro definirmos alg
 
 **_Back-end_**: é a parte do sistema que não é visível para o usuário. É a parte do sistema que gerencia os dados e a lógica de negócio.
 
-**Bloco Gutemberg**: é uma funcionalidade do WordPress que facilita a reutilização de componentes de interface de usuário. Os blocos Gutemberg são utilizados para construir páginas e postagens no WordPress, e utilizam a biblioteca React para construção das interfaces.
+<!-- **Bloco Gutemberg**: é uma funcionalidade do WordPress que facilita a reutilização de componentes de interface de usuário. Os blocos Gutemberg são utilizados para construir páginas e postagens no WordPress, e utilizam a biblioteca React para construção das interfaces. -->
 
 **Componente React**: é um componente de interface de usuário desenvolvido utilizando a biblioteca React [@meta-open-source2023]. Os componentes são utilizados como blocos de construção no desenvolvimento de interfaces de usuário.
 
@@ -56,8 +56,6 @@ Utilizamos o Git [@torvalds2005] para o controle de versão dos pacotes, o GitHu
 
 ![**Fonte**: Elaborado pelo autor, com base no SemVer.org](./SemVer.png)
 
-Para assegurarmos a qualidade do código-fonte, e se seus objetivos estão sendo atingidos, criamos um conjunto de testes automatizados para cada um dos pacotes, configurados especificamente para cada linguagem de programação e ambiente. Estes testes rodam automaticamente no ambiente local a cada nova alteração no código-fonte adicionada ao controle de versão utilizando a biblioteca Husky [@typicode2018], e em um ambiente de integração contínua (_CI_) (sincronização remota) utilizando o GitHub Actions [@github2018].
-
 O repositório pode ser acessado no link <https://github.com/hgodinho/elucidario> e, em resumo, é organizado da seguinte forma:
 
 ```bash
@@ -69,13 +67,13 @@ elucidario
 ├── ...
 ```
 
-O diretório "_packages_" contém os pacotes que podem ser reutilizados, tanto por outros pacotes, como por aplicações. Todos os pacotes definidos nesta pasta seguem o padrão de nome "@elucidario/pkg-\<nome-pacote\>".
+O diretório `packages` contém os pacotes que podem ser reutilizados, tanto por outros pacotes, como por aplicações. Todos os pacotes definidos nesta pasta seguem o padrão de nome `@elucidario/pkg-<nome-pacote>`.
 
-No diretório "_apps_", se encontram as aplicações, como um ambiente de desenvolvimento completo utilizando Docker para testes locais e o site do Elucidário.art disponível em <http://elucidario.art/>. Os pacotes nesta pasta seguem o padrão de nome "@elucidario/app-\<nome-pacote\>".
+No diretório `apps`, se encontram as aplicações, como um ambiente de desenvolvimento completo utilizando Docker para testes locais e o site do Elucidário.art disponível em <http://elucidario.art/>. Os pacotes nesta pasta seguem o padrão de nome `@elucidario/app-<nome-pacote>`.
 
-O diretório "_publications_" contém as publicações referentes ao Elucidário.art, como a dissertação de mestrado e outros artigos desenvolvidos ao longo da pesquisa. Os pacotes nesta pasta seguem o padrão de nome "@elucidario/pub-\<nome-pacote\>".
+O diretório `publications` contém as publicações referentes ao Elucidário.art, como esta dissertação de mestrado e outros artigos desenvolvidos ao longo da pesquisa. Os pacotes nesta pasta seguem o padrão de nome `@elucidario/pub-<nome-pacote>`.
 
-No diretório "_references_" contém referências utilizadas no desenvolvimento de todo o ecossistema do Elucidário.art e estão organizadas em um arquivo JSON para cada referência seguindo o formato _Citation Style Language_ (CSL) [@d-arcus2010].
+No diretório `references` contém referências utilizadas no desenvolvimento de todo o ecossistema do Elucidário.art e estão organizadas em um arquivo JSON para cada referência seguindo o formato _Citation Style Language_ (CSL) [@d-arcus2010].
 
 Todos os pacotes nos diretórios `apps` e `packages` foram construídos levando em conta os seguintes princípios de design, ou técnicas de programação:
 
@@ -83,15 +81,73 @@ Todos os pacotes nos diretórios `apps` e `packages` foram construídos levando 
 - i10n (_localization_) - quando aplicável o pacote deve implementar o suporte a localização dos idiomas português, espanhol e inglês, seguindo esta ordem de prioridade;
 - i18n (_internationalization_) - quando aplicável o pacote deve implementar o suporte a internacionalização, e o processo de localização deve ser devidamente documentado;
 
-Os pacotes principais do diretório _packages_ são:
+Os pacotes são apresentados a seguir e estão organizados da seguinte forma:
 
-- "@elucidario/pkg-mdorim" - Pacote que define o modelo de dados utilizado no sistema;
-- "@elucidario/pkg-design-system" - Pacote que define o sistema de design utilizado no aplicativo;
-- "@elucidario/pkg-core" - Pacote principal do Elucidário.art, integra os demais pacotes e define as funcionalidades principais do sistema, como banco de dados, rotas, páginas administrativas, configurações, usuários, permissões de usuários, etc;
+**Escopo**
+
+Descreve o que cada pacote faz e quais são as suas funcionalidades.
+
+**Descrição**
+
+Descreve como cada pacote foi implementado, quais são as suas principais características e como ele se relaciona com os demais pacotes. Esta seção também descreve a estrutura de cada pacote, como os arquivos estão organizados e quais são as suas principais dependências. As descrições podem conter diagramas UML, ilustrações e quadros para melhor representação de seu conteúdo.
+
+**Testes**
+
+Para assegurarmos a qualidade do código-fonte, e se seus objetivos estão sendo atingidos, criamos um conjunto de testes automatizados para cada um dos pacotes, configurados especificamente para cada linguagem de programação e ambiente. Estes testes rodam automaticamente no ambiente local a cada nova alteração no código-fonte adicionada ao controle de versão (Git) utilizando a biblioteca Husky [@typicode2018], e em um ambiente de integração contínua (CI) utilizando o GitHub Actions [@github2018].
+
+Utilizamos a biblioteca Jest [@nakazawa2011] para os testes em javascript e a biblioteca Pest [@maduro2021] para os testes em PHP. Estas bibliotecas permitem a criação de testes unitários e de integração. Os testes unitários são utilizados para testar pequenas partes do código-fonte, como funções, métodos, classes, etc. Os testes de integração são utilizados para testar a integração entre diferentes partes do código-fonte, como a integração entre diferentes funções, métodos, classes, etc. Embora utilizadas em linguagens de programação diferentes, as duas bibliotecas apresentam uma API bastante similar, umas das funcionalidades apresentadas por ambas é a possibilidade de definir _matchers_ para validação de valores, como por exemplo, a validação de uma `string`:
+
+**{{count:figures;legend=Exemplo de teste utilizando o Jest para javascript e o Pest para PHP}}**
+
+```javascript
+// js
+expect('banana').toBe('banana');
+
+// php
+expect('banana')->toBe('banana');
+```
+
+**Fonte**: elaborado pelo autor.
+
+Em que `expect` é uma função que espera um valor qualquer como parâmetro, nela definimos o valor que esperamos receber, e em seguida utilizamos o _matcher_ `toBe` para validar se o valor recebido é igual ao valor esperado.
+
+### 7.1.1. Clonando o repositório
+
+Para executar o Elucidário.art localmente, bem com seus testes, dependências e pacotes, é necessário clonar o repositório do Elucidário.art, mas para isso é necessário ter algumas dependências instaladas previamente:
+
+- Git [@torvalds2005];
+- Node.js [@node-js2023];
+- pnpm [@pnpm2023];
+- PHP 8.2 [@php2022];
+- Composer [@adermann2023];
+- Docker [@hykes2013].
+
+Após a instalação das dependências, inicie um novo terminal em um diretório de sua preferência e execute o comando `git clone`:
+
+```bash
+git clone https://github.com/hgodinho/elucidario.git
+```
+
+Ao concluir o download será possível navegar pelo repositório e executar os comandos de instalação e execução do Elucidário.art.
+
+### 7.1.2. Instalando as dependências
+
+Para instalar as dependências do Elucidário.art, execute o comando `pnpm install` na raiz do repositório. Como utilizamos a biblioteca Lerna [@lerna2023] para gerenciar o _monorepo_, este comando irá ser executado recursivamente em todos os pacotes disponibilizados no diretório `packages` e `apps`, e irá instalar as dependências de cada pacote.
+
+Dependendo do pacote, se possuir código em PHP, deve-se navegar até o diretório do pacote e executar o comando `composer install` para instalar as dependências PHP.
+
+```bash
+cd packages/core
+composer install
+```
+
+Cada pacote possui uma série de comandos para sua execução, testes e publicação, abordaremos alguns deles nas seções que descrevem os testes dos pacotes a seguir.
+
+## 7.2. Os pacotes
+
+A seguir apresentamos os principais pacotes do diretório `packages`:
+
+- `@elucidario/pkg-mdorim` - Pacote que define o modelo de dados utilizado no sistema;
+- `@elucidario/pkg-design-system` - Pacote que define o sistema de design utilizado no aplicativo;
+- `@elucidario/pkg-core` - Pacote principal do Elucidário.art, integra os demais pacotes e define as funcionalidades principais do sistema, como banco de dados, rotas, páginas administrativas, configurações, usuários, permissões de usuários, etc;
 <!-- - "@elucidario/pkg-blocks" - Pacote que define os blocos Gutemberg utilizados no WordPress; -->
-
-A seguir apresentamos os principais pacotes individualmente, descrevendo-os em três partes:
-
-1. Escopo de uso do pacote;
-2. Descrição de suas funcionalidades, implementação e estrutura. As descrições contém diagramas UML e tabelas para melhor representação de seu conteúdo;
-3. Como os testes foram executados e seus resultados para garantir a qualidade de cada pacote.

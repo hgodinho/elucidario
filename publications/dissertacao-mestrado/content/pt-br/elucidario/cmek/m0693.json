@@ -1,0 +1,40 @@
+{
+    "type": "HumanMadeObject",
+    "identified_by": [
+        {
+            "type": "Identifier",
+            "content": "M-0693",
+            "classified_as": [
+                {
+                    "type": "Type",
+                    "id": "https://vocab.getty.edu/aat/300312355",
+                    "label": "accession number"
+                }
+            ]
+        },
+        {
+            "type": "Name",
+            "content": "Mesa de jogos com toucador",
+            "classified_as": [
+                {
+                    "type": "Type",
+                    "id": "https://vocab.getty.edu/aat/300417199",
+                    "label": "descriptive titles"
+                }
+            ]
+        }
+    ],
+    "referred_to_by": [
+        {
+            "type": "Statement",
+            "content": "Estilo e época transição de D. João V para D. José. Com quatro tampos: aparador, cartas, xadrez e toucador.",
+            "classified_as": [
+                {
+                    "type": "Concept",
+                    "id": "https://vocab.getty.edu/aat/300435416",
+                    "label": "descriptive note"
+                }
+            ]
+        }
+    ]
+}

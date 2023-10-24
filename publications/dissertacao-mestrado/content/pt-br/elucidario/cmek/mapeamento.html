@@ -1,0 +1,669 @@
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th colspan="3">Mdorim</th>
+            <th colspan="2">Termos candidatos</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Museológico</th>
+            <th>Entidade</th>
+            <th>Propriedade</th>
+            <th>Classe relacionada</th>
+            <th>AAT</th>
+            <th>Spectrum</th>
+            <th>Observação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- NumeroTombo -->
+        <tr>
+            <td rowspan="2">NúmeroTombo</td>
+            <td>Object</td>
+            <td>identified_by</td>
+            <td>Identified</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Identifier</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>accession numbers</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- Letra -->
+        <tr>
+            <td rowspan="2">Letra</td>
+            <td>Object</td>
+            <td>identified_by</td>
+            <td>Identified</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Identifier</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>accession numbers</td>
+            <td></td>
+            <td>É recomendado usar um sistema numérico e não alfa-numérico</td>
+        </tr>
+        <!-- NúmeroAnterior -->
+        <tr>
+            <td rowspan="2">NúmeroAnterior</td>
+            <td>Object</td>
+            <td>identified_by</td>
+            <td>Identified</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Identifier</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>former, accession numbers</td>
+            <td></td>
+            <td>Aprofundar com contextualização de ser atribuição anterior</td>
+        </tr>
+        <!-- Classificação -->
+        <tr>
+            <td>Classificação</td>
+            <td>Object</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td></td>
+            <td></td>
+            <td>
+                Deve-se criar entidades Concept no Elucidário.art que descrevem
+                as estruturas de vocabulários controlados utilizados pela base
+                museológica da Casa Museu Ema Klabin
+            </td>
+        </tr>
+        <!-- Núcleo -->
+        <tr>
+            <td>Núcleo</td>
+            <td>Object</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td></td>
+            <td></td>
+            <td>igual a classificação</td>
+        </tr>
+        <!-- NomeTítulo -->
+        <tr>
+            <td rowspan="2">NomeTítulo</td>
+            <td>Object</td>
+            <td>identified_by</td>
+            <td>Name</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>titles</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- Autor -->
+        <tr>
+            <td rowspan="2">Autor</td>
+            <td>Object</td>
+            <td>produced_by</td>
+            <td>Production</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Production</td>
+            <td>carried_out_by</td>
+            <td>Person</td>
+            <td></td>
+            <td></td>
+            <td>
+                Deve se criar entidades Person/Group no Elucidário para cada
+                autoria representada
+            </td>
+        </tr>
+        <!-- Origem -->
+        <tr>
+            <td rowspan="2">Origem</td>
+            <td>Object</td>
+            <td>produced_by</td>
+            <td>Production</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Production</td>
+            <td>took_place_at</td>
+            <td>Place</td>
+            <td></td>
+            <td></td>
+            <td>
+                Deve se criar entidades Place que descrevem as origens definidas
+                na Coleção
+            </td>
+        </tr>
+        <!-- DataPeríodo -->
+        <tr>
+            <td rowspan="2">DataPeríodo</td>
+            <td>Object</td>
+            <td>produced_by</td>
+            <td>Production</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Production</td>
+            <td>timespan</td>
+            <td>TimeSpan</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- LocalizaçãoAtual -->
+        <tr>
+            <td>LocalizaçãoAtual</td>
+            <td>Object</td>
+            <td>current_location</td>
+            <td>Place</td>
+            <td></td>
+            <td></td>
+            <td>
+                Deve-se criar entidades Places que descrevem os ambientes da
+                Casa
+            </td>
+        </tr>
+        <!-- LocalizaçãoOriginal -->
+        <tr>
+            <td rowspan="6">LocalizaçãoOriginal</td>
+            <td>Object</td>
+            <td>attributed_by</td>
+            <td>AttributeAssignment</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>AttributeAssignment</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>location (physical position)</td>
+            <td></td>
+            <td>
+                Deve-se criar um conceito que define Localização anterior com
+                equivalência ao termo location do AAT Getty
+            </td>
+        </tr>
+        <tr>
+            <td>AttributeAssignment</td>
+            <td>assigned</td>
+            <td>Place</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>AttributeAssignment</td>
+            <td>identified_by</td>
+            <td>Name</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>display information</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>content</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Localização original</td>
+        </tr>
+        <!-- MaterialTécnica -->
+        <tr>
+            <td rowspan="3">MaterialTécnica</td>
+            <td>Object</td>
+            <td>made_of</td>
+            <td>Ref</td>
+            <td></td>
+            <td></td>
+            <td>
+                Deve se criar entidades Concept/Types que descreve materiais e
+                técnicas utilizando AAT
+            </td>
+        </tr>
+        <tr>
+            <td>Object</td>
+            <td>produced_by</td>
+            <td>Production</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Production</td>
+            <td>technique</td>
+            <td>Concept</td>
+            <td></td>
+            <td></td>
+            <td>
+                Deve se criar entidades Concept/Types que descreve materiais e
+                técnicas utilizando AAT
+            </td>
+        </tr>
+        <!-- Dimensões -->
+        <tr>
+            <td>Dimensões</td>
+            <td>Object</td>
+            <td>dimension</td>
+            <td>Dimension</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- BaseMoldura -->
+        <tr>
+            <td>BaseMoldura</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                BaseMoldura deixa de existir e criamos uma nova entidade Object
+                que descreve o item relacionado e neste item marcamos o item
+                superior utilizando a propriedade part_of
+            </td>
+        </tr>
+        <!-- PesoTotal -->
+        <tr>
+            <td>PesoTotal</td>
+            <td>Object</td>
+            <td>dimension</td>
+            <td>Dimension</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- Marca -->
+        <tr>
+            <td>Marca</td>
+            <td>Object</td>
+            <td>referred_to_by</td>
+            <td>Statement</td>
+            <td></td>
+            <td></td>
+            <td>
+                Necessita ser avaliado a necessidade desse campo, se pode ser
+                mesclado com Inscrições
+            </td>
+        </tr>
+        <!-- Assinatura -->
+        <tr>
+            <td rowspan="2">Assinatura</td>
+            <td>Object</td>
+            <td>referred_to_by</td>
+            <td>Statement</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Statement</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>signatures</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- Etiquetas -->
+        <tr>
+            <td rowspan="2">Etiquetas</td>
+            <td>Object</td>
+            <td>referred_to_by</td>
+            <td>Statement</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Statement</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>identification tags</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- Procedência -->
+        <tr>
+            <td>Procedência</td>
+            <td>Provenance</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- DataEntrada -->
+        <tr>
+            <td>DataEntrada</td>
+            <td>Provenance</td>
+            <td>timespan</td>
+            <td>TimeSpan</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- DocumentoAquisição -->
+        <tr>
+            <td>DocumentoAquisição</td>
+            <td>Provenance</td>
+            <td>subject_of</td>
+            <td>Textual</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- ParecerTécnico -->
+        <tr>
+            <td>ParecerTécnico</td>
+            <td>Object</td>
+            <td>referred_to_by</td>
+            <td>Textual</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- Exposições -->
+        <tr>
+            <td>Exposições</td>
+            <td>Activity</td>
+            <td>used_specific_object</td>
+            <td>Object</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- ReferênciaBibliográfica -->
+        <tr>
+            <td>ReferênciaBibliográfica</td>
+            <td>Object</td>
+            <td>subject_of</td>
+            <td>Textual</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- ReferênciaAudiovisual -->
+        <tr>
+            <td>ReferênciaAudiovisual</td>
+            <td>Object</td>
+            <td>representation</td>
+            <td>Visual</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- EstadoAtual -->
+        <tr>
+            <td>EstadoAtual</td>
+            <td>Procedure</td>
+            <td>type</td>
+            <td></td>
+            <td></td>
+            <td>Condition checking and technical assessment</td>
+            <td></td>
+        </tr>
+        <!-- Recomendações -->
+        <tr>
+            <td rowspan="2">Recomendações</td>
+            <td>Object</td>
+            <td>referred_to_by</td>
+            <td>Statement</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Statement</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>remarks</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- DescriçãoTécnicos -->
+        <tr>
+            <td rowspan="2">DescriçãoTécnicos</td>
+            <td>Object</td>
+            <td>referred_to_by</td>
+            <td>Statement</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Statement</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>descriptive_note</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- DescriçãoConservação -->
+        <tr>
+            <td rowspan="2">DescriçãoConservação</td>
+            <td>Object</td>
+            <td>referred_to_by</td>
+            <td>Statement</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Statement</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>condition/examination description</td>
+            <td>Condition checking and technical assessment</td>
+            <td></td>
+        </tr>
+        <!-- Intervenções -->
+        <tr>
+            <td>Intervenções</td>
+            <td>Procedure</td>
+            <td>type</td>
+            <td></td>
+            <td></td>
+            <td>Collections care and conservation</td>
+            <td></td>
+        </tr>
+        <!-- Trânsito -->
+        <tr>
+            <td>Trânsito</td>
+            <td>Procedure</td>
+            <td>type</td>
+            <td></td>
+            <td></td>
+            <td>Location and movement control</td>
+            <td></td>
+        </tr>
+        <!-- CriadorReg -->
+        <tr>
+            <td>CriadorReg</td>
+            <td>Object</td>
+            <td>author</td>
+            <td>User</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- DataCriação -->
+        <tr>
+            <td>DataCriação</td>
+            <td>Object</td>
+            <td>created</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- HoraCriação -->
+        <tr>
+            <td>HoraCriação</td>
+            <td>Object</td>
+            <td>created</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- ModificadorReg -->
+        <tr>
+            <td>ModificadorReg</td>
+            <td>History</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- DataModificação -->
+        <tr>
+            <td>DataModificação</td>
+            <td>History</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- HoraModificação -->
+        <tr>
+            <td>HoraModificação</td>
+            <td>History</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- Observações -->
+        <tr>
+            <td>Observações</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                Precisa ser analisado caso a caso, pois possui informações de
+                diversos tipos diferentes
+            </td>
+        </tr>
+        <!-- valor_seguro -->
+        <tr>
+            <td rowspan="2">valor_seguro</td>
+            <td>Object</td>
+            <td>dimension</td>
+            <td>Dimension</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Dimension</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>price</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- conservacao_nivel -->
+        <tr>
+            <td rowspan="2">conservacao_nivel</td>
+            <td>Object</td>
+            <td>referred_to_by</td>
+            <td>Statement</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Statement</td>
+            <td>classified_as</td>
+            <td>Concept</td>
+            <td>remarks</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <!-- title_language -->
+        <tr>
+            <td rowspan="2">title_language</td>
+            <td>Object</td>
+            <td>identified_by</td>
+            <td>Name</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>language</td>
+            <td>Concept</td>
+            <td></td>
+            <td></td>
+            <td>Entidade Concept (Language) que descreve o idioma utilizado</td>
+        </tr>
+        <!-- ConservaçãoFoto -->
+        <tr>
+            <td>ConservaçãoFoto</td>
+            <td>Procedure</td>
+            <td>type</td>
+            <td></td>
+            <td></td>
+            <td>Condition checking and technical assessment</td>
+            <td></td>
+        </tr>
+        <!-- ConservaçãoCromo -->
+        <tr>
+            <td>ConservaçãoCromo</td>
+            <td>Procedure</td>
+            <td>type</td>
+            <td></td>
+            <td></td>
+            <td>Condition checking and technical assessment</td>
+            <td></td>
+        </tr>
+        <!-- Restauração -->
+        <tr>
+            <td>Restauração</td>
+            <td>Procedure</td>
+            <td>type</td>
+            <td></td>
+            <td></td>
+            <td>Condition checking and technical assessment</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
