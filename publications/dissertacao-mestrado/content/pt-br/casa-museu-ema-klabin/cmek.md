@@ -94,6 +94,10 @@ Um outro problema nas BDs é que não há uma conexão direta entre elas, quando
 
 ![**Fonte**: Aba do histórico de uma peça no Filemaker](filemaker-m0023.png)
 
+O quadro a seguir demonstra todos os metadados definidos na BD Museológica:
+
+{{table:casa-museu-ema-klabin/museologico.json}}
+
 Em 2019, com o lançamento do EXPLORE (<https://emaklabin.org.br/explore>), a Casa Museu Ema Klabin passa a disponibilizar a coleção para consulta online. O EXPLORE é resultado do Trabalho de Conclusão de Curso da Pós-Graduação em Comunicação e Design Digital pela Escola Superior de Propaganda e Marketing (2018) e consiste em duas partes principais: plugin e tema para WordPress. O plugin é responsável por delimitar a arquitetura da Informação no sistema, o _back-end_, já o tema é responsável pela apresentação desta informação, o _front-end_. No _back-end_ foi estabelecido dois tipos principais de conteúdos a serem inseridos: Autores e Obras. Também foi estabelecido três taxonomias para organizar as obras: Ambientes, Núcleos e Classificações. Em “Autores” foi inserido todos os metadados relacionados aos agentes criadores dos objetos da coleção. “Obras” armazena os metadados relacionados aos itens da coleção: número de tombo, título, autor, data, material, técnica, medidas, classificação, ambiente e núcleo. Em “ambientes” foi criado um termo para cada ambiente da casa: sala de jantar, galeria, biblioteca, salão, quarto principal, quarto azul, sala de música, hall, vestíbulo, jardim principal e jardim interno, e relacionado à localização das obras na casa. Em “núcleos” estão os termos utilizados pela curadoria para organizar os itens da coleção: artes decorativas, prataria, arte asiática, arte europeia até 1900, arte brasileira - século XX, mobiliário europeu, arte brasileira até 1900, moda, mobiliário brasileiro, arte europeia - século XX, antiguidade clássica, arte pré-colombiana, arte africana e arte das Américas. Em “classificações” foi utilizado o Tesauro de Objetos do Patrimônio Cultural nos Museus Brasileiros (FERREZ, 2016).
 
 {{count:images;legend=Página principal do Explore.}}
