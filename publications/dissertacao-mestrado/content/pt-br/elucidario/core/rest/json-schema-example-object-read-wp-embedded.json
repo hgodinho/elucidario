@@ -1,0 +1,31 @@
+{
+    "classified_as": [2],
+    "_links": {
+        "concepts": [
+            {
+                "id": 2,
+                "href": "http://exemplo.com/wp-json/lcdr/v1/concepts/2",
+                "embeddable": true
+            }
+        ]
+    },
+    "_embedded": {
+        "concept": {
+            "entity_id": 2,
+            "name": "name",
+            "guid": "936DA01F-9ABD-4d9d-80C7-02AF85C822A8",
+            "author": 1,
+            "status": "publish",
+            "created": "2023-01-01 00:00:00",
+            "modified": "2023-01-01 00:00:00",
+            "type": "Concept",
+            "label": "Conceito de exemplo",
+            "identified_by": [
+                {
+                    "type": "Name",
+                    "content": "Conceito de Exemplo"
+                }
+            ]
+        }
+    }
+}

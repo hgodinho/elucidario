@@ -1,0 +1,67 @@
+{
+    "title": "{{count:charts;legend=Descrição da tabela MySQL _wp_lcdr_relationships_ do sistema.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Chave"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
+        [
+            "rel_id",
+            "bigint(20) unsigned",
+            "auto_increment",
+            "PRI",
+            "Identificador único da relação"
+        ],
+        [
+            "subject",
+            "bigint(20) unsigned",
+            "NOT NULL",
+            "KEY",
+            "Identificador único da entidade que é o sujeito da relação"
+        ],
+        [
+            "predicate",
+            "varchar(50)",
+            "NOT NULL",
+            "KEY",
+            "Predicado da relação, pode ser qualquer uma das propriedades listadas como propriedade de relacionamento no Quadro 34."
+        ],
+        [
+            "object",
+            "bigint(20) unsigned",
+            "NOT NULL",
+            "KEY",
+            "Identificador único da entidade que é o objeto da relação"
+        ],
+        [
+            "rel_order",
+            "int(11)",
+            "NOT NULL",
+            "KEY",
+            "Ordem da relação, para o caso de uma entidade ter mais de uma relação"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}
