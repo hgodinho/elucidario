@@ -7,7 +7,7 @@ O Mdorim também é utilizado pelo plugin para gerar a UI administrativa para ed
 Fonte: Elaborado pelo autor.
 
 Em `definitions`, definimos um objeto `localizedString` que contém as propriedades `lang` e `content`, ambas obrigatórias. A propriedade `lang` deve seguir a RFC 5646
-[^1] e a propriedade `content` deve ser uma string no idioma definido em `lang`.
+[^2] e a propriedade `content` deve ser uma string no idioma definido em `lang`.
 
 A propriedade `patternProperties` define o padrão de nome de cada propriedade do Linked Art para o mapeamento, no caso utilizamos o padrão Regex `^_?[a-z][a-z0-9_]*$`, em que:
 
@@ -28,4 +28,4 @@ Utilizando este esquema, o metadado `identified_by` do Linked Art pode ser tradu
 
 Esta interface de tradução é utilizada somente no código, em que novos arquivos JSON são adicionados para cada idioma que se deseja dar suporte. Cada novo idioma deve conter uma suite de testes adicionais para validação do formato.
 
-[^1]: <https://datatracker.ietf.org/doc/html/rfc5646>
+[^2]: <https://datatracker.ietf.org/doc/html/rfc5646>

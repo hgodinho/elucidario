@@ -1,16 +1,14 @@
 {
     "files": [
-        "agradecimentos.md",
         "resumo.md",
-        "siglas.md",
-        "introducao",
+        "abstract.md",
+        "introducao.md",
         "metodologia.md",
         "informacao.md",
         "metadados-representacao",
         "documentacao",
         "casa-museu-ema-klabin",
         "elucidario",
-        "consideracoes-finais.md",
-        "notas.md"
+        "consideracoes-finais.md"
     ]
 }

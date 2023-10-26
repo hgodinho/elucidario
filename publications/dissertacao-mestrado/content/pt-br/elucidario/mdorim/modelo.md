@@ -47,7 +47,7 @@ A seguir apresentamos uma visão geral do modelo com todas as entidades, procedi
 
 {{mermaid:elucidario/mdorim/mermaid.md}}
 
-A figura 8 demonstra o Mdorim como um todo, em cinza vemos as entidades principais do modelo que foram importadas do Linked Art; na cor vinho e com formato circular vemos os procedimentos que também tem sua rota no modelo; em preto vemos a entidade `Option` e suas possibilidades de uso; em vermelho os tipos de usuários; em roxo a entidade `History` e, por fim, em marrom o mapeamentos e suas propriedades.
+A figura 10 demonstra o Mdorim como um todo, em cinza vemos as entidades principais do modelo que foram importadas do Linked Art; na cor vinho e com formato circular vemos os procedimentos que também tem sua rota no modelo; em preto vemos a entidade `Option` e suas possibilidades de uso; em vermelho os tipos de usuários; em roxo a entidade `History` e, por fim, em marrom o mapeamentos e suas propriedades.
 
 As nomenclaturas do modelo, como nome de entidades, objetos e propriedades foram mantidas em inglês para manter a consistência entre o idioma usado nas linguagens de programação e a API do modelo.
 
