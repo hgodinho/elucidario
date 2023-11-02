@@ -1,0 +1,12 @@
+{
+    "extends": "@elucidario/pkg-tsconfig",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "lib",
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "declaration": true,
+        "types": ["@elucidario/pkg-types"]
+    },
+    "include": ["src/lib/**/*.ts"]
+}

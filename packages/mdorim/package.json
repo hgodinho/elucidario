@@ -1,7 +1,7 @@
 {
     "name": "@elucidario/pkg-mdorim",
     "version": "0.2.1",
-    "description": "Modelo de Dados para Organização e Representação da Informação Museológica, utilizado pelo Elucidário.art.",
+    "description": "Modelo de Dados para Organização e Representação da Informação Museológica (Mdorim) utilizado pelo Elucidário.art.",
     "homepage": "https://elucidario.art/mdorim",
     "license": "MIT",
     "author": {
@@ -11,12 +11,11 @@
     "type": "module",
     "exports": {
         ".": {
-            "import": "./lib/mjs/index.mjs",
-            "require": "./lib/cjs/index.cjs"
+            "import": "./lib/mjs/index.min.mjs",
+            "require": "./lib/cjs/index.min.cjs"
         }
     },
     "main": "lib/mjs/index.mjs",
-    "types": "lib/types.d.ts",
     "files": [
         "dist",
         "mapping",
@@ -26,9 +25,12 @@
     ],
     "scripts": {
         "build": "pnpm buildScript -c -s -e -t -d && pnpm test",
+        "build:rollup": "rollup -c",
+        "watch:rollup": "rollup -c -w",
         "buildScript": "node src/build/build.js",
         "clean:docs": "rm -rf docs/*",
         "clean:static": "rm -rf static/*",
+        "clean:lib": "rm -rf lib/*",
         "dev": "pnpm buildScript -c -s -e -t -m -w",
         "jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
         "test": "pnpm .bin/test.sh"
@@ -45,12 +47,17 @@
         "@elucidario/pkg-docusaurus-md": "workspace:^",
         "@elucidario/pkg-paths": "workspace:^",
         "@elucidario/pkg-pub-gen": "workspace:^",
+        "@elucidario/pkg-rollup": "workspace:^",
         "@elucidario/pkg-schema-doc": "workspace:^",
+        "@elucidario/pkg-types": "workspace:^",
+        "@elucidario/pkg-tsconfig": "workspace:^",
         "child_process": "^1.0.2",
         "commander": "^10.0.1",
         "jest": "^29.5.0",
         "jest-json-schema": "^6.1.0",
         "json-schema-to-typescript": "^13.0.1",
-        "lodash-es": "^4.17.21"
+        "lodash-es": "^4.17.21",
+        "rollup": "^4.2.0",
+        "typescript": "^5.2.2"
     }
 }
