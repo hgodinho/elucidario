@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # This script is used to run tests in CI.
 
 run_node_tests() {
@@ -12,7 +11,7 @@ run_php_tests() {
     composer run-script test
 }
 
-# run_node_tests
+run_node_tests
 run_php_tests
 
 # Verify exit status of tests

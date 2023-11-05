@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "$id": "https://elucidario.art/mdorim/schemas/mapping/prop_map.json",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/prop_map.json",
     "title": "PropMap",
     "description": "Describe the `PropMap` entity, responsible to describe a mapping between a property of an entity of Linked Art and a property of an external source.",
     "type": "object",

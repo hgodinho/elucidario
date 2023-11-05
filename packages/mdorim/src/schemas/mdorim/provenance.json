@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://elucidario.art/mdorim/schemas/linked-art/provenance.json",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/provenance.json",
     "title": "Provenance Activity Schema",
     "description": "_crm:E7\\_Activity_\nA broad activity during which the ownership, custody, location or other rights related to one or more objects are changed\nSee: [API](https://linked.art/api/1.0/endpoint/provenance/) | [Model](https://linked.art/model/provenance/)",
     "type": "object",

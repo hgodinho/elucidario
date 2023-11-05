@@ -24,14 +24,14 @@
         "translations"
     ],
     "scripts": {
-        "build": "pnpm buildScript -c -s -e -t -d && pnpm test",
+        "build": "pnpm build:script -c -s -e -t -d -l && pnpm test",
         "build:rollup": "rollup -c",
         "watch:rollup": "rollup -c -w",
-        "buildScript": "node src/build/build.js",
+        "build:script": "node src/build/build.js",
         "clean:docs": "rm -rf docs/*",
         "clean:static": "rm -rf static/*",
         "clean:lib": "rm -rf lib/*",
-        "dev": "pnpm buildScript -c -s -e -t -m -w",
+        "dev": "pnpm build:script -c -s -e -t -l -w --test",
         "jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
         "test": "pnpm .bin/test.sh"
     },

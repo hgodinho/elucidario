@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "$id": "https://elucidario.art/mdorim/schemas/mapping/mapping.json",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/mapping.json",
     "title": "Mapping",
     "description": "Describe a interface to declare property mappings between two data models in the context of Elucidário.art.",
     "type": "object",
