@@ -11,7 +11,6 @@ import type {
     MdorimProperties,
     parseId as parsedIdType,
     Definitions,
-    LinkedArtTypes,
 } from "@elucidario/pkg-types";
 
 const { packages } = getPaths();
@@ -69,34 +68,37 @@ export const generateIndex = (schemas: Record<string, any>) => {
  * @returns MdorimInstance
  */
 export const init = (context?: MdorimTypes): MdorimInstance => {
-    const contents = readContents({
+    const { examples, schemas, translations } = readContents({
         dirPath: __dirname,
         extensions: ["json"],
         index: false,
     });
+    const { mdorim, translation, ...linkedArt } = schemas;
 
-    const mdorim = {
-        ...contents,
+    const mdorimInstance = {
+        examples,
+        translations,
         schemas: {
-            ...contents.schemas,
-            linkedArt: contents.schemas["linked-art"],
+            mdorim,
+            linkedArt: linkedArt["linked-art"],
+            translation,
         } as MdorimInstance["schemas"],
     } as MdorimInstance;
 
     const index: Index = {
-        mdorim: generateIndex(contents.schemas.mdorim),
-        linkedArt: generateIndex(contents.schemas["linked-art"]),
-        translation: generateIndex(contents.schemas.translation),
+        mdorim: generateIndex(mdorim),
+        linkedArt: generateIndex(linkedArt["linked-art"]),
+        translation: generateIndex(translation),
     };
 
     if (context) {
-        context = mdorim.schemas.mdorim.hasOwnProperty(context)
-            ? mdorim.schemas.mdorim[context]
+        context = mdorimInstance.schemas.mdorim.hasOwnProperty(context)
+            ? mdorimInstance.schemas.mdorim[context]
             : null;
     }
 
     return {
-        ...mdorim,
+        ...mdorimInstance,
         context,
         index,
     };

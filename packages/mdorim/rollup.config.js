@@ -2,6 +2,11 @@ import lcdrRollupConfig from "@elucidario/pkg-rollup";
 
 import pkg from "./package.json" assert { type: "json" };
 
+const external = [
+    ...Object.keys(pkg.dependencies),
+    ...Object.keys(pkg.devDependencies),
+];
+
 const minified = [
     {
         file: pkg.exports["."].import,
@@ -19,6 +24,7 @@ const unMinified = minified.map(({ file, ...rest }) => ({
 }));
 
 const config = lcdrRollupConfig({
+    external,
     input: "src/lib/index.ts",
     output: [...unMinified, ...minified],
 });

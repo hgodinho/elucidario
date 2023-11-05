@@ -13,10 +13,13 @@ describe("Mdorim", () => {
         expect(mdorim).toHaveProperty("examples");
         expect(mdorim).toHaveProperty("schemas");
         expect(mdorim).toHaveProperty("translations");
-        expect(mdorim).toHaveProperty("index");
         expect(mdorim).toHaveProperty("context");
+        expect(mdorim).toHaveProperty("index");
+        expect(mdorim.index).toHaveProperty("linkedArt");
+        expect(mdorim.index).toHaveProperty("mdorim");
+        expect(mdorim.index).toHaveProperty("translation");
         expect(mdorim.schemas).toHaveProperty("mdorim");
-        expect(mdorim.schemas).toHaveProperty("linked-art");
+        expect(mdorim.schemas).toHaveProperty("linkedArt");
         expect(mdorim.schemas).toHaveProperty("translation");
     });
 
