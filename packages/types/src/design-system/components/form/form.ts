@@ -5,8 +5,10 @@ export type FormProps = Component<FormHTMLAttributes<HTMLFormElement>> & {
     children?: JSX.Element | JSX.Element[];
 }
 
+export type InputType = 'text' | 'password' | 'email' | 'number' | 'tel' | 'url' | 'checkbox';
+
 export type InputProps = InputHTMLAttributes<Omit<HTMLInputElement, 'children'>> & {
-    type: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
+    type?: InputType;
 }
 
 export type LabelProps = Component<LabelHTMLAttributes<HTMLLabelElement>> & {
