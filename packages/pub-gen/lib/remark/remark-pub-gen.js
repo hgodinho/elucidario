@@ -223,7 +223,6 @@ export default function remarkPubGen(options) {
                 /**
                  * Code
                  * {{code:./src/...}}
-                 * {{code:./src/...;language}}
                  */
                 if ("code" === action) {
                     const language =
@@ -247,6 +246,9 @@ export default function remarkPubGen(options) {
                     const embedData = fs
                         .readFileSync(path.resolve(options.path, filePath))
                         .toString();
+                    // const language =
+                    //     path.parse(filePath).ext.replace(".", "") || "html";
+                    // const embedData = codeBlock(data, `{=${language}}`);
 
                     const embedContent = toMD([embedData]);
 
