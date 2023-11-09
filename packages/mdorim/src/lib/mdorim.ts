@@ -11,6 +11,7 @@ import type {
     MdorimProperties,
     parseId as parsedIdType,
     Definitions,
+    DataTypes,
 } from "@elucidario/pkg-types";
 
 const { packages } = getPaths();
@@ -140,7 +141,7 @@ const MdorimSingleton: Mdorim = (() => {
          */
         getFromId: (id) => {
             const { entityId, pathname, hash } = parseId(id);
-            let entity: Entity | Schema | null = null;
+            let entity: Entity | Schema<DataTypes> | null = null;
             if (pathname.includes("schemas/mdorim")) {
                 entity = MdorimSingleton.getEntityFromIndex(entityId);
             }
@@ -158,7 +159,7 @@ const MdorimSingleton: Mdorim = (() => {
                 ) {
                     entity = (entity.definitions as Definitions)[
                         id as MdorimProperties
-                    ] as Schema;
+                    ] as Schema<DataTypes>;
                 }
             }
             return entity;
