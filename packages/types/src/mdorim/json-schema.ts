@@ -28,7 +28,7 @@ export type ObjectSchema = BaseSchema<"object"> & {
 };
 
 export type ArraySchema = BaseSchema<"array"> & {
-    items: Pick<Schema<"array">, "type" | "title"> & {
+    items: Pick<Schema<DataTypes>, "type" | "title"> & {
         anyOf?: Schema<DataTypes>[];
         oneOf?: Schema<DataTypes>[];
     };
