@@ -1,0 +1,3960 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.0.3",
+  "deps": {
+    "nx": "^17.0.3",
+    "@elucidario/pkg-eslint-config": "workspace:^",
+    "@elucidario/pkg-pub-gen": "workspace:^",
+    "@nx/storybook": "^17.0.3",
+    "commitizen": "^4.3.0",
+    "conventional-changelog": "^5.1.0",
+    "eslint": "^8.53.0",
+    "husky": "^8.0.3",
+    "lerna": "^7.4.2",
+    "lint-staged": "^15.0.2",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "7890480819458208707"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "8187953551282692341"
+      },
+      {
+        "file": ".eslintrc.js",
+        "hash": "10190392563803577854"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/BUG.yml",
+        "hash": "2483824958867840703"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/DISCUSSION.yml",
+        "hash": "17985063788998704876"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/config.yml",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": ".github/workflows/deploy-lcdr.yml",
+        "hash": "6678873128587242809"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "460966371170861774"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "3799074197092859303"
+      },
+      {
+        "file": ".markdownlint.json",
+        "hash": "17518675002594040127"
+      },
+      {
+        "file": ".nx/cache/d/daemon.log",
+        "hash": "828911318160539429"
+      },
+      {
+        "file": ".nx/cache/d/server-process.json",
+        "hash": "14249505697198081125"
+      },
+      {
+        "file": ".nx/cache/file-map.json",
+        "hash": "14377280786403735004"
+      },
+      {
+        "file": ".nx/cache/lockfile.hash",
+        "hash": "12138982159692835958"
+      },
+      {
+        "file": ".nx/cache/parsed-lock-file.json",
+        "hash": "4332052453611352428"
+      },
+      {
+        "file": ".nx/cache/project-graph.json",
+        "hash": "9225784260797875402"
+      },
+      {
+        "file": ".vscode/lcdr.code-snippets",
+        "hash": "11799904235454809492"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "8175456454846960773"
+      },
+      {
+        "file": "README.md",
+        "hash": "14591226176308790561"
+      },
+      {
+        "file": "elucidario.code-workspace",
+        "hash": "1735672953158098629"
+      },
+      {
+        "file": "lerna.json",
+        "hash": "12392461473507856288"
+      },
+      {
+        "file": "nx.json",
+        "hash": "3618053444793174738"
+      },
+      {
+        "file": "package.json",
+        "hash": "1841530438993217584"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "4710344957703324014"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "5579076041722368877"
+      },
+      {
+        "file": "pub-gen-config.json",
+        "hash": "6382262494696880458"
+      },
+      {
+        "file": "references/adermann2023_composer.json",
+        "hash": "8263778260942457086"
+      },
+      {
+        "file": "references/american-express2022_jest-json-schema.json",
+        "hash": "10506190883703458229"
+      },
+      {
+        "file": "references/andersson2021_the-inter-font-family.json",
+        "hash": "409421340973535270"
+      },
+      {
+        "file": "references/baca2006.1_cataloguing-cultural-objects-cco.json",
+        "hash": "7049775602844315620"
+      },
+      {
+        "file": "references/baca2006_cataloging-cultural-objects-a-guide-to-describing-cultural-works-and-their-images.json",
+        "hash": "16067767640890481740"
+      },
+      {
+        "file": "references/barreto2007_uma-historia-da-ciencia-da-informacao.json",
+        "hash": "17783494912051976094"
+      },
+      {
+        "file": "references/bergmann2001_php-unit.json",
+        "hash": "14748314891825790344"
+      },
+      {
+        "file": "references/bernes-lee2006_linked-data.json",
+        "hash": "5652301988088998776"
+      },
+      {
+        "file": "references/bevilacqua2014_spectrum-4-0-o-padrao-para-gestao-de-colecoes-de-museus-do-reino-unido.json",
+        "hash": "6930859968815650220"
+      },
+      {
+        "file": "references/botallo2014_declaracao-de-principios-de-documentacao-em-museus-e-diretrizes-internacionais-de-informacao-sobre-objetos-de-museus-categorias-de-informacao-do-comite-internacional-de-documentacao.json",
+        "hash": "6348148033586694480"
+      },
+      {
+        "file": "references/brasil2009_lei-no-11-904-de-14-de-janeiro-de-2009.json",
+        "hash": "16109896183141596072"
+      },
+      {
+        "file": "references/brasil2013_decreto-no-8-124-de-17-de-outubro-de-2013.json",
+        "hash": "3640438490067039611"
+      },
+      {
+        "file": "references/buckland1991_information-as-thing.json",
+        "hash": "15832564746212287109"
+      },
+      {
+        "file": "references/capurro2003_epistemologia-e-ciencia-da-informacao.json",
+        "hash": "10915142232469551764"
+      },
+      {
+        "file": "references/caro-castro2011_vocabularios-estructurados-web-semantica-y-linked-data-oportunidades-y-retos-para-los-profesionales-de-la-documentacion.json",
+        "hash": "15579483043981668029"
+      },
+      {
+        "file": "references/cetic-br2022_pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2022.json",
+        "hash": "5616197302784944216"
+      },
+      {
+        "file": "references/cetic.br2016_pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2016.json",
+        "hash": "7467340990151874284"
+      },
+      {
+        "file": "references/cetic.br2018_pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2018.json",
+        "hash": "2197074081246765342"
+      },
+      {
+        "file": "references/cetic.br2020_pesquisa-sobre-o-uso-das-tecnologias-de-informacao-e-comunicacao-nos-equipamentos-culturais-brasileiros-tic-cultura-2020.json",
+        "hash": "17020753188444161313"
+      },
+      {
+        "file": "references/collections-trust2011_spectrum-timeline.json",
+        "hash": "10575099543868508900"
+      },
+      {
+        "file": "references/collections-trust2017.10_object-exit.json",
+        "hash": "15791211008944673032"
+      },
+      {
+        "file": "references/collections-trust2017.11_loan-in-borrowing-object.json",
+        "hash": "16617589247112716227"
+      },
+      {
+        "file": "references/collections-trust2017.12_documentation-planning.json",
+        "hash": "6750791332029686720"
+      },
+      {
+        "file": "references/collections-trust2017.13_loans-out-lending-objects.json",
+        "hash": "9761471853151366768"
+      },
+      {
+        "file": "references/collections-trust2017.1_standard-procedures-for-collections-recording-used-in-museums-spectrum.json",
+        "hash": "10486174606420886353"
+      },
+      {
+        "file": "references/collections-trust2017.2_appendix-information-requirements-spectrum.json",
+        "hash": "8191142643896178180"
+      },
+      {
+        "file": "references/collections-trust2017.3_object-name-spectrum.json",
+        "hash": "3194841645433545906"
+      },
+      {
+        "file": "references/collections-trust2017.4_object-identification-information-spectrum-5-1.json",
+        "hash": "10712156238622762216"
+      },
+      {
+        "file": "references/collections-trust2017.5_person-information.json",
+        "hash": "4336735440367543569"
+      },
+      {
+        "file": "references/collections-trust2017.6_object-entry.json",
+        "hash": "14536004027565700849"
+      },
+      {
+        "file": "references/collections-trust2017.7_acquisition-and-accessioning.json",
+        "hash": "4067243391114895506"
+      },
+      {
+        "file": "references/collections-trust2017.8_location-and-movement-control.json",
+        "hash": "16492705590306433197"
+      },
+      {
+        "file": "references/collections-trust2017.9_cataloguing.json",
+        "hash": "12710509650989398067"
+      },
+      {
+        "file": "references/collections-trust2017.9_inventory.json",
+        "hash": "2993172435705280174"
+      },
+      {
+        "file": "references/collections-trust2021_rethinking-cataloguing.json",
+        "hash": "3001646081214434929"
+      },
+      {
+        "file": "references/collections-trust2022.1_introduction-do-spectrum.json",
+        "hash": "3176812438675716081"
+      },
+      {
+        "file": "references/collections-trust2022.2_primary-procedures.json",
+        "hash": "10748736908577786870"
+      },
+      {
+        "file": "references/conselho-internacional-de-museus-icom1999_lista-de-controle-da-norma-object-id.json",
+        "hash": "17558219330204249388"
+      },
+      {
+        "file": "references/conselho-internacional-de-museus-icom2009_codigo-de-etica-lusofono.json",
+        "hash": "2895224907558481996"
+      },
+      {
+        "file": "references/costa2007_sinfonia-de-objetos.json",
+        "hash": "4097741365976674901"
+      },
+      {
+        "file": "references/cypress2017_cypress.json",
+        "hash": "3682539284134283820"
+      },
+      {
+        "file": "references/d-arcus2010_citation-style-language-repository.json",
+        "hash": "14998251554245397683"
+      },
+      {
+        "file": "references/derviche2021_pandemia-e-crise-estimulam-a-inovacao-em-museus.json",
+        "hash": "5661152045450031606"
+      },
+      {
+        "file": "references/domino2021_.json",
+        "hash": "15705181597306485"
+      },
+      {
+        "file": "references/droettboom2020_understanding-json-schema.json",
+        "hash": "14461248439372485618"
+      },
+      {
+        "file": "references/droettboom2023_what-is-a-schema.json",
+        "hash": "10757027767004899606"
+      },
+      {
+        "file": "references/extreme-programming-roadpmap2006_extreme-programming.json",
+        "hash": "12105937367374840910"
+      },
+      {
+        "file": "references/fielding2000_representational-state-transfer-rest.json",
+        "hash": "3593467497215463505"
+      },
+      {
+        "file": "references/frost2013_atomic-design.json",
+        "hash": "5573181725292981111"
+      },
+      {
+        "file": "references/github2008_github.json",
+        "hash": "15657901131648955866"
+      },
+      {
+        "file": "references/github2018_github-actions.json",
+        "hash": "4653460249721971000"
+      },
+      {
+        "file": "references/godinho2019.1_explore-a-colecao.json",
+        "hash": "7772302359179053953"
+      },
+      {
+        "file": "references/godinho2019.2_nucleos.json",
+        "hash": "15219392411883965481"
+      },
+      {
+        "file": "references/harpring2022_categories-for-the-descriptions-of-works-of-art.json",
+        "hash": "312137437692121243"
+      },
+      {
+        "file": "references/hjorland2007_o-conceito-de-informacao.json",
+        "hash": "2203759215717379672"
+      },
+      {
+        "file": "references/hykes2013_docker.json",
+        "hash": "7323991531278064982"
+      },
+      {
+        "file": "references/icom2022_nova-definicao-de-museu-icom.json",
+        "hash": "10160570581126365666"
+      },
+      {
+        "file": "references/ietf2017_rfc-8259-the-java-script-object-notation-json-data-interchange-format.json",
+        "hash": "5935226273476423663"
+      },
+      {
+        "file": "references/index.json",
+        "hash": "5051090529841274907"
+      },
+      {
+        "file": "references/intenational-committee-for-documentaion2018_documentand-o-museu-iberoamerica-no-domino-working-group.json",
+        "hash": "4916384852190975572"
+      },
+      {
+        "file": "references/jacoby2022_berlin-db.json",
+        "hash": "1993049322941045282"
+      },
+      {
+        "file": "references/json-ld-working-group2020_json-ld-1-1-a-json-based-serialization-for-linked-data.json",
+        "hash": "4130682881983197902"
+      },
+      {
+        "file": "references/le-coadic1994_a-ciencia-da-informacao.json",
+        "hash": "18060701083480253012"
+      },
+      {
+        "file": "references/lerna2023_lerna.json",
+        "hash": "7710689011039601544"
+      },
+      {
+        "file": "references/linked-art2021.10_linked-art-api-digital-object.json",
+        "hash": "5104160512340307144"
+      },
+      {
+        "file": "references/linked-art2021.11_linked-art-api-monetary-amount-structure.json",
+        "hash": "479978051868391512"
+      },
+      {
+        "file": "references/linked-art2021.12_linked-art-api-name-structure.json",
+        "hash": "1806043116243757020"
+      },
+      {
+        "file": "references/linked-art2021.13_linked-art-api-statement-structure.json",
+        "hash": "16134705947384313544"
+      },
+      {
+        "file": "references/linked-art2021.14_linked-art-api-time-span-structure.json",
+        "hash": "17059959306085136681"
+      },
+      {
+        "file": "references/linked-art2021.15_linked-art-api-type-structure.json",
+        "hash": "18226116313739367498"
+      },
+      {
+        "file": "references/linked-art2021.16_linked-art-api-assigned-relationship-structure.json",
+        "hash": "12577956115081409180"
+      },
+      {
+        "file": "references/linked-art2021.17_linked-art-api-reference-structure.json",
+        "hash": "14097168778162420820"
+      },
+      {
+        "file": "references/linked-art2021.18_linked-art-api-event.json",
+        "hash": "6409214879771831824"
+      },
+      {
+        "file": "references/linked-art2021.19_linked-art-api-group.json",
+        "hash": "4029102856300042344"
+      },
+      {
+        "file": "references/linked-art2021.1_linked-art.json",
+        "hash": "9635307120970349058"
+      },
+      {
+        "file": "references/linked-art2021.20_linked-art-api-person.json",
+        "hash": "6477423721419598027"
+      },
+      {
+        "file": "references/linked-art2021.21_linked-art-api-physical-object-representation.json",
+        "hash": "8497971202907437136"
+      },
+      {
+        "file": "references/linked-art2021.22_linked-art-api-place.json",
+        "hash": "14887424262428695135"
+      },
+      {
+        "file": "references/linked-art2021.23_linked-art-api-provenance-activity.json",
+        "hash": "6949444312214870555"
+      },
+      {
+        "file": "references/linked-art2021.24_linked-art-api-set.json",
+        "hash": "14790085534286324837"
+      },
+      {
+        "file": "references/linked-art2021.25_linked-art-api-textual-work.json",
+        "hash": "6637470705184825833"
+      },
+      {
+        "file": "references/linked-art2021.26_linked-art-api-visual-work.json",
+        "hash": "14821916224681199767"
+      },
+      {
+        "file": "references/linked-art2021.27_linked-art-api-protocol.json",
+        "hash": "4941195084298041152"
+      },
+      {
+        "file": "references/linked-art2021.28_api-design-principles-and-requirements.json",
+        "hash": "9410211174272991263"
+      },
+      {
+        "file": "references/linked-art2021.2_community-linked-art.json",
+        "hash": "14249975030015493309"
+      },
+      {
+        "file": "references/linked-art2021.3_linked-art-profile-of-cidoc-crm.json",
+        "hash": "1089530242766427591"
+      },
+      {
+        "file": "references/linked-art2021.4_api-linked-art.json",
+        "hash": "8611640798006544826"
+      },
+      {
+        "file": "references/linked-art2021.5_linked-art-api-endpoints.json",
+        "hash": "5457373403374809699"
+      },
+      {
+        "file": "references/linked-art2021.6_linked-art-api-concept.json",
+        "hash": "10013797409910285166"
+      },
+      {
+        "file": "references/linked-art2021.7_linked-art-api-shared-data-structures.json",
+        "hash": "147441957950482277"
+      },
+      {
+        "file": "references/linked-art2021.8_linked-art-api-dimension-structure.json",
+        "hash": "5640561587595553141"
+      },
+      {
+        "file": "references/linked-art2021.9_linked-art-api-identifier-structure.json",
+        "hash": "5695862445302647859"
+      },
+      {
+        "file": "references/maduro2021_pest.json",
+        "hash": "8425937148042964299"
+      },
+      {
+        "file": "references/matos2014_nota-sobre-a-traducao-do-spectrum-em-portugal.json",
+        "hash": "18380760391042112309"
+      },
+      {
+        "file": "references/mdn-web-docs2023_working-with-json.json",
+        "hash": "11685186224678539658"
+      },
+      {
+        "file": "references/mdn2022_java-script.json",
+        "hash": "16399622180675940813"
+      },
+      {
+        "file": "references/meta-open-source2023_react-the-library-for-web-and-native-user-interfaces.json",
+        "hash": "16131645470330192205"
+      },
+      {
+        "file": "references/microsoft2023.1_description-of-the-database-normalization-basics.json",
+        "hash": "13785387709221703154"
+      },
+      {
+        "file": "references/microsoft2023.2_guid-estrutura.json",
+        "hash": "11786481856196718402"
+      },
+      {
+        "file": "references/microsoft2023_type-script-5-1.json",
+        "hash": "1502263081865470065"
+      },
+      {
+        "file": "references/my-sql2023_chapter-11-data-types.json",
+        "hash": "5541417105075688336"
+      },
+      {
+        "file": "references/nakazawa2011_jest.json",
+        "hash": "15725722093281817998"
+      },
+      {
+        "file": "references/narwhal-technologies-inc2022_monorepo-tools.json",
+        "hash": "6105693022561290889"
+      },
+      {
+        "file": "references/node-js2023_node-js.json",
+        "hash": "5019219899038551655"
+      },
+      {
+        "file": "references/opis2022_opis-json-schema.json",
+        "hash": "2368825538254719851"
+      },
+      {
+        "file": "references/padilha2014_documentacao-museologica-e-gestao-de-acervo.json",
+        "hash": "10884939953271217018"
+      },
+      {
+        "file": "references/petty2014_dbdelta-supporting-foreign-key.json",
+        "hash": "442780450450743540"
+      },
+      {
+        "file": "references/php2022_php.json",
+        "hash": "6746297629634837658"
+      },
+      {
+        "file": "references/pnpm2023_pnpm.json",
+        "hash": "14694479955874323084"
+      },
+      {
+        "file": "references/sanderson2018_shout-it-loud-loud.json",
+        "hash": "2670374355839733730"
+      },
+      {
+        "file": "references/sanderson2021_object-json.json",
+        "hash": "16344135952626615940"
+      },
+      {
+        "file": "references/saracevic1996_ciencia-da-informacao-origem-evolucao-e-relacoes.json",
+        "hash": "10970594591609063895"
+      },
+      {
+        "file": "references/schwaber2020_the-2020-scrum-guide.json",
+        "hash": "11743240795871772252"
+      },
+      {
+        "file": "references/sem-ver2023_versionamento-semantico-2-0-0.json",
+        "hash": "12822974918779707950"
+      },
+      {
+        "file": "references/shadow2017_violation-of-1-nf-in-my-sql-response.json",
+        "hash": "17529793922417098332"
+      },
+      {
+        "file": "references/silva2020_esquema-de-metadados-para-descricao-de-obras-de-arte-em-museus-brasileiros-uma-proposta.json",
+        "hash": "6189005980923710364"
+      },
+      {
+        "file": "references/spec9999_the-8-point-grid.json",
+        "hash": "7471232872515117947"
+      },
+      {
+        "file": "references/sporny2012_what-is-json-ld.json",
+        "hash": "9824311070135586933"
+      },
+      {
+        "file": "references/storybook2023_storybook.json",
+        "hash": "6723003099459749017"
+      },
+      {
+        "file": "references/sveidqvist2023_mermaid-diagramming-and-charting-tool.json",
+        "hash": "7840755814334178626"
+      },
+      {
+        "file": "references/torvalds2005_git.json",
+        "hash": "3645650894527532775"
+      },
+      {
+        "file": "references/typicode2018_husky-commit.json",
+        "hash": "17496024090613011239"
+      },
+      {
+        "file": "references/vega-almeida2009_coordenadas-paradigmaticas-historicas-y-epistemologicas-de-la-ciencia-de-la-informacion-una-sistematizacion.json",
+        "hash": "819849466107308862"
+      },
+      {
+        "file": "references/w-3-c-json-ld-working-group2014_json-for-linking-data.json",
+        "hash": "5041630496159911133"
+      },
+      {
+        "file": "references/w-3-c2022_wai-aria-overview.json",
+        "hash": "7408094015034849479"
+      },
+      {
+        "file": "references/wells1999_extreme-programming-a-gentle-introduction.json",
+        "hash": "5648225565342676635"
+      },
+      {
+        "file": "references/wells2009_agile-software-development-a-gentle-introduction.json",
+        "hash": "457199221059900676"
+      },
+      {
+        "file": "references/wiki-extreme-programming2009_relentless-testing.json",
+        "hash": "13931125776970075564"
+      },
+      {
+        "file": "references/wiki-extreme-programming2014_extreme-programming-for-one.json",
+        "hash": "1597467024799164533"
+      },
+      {
+        "file": "references/word-press2023.1_sanitizing-data.json",
+        "hash": "13945604246065760412"
+      },
+      {
+        "file": "references/word-press2023_escaping-data.json",
+        "hash": "12950288286250547333"
+      },
+      {
+        "file": "references/word-press9999.1_word-press-rest-api-key-concepts.json",
+        "hash": "15418929425032448210"
+      },
+      {
+        "file": "references/word-press9999_linking-and-embedding.json",
+        "hash": "7228967510329460391"
+      }
+    ],
+    "projectFileMap": {
+      "@elucidario/pkg-tsconfig": [
+        {
+          "file": "packages/tsconfig/CHANGELOG.md",
+          "hash": "12355751245420985680"
+        },
+        {
+          "file": "packages/tsconfig/package.json",
+          "hash": "8760991676397772759",
+          "deps": [
+            "npm:@types/node",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/tsconfig/src/index.ts",
+          "hash": "5224733034725787700"
+        },
+        {
+          "file": "packages/tsconfig/tsconfig.json",
+          "hash": "11719057970997513920"
+        }
+      ],
+      "@elucidario/pkg-types": [
+        {
+          "file": "packages/types/CHANGELOG.md",
+          "hash": "9380520932379429175"
+        },
+        {
+          "file": "packages/types/README.md",
+          "hash": "2337404262918631647"
+        },
+        {
+          "file": "packages/types/package.json",
+          "hash": "702299938347682893",
+          "deps": [
+            "@elucidario/pkg-tsconfig",
+            "npm:@types/node",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:typescript",
+            "npm:react",
+            "npm:react-dom"
+          ]
+        },
+        {
+          "file": "packages/types/src/console.types.ts",
+          "hash": "11953667884244956141"
+        },
+        {
+          "file": "packages/types/src/design-system/components/box.ts",
+          "hash": "11385179037044226294"
+        },
+        {
+          "file": "packages/types/src/design-system/components/button.ts",
+          "hash": "3631554258466053554"
+        },
+        {
+          "file": "packages/types/src/design-system/components/form/field.ts",
+          "hash": "12097048483684939641"
+        },
+        {
+          "file": "packages/types/src/design-system/components/form/form.ts",
+          "hash": "4457029207232833214"
+        },
+        {
+          "file": "packages/types/src/design-system/components/form/index.ts",
+          "hash": "13012043047821368050"
+        },
+        {
+          "file": "packages/types/src/design-system/components/generic.ts",
+          "hash": "11102414690935775582"
+        },
+        {
+          "file": "packages/types/src/design-system/components/index.ts",
+          "hash": "18237213145265300656"
+        },
+        {
+          "file": "packages/types/src/design-system/components/multiple.ts",
+          "hash": "9576722095551948084"
+        },
+        {
+          "file": "packages/types/src/design-system/components/popover.ts",
+          "hash": "6839265983841226953"
+        },
+        {
+          "file": "packages/types/src/design-system/hooks/index.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/types/src/design-system/index.ts",
+          "hash": "9157489238161482049"
+        },
+        {
+          "file": "packages/types/src/design-system/provider/index.ts",
+          "hash": "2994748182476477727"
+        },
+        {
+          "file": "packages/types/src/design-system/provider/system-provider.ts",
+          "hash": "12660072049157766390"
+        },
+        {
+          "file": "packages/types/src/docusaurus-md.types.ts",
+          "hash": "17814522665931956187"
+        },
+        {
+          "file": "packages/types/src/index.ts",
+          "hash": "4483405572555994127"
+        },
+        {
+          "file": "packages/types/src/mdorim/index.ts",
+          "hash": "18183271114540239856"
+        },
+        {
+          "file": "packages/types/src/mdorim/json-schema.ts",
+          "hash": "8716169260905854061"
+        },
+        {
+          "file": "packages/types/src/mdorim/mapping.ts",
+          "hash": "17869302504681161029"
+        },
+        {
+          "file": "packages/types/src/mdorim/mdorim.ts",
+          "hash": "15667067737948460322"
+        },
+        {
+          "file": "packages/types/src/package.types.ts",
+          "hash": "8390515639365220971"
+        },
+        {
+          "file": "packages/types/src/paths.types.ts",
+          "hash": "6900042091721411047"
+        },
+        {
+          "file": "packages/types/tsconfig.json",
+          "hash": "5331307744473735097"
+        }
+      ],
+      "@elucidario/pub-interseccoes-entre-linked-art-e-spectrum": [
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/.gitignore",
+          "hash": "8549289737806910635"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/README.md",
+          "hash": "6796460812980333392"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/comparison.json",
+          "hash": "16934826095356086558"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/conclusions.md",
+          "hash": "7118651953869129405"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/index.json",
+          "hash": "10324175885482315247"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/intersections.md",
+          "hash": "17299613952392260316"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/intersections.png",
+          "hash": "15275083877953546708"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/introduction.md",
+          "hash": "6016757796240332201"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/mdorim-mermaid.md",
+          "hash": "2271735994459568630"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/mdorim.md",
+          "hash": "18402219631780841293"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/model-mapping.json",
+          "hash": "14684301785055487228"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/model-procedure.json",
+          "hash": "12848714020276628217"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/model-prop-map.json",
+          "hash": "3192662981810809654"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/rj-tarsila-linked-art.json",
+          "hash": "13696234716764657657"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/rj-tarsila-spectrum.json",
+          "hash": "2838330234830559351"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/en-us/summary.md",
+          "hash": "3835370745154233724"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/comparativo.json",
+          "hash": "809997163071236853"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/conclusoes.md",
+          "hash": "4476359286118727398"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/index.json",
+          "hash": "12570587068764494654"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/interseccoes-v2.png",
+          "hash": "8503534891875588075"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/interseccoes.md",
+          "hash": "5188185457250373033"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/introducao.md",
+          "hash": "8863983071041555119"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/linked-art.md",
+          "hash": "1008800574631004432"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/mdorim-mermaid.md",
+          "hash": "10317766841713600786"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/mdorim.md",
+          "hash": "5404233845141717879"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/model-mapping.json",
+          "hash": "4900646574808266984"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/model-procedure.json",
+          "hash": "2583511775292188595"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/model-prop-map.json",
+          "hash": "4494269462026779131"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/resumo.md",
+          "hash": "14631018156725571265"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/rj-tarsila-linked-art.json",
+          "hash": "18394169245852628932"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/rj-tarsila-spectrum.json",
+          "hash": "4994285732455766819"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/spectrum-object-name.json",
+          "hash": "9585440169057292786"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/content/pt-br/spectrum.md",
+          "hash": "17282104932289365734"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/generated/0.1.0/0.1.0-en-us-intersections-between-linked-art-and-spectrum.docx",
+          "hash": "15669914032851713537"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/generated/0.1.0/0.1.0-pt-br-interseccoes-entre-linked-art-e-spectrum.docx",
+          "hash": "1012310048724268689"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/static/BNM PROGRAMA CIDOC 2023 con ligas de transmisión.pdf",
+          "hash": "15664295180842752003"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/static/MUAC PROGRAMA CIDOC 2023 con ligas de transmisión.pdf",
+          "hash": "14198349292279400187"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/static/Resumenes CIDOC 2023.pdf",
+          "hash": "16007938414515207997"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/static/apresentaçao CIDOC 2023.pptx",
+          "hash": "11318174587944175906"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/static/interseccoes.ai",
+          "hash": "7667692739879025334"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/static/mdorim-en.png",
+          "hash": "1037660325994991476"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/static/mdorim-pt.png",
+          "hash": "18139196202694209819"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/files/static/presentacion-cidoc-2023.pptx",
+          "hash": "2284283433342355249"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/package.json",
+          "hash": "11594287004070183639",
+          "deps": [
+            "@elucidario/pkg-pub-gen"
+          ]
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/pub-gen.json",
+          "hash": "11094549124637519705"
+        },
+        {
+          "file": "publications/interseccoes-entre-linked-art-e-spectrum/references/index.json",
+          "hash": "8974618077225858382"
+        }
+      ],
+      "@elucidario/pkg-paths": [
+        {
+          "file": "packages/paths/CHANGELOG.md",
+          "hash": "14794424881625122167"
+        },
+        {
+          "file": "packages/paths/README.md",
+          "hash": "10537971516025879033"
+        },
+        {
+          "file": "packages/paths/jest.config.json",
+          "hash": "18300371663237129814"
+        },
+        {
+          "file": "packages/paths/package.json",
+          "hash": "1533658739840691873",
+          "deps": [
+            "npm:commander",
+            "npm:lodash-es",
+            "@elucidario/pkg-console",
+            "@elucidario/pkg-rollup",
+            "@elucidario/pkg-tsconfig",
+            "@elucidario/pkg-types",
+            "npm:@types/lodash-es",
+            "npm:@types/node",
+            "npm:jest",
+            "npm:rollup",
+            "npm:ts-node",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/paths/rollup.config.js",
+          "hash": "409954882255239757"
+        },
+        {
+          "file": "packages/paths/src/build.ts",
+          "hash": "943461325023737885"
+        },
+        {
+          "file": "packages/paths/src/getPaths.ts",
+          "hash": "346349503417621495"
+        },
+        {
+          "file": "packages/paths/src/index.ts",
+          "hash": "8815744193620628336"
+        },
+        {
+          "file": "packages/paths/src/readContents.ts",
+          "hash": "16387588850153404066"
+        },
+        {
+          "file": "packages/paths/tsconfig.json",
+          "hash": "6554434344827809158"
+        }
+      ],
+      "@elucidario/pub-dissertacao-mestrado": [
+        {
+          "file": "publications/dissertacao-mestrado/.gitignore",
+          "hash": "5744047254634802474"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/README.md",
+          "hash": "2357235342768003336"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/abstract.md",
+          "hash": "1872177601004587159"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/acronyms.json",
+          "hash": "5400053528134962295"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/agradecimentos.md",
+          "hash": "9646505480399159360"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/cmek.md",
+          "hash": "9868109582052455407"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/explore-home.png",
+          "hash": "7001556404897045382"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/explore-single.png",
+          "hash": "256778509092769169"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/fachada-nelson-kon-2022.jpg",
+          "hash": "2980544026872379891"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/filemaker-m0003.png",
+          "hash": "12336699859557258060"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/filemaker-m0021.png",
+          "hash": "7006276028128013596"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/filemaker-m0023.png",
+          "hash": "6606488454773544899"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/grupos-bd.png",
+          "hash": "10065973607182908177"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/index.json",
+          "hash": "9081746095047867776"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/museologico.json",
+          "hash": "341521714100801068"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/numeracao.md",
+          "hash": "7216510821293338579"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/quarto-nelson-kon-2022.jpg",
+          "hash": "13319540589073243243"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/sala-jantar-nelson-kon-2022.jpg",
+          "hash": "3156582928005195847"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/sala-musica-nelson-kon-2022.jpg",
+          "hash": "7472129756309873100"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/casa-museu-ema-klabin/salao-nelson-kon-2022.jpg",
+          "hash": "13258818847947715576"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/consideracoes-finais.md",
+          "hash": "16990518645906159475"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/documentacao-museologica.md",
+          "hash": "372076653907960710"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/gestao/acesso-ladkin-2015.json",
+          "hash": "8309892442113823500"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/gestao/pesquisa-ladkin-2015.json",
+          "hash": "16343415721157243097"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/gestao/politica-ladkin-2015.json",
+          "hash": "17398558960550321113"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/gestao/preservacao-ladkin-2015.json",
+          "hash": "8596295281361265213"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/gestao/procedimentos-ladkin-2015.json",
+          "hash": "10211971796245515444"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/index.json",
+          "hash": "15158709192021600864"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum/acquisition.json",
+          "hash": "1090666294943101863"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum/cataloguing.json",
+          "hash": "8148299792466798358"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum/loan-in.json",
+          "hash": "1957766683892633249"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum/loan-out.json",
+          "hash": "2401039723198218268"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum/location.json",
+          "hash": "9572969427182438227"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum/movement.json",
+          "hash": "12330038923073935376"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum/obj-entry.json",
+          "hash": "7014630068512634806"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum/obj-exit.json",
+          "hash": "11617586525916619708"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum/spectrum-object-name.json",
+          "hash": "14486812264706139580"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-acquisition.md",
+          "hash": "1538271033491803595"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-cataloguing.md",
+          "hash": "214609340341056480"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-conditional-checking.md",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-exit.md",
+          "hash": "548254406554643593"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-inventory.md",
+          "hash": "3279429240331006501"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-loan-in.md",
+          "hash": "1397934853839482780"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-loan-out.md",
+          "hash": "3597527334862716498"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-location.md",
+          "hash": "3479649342313687365"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-object-entry.md",
+          "hash": "11308723743594565943"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-planning.md",
+          "hash": "4392169534288974892"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum-seguro-indenizacao.md",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/documentacao/spectrum.md",
+          "hash": "2692699584962197063"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/SemVer.png",
+          "hash": "5566651253908943283"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/anatomia-Field-array.png",
+          "hash": "3574645777015800310"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/anatomia-Field-error.png",
+          "hash": "16471151397280545175"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/anatomia-Field-object.png",
+          "hash": "13519276379878822780"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/anatomia-Field-success.png",
+          "hash": "8704439570097301051"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/anatomia-Field.png",
+          "hash": "15012470239308185448"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/atomic-design-process.png",
+          "hash": "12151891237306623224"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/cartela-tipografia.png",
+          "hash": "8335125850960274698"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/cartela-tipografia.svg",
+          "hash": "5563194704828400247"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/cmek/cmek.md",
+          "hash": "16532703661514307786"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/cmek/index.json",
+          "hash": "9081746095047867776"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/cmek/m0693.json",
+          "hash": "6020438812055190287"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/cmek/mapeamento.html",
+          "hash": "12826375506996388128"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/cmek/mapping.json",
+          "hash": "8064838695721846539"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/cmek/selecionadas-museologico.json",
+          "hash": "14833959194578256655"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/concept.md",
+          "hash": "6350251720481064887"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/core.md",
+          "hash": "4452487494830260034"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/index.json",
+          "hash": "2301163406535568979"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/index.json",
+          "hash": "14045175140714967141"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/mdorim-entities.json",
+          "hash": "330273461563692880"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/mdorim-properties.json",
+          "hash": "2353749933476049628"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/mysql-colunas-comuns.json",
+          "hash": "15077312890053062444"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/mysql-mermaid.md",
+          "hash": "13074791070415602947"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/mysql.md",
+          "hash": "7088311228460149292"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/tabela-wp-lcdr-entities.json",
+          "hash": "8077229281872484003"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/tabela-wp-lcdr-history.json",
+          "hash": "181148368165269884"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/tabela-wp-lcdr-mapping.json",
+          "hash": "10008905973353957569"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/tabela-wp-lcdr-options.json",
+          "hash": "14452540811278175615"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/tabela-wp-lcdr-procedure-entity.json",
+          "hash": "5501160219229286535"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/tabela-wp-lcdr-procedures.json",
+          "hash": "15373393582607503326"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/tabela-wp-lcdr-prop-map.json",
+          "hash": "16208569700740179755"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/mysql/tabela-wp-lcdr-relationships.json",
+          "hash": "13541015541103740515"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/rest/endpoints.json",
+          "hash": "13216536348730871502"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/rest/index.json",
+          "hash": "699798332548505996"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/rest/json-schema-example-object-read-la.json",
+          "hash": "16654251411075830116"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/rest/json-schema-example-object-read-wp-embedded.json",
+          "hash": "13286293312516582786"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/rest/json-schema-example-object-read-wp.json",
+          "hash": "1819407954336594412"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/rest/json-schema-example-object-write-wp.json",
+          "hash": "14624686972825209038"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/rest/rest.md",
+          "hash": "1766909268976302560"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/testes.md",
+          "hash": "16645334867862554866"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/ui.md",
+          "hash": "5680863869609752566"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/core/validacao.md",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/design-system/design-system.md",
+          "hash": "16160481440899429972"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/design-system/index.json",
+          "hash": "17838593152215504622"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/design-system/json-schema-html.json",
+          "hash": "6365275053816588710"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/design-system/testes.md",
+          "hash": "1178574491308844484"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/elucidario-pkg.png",
+          "hash": "6969094515107889158"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/elucidario.md",
+          "hash": "17752882579189453697"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/index.json",
+          "hash": "2194029040264008404"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/classes-mdorim.md",
+          "hash": "3562312143044590403"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/index.json",
+          "hash": "14169743971868396248"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/mdorim.md",
+          "hash": "2208515206770764342"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/mermaid.md",
+          "hash": "9729600638185225335"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/json-schema-example-definitions.json",
+          "hash": "12654368739952461739"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/json-schema-example-person.json",
+          "hash": "2354726864973351581"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/json-schema-example-ref.json",
+          "hash": "7041621072920795242"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/json-schema-example.json",
+          "hash": "7138181866065356519"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/mdorim-prop-map.json",
+          "hash": "3649363715284575520"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/model-entity.json",
+          "hash": "11667058056609152688"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/model-history-event.json",
+          "hash": "3024247655563156653"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/model-history.json",
+          "hash": "17479666942743782368"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/model-mapping.json",
+          "hash": "12075846398251478060"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/model-option.json",
+          "hash": "17757083693053404205"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/model-procedure.json",
+          "hash": "5002595106258142743"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/model-prop-map.json",
+          "hash": "5124787869140162393"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo/user-capacity.json",
+          "hash": "6124825195715949639"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/modelo.md",
+          "hash": "3598249336798610099"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/teste-exemplo.php",
+          "hash": "1616800545730472485"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/testes.md",
+          "hash": "17593314977299469241"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/traducoes.md",
+          "hash": "1130888237998501666"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/mdorim/validacao.md",
+          "hash": "8472715480396447006"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/elucidario/ui.md",
+          "hash": "1087369995056900935"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/glossario.md",
+          "hash": "2551096740368695105"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/index.json",
+          "hash": "11686935875317921312"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/informacao.md",
+          "hash": "2688216435198122167"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/introducao.md",
+          "hash": "396790943808398513"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/index.json",
+          "hash": "15901043555187321011"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/interseccoes/comparativo.json",
+          "hash": "11626572887015582373"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/interseccoes/identified_by.json",
+          "hash": "9965410379501993360"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/interseccoes/index.json",
+          "hash": "12040681981195878724"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/interseccoes/interseccoes.md",
+          "hash": "13454073774510585540"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/attribute.json",
+          "hash": "17581125001692084075"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/common-properties.json",
+          "hash": "16380986767428321152"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/concept-creation.json",
+          "hash": "10909082385083897009"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/concept.json",
+          "hash": "13390862443205061092"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/digital-creation.json",
+          "hash": "4977169498584260042"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/digital-service.json",
+          "hash": "8693350678309350834"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/digital.json",
+          "hash": "2718279321525704796"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/dimensions.json",
+          "hash": "8648433883288728107"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/event.json",
+          "hash": "9378779362516593834"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/group.json",
+          "hash": "16371300064317615165"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/identifiers-assignments.json",
+          "hash": "5288591930255913137"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/identifiers.json",
+          "hash": "13449098081113593585"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/index.json",
+          "hash": "6034534967244820360"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/linked-art.md",
+          "hash": "13418016168027904792"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/measurement.json",
+          "hash": "5806800717892322152"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/monetary.json",
+          "hash": "2710733423773886062"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/name.json",
+          "hash": "5410887452848049505"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/object.json",
+          "hash": "7348072936420916848"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/people.json",
+          "hash": "907914470763488453"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/place.json",
+          "hash": "5661396957401660528"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/properties.json",
+          "hash": "12752858396107328970"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/provenance-acquisition.json",
+          "hash": "11344574479258869075"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/provenance-encounter.json",
+          "hash": "2899027395399004694"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/provenance-move.json",
+          "hash": "13502533364574206208"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/provenance-payment.json",
+          "hash": "18050572371857575556"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/provenance-promise.json",
+          "hash": "12713180917880857451"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/provenance-right-acquisition.json",
+          "hash": "6190069961633314518"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/provenance-rights.json",
+          "hash": "9799044867360516475"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/provenance-transfer.json",
+          "hash": "15003335520038317281"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/provenance.json",
+          "hash": "8688101673062733413"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/reference.json",
+          "hash": "14279157756403544210"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/set.json",
+          "hash": "15366106527499147696"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/statement.json",
+          "hash": "1201084408705409818"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/textual.json",
+          "hash": "797435430338153167"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/timespan.json",
+          "hash": "4061707689358889460"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/type.json",
+          "hash": "4901889012851828116"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/linked-art/visual.json",
+          "hash": "11434420138658252123"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/metadados-de-representacao.md",
+          "hash": "15759883962212080779"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/silva2020-modelo.md",
+          "hash": "10710989305343891548"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/spectrum/index.json",
+          "hash": "10941157671853860447"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/spectrum/spectrum-object-information-groups.json",
+          "hash": "8379831315413403791"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/spectrum/spectrum-procedural-information-groups.json",
+          "hash": "4351468057949306643"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/spectrum/spectrum-record-management-information-groups.json",
+          "hash": "9801895608699691538"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metadados-representacao/spectrum/spectrum.md",
+          "hash": "18361603730199956050"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/metodologia.md",
+          "hash": "3122634772949545059"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/content/pt-br/resumo.md",
+          "hash": "2031315385497621839"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.2.0/pt-br-dissertacao-mestrado.docx",
+          "hash": "10013849482722254254"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.3.0/pt-br-dissertacao-mestrado.docx",
+          "hash": "15170560218928471473"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.3.0/silva2020-modelo.png",
+          "hash": "3785556906410465748"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.4.0/pt-br-dissertacao-mestrado.docx",
+          "hash": "14568938002251987892"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.4.0/silva2020-modelo.png",
+          "hash": "3785556906410465748"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.5.0/0.5.0-pt-br-dissertacao-mestrado.docx",
+          "hash": "9023374626516442297"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.5.0/0.5.0-pt-br-dissertacao-mestrado.pdf",
+          "hash": "1143804989129521805"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.5.0/silva2020-modelo.png",
+          "hash": "3785556906410465748"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.6.0/0.6.0-pt-br-dissertacao-mestrado.docx",
+          "hash": "2330020027536939520"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.6.0/silva2020-modelo.png",
+          "hash": "3785556906410465748"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.6.1/0.6.1-pt-br-dissertacao-mestrado.docx",
+          "hash": "17498230847537922829"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.6.1/mysql.png",
+          "hash": "9588501778151190343"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.6.1/numeracao.png",
+          "hash": "11287517322524703596"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.6.1/silva2020-modelo.png",
+          "hash": "3785556906410465748"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.0/0.7.0-pt-br-dissertacao-mestrado.docx",
+          "hash": "15884019925248707604"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.0/0.7.0-pt-br-dissertacao-mestrado.pdf",
+          "hash": "8297699966292913185"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.0/mysql.png",
+          "hash": "9588501778151190343"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.0/numeracao.png",
+          "hash": "11287517322524703596"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.0/silva2020-modelo.png",
+          "hash": "3785556906410465748"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.1/0.7.1-pt-br-dissertacao-mestrado.docx",
+          "hash": "8079214937357779769"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.1/mysql.png",
+          "hash": "9588501778151190343"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.1/numeracao.png",
+          "hash": "11287517322524703596"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.1/silva2020-modelo.png",
+          "hash": "3785556906410465748"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.1-alpha.0/0.7.1-alpha.0-pt-br-dissertacao-mestrado.docx",
+          "hash": "11586118364009502002"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.1-alpha.0/0.7.1-alpha.0-pt-br-dissertacao-mestrado.pdf",
+          "hash": "515764417575243468"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/generated/0.7.1-alpha.0/capa.pdf",
+          "hash": "5972526705133237710"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/static/capa.docx",
+          "hash": "17005436853199840594"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/static/ficha-catalografica.pdf",
+          "hash": "9759145123505361169"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/files/static/mapeamento museologico-_mdorim.xlsx",
+          "hash": "18323145178561245473"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/package.json",
+          "hash": "13099582599387981900",
+          "deps": [
+            "@elucidario/pkg-pub-gen"
+          ]
+        },
+        {
+          "file": "publications/dissertacao-mestrado/pub-gen.json",
+          "hash": "1687547133296500546"
+        },
+        {
+          "file": "publications/dissertacao-mestrado/references/index.json",
+          "hash": "9127936882384622132"
+        }
+      ],
+      "@elucidario/pkg-core": [
+        {
+          "file": "packages/core/.bin/create-index.js",
+          "hash": "18032117507610492425"
+        },
+        {
+          "file": "packages/core/.bin/lint.sh",
+          "hash": "12526433500171803586"
+        },
+        {
+          "file": "packages/core/.bin/make-pot.js",
+          "hash": "1861287274783151551"
+        },
+        {
+          "file": "packages/core/.bin/test.sh",
+          "hash": "15737816551947343539"
+        },
+        {
+          "file": "packages/core/.gitignore",
+          "hash": "2730477198815613167"
+        },
+        {
+          "file": "packages/core/.lintstagedrc.json",
+          "hash": "9706657980495117519"
+        },
+        {
+          "file": "packages/core/CHANGELOG.md",
+          "hash": "17872504244565154092"
+        },
+        {
+          "file": "packages/core/README.md",
+          "hash": "13766927853381283358"
+        },
+        {
+          "file": "packages/core/composer.json",
+          "hash": "13664413242651020563"
+        },
+        {
+          "file": "packages/core/docs/en/README.md",
+          "hash": "5712004139063225805"
+        },
+        {
+          "file": "packages/core/docs/en/core.md",
+          "hash": "4190657704476206882"
+        },
+        {
+          "file": "packages/core/docs/en/i18n.md",
+          "hash": "9954436051324611035"
+        },
+        {
+          "file": "packages/core/docs/es/README.md",
+          "hash": "14327876208102336527"
+        },
+        {
+          "file": "packages/core/docs/pt-br/README.md",
+          "hash": "3102015152771738431"
+        },
+        {
+          "file": "packages/core/docs/pt-br/berlin-db.md",
+          "hash": "6923756210460489410"
+        },
+        {
+          "file": "packages/core/docs/pt-br/core.md",
+          "hash": "5213854337341080019"
+        },
+        {
+          "file": "packages/core/docs/pt-br/i18n.md",
+          "hash": "9954436051324611035"
+        },
+        {
+          "file": "packages/core/languages/lcdr-php.pot",
+          "hash": "4200412060873155475"
+        },
+        {
+          "file": "packages/core/languages/php-lcdr-en_US.mo",
+          "hash": "16949007419355924960"
+        },
+        {
+          "file": "packages/core/languages/php-lcdr-en_US.po",
+          "hash": "7958842389479621610"
+        },
+        {
+          "file": "packages/core/languages/php-lcdr-pt_BR.mo",
+          "hash": "17054340296290407144"
+        },
+        {
+          "file": "packages/core/languages/php-lcdr-pt_BR.po",
+          "hash": "18037887527623278139"
+        },
+        {
+          "file": "packages/core/lcdr.php",
+          "hash": "10026804848253177972"
+        },
+        {
+          "file": "packages/core/package.json",
+          "hash": "18402882931266702510",
+          "deps": [
+            "@elucidario/pkg-mdorim",
+            "@elucidario/pkg-rollup",
+            "@elucidario/pkg-tsconfig",
+            "@elucidario/pkg-types",
+            "npm:@types/node",
+            "npm:wp-pot"
+          ]
+        },
+        {
+          "file": "packages/core/phpcs.xml",
+          "hash": "9518453525309221547"
+        },
+        {
+          "file": "packages/core/phpdox.xml",
+          "hash": "2244175171921739914"
+        },
+        {
+          "file": "packages/core/phpunit.xml",
+          "hash": "14261712273535069380"
+        },
+        {
+          "file": "packages/core/src/js/index.ts",
+          "hash": "11263923688743435809"
+        },
+        {
+          "file": "packages/core/src/php/Core.php",
+          "hash": "11729721787891977043"
+        },
+        {
+          "file": "packages/core/src/php/DB/Core.php",
+          "hash": "10505054660001667841"
+        },
+        {
+          "file": "packages/core/src/php/DB/Interfaces/Entity.php",
+          "hash": "12011318776642138493"
+        },
+        {
+          "file": "packages/core/src/php/DB/Interfaces/Relationship.php",
+          "hash": "10477616872811672610"
+        },
+        {
+          "file": "packages/core/src/php/DB/Query/Concepts.php",
+          "hash": "4893048210122490512"
+        },
+        {
+          "file": "packages/core/src/php/DB/Query/Entities.php",
+          "hash": "16717212431218413214"
+        },
+        {
+          "file": "packages/core/src/php/DB/Query/Mappings.php",
+          "hash": "10839027061265216005"
+        },
+        {
+          "file": "packages/core/src/php/DB/Query/Options.php",
+          "hash": "6452002654552899133"
+        },
+        {
+          "file": "packages/core/src/php/DB/Query/Procedures.php",
+          "hash": "12970417587008866746"
+        },
+        {
+          "file": "packages/core/src/php/DB/Query/ProceduresEntities.php",
+          "hash": "2278602776630829192"
+        },
+        {
+          "file": "packages/core/src/php/DB/Query/PropsMaps.php",
+          "hash": "8180654551074506842"
+        },
+        {
+          "file": "packages/core/src/php/DB/Query/Relationships.php",
+          "hash": "10691455565178469481"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/Concept.php",
+          "hash": "1220185071261211343"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/Entity.php",
+          "hash": "5051942278089565306"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/Factory.php",
+          "hash": "4314992855120817730"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/Mapping.php",
+          "hash": "6029470698162109045"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/ObjectRow.php",
+          "hash": "9554603291945548566"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/Option.php",
+          "hash": "9778387345809968612"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/Procedure.php",
+          "hash": "10666786882808608582"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/ProcedureEntity.php",
+          "hash": "12559995257361909243"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/PropMap.php",
+          "hash": "2789537406443811261"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/Relationship.php",
+          "hash": "4475087144962495362"
+        },
+        {
+          "file": "packages/core/src/php/DB/Row/Row.php",
+          "hash": "5164469471170592559"
+        },
+        {
+          "file": "packages/core/src/php/DB/Schema/Entities.php",
+          "hash": "8954727356207055965"
+        },
+        {
+          "file": "packages/core/src/php/DB/Schema/Mappings.php",
+          "hash": "10753277599003414511"
+        },
+        {
+          "file": "packages/core/src/php/DB/Schema/Options.php",
+          "hash": "14213599477936220484"
+        },
+        {
+          "file": "packages/core/src/php/DB/Schema/Procedures.php",
+          "hash": "9277104843147980240"
+        },
+        {
+          "file": "packages/core/src/php/DB/Schema/ProceduresEntities.php",
+          "hash": "5204129894666743158"
+        },
+        {
+          "file": "packages/core/src/php/DB/Schema/PropsMaps.php",
+          "hash": "16426684600384746272"
+        },
+        {
+          "file": "packages/core/src/php/DB/Schema/Relationships.php",
+          "hash": "3133578412093942098"
+        },
+        {
+          "file": "packages/core/src/php/DB/Table/Entities.php",
+          "hash": "11752711598981518008"
+        },
+        {
+          "file": "packages/core/src/php/DB/Table/Mappings.php",
+          "hash": "16154640862339351494"
+        },
+        {
+          "file": "packages/core/src/php/DB/Table/Options.php",
+          "hash": "433257966478617091"
+        },
+        {
+          "file": "packages/core/src/php/DB/Table/Procedures.php",
+          "hash": "13912019095490450460"
+        },
+        {
+          "file": "packages/core/src/php/DB/Table/ProceduresEntities.php",
+          "hash": "12137727864312466474"
+        },
+        {
+          "file": "packages/core/src/php/DB/Table/PropsMaps.php",
+          "hash": "9055817326792404907"
+        },
+        {
+          "file": "packages/core/src/php/DB/Table/Relationships.php",
+          "hash": "9399721091452139637"
+        },
+        {
+          "file": "packages/core/src/php/DB/Table/Table.php",
+          "hash": "4936527841951353660"
+        },
+        {
+          "file": "packages/core/src/php/Error/Base.php",
+          "hash": "4958121121764315085"
+        },
+        {
+          "file": "packages/core/src/php/Error/DB.php",
+          "hash": "7443927321088232165"
+        },
+        {
+          "file": "packages/core/src/php/Error/Error.php",
+          "hash": "14020563794873191687"
+        },
+        {
+          "file": "packages/core/src/php/Error/Factory.php",
+          "hash": "11097512939094064595"
+        },
+        {
+          "file": "packages/core/src/php/Error/Rest.php",
+          "hash": "15313433644289410887"
+        },
+        {
+          "file": "packages/core/src/php/Error/Schema.php",
+          "hash": "1300989318229704082"
+        },
+        {
+          "file": "packages/core/src/php/Error/User.php",
+          "hash": "13402219426451410509"
+        },
+        {
+          "file": "packages/core/src/php/Options/Config.php",
+          "hash": "18177425864573088983"
+        },
+        {
+          "file": "packages/core/src/php/Options/Core.php",
+          "hash": "1079513246956726242"
+        },
+        {
+          "file": "packages/core/src/php/Rest/Core.php",
+          "hash": "8985152001876234956"
+        },
+        {
+          "file": "packages/core/src/php/Rest/Routes/Abstracts/Base.php",
+          "hash": "11546352183680964687"
+        },
+        {
+          "file": "packages/core/src/php/Rest/Routes/Abstracts/Entities.php",
+          "hash": "4584167044163566401"
+        },
+        {
+          "file": "packages/core/src/php/Rest/Routes/Concepts.php",
+          "hash": "2644997039948633856"
+        },
+        {
+          "file": "packages/core/src/php/Rest/Routes/Mapping.php",
+          "hash": "14349356988472109762"
+        },
+        {
+          "file": "packages/core/src/php/Rest/Routes/Objects.php",
+          "hash": "1778571967552685418"
+        },
+        {
+          "file": "packages/core/src/php/Rest/checklist.md",
+          "hash": "12580402241993530380"
+        },
+        {
+          "file": "packages/core/src/php/Users/Core.php",
+          "hash": "2632469520830222508"
+        },
+        {
+          "file": "packages/core/src/php/Utils/Notices.php",
+          "hash": "16582386859116188138"
+        },
+        {
+          "file": "packages/core/src/php/Utils/Singleton.php",
+          "hash": "9703445508136381928"
+        },
+        {
+          "file": "packages/core/src/php/Utils/debug.php",
+          "hash": "18401479107158517182"
+        },
+        {
+          "file": "packages/core/src/php/functions.php",
+          "hash": "9744297130806931701"
+        },
+        {
+          "file": "packages/core/src/php/index.php",
+          "hash": "1463045775691084425"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/DB/ConceptTest.php",
+          "hash": "5403697873388034227"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/DB/FactoryTest.php",
+          "hash": "16827321610340005713"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/DB/MappingTest.php",
+          "hash": "15531219059941645680"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/DB/OptionTest.php",
+          "hash": "5131160709614129070"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/DB/ProcedureTest.php",
+          "hash": "12397776216975592731"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/DB/ProceduresEntitiesTest.php",
+          "hash": "9024624896798325967"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/DB/PropsMapsTest.php",
+          "hash": "7991146381933055507"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/DB/RelationshipTest.php",
+          "hash": "9704688264075061335"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/DB/TablesTest.php",
+          "hash": "7829495225605246647"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/Rest/BaseTest.php",
+          "hash": "17189105734091532226"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/Rest/ConceptsTest.php",
+          "hash": "6914502375504070768"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/Rest/MappingTest.php",
+          "hash": "9038454569574838616"
+        },
+        {
+          "file": "packages/core/tests/Pest/Integration/Rest/ObjectsTest.php",
+          "hash": "17530503481390851920"
+        },
+        {
+          "file": "packages/core/tests/Pest/Unit/CoreTest.php",
+          "hash": "8191488584693271380"
+        },
+        {
+          "file": "packages/core/tests/Pest/Unit/ErrorsTest.php",
+          "hash": "4420239645136188567"
+        },
+        {
+          "file": "packages/core/tests/Pest/Unit/Users/CoreTest.php",
+          "hash": "6984199586270292069"
+        },
+        {
+          "file": "packages/core/tests/Pest/Unit/functionsTest.php",
+          "hash": "15167105239435649307"
+        },
+        {
+          "file": "packages/core/tests/Pest/Unit/utilsTest.php",
+          "hash": "16430086134994157831"
+        },
+        {
+          "file": "packages/core/tests/Pest.php",
+          "hash": "6291163708501025270"
+        },
+        {
+          "file": "packages/core/tests/bootstrap.php",
+          "hash": "12810553626564318030"
+        },
+        {
+          "file": "packages/core/tests/data/json-data.json",
+          "hash": "12826888839895480229"
+        },
+        {
+          "file": "packages/core/tests/http/concept.rest",
+          "hash": "5072980361988752329"
+        },
+        {
+          "file": "packages/core/tests/http/mappings.rest",
+          "hash": "13892541344522979979"
+        },
+        {
+          "file": "packages/core/tsconfig.json",
+          "hash": "13067634961594694500"
+        }
+      ],
+      "@elucidario/pkg-eslint-config": [
+        {
+          "file": "packages/eslint-config/.eslintrc.js",
+          "hash": "1219582671923983653"
+        },
+        {
+          "file": "packages/eslint-config/CHANGELOG.md",
+          "hash": "3464217755710589456"
+        },
+        {
+          "file": "packages/eslint-config/package.json",
+          "hash": "9232356165914280803",
+          "deps": [
+            "npm:@typescript-eslint/eslint-plugin",
+            "npm:@typescript-eslint/parser",
+            "npm:eslint",
+            "npm:eslint-config-next",
+            "npm:eslint-config-standard",
+            "npm:eslint-plugin-import",
+            "npm:eslint-plugin-n",
+            "npm:eslint-plugin-node",
+            "npm:eslint-plugin-promise",
+            "npm:typescript"
+          ]
+        }
+      ],
+      "@elucidario/pkg-mdorim": [
+        {
+          "file": "packages/mdorim/.bin/test.sh",
+          "hash": "6477794977112669681"
+        },
+        {
+          "file": "packages/mdorim/.gitignore",
+          "hash": "16365109284541927820"
+        },
+        {
+          "file": "packages/mdorim/CHANGELOG.md",
+          "hash": "12091340827098437172"
+        },
+        {
+          "file": "packages/mdorim/README.md",
+          "hash": "12206248589435950334"
+        },
+        {
+          "file": "packages/mdorim/babel.config.cjs",
+          "hash": "3086776811682664058"
+        },
+        {
+          "file": "packages/mdorim/composer.json",
+          "hash": "13746665122870182441"
+        },
+        {
+          "file": "packages/mdorim/composer.lock",
+          "hash": "2934237787387088249"
+        },
+        {
+          "file": "packages/mdorim/jest.config.json",
+          "hash": "6526024238996509713"
+        },
+        {
+          "file": "packages/mdorim/package.json",
+          "hash": "13501531996118796036",
+          "deps": [
+            "npm:@babel/plugin-syntax-import-attributes",
+            "npm:ajv",
+            "npm:json-cycle",
+            "npm:@babel/plugin-transform-json-strings",
+            "npm:@babel/preset-env",
+            "@elucidario/pkg-console",
+            "@elucidario/pkg-docusaurus-md",
+            "@elucidario/pkg-paths",
+            "@elucidario/pkg-pub-gen",
+            "@elucidario/pkg-rollup",
+            "@elucidario/pkg-schema-doc",
+            "@elucidario/pkg-tsconfig",
+            "@elucidario/pkg-types",
+            "npm:child_process",
+            "npm:commander",
+            "npm:jest",
+            "npm:jest-json-schema",
+            "npm:json-schema-to-typescript",
+            "npm:lodash-es",
+            "npm:rollup",
+            "npm:tslib",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/mdorim/phpunit.xml",
+          "hash": "7717698798494916917"
+        },
+        {
+          "file": "packages/mdorim/rollup.config.js",
+          "hash": "13612269664364408318"
+        },
+        {
+          "file": "packages/mdorim/src/build/build.js",
+          "hash": "11798123128194958714"
+        },
+        {
+          "file": "packages/mdorim/src/build/clean.js",
+          "hash": "1656051577211057034"
+        },
+        {
+          "file": "packages/mdorim/src/build/cli.js",
+          "hash": "7999489605561881720"
+        },
+        {
+          "file": "packages/mdorim/src/build/dereference.js",
+          "hash": "15636795339099941160"
+        },
+        {
+          "file": "packages/mdorim/src/build/docs.js",
+          "hash": "7532243030102286596"
+        },
+        {
+          "file": "packages/mdorim/src/build/examples.js",
+          "hash": "11451378727945056790"
+        },
+        {
+          "file": "packages/mdorim/src/build/replaceRef.js",
+          "hash": "10815196140573677860"
+        },
+        {
+          "file": "packages/mdorim/src/build/schemas.js",
+          "hash": "12968815360316764469"
+        },
+        {
+          "file": "packages/mdorim/src/build/translations.js",
+          "hash": "2180165149719883667"
+        },
+        {
+          "file": "packages/mdorim/src/build/writeFile.js",
+          "hash": "8895965970016326679"
+        },
+        {
+          "file": "packages/mdorim/src/examples/rest/rio-janeiro.json",
+          "hash": "5664638149701209990"
+        },
+        {
+          "file": "packages/mdorim/src/examples/storage/options.json",
+          "hash": "14337998624800058291"
+        },
+        {
+          "file": "packages/mdorim/src/examples/storage/rio-janeiro.json",
+          "hash": "5508198913768762933"
+        },
+        {
+          "file": "packages/mdorim/src/lib/index.ts",
+          "hash": "1635880263230360450"
+        },
+        {
+          "file": "packages/mdorim/src/lib/mdorim.ts",
+          "hash": "4601296429411965945"
+        },
+        {
+          "file": "packages/mdorim/src/localSidebars.cjs",
+          "hash": "16499737206403265822"
+        },
+        {
+          "file": "packages/mdorim/src/php/Core.php",
+          "hash": "12023758770512404163"
+        },
+        {
+          "file": "packages/mdorim/src/php/Schema/Entities/Concept.php",
+          "hash": "4850085315778143670"
+        },
+        {
+          "file": "packages/mdorim/src/php/Schema/Generator.php",
+          "hash": "609164282851404192"
+        },
+        {
+          "file": "packages/mdorim/src/php/Schema/Metadata.php",
+          "hash": "15753829698753254803"
+        },
+        {
+          "file": "packages/mdorim/src/php/Schema/Schemas.php",
+          "hash": "7428020907279245213"
+        },
+        {
+          "file": "packages/mdorim/src/php/Traits/Debug.php",
+          "hash": "9014490722661645526"
+        },
+        {
+          "file": "packages/mdorim/src/php/Traits/Singleton.php",
+          "hash": "5838275982497632341"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/concept.json",
+          "hash": "10863070501363831851"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/conversion.md",
+          "hash": "1888390536232476164"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/core.json",
+          "hash": "8179080776438356766"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/digital.json",
+          "hash": "15025486605300921231"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/event.json",
+          "hash": "1713593212036562725"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/group.json",
+          "hash": "12604818983177172456"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/object.json",
+          "hash": "3413562860977287305"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/person.json",
+          "hash": "6673296609069330227"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/place.json",
+          "hash": "15990815022237972937"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/provenance.json",
+          "hash": "3417025037663336510"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/set.json",
+          "hash": "1947443451544037477"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/text.json",
+          "hash": "12400250300976274747"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/linked-art/visual.json",
+          "hash": "5005586372438959054"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/concept.json",
+          "hash": "13717685598447154022"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/core.json",
+          "hash": "13821519060432267293"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/digital.json",
+          "hash": "5335146195945879008"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/event.json",
+          "hash": "7976887500324490137"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/group.json",
+          "hash": "16511791509200046954"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/mapping.json",
+          "hash": "2166173620976781602"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/object.json",
+          "hash": "1300095049928463259"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/options.json",
+          "hash": "15548537008448756537"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/person.json",
+          "hash": "9926144868185190460"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/place.json",
+          "hash": "17079631172347319802"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/prop_map.json",
+          "hash": "5140572750566297983"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/provenance.json",
+          "hash": "5495807432716828852"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/set.json",
+          "hash": "10064728145752902514"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/text.json",
+          "hash": "9644904709686455987"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/mdorim/visual.json",
+          "hash": "4102156032275132933"
+        },
+        {
+          "file": "packages/mdorim/src/schemas/translation/schema.json",
+          "hash": "9983011347632037326"
+        },
+        {
+          "file": "packages/mdorim/src/sidebars.cjs",
+          "hash": "11339437036882705499"
+        },
+        {
+          "file": "packages/mdorim/src/translations/id.json",
+          "hash": "7540159068039872618"
+        },
+        {
+          "file": "packages/mdorim/src/translations/identified_by.json",
+          "hash": "15917589534731137531"
+        },
+        {
+          "file": "packages/mdorim/src/translations/referred_to_by.json",
+          "hash": "12672743319208258386"
+        },
+        {
+          "file": "packages/mdorim/tests/jest/lib.test.js",
+          "hash": "10992252599818457583"
+        },
+        {
+          "file": "packages/mdorim/tests/jest/replaceRef.test.js",
+          "hash": "5672216675754905548"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Pest.php",
+          "hash": "8013001751858541398"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/CoreTest.php",
+          "hash": "7448161347315170381"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/ConceptTest.php",
+          "hash": "7685440370556990764"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/DigitalTest.php",
+          "hash": "374461085114045329"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/EventTest.php",
+          "hash": "2576145987070416789"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/GroupTest.php",
+          "hash": "16913967474143935658"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/ObjectTest.php",
+          "hash": "16546398210442409931"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/PersonTest.php",
+          "hash": "9510878363177498355"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/PlaceTest.php",
+          "hash": "13174737309400430882"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/ProvenanceTest.php",
+          "hash": "6864414003679374292"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/SetTest.php",
+          "hash": "935735538694042430"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/TextTest.php",
+          "hash": "880836801927517793"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/Entities/VisualTest.php",
+          "hash": "2917432753001605111"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/GeneratorTest.php",
+          "hash": "3709129675279850173"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/MappingTest.php",
+          "hash": "1835981829366809639"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/MetadataTest.php",
+          "hash": "13051495536744783820"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/Schema/SchemaTest.php",
+          "hash": "8070736319876626184"
+        },
+        {
+          "file": "packages/mdorim/tests/php/Unit/TraitsTest.php",
+          "hash": "1570459922309235192"
+        },
+        {
+          "file": "packages/mdorim/tsconfig.json",
+          "hash": "2398500995921885242"
+        }
+      ],
+      "@elucidario/pkg-g-api-utils": [
+        {
+          "file": "packages/g-api-utils/.gitignore",
+          "hash": "49251253421724194"
+        },
+        {
+          "file": "packages/g-api-utils/CHANGELOG.md",
+          "hash": "5623727535034669808"
+        },
+        {
+          "file": "packages/g-api-utils/README.md",
+          "hash": "3106738933265800660"
+        },
+        {
+          "file": "packages/g-api-utils/package.json",
+          "hash": "197382381180584786",
+          "deps": [
+            "@elucidario/pkg-parse-args",
+            "npm:@googleapis/docs",
+            "npm:@googleapis/drive",
+            "npm:chalk",
+            "npm:google-auth-library",
+            "npm:googleapis",
+            "@elucidario/pkg-rollup",
+            "@elucidario/pkg-tsconfig",
+            "npm:@types/node",
+            "npm:rollup",
+            "npm:tslib",
+            "npm:tsx",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/g-api-utils/rollup.config.js",
+          "hash": "4551287009776571656"
+        },
+        {
+          "file": "packages/g-api-utils/src/authenticate.ts",
+          "hash": "8458281756558873428"
+        },
+        {
+          "file": "packages/g-api-utils/src/classes/Auth.ts",
+          "hash": "2651228816764508403"
+        },
+        {
+          "file": "packages/g-api-utils/src/classes/Drive.ts",
+          "hash": "8667449945806442426"
+        },
+        {
+          "file": "packages/g-api-utils/src/classes/GoogleDocs.ts",
+          "hash": "9109613968725610858"
+        },
+        {
+          "file": "packages/g-api-utils/src/comment.ts",
+          "hash": "4703095095160789967"
+        },
+        {
+          "file": "packages/g-api-utils/src/create-doc.ts",
+          "hash": "10555809733388267947"
+        },
+        {
+          "file": "packages/g-api-utils/src/create-reference.ts",
+          "hash": "1184319289665796639"
+        },
+        {
+          "file": "packages/g-api-utils/src/enums.ts",
+          "hash": "18209428715230722650"
+        },
+        {
+          "file": "packages/g-api-utils/src/index.ts",
+          "hash": "14726761783662784747"
+        },
+        {
+          "file": "packages/g-api-utils/src/teste/livro.json",
+          "hash": "14809152429361772670"
+        },
+        {
+          "file": "packages/g-api-utils/src/update-doc.ts",
+          "hash": "4295571408701701300"
+        },
+        {
+          "file": "packages/g-api-utils/tsconfig.json",
+          "hash": "1185958740968663985"
+        }
+      ],
+      "@elucidario/pkg-parse-args": [
+        {
+          "file": "packages/parse-args/CHANGELOG.md",
+          "hash": "2382368668526400454"
+        },
+        {
+          "file": "packages/parse-args/README.md",
+          "hash": "3404664212726272827"
+        },
+        {
+          "file": "packages/parse-args/package.json",
+          "hash": "4474935029368694216",
+          "deps": [
+            "@elucidario/pkg-rollup",
+            "@elucidario/pkg-tsconfig",
+            "npm:@types/node",
+            "npm:rollup",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/parse-args/rollup.config.js",
+          "hash": "5748652139406710161"
+        },
+        {
+          "file": "packages/parse-args/src/index.ts",
+          "hash": "5600396805706722490"
+        },
+        {
+          "file": "packages/parse-args/src/parse-args.ts",
+          "hash": "154383249524925878"
+        },
+        {
+          "file": "packages/parse-args/tsconfig.json",
+          "hash": "13569776201578564981"
+        }
+      ],
+      "@elucidario/pkg-pub-gen": [
+        {
+          "file": "packages/pub-gen/.gitignore",
+          "hash": "9810048320241405113"
+        },
+        {
+          "file": "packages/pub-gen/CHANGELOG.md",
+          "hash": "13077971909121378440"
+        },
+        {
+          "file": "packages/pub-gen/README.md",
+          "hash": "15896421667330094134"
+        },
+        {
+          "file": "packages/pub-gen/babel.config.cjs",
+          "hash": "3847715514397853362"
+        },
+        {
+          "file": "packages/pub-gen/bin/build.js",
+          "hash": "12325751872910524114"
+        },
+        {
+          "file": "packages/pub-gen/index.js",
+          "hash": "12619486786096428740"
+        },
+        {
+          "file": "packages/pub-gen/jest.config.cjs",
+          "hash": "1673837922005130266"
+        },
+        {
+          "file": "packages/pub-gen/lib/addAuthor.js",
+          "hash": "5416765961674216068"
+        },
+        {
+          "file": "packages/pub-gen/lib/build.js",
+          "hash": "3805029261869194107"
+        },
+        {
+          "file": "packages/pub-gen/lib/commentsToIssues.js",
+          "hash": "2228497203762882881"
+        },
+        {
+          "file": "packages/pub-gen/lib/create.js",
+          "hash": "4802347206364734786"
+        },
+        {
+          "file": "packages/pub-gen/lib/debounce.js",
+          "hash": "3335280320162157088"
+        },
+        {
+          "file": "packages/pub-gen/lib/getCredentials.js",
+          "hash": "15915800697740394352"
+        },
+        {
+          "file": "packages/pub-gen/lib/getPaths.js",
+          "hash": "10443173969139561769"
+        },
+        {
+          "file": "packages/pub-gen/lib/githubAuthenticate.js",
+          "hash": "2988730585352433418"
+        },
+        {
+          "file": "packages/pub-gen/lib/init.js",
+          "hash": "1514662501576565961"
+        },
+        {
+          "file": "packages/pub-gen/lib/pandoc/convert.js",
+          "hash": "13236174171164949408"
+        },
+        {
+          "file": "packages/pub-gen/lib/pandoc/listTemplates.js",
+          "hash": "14302803934267554158"
+        },
+        {
+          "file": "packages/pub-gen/lib/presets/abnt/schemas/referencias/autor.json",
+          "hash": "14526648932235246599"
+        },
+        {
+          "file": "packages/pub-gen/lib/presets/abnt/schemas/referencias/evento.json",
+          "hash": "8799347544601809911"
+        },
+        {
+          "file": "packages/pub-gen/lib/presets/abnt/schemas/referencias/livro.json",
+          "hash": "284238647382930520"
+        },
+        {
+          "file": "packages/pub-gen/lib/presets/abnt/schemas/referencias/periodico.json",
+          "hash": "13803391976453035505"
+        },
+        {
+          "file": "packages/pub-gen/lib/presets/abnt/schemas/referencias/referencias.json",
+          "hash": "2237106677836363023"
+        },
+        {
+          "file": "packages/pub-gen/lib/presets/abnt/schemas/referencias/teses.json",
+          "hash": "13487807312038351318"
+        },
+        {
+          "file": "packages/pub-gen/lib/presets/abnt/schemas/referencias/webpage.json",
+          "hash": "9051827478231299073"
+        },
+        {
+          "file": "packages/pub-gen/lib/prompt/createInput.js",
+          "hash": "3012538730290037736"
+        },
+        {
+          "file": "packages/pub-gen/lib/prompt/index.js",
+          "hash": "16760429664685135383"
+        },
+        {
+          "file": "packages/pub-gen/lib/prompt/pubGenPrompt.js",
+          "hash": "15397012614562203660"
+        },
+        {
+          "file": "packages/pub-gen/lib/prompt/referencePrompt.js",
+          "hash": "7919965527941286938"
+        },
+        {
+          "file": "packages/pub-gen/lib/pub-gen.js",
+          "hash": "854760460755473710"
+        },
+        {
+          "file": "packages/pub-gen/lib/reference/addReference.js",
+          "hash": "9842732592083128968"
+        },
+        {
+          "file": "packages/pub-gen/lib/reference/csl-engine.js",
+          "hash": "7258891721610999673"
+        },
+        {
+          "file": "packages/pub-gen/lib/reference/fetchLocales.js",
+          "hash": "14558005315586403014"
+        },
+        {
+          "file": "packages/pub-gen/lib/reference/fetchSearchStyles.js",
+          "hash": "4529422015513873353"
+        },
+        {
+          "file": "packages/pub-gen/lib/reference/fetchStyles.js",
+          "hash": "11394635085150898442"
+        },
+        {
+          "file": "packages/pub-gen/lib/reference/generateSearchIndex.js",
+          "hash": "14952019837096099513"
+        },
+        {
+          "file": "packages/pub-gen/lib/reference/reference.js",
+          "hash": "11259521374015423901"
+        },
+        {
+          "file": "packages/pub-gen/lib/reference/search.js",
+          "hash": "666138042762780128"
+        },
+        {
+          "file": "packages/pub-gen/lib/reference/validateReferences.js",
+          "hash": "2425235861632596808"
+        },
+        {
+          "file": "packages/pub-gen/lib/remark/processor.js",
+          "hash": "7443651392622014551"
+        },
+        {
+          "file": "packages/pub-gen/lib/remark/remark-pub-gen.js",
+          "hash": "6463599788211342215"
+        },
+        {
+          "file": "packages/pub-gen/lib/remark/table.js",
+          "hash": "6912980695626384793"
+        },
+        {
+          "file": "packages/pub-gen/lib/schema/pub-gen-schema.json",
+          "hash": "10975352039009969289"
+        },
+        {
+          "file": "packages/pub-gen/lib/schema/reference-schema.json",
+          "hash": "15697426202972410326"
+        },
+        {
+          "file": "packages/pub-gen/lib/schema/table-schema.json",
+          "hash": "1511880835988308183"
+        },
+        {
+          "file": "packages/pub-gen/lib/sidebars/local.cjs",
+          "hash": "3245670725278396494"
+        },
+        {
+          "file": "packages/pub-gen/lib/sidebars/sidebars.cjs",
+          "hash": "2242664046931587060"
+        },
+        {
+          "file": "packages/pub-gen/lib/to-docx.js",
+          "hash": "5893667731838527778"
+        },
+        {
+          "file": "packages/pub-gen/lib/version.js",
+          "hash": "4302772469112812151"
+        },
+        {
+          "file": "packages/pub-gen/package.json",
+          "hash": "8263486313450873764",
+          "deps": [
+            "npm:@apidevtools/json-schema-ref-parser",
+            "npm:@babel/core",
+            "npm:@benrbray/remark-cite",
+            "@elucidario/pkg-console",
+            "@elucidario/pkg-docusaurus-md",
+            "@elucidario/pkg-g-api-utils",
+            "@elucidario/pkg-parse-args",
+            "@elucidario/pkg-paths",
+            "@elucidario/pkg-schema-doc",
+            "npm:ajv",
+            "npm:axios",
+            "npm:babel-plugin-transform-import-meta",
+            "npm:chalk",
+            "npm:child_process",
+            "npm:chokidar",
+            "npm:citeproc",
+            "npm:commander",
+            "npm:dotenv",
+            "npm:fs",
+            "npm:i18n",
+            "npm:inquirer",
+            "npm:js-search",
+            "npm:jsdom",
+            "npm:json-schema",
+            "npm:lodash-es",
+            "npm:node-html-markdown",
+            "npm:object-hash",
+            "npm:octokit",
+            "npm:parser-front-matter",
+            "npm:path",
+            "npm:prettier",
+            "npm:rehype-parse",
+            "npm:remark",
+            "npm:remark-docx",
+            "npm:remark-frontmatter",
+            "npm:remark-gfm",
+            "npm:remark-parse",
+            "npm:remark-prettier",
+            "npm:remark-stringify",
+            "npm:simple-git",
+            "npm:tableschema",
+            "npm:unified",
+            "npm:unified-stream",
+            "npm:unist-util-visit",
+            "npm:@babel/eslint-parser",
+            "npm:@babel/plugin-syntax-import-assertions",
+            "npm:@babel/plugin-syntax-import-meta",
+            "npm:@babel/preset-env",
+            "npm:babel-jest",
+            "npm:jest"
+          ]
+        },
+        {
+          "file": "packages/pub-gen/src/docs/google-drive.md",
+          "hash": "5279354079724556194"
+        },
+        {
+          "file": "packages/pub-gen/src/docs/home.md",
+          "hash": "6661435592700193428"
+        },
+        {
+          "file": "packages/pub-gen/src/docs/pub-gen-schema.md",
+          "hash": "14385799719024574715"
+        },
+        {
+          "file": "packages/pub-gen/src/docs/publicacao.md",
+          "hash": "3671389026325386006"
+        },
+        {
+          "file": "packages/pub-gen/src/docs/reference-schema.md",
+          "hash": "10816519407281461611"
+        },
+        {
+          "file": "packages/pub-gen/src/docs/referencia.md",
+          "hash": "458253304109114540"
+        },
+        {
+          "file": "packages/pub-gen/src/docs/table-schema.md",
+          "hash": "14296920350609011217"
+        },
+        {
+          "file": "packages/pub-gen/src/docs/versionamento.md",
+          "hash": "13506535670664322329"
+        },
+        {
+          "file": "packages/pub-gen/template/.gitignore",
+          "hash": "14701447983186203428"
+        },
+        {
+          "file": "packages/pub-gen/template/content/introducao.md",
+          "hash": "15324516449142154576"
+        },
+        {
+          "file": "packages/pub-gen/template/content/resumo.md",
+          "hash": "16853956630407077324"
+        },
+        {
+          "file": "packages/pub-gen/template/docx/abnt.docx",
+          "hash": "9626737750260638309"
+        },
+        {
+          "file": "packages/pub-gen/template/references/abnt/livro.json",
+          "hash": "13137874184827438908"
+        },
+        {
+          "file": "packages/pub-gen/tests/prompt.spec.js",
+          "hash": "7911967552667686920"
+        },
+        {
+          "file": "packages/pub-gen/tests/pub-gen-schema.spec.js",
+          "hash": "15332194744586882090"
+        },
+        {
+          "file": "packages/pub-gen/tests/referencePrompt.spec.js",
+          "hash": "2671764279008946420"
+        }
+      ],
+      "@elucidario/pkg-prettier-config": [
+        {
+          "file": "packages/prettier-config/.prettierrc.json",
+          "hash": "13321465816289657533"
+        },
+        {
+          "file": "packages/prettier-config/CHANGELOG.md",
+          "hash": "14744856123480751259"
+        },
+        {
+          "file": "packages/prettier-config/package.json",
+          "hash": "4188790805026353546"
+        }
+      ],
+      "@elucidario/app-dev-ui": [
+        {
+          "file": "apps/dev-ui/.gitignore",
+          "hash": "13046175384202504187"
+        },
+        {
+          "file": "apps/dev-ui/README.md",
+          "hash": "10087808838262969736"
+        },
+        {
+          "file": "apps/dev-ui/index.html",
+          "hash": "12460215434001480976"
+        },
+        {
+          "file": "apps/dev-ui/package.json",
+          "hash": "7545903830946947450",
+          "deps": [
+            "npm:react",
+            "npm:react-dom",
+            "npm:@babel/preset-env",
+            "npm:@babel/preset-react",
+            "npm:@babel/preset-typescript",
+            "npm:@storybook/addon-essentials",
+            "npm:@storybook/addon-interactions",
+            "npm:@storybook/addon-links",
+            "npm:@storybook/addon-styling",
+            "npm:@storybook/blocks",
+            "npm:@storybook/react",
+            "npm:@storybook/react-vite",
+            "npm:@storybook/testing-library",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:@typescript-eslint/eslint-plugin",
+            "npm:@typescript-eslint/parser",
+            "npm:@vitejs/plugin-react",
+            "npm:eslint",
+            "npm:eslint-plugin-react-hooks",
+            "npm:eslint-plugin-react-refresh",
+            "npm:storybook",
+            "npm:typescript",
+            "npm:vite"
+          ]
+        },
+        {
+          "file": "apps/dev-ui/public/vite.svg",
+          "hash": "16046085400642193116"
+        },
+        {
+          "file": "apps/dev-ui/src/App.css",
+          "hash": "3739391659270974612"
+        },
+        {
+          "file": "apps/dev-ui/src/App.tsx",
+          "hash": "4238939368060857942"
+        },
+        {
+          "file": "apps/dev-ui/src/assets/react.svg",
+          "hash": "16069471864800376455"
+        },
+        {
+          "file": "apps/dev-ui/src/index.css",
+          "hash": "14049402097647904024"
+        },
+        {
+          "file": "apps/dev-ui/src/main.tsx",
+          "hash": "4551562787659740963"
+        },
+        {
+          "file": "apps/dev-ui/src/vite-env.d.ts",
+          "hash": "12946363841406869089"
+        },
+        {
+          "file": "apps/dev-ui/tsconfig.json",
+          "hash": "14184196279063105844"
+        },
+        {
+          "file": "apps/dev-ui/tsconfig.node.json",
+          "hash": "18421770259696738015"
+        },
+        {
+          "file": "apps/dev-ui/vite.config.ts",
+          "hash": "12167372479140234466"
+        }
+      ],
+      "@elucidario/pkg-docusaurus-md": [
+        {
+          "file": "packages/docusaurus-md/CHANGELOG.md",
+          "hash": "11979522833945059738"
+        },
+        {
+          "file": "packages/docusaurus-md/jest.config.cjs",
+          "hash": "7375495101385670905"
+        },
+        {
+          "file": "packages/docusaurus-md/package.json",
+          "hash": "8795587709912134054",
+          "deps": [
+            "@elucidario/pkg-rollup",
+            "@elucidario/pkg-tsconfig",
+            "@elucidario/pkg-types",
+            "npm:@types/node",
+            "npm:jest",
+            "npm:rollup",
+            "npm:ts-jest",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/docusaurus-md/rollup.config.js",
+          "hash": "409954882255239757"
+        },
+        {
+          "file": "packages/docusaurus-md/src/index.ts",
+          "hash": "8149083871559864594"
+        },
+        {
+          "file": "packages/docusaurus-md/src/markdown.spec.ts",
+          "hash": "14926007127341194204"
+        },
+        {
+          "file": "packages/docusaurus-md/src/markdown.ts",
+          "hash": "10340708829932944613"
+        },
+        {
+          "file": "packages/docusaurus-md/tsconfig.json",
+          "hash": "13156155380334117944"
+        }
+      ],
+      "@elucidario/app-lcdr-docs": [
+        {
+          "file": "apps/lcdr-docs/.eslintrc.json",
+          "hash": "2663943017257687078"
+        },
+        {
+          "file": "apps/lcdr-docs/.gitignore",
+          "hash": "991991050619441386"
+        },
+        {
+          "file": "apps/lcdr-docs/README.md",
+          "hash": "7366202690842274983"
+        },
+        {
+          "file": "apps/lcdr-docs/babel.config.js",
+          "hash": "2261274304634178639"
+        },
+        {
+          "file": "apps/lcdr-docs/docs/glossario/index.md",
+          "hash": "7302201029385496260"
+        },
+        {
+          "file": "apps/lcdr-docs/docs/home.md",
+          "hash": "11110176054620344730"
+        },
+        {
+          "file": "apps/lcdr-docs/docs/tables/index.md",
+          "hash": "11411142963749464936"
+        },
+        {
+          "file": "apps/lcdr-docs/docs/todo/index.md",
+          "hash": "15792736334582163555"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/concepts/index.md",
+          "hash": "17432632536135527141"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/agent.md",
+          "hash": "6145852097777543322"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/concept.md",
+          "hash": "10614800816965774559"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/digital-object.md",
+          "hash": "17123717311094873068"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/event.md",
+          "hash": "2545706608703156659"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/generic.md",
+          "hash": "14768356155964626749"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/index.md",
+          "hash": "1859898704828491294"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/object.md",
+          "hash": "4266791109588198368"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/place.md",
+          "hash": "13222629030963349718"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/set.md",
+          "hash": "16545134795536376680"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/textual-object.md",
+          "hash": "18286663771343562624"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/user.md",
+          "hash": "12553808026278411301"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/entities/visual-object.md",
+          "hash": "989825633065691084"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/home.md",
+          "hash": "8694751197839615599"
+        },
+        {
+          "file": "apps/lcdr-docs/docs-bk/metadata/index.md",
+          "hash": "8529050489128578943"
+        },
+        {
+          "file": "apps/lcdr-docs/docusaurus.config.js",
+          "hash": "5445592250476990113"
+        },
+        {
+          "file": "apps/lcdr-docs/package.json",
+          "hash": "9230590223020177308",
+          "deps": [
+            "npm:@docusaurus/core",
+            "npm:@docusaurus/module-type-aliases",
+            "npm:@docusaurus/plugin-content-docs",
+            "npm:@docusaurus/preset-classic",
+            "npm:@docusaurus/theme-classic",
+            "npm:@mdx-js/react",
+            "npm:clsx",
+            "npm:prism-react-renderer",
+            "npm:react",
+            "npm:react-dom",
+            "npm:@tsconfig/docusaurus",
+            "npm:@types/node",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "apps/lcdr-docs/sidebars.js",
+          "hash": "1090223096636313842"
+        },
+        {
+          "file": "apps/lcdr-docs/src/components/HomepageFeatures/index.tsx",
+          "hash": "6670542703341130367"
+        },
+        {
+          "file": "apps/lcdr-docs/src/components/HomepageFeatures/styles.module.css",
+          "hash": "6513973468646677811"
+        },
+        {
+          "file": "apps/lcdr-docs/src/css/custom.css",
+          "hash": "6797371043770863784"
+        },
+        {
+          "file": "apps/lcdr-docs/src/pages/index.module.css",
+          "hash": "5688706008830856753"
+        },
+        {
+          "file": "apps/lcdr-docs/src/pages/markdown-page.md",
+          "hash": "15237730561110932526"
+        },
+        {
+          "file": "apps/lcdr-docs/static/.nojekyll",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/lcdr-docs/static/img/SemVer.png",
+          "hash": "14889856408506993133"
+        },
+        {
+          "file": "apps/lcdr-docs/static/img/book-open.svg",
+          "hash": "3870386245347653425"
+        },
+        {
+          "file": "apps/lcdr-docs/static/img/elucidario.ico",
+          "hash": "18064570374925755628"
+        },
+        {
+          "file": "apps/lcdr-docs/static/img/elucidario.png",
+          "hash": "3340267873468042322"
+        },
+        {
+          "file": "apps/lcdr-docs/static/img/elucidario.svg",
+          "hash": "8723003061895122120"
+        },
+        {
+          "file": "apps/lcdr-docs/static/img/elucidário.art-v-dark.svg",
+          "hash": "1327535268848860396"
+        },
+        {
+          "file": "apps/lcdr-docs/static/img/elucidário.art-v-light.svg",
+          "hash": "8723003061895122120"
+        },
+        {
+          "file": "apps/lcdr-docs/static/img/favicon.ico",
+          "hash": "12018898405833912528"
+        },
+        {
+          "file": "apps/lcdr-docs/static/img/issues.png",
+          "hash": "14932625166941662191"
+        },
+        {
+          "file": "apps/lcdr-docs/tsconfig.json",
+          "hash": "9081033790705772449"
+        }
+      ],
+      "@elucidario/pkg-rollup": [
+        {
+          "file": "packages/rollup/CHANGELOG.md",
+          "hash": "11184338823985734602"
+        },
+        {
+          "file": "packages/rollup/README.md",
+          "hash": "9203736506079295396"
+        },
+        {
+          "file": "packages/rollup/package.json",
+          "hash": "6079449320819795855",
+          "deps": [
+            "@elucidario/pkg-tsconfig",
+            "npm:@rollup/plugin-json",
+            "npm:@rollup/plugin-terser",
+            "npm:@rollup/plugin-typescript",
+            "npm:lodash",
+            "npm:rollup",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/rollup/rollup.config.js",
+          "hash": "15935695820023167792"
+        },
+        {
+          "file": "packages/rollup/src/index.ts",
+          "hash": "16446486656722919187"
+        },
+        {
+          "file": "packages/rollup/tsconfig.json",
+          "hash": "11801237894363500520"
+        }
+      ],
+      "@elucidario/pkg-schema-doc": [
+        {
+          "file": "packages/schema-doc/CHANGELOG.md",
+          "hash": "16389240520268243566"
+        },
+        {
+          "file": "packages/schema-doc/README.md",
+          "hash": "1290877910366305760"
+        },
+        {
+          "file": "packages/schema-doc/jest.config.cjs",
+          "hash": "5716191387833570742"
+        },
+        {
+          "file": "packages/schema-doc/locales/en.json",
+          "hash": "11579260158520373562"
+        },
+        {
+          "file": "packages/schema-doc/locales/pt-BR.json",
+          "hash": "16807796634179345754"
+        },
+        {
+          "file": "packages/schema-doc/package.json",
+          "hash": "9929752734139331735",
+          "deps": [
+            "npm:@apidevtools/json-schema-ref-parser",
+            "@elucidario/pkg-console",
+            "@elucidario/pkg-docusaurus-md",
+            "@elucidario/pkg-paths",
+            "npm:chalk",
+            "npm:esm",
+            "npm:fs",
+            "npm:i18n",
+            "npm:lodash-es",
+            "npm:path",
+            "@elucidario/pkg-rollup",
+            "@elucidario/pkg-tsconfig",
+            "@elucidario/pkg-types",
+            "npm:@jest/globals",
+            "npm:@rollup/plugin-typescript",
+            "npm:@types/esm",
+            "npm:@types/i18n",
+            "npm:@types/json-schema",
+            "npm:@types/lodash-es",
+            "npm:@types/node",
+            "npm:babel-jest",
+            "npm:jest",
+            "npm:rollup",
+            "npm:ts-jest",
+            "npm:url"
+          ]
+        },
+        {
+          "file": "packages/schema-doc/rollup.config.js",
+          "hash": "16533078249596854772"
+        },
+        {
+          "file": "packages/schema-doc/src/i18n/i18n.config.ts",
+          "hash": "10379319022925430851"
+        },
+        {
+          "file": "packages/schema-doc/src/i18n/index.ts",
+          "hash": "3833272078147984350"
+        },
+        {
+          "file": "packages/schema-doc/src/index.ts",
+          "hash": "12053747941666574515"
+        },
+        {
+          "file": "packages/schema-doc/src/parts/bundle.ts",
+          "hash": "13703849301818002771"
+        },
+        {
+          "file": "packages/schema-doc/src/parts/dereference.ts",
+          "hash": "5542203787617036032"
+        },
+        {
+          "file": "packages/schema-doc/src/parts/index.ts",
+          "hash": "8424574717155990815"
+        },
+        {
+          "file": "packages/schema-doc/src/parts/mergeSubSchema.ts",
+          "hash": "8231328370912604785"
+        },
+        {
+          "file": "packages/schema-doc/src/parts/parts.ts",
+          "hash": "15493816090691229351"
+        },
+        {
+          "file": "packages/schema-doc/src/parts/readContents.ts",
+          "hash": "17332358572947839022"
+        },
+        {
+          "file": "packages/schema-doc/tests/parts.spec.ts",
+          "hash": "3120121179333201489"
+        },
+        {
+          "file": "packages/schema-doc/tsconfig.json",
+          "hash": "7036445440412294507"
+        }
+      ],
+      "@elucidario/app-dev-env": [
+        {
+          "file": "apps/dev-env/.gitignore",
+          "hash": "12673190411111049197"
+        },
+        {
+          "file": "apps/dev-env/CHANGELOG.md",
+          "hash": "11803182550389466268"
+        },
+        {
+          "file": "apps/dev-env/Dockerfile",
+          "hash": "639389901257811014"
+        },
+        {
+          "file": "apps/dev-env/docker-compose.yml",
+          "hash": "8696874650212740441"
+        },
+        {
+          "file": "apps/dev-env/package.json",
+          "hash": "16915555190512267510"
+        }
+      ],
+      "@elucidario/pkg-design-system": [
+        {
+          "file": "packages/design-system/.babelrc.json",
+          "hash": "17367166747352652363"
+        },
+        {
+          "file": "packages/design-system/.gitignore",
+          "hash": "14296374701549010408"
+        },
+        {
+          "file": "packages/design-system/.storybook/main.ts",
+          "hash": "14128768414641338166"
+        },
+        {
+          "file": "packages/design-system/.storybook/preview.tsx",
+          "hash": "13921544402624699154"
+        },
+        {
+          "file": "packages/design-system/CHANGELOG.md",
+          "hash": "7417911017882911708"
+        },
+        {
+          "file": "packages/design-system/bin/generateStories.js",
+          "hash": "10099795431997576674"
+        },
+        {
+          "file": "packages/design-system/package.json",
+          "hash": "2258961788489017250",
+          "deps": [
+            "@elucidario/pkg-mdorim",
+            "npm:@radix-ui/react-icons",
+            "npm:@radix-ui/react-popover",
+            "npm:lodash-es",
+            "npm:react-hook-form",
+            "npm:@babel/preset-env",
+            "npm:@babel/preset-react",
+            "npm:@babel/preset-typescript",
+            "@elucidario/pkg-rollup",
+            "@elucidario/pkg-tsconfig",
+            "@elucidario/pkg-types",
+            "npm:@rollup/plugin-babel",
+            "npm:@rollup/plugin-node-resolve",
+            "npm:@rollup/plugin-replace",
+            "npm:@storybook/addon-essentials",
+            "npm:@storybook/addon-interactions",
+            "npm:@storybook/addon-links",
+            "npm:@storybook/addon-styling",
+            "npm:@storybook/blocks",
+            "npm:@storybook/react",
+            "npm:@storybook/react-vite",
+            "npm:@storybook/testing-library",
+            "npm:@types/jest-axe",
+            "npm:@types/lodash-es",
+            "npm:@types/node",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:jest",
+            "npm:jest-axe",
+            "npm:jest-environment-jsdom",
+            "npm:prop-types",
+            "npm:react",
+            "npm:react-dom",
+            "npm:rollup",
+            "npm:storybook",
+            "npm:tailwindcss",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/design-system/rollup.config.js",
+          "hash": "8959212994297149980"
+        },
+        {
+          "file": "packages/design-system/src/components/box/Box.tsx",
+          "hash": "7850282574100925250"
+        },
+        {
+          "file": "packages/design-system/src/components/box/index.ts",
+          "hash": "13478366536836901547"
+        },
+        {
+          "file": "packages/design-system/src/components/button/Button.tsx",
+          "hash": "12651768819664521853"
+        },
+        {
+          "file": "packages/design-system/src/components/button/index.ts",
+          "hash": "8665336225023395340"
+        },
+        {
+          "file": "packages/design-system/src/components/form/Form.tsx",
+          "hash": "7090241492420948966"
+        },
+        {
+          "file": "packages/design-system/src/components/form/field/FieldDescription.tsx",
+          "hash": "16152274117766898105"
+        },
+        {
+          "file": "packages/design-system/src/components/form/field/FieldLabel.tsx",
+          "hash": "5484272859390790438"
+        },
+        {
+          "file": "packages/design-system/src/components/form/field/FieldMapping.tsx",
+          "hash": "14097623960908117835"
+        },
+        {
+          "file": "packages/design-system/src/components/form/field/FieldProvider.tsx",
+          "hash": "6970523566777896010"
+        },
+        {
+          "file": "packages/design-system/src/components/form/field/FieldRoot.tsx",
+          "hash": "6848845624165853132"
+        },
+        {
+          "file": "packages/design-system/src/components/form/field/index.ts",
+          "hash": "12728038253660414826"
+        },
+        {
+          "file": "packages/design-system/src/components/form/field/useFieldComponent.ts",
+          "hash": "4361720643401627611"
+        },
+        {
+          "file": "packages/design-system/src/components/form/field/useFieldProvider.ts",
+          "hash": "6666835640538403493"
+        },
+        {
+          "file": "packages/design-system/src/components/form/index.ts",
+          "hash": "9046893911674769849"
+        },
+        {
+          "file": "packages/design-system/src/components/form/input/Input.tsx",
+          "hash": "18291195255700180608"
+        },
+        {
+          "file": "packages/design-system/src/components/form/input/index.ts",
+          "hash": "3726743256145340560"
+        },
+        {
+          "file": "packages/design-system/src/components/form/label/Label.tsx",
+          "hash": "7717628922976556831"
+        },
+        {
+          "file": "packages/design-system/src/components/form/label/index.ts",
+          "hash": "18153493506731143019"
+        },
+        {
+          "file": "packages/design-system/src/components/form/legend/Legend.tsx",
+          "hash": "17315121592775956027"
+        },
+        {
+          "file": "packages/design-system/src/components/form/legend/index.ts",
+          "hash": "14535066918514032884"
+        },
+        {
+          "file": "packages/design-system/src/components/form/multiple/Multiple.tsx",
+          "hash": "13749289956212849303"
+        },
+        {
+          "file": "packages/design-system/src/components/form/multiple/index.ts",
+          "hash": "17662461649484428813"
+        },
+        {
+          "file": "packages/design-system/src/components/index.ts",
+          "hash": "9474747188192510100"
+        },
+        {
+          "file": "packages/design-system/src/components/popover/Popover.tsx",
+          "hash": "17818234336583773852"
+        },
+        {
+          "file": "packages/design-system/src/components/popover/index.ts",
+          "hash": "7862214597920226480"
+        },
+        {
+          "file": "packages/design-system/src/index.ts",
+          "hash": "5450305023179411866"
+        },
+        {
+          "file": "packages/design-system/src/input.css",
+          "hash": "11855546407738933268"
+        },
+        {
+          "file": "packages/design-system/src/provider/SystemActionTypes.ts",
+          "hash": "7196182397032063346"
+        },
+        {
+          "file": "packages/design-system/src/provider/SystemProvider.tsx",
+          "hash": "12371040526971552349"
+        },
+        {
+          "file": "packages/design-system/src/provider/index.ts",
+          "hash": "13872433824893275776"
+        },
+        {
+          "file": "packages/design-system/src/provider/useSystemProvider.ts",
+          "hash": "14018292482511291668"
+        },
+        {
+          "file": "packages/design-system/src/stories/ComponentTemplate.tsx",
+          "hash": "3135991653935934049"
+        },
+        {
+          "file": "packages/design-system/src/stories/components/Button.stories.tsx",
+          "hash": "8143269251228299001"
+        },
+        {
+          "file": "packages/design-system/src/stories/components/form/Field.stories.tsx",
+          "hash": "2097649437557015799"
+        },
+        {
+          "file": "packages/design-system/src/stories/components/form/Input.stories.ts",
+          "hash": "1128610244073724039"
+        },
+        {
+          "file": "packages/design-system/src/stories/components/form/Label.stories.ts",
+          "hash": "1112743898582957928"
+        },
+        {
+          "file": "packages/design-system/src/stories/components/index.ts",
+          "hash": "14589218549001755242"
+        },
+        {
+          "file": "packages/design-system/src/stories/index.ts",
+          "hash": "406893267761917856"
+        },
+        {
+          "file": "packages/design-system/tailwind.config.js",
+          "hash": "3963564366378669958"
+        },
+        {
+          "file": "packages/design-system/tests/components/label.spec.ts",
+          "hash": "2449085837633905063"
+        },
+        {
+          "file": "packages/design-system/tsconfig.json",
+          "hash": "1096018411504154683"
+        }
+      ],
+      "@elucidario/pkg-console": [
+        {
+          "file": "packages/console/.gitattributes",
+          "hash": "8203086421481795821"
+        },
+        {
+          "file": "packages/console/CHANGELOG.md",
+          "hash": "5202772526283594592"
+        },
+        {
+          "file": "packages/console/package.json",
+          "hash": "9222199808008775668",
+          "deps": [
+            "npm:ink",
+            "npm:react",
+            "@elucidario/pkg-tsconfig",
+            "@elucidario/pkg-types",
+            "npm:@types/react",
+            "npm:@vdemedes/prettier-config",
+            "npm:ava",
+            "npm:chalk",
+            "npm:eslint-config-xo-react",
+            "npm:eslint-plugin-react",
+            "npm:eslint-plugin-react-hooks",
+            "npm:ink-testing-library",
+            "npm:ts-node",
+            "npm:typescript",
+            "npm:xo"
+          ]
+        },
+        {
+          "file": "packages/console/readme.md",
+          "hash": "3710591192516434798"
+        },
+        {
+          "file": "packages/console/src/index.ts",
+          "hash": "2078429924113387079"
+        },
+        {
+          "file": "packages/console/src/log.tsx",
+          "hash": "3713280239071972299"
+        },
+        {
+          "file": "packages/console/src/package-json.tsx",
+          "hash": "13845394926473390697"
+        },
+        {
+          "file": "packages/console/test.tsx",
+          "hash": "17208346917138741870"
+        },
+        {
+          "file": "packages/console/tsconfig.json",
+          "hash": "13170958845925946119"
+        }
+      ]
+    }
+  }
+}
