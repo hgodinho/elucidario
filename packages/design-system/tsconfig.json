@@ -1,24 +1,36 @@
 {
-    "extends": "@elucidario/pkg-tsconfig",
     "compilerOptions": {
-        "target": "es2017",
-        "resolveJsonModule": true,
-        "outDir": "dist",
-        "jsx": "react",
         "baseUrl": ".",
-        "moduleResolution": "node",
-        "module": "esnext",
-        "declaration": true,
-        "declarationMap": true,
-        "preserveSymlinks": true,
-        "declarationDir": "./dist/types",
-        "types": ["@elucidario/pkg-mdorim", "@elucidario/pkg-types"],
+
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "module": "ESNext",
+        "skipLibCheck": true,
+
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+
+        /* Linting */
+        "strict": true,
+        // "noUnusedLocals": true,
+        // "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+
+        /* Design system */
+        "types": ["./node_modules/@elucidario/pkg-types/dist/index.d.ts"],
         "paths": {
-            "@/*": ["./src/*"],
-            "@elucidario/pkg-mdorim": [
-                "./node_modules/@elucidario/pkg-mdorim/lib"
+            "@/*": ["./lib/*"],
+            "@elucidario/pkg-types": [
+                "./node_modules/@elucidario/pkg-types/dist/index.d.ts"
             ]
         }
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"]
+    "include": ["src", "lib"],
+    "references": [{ "path": "./tsconfig.node.json" }]
 }

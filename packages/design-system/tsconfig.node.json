@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "composite": true,
+        "skipLibCheck": true,
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "@/*": ["./lib/*"],
+            "@elucidario/pkg-types": [
+                "./node_modules/@elucidario/pkg-types/dist/index.d.ts"
+            ]
+        }
+    },
+    "include": ["vite.config.ts", "package.json"]
+}
