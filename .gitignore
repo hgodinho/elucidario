@@ -14,4 +14,4 @@ lerna-debug.log
 credentials.json
 token.json
 
-.nx
+.nx/**/*
