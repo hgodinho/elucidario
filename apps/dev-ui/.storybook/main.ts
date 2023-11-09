@@ -1,18 +1,14 @@
 import type { StorybookConfig } from "@storybook/react-vite";
 import path from "path";
 
-// console.log(paths);
-
 const root = path.resolve(__dirname, "..", "..", "..");
 const designSystem = (alias: string) =>
-    path.resolve(root, "packages", "design-system", "src", alias);
-
-console.log(designSystem("**/*.stories.@(js|jsx|ts|tsx)"));
+    path.resolve(root, "packages", "design-system", "lib", alias);
 
 const config: StorybookConfig = {
     stories: [
-        // "../src/**/*.mdx",
-        "../../../packages/design-system/src/**/*.stories.@(js|jsx|ts|tsx)",
+        "../../../packages/design-system/lib/**/*.stories.@(ts|tsx)",
+        "../src/stories/mdorim/**/*.stories.@(ts|tsx)",
     ],
     addons: [
         "@storybook/addon-links",

@@ -1,9 +1,9 @@
 import type { Preview } from "@storybook/react";
 import { withThemeByDataAttribute } from "@storybook/addon-styling";
 import React from "react";
-// import { SystemProvider } from "../src/provider";
+import { SystemProvider } from "@elucidario/pkg-design-system";
 
-import "@elucidario/pkg-design-system/dist/output.css";
+import "../../../packages/design-system/dist/style.css";
 
 export const decorators = [
     withThemeByDataAttribute({
@@ -28,9 +28,9 @@ const preview: Preview = {
     },
     decorators: [
         (Story) => (
-            // <SystemProvider lang="pt-BR">
-            <Story />
-            // </SystemProvider>
+            <SystemProvider lang="pt-BR">
+                <Story />
+            </SystemProvider>
         ),
     ]
 };
