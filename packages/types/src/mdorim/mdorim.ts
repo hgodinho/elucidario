@@ -1,4 +1,4 @@
-import { Entity, Schema } from "@/mdorim/json-schema";
+import { DataTypes, Entity, Schema } from "@/mdorim/json-schema";
 
 export type LocalizedString = {
     lang: string;
@@ -71,7 +71,7 @@ export type parseId = (id: string) => ParsedId;
 export type Mdorim = {
     getInstance: (context?: MdorimTypes) => MdorimInstance;
     getSchema: (name: MdorimTypes, type?: "linkedArt" | "mdorim") => Entity;
-    getFromId: (id: string) => Entity | Schema;
+    getFromId: (id: string) => Entity | Schema<DataTypes>;
     getEntityFromIndex: (
         indexId: string,
         type?: "linkedArt" | "mdorim",

@@ -1,49 +1,58 @@
-// import React, { HTMLAttributes, TableHTMLAttributes } from "react";
-// import { Component } from "../generic";
-// import type { LabelProps, LegendProps, InputType } from "./form";
-// import type { MappingProps } from "../../../mdorim";
-// import type { BoxProps } from "../box";
+import { FC, HTMLAttributes, TableHTMLAttributes, ReactNode } from "react";
+import type { BoxProps, Component } from "@/design-system";
+import type { DataTypes, MappingProps, Schema } from "@/mdorim";
+import type { LabelProps, LegendProps, InputType } from "./form";
 
-// import type { Schema } from "../../../schema.types";
+export type UseFieldComponent = (schema: Schema<DataTypes>) => {
+    component: string;
+    componentProps: FieldSchema;
+};
 
-// export type FieldSchema = Omit<Schema, 'required'> & {
-//     required?: boolean;
-//     type?: InputType;
-// }
+export type FieldSchema = Omit<Schema<DataTypes>, "required"> & {
+    required?: boolean;
+    type?: InputType;
+};
 
-// export interface FieldContextProps {
-//     schema: Schema;
-//     translations?: Record<string, any>;
-//     map?: MappingProps;
-//     language?: string;
-// }
+export interface FieldContextProps {
+    schema: Schema<DataTypes>;
+    translations?: Record<string, any>;
+    map?: MappingProps;
+    language?: string;
+}
 
-// export type FieldContextProvider = FieldContextProps & {
-//     label: React.ReactNode;
-//     description?: React.ReactNode;
-//     componentProps?: FieldSchema;
-// }
+export type FieldContextProvider = FieldContextProps & {
+    label: ReactNode;
+    description?: ReactNode;
+    componentProps?: FieldSchema;
+};
 
-// export type FieldRootProps = Component<HTMLAttributes<HTMLDivElement>> & {
-//     render?: (fieldProps: FieldContextProps) => React.ReactNode;
-// } & FieldContextProps;
+export type FieldRootProps = Component<HTMLAttributes<HTMLDivElement>> &
+    FieldContextProps;
 
-// export type FieldLabelType = 'label' | 'legend';
+export type FieldLabelType = "label" | "legend";
 
-// export type FieldLabelProps = (LabelProps | LegendProps) & {
-//     type: FieldLabelType;
-//     label?: React.ReactNode;
-// }
+export type FieldLabelProps = (LabelProps | LegendProps) & {
+    type: FieldLabelType;
+    label?: ReactNode;
+};
 
-// export type FieldDescriptionProps = BoxProps & {
-//     description?: string;
-// }
+export type FieldDescriptionProps = BoxProps & {
+    description?: string;
+};
 
-// export type FieldMappingProps = Component<TableHTMLAttributes<HTMLTableElement>> & {
-//     map: MappingProps;
-// }
+export type FieldMappingProps = Component<
+    TableHTMLAttributes<HTMLTableElement>
+> & {
+    map: MappingProps;
+};
 
-// export type FieldProps =
-//     Component<HTMLAttributes<HTMLDivElement>> &
-//     FieldContextProps &
-//     FieldDescriptionProps;
+export type FieldProps = Component<HTMLAttributes<HTMLDivElement>> &
+    FieldContextProps &
+    FieldDescriptionProps;
+
+export type FieldType = {
+    Provider: FC<FieldContextProvider>;
+    Root: FC<FieldRootProps>;
+    Label: FC<FieldLabelProps>;
+    Description: FC<FieldDescriptionProps>;
+};

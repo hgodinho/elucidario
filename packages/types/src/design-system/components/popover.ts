@@ -1,7 +1,7 @@
-import { JSXElementConstructor } from 'react';
+import { ElementType } from "react";
 
 export type PopoverProps = {
-    Trigger: JSXElementConstructor<any>;
-    Content: JSXElementConstructor<any>;
+    Trigger: ElementType;
+    Content: ElementType;
     contentProps?: Record<string, any>;
-}
+};

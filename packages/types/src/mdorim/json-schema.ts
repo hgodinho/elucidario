@@ -29,8 +29,8 @@ export type ObjectSchema = BaseSchema<"object"> & {
 
 export type ArraySchema = BaseSchema<"array"> & {
     items: Pick<Schema<"array">, "type" | "title"> & {
-        anyOf?: Schema[];
-        oneOf?: Schema[];
+        anyOf?: Schema<DataTypes>[];
+        oneOf?: Schema<DataTypes>[];
     };
 };
 
@@ -52,7 +52,7 @@ export type AnyOfSchema = Omit<ArraySchema, "type"> & {
     };
 };
 
-export type Schema<T extends DataTypes = "string"> =
+export type Schema<T extends DataTypes> =
     | BaseSchema<T>
     | ObjectSchema
     | ArraySchema
@@ -60,7 +60,7 @@ export type Schema<T extends DataTypes = "string"> =
     | AnyOfSchema;
 
 export type Definitions = {
-    [x in MdorimProperties]: Schema;
+    [x in MdorimProperties]: Schema<DataTypes>;
 };
 
 export type Entity = ObjectSchema & {
