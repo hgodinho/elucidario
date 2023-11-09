@@ -8,5 +8,6 @@
 	"Examples": "Examples",
 	"type": "type",
 	"with `anyOf` properties": "with `anyOf` properties",
-	"Properties": "Properties"
+	"Properties": "Properties",
+	"Definitions": "Definitions"
 }
