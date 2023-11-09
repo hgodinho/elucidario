@@ -14,7 +14,8 @@
     },
     "types": "./dist/types/lib/index.d.ts",
     "scripts": {
-        "build": "tsc && vite build --watch",
+        "build": "tsc && vite build",
+        "watch": "pnpm build --watch",
         "build:styles": "tailwindcss -i ./lib/input.css -o ./dist/output.css",
         "dev": "vite",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
