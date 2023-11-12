@@ -1,10 +1,13 @@
 import fs from "fs";
 import path from "path";
 
-import type { PackageProps, ReadContentsProps, ReadContentsReturn } from "@elucidario/pkg-types";
+import type {
+    PackageProps,
+    ReadContentsProps,
+    ReadContentsReturn,
+} from "@elucidario/pkg-types";
 
 import { getPaths } from "./getPaths";
-import { Console } from "@elucidario/pkg-console";
 
 const imagesExtensions = [
     "jpg",
@@ -17,31 +20,30 @@ const imagesExtensions = [
     "ico",
 ];
 
-export const readFile = (filePath: string, ext: string): ReadContentsReturn | string => {
+export const readFile = (
+    filePath: string,
+    ext: string,
+): ReadContentsReturn | string => {
     try {
         switch (ext) {
-            case 'json':
+            case "json":
                 return JSON.parse(
-                    fs.readFileSync(
-                        path.resolve(filePath),
-                        "utf-8"
-                    ).toString()
+                    fs.readFileSync(path.resolve(filePath), "utf-8").toString(),
                 );
 
             default:
-                return fs.readFileSync(
-                    path.resolve(filePath),
-                    "utf-8"
-                ).toString();
+                return fs
+                    .readFileSync(path.resolve(filePath), "utf-8")
+                    .toString();
         }
     } catch (err: any) {
         throw new Error(`Cannot read file at ${filePath}: ${err}`);
     }
-}
+};
 
 /**
  * Lê o conteúdo de um diretório recursivamente, retornando um objeto com o conteúdo de cada arquivo ou path
- * 
+ *
  * @param {Object} props - Propriedades
  * @param {string} props.dirPath - Path do diretório a ser lido
  * @param {boolean} [props.index=true] - Se deve ler o index.json ou não
@@ -50,14 +52,14 @@ export const readFile = (filePath: string, ext: string): ReadContentsReturn | st
  * @param {string[]} [props.exclude] - Arquivos a serem excluídos
  * @param {boolean} [props.log=false] - Se deve logar no console ou não
  * @param {PackageProps} [props.package] - Objeto package.json
- * 
+ *
  * @returns {Object} - Objeto com o conteúdo de cada arquivo ou path
  */
 export const readContents = ({
     dirPath,
     index = true,
     extensions = ["json", "md"],
-    returnType = 'content',
+    returnType = "content",
     exclude,
     log,
     package: pkg,
@@ -69,12 +71,10 @@ export const readContents = ({
         pkg = JSON.parse(
             fs.readFileSync(
                 path.resolve(getPaths().packages, "paths", "package.json"),
-                "utf-8"
-            )
+                "utf-8",
+            ),
         );
     }
-
-    const console = new Console(pkg as PackageProps);
 
     // caso index seja false lê o diretório
     if (!index) {
@@ -96,8 +96,16 @@ export const readContents = ({
                             package: pkg,
                         });
                     } catch (err: any) {
-                        console.log({ err }, { defaultLog: true, type: "error" })
-                        throw new Error(`Cannot read recursive directory: ${path.resolve(dirPath, file)}`);
+                        console.log(
+                            { err },
+                            { defaultLog: true, type: "error" },
+                        );
+                        throw new Error(
+                            `Cannot read recursive directory: ${path.resolve(
+                                dirPath,
+                                file,
+                            )}`,
+                        );
                     }
                 }
 
@@ -106,18 +114,28 @@ export const readContents = ({
                     const ext = filePath.ext.replace(".", "");
                     if (extensions.includes(ext)) {
                         switch (returnType) {
-                            case 'path':
-                                result[filePath.name] = path.resolve(dirPath, file);
+                            case "path":
+                                result[filePath.name] = path.resolve(
+                                    dirPath,
+                                    file,
+                                );
                                 break;
-                            case 'content':
-                                result[filePath.name] = readFile(path.resolve(dirPath, file), ext);
+                            case "content":
+                                result[filePath.name] = readFile(
+                                    path.resolve(dirPath, file),
+                                    ext,
+                                );
                         }
                     }
                 } catch (err: any) {
-                    throw new Error(`Cannot read file at ${path.resolve(dirPath, file)}: ${err}`);
+                    throw new Error(
+                        `Cannot read file at ${path.resolve(
+                            dirPath,
+                            file,
+                        )}: ${err}`,
+                    );
                 }
             });
-
         } catch (err: any) {
             throw new Error(`Cannot read directory at ${dirPath}: ${err}`);
         }
@@ -127,7 +145,7 @@ export const readContents = ({
     else {
         try {
             const indexJson = JSON.parse(
-                fs.readFileSync(path.resolve(dirPath, "index.json"), "utf-8")
+                fs.readFileSync(path.resolve(dirPath, "index.json"), "utf-8"),
             );
 
             indexJson.files.forEach((file: string) => {
@@ -149,13 +167,18 @@ export const readContents = ({
                     // se for um arquivo, lê o conteúdo
                     const ext = filePath.ext.replace(".", "");
                     if (extensions.includes(ext)) {
-
                         switch (returnType) {
-                            case 'path':
-                                result[filePath.name] = path.resolve(dirPath, file);
+                            case "path":
+                                result[filePath.name] = path.resolve(
+                                    dirPath,
+                                    file,
+                                );
                                 break;
-                            case 'content':
-                                result[filePath.name] = readFile(path.resolve(dirPath, file), ext);
+                            case "content":
+                                result[filePath.name] = readFile(
+                                    path.resolve(dirPath, file),
+                                    ext,
+                                );
                         }
                     }
                 }

@@ -1,12 +1,17 @@
 {
     "extends": "@elucidario/pkg-tsconfig",
     "compilerOptions": {
+        "baseUrl": ".",
         "outDir": "dist",
         "target": "ESNext",
         "module": "ESNext",
         "paths": {
-            "@elucidario/pkg-console": ["../console/dist"],
-            "@elucidario/pkg-types": ["../types/dist/index.d.ts"]
+            "@elucidario/pkg-console": [
+                "./node_modules/@elucidario/pkg-console/dist/index.d.ts"
+            ],
+            "@elucidario/pkg-types": [
+                "./node_modules/@elucidario/pkg-types/dist/index.d.ts"
+            ]
         }
     },
     "include": ["src/index.ts"],

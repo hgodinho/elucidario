@@ -6,11 +6,21 @@
     "license": "ISC",
     "author": "",
     "type": "module",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "./dist/index.esm.js",
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.esm.js",
+            "require": "./dist/index.js"
+        }
+    },
     "scripts": {
-        "build": "rollup -c",
-        "dev": "rollup -c -w"
+        "build": "pnpm clean && rollup -c",
+        "dev": "rollup -c -w",
+        "clean": "rm -rf dist"
     },
     "dependencies": {
         "commander": "^11.0.0",
