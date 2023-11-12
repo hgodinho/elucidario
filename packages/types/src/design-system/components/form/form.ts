@@ -1,19 +1,37 @@
-import { FieldsetHTMLAttributes, FormHTMLAttributes, HTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes } from "react"
-import type { Component } from "../generic"
+import {
+    FieldsetHTMLAttributes,
+    FormHTMLAttributes,
+    HTMLAttributes,
+    InputHTMLAttributes,
+    LabelHTMLAttributes,
+    ReactNode,
+    FC,
+} from "react";
+import type { Component } from "../generic";
 
 export type FormProps = Component<FormHTMLAttributes<HTMLFormElement>> & {
-    children?: JSX.Element | JSX.Element[];
-}
+    children?: ReactNode;
+};
 
-export type InputProps = InputHTMLAttributes<Omit<HTMLInputElement, 'children'>> & {
-    type: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
-}
+export type InputType =
+    | "text"
+    | "password"
+    | "email"
+    | "number"
+    | "tel"
+    | "url"
+    | "checkbox";
+
+export type InputProps = InputHTMLAttributes<
+    Omit<HTMLInputElement, "children">
+> & {
+    type?: InputType;
+};
+
+export type Input = FC<InputProps>;
 
 export type LabelProps = Component<LabelHTMLAttributes<HTMLLabelElement>> & {
     // htmlFor?: string;
-}
+};
 
-export type LegendProps = Component<HTMLAttributes<HTMLLegendElement>> & {
-
-}
-
+export type LegendProps = Component<HTMLAttributes<HTMLLegendElement>> & {};

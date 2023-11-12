@@ -5,11 +5,10 @@ import { build, getPaths } from "@elucidario/pkg-paths";
 
 import { buildDocs } from "./docs.js";
 import { buildSchemas } from "./schemas.js";
-import { buildTypes } from "./types.js";
 import { buildTranslations } from "./translations.js";
 import { buildExamples } from "./examples.js";
 import { clean } from "./clean.js";
-import { test } from "./test.js";
+import { cli } from "./cli.js";
 
 const { packages } = getPaths();
 
@@ -32,6 +31,7 @@ export const buildMdorim = async () => {
         .option("-s, --schema", "Builds the schema", false)
         .option("-e, --examples", "Builds the examples", false)
         .option("-t, --translations", "Builds the translations", false)
+        .option("-l, --lib", "Builds the Lib", false)
         .option("-d, --docs", "Builds the docs", false)
         .option("--test", "Test the model", false)
         .action(async (options) => {
@@ -60,9 +60,16 @@ export const buildMdorim = async () => {
                             outStatic,
                         );
 
+                    if (options.lib)
+                        await cli(
+                            "pnpm build:rollup",
+                            "Building lib with rollup...",
+                            packageJson,
+                        );
+
                     if (options.docs) await buildDocs(packageJson, __dirname);
-                    if (options.test) await test(packageJson);
-                    // if (options.types) await buildTypes(packageJson, __dirname);
+                    if (options.test)
+                        await cli("pnpm test", "Testando...", packageJson);
                 },
             );
         });

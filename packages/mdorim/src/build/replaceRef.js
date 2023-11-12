@@ -16,6 +16,7 @@ export const replaceRef = (schema, ext = false, ref) => {
                     ext ? `${ref}/schemas/mdorim` : ".",
                 );
             }
+
             if (newSchema[key].includes("<mapping>")) {
                 if (ext && !ref) throw new Error("No ref provided");
                 newSchema[key] = newSchema[key].replace(
@@ -23,6 +24,7 @@ export const replaceRef = (schema, ext = false, ref) => {
                     ext ? `${ref}/schemas/mapping` : ".",
                 );
             }
+
             if (newSchema[key].includes("<linked-art>")) {
                 newSchema[key] = newSchema[key].replace(
                     "<linked-art>",

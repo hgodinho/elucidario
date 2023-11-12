@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://elucidario.art/mdorim/schemas/linked-art/place.json",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/place.json",
     "title": "Place Schema",
     "description": "_crm:E53\\_Place_\nGeographic locations where activities occur.\nSee: [API](https://linked.art/api/1.0/endpoint/place/) | [Model](https://linked.art/model/place/)",
     "type": "object",

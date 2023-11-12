@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://elucidario.art/mdorim/schemas/linked-art/event.json",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/event.json",
     "title": "Event Schema",
     "description": "_crm:E6\\_Event_ or _crm:E7\\_Activity_\nAn event (no person carried it out) or activity (some actor was responsible) that occured.\nSee: [API](https://linked.art/api/1.0/endpoint/event/) | [Model]()",
     "type": "object",

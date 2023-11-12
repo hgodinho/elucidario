@@ -23,7 +23,7 @@ export const buildSchemas = async (pkg, __dirname, outStatic) => {
         throw new Error(err);
     }
     try {
-        const toCopy = ["json-ui", "linked-art", "mapping", "mdorim"];
+        const toCopy = ["translation", "linked-art", "mdorim"];
         for (let [name, schema] of Object.entries(schemas)) {
             if (toCopy.includes(name)) {
                 Object.entries(schema).map(([schemaName, schemaValue]) => {
@@ -32,13 +32,13 @@ export const buildSchemas = async (pkg, __dirname, outStatic) => {
                     const external = replaceRef(
                         schemaValue,
                         true,
-                        pkg.homepage
+                        pkg.homepage,
                     );
                     writeFile(
                         path.resolve(outStatic, "schemas", name),
                         fileName,
                         JSON.stringify(external, null, 4),
-                        pkg
+                        pkg,
                     );
                 });
             }

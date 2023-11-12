@@ -14,7 +14,7 @@ afterAll( function () {
 
 test( 'mapping/mapping', function () {
 	global $schema;
-	$validate = $schema->validate( 'mapping/mapping', (object) array(
+	$validate = $schema->validate( 'mdorim/mapping', (object) array(
 		'mapping_id' => 1,
 		'name' => 'mapeamento-test',
 		'title' => 'Mapeamento teste',

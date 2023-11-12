@@ -37,19 +37,20 @@
         }
     },
     "dependencies": {
-        "nx": "^16.5.1"
+        "nx": "^17.0.3"
     },
     "devDependencies": {
         "@elucidario/pkg-eslint-config": "workspace:^",
         "@elucidario/pkg-pub-gen": "workspace:^",
+        "@nx/storybook": "^17.0.3",
         "commitizen": "^4.3.0",
-        "conventional-changelog": "^4.0.0",
-        "eslint": "^8.44.0",
-        "husky": "^8.0.0",
-        "lerna": "^7.1.1",
-        "lint-staged": "^13.2.3",
-        "prettier": "^3.0.0",
-        "typescript": "^5.1.6"
+        "conventional-changelog": "^5.1.0",
+        "eslint": "^8.53.0",
+        "husky": "^8.0.3",
+        "lerna": "^7.4.2",
+        "lint-staged": "^15.0.2",
+        "prettier": "^3.0.3",
+        "typescript": "^5.2.2"
     },
     "engines": {
         "node": ">=14.15.0",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ElementType } from "react";
 
 // export type LabelProps = Omit<Component, 'as'> & LabelHTMLAttributes<HTMLLabelElement> & {
 //     htmlFor?: string;
@@ -13,5 +13,4 @@ import React from 'react';
 
 export type Component<T> = T & {
     as?: keyof JSX.IntrinsicElements;
-}
-
+};

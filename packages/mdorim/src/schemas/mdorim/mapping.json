@@ -1,0 +1,129 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/mapping.json",
+    "title": "Mapping",
+    "description": "Describe a interface to declare property mappings between two data models in the context of Elucidário.art.",
+    "type": "object",
+    "version": "0.1.0",
+    "properties": {
+        "mapping_id": {
+            "$ref": "<local>/core.json#/definitions/entity_id"
+        },
+        "name": {
+            "$ref": "<local>/core.json#/definitions/name"
+        },
+        "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Title of the mapping."
+        },
+        "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "Description of the mapping."
+        },
+        "author": {
+            "type": "integer",
+            "title": "Author",
+            "description": "ID of the Author of the mapping."
+        },
+        "guid": {
+            "$ref": "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/guid"
+        },
+
+        "standard": {
+            "$ref": "#/definitions/Standard"
+        },
+
+        "version": {
+            "description": "Version of the mapping. Use semantic versioning: MAJOR.MINOR.PATCH.",
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+
+        "created": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created",
+            "description": "Date and time of creation of the mapping."
+        },
+        "modified": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Modified",
+            "description": "Date and time of last modification of the mapping."
+        },
+        "mapping": {
+            "type": "array",
+            "items": {
+                "$ref": "./prop_map.json"
+            }
+        }
+    },
+    "additionalProperties": false,
+    "definitions": {
+        "Standard": {
+            "type": "object",
+            "title": "Standard",
+            "description": "Standard to be mapped.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "Name of the standard to be mapped."
+                },
+                "uri": {
+                    "type": "string",
+                    "title": "URI",
+                    "description": "URI of the standard to be mapped."
+                }
+            },
+            "additionalProperties": false,
+            "required": ["name"]
+        },
+        "MappingPost": {
+            "title": "MappingPost",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name",
+                    "description": "Name of the mapping in kebab-case."
+                },
+                "title": {
+                    "type": "string",
+                    "title": "Title",
+                    "description": "Title of the mapping."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Description of the mapping."
+                },
+                "author": {
+                    "type": "integer",
+                    "title": "Author",
+                    "description": "ID of the Author of the mapping."
+                },
+
+                "standard": {
+                    "$ref": "#/definitions/Standard"
+                },
+
+                "version": {
+                    "description": "Version of schema file. Use semantic versioning: MAJOR.MINOR.PATCH.",
+                    "type": "string",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                },
+                "mapping": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "./prop_map.json#/definitions/PropMapPost"
+                    }
+                }
+            },
+            "required": ["title", "standard", "mapping"],
+            "additionalProperties": false
+        }
+    }
+}

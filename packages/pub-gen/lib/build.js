@@ -9,7 +9,7 @@ import { readContents, build } from "@elucidario/pkg-paths";
 import { getPaths } from "./getPaths.js";
 import { pubGenRemarkProcessor } from "./remark/processor.js";
 import { engine } from "./reference/csl-engine.js";
-import { toMD, heading, list } from "@elucidario/pkg-docusaurus-md";
+import { toMD, heading, list, table } from "@elucidario/pkg-docusaurus-md";
 
 const paths = getPaths();
 
@@ -190,6 +190,7 @@ const writeDocs = async ({
                 index: attachmentIndex,
                 publication,
                 lang,
+                srcPath,
                 style,
                 version,
             })
@@ -203,13 +204,33 @@ const writeIndexFiles = async ({
     index,
     publication,
     lang,
+    srcPath,
     style,
     version,
 }) => {
-    const build = ({ type, title, items }) => {
-        const header = heading(1, title);
-        const body = list(items, true);
+    const build = ({
+        type,
+        title,
+        items,
+        indexFile = "table",
+        paginate = true,
+    }) => {
+        const header = heading(1, title.toUpperCase());
+
+        // const body = list(items, true);
+        const body =
+            "table" === indexFile
+                ? table({
+                      headers: paginate ? ["", "", ""] : ["", ""],
+                      rows: items.map((item, i) => {
+                          const number = i + 1;
+                          return paginate ? [number, item, ""] : [number, item];
+                      }),
+                  })
+                : list(items, true);
+
         const md = toMD([header, body]);
+
         fs.writeFileSync(
             path.resolve(
                 paths.publications,
@@ -222,6 +243,7 @@ const writeIndexFiles = async ({
         );
     };
 
+    // attachmentIndex
     Object.entries(index).map(async ([type, files]) => {
         if (files.length === 0) return;
 
@@ -256,6 +278,32 @@ const writeIndexFiles = async ({
                 break;
         }
     });
+
+    // acronyms and abbreviations
+    if (fs.existsSync(path.resolve(srcPath, "acronyms.json"))) {
+        const acronyms = JSON.parse(
+            fs.readFileSync(path.resolve(srcPath, "acronyms.json"))
+        );
+        const sortedAcronyms = Object.entries(acronyms).sort((a, b) => {
+            if (a[0] < b[0]) return -1;
+            if (a[0] > b[0]) return 1;
+        });
+        build({
+            type: "acronyms",
+            title: "Lista de siglas e abreviaturas",
+            items: sortedAcronyms.map(([acronym, description], i) => {
+                if (i === sortedAcronyms.length - 1) {
+                    return `${acronym} - ${description}.`;
+                } else {
+                    return `${acronym} - ${description};`;
+                }
+            }),
+            indexFile: "table",
+            paginate: false,
+        });
+    } else {
+        console.log("acronyms.json does not exist");
+    }
 };
 
 /**
@@ -320,6 +368,10 @@ const buildDocs = async ({
                 if (attachmentIndex[key].length > 0) return key;
             })
             .filter((key) => key !== undefined);
+
+        if (fs.existsSync(path.resolve(srcPath, "acronyms.json"))) {
+            attachmentKeys.push("acronyms");
+        }
 
         let position = 0;
         let offset = 2;
@@ -406,9 +458,14 @@ const buildReferences = async ({
             bibliography[1].join("")
         );
 
+        const data = toMD([
+            heading(1, "Referências".toUpperCase()),
+            bibliographyMD,
+        ]);
+
         fs.writeFileSync(
             path.resolve(distPath, lang, "references.md"),
-            bibliographyMD,
+            data,
             "utf-8"
         );
         console.log(`References built using ${style} style!`);

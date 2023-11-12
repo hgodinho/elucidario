@@ -1,0 +1,173 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/prop_map.json",
+    "title": "PropMap",
+    "description": "Describe the `PropMap` entity, responsible to describe a mapping between a property of an entity of Linked Art and a property of an external source.",
+    "type": "object",
+    "version": "0.1.0",
+    "properties": {
+        "map_id": {
+            "type": "integer",
+            "title": "ID",
+            "description": "Unique identifier of the mapping."
+        },
+        "guid": {
+            "$ref": "<local>/core.json#/definitions/guid"
+        },
+
+        "description": {
+            "type": "string",
+            "title": "Description",
+            "description": "Description of the mapping."
+        },
+
+        "prop_name": {
+            "type": "string",
+            "title": "Property Name",
+            "description": "Name of the target property."
+        },
+
+        "entity_type": {
+            "type": "string",
+            "title": "Entity Type",
+            "description": "Entity type mapping target."
+        },
+
+        "external": {
+            "$ref": "#/definitions/External"
+        },
+
+        "map_value": {
+            "title": "Map Value",
+            "description": "Default mapped value.",
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "array"
+                },
+                {
+                    "type": "object"
+                }
+            ]
+        },
+
+        "editable": {
+            "type": "boolean",
+            "title": "Editable",
+            "description": "If the mapped value is editable.",
+            "default": true
+        },
+
+        "status": {
+            "type": "string",
+            "title": "Status",
+            "description": "Status of the mapping.",
+            "enum": ["active", "inactive"],
+            "default": "active"
+        }
+    },
+    "additionalProperties": false,
+    "definitions": {
+        "External": {
+            "type": "object",
+            "title": "External",
+            "description": "External source of the mapping.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "External Property Name",
+                    "description": "Name of the source property."
+                },
+                "uri": {
+                    "type": "string",
+                    "title": "External Property URI",
+                    "description": "URI of the source property."
+                },
+                "type": {
+                    "type": "string",
+                    "title": "External Property Type",
+                    "description": "Type of the source property."
+                }
+            },
+            "additionalProperties": false,
+            "required": ["name", "type"]
+        },
+        "PropMapPost": {
+            "title": "PropMapPost",
+            "type": "object",
+            "properties": {
+                "prop_name": {
+                    "type": "string",
+                    "title": "Property Name",
+                    "description": "Name of the target property."
+                },
+                "entity_type": {
+                    "type": "string",
+                    "title": "Entity Type",
+                    "description": "Entity type mapping target."
+                },
+
+                "description": {
+                    "type": "string",
+                    "title": "Description",
+                    "description": "Description of the mapping."
+                },
+
+                "external": {
+                    "$ref": "#/definitions/External"
+                },
+
+                "map_value": {
+                    "title": "Map Value",
+                    "description": "Default mapped value.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "array"
+                        },
+                        {
+                            "type": "object"
+                        }
+                    ]
+                },
+
+                "editable": {
+                    "type": "boolean",
+                    "title": "Editable",
+                    "description": "If the mapped value is editable.",
+                    "default": true
+                },
+                "status": {
+                    "type": "string",
+                    "title": "Status",
+                    "description": "Status of the mapping.",
+                    "enum": ["active", "inactive", "trash"]
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "prop_name",
+                "entity_type",
+                "external",
+                "map_value",
+                "editable"
+            ]
+        }
+    }
+}

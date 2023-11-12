@@ -13,3 +13,5 @@ lerna-debug.log
 # ensure no secrets are committed
 credentials.json
 token.json
+
+.nx/**/*
