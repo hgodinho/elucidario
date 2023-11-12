@@ -3,10 +3,7 @@ import type { BoxProps, Component } from "@/design-system";
 import type { DataTypes, MappingProps, Schema } from "@/mdorim";
 import type { LabelProps, LegendProps, InputType } from "./form";
 
-export type UseFieldComponent = (schema: Schema<DataTypes>) => {
-    component: string;
-    componentProps: FieldSchema;
-};
+export type UseFieldComponent = (schema: Schema<DataTypes>) => FieldSchema;
 
 export type FieldSchema = Omit<Schema<DataTypes>, "required"> & {
     required?: boolean;

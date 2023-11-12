@@ -18,6 +18,7 @@ export type LinkedArtTypes =
     | "core"
     | "concept"
     | "digital"
+    | "object"
     | "event"
     | "group"
     | "person"
@@ -27,7 +28,7 @@ export type LinkedArtTypes =
     | "text"
     | "visual";
 
-type GenericTypes = "procedure" | "mapping" | "prop_map" | "history" | "option";
+type GenericTypes = "procedure" | "mapping" | "propMap" | "history" | "option";
 
 export type MdorimTypes = GenericTypes | LinkedArtTypes;
 
@@ -44,33 +45,26 @@ export type Index = {
 };
 
 export type MdorimInstance = {
-    examples: any;
+    examples?: any;
     schemas: {
         linkedArt: {
-            [x in MdorimTypes]: Entity;
+            [x in LinkedArtTypes]?: Entity;
         };
         mdorim: {
-            [x in MdorimTypes]: Entity;
+            [x in MdorimTypes]?: Entity;
         };
         translation: Entity;
     };
     translations: Translations;
     index: Index;
-    context: Entity;
 };
-
-export type ParsedId = {
-    origin: string;
-    pathname: string;
-    hash: string;
-    entityId: string;
-};
-
-export type parseId = (id: string) => ParsedId;
 
 export type Mdorim = {
-    getInstance: (context?: MdorimTypes) => MdorimInstance;
-    getSchema: (name: MdorimTypes, type?: "linkedArt" | "mdorim") => Entity;
+    getInstance: () => MdorimInstance;
+    getSchema: (
+        name: MdorimTypes,
+        type?: "linkedArt" | "mdorim" | "translation",
+    ) => Entity;
     getFromId: (id: string) => Entity | Schema<DataTypes>;
     getEntityFromIndex: (
         indexId: string,
@@ -214,3 +208,22 @@ export type MdorimProperties =
     | "option_id"
     | "value"
     | "schema";
+
+export type MdorimProviderState = {
+    mdorim: MdorimInstance;
+    loading: boolean;
+};
+
+export type MdorimAction = {
+    type: "create";
+    payload: any;
+};
+
+export type ParsedId = {
+    origin: string;
+    pathname: string;
+    hash: string;
+    entityId: string;
+};
+
+export type parseId = (id: string) => ParsedId;

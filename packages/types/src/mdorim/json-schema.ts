@@ -74,3 +74,5 @@ export type Status = {
     title: string;
     description: string;
 };
+
+export type isSchema = (json: Record<string, any>) => json is Schema<DataTypes>;
