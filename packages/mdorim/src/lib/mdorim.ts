@@ -1,8 +1,5 @@
-import path from "path";
-import { URL } from "url";
-import { readContents, getPaths } from "@elucidario/pkg-paths";
-import type {
-    Mdorim,
+import {
+    Mdorim as MdorimType,
     MdorimInstance,
     MdorimTypes,
     Index,
@@ -12,18 +9,17 @@ import type {
     parseId as parsedIdType,
     Definitions,
     DataTypes,
+    isSchema as isSchemaType,
 } from "@elucidario/pkg-types";
 
-const { packages } = getPaths();
-
-const __dirname = path.resolve(packages, "mdorim", "static", "mdorim");
+import { mdorim, translation, translations, linkedArt } from "./json-imports";
 
 /**
  * Verifica se o json é um schema
  * @param json | Record<string, any>
  * @returns boolean
  */
-export const isSchema = (json: Record<string, any>) => {
+export const isSchema: isSchemaType = (json): json is Schema<DataTypes> => {
     if (json.hasOwnProperty("$schema")) {
         return true;
     }
@@ -55,7 +51,7 @@ export const generateIndex = (schemas: Record<string, any>) => {
     return Object.entries(schemas).reduce(
         (acc, [name, schema]) => {
             if (isSchema(schema)) {
-                acc[schema.$id] = name;
+                acc[schema.$id as string] = name;
             }
             return acc;
         },
@@ -63,139 +59,98 @@ export const generateIndex = (schemas: Record<string, any>) => {
     );
 };
 
-/**
- * Inicializa o Mdorim
- * @param context | MdorimTypes Nome do contexto
- * @returns MdorimInstance
- */
-export const init = (context?: MdorimTypes): MdorimInstance => {
-    const { examples, schemas, translations } = readContents({
-        dirPath: __dirname,
-        extensions: ["json"],
-        index: false,
-    });
-    const { mdorim, translation, ...linkedArt } = schemas;
+export const index: Index = {
+    mdorim: generateIndex(mdorim),
+    linkedArt: generateIndex(linkedArt),
+    translation: generateIndex(translation),
+};
 
-    const mdorimInstance = {
-        examples,
-        translations,
-        schemas: {
-            mdorim,
-            linkedArt: linkedArt["linked-art"],
-            translation,
-        } as MdorimInstance["schemas"],
-    } as MdorimInstance;
-
-    const index: Index = {
-        mdorim: generateIndex(mdorim),
-        linkedArt: generateIndex(linkedArt["linked-art"]),
-        translation: generateIndex(translation),
-    };
-
-    if (context) {
-        context = mdorimInstance.schemas.mdorim.hasOwnProperty(context)
-            ? mdorimInstance.schemas.mdorim[context]
-            : null;
-    }
-
-    return {
-        ...mdorimInstance,
-        context,
-        index,
-    };
+export const mdorimInstance: MdorimInstance = {
+    // examples,
+    translations,
+    schemas: {
+        mdorim,
+        linkedArt,
+        translation,
+    },
+    index,
 };
 
 /**
- * Singleton do Mdorim
+ * GlobalMdorim
  */
-const MdorimSingleton: Mdorim = (() => {
-    let instance: MdorimInstance | null = null;
+export const GlobalMdorim: MdorimType = {
+    /**
+     * Retorna a instância do Mdorim
+     * @returns | MdorimInstance
+     */
+    getInstance: () => {
+        return mdorimInstance;
+    },
 
-    return {
-        /**
-         * Retorna a instância do Mdorim
-         * @param context | MdorimTypes Nome do contexto
-         * @returns | MdorimInstance
-         */
-        getInstance: (context) => {
-            if (!instance || instance.context !== context) {
-                instance = init(context);
+    /**
+     * Retorna um schema do Mdorim
+     * @param name | string
+     * @returns Entity
+     */
+    getSchema: (name, type = "mdorim") => {
+        typeof type === "undefined" ? (type = "mdorim") : (type = type);
+        return mdorimInstance.schemas[type][name];
+    },
+
+    /**
+     * Retorna um schema a partir de um id
+     * @param id | string
+     * @returns Entity | Schema | null
+     */
+    getFromId: (id) => {
+        const { entityId, pathname, hash } = parseId(id);
+        let entity: Entity | Schema<DataTypes> | null = null;
+        if (pathname.includes("schemas/mdorim")) {
+            entity = GlobalMdorim.getEntityFromIndex(entityId);
+        }
+        if (pathname.includes("schemas/linked-art")) {
+            entity = GlobalMdorim.getEntityFromIndex(entityId, "linkedArt");
+        }
+        if (hash.startsWith("#/") && entity) {
+            const [type, id] = hash.split("/").slice(1);
+            if (
+                entity.hasOwnProperty("definitions") &&
+                type === "definitions"
+            ) {
+                entity = (entity.definitions as Definitions)[
+                    id as MdorimProperties
+                ] as Schema<DataTypes>;
             }
-            return instance;
-        },
+        }
+        return entity;
+    },
 
-        /**
-         * Retorna um schema do Mdorim
-         * @param name | string
-         * @returns Entity
-         */
-        getSchema: (name, type = "mdorim") => {
-            const mdorim = MdorimSingleton.getInstance();
-            return mdorim.schemas[type][name];
-        },
+    /**
+     * Retorna um schema do Mdorim a partir de um index
+     * @param indexId | string
+     * @param type | linkedArt | mdorim
+     * @returns Entity
+     */
+    getEntityFromIndex: (indexId, type = "mdorim") => {
+        const entityName = mdorimInstance.index[type][indexId];
+        return GlobalMdorim.getSchema(entityName as MdorimTypes, type);
+    },
 
-        /**
-         * Retorna um schema a partir de um id
-         * @param id | string
-         * @returns Entity | Schema | null
-         */
-        getFromId: (id) => {
-            const { entityId, pathname, hash } = parseId(id);
-            let entity: Entity | Schema<DataTypes> | null = null;
-            if (pathname.includes("schemas/mdorim")) {
-                entity = MdorimSingleton.getEntityFromIndex(entityId);
-            }
-            if (pathname.includes("schemas/linked-art")) {
-                entity = MdorimSingleton.getEntityFromIndex(
-                    entityId,
-                    "linkedArt",
-                );
-            }
-            if (hash.startsWith("#/") && entity) {
-                const [type, id] = hash.split("/").slice(1);
-                if (
-                    entity.hasOwnProperty("definitions") &&
-                    type === "definitions"
-                ) {
-                    entity = (entity.definitions as Definitions)[
-                        id as MdorimProperties
-                    ] as Schema<DataTypes>;
-                }
-            }
-            return entity;
-        },
+    /**
+     * Retorna uma tradução de uma propriedade
+     * @param name | string
+     * @returns Translation
+     */
+    getTranslation: (name) => {
+        return mdorimInstance.translations[name];
+    },
 
-        /**
-         * Retorna um schema do Mdorim a partir de um index
-         * @param indexId | string
-         * @param type | linkedArt | mdorim
-         * @returns Entity
-         */
-        getEntityFromIndex: (indexId, type = "mdorim") => {
-            const mdorim = MdorimSingleton.getInstance();
-            const entityName = mdorim.index[type][indexId];
-            return MdorimSingleton.getSchema(entityName as MdorimTypes, type);
-        },
-
-        /**
-         * Retorna uma tradução de uma propriedade
-         * @param name | string
-         * @returns Translation
-         */
-        getTranslation: (name) => {
-            const mdorim = MdorimSingleton.getInstance();
-            return mdorim.translations[name];
-        },
-
-        /**
-         * Retorna todas as traduções
-         * @returns Translations
-         */
-        getTranslations: () => {
-            const mdorim = MdorimSingleton.getInstance();
-            return mdorim.translations;
-        },
-    };
-})();
-
-export { MdorimSingleton as Mdorim };
+    /**
+     * Retorna todas as traduções
+     * @returns Translations
+     */
+    getTranslations: () => {
+        return mdorimInstance.translations;
+    },
+};

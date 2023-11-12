@@ -1,3 +1,4 @@
+import React from "react";
 import type { Input as InputType } from "@elucidario/pkg-types";
 
 export const Input: InputType = ({ children, ...props }) => {

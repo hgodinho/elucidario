@@ -23,12 +23,17 @@
         "noFallthroughCasesInSwitch": true,
 
         "types": [
-            "./node_modules/@elucidario/pkg-types/dist/index.d.ts",
-            "./node_modules/@elucidario/pkg-design-system/dist/types/lib/index.d.ts"
+            "@elucidario/pkg-design-system",
+            "@elucidario/pkg-mdorim",
+            "@elucidario/pkg-types",
+            "@elucidario/pkg-mdorim-react"
         ],
         "paths": {
             "@elucidario/pkg-design-system": [
                 "./node_modules/@elucidario/pkg-design-system/dist"
+            ],
+            "elucidario/pkg-mdorim-react": [
+                "./node_modules/@elucidario/pkg-mdorim-react/dist"
             ]
         }
     },

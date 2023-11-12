@@ -1,1 +1,3 @@
-export * from './mdorim'
+import { GlobalMdorim } from "./mdorim";
+
+export default GlobalMdorim;

@@ -23,7 +23,13 @@ const config: StorybookConfig = {
     docs: {
         autodocs: "tag",
     },
-    viteFinal: async (config, { configType }) => {
+    viteFinal: async (config) => {
+        config.build = {
+            target: "esnext",
+        };
+        config.define = {
+            "process.env": {},
+        };
         if ("resolve" in config && config.resolve) {
             config.resolve.alias = {
                 ...config.resolve.alias,

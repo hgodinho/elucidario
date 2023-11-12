@@ -23,11 +23,11 @@
         "noFallthroughCasesInSwitch": true,
 
         /* Design system */
-        "types": ["./node_modules/@elucidario/pkg-types/dist/index.d.ts"],
+        "types": ["@elucidario/pkg-types"],
         "paths": {
             "@/*": ["./lib/*"],
             "@elucidario/pkg-types": [
-                "./node_modules/@elucidario/pkg-types/dist/index.d.ts"
+                "./node_modules/@elucidario/pkg-types/dist"
             ]
         }
     },

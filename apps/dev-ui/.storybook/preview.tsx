@@ -27,11 +27,14 @@ const preview: Preview = {
         },
     },
     decorators: [
-        (Story) => (
-            <SystemProvider lang="pt-BR">
-                <Story />
-            </SystemProvider>
-        ),
+        (Story,) => {
+            console.log("Story", Story);
+            return (
+                <SystemProvider lang="pt-BR">
+                    <Story />
+                </SystemProvider>
+            )
+        },
     ]
 };
 

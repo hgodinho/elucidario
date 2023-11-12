@@ -1,3 +1,5 @@
+import React from "react";
+
 import type { FieldDescriptionProps } from "@elucidario/pkg-types";
 
 import { Box } from "@/components";

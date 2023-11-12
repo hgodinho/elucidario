@@ -1,4 +1,4 @@
-import { useMemo, useCallback, FC } from "react";
+import React, { useMemo, useCallback, FC } from "react";
 import type {
     Schema,
     DataTypes,
@@ -26,60 +26,35 @@ export const useFieldComponent: UseFieldComponent = (schema) => {
         [],
     );
 
-    const { componentProps, component } = useMemo(() => {
-        return {
-            // Cria um componente de acordo com o tipo de dado
-            component: ((): string => {
-                switch (schema.type) {
-                    case "string":
-                        return "Input";
-                    case "number":
-                    case "integer":
-                        return "Input";
-                    case "boolean":
-                        return "Input";
-                    // case "object":
-                    //     return Object;
-                    case "array":
-                        return "Multiple";
-                    default:
-                        return "Input";
-                }
-            })(),
+    const fieldSchema = useMemo(() => {
+        // Cria as props do componente de acordo com o tipo de dado
+        let fieldSchema = {};
 
-            // Cria as props do componente de acordo com o tipo de dado
-            componentProps: (() => {
-                let newSchema = {};
+        switch (schema.type) {
+            case "string":
+                fieldSchema = parseSchema(schema, "text");
+                break;
+            case "number":
+            case "integer":
+                fieldSchema = parseSchema(schema, "number");
+                break;
+            case "boolean":
+                fieldSchema = parseSchema(schema, "checkbox");
+                break;
+            case "object":
+                fieldSchema = parseSchema(schema);
+                break;
+            case "array":
+                fieldSchema = parseSchema(schema);
+                break;
 
-                switch (schema.type) {
-                    case "string":
-                        newSchema = parseSchema(schema, "text");
-                        break;
-                    case "number":
-                    case "integer":
-                        newSchema = parseSchema(schema, "number");
-                        break;
-                    case "boolean":
-                        newSchema = parseSchema(schema, "checkbox");
-                        break;
-                    case "object":
-                        newSchema = parseSchema(schema);
-                        break;
-                    case "array":
-                        newSchema = parseSchema(schema);
-                        break;
+            default:
+                fieldSchema = parseSchema(schema, "text");
+                break;
+        }
 
-                    default:
-                        newSchema = parseSchema(schema, "text");
-                        break;
-                }
-                return newSchema;
-            })() as FieldSchema,
-        };
-    }, [schema]);
+        return fieldSchema as FieldSchema;
+    }, [schema, parseSchema]);
 
-    return {
-        componentProps,
-        component,
-    };
+    return fieldSchema;
 };

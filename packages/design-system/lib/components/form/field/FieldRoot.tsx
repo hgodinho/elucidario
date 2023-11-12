@@ -5,7 +5,7 @@ import { FieldLabel } from "./FieldLabel";
 import { FieldDescription } from "./FieldDescription";
 import { useFieldComponent } from "./useFieldComponent";
 
-import { Input, Multiple } from "../";
+import { Input, Multiple, Object } from "../";
 
 export const FieldRoot = ({
     as,
@@ -14,19 +14,21 @@ export const FieldRoot = ({
     map,
     language,
 }: FieldRootProps) => {
-    const { componentProps, component } = useFieldComponent(schema);
+
+    const fieldProps = useFieldComponent(schema);
 
     // Componente a ser usado
-    const Component = component !== undefined ? (() => {
+    const Component = (() => {
         switch (schema.type) {
             case "object":
+                return Object;
             case "array":
                 return Multiple;
             case "string":
             default:
                 return Input;
         }
-    })() : Input;
+    })();
 
     // Cria um componente de acordo com o tipo de dado
     const As = as !== undefined ? (() => {
@@ -39,6 +41,16 @@ export const FieldRoot = ({
         }
     })() : 'div';
 
+    console.log('FieldRoot', {
+        schema,
+        translations,
+        map,
+        language,
+        // fieldProps,
+        Component,
+        As
+    })
+
     return (
         <FieldProvider
             schema={schema}
@@ -48,9 +60,7 @@ export const FieldRoot = ({
         >
             <As className="field flex flex-col mb-4">
                 <FieldLabel type={'fieldset' === As ? 'legend' : 'label'} />
-                <Component
-                    {...componentProps}
-                />
+                <Component />
                 <FieldDescription />
             </As>
         </FieldProvider>

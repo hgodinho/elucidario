@@ -1,4 +1,4 @@
-import { Mdorim } from "../../lib/mjs";
+import Mdorim from "../../lib/mjs";
 
 import mdorimCore from "../../static/mdorim/schemas/mdorim/core.json";
 import mdorimConcept from "../../static/mdorim/schemas/mdorim/concept.json";
@@ -10,10 +10,9 @@ describe("Mdorim", () => {
     test("Mdorim instance", () => {
         const mdorim = Mdorim.getInstance();
 
-        expect(mdorim).toHaveProperty("examples");
+        // expect(mdorim).toHaveProperty("examples");
         expect(mdorim).toHaveProperty("schemas");
         expect(mdorim).toHaveProperty("translations");
-        expect(mdorim).toHaveProperty("context");
         expect(mdorim).toHaveProperty("index");
         expect(mdorim.index).toHaveProperty("linkedArt");
         expect(mdorim.index).toHaveProperty("mdorim");

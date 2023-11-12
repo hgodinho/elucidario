@@ -27,6 +27,12 @@ const config = lcdrRollupConfig({
     external,
     input: "src/lib/index.ts",
     output: [...unMinified, ...minified],
+    plugins: {
+        typescript: {
+            declaration: false,
+            declarationDir: null,
+        },
+    },
 });
 
 export default config;
