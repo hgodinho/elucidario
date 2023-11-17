@@ -2,10 +2,6 @@
 
 use Yoast\WPTestUtils\WPIntegration\TestCase;
 
-if ( isUnitTest() ) {
-	return;
-}
-
 uses( TestCase::class);
 
 beforeEach( function () {

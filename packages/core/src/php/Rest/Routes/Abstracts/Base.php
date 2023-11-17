@@ -97,7 +97,6 @@ abstract class Base extends \WP_REST_Controller {
 		$this->rest_base           = $this->set_base();
 		$this->primary_property    = $this->set_primary_property();
 		$this->required_properties = $this->set_required_properties();
-		$this->register_routes();
 	}
 
 	/**
@@ -620,6 +619,7 @@ abstract class Base extends \WP_REST_Controller {
 			preg_match( $pattern, $route, $matches );
 			$id = isset( $matches['id'] ) ? $matches['id'] : 0;
 		}
+
 		if ( empty( $id ) ) {
 			$id = new \LCDR\Error\Rest(
 				'empty_id',

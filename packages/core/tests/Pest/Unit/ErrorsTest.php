@@ -1,11 +1,8 @@
 <?php
-namespace LCDR\Tests\Pest\Integration;
+namespace LCDR\Tests\Pest\Unit;
 
 use Yoast\WPTestUtils\WPIntegration\TestCase;
 
-if ( isUnitTest() ) {
-	return;
-}
 uses( TestCase::class);
 
 class TestBaseError extends \LCDR\Error\Base {

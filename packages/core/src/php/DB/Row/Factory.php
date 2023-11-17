@@ -55,6 +55,9 @@ final class Factory {
 				case 'Type':
 					$concept = new \LCDR\DB\Row\Concept( (array) $entity );
 					return $concept;
+				case 'HumanMadeObject':
+					$object = new \LCDR\DB\Row\ObjectRow( (array) $entity );
+					return $object;
 				default:
 					return $error;
 			}

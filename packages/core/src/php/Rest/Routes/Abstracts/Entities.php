@@ -265,8 +265,8 @@ abstract class Entities extends Base {
 				array( 'status' => 400 )
 			);
 		}
+		// content-type is wp —> continue.
 
-		// content-type is wp — continue.
 		if ( ! empty( $request[ $this->primary_property ] ) ) {
 			return new \LCDR\Error\Rest(
 				'already_exists',
@@ -287,7 +287,6 @@ abstract class Entities extends Base {
 		}
 
 		$entity_id = lcdr_insert_entity( (array) $prepared_entity );
-
 		if ( is_lcdr_error( $entity_id ) ) {
 
 			if ( 'db__insert' === $entity_id->get_error_code() ) {
@@ -508,7 +507,7 @@ abstract class Entities extends Base {
 	/**
 	 * Get entity.
 	 *
-	 * @param int $id Entity ID.
+	 * @param mixed $id Entity ID.
 	 * @return \LCDR\Error\Rest|\LCDR\DB\Row\Entity
 	 *
 	 * @todo transform to abstract method in Base class
@@ -519,11 +518,16 @@ abstract class Entities extends Base {
 			array( 'status' => 404 )
 		);
 
+		if ( is_lcdr_error( $id ) ) {
+			return $id;
+		}
+
 		if ( (int) $id <= 0 ) {
 			return $error;
 		}
 
 		$entity = lcdr_get_entity( (int) $id );
+
 		if ( empty( $entity ) || empty( $entity->{$this->primary_property} ) ) {
 			return $error;
 		}

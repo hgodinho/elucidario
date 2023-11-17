@@ -1,6 +1,6 @@
 <?php
 /**
- * Concept Rest class.
+ * Concepts Rest class.
  *
  * @since 0.3.0
  * @package elucidario/pkg-core
@@ -18,9 +18,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 // @codeCoverageIgnoreEnd
 
 /**
- * Concept Base Rest Class
+ * Concepts Base Rest Class
  */
-class Concept extends \LCDR\Rest\Routes\Abstracts\Entities {
+class Concepts extends \LCDR\Rest\Routes\Abstracts\Entities {
 	/**
 	 * Set base.
 	 *

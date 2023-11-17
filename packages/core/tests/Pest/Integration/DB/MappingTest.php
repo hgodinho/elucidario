@@ -1,6 +1,6 @@
 <?php
 
-namespace LCDR\Tests\Pest\Integration\DB;
+namespace LCDR\Tests\Integration\DB;
 
 use Yoast\WPTestUtils\WPIntegration\TestCase;
 
@@ -56,7 +56,7 @@ test( '\LCDR\DB\Query\Mappings->add_mapping() and props_maps', function () {
 			'standard' => 'Spectrum',
 			'description' => 'Teste de mapeamento',
 			'version' => '1.0.0',
-            'mapping' => array(
+			'mapping' => array(
 				array(
 					'description' => 'mapeamento-test',
 					'prop_name' => 'identified_by',

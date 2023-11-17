@@ -1,6 +1,6 @@
 <?php
 
-namespace LCDR\Tests\Pest\Integration\DB;
+namespace LCDR\Tests\Integration\DB;
 
 use Yoast\WPTestUtils\WPIntegration\TestCase;
 

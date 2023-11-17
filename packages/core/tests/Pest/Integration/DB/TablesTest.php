@@ -1,6 +1,6 @@
 <?php
 
-namespace LCDR\Tests\Pest\Integration\DB;
+namespace LCDR\Tests\Integration\DB;
 
 test( '\LCDR\DB\Table\Entities instance', function () {
 	$table = new \LCDR\DB\Table\Entities();

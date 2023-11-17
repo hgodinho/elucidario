@@ -1,8 +1,12 @@
 <?php
 
-namespace LCDR\Tests\Pest\Unit\Rest;
+namespace LCDR\Tests\Integration\Rest;
 
 use Yoast\WPTestUtils\WPIntegration\TestCase;
+
+if ( isUnitTest() ) {
+	return;
+}
 
 uses( Testcase::class);
 
@@ -97,12 +101,15 @@ test( 'BaseTestCase must have permission group', function () {
 } );
 
 test( 'BaseTestCase->register_routes() should return an array of true values', function () {
-	$base = new BaseTestCase();
-	$routes = $base->register_routes();
-	expect( $routes )->toBeArray();
-	foreach ( $routes as $route ) {
-		expect( $route )->toBeTrue();
-	}
+	add_action( 'rest_api_init', function () {
+		$base = new BaseTestCase();
+		$routes = $base->register_routes();
+		expect( $routes )->toBeArray();
+		foreach ( $routes as $route ) {
+			expect( $route )->toBeTrue();
+		}
+	} );
+	do_action( 'rest_api_init' );
 } );
 
 test( 'BaseTestCase->get_item_permissions_check() should return true for public access on published entity', function () {
@@ -330,10 +337,8 @@ test( 'BaseTestCase->create_item_permissions_check() should return true with log
 
 test( 'BaseTestCase->content_negotiation_request() wrong type return error', function () {
 	$base = new BaseTestCase();
-	$request = new \WP_REST_Request( 'POST', "/lcdr/v1/tests/" );
+	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/tests/" );
 	$request->set_header( 'Accept', 'banana' );
-	$request->set_body( json_encode( array( 'author' => 9999 ) ) );
-	$request->set_param( 'author', 9999 );
 	$result = $base->content_negotiation_request( $request );
 	expect( $result )->toBeInstanceOf( \LCDR\Error\Rest::class);
 } );
@@ -349,10 +354,8 @@ test( 'BaseTestCase->content_negotiation_request() null type return mdorim', fun
 
 test( 'BaseTestCase->content_negotiation_request() linked art type return la', function () {
 	$base = new BaseTestCase();
-	$request = new \WP_REST_Request( 'POST', "/lcdr/v1/tests/" );
-	$request->set_body( json_encode( array( 'author' => 9999 ) ) );
+	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/tests/" );
 	$request->set_header( 'Accept', 'application/ld+json; profile="https://linked.art/ns/v1/linked-art.json"' );
-	$request->set_param( 'author', 9999 );
 	$result = $base->content_negotiation_request( $request );
 	expect( $result )->toBe( 'la' );
 } );

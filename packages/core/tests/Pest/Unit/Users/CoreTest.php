@@ -1,12 +1,9 @@
 <?php
 
-namespace LCDR\Tests\Pest\Integration\Users;
+namespace LCDR\Tests\Pest\Unit\Users;
 
 use Yoast\WPTestUtils\WPIntegration\TestCase;
 
-if ( isUnitTest() ) {
-	return;
-}
 uses( TestCase::class);
 
 global $core;

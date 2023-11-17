@@ -1,9 +1,13 @@
 <?php
 
-namespace LCDR\Tests\Pest\Unit\Rest;
+namespace LCDR\Tests\Integration\Rest;
 
 use WP_REST_Response;
 use Yoast\WPTestUtils\WPIntegration\TestCase;
+
+if ( isUnitTest() ) {
+	return;
+}
 
 uses( Testcase::class);
 
@@ -26,13 +30,13 @@ test( 'register_routes', function () {
 	expect( $routes )->toHaveKey( '/lcdr/v1/concepts/(?P<id>[\\d]+)' );
 } );
 
-test( '\LCDR\Rest\Routes\Concept must have base', function () {
-	$concept = new \LCDR\Rest\Routes\Concept();
+test( '\LCDR\Rest\Routes\Concepts must have base', function () {
+	$concept = new \LCDR\Rest\Routes\Concepts();
 	expect( $concept->set_base() )->toBe( 'concepts' );
 } );
 
-test( '\LCDR\Rest\Routes\Concept must have method set_schema', function () {
-	$concept = new \LCDR\Rest\Routes\Concept();
+test( '\LCDR\Rest\Routes\Concepts must have method set_schema', function () {
+	$concept = new \LCDR\Rest\Routes\Concepts();
 	expect( $concept->set_schema() )->toMatchArray( array(
 		'mdorim' => array(
 			'view' => array(
@@ -53,14 +57,14 @@ test( '\LCDR\Rest\Routes\Concept must have method set_schema', function () {
 	) );
 } );
 
-test( '\LCDR\Rest\Routes\Concept must have permission_group', function () {
-	$concept = new \LCDR\Rest\Routes\Concept();
+test( '\LCDR\Rest\Routes\Concepts must have permission_group', function () {
+	$concept = new \LCDR\Rest\Routes\Concepts();
 	expect( $concept->set_permission_group() )->toBe( 'entities' );
 } );
 
-test( '\LCDR\Rest\Routes\Concept->create_item()', function () {
+test( '\LCDR\Rest\Routes\Concepts->create_item()', function () {
 	wp_set_current_user( 1 );
-	$base = new \LCDR\Rest\Routes\Concept();
+	$base = new \LCDR\Rest\Routes\Concepts();
 	$request = new \WP_REST_Request( 'POST', "/lcdr/v1/concepts/" );
 	$request->set_body_params(
 		array(
@@ -85,10 +89,10 @@ test( '\LCDR\Rest\Routes\Concept->create_item()', function () {
 	$concept_id = $result->data['entity_id'];
 } );
 
-test( '\LCDR\Rest\Routes\Concept->update_item()', function () {
+test( '\LCDR\Rest\Routes\Concepts->update_item()', function () {
 	wp_set_current_user( 1 );
 	global $concept_id;
-	$base = new \LCDR\Rest\Routes\Concept();
+	$base = new \LCDR\Rest\Routes\Concepts();
 	$request = new \WP_REST_Request( 'PATCH', "/lcdr/v1/concepts/{$concept_id}" );
 	$request->set_body_params(
 		array(
@@ -101,10 +105,10 @@ test( '\LCDR\Rest\Routes\Concept->update_item()', function () {
 	expect( $result->data['name'] )->toBe( 'teste' );
 } );
 
-test( '\LCDR\Rest\Routes\Concept->get_item()', function () {
+test( '\LCDR\Rest\Routes\Concepts->get_item()', function () {
 	wp_set_current_user( 1 );
 	global $concept_id;
-	$base = new \LCDR\Rest\Routes\Concept();
+	$base = new \LCDR\Rest\Routes\Concepts();
 	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/concepts/{$concept_id}" );
 	$result = $base->get_item( $request );
 
@@ -112,9 +116,9 @@ test( '\LCDR\Rest\Routes\Concept->get_item()', function () {
 	expect( $result->data['name'] )->toBe( 'teste' );
 } );
 
-test( '\LCDR\Rest\Routes\Concept->get_items()', function () {
+test( '\LCDR\Rest\Routes\Concepts->get_items()', function () {
 	wp_set_current_user( 1 );
-	$base = new \LCDR\Rest\Routes\Concept();
+	$base = new \LCDR\Rest\Routes\Concepts();
 	$request = new \WP_REST_Request( 'GET', '/lcdr/v1/concepts/' );
 	$result = $base->get_items( $request );
 
@@ -122,10 +126,10 @@ test( '\LCDR\Rest\Routes\Concept->get_items()', function () {
 	expect( $result->data )->toBeArray();
 } );
 
-test( '\LCDR\Rest\Routes\Concept->delete_item()', function () {
+test( '\LCDR\Rest\Routes\Concepts->delete_item()', function () {
 	wp_set_current_user( 1 );
 	global $concept_id;
-	$base = new \LCDR\Rest\Routes\Concept();
+	$base = new \LCDR\Rest\Routes\Concepts();
 	$request = new \WP_REST_Request( 'DELETE', "/lcdr/v1/concepts/{$concept_id}" );
 	$result = $base->delete_item( $request );
 

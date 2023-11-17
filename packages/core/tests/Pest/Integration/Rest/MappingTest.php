@@ -1,8 +1,12 @@
 <?php
 
-namespace LCDR\Tests\Pest\Unit\Rest;
+namespace LCDR\Tests\Integration\Rest;
 
 use Yoast\WPTestUtils\WPIntegration\TestCase;
+
+if ( isUnitTest() ) {
+	return;
+}
 
 uses( Testcase::class);
 
@@ -36,10 +40,10 @@ test( 'LCDR\Rest\Routes\Mapping must have method set_schema', function () {
 		array(
 			'mdorim' => array(
 				'view' => array(
-					'schema' => 'mapping/mapping',
+					'schema' => 'mdorim/mapping',
 				),
 				'edit' => array(
-					'schema' => 'mapping/mapping',
+					'schema' => 'mdorim/mapping',
 					'options' => array(
 						'definitions' => 'MappingPost',
 					),

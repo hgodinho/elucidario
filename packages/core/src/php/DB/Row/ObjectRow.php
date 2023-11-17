@@ -1,6 +1,6 @@
 <?php
 /**
- * Concept class.
+ * Object class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -18,9 +18,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 // @codeCoverageIgnoreEnd
 
 /**
- * Concept row class.
+ * Object row class.
  */
-final class Concept extends Entity {
+final class ObjectRow extends Entity {
 	/**
 	 * Broader concepts.
 	 *

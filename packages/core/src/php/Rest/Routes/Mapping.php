@@ -39,10 +39,10 @@ class Mapping extends \LCDR\Rest\Routes\Abstracts\Base {
 		return array(
 			'mdorim' => array(
 				'view' => array(
-					'schema' => 'mapping/mapping',
+					'schema' => 'mdorim/mapping',
 				),
 				'edit' => array(
-					'schema'  => 'mapping/mapping',
+					'schema'  => 'mdorim/mapping',
 					'options' => array(
 						'definitions' => 'MappingPost',
 					),
