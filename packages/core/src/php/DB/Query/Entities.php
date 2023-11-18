@@ -54,6 +54,13 @@ class Entities extends Query {
 	protected $item_name = 'entity';
 
 	/**
+	 * Item name plural
+	 *
+	 * @var string
+	 */
+	protected $item_name_plural = 'entities';
+
+	/**
 	 * Database version key
 	 *
 	 * @var string
@@ -82,6 +89,25 @@ class Entities extends Query {
 	 *  / .___/\__,_/_.___/_/_/\___/
 	 * /_/
 	 */
+	/**
+	 * Constructor
+	 *
+	 * @param array $options Options.
+	 */
+	public function __construct( $options = array() ) {
+		parent::__construct( array_key_exists( 'query', $options ) ? $options['query'] : array() );
+
+		foreach ( $options as $key => $value ) {
+			if ( property_exists( $this, $key ) ) {
+				$this->$key = $value;
+				if ( 'item_shape' === $key ) {
+					$namespace  = '\\LCDR\\DB\\Row\\';
+					$this->$key = $namespace . $value;
+				}
+			}
+		}
+	}
+
 	/**
 	 * Get entities
 	 *

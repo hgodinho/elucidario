@@ -18,7 +18,11 @@ beforeAll( function () {
 afterAll( function () {
 	global $db;
 	$db->uninstall_tables();
-	$concept = new \LCDR\DB\Query\Concepts();
+	$concept = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$all = $concept->get_entities();
 	foreach ( $all as $item ) {
 		$concept->delete_entity( $item->entity_id );
@@ -31,13 +35,17 @@ afterAll( function () {
 	}
 } );
 
-test( '\LCDR\DB\Query\Concepts class', function () {
-	$query = new \LCDR\DB\Query\Concepts();
-	expect( $query )->toBeInstanceOf( \LCDR\DB\Query\Concepts::class);
+test( '\LCDR\DB\Query\Entities class', function () {
+	$query = new \LCDR\DB\Query\Entities();
+	expect( $query )->toBeInstanceOf( \LCDR\DB\Query\Entities::class);
 } );
 
-test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
-	$concept_query = new \LCDR\DB\Query\Concepts();
+test( '\LCDR\DB\Query\Entities->add_entities()', function () {
+	$concept_query = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 
 	global $concept_ids;
 	$concept_ids = $concept_query->add_entities(
@@ -92,10 +100,14 @@ test( '\LCDR\DB\Query\Concepts->add_entities()', function () {
 	expect( $concept_ids )->toBeArray();
 } );
 
-test( '\LCDR\DB\Query\Concepts->add_entity()', function () {
+test( '\LCDR\DB\Query\Entities->add_entity()', function () {
 	global $concept_ids;
 
-	$concept = new \LCDR\DB\Query\Concepts();
+	$concept = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 
 	$concept_id = $concept->add_entity(
 		array(
@@ -116,10 +128,14 @@ test( '\LCDR\DB\Query\Concepts->add_entity()', function () {
 	expect( $concept_id )->toBeGreaterThan( 0 );
 } );
 
-test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
+test( '\LCDR\DB\Query\Entities->add_entity() with referred_to_by', function () {
 	global $concept_ids, $concept_id;
 
-	$concept = new \LCDR\DB\Query\Concepts();
+	$concept = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$concept_to_add = array(
 		'type' => 'Type',
 		'_label' => 'Referred to by test',
@@ -159,10 +175,14 @@ test( '\LCDR\DB\Query\Concepts->add_entity() with referred_to_by', function () {
 	expect( $referred_to_by )->toBeArray()->toMatchArray( $concept_to_add['referred_to_by'] );
 } );
 
-test( '\LCDR\DB\Query\Concepts->add_entity() no type', function () {
+test( '\LCDR\DB\Query\Entities->add_entity() no type', function () {
 	expect(
 		function () {
-			$concept_query = new \LCDR\DB\Query\Concepts();
+			$concept_query = new \LCDR\DB\Query\Entities( array(
+				'item_name' => 'concept',
+				'item_name_plural' => 'concepts',
+				'item_shape' => 'ConceptRow',
+			) );
 			$concept_query->add_entity(
 				array(
 					'_label' => 'relation-test',
@@ -179,11 +199,15 @@ test( '\LCDR\DB\Query\Concepts->add_entity() no type', function () {
 	)->toThrow( \Exception::class, 'The data must have a type.' );
 } );
 
-test( '\LCDR\DB\Query\Concepts->add_entity() no _label', function () {
+test( '\LCDR\DB\Query\Entities->add_entity() no _label', function () {
 
 	expect(
 		function () {
-			$concept_query = new \LCDR\DB\Query\Concepts();
+			$concept_query = new \LCDR\DB\Query\Entities( array(
+				'item_name' => 'concept',
+				'item_name_plural' => 'concepts',
+				'item_shape' => 'ConceptRow',
+			) );
 			$concept_query->add_entity(
 				array(
 					'type' => 'Type',
@@ -200,33 +224,45 @@ test( '\LCDR\DB\Query\Concepts->add_entity() no _label', function () {
 	)->toThrow( \Exception::class, 'The data must have a _label.' );
 } );
 
-test( '\LCDR\DB\Query\Concepts->get_entity() must return valid relationships', function () {
+test( '\LCDR\DB\Query\Entities->get_entity() must return valid relationships', function () {
 	global $concept_id;
 
-	$concept = new \LCDR\DB\Query\Concepts();
+	$concept = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$test = $concept->get_entity( $concept_id );
 	$classified_as = $test->get_property( 'classified_as' );
 	expect( $classified_as )->toBeArray();
 } );
 
-test( '\LCDR\DB\Query\Concepts->get_entities()', function () {
-	$concepts = new \LCDR\DB\Query\Concepts();
+test( '\LCDR\DB\Query\Entities->get_entities()', function () {
+	$concepts = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$test = $concepts->get_entities();
 
 	expect( $test )->toBeArray();
 } );
 
-test( '\LCDR\DB\Query\Concepts->get_entity()', function () {
+test( '\LCDR\DB\Query\Entities->get_entity()', function () {
 	global $concept_id;
-	$concepts = new \LCDR\DB\Query\Concepts();
+	$concepts = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$test = $concepts->get_entity( $concept_id );
 
-	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\Concept::class);
+	expect( $test )->toBeInstanceOf( \LCDR\DB\Row\ConceptRow::class);
 	expect( $test->get_property( '_label' ) )->toBe( 'Referred to by test' );
 	expect( $test->get_property( 'name' ) )->toBe( 'referred-to-by-test' );
 } );
 
-test( '\LCDR\DB\Query\Concepts->update_entity()', function () {
+test( '\LCDR\DB\Query\Entities->update_entity()', function () {
 	global $concept_id;
 	global $concept_ids;
 
@@ -236,7 +272,11 @@ test( '\LCDR\DB\Query\Concepts->update_entity()', function () {
 	$classified_as[] = 1;
 	$classified_as = array_values( (array) $classified_as );
 
-	$concepts = new \LCDR\DB\Query\Concepts();
+	$concepts = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$test = $concepts->update_entity( $concept_id, array(
 		'identified_by' => array(
 			(object) array(
@@ -253,8 +293,12 @@ test( '\LCDR\DB\Query\Concepts->update_entity()', function () {
 	expect( $updated->get_property( 'classified_as' ) )->toMatchArray( $classified_as );
 } );
 
-test( '\LCDR\DB\Query\Concepts->update_entity() wrong id throws exception', function () {
-	$concepts = new \LCDR\DB\Query\Concepts();
+test( '\LCDR\DB\Query\Entities->update_entity() wrong id throws exception', function () {
+	$concepts = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$test = $concepts->update_entity(
 		0,
 		array(
@@ -264,9 +308,13 @@ test( '\LCDR\DB\Query\Concepts->update_entity() wrong id throws exception', func
 	expect( $test )->toBeInstanceOf( \LCDR\Error\Error::class);
 } );
 
-test( '\LCDR\DB\Row\Concept->get_property()', function () {
+test( '\LCDR\DB\Row\ConceptRow->get_property()', function () {
 	global $concept_id;
-	$concepts = new \LCDR\DB\Query\Concepts();
+	$concepts = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$test = $concepts->get_item( $concept_id );
 	expect( $test->get_property( 'identified_by' ) )->toMatchArray(
 		array(
@@ -278,9 +326,13 @@ test( '\LCDR\DB\Row\Concept->get_property()', function () {
 	);
 } );
 
-test( '\LCDR\DB\Query\Concepts->delete_item()', function () {
+test( '\LCDR\DB\Query\Entities->delete_item()', function () {
 	global $concept_id;
-	$concepts = new \LCDR\DB\Query\Concepts();
+	$concepts = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$test = $concepts->delete_entity( $concept_id );
 	expect( $test )->toBeNumeric();
 } );

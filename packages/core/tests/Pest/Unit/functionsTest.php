@@ -231,7 +231,11 @@ test( 'lcdr_get_valid_properties', function () {
 } );
 
 test( 'lcdr_get_entity()', function () {
-	$query = new \LCDR\DB\Query\Concepts();
+	$query = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	global $item_id;
 	$item_id = $query->add_entity( array(
 		'type' => 'Type',
@@ -258,7 +262,11 @@ test( 'lcdr_unique_entity_slug()', function () {
 
 test( 'lcdr_insert_entity()', function () {
 	global $item_id;
-	$query = new \LCDR\DB\Query\Concepts();
+	$query = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$item_id = $query->add_entity( array(
 		'type' => 'Type',
 		'_label' => 'relation-test',

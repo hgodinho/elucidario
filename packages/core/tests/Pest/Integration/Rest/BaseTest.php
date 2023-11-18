@@ -53,7 +53,11 @@ beforeAll( function () {
 	wp_set_current_user( 1 );
 
 	$wp_rest_server = new \Spy_REST_Server();
-	$query = new \LCDR\DB\Query\Concepts();
+	$query = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$item_id = $query->add_entity(
 		array(
 			'type' => 'Type',
@@ -122,7 +126,11 @@ test( 'BaseTestCase->get_item_permissions_check() should return true for public 
 } );
 
 test( 'BaseTestCase->get_item_permissions_check() should return ERROR for status other than publish with not logged user', function () {
-	$query = new \LCDR\DB\Query\Concepts();
+	$query = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$item_id = $query->add_entity(
 		array(
 			'type' => 'Type',
@@ -168,7 +176,11 @@ test( 'BaseTestCase->get_item_permissions_check() should return ERROR with conte
 } );
 
 test( 'BaseTestCase->get_item_permissions_check() should return ERROR with wrong password', function () {
-	$query = new \LCDR\DB\Query\Concepts();
+	$query = new \LCDR\DB\Query\Entities( array(
+		'item_name' => 'concept',
+		'item_name_plural' => 'concepts',
+		'item_shape' => 'ConceptRow',
+	) );
 	$item_id = $query->add_entity( array(
 		'type' => 'Type',
 		'_label' => 'relation-test',
