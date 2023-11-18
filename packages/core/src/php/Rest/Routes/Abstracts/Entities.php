@@ -17,6 +17,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 }
 // @codeCoverageIgnoreEnd
 
+/**
+ * Entities abstract class.
+ */
 abstract class Entities extends Base {
 	/**
 	 * Set permission group.
@@ -52,8 +55,8 @@ abstract class Entities extends Base {
 	/**
 	 * Prepare item.
 	 *
-	 * @param array            $args
-	 * @param \WP_REST_Request $request
+	 * @param array            $args   Array of arguments for Query.
+	 * @param \WP_REST_Request $request The REST API request.
 	 * @return object|\LCDR\Error\Error
 	 */
 	public function prepare_for_db( $args, $request ) {
@@ -403,9 +406,7 @@ abstract class Entities extends Base {
 	}
 
 	/**
-	 * Deletes a single post.
-	 *
-	 * @since 4.7.0
+	 * Deletes a single entity.
 	 *
 	 * @param \WP_REST_Request $request Full details about the request.
 	 * @return \WP_REST_Response|\LCDR\Error\Error Response object on success, or WP_Error object on failure.
@@ -419,7 +420,7 @@ abstract class Entities extends Base {
 
 		$id = $entity->{$this->primary_property};
 
-		// $force = (bool) $request['force'];
+		// $force = (bool) $request['force']; // @todo dev the part of trash
 		$supports_trash = ( EMPTY_TRASH_DAYS > 0 );
 
 		/**

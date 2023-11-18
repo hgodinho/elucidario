@@ -118,46 +118,49 @@ test( '\LCDR\Rest\Routes\Mapping->update_item()', function () {
 	wp_set_current_user( 1 );
 	global $mapping_id;
 	$base = new \LCDR\Rest\Routes\Mapping();
-	$request = new \WP_REST_Request( 'PATCH', "/lcdr/v1/concepts/{$mapping_id}" );
+	$request = new \WP_REST_Request( 'PATCH', "/lcdr/v1/mapping/{$mapping_id}" );
 	$request->set_body_params(
 		array(
-			'type' => 'Mapping',
+			'standard' => (object) array(
+				'name' => 'teste 2',
+				'uri' => 'uri:teste_2'
+			),
 		)
 	);
 	$result = $base->update_item( $request );
-
-	expect( $result )->toBeInstanceOf( WP_REST_Response::class);
-	expect( $result->data['name'] )->toBe( 'teste' );
-} )->skip( 'Not implemented yet' );
+	expect( $result )->toBeInstanceOf( \WP_REST_Response::class);
+	expect( $result->data['name'] )->toBe( 'mapping-test' );
+	expect( $result->data['standard']->name )->toBe( 'teste 2' );
+	expect( $result->data['standard']->uri )->toBe( 'uri:teste_2' );
+} );
 
 test( '\LCDR\Rest\Routes\Mapping->get_item()', function () {
 	wp_set_current_user( 1 );
 	global $mapping_id;
 	$base = new \LCDR\Rest\Routes\Mapping();
-	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/concepts/{$mapping_id}" );
+	$request = new \WP_REST_Request( 'GET', "/lcdr/v1/mapping/{$mapping_id}" );
 	$result = $base->get_item( $request );
-
-	expect( $result )->toBeInstanceOf( WP_REST_Response::class);
-	expect( $result->data['name'] )->toBe( 'teste' );
-} )->skip( 'Not implemented yet' );
+	expect( $result )->toBeInstanceOf( \WP_REST_Response::class);
+	expect( $result->data['name'] )->toBe( 'mapping-test' );
+} );
 
 test( '\LCDR\Rest\Routes\Mapping->get_items()', function () {
 	wp_set_current_user( 1 );
 	$base = new \LCDR\Rest\Routes\Mapping();
-	$request = new \WP_REST_Request( 'GET', '/lcdr/v1/concepts/' );
+	$request = new \WP_REST_Request( 'GET', '/lcdr/v1/mapping/' );
 	$result = $base->get_items( $request );
 
-	expect( $result )->toBeInstanceOf( WP_REST_Response::class);
+	expect( $result )->toBeInstanceOf( \WP_REST_Response::class);
 	expect( $result->data )->toBeArray();
-} )->skip( 'Not implemented yet' );
+} );
 
 test( '\LCDR\Rest\Routes\Mapping->delete_item()', function () {
 	wp_set_current_user( 1 );
 	global $mapping_id;
 	$base = new \LCDR\Rest\Routes\Mapping();
-	$request = new \WP_REST_Request( 'DELETE', "/lcdr/v1/concepts/{$mapping_id}" );
+	$request = new \WP_REST_Request( 'DELETE', "/lcdr/v1/mapping/{$mapping_id}" );
 	$result = $base->delete_item( $request );
 
-	expect( $result )->toBeInstanceOf( WP_REST_Response::class);
+	expect( $result )->toBeInstanceOf( \WP_REST_Response::class);
 	expect( $result->data['deleted'] )->toBeTrue();
-} )->skip( 'Not implemented yet' );
+} );

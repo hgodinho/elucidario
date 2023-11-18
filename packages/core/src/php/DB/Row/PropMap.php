@@ -164,6 +164,11 @@ final class PropMap extends Row {
 		$this->status                    = (string) $this->status;
 	}
 
+	/**
+	 * Set allowed properties.
+	 *
+	 * @return string[]
+	 */
 	public function set_allowed_properties() {
 		return array(
 			'map_id',

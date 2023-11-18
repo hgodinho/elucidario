@@ -251,6 +251,24 @@ function lcdr_get_mapping( $mapping_id ) {
 }
 
 /**
+ * Return mappings
+ *
+ * @param array   $args Query args.
+ * @param boolean $count Count.
+ * @return array
+ */
+function lcdr_get_mappings( $args, $count = false ) {
+	$query = new \LCDR\DB\Query\Mappings();
+	if ( $count && ! isset( $args['count'] ) ) {
+		$args['count'] = true;
+		$mappings      = $query->get_mappings( $args );
+		return $mappings;
+	}
+	$mappings = $query->get_mappings( $args );
+	return $mappings;
+}
+
+/**
  * Insert new mapping
  *
  * @param array $args Mapping args.
@@ -260,6 +278,41 @@ function lcdr_insert_mapping( $args ) {
 	$query      = new \LCDR\DB\Query\Mappings();
 	$mapping_id = $query->add_mapping( $args );
 	return lcdr_parse_item_id( $mapping_id );
+}
+
+/**
+ * Update mapping
+ *
+ * @param int   $mapping_id Mapping id.
+ * @param array $args Mapping args.
+ * @return \LCDR\DB\Interfaces\Entity|int|\LCDR\Error\DB
+ */
+function lcdr_update_mapping( $mapping_id, $args ) {
+	$query = new \LCDR\DB\Query\Mappings();
+	if ( ! in_array( 'mapping_id', $args, true ) && $mapping_id ) {
+		$args['mapping_id'] = $mapping_id;
+	}
+	$updated = $query->update_mapping( $mapping_id, $args );
+	if ( is_lcdr_error( $updated ) ) {
+		return $updated;
+	}
+	if ( $updated ) {
+		return lcdr_get_mapping( $mapping_id );
+	} else {
+		return (int) $updated;
+	}
+}
+
+/**
+ * Delete mapping
+ *
+ * @param int $mapping_id Entity id.
+ * @return bool
+ */
+function lcdr_delete_mapping( $mapping_id ) {
+	$query   = new \LCDR\DB\Query\Mappings();
+	$deleted = $query->delete_mapping( $mapping_id );
+	return (bool) $deleted;
 }
 
 /**

@@ -114,7 +114,7 @@ class Entities extends Query {
 			$item = $this->get_item_by( 'entity_id', (int) $entity_id );
 		} catch ( \Exception $e ) {
 			$this->dump(
-				'cli',
+				'browser',
 				array(
 					'code'    => $e->getCode(),
 					'message' => $e->getMessage(),
@@ -123,9 +123,8 @@ class Entities extends Query {
 				__CLASS__,
 				__METHOD__,
 				__LINE__,
-				false
+				true
 			);
-			// $this->log( $e->getTrace(), 'error', __METHOD__, __LINE__ );
 		}
 		if ( ! $item ) {
 			return new \LCDR\Error\DB( 'get' );
@@ -290,8 +289,8 @@ class Entities extends Query {
 	/**
 	 * Get unique slug
 	 *
-	 * @param string $slug
-	 * @param int    $entity_id
+	 * @param string $slug Slug.
+	 * @param int    $entity_id Entity ID.
 	 * @return string
 	 */
 	public function unique_slug( $slug, $entity_id ) {
@@ -390,7 +389,6 @@ class Entities extends Query {
 		}
 
 		// Column Status.
-		// $columns['status'] = isset( $columns['status'] ) ? $columns['status'] : 'draft';
 		if ( ! isset( $columns['status'] ) && $entity ) {
 			$columns['status'] = $entity->status;
 		} elseif ( ! isset( $columns['status'] ) && ! $entity ) {

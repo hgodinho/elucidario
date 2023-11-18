@@ -199,6 +199,7 @@ final class Relationships extends Query {
 	 * @param int   $relationship_id Relationship ID.
 	 * @param array $args Updated args.
 	 * @return bool|int False on failure, the ID of the inserted relationship otherwise.
+	 * @throws \Exception If relationship ID is empty.
 	 */
 	public function update_relationship( int $relationship_id, $args = array() ) {
 		$args = $this->parse_args( $args );

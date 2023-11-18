@@ -286,6 +286,13 @@ class Mappings extends Query {
 		return $columns;
 	}
 
+	/**
+	 * Add props maps
+	 *
+	 * @param int   $mapping_id ID of the mapping.
+	 * @param array $args Arguments to add the props maps.
+	 * @return bool|\LCDR\DB\Row\Procedure[] False on failure, the ID of the inserted props maps otherwise.
+	 */
 	public function add_props_maps( $mapping_id, $args ) {
 		$mapping = array();
 		if ( ! isset( $args['mapping'] ) ) {

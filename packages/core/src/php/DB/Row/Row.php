@@ -53,7 +53,7 @@ trait Row {
 	/**
 	 * Set the allowed properties.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
-	abstract function set_allowed_properties();
+	abstract public function set_allowed_properties();
 }
