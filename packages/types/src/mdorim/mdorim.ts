@@ -59,13 +59,17 @@ export type MdorimInstance = {
     index: Index;
 };
 
+export type SchemaType = "linkedArt" | "mdorim" | "translation";
+
 export type Mdorim = {
     getInstance: () => MdorimInstance;
     getSchema: (
         name: MdorimTypes,
-        type?: "linkedArt" | "mdorim" | "translation",
+        type?: SchemaType,
+        mdorim?: MdorimInstance,
     ) => Entity;
-    getFromId: (id: string) => Entity | Schema<DataTypes>;
+    getContext: (context: string) => Entity;
+    getFromId: (id: string, context?: string) => Entity | Schema<DataTypes>;
     getEntityFromIndex: (
         indexId: string,
         type?: "linkedArt" | "mdorim",
@@ -226,4 +230,4 @@ export type ParsedId = {
     entityId: string;
 };
 
-export type parseId = (id: string) => ParsedId;
+export type parseId = (id: string) => ParsedId | false;
