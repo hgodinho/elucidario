@@ -2,7 +2,7 @@ O Mdorim também é utilizado pelo plugin para gerar a UI administrativa para ed
 
 **{{count:charts;legend=JSON-UI: Esquema declarativo para mapeamento de modelos de dados definidos em JSON-Schema e Interfaces de Usuário.}}**
 
-{{code:../../../../packages/mdorim/src/schemas/json-ui/schema.json}}
+{{code:../../../../packages/mdorim/static/mdorim/schemas/translation/schema.json}}
 
 Fonte: Elaborado pelo autor.
 
