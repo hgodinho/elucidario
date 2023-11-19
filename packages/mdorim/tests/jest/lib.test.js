@@ -22,7 +22,7 @@ describe("Mdorim", () => {
         expect(mdorim.schemas).toHaveProperty("translation");
     });
 
-    test("Mdorim getFromId from definitions mdorim", () => {
+    test("Mdorim getFromId from mdorim definitions", () => {
         const mdorim = Mdorim.getFromId(
             "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/entity_id",
         );
@@ -41,6 +41,16 @@ describe("Mdorim", () => {
             "https://elucidario.art/mdorim/schemas/linked-art/object.json",
         );
         expect(linkedArt).toMatchObject(linkedArtObject);
+    });
+
+    test("Mdorim getFromId entity linked-art with context", () => {
+        const identified_by = Mdorim.getFromId(
+            "#/definitions/identified_byProp",
+            "linkedArt/core",
+        );
+        expect(identified_by).toMatchObject(
+            linkedArtCore.definitions.identified_byProp,
+        );
     });
 
     test("Mdorim getFromId from definitions linked-art", () => {

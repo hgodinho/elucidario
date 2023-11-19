@@ -221,6 +221,117 @@
                     "$ref": "<linked-art>/core.json#/definitions/EventRefOrActivityRef"
                 }
             }
+        },
+        "GroupPost": {
+            "title": "GroupPost",
+            "description": "A Group to be created",
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "<local>/core.json#/definitions/author"
+                },
+                "status": {
+                    "$ref": "<local>/core.json#/definitions/status"
+                },
+                "password": {
+                    "$ref": "<local>/core.json#/definitions/password"
+                },
+
+                "created": {
+                    "$ref": "<local>/core.json#/definitions/created"
+                },
+                "modified": {
+                    "$ref": "<local>/core.json#/definitions/updated"
+                },
+
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "const": "Group"
+                        }
+                    ]
+                },
+
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
+                "identified_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+                },
+                "classified_as": {
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+                },
+                "referred_to_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+                },
+                "equivalent": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/equivalentProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "description": "List of `Group` entities",
+                            "type": "array",
+                            "items": {
+                                "$ref": "<linked-art>/core.json#/definitions/GroupRef"
+                            }
+                        }
+                    ]
+                },
+
+                "representation": {
+                    "$ref": "<linked-art>/core.json#/definitions/representationProp"
+                },
+                "member_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/member_ofGroupProp"
+                },
+                "subject_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/subject_ofProp"
+                },
+                "attributed_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/attributed_byRelProp"
+                },
+
+                "carried_out": {
+                    "$ref": "<linked-art>/core.json#/definitions/carried_outProp"
+                },
+                "contact_point": {
+                    "$ref": "<linked-art>/core.json#/definitions/contact_pointProp"
+                },
+                "residence": {
+                    "$ref": "<linked-art>/core.json#/definitions/residenceProp"
+                },
+
+                "formed_by": {
+                    "title": "crm:P95i_was_formed_by",
+                    "description": "The activity of forming or creating the Group",
+                    "$ref": "#/definitions/Formation"
+                },
+                "dissolved_by": {
+                    "title": "crm:P99i_was_dissolved_by",
+                    "description": "The activity of dissolving or ending the Group",
+                    "$ref": "#/definitions/Dissolution"
+                },
+
+                "history": {
+                    "$ref": "<local>/history.json"
+                },
+
+                "_fields": {
+                    "$ref": "<local>/core.json#/definitions/_fields"
+                },
+                "_embed": {
+                    "$ref": "<local>/core.json#/definitions/_embed"
+                }
+            }
         }
     },
     "required": [

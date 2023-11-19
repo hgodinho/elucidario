@@ -1,6 +1,6 @@
 <?php
 /**
- * Object class.
+ * Event class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -18,16 +18,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 // @codeCoverageIgnoreEnd
 
 /**
- * Object row class.
+ * Event row class.
  */
-final class ObjectRow extends Entity {
-	/**
-	 * Broader concepts.
-	 *
-	 * @var array
-	 */
-	public $broader = array();
-
+final class EventRow extends Entity {
 	/**
 	 * Allowed properties
 	 *
@@ -52,29 +45,18 @@ final class ObjectRow extends Entity {
 			'classified_as',
 			'referred_to_by',
 			'equivalent',
+			'timespan',
 			'representation',
 			'member_of',
 			'subject_of',
 			'part_of',
-			'used_for',
+			'attributed_by',
 			'took_place_at',
 			'caused_by',
 			'carried_out_by',
 			'used_specific_object',
 			'influenced_by',
 			'technique',
-			'made_of',
-			'current_owner',
-			'current_custodian',
-			'current_permanent_custodian',
-			'current_location',
-			'shows',
-			'carries',
-			'attributed_by',
-			'dimension',
-			'produced_by',
-			'destroyed_by',
-			'removed_by',
 			'created_by',
 		);
 	}

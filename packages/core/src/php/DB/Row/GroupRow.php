@@ -1,6 +1,6 @@
 <?php
 /**
- * Object class.
+ * Group class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -18,16 +18,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 // @codeCoverageIgnoreEnd
 
 /**
- * Object row class.
+ * Group row class.
  */
-final class ObjectRow extends Entity {
-	/**
-	 * Broader concepts.
-	 *
-	 * @var array
-	 */
-	public $broader = array();
-
+final class GroupRow extends Entity {
 	/**
 	 * Allowed properties
 	 *
@@ -45,9 +38,8 @@ final class ObjectRow extends Entity {
 			'author',
 			'status',
 			'_label',
-			'type',
 
-			// object specific
+			// group specific
 			'identified_by',
 			'classified_as',
 			'referred_to_by',
@@ -55,26 +47,12 @@ final class ObjectRow extends Entity {
 			'representation',
 			'member_of',
 			'subject_of',
-			'part_of',
-			'used_for',
-			'took_place_at',
-			'caused_by',
-			'carried_out_by',
-			'used_specific_object',
-			'influenced_by',
-			'technique',
-			'made_of',
-			'current_owner',
-			'current_custodian',
-			'current_permanent_custodian',
-			'current_location',
-			'shows',
-			'carries',
 			'attributed_by',
-			'dimension',
-			'produced_by',
-			'destroyed_by',
-			'removed_by',
+			'contact_point',
+			'formed_by',
+			'dissolved_by',
+			'carried_out',
+			'residence',
 			'created_by',
 		);
 	}

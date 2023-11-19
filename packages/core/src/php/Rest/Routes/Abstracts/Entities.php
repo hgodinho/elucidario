@@ -60,7 +60,7 @@ abstract class Entities extends Base {
 	 * @return object|\LCDR\Error\Error
 	 */
 	public function prepare_for_db( $args, $request ) {
-		$prepared       = new \stdClass();
+		$prepared = new \stdClass();
 		$current_status = '';
 
 		// Mount prepared object.
@@ -139,7 +139,7 @@ abstract class Entities extends Base {
 			return $entity;
 		}
 
-		$data     = $this->prepare_item_for_response( $entity, $request );
+		$data = $this->prepare_item_for_response( $entity, $request );
 		$response = rest_ensure_response( $data );
 
 		return $response;
@@ -160,7 +160,7 @@ abstract class Entities extends Base {
 
 		// Retrieve the list of registered collection query parameters.
 		$registered = $this->get_collection_params();
-		$args       = array();
+		$args = array();
 
 		/**
 		 * Filters Query arguments when querying entities via the REST API.
@@ -172,7 +172,7 @@ abstract class Entities extends Base {
 		 * @param array            $args    Array of arguments for WP_Query.
 		 * @param \WP_REST_Request $request The REST API request.
 		 */
-		$args       = apply_filters( lcdr_hook( array( 'rest', $this->rest_base, 'query' ) ), $args, $request );
+		$args = apply_filters( lcdr_hook( array( 'rest', $this->rest_base, 'query' ) ), $args, $request );
 		$query_args = $this->prepare_items_query( $args, $request );
 
 		$query_result = lcdr_get_entities( $query_args );
@@ -189,7 +189,7 @@ abstract class Entities extends Base {
 				continue;
 			}
 
-			$data       = $this->prepare_item_for_response( $post, $request );
+			$data = $this->prepare_item_for_response( $post, $request );
 			$entities[] = $this->prepare_response_for_collection( $data );
 		}
 
@@ -291,13 +291,11 @@ abstract class Entities extends Base {
 
 		$entity_id = lcdr_insert_entity( (array) $prepared_entity );
 		if ( is_lcdr_error( $entity_id ) ) {
-
 			if ( 'db__insert' === $entity_id->get_error_code() ) {
 				$entity_id->add_data( array( 'status' => 500 ) );
 			} else {
 				$entity_id->add_data( array( 'status' => 400 ) );
 			}
-
 			return $entity_id;
 		}
 
@@ -412,7 +410,7 @@ abstract class Entities extends Base {
 	 * @return \WP_REST_Response|\LCDR\Error\Error Response object on success, or WP_Error object on failure.
 	 */
 	public function delete_item( $request ) {
-		$id     = $this->get_id_from_request( $request );
+		$id = $this->get_id_from_request( $request );
 		$entity = $this->get_entity( $id );
 		if ( is_lcdr_error( $entity ) ) {
 			return $entity;
@@ -486,7 +484,7 @@ abstract class Entities extends Base {
 		$previous = $this->prepare_item_for_response( $entity, $request );
 		$response->set_data(
 			array(
-				'deleted'  => true,
+				'deleted' => true,
 				'previous' => $previous->get_data(),
 			)
 		);
@@ -528,6 +526,8 @@ abstract class Entities extends Base {
 		}
 
 		$entity = lcdr_get_entity( (int) $id );
+
+		$this->log( $entity, 'get_entity', __METHOD__, __LINE__ );
 
 		if ( empty( $entity ) || empty( $entity->{$this->primary_property} ) ) {
 			return $error;

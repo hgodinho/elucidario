@@ -122,7 +122,6 @@
                     }
                 }
             },
-            "required": ["title", "standard", "mapping"],
             "additionalProperties": false
         }
     }

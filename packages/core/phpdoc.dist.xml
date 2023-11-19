@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdocumentor configVersion="3">
+    <paths>
+        <output>docs/php</output>
+        <cache>docs/php/cache</cache>
+    </paths>
+    <version number="3.0.0">
+        <api>
+                <path>src/php</path>
+            </source>
+        </api>
+    </version>
+</phpdocumentor>

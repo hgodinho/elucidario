@@ -11,10 +11,12 @@ const minified = [
     {
         file: pkg.exports["."].import,
         format: "esm",
+        sourcemap: true,
     },
     {
         file: pkg.exports["."].require,
         format: "cjs",
+        sourcemap: true,
     },
 ];
 

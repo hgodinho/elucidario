@@ -116,5 +116,109 @@
         "type",
         "identified_by"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "definitions": {
+        "PlacePost": {
+            "title": "PlacePost",
+            "description": "A Place to be creted",
+            "type": "object",
+            "properties": {
+
+                "author": {
+                    "$ref": "<local>/core.json#/definitions/author"
+                },
+                "status": {
+                    "$ref": "<local>/core.json#/definitions/status"
+                },
+                "password": {
+                    "$ref": "<local>/core.json#/definitions/password"
+                },
+                "created": {
+                    "$ref": "<local>/core.json#/definitions/created"
+                },
+                "modified": {
+                    "$ref": "<local>/core.json#/definitions/updated"
+                },
+        
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                        },
+                        { "title": "Specific", "type": "string", "const": "Place" }
+                    ]
+                },
+                "_label": { "$ref": "<linked-art>/core.json#/definitions/labelProp" },
+                "classified_as": {
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+                },
+                "identified_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+                },
+                "referred_to_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+                },
+                "equivalent": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/equivalentProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "description": "List of `Place` entities",
+                            "type": "array",
+                            "items": {
+                                "$ref": "<linked-art>/core.json#/definitions/PlaceRef"
+                            }
+                        }
+                    ]
+                },
+        
+                "representation": {
+                    "$ref": "<linked-art>/core.json#/definitions/representationProp"
+                },
+                "member_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/member_ofSetProp"
+                },
+                "subject_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/subject_ofProp"
+                },
+                "attributed_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/attributed_byRelProp"
+                },
+        
+                "defined_by": {
+                    "title": "crm:P168_place_is_defined_by",
+                    "description": "A string with a WKT or GeoJSON definition of the area of the Place",
+                    "type": "string"
+                },
+                "approximated_by": {
+                    "title": "crm:P189i_is_approximated_by",
+                    "description": "This `Place` is approximately the same area as the given entities",
+                    "type": "array",
+                    "items": { "$ref": "<linked-art>/core.json#/definitions/PlaceRef" }
+                },
+                "part_of": {
+                    "title": "crm:P89_falls_within",
+                    "description": "This `Place` is contained within one or more larger `Place` entities",
+                    "type": "array",
+                    "items": { "$ref": "<linked-art>/core.json#/definitions/PlaceRef" }
+                },
+        
+                "history": {
+                    "$ref": "<local>/history.json"
+                },
+        
+                "_fields": {
+                    "$ref": "<local>/core.json#/definitions/_fields"
+                },
+                "_embed": {
+                    "$ref": "<local>/core.json#/definitions/_embed"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
 }

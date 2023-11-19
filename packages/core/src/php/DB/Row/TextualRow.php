@@ -1,6 +1,6 @@
 <?php
 /**
- * Object class.
+ * Textual class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -18,16 +18,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 // @codeCoverageIgnoreEnd
 
 /**
- * Object row class.
+ * Textual row class.
  */
-final class ObjectRow extends Entity {
-	/**
-	 * Broader concepts.
-	 *
-	 * @var array
-	 */
-	public $broader = array();
-
+final class TextualRow extends Entity {
 	/**
 	 * Allowed properties
 	 *
@@ -63,18 +56,13 @@ final class ObjectRow extends Entity {
 			'used_specific_object',
 			'influenced_by',
 			'technique',
-			'made_of',
-			'current_owner',
-			'current_custodian',
-			'current_permanent_custodian',
-			'current_location',
-			'shows',
-			'carries',
+			'about',
+			'language',
+			'digitally_carried_by',
+			'carried_by',
+			'refers_to',
 			'attributed_by',
-			'dimension',
-			'produced_by',
-			'destroyed_by',
-			'removed_by',
+			'timespan',
 			'created_by',
 		);
 	}

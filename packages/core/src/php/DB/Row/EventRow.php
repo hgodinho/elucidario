@@ -1,6 +1,6 @@
 <?php
 /**
- * Concept class.
+ * Event class.
  *
  * @since 0.2.0
  * @package elucidario/pkg-core
@@ -18,16 +18,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 // @codeCoverageIgnoreEnd
 
 /**
- * Concept row class.
+ * Event row class.
  */
-final class Concept extends Entity {
-	/**
-	 * Broader concepts.
-	 *
-	 * @var array
-	 */
-	public $broader = array();
-
+final class EventRow extends Entity {
 	/**
 	 * Allowed properties
 	 *
@@ -35,6 +28,7 @@ final class Concept extends Entity {
 	 */
 	public function set_allowed_properties() {
 		return array(
+			// default
 			'entity_id',
 			'name',
 			'guid',
@@ -45,16 +39,26 @@ final class Concept extends Entity {
 			'status',
 			'_label',
 			'type',
+
+			// event specific
+			'part',
 			'identified_by',
 			'classified_as',
 			'referred_to_by',
 			'equivalent',
+			'timespan',
 			'representation',
 			'member_of',
 			'subject_of',
+			'part_of',
 			'attributed_by',
+			'took_place_at',
+			'caused_by',
+			'carried_out_by',
+			'used_specific_object',
+			'influenced_by',
+			'technique',
 			'created_by',
-			'broader',
 		);
 	}
 
@@ -65,6 +69,5 @@ final class Concept extends Entity {
 	 */
 	public function __construct( $item = null ) {
 		parent::__construct( $item );
-		$this->broader = (array) $this->broader;
 	}
 }
