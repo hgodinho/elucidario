@@ -31,9 +31,6 @@
         },
         "markdownlint.run": "onSave",
         "markdown.occurrencesHighlight.enabled": true,
-        "markdownlint.config": {
-            "md033": false
-        },
         "markdown.extension.toc.orderedList": false,
         "[json]": {
             "editor.quickSuggestions": {
@@ -45,7 +42,6 @@
         },
         "files.autoSave": "onWindowChange",
         "editor.formatOnSave": true,
-        "prettier.tabWidth": 4,
         "prettier.useTabs": true,
         "eslint.format.enable": true,
         "intelephense.environment.includePaths": ["./packages/core/phpcs.xml"],
@@ -127,7 +123,6 @@
         ],
         "terminal.integrated.tabs.enabled": true,
         "typescript.tsdk": "node_modules\\typescript\\lib",
-        "cSpell.language": "en,pt-BR,es-ES,pt",
         "php.format.codeStyle": "WordPress",
         "phpfmt.yoda": true,
         "php.format.rules.alignConsecutiveAssignments": false

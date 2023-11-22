@@ -73,7 +73,7 @@
         "scope": "php",
         "prefix": "log",
         "description": "$this->log",
-        "body": "$this->log( ${1:msg}, ${2:title}, __METHOD__, __LINE__ );"
+        "body": "\\$this->log( ${1:msg}, ${2:title}, __METHOD__, __LINE__ );"
     },
     "dump": {
         "scope": "php",
