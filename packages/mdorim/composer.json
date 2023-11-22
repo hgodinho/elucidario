@@ -1,16 +1,14 @@
 {
     "name": "elucidario/pkg-mdorim",
-    "autoload": {
-        "psr-4": {
-            "Mdorim\\": "src/php/"
-        }
-    },
     "authors": [
         {
             "name": "hgodinho",
             "email": "henrique@hgod.in"
         }
     ],
+    "scripts": {
+        "test": "vendor/bin/pest"
+    },
     "require": {
         "opis/json-schema": "^2.3"
     },
@@ -22,7 +20,9 @@
             "pestphp/pest-plugin": true
         }
     },
-    "scripts": {
-        "test": "vendor/bin/pest"
+    "autoload": {
+        "psr-4": {
+            "Mdorim\\": "./src/php"
+        }
     }
 }

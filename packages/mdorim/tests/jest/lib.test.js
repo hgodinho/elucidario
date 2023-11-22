@@ -9,8 +9,6 @@ import linkedArtObject from "../../static/mdorim/schemas/linked-art/object.json"
 describe("Mdorim", () => {
     test("Mdorim instance", () => {
         const mdorim = Mdorim.getInstance();
-
-        // expect(mdorim).toHaveProperty("examples");
         expect(mdorim).toHaveProperty("schemas");
         expect(mdorim).toHaveProperty("translations");
         expect(mdorim).toHaveProperty("index");

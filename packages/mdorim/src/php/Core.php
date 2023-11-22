@@ -29,7 +29,7 @@ class Core {
 	/**
 	 * Constructor.
 	 */
-	private function __construct() {
+	public function __construct() {
 		$this->init();
 	}
 
