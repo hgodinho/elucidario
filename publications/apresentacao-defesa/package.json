@@ -1,0 +1,19 @@
+{
+    "name": "@elucidario/pub-apresentacao-defesa",
+    "version": "0.1.0",
+    "main": "README.md",
+    "private": true,
+    "scripts": {
+        "add-author": "pub-gen add-author -p apresentacao-defesa",
+        "authenticate": "pub-gen authenticate -p apresentacao-defesa",
+        "build": "pnpm clean && pub-gen build -p apresentacao-defesa",
+        "clean": "rm -rf dist/*",
+        "convert": "pub-gen convert -p apresentacao-defesa",
+        "ref-add": "pub-gen reference add -p apresentacao-defesa",
+        "ref-search": "pub-gen reference search -p apresentacao-defesa",
+        "version-up": "pub-gen version -p apresentacao-defesa"
+    },
+    "devDependencies": {
+        "@elucidario/pkg-pub-gen": "workspace:^"
+    }
+}
