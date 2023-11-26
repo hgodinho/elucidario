@@ -15,7 +15,7 @@
                 "./node_modules/@elucidario/pkg-types/dist/index.d.ts"
             ],
             "@elucidario/pkg-paths": [
-                "./node_modules/@elucidario/pkg-paths/dist/index.d.ts"
+                "./node_modules/@elucidario/pkg-paths/dist/types/index.d.ts"
             ]
         }
     },
