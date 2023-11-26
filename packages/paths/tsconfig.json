@@ -5,9 +5,11 @@
         "outDir": "dist",
         "target": "ESNext",
         "module": "ESNext",
+        "declarationDir": "dist/types",
+        "emitDeclarationOnly": true,
         "paths": {
             "@elucidario/pkg-console": [
-                "./node_modules/@elucidario/pkg-console/dist/index.d.ts"
+                "./node_modules/@elucidario/pkg-console/dist/mjs/index.d.ts"
             ],
             "@elucidario/pkg-types": [
                 "./node_modules/@elucidario/pkg-types/dist/index.d.ts"

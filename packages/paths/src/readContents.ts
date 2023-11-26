@@ -2,44 +2,12 @@ import fs from "fs";
 import path from "path";
 
 import type {
-    PackageProps,
     ReadContentsProps,
     ReadContentsReturn,
 } from "@elucidario/pkg-types";
 
 import { getPaths } from "./getPaths";
-
-const imagesExtensions = [
-    "jpg",
-    "jpeg",
-    "png",
-    "gif",
-    "svg",
-    "webp",
-    "bmp",
-    "ico",
-];
-
-export const readFile = (
-    filePath: string,
-    ext: string,
-): ReadContentsReturn | string => {
-    try {
-        switch (ext) {
-            case "json":
-                return JSON.parse(
-                    fs.readFileSync(path.resolve(filePath), "utf-8").toString(),
-                );
-
-            default:
-                return fs
-                    .readFileSync(path.resolve(filePath), "utf-8")
-                    .toString();
-        }
-    } catch (err: any) {
-        throw new Error(`Cannot read file at ${filePath}: ${err}`);
-    }
-};
+import { readFile } from "./readFile";
 
 /**
  * Lê o conteúdo de um diretório recursivamente, retornando um objeto com o conteúdo de cada arquivo ou path
