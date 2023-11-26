@@ -3,11 +3,16 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"outDir": "dist",
-		"jsx": "react",
+		"target": "ES2020",
+		"moduleResolution": "Bundler",
+		"declarationDir": "dist/types",
+		"emitDeclarationOnly": true,
 		"paths": {
-			"ink": ["node_modules/ink/build/index.d.ts"],
-			"@elucidario/pkg-types": ["../types/dist/index.d.ts"]
-		}
+			"@elucidario/pkg-types": [
+				"node_modules/@elucidario/pkg-types/dist/index.d.ts"
+			]
+		},
+		"types": ["@elucidario/pkg-types"]
 	},
 	"include": ["src/index.ts"]
 }
