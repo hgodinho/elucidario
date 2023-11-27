@@ -1,0 +1,39 @@
+{
+    "name": "@elucidario/pkg-schema-validator",
+    "version": "0.1.0",
+    "description": "",
+    "keywords": [],
+    "author": "Henrique Godinho <henrique@hgod.in>",
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/types/index.d.ts",
+            "import": "./dist/mjs/index.min.mjs",
+            "require": "./dist/cjs/index.min.cjs"
+        }
+    },
+    "main": "./dist/index.esm.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "clean": "rm -r dist/*",
+        "build": "pnpm clean && tsc && rollup -c && pnpm test",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
+        "test:cov": "pnpm test -- --coverage --coverageDirectory=\"tests/coverage\""
+    },
+    "dependencies": {
+        "jsonschema": "^1.4.1"
+    },
+    "devDependencies": {
+        "@babel/plugin-syntax-import-attributes": "^7.22.5",
+        "@babel/plugin-transform-json-strings": "^7.22.5",
+        "@babel/preset-env": "^7.23.3",
+        "@elucidario/pkg-rollup": "workspace:^",
+        "@elucidario/pkg-tsconfig": "workspace:^",
+        "@elucidario/pkg-types": "workspace:^",
+        "jest": "^29.7.0",
+        "rollup": "^4.6.0",
+        "typescript": "^5.3.2"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://example.com/principal.json",
+    "type": "object",
+    "properties": {
+        "id": {
+            "$ref": "http://example.com/definitions.json#/definitions/id"
+        },
+        "name": {
+            "$ref": "http://example.com/definitions.json#/definitions/name"
+        },
+        "anotherName": {
+            "$ref": "http://example.com/definitions2.json#/definitions/anotherName"
+        }
+    }
+}
