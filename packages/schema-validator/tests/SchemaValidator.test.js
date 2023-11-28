@@ -64,3 +64,30 @@ test("validate should return true if right schema and data with $ref", () => {
 
     expect(validate).toBe(true);
 });
+
+test("validate getErrors should return errors if wrong schema or data", () => {
+    const validate = validator.validate({
+        schema: objectJson,
+        data: {
+            id: 1,
+            name: 123,
+        },
+    });
+
+    expect(validate).toBe(false);
+
+    const errors = validator.getErrors();
+
+    expect(errors).toEqual([
+        {
+            path: ["name"],
+            property: "instance.name",
+            message: "is not of a type(s) string",
+            schema: { type: "string" },
+            instance: 123,
+            name: "type",
+            argument: ["string"],
+            stack: "instance.name is not of a type(s) string",
+        },
+    ]);
+});

@@ -1,5 +1,5 @@
 import { Validator } from "jsonschema";
-import type { Schema as JsonSchema } from "jsonschema";
+import type { Schema as JsonSchema, ValidationError } from "jsonschema";
 
 import {
     ValidateProps,
@@ -16,6 +16,11 @@ export class SchemaValidator implements SchemaValidatorInterface {
      * Validator instance
      */
     validator: Validator;
+
+    /**
+     * Errors
+     */
+    errors: ValidationError[] | undefined;
 
     /**
      * Constructor
@@ -35,6 +40,7 @@ export class SchemaValidator implements SchemaValidatorInterface {
         this.addSchemas(schemas);
 
         const validate = this.validator.validate(data, schema);
+        this.errors = validate.errors;
 
         if (returnType === "boolean") {
             return validate.valid;
@@ -52,5 +58,13 @@ export class SchemaValidator implements SchemaValidatorInterface {
                 this.validator.addSchema(schema as JsonSchema),
             );
         }
+    }
+
+    /**
+     * Get errors
+     * @returns Errors
+     */
+    getErrors(): ValidationError[] | undefined {
+        return this.errors;
     }
 }
