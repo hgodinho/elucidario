@@ -11,6 +11,7 @@ import type { LabelProps, LegendProps, InputType } from "./form";
 export type UseFieldComponent = (schema: Schema<DataTypes>) => FieldSchema;
 
 export type FieldSchema = Omit<Schema<DataTypes>, "required"> & {
+    name: string;
     required?: boolean;
     type?: InputType;
 };

@@ -29,8 +29,6 @@ export interface FNCallbackProps {
     filename?: string;
 }
 
-export type ReadContentsReturn = { [key: string]: string | any };
-
 export interface ReadContentsProps {
     dirPath: string;
     index?: boolean;
@@ -40,3 +38,30 @@ export interface ReadContentsProps {
     log?: boolean;
     package?: PackageProps;
 }
+
+export interface ReadFileProps {
+    filePath: string;
+    ext?: string;
+    enc?: BufferEncoding;
+}
+
+export interface File<T extends unknown> {
+    name: string;
+    path: string;
+    content: T;
+    ext?: string;
+    size?: number;
+    atime?: Date;
+    mtime?: Date;
+    ctime?: Date;
+    birthtime?: Date;
+}
+
+export type ParseFileProps = {
+    name: string;
+    path: string;
+    content: string;
+    ext?: string;
+};
+
+export type ReadContentsReturn<T> = File<T>[];

@@ -1,13 +1,12 @@
-export type LogType = 'error' | 'warning' | 'info' | 'success';
+export type LogType = "error" | "warning" | "info" | "success";
 
-export type LogProps = {
-    message: string;
-    type: string;
-    prefix?: string;
-};
-
-export type LogOptions = {
-    type?: LogType;
+export type LogOptions<T extends LogType> = {
+    // message: string;
+    type: T;
     title?: string;
     defaultLog?: boolean;
+};
+
+export type LogProps<T extends LogType> = LogOptions<T> & {
+    message: string;
 };

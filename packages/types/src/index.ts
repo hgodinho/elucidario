@@ -5,3 +5,4 @@ export * from "./console.types";
 export * from "./paths.types";
 export * from "./design-system";
 export * from "./mdorim";
+export * from "./schema-validator";
