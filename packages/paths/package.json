@@ -19,10 +19,12 @@
     },
     "scripts": {
         "build": "pnpm clean && tsc && rollup -c",
-        "dev": "rollup -c -w",
+        "build:test": "pnpm build && pnpm test",
+        "dev": "pnpm build -w",
         "clean": "rm -rf dist/*",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
-        "test:cov": "pnpm test -- --coverage --coverageDirectory=\"tests/coverage\""
+        "test:cov": "pnpm test -- --coverage --coverageDirectory=\"tests/coverage\"",
+        "test:watch": "pnpm test -- --watchAll"
     },
     "dependencies": {
         "@elucidario/pkg-console": "workspace:^",
