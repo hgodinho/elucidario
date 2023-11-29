@@ -20,9 +20,9 @@ const pubGenJson = JSON.parse(
 // ("../static/pub-gen/schema/pub-gen-schema.json");
 
 describe("pub-gen-schema", () => {
-    it("should have a valid draft07 $schema", () => {
+    it("should have a valid draft04 $schema", () => {
         expect(pubGenJson.$schema).toBe(
-            "https://json-schema.org/draft-07/schema#"
+            "https://json-schema.org/draft-04/schema#"
         );
     });
 

@@ -1,73 +1,82 @@
 import path from "path";
 import fs from "fs";
-import Ajv from "ajv";
 import * as tableschema from "tableschema";
 
 import { Console } from "@elucidario/pkg-console";
-import { getPaths } from "../getPaths.js";
+import { getPaths } from "@elucidario/pkg-paths";
 import { table as mdTable } from "@elucidario/pkg-docusaurus-md";
+
+import { SchemaValidator } from "@elucidario/pkg-schema-validator";
 
 const paths = getPaths();
 const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
+    fs.readFileSync(path.resolve(paths.packages, "pub-gen", "package.json"))
 );
 const console = new Console(packageJson);
 
-let schema = {};
-
-if (
-    fs.existsSync(
-        path.resolve(
-            paths.pubGen,
-            "static",
-            "pub-gen",
-            "schemas",
-            "table-schema.json"
-        )
-    )
-) {
-    schema = JSON.parse(
-        fs.readFileSync(
-            path.resolve(
-                paths.pubGen,
-                "static",
-                "pub-gen",
-                "schemas",
-                "table-schema.json"
-            )
-        )
-    );
-}
-
-const ajv = new Ajv();
-ajv.addVocabulary(["context", "notes"]);
-
-const validate = ajv.compile(schema);
-
 export const tableMarkdown = async (json, emptyValue = "") => {
     try {
-        const valid = validate(json);
-        if (!valid) {
-            throw validate.errors;
-        }
-        const { data, title, note, ...schema } = json;
+        const schemaValidator = new SchemaValidator();
 
-        const schemaData = await tableschema.Schema.load(schema);
+        // default schema
+        let schema = {};
+        if (
+            fs.existsSync(
+                path.resolve(
+                    paths.packages,
+                    "pub-gen",
+                    "static",
+                    "pub-gen",
+                    "schemas",
+                    "table-schema.json"
+                )
+            )
+        ) {
+            schema = JSON.parse(
+                fs.readFileSync(
+                    path.resolve(
+                        paths.packages,
+                        "pub-gen",
+                        "static",
+                        "pub-gen",
+                        "schemas",
+                        "table-schema.json"
+                    )
+                )
+            );
+        }
+
+        const valid = schemaValidator.validate({
+            schema: schema,
+            data: json,
+        });
+
+        if (!valid) {
+            throw schemaValidator.getErrors();
+        }
+
+        const { data, title, note, ...jsonSchema } = json;
+
+        const schemaData = await tableschema.Schema.load(jsonSchema).then(
+            (schema) => schema
+        );
 
         if (!schemaData.valid) throw schemaData.errors;
 
         const tableData = await tableschema.Table.load(data, {
             schema: schemaData.descriptor,
         });
-        let rows = await tableData.read({ keyed: false });
-        const headers = tableData.headers;
 
-        rows = rows.map((row) => {
-            return row.map((column) => {
-                if (!column) return emptyValue;
-                return column;
+        const rows = await tableData.read({ keyed: false }).then((rows) => {
+            return rows.map((row) => {
+                return row.map((column) => {
+                    if (!column) return emptyValue;
+                    return column;
+                });
             });
         });
+
+        const headers = tableData.headers;
 
         return mdTable({
             title,

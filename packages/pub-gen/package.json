@@ -16,18 +16,18 @@
         "email": "ola@hgod.in"
     },
     "type": "module",
-    "main": "index.js",
+    "main": "lib/index.js",
     "bin": {
-        "pub-gen": "./index.js"
+        "pub-gen": "./bin/pub-gen.js"
     },
     "scripts": {
         "build": " pnpm clean:dist && pnpm clean:docs && node bin/build.js -l pt-BR && pnpm test",
         "clean:dist": "rm -rf ./static/*",
         "clean:docs": "rm -rf ./docs/*",
         "dev": "pnpm clean:dist && pnpm clean:docs && node bin/build.js -w -l pt-BR",
+        "pandoc-template": "pandoc -o template/docx/reference.docx --print-default-data-file reference.docx",
         "pub-gen": "node ./index.js",
-        "test": "jest --coverage",
-        "pandoc-template": "pandoc -o template/docx/reference.docx --print-default-data-file reference.docx"
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
     },
     "dependencies": {
         "@apidevtools/json-schema-ref-parser": "^10.1.0",
@@ -37,8 +37,8 @@
         "@elucidario/pkg-docusaurus-md": "workspace:^",
         "@elucidario/pkg-g-api-utils": "workspace:^",
         "@elucidario/pkg-parse-args": "workspace:^",
-        "@elucidario/pkg-paths": "workspace:^",
         "@elucidario/pkg-schema-doc": "workspace:^",
+        "@elucidario/pkg-schema-validator": "workspace:^",
         "ajv": "^8.12.0",
         "axios": "^1.4.0",
         "babel-plugin-transform-import-meta": "^2.2.0",
@@ -78,8 +78,10 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.21.8",
         "@babel/plugin-syntax-import-assertions": "^7.20.0",
+        "@babel/plugin-syntax-import-attributes": "^7.22.5",
         "@babel/plugin-syntax-import-meta": "^7.10.4",
         "@babel/preset-env": "^7.21.5",
+        "@elucidario/pkg-paths": "workspace:^",
         "babel-jest": "^29.5.0",
         "jest": "^29.5.0"
     }

@@ -2,6 +2,6 @@
 
 "use strict";
 
-import PubGen from "./lib/pub-gen.js";
+import PubGen from "../lib/pub-gen.js";
 
 PubGen(); // Run pub-gen

@@ -9,7 +9,9 @@ import { toMD, bold, codeBlock } from "@elucidario/pkg-docusaurus-md";
 import { getPaths } from "../getPaths.js";
 import { tableMarkdown } from "./table.js";
 
-import packageJson from "../../package.json" assert { type: "json" };
+const packageJson = JSON.parse(
+    fs.readFileSync(path.resolve("../../package.json")).toString()
+);
 
 import { Console } from "@elucidario/pkg-console";
 
@@ -19,6 +21,13 @@ const paths = getPaths();
 
 import { engine } from "../reference/csl-engine.js";
 
+/**
+ * Replace Regex Handlebars
+ *
+ * @param {string} text
+ * @param {Object} options
+ * @returns {string}
+ */
 export function replaceRegexHandlebars(text, options) {
     if (!text) return null;
     const regex = /{{(.*?)}}/g;
@@ -30,6 +39,12 @@ export function replaceRegexHandlebars(text, options) {
     return replacedText;
 }
 
+/**
+ * Parse Value
+ *
+ * @param {string} value
+ * @returns {Object}
+ */
 export const parseValue = (value) => {
     const [action, optionsString] = value.split(":");
     const [filePath, ...fileOptions] = optionsString.split(";");
@@ -63,6 +78,7 @@ export default function remarkPubGen(options) {
             index[type].push(value);
             return index[type].length;
         };
+
         const counter = (index, path, options) => {
             const length = pushToIndex(index, path, options.legend);
             return `${labels[path]} ${length}: ${options.legend}`;
@@ -71,8 +87,7 @@ export default function remarkPubGen(options) {
         visit(tree, "text", (node) => {
             if (node.value.startsWith("{{") && node.value.endsWith("}}")) {
                 const value = node.value.replace("{{", "").replace("}}", "");
-                const { action, optionsString, filePath, fileOptions } =
-                    parseValue(value);
+                const { action, filePath, fileOptions } = parseValue(value);
 
                 /**
                  * Table
@@ -89,6 +104,7 @@ export default function remarkPubGen(options) {
                             .replace("{{", "")
                             .replace("}}", "");
                         const parsed = parseValue(value);
+
                         if ("count" === parsed.action) {
                             tableData.title = counter(
                                 options.index,

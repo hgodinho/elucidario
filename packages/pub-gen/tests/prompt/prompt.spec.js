@@ -1,6 +1,6 @@
 import { describe, it, expect } from "@jest/globals";
 
-import { pubGenPrompt } from "../lib/prompt";
+import { pubGenPrompt } from "../../lib/prompt";
 
 describe("prompt", () => {
     it("should return a create prompt object", () => {
