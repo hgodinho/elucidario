@@ -19,6 +19,8 @@ const MdorimProvider: MdorimProviderType = ({ children, context }) => {
         return null;
     }, [context]);
 
+    // console.warn({ Mdorim })
+
     const value: MdorimContextType = {
         ...Mdorim,
         context: mdorimContext,
