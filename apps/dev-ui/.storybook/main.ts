@@ -14,7 +14,7 @@ const config: StorybookConfig = {
         "@storybook/addon-links",
         "@storybook/addon-essentials",
         "@storybook/addon-interactions",
-        "@storybook/addon-styling",
+        "storybook-tailwind-dark-mode",
     ],
     framework: {
         name: "@storybook/react-vite",
@@ -39,6 +39,7 @@ const config: StorybookConfig = {
                 "@/styles": designSystem("styles"),
                 "@/layouts": designSystem("layouts"),
                 "@/provider": designSystem("provider"),
+                "@/templates": designSystem("templates"),
                 "@/components": designSystem("components"),
             };
             return config;

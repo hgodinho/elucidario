@@ -92,7 +92,7 @@ const argTypes = ${JSON.stringify(JSON.stringify(argTypes))};
 const meta = {
     title: "${title}",
     component: (args: FieldProps) => (
-        <ComponentTemplate>
+        <ComponentTemplate form={true}>
             <MdorimProvider context="${context}">
                 <Field.Root {...args} />
             </MdorimProvider>
