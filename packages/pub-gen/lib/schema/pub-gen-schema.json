@@ -12,13 +12,15 @@
     "type": "object",
     "required": ["name", "version", "type", "year"],
     "properties": {
-        "name": {
-            "description": "An identifier for the publication. It will be automatically generated."
-        },
         "version": {
             "title": "Version",
             "description": "Version of the configuration file.",
             "type": "string"
+        },
+        "private": {
+            "title": "Private",
+            "description": "If true, the publication will not be published.",
+            "type": "boolean"
         },
         "type": {
             "title": "Type",
@@ -40,17 +42,17 @@
             "description": "Publication year.",
             "type": "string"
         },
-        "publications": {
+        "documents": {
             "type": "array",
-            "title": "Publications",
-            "description": "List of publications.",
+            "title": "Documents",
+            "description": "List of documents.",
             "items": {
-                "title": "Publication",
+                "title": "Document",
                 "type": "object",
                 "properties": {
                     "title": {
                         "title": "Title",
-                        "description": "Title of the publication.",
+                        "description": "Title of the document.",
                         "type": "string"
                     },
                     "style": {
@@ -73,7 +75,7 @@
                     },
                     "language": {
                         "title": "Language",
-                        "description": "The language of the publication. Use RFC 5646.",
+                        "description": "The language of the document. Use RFC 5646.",
                         "type": "string"
                     }
                 },

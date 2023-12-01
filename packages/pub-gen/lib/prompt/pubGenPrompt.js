@@ -69,14 +69,14 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         }
     );
 
-    const publicationSchema = schema.properties.publications.items;
-    const publicationPrompt = Object.entries(publicationSchema.properties).map(
+    const documentsSchema = schema.properties.documents.items;
+    const documentPrompt = Object.entries(documentsSchema.properties).map(
         ([key, value]) => {
             return createInput({
-                name: `publication.${key}`,
+                name: `document.${key}`,
                 schema: {
                     ...value,
-                    required: isRequired(key, publicationSchema),
+                    required: isRequired(key, documentsSchema),
                 },
                 defaultValue: defaults
                     ? defaults[key]
@@ -86,10 +86,10 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
             });
         }
     );
-    publicationPrompt.push({
+    documentPrompt.push({
         type: "confirm",
-        name: "addMorePublication",
-        message: "Do you want to add another publication?",
+        name: "addMoreDocument",
+        message: "Do you want to add another document?",
         default: false,
     });
 
@@ -145,7 +145,7 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         case "addLicense":
             return licensePrompt;
 
-        case "publication":
-            return publicationPrompt;
+        case "document":
+            return documentPrompt;
     }
 };

@@ -2,9 +2,8 @@ import path from "path";
 import fs from "fs";
 
 import { pubGenRemarkProcessor } from "../remark/processor.js";
-import { readContents } from "@elucidario/pkg-paths";
+import { readContents, getPaths } from "@elucidario/pkg-paths";
 import { toMD, heading, list, table } from "@elucidario/pkg-docusaurus-md";
-import { getPaths } from "../getPaths.js";
 
 const paths = getPaths();
 

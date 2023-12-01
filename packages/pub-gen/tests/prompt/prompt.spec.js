@@ -85,32 +85,32 @@ describe("prompt", () => {
         expect(prompt).toMatchObject(matchers);
     });
 
-    it("should return a publication prompt object", () => {
-        const prompt = pubGenPrompt("publication");
+    it("should return a document prompt object", () => {
+        const prompt = pubGenPrompt("document");
         expect(prompt).toEqual([
             {
                 type: "string",
-                name: "publication.title",
-                message: "Title (Title of the publication.)",
+                name: "document.title",
+                message: "Title (Title of the document.)",
                 validate: expect.any(Function),
             },
             {
                 type: "string",
-                name: "publication.style",
+                name: "document.style",
                 message: "Style (Use CSL style.)",
                 validate: expect.any(Function),
             },
             {
                 type: "string",
-                name: "publication.language",
+                name: "document.language",
                 message:
-                    "Language (The language of the publication. Use RFC 5646.)",
+                    "Language (The language of the document. Use RFC 5646.)",
                 validate: expect.any(Function),
             },
             {
                 default: false,
-                message: "Do you want to add another publication?",
-                name: "addMorePublication",
+                message: "Do you want to add another document?",
+                name: "addMoreDocument",
                 type: "confirm",
             },
         ]);

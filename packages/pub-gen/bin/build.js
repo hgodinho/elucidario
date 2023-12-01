@@ -8,19 +8,28 @@ import { readContents, mergeSubSchema } from "@elucidario/pkg-schema-doc";
 import { Command } from "commander";
 
 import { Console } from "@elucidario/pkg-console";
-import { getPaths } from "../lib/getPaths.js";
+import { getPaths } from "@elucidario/pkg-paths";
 import { debounce } from "../lib/utils.js";
 
 const paths = getPaths();
 const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, "package.json"), "utf-8")
+    fs.readFileSync(
+        path.resolve(paths.packages, "pub-gen", "package.json"),
+        "utf-8"
+    )
 );
 const console = new Console(packageJson);
 
-const srcPath = path.resolve(paths.pubGen, "src", "docs");
-const libPath = path.resolve(paths.pubGen, "lib");
-const docsPath = path.resolve(paths.pubGen, "docs");
-const distPath = path.resolve(paths.pubGen, "static", "pub-gen", "schemas");
+const srcPath = path.resolve(paths.packages, "pub-gen", "src", "docs");
+const libPath = path.resolve(paths.packages, "pub-gen", "lib");
+const docsPath = path.resolve(paths.packages, "pub-gen", "docs");
+const distPath = path.resolve(
+    paths.packages,
+    "pub-gen",
+    "static",
+    "pub-gen",
+    "schemas"
+);
 
 const docs = readContents(srcPath, ["md"], false);
 

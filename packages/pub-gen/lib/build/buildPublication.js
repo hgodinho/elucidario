@@ -10,12 +10,12 @@ export async function buildPublication({ publication }) {
     const pubGenJson = pubGenConfig(publication);
     const pkgJson = packageJson(publication);
 
-    const { publications } = pubGenJson;
+    const { documents } = pubGenJson;
 
     const manifests = {};
 
     await Promise.all(
-        publications.map(async (pub) => {
+        documents.map(async (pub) => {
             let manifest = {
                 indexFiles: [],
                 content: [],

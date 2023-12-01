@@ -17,6 +17,9 @@
     },
     "type": "module",
     "main": "lib/index.js",
+    "config": {
+        "schema-version": "1.0.0"
+    },
     "bin": {
         "pub-gen": "./bin/pub-gen.js"
     },
@@ -27,7 +30,8 @@
         "dev": "pnpm clean:dist && pnpm clean:docs && node bin/build.js -w -l pt-BR",
         "pandoc-template": "pandoc -o template/docx/reference.docx --print-default-data-file reference.docx",
         "pub-gen": "node ./index.js",
-        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
+        "test:cov": "pnpm test -- --coverage --coverageDirectory=\"tests/coverage\""
     },
     "dependencies": {
         "@apidevtools/json-schema-ref-parser": "^10.1.0",

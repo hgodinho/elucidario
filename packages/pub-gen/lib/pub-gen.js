@@ -17,6 +17,7 @@ import { generateSearchIndex } from "./reference/generateSearchIndex.js";
 import { convert } from "./pandoc/convert.js";
 import { listTemplates } from "./pandoc/listTemplates.js";
 import { validateReferences } from "./reference/validateReferences.js";
+import { migrate } from "./migration/migration-helper.js";
 
 const paths = getPaths();
 
@@ -38,11 +39,26 @@ const PubGen = () => {
     program
         .command("init")
         .description("Initialize pub-gen config")
-        .option("-f, --force", "force initialization")
+        .option("-f, --force", "force initialization", false)
         .option("-d, --default", "default configuration")
         .action((argv) => {
             console.log("Initializing pub-gen config...");
             init(argv);
+        });
+
+    /**
+     * @command <migrate> - Migrar versão da publicação
+     *
+     * @param {string} publication - Nome da publicação
+     */
+    program
+        .command("migrate")
+        .description("Migrate publications version")
+        .option("-p, --publication <publication>")
+        .option("-f, --force", "force initialization", false)
+        .action((argv) => {
+            console.log("Migrating publication version...");
+            migrate(argv);
         });
 
     /**

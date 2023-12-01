@@ -3,6 +3,7 @@ import { getPaths, readFile } from "@elucidario/pkg-paths";
 import { toMD } from "@elucidario/pkg-docusaurus-md";
 import inquirer from "inquirer";
 import { Console } from "@elucidario/pkg-console";
+import { kebabCase } from "lodash-es";
 
 const pkg = readFile({
     filePath: path.resolve(getPaths().packages, "pub-gen", "package.json"),
@@ -80,19 +81,30 @@ export const debounce = async (func, delay) => {
 export const cleanFalsy = (obj) => {
     return Object.fromEntries(
         Object.entries(obj).reduce((acc, [key, value]) => {
-            if (value != null && value !== "") {
-                if (typeof value === "object" && !Array.isArray(value)) {
+            if (value !== null && value !== undefined && value !== "") {
+                if (
+                    typeof value === "object" &&
+                    !Array.isArray(value) &&
+                    Object.keys(value).length > 0
+                ) {
                     value = cleanFalsy(value);
-                }
-                if (Array.isArray(value)) {
+                    acc.push([key, value]);
+                } else if (Array.isArray(value) && value.length) {
                     value = value.map((item) => {
                         if (typeof item === "object") {
                             return cleanFalsy(item);
                         }
                         return item;
                     });
+                    acc.push([key, value]);
+                } else if (typeof value === "string" && value.length) {
+                    value = value.trim();
+                    acc.push([key, value]);
+                } else if (typeof value === "boolean" || value === 0) {
+                    acc.push([key, value]);
+                } else {
+                    return acc;
                 }
-                acc.push([key, value]);
             }
             return acc;
         }, [])
@@ -106,7 +118,7 @@ export const cleanFalsy = (obj) => {
  * @returns {string}
  */
 export const publicationPkgName = (publication) =>
-    `@elucidario/pub-${publication}`;
+    `@elucidario/pub-${kebabCase(publication.trim())}`;
 
 /**
  * Create a inquirer callback
@@ -148,8 +160,10 @@ export const makeInquirer = async ({
  * Creates the README.md file for the publication
  *
  * @param {string} name | name of the publication
- * @param {*} answers | package.json of the publication
- * @returns | README.md
+ * @param {Object} answers | package.json of the publication
+ * @param {string} answers.description | description of the publication
+ *
+ * @returns | README.md as string (needs to be saved)
  */
 export const createREADME = (name, answers) => {
     return toMD([
@@ -162,33 +176,45 @@ export const createREADME = (name, answers) => {
 /**
  * Creates the .gitignore file for the publication
  *
- * @returns | .gitignore
+ * @returns | .gitignore as string (needs to be saved)
  */
-export const createGitIgnore = () => {
-    return `node_modules
-credentials.json
-token.json
-dist
-~$*.*`;
+export const createGitignore = (files = []) => {
+    return [
+        "node_modules",
+        "credentials.json",
+        "token.json",
+        "dist",
+        "~$*.*",
+        ...files,
+    ].join("\n");
 };
 
 /**
- *  Creates the pub-gen.json file for the publication
+ * Creates the pub-gen.json file for the publication
+ * use for current version schema
+ *
+ * @see package.json->config.schema-version for current version
+ * @see packages/pub-gen/static/pub-gen/schemas/pub-gen-schema.json for schema
+ *
  * @param {string} name | name of the publication
- * @param {*} answers | answers from the prompt
- * @returns | pub-gen.json
+ * @param {Object} answers | answers from the prompt
+ *
+ * @returns | pub-gen.json as object (needs to be stringified to be saved)
  */
 export const createPubGenJson = (name, answers) => {
     const { keywords, ...rest } = answers;
+    const version = pkg.config["schema-version"];
     return cleanFalsy({
         $schema:
             "node_modules/@elucidario/pkg-pub-gen/static/pub-gen/schemas/pub-gen-schema.json",
-        version: "1.0.0",
+        version,
         profile: "data-package",
-        id: `https://elucidario.art/publicacoes/${name}`,
+        id: `https://elucidario.art/publicacoes/${name.trim()}`,
         ...rest,
         keywords:
-            typeof keywords !== "undefined" ? keywords.split(",") : undefined,
+            typeof keywords !== "undefined"
+                ? keywords.split(/[;,]/).map((k) => k.trim())
+                : undefined,
         created: new Date().toISOString(),
     });
 };
@@ -199,20 +225,21 @@ export const createPubGenJson = (name, answers) => {
  * @returns | package.json
  */
 export const createPackageJson = (name) => {
+    const pubName = kebabCase(name.trim());
     return {
         name: publicationPkgName(name),
         version: "0.1.0",
         main: "README.md",
         private: true,
         scripts: {
-            "add-author": `pub-gen add-author -p ${name}`,
-            authenticate: `pub-gen authenticate -p ${name}`,
-            build: `pnpm clean && pub-gen build -p ${name}`,
+            "add-author": `pub-gen add-author -p ${pubName}`,
+            authenticate: `pub-gen authenticate -p ${pubName}`,
+            build: `pnpm clean && pub-gen build -p ${pubName}`,
             clean: "rm -rf dist/*",
-            convert: `pub-gen convert -p ${name}`,
-            "ref-add": `pub-gen reference add -p ${name}`,
-            "ref-search": `pub-gen reference search -p ${name}`,
-            "version-up": `pub-gen version -p ${name}`,
+            convert: `pub-gen convert -p ${pubName}`,
+            "ref-add": `pub-gen reference add -p ${pubName}`,
+            "ref-search": `pub-gen reference search -p ${pubName}`,
+            "version-up": `pub-gen version -p ${pubName}`,
         },
         devDependencies: {
             "@elucidario/pkg-pub-gen": "workspace:^",

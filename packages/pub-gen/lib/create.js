@@ -19,7 +19,7 @@ import {
     cleanFalsy,
     makeInquirer,
     createREADME,
-    createGitIgnore,
+    createGitignore,
     createPubGenJson,
     createPackageJson,
 } from "./utils.js";
@@ -57,13 +57,13 @@ const addAuthorInquirer = async () =>
  * @param {Object} defaults
  * @returns {Object}
  */
-const addPublicationInquirer = async (defaults) => {
+const addDocumentInquirer = async (defaults) => {
     return await makeInquirer({
-        title: "Adding publications...",
-        prompt: pubGenPrompt("publication", defaults),
+        title: "Adding documents...",
+        prompt: pubGenPrompt("document", defaults),
         callback: async (answers) => {
-            const { publication, addMorePublication } = cleanFalsy(answers);
-            const { title, language, style } = publication;
+            const { document, addMoreDocument } = cleanFalsy(answers);
+            const { title, language, style } = document;
 
             await fetchLocales([language]);
 
@@ -95,12 +95,12 @@ const addPublicationInquirer = async (defaults) => {
                     });
 
                     return {
-                        publication: {
+                        document: {
                             title,
                             language,
                             style,
                         },
-                        addMorePublication,
+                        addMoreDocument,
                     };
                 }
             } catch (error) {
@@ -114,10 +114,11 @@ export const createPublication = async (args) => {
     const { noInstall, debug } = args;
 
     if (debug) {
-        console.log(
-            { args },
-            { type: "warning", defaultLog: true, title: "Debug mode" }
-        );
+        console.warning({
+            message: args,
+            defaultLog: true,
+            title: "Debug mode",
+        });
     }
     await makeInquirer({
         title: "Creating publication...",
@@ -125,17 +126,20 @@ export const createPublication = async (args) => {
         callback: async (answers) => {
             let { addLicense, addAuthor, ...options } = cleanFalsy(answers);
 
-            console.error({
-                message: cleanFalsy(answers),
-                defaultLog: true,
-            });
+            if (debug) {
+                console.warning({
+                    message: cleanFalsy(answers),
+                    defaultLog: true,
+                    title: "Debug mode",
+                });
+            }
 
             const PubGen = {
                 ...options,
                 name: kebabCase(options.title),
                 licenses: [],
                 contributors: [],
-                publications: [],
+                documents: [],
             };
 
             const name = PubGen.name;
@@ -152,16 +156,6 @@ export const createPublication = async (args) => {
 
                 PubGen.licenses.push(license.license);
                 addLicense = addMoreLicense;
-                if (debug) {
-                    console.log(
-                        { license: license.license, addMoreLicense },
-                        {
-                            type: "warning",
-                            defaultLog: true,
-                            title: "Debug mode",
-                        }
-                    );
-                }
             }
 
             while (addAuthor) {
@@ -170,34 +164,23 @@ export const createPublication = async (args) => {
 
                 PubGen.contributors.push(contributor.contributor);
                 addAuthor = addMoreAuthor;
-                if (debug) {
-                    console.log(
-                        { author: contributor.contributor, addMoreAuthor },
-                        {
-                            type: "warning",
-                            defaultLog: true,
-                            title: "Debug mode",
-                        }
-                    );
-                }
             }
 
-            let { addMorePublication, ...publication } =
-                await addPublicationInquirer({
+            let { addMoreDocument, document } = await addDocumentInquirer({
+                title: PubGen.title,
+            });
+
+            PubGen.documents.push(document);
+
+            while (addMoreDocument) {
+                const documentResponse = await addPublicationInquirer({
                     title: PubGen.title,
                 });
 
-            PubGen.publications.push(publication.publication);
+                PubGen.documents.push(documentResponse.document);
 
-            while (addMorePublication) {
-                const publicationResponse = await addPublicationInquirer({
-                    title: PubGen.title,
-                });
-
-                PubGen.publications.push(publicationResponse.publication);
-
-                if (!publicationResponse.addMorePublication) {
-                    addMorePublication = false;
+                if (!documentResponse.addMoreDocument) {
+                    addMoreDocument = false;
                 }
             }
 
@@ -206,7 +189,7 @@ export const createPublication = async (args) => {
                     "package.json": createPackageJson(name),
                     "pub-gen.json": createPubGenJson(name, PubGen),
                     "README.md": createREADME(name, PubGen),
-                    ".gitignore": createGitIgnore(),
+                    ".gitignore": createGitignore(),
                 };
                 const directories = ["content", "dist", "files", "references"];
 
@@ -258,14 +241,11 @@ export const createPublication = async (args) => {
                             type: "success",
                         });
                     }
-                    console.log("Boa escrita!");
+                    console.success({ message: "Boa escrita!" });
                 }
             } catch (error) {
-                console.log(error, { type: "error", defaultLog: true });
+                console.error({ message: error, defaultLog: true });
             }
         },
     });
-    // await inquirer
-    //     .prompt(pubGenPrompt("create", args))
-    //     .then();
 };

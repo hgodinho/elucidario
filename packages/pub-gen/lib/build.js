@@ -3,9 +3,8 @@ import fs from "fs";
 import { NodeHtmlMarkdown } from "node-html-markdown";
 
 import { Console } from "@elucidario/pkg-console";
-import { build, createDir } from "@elucidario/pkg-paths";
+import { build, createDir, getPaths } from "@elucidario/pkg-paths";
 
-import { getPaths } from "./getPaths.js";
 import { engine } from "./reference/csl-engine.js";
 import { toMD, heading } from "@elucidario/pkg-docusaurus-md";
 import writeImages from "./build/writeImages.js";
