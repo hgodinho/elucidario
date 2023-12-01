@@ -1,6 +1,6 @@
 import { describe, it, expect } from "@jest/globals";
 
-import { referencePrompt, authorPrompt, datePrompt } from "../lib/prompt";
+import { referencePrompt, authorPrompt, datePrompt } from "../../lib/prompt";
 
 describe("referencePrompt", () => {
     it("should return a reference type prompt object", () => {
@@ -16,7 +16,7 @@ describe("referencePrompt", () => {
             {
                 type: "list",
                 name: "type",
-                message: undefined,
+                message: "type",
                 choices: [
                     "article",
                     "article-journal",
@@ -81,7 +81,7 @@ describe("referencePrompt", () => {
             {
                 type: "list",
                 name: "type",
-                message: undefined,
+                message: "type",
                 choices: [
                     "article",
                     "article-journal",
@@ -139,56 +139,56 @@ describe("referencePrompt", () => {
         expect(prompt).toEqual([
             {
                 default: undefined,
-                message: undefined,
+                message: "book.title",
                 name: "book.title",
                 type: "string",
                 validate: expect.any(Function),
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "book.container-title",
                 name: "book.container-title",
                 type: "string",
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "book.publisher",
                 name: "book.publisher",
                 type: "string",
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "book.publisher-place",
                 name: "book.publisher-place",
                 type: "string",
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "book.volume",
                 name: "book.volume",
                 type: "string",
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "book.number-of-volumes",
                 name: "book.number-of-volumes",
                 type: "string",
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "book.number",
                 name: "book.number",
                 type: "string",
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "book.number-of-pages",
                 name: "book.number-of-pages",
                 type: "string",
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "book.ISBN",
                 name: "book.ISBN",
                 type: "string",
             },
@@ -199,74 +199,74 @@ describe("referencePrompt", () => {
         {
             type: "string",
             name: `${type}.title`,
-            message: undefined,
+            message: `${type}.title`,
             default: undefined,
             validate: expect.any(Function),
         },
         {
             type: "string",
             name: `${type}.container-title`,
-            message: undefined,
+            message: `${type}.container-title`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.publisher`,
-            message: undefined,
+            message: `${type}.publisher`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.publisher-place`,
-            message: undefined,
+            message: `${type}.publisher-place`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.volume`,
-            message: undefined,
+            message: `${type}.volume`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.number-of-volumes`,
-            message: undefined,
+            message: `${type}.number-of-volumes`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.number`,
-            message: undefined,
+            message: `${type}.number`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.issue`,
-            message: undefined,
+            message: `${type}.issue`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.page`,
-            message: undefined,
+            message: `${type}.page`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.number-of-pages`,
-            message: undefined,
+            message: `${type}.number-of-pages`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.DOI`,
-            message: undefined,
+            message: `${type}.DOI`,
             default: undefined,
         },
         {
             type: "string",
             name: `${type}.ISSN`,
-            message: undefined,
+            message: `${type}.ISSN`,
             default: undefined,
         },
     ];
@@ -293,13 +293,13 @@ describe("referencePrompt", () => {
             {
                 type: "string",
                 name: "event.event-title",
-                message: undefined,
+                message: "event.event-title",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "event.event-place",
-                message: undefined,
+                message: "event.event-place",
                 default: undefined,
             },
         ]);
@@ -311,25 +311,25 @@ describe("referencePrompt", () => {
             {
                 type: "string",
                 name: "archive",
-                message: undefined,
+                message: "archive",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "archive_location",
-                message: undefined,
+                message: "archive_location",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "archive-place",
-                message: undefined,
+                message: "archive-place",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "call-number",
-                message: undefined,
+                message: "call-number",
                 default: undefined,
             },
         ]);
@@ -341,37 +341,37 @@ describe("referencePrompt", () => {
             {
                 type: "string",
                 name: "language",
-                message: undefined,
+                message: "language",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "abstract",
-                message: undefined,
+                message: "abstract",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "keyword",
-                message: undefined,
+                message: "keyword",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "medium",
-                message: undefined,
+                message: "medium",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "note",
-                message: undefined,
+                message: "note",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "URL",
-                message: undefined,
+                message: "URL",
                 default: undefined,
             },
         ]);
@@ -383,56 +383,56 @@ describe("referencePrompt", () => {
             {
                 type: "string",
                 name: "bill.title",
-                message: undefined,
+                message: "bill.title",
                 default: undefined,
                 validate: expect.any(Function),
             },
             {
                 type: "string",
                 name: "bill.container-title",
-                message: undefined,
+                message: "bill.container-title",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "bill.publisher",
-                message: undefined,
+                message: "bill.publisher",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "bill.publisher-place",
-                message: undefined,
+                message: "bill.publisher-place",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "bill.volume",
-                message: undefined,
+                message: "bill.volume",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "bill.number-of-volumes",
-                message: undefined,
+                message: "bill.number-of-volumes",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "bill.number",
-                message: undefined,
+                message: "bill.number",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "bill.number-of-pages",
-                message: undefined,
+                message: "bill.number-of-pages",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "bill.issue",
-                message: undefined,
+                message: "bill.issue",
                 default: undefined,
             },
         ]);
@@ -472,7 +472,7 @@ describe("authorPrompt", () => {
                 "translator",
             ],
             default: undefined,
-            message: undefined,
+            message: "type",
             name: "type",
             type: "list",
         });
@@ -483,32 +483,32 @@ describe("authorPrompt", () => {
         expect(prompt).toEqual([
             {
                 default: undefined,
-                message: undefined,
+                message: "family",
                 name: "family",
                 type: "string",
                 validate: expect.any(Function),
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "given",
                 name: "given",
                 type: "string",
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "suffix",
                 name: "suffix",
                 type: "string",
             },
             {
                 default: undefined,
-                message: undefined,
+                message: "literal",
                 name: "literal",
                 type: "string",
             },
             {
                 default: false,
-                message: undefined,
+                message: "addMore",
                 name: "addMore",
                 type: "confirm",
             },
@@ -529,7 +529,7 @@ describe("datePrompt", () => {
                 "submitted",
             ],
             default: undefined,
-            message: undefined,
+            message: "type",
             name: "type",
             type: "list",
         });
@@ -541,31 +541,31 @@ describe("datePrompt", () => {
             {
                 type: "string",
                 name: "season",
-                message: undefined,
+                message: "season",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "circa",
-                message: undefined,
+                message: "circa",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "literal",
-                message: undefined,
+                message: "literal",
                 default: undefined,
             },
             {
                 type: "string",
                 name: "raw",
-                message: undefined,
+                message: "raw",
                 default: undefined,
             },
             {
                 type: "confirm",
                 name: "addMore",
-                message: undefined,
+                message: "addMore",
                 default: false,
             },
         ]);

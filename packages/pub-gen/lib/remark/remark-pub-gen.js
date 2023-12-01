@@ -6,18 +6,16 @@ import parser from "parser-front-matter";
 import { entityPage } from "@elucidario/pkg-schema-doc";
 import { toMD, bold, codeBlock } from "@elucidario/pkg-docusaurus-md";
 
-import { getPaths } from "../getPaths.js";
+import { getPaths, readFile } from "@elucidario/pkg-paths";
 import { tableMarkdown } from "./table.js";
 
-const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve("../../package.json")).toString()
+const pkg = readFile(
+    path.resolve(getPaths().packages, "pub-gen", "package.json")
 );
 
 import { Console } from "@elucidario/pkg-console";
 
-const console = new Console(packageJson);
-
-const paths = getPaths();
+const console = new Console(pkg);
 
 import { engine } from "../reference/csl-engine.js";
 
@@ -299,7 +297,7 @@ export default function remarkPubGen(options) {
             const references = JSON.parse(
                 fs.readFileSync(
                     path.resolve(
-                        paths.publications,
+                        getPaths().publications,
                         options.publication,
                         "references",
                         "index.json"
@@ -308,7 +306,7 @@ export default function remarkPubGen(options) {
             )
                 .items.map((item) => {
                     let refPath = item.path.replace("<references>/", "");
-                    refPath = path.resolve(paths.references, refPath);
+                    refPath = path.resolve(getPaths().references, refPath);
                     return JSON.parse(fs.readFileSync(refPath));
                 })
                 .filter((item) => item);

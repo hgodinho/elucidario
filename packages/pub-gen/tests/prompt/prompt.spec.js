@@ -5,12 +5,14 @@ import { pubGenPrompt } from "../../lib/prompt";
 describe("prompt", () => {
     it("should return a create prompt object", () => {
         const prompt = pubGenPrompt("create", { name: "test" });
-        expect(prompt).toEqual([
+
+        const matchers = [
             {
                 type: "string",
                 name: "title",
                 message: "Title (A human-readable title.)",
                 default: undefined,
+                validate: undefined,
             },
             {
                 type: "list",
@@ -27,12 +29,14 @@ describe("prompt", () => {
                     "misc",
                 ],
                 default: undefined,
+                validate: expect.any(Function),
             },
             {
                 type: "string",
                 name: "year",
                 message: "Year (Publication year.)",
                 default: undefined,
+                validate: expect.any(Function),
             },
             {
                 type: "string",
@@ -40,6 +44,7 @@ describe("prompt", () => {
                 message:
                     "Description (A text description. Markdown is encouraged.)",
                 default: undefined,
+                validate: undefined,
             },
             {
                 type: "string",
@@ -47,6 +52,7 @@ describe("prompt", () => {
                 message:
                     "Home Page (The home on the web that is related to this data package.)",
                 default: undefined,
+                validate: undefined,
             },
             {
                 type: "string",
@@ -54,11 +60,14 @@ describe("prompt", () => {
                 message:
                     "Keywords (A list of keywords that describe this package.)",
                 default: undefined,
+                validate: undefined,
             },
             {
                 type: "string",
                 name: "image",
                 message: "Image (A image to represent this package.)",
+                default: undefined,
+                validate: undefined,
             },
             {
                 default: true,
@@ -72,7 +81,8 @@ describe("prompt", () => {
                 name: "addAuthor",
                 type: "confirm",
             },
-        ]);
+        ];
+        expect(prompt).toMatchObject(matchers);
     });
 
     it("should return a publication prompt object", () => {
@@ -82,20 +92,20 @@ describe("prompt", () => {
                 type: "string",
                 name: "publication.title",
                 message: "Title (Title of the publication.)",
-                default: undefined,
+                validate: expect.any(Function),
             },
             {
                 type: "string",
                 name: "publication.style",
                 message: "Style (Use CSL style.)",
-                default: undefined,
+                validate: expect.any(Function),
             },
             {
                 type: "string",
                 name: "publication.language",
                 message:
                     "Language (The language of the publication. Use RFC 5646.)",
-                default: undefined,
+                validate: expect.any(Function),
             },
             {
                 default: false,

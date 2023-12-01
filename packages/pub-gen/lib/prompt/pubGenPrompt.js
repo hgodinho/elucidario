@@ -17,6 +17,19 @@ const schema = JSON.parse(
     )
 );
 
+export const isRequired = (key, schema) => {
+    if (schema.required) {
+        return schema.required.includes(key);
+    }
+    if (schema.anyOf) {
+        return schema.anyOf.some((item) => item.required.includes(key));
+    }
+    if (schema.oneOf) {
+        return schema.oneOf.some((item) => item.required.includes(key));
+    }
+    return false;
+};
+
 export const pubGenPrompt = (callback, defaults = undefined) => {
     const createPromptType = [
         "title",
@@ -28,11 +41,18 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         "image",
     ];
     const createPrompt = createPromptType.map((key) => {
-        return createInput(
-            key,
-            schema.properties[key],
-            defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
-        );
+        return createInput({
+            name: key,
+            schema: {
+                ...schema.properties[key],
+                required: isRequired(key, schema),
+            },
+            defaultValue: defaults
+                ? defaults[key]
+                    ? defaults[key]
+                    : undefined
+                : undefined,
+        });
     });
     createPrompt.push(
         {
@@ -49,15 +69,23 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         }
     );
 
-    const publicationPrompt = Object.entries(
-        schema.properties.publications.items.properties
-    ).map(([key, value]) => {
-        return createInput(
-            `publication.${key}`,
-            value,
-            defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
-        );
-    });
+    const publicationSchema = schema.properties.publications.items;
+    const publicationPrompt = Object.entries(publicationSchema.properties).map(
+        ([key, value]) => {
+            return createInput({
+                name: `publication.${key}`,
+                schema: {
+                    ...value,
+                    required: isRequired(key, publicationSchema),
+                },
+                defaultValue: defaults
+                    ? defaults[key]
+                        ? defaults[key]
+                        : undefined
+                    : undefined,
+            });
+        }
+    );
     publicationPrompt.push({
         type: "confirm",
         name: "addMorePublication",
@@ -65,15 +93,20 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         default: false,
     });
 
-    const licensePrompt = Object.entries(
-        schema.properties.licenses.items.properties
-    ).map(([key, value]) => {
-        return createInput(
-            `license.${key}`,
-            value,
-            defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
-        );
-    });
+    const licenseSchema = schema.properties.licenses.items;
+    const licensePrompt = Object.entries(licenseSchema.properties).map(
+        ([key, value]) => {
+            return createInput({
+                name: `license.${key}`,
+                schema: { ...value, required: isRequired(key, licenseSchema) },
+                defaultValue: defaults
+                    ? defaults[key]
+                        ? defaults[key]
+                        : undefined
+                    : undefined,
+            });
+        }
+    );
     licensePrompt.push({
         type: "confirm",
         name: "addMoreLicense",
@@ -81,15 +114,20 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         default: false,
     });
 
-    const authorPrompt = Object.entries(
-        schema.properties.contributors.items.properties
-    ).map(([key, value]) => {
-        return createInput(
-            `contributor.${key}`,
-            value,
-            defaults ? (defaults[key] ? defaults[key] : undefined) : undefined
-        );
-    });
+    const authorSchema = schema.properties.contributors.items;
+    const authorPrompt = Object.entries(authorSchema.properties).map(
+        ([key, value]) => {
+            return createInput({
+                name: `contributor.${key}`,
+                schema: { ...value, required: isRequired(key, authorSchema) },
+                defaultValue: defaults
+                    ? defaults[key]
+                        ? defaults[key]
+                        : undefined
+                    : undefined,
+            });
+        }
+    );
     authorPrompt.push({
         type: "confirm",
         name: "addMoreAuthor",

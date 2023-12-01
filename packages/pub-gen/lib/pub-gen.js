@@ -3,6 +3,7 @@ import path from "path";
 import fs from "fs";
 
 import { Console } from "@elucidario/pkg-console";
+import { getPaths } from "@elucidario/pkg-paths";
 
 import { init } from "./init.js";
 import { createPublication } from "./create.js";
@@ -15,12 +16,12 @@ import { version } from "./version.js";
 import { generateSearchIndex } from "./reference/generateSearchIndex.js";
 import { convert } from "./pandoc/convert.js";
 import { listTemplates } from "./pandoc/listTemplates.js";
-import { getPaths } from "./getPaths.js";
 import { validateReferences } from "./reference/validateReferences.js";
 
 const paths = getPaths();
+
 const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
+    fs.readFileSync(path.resolve(paths.packages, "pub-gen", "package.json"))
 );
 const console = new Console(packageJson);
 
@@ -40,7 +41,7 @@ const PubGen = () => {
         .option("-f, --force", "force initialization")
         .option("-d, --default", "default configuration")
         .action((argv) => {
-            console.log("Initializing pub-gen config");
+            console.log("Initializing pub-gen config...");
             init(argv);
         });
 
@@ -53,7 +54,7 @@ const PubGen = () => {
         .option("-n, --no-install")
         .option("-d, --debug")
         .action((argv) => {
-            console.log("Creating new publication");
+            console.log("Creating new publication package...");
             createPublication(argv);
         });
 

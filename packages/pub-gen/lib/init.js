@@ -2,26 +2,28 @@ import inquirer from "inquirer";
 import fs from "fs";
 import path from "path";
 import { Console } from "@elucidario/pkg-console";
+import { readFile, getPaths, fileExists } from "@elucidario/pkg-paths";
 
-import { getPaths } from "./getPaths.js";
-const paths = getPaths();
-const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, "package.json"), "utf-8")
-);
-const console = new Console(packageJson);
+const pkg = readFile(
+    path.resolve(getPaths().packages, "pub-gen", "package.json")
+).content;
+const console = new Console(pkg);
 
 export const init = async (options) => {
     const configPath = path.resolve(process.cwd(), "pub-gen-config.json");
+
     if (options.force) {
         buildInit(configPath);
         return;
     }
+
     if (options.default) {
         buildInit(configPath, true);
         return;
     }
-    if (fs.existsSync(configPath)) {
-        console.log("config file exists");
+
+    if (fileExists(configPath)) {
+        console.log("Config file exists.");
         inquirer
             .prompt([
                 {
@@ -40,10 +42,10 @@ export const init = async (options) => {
     }
 };
 
-export const buildInit = async (path, def) => {
+export const buildInit = async (configPath, def) => {
     if (def) {
         fs.writeFileSync(
-            path,
+            configPath,
             JSON.stringify(
                 {
                     root: ".",

@@ -1,46 +1,66 @@
-import fs from "fs";
 import path from "path";
-import inquirer from "inquirer";
-import chalk from "chalk";
+import { getPaths, createFile } from "@elucidario/pkg-paths";
+import { Console } from "@elucidario/pkg-console";
 
 import { pubGenPrompt } from "./prompt/pubGenPrompt.js";
+import {
+    makeInquirer,
+    pubGenConfig,
+    packageJson,
+    cleanFalsy,
+} from "./utils.js";
 
-const authors = [];
-
-const __dirname = path.resolve();
+let authors = [];
 
 export const addAuthor = async (args) => {
-    const rootPath = path.resolve(__dirname, "..", "..");
+    const { publication } = args;
+    const pkg = packageJson(publication);
+    const console = new Console(pkg);
 
-    inquirer.prompt(pubGenPrompt("addAuthor", args)).then(async (answers) => {
-        const publication = args.publication;
+    await makeInquirer({
+        title: "Adicionando autor...",
+        publication,
+        prompt: pubGenPrompt("addAuthor", args),
+        callback: async (answers) => {
+            const { contributor, addMoreAuthor } = cleanFalsy(answers);
 
-        authors.push(answers.authors);
+            authors.push(contributor);
 
-        if (answers.addAuthor) {
-            console.log(
-                chalk.green(`${answers.authors.name} adicionado com sucesso`)
-            );
-            addAuthor(args);
-        } else {
-            const pubPath = path.resolve(rootPath, "publications");
-            const dirName = path.resolve(pubPath, publication);
-            const pubGenJson = JSON.parse(
-                fs.readFileSync(path.resolve(dirName, "pub-gen.json"))
-            );
-            pubGenJson.authors = [...pubGenJson.authors, ...authors];
+            if (addMoreAuthor) {
+                console.success({
+                    message: `Autor ${contributor.title} adicionado com sucesso! Adicione mais autores:`,
+                });
+                addAuthor(args);
+            } else {
+                const pubGenJson = pubGenConfig(publication);
 
-            fs.writeFileSync(
-                path.resolve(dirName, "pub-gen.json"),
-                JSON.stringify(pubGenJson, null, 4)
-            );
-            const authorsNames = authors
-                .map((author) => author.name)
-                .join(", ");
+                pubGenJson.contributors = [
+                    ...pubGenJson.contributors,
+                    ...authors,
+                ];
 
-            console.log(
-                chalk.green(`Autores adicionados com sucesso: ${authorsNames}`)
-            );
-        }
+                createFile(
+                    {
+                        filePath: path.resolve(
+                            getPaths().publications,
+                            publication,
+                            "pub-gen.json"
+                        ),
+                        ext: "json",
+                    },
+                    pubGenJson
+                );
+
+                const authorsNames = authors
+                    .map((author) => author.title)
+                    .join(", ");
+
+                console.success({
+                    message: `Autores adicionados com sucesso: ${authorsNames}`,
+                });
+
+                authors = [];
+            }
+        },
     });
 };

@@ -7,6 +7,7 @@ import { Console } from "@elucidario/pkg-console";
 
 import { getPaths } from "../getPaths.js";
 const paths = getPaths();
+
 const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
 );
@@ -16,10 +17,8 @@ const token = JSON.parse(
 ).token;
 
 export const fetchLocales = async (lang) => {
-    console.log(lang, {
-        defaultLog: true,
-        type: "info",
-        title: "Fetching locales...",
+    console.warning({
+        message: `Fetching locales for ${lang.join(", ")}`,
     });
 
     const locales = lang.filter((locale) => {
@@ -30,12 +29,12 @@ export const fetchLocales = async (lang) => {
             `locales-${locale}.xml`
         );
         if (!fs.existsSync(localePath)) {
-            console.log(
-                `Locale ${locale} not found in cache. Fetching from GitHub...`
-            );
+            console.warning({
+                message: `Locale ${locale} not found in cache. Fetching from GitHub...`,
+            });
             return true;
         }
-        console.log(`Locale ${locale} found in cache.`);
+        console.warning({ message: `Locale ${locale} found in cache.` });
         return false;
     });
 
@@ -83,7 +82,7 @@ export const fetchLocales = async (lang) => {
                         throw error;
                     });
             } catch (error) {
-                console.log({ error }, { defaultLog: true, type: "error" });
+                console.error({ defaultLog: true, message: error });
             }
         })
     );

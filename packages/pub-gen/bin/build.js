@@ -9,7 +9,7 @@ import { Command } from "commander";
 
 import { Console } from "@elucidario/pkg-console";
 import { getPaths } from "../lib/getPaths.js";
-import { debounce } from "../lib/debounce.js";
+import { debounce } from "../lib/utils.js";
 
 const paths = getPaths();
 const packageJson = JSON.parse(
