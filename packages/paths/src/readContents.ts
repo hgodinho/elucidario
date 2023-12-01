@@ -87,7 +87,9 @@ export function readContents<T>({
                     }
                 } else {
                     try {
-                        const ext = filePath.ext.replace(".", "");
+                        const ext = filePath.ext
+                            ? filePath.ext.replace(".", "")
+                            : "json";
                         result.push(
                             readFile<T>({
                                 filePath: path.resolve(dirPath, file),

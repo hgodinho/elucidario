@@ -45,6 +45,14 @@ export interface ReadFileProps {
     enc?: BufferEncoding;
 }
 
+export interface CreateFileProps {
+    filePath: string;
+    enc?: BufferEncoding;
+    ext?: string;
+    replacer?: any;
+    space?: string | number;
+}
+// JSON.stringify(pubGenJson, null, 4)
 export interface File<T extends unknown> {
     name: string;
     path: string;

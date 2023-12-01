@@ -5,6 +5,7 @@ import type {
     File,
     ReadFileProps,
     ParseFileProps,
+    CreateFileProps,
 } from "@elucidario/pkg-types";
 
 /**
@@ -27,17 +28,26 @@ export function fileExists(filePath: string): boolean {
  *
  * @returns | file contents
  */
-export function readFile<T>({ filePath, ext, enc }: ReadFileProps): File<T> {
+export function readFile<T>(file: string | ReadFileProps): File<T> {
+    let enc: BufferEncoding | undefined;
+    let ext: string | undefined;
+    let filePath: string;
+    if (typeof file === "string") {
+        filePath = file;
+    } else {
+        filePath = file.filePath;
+        enc = file.enc;
+        ext = file.ext;
+    }
     if (typeof enc === "undefined") enc = "utf-8";
-
     const parsed = path.parse(filePath);
-    if (!ext) ext = parsed.ext.replace(".", "");
+    if (typeof ext === "undefined") ext = parsed.ext.replace(".", "");
 
     const { size, atime, mtime, ctime, birthtime } = fs.statSync(
         path.resolve(filePath),
     );
 
-    const file: File<T> = {
+    const read: File<T> = {
         name: parsed.name,
         path: filePath,
         ext,
@@ -52,7 +62,7 @@ export function readFile<T>({ filePath, ext, enc }: ReadFileProps): File<T> {
     try {
         switch (ext) {
             case "json":
-                file.content = JSON.parse(
+                read.content = JSON.parse(
                     fs.readFileSync(path.resolve(filePath), enc).toString(),
                 ) as T;
                 break;
@@ -60,13 +70,13 @@ export function readFile<T>({ filePath, ext, enc }: ReadFileProps): File<T> {
             case "md":
             case "txt":
             case "html":
-                file.content = fs
+                read.content = fs
                     .readFileSync(path.resolve(filePath), enc)
                     .toString() as T;
                 break;
         }
 
-        return file;
+        return read;
     } catch (err: any) {
         throw new Error(`Cannot read file at ${filePath}: ${err}`);
     }
@@ -75,20 +85,54 @@ export function readFile<T>({ filePath, ext, enc }: ReadFileProps): File<T> {
 /**
  * Create a file if it doesn't exist, overwriting it if it does.
  *
- * @param filePath The path to the file.
+ * @param file The path to the file.
  * @param contents The contents of the file.
  * @returns {string}
  */
 export function createFile(
-    filePath: string,
+    file: string | CreateFileProps,
     contents: any,
     options?: WriteFileOptions,
 ): string {
+    let filePath: string;
+    if (typeof file === "string") {
+        filePath = file;
+    } else {
+        filePath = file.filePath;
+    }
     const resolvedPath = path.resolve(filePath);
-    const { dir } = path.parse(resolvedPath);
-    createDir(dir);
-    fs.writeFileSync(resolvedPath, contents, options);
-    return resolvedPath;
+    const { dir, ext } = path.parse(resolvedPath);
+
+    const extension = ext
+        ? ext.replace(".", "")
+        : typeof file === "string"
+        ? "md"
+        : file.ext;
+
+    try {
+        createDir(dir);
+        switch (extension) {
+            case "json":
+                file = file as CreateFileProps;
+                contents = JSON.stringify(
+                    contents,
+                    file.replacer || null,
+                    file.space || 4,
+                );
+                break;
+
+            case "md":
+            case "txt":
+            case "html":
+            default:
+                contents = contents.toString();
+                break;
+        }
+        fs.writeFileSync(resolvedPath, contents, options);
+        return resolvedPath;
+    } catch (err) {
+        throw new Error(`Cannot create file at ${file}: ${err}`);
+    }
 }
 
 /**
