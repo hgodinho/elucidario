@@ -1,9 +1,8 @@
-import React, { ElementType } from "react";
+import React from "react";
 import type { FieldRootProps } from "@elucidario/pkg-types";
 import { FieldProvider } from "./FieldProvider";
 import { FieldLabel } from "./FieldLabel";
 import { FieldDescription } from "./FieldDescription";
-import { useFieldComponent } from "./useFieldComponent";
 
 import { Input, Multiple, Object } from "../";
 
@@ -13,10 +12,8 @@ export const FieldRoot = ({
     translations,
     map,
     language,
+    name,
 }: FieldRootProps) => {
-
-    const fieldProps = useFieldComponent(schema);
-
     // Componente a ser usado
     const Component = (() => {
         switch (schema.type) {
@@ -41,23 +38,16 @@ export const FieldRoot = ({
         }
     })() : 'div';
 
-    console.log('FieldRoot', {
+    const props: FieldRootProps = {
         schema,
         translations,
         map,
         language,
-        // fieldProps,
-        Component,
-        As
-    })
+        name
+    }
 
     return (
-        <FieldProvider
-            schema={schema}
-            translations={translations}
-            map={map}
-            language={language}
-        >
+        <FieldProvider {...props}>
             <As className="field flex flex-col mb-4">
                 <FieldLabel type={'fieldset' === As ? 'legend' : 'label'} />
                 <Component />

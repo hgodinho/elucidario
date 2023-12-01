@@ -8,11 +8,11 @@ import type {
 import { Legend } from "../legend";
 import { Label } from "../label";
 
-import { useFieldProvider } from "./useFieldProvider";
+import useFieldContext from "./useFieldContext";
 // import { FieldMapping } from "./FieldMapping";
 
 export const FieldLabel = ({ children, type, ...props }: FieldLabelProps) => {
-    const { label, map } = useFieldProvider();
+    const { label, map } = useFieldContext();
 
     const Child = useMemo(() => {
         // const X = children === undefined

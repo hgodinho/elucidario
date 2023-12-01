@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
-
 import { Button } from "@/components";
 
 import { ButtonProps } from "@elucidario/pkg-types";
 import { ComponentTemplate } from "../ComponentTemplate";
 
-const ButtonTemplate = (args: ButtonProps) => {
+const Template = (args: ButtonProps) => {
     return (
         <ComponentTemplate>
             <Button {...args} />
@@ -16,8 +14,7 @@ const ButtonTemplate = (args: ButtonProps) => {
 
 const meta = {
     title: "@elucidario/pkg-design-system/components/Button",
-    component: ButtonTemplate,
-    // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
+    component: Template,
     tags: ["autodocs"],
     args: {
         children: "Button",
@@ -25,7 +22,7 @@ const meta = {
     parameters: {
         layout: "fullscreen",
     },
-} satisfies Meta<typeof ButtonTemplate>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 
