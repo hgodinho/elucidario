@@ -12,6 +12,8 @@ import { readFile } from "./file";
 
 import { Console } from "@elucidario/pkg-console";
 
+import { supportedExtensions } from "./file";
+
 /**
  * Lê o conteúdo de um diretório recursivamente, retornando um objeto com o conteúdo de cada arquivo ou path
  *
@@ -29,13 +31,17 @@ import { Console } from "@elucidario/pkg-console";
 export function readContents<T>({
     dirPath,
     index = true,
-    extensions = ["json", "md"],
+    extensions = [],
     returnType = "content",
     exclude,
     log,
     package: pkg,
 }: ReadContentsProps): ReadContentsReturn<T> {
     const result: ReadContentsReturn<T> = [];
+
+    if (extensions.length === 0) {
+        extensions = supportedExtensions;
+    }
 
     // Selecionar o package.json do projeto, caso não seja recebido como parâmetro
     if (!pkg) {
@@ -58,6 +64,15 @@ export function readContents<T>({
             files.forEach((file: string) => {
                 const filePath = path.parse(file);
                 const stat = fs.statSync(path.resolve(dirPath, file));
+
+                const ext = filePath.ext
+                    ? filePath.ext.replace(".", "")
+                    : "json";
+
+                // se for um arquivo e não estiver na lista de extensões, retorna.
+                if (!extensions.includes(ext)) {
+                    return;
+                }
 
                 // se for um diretório, chama a função recursivamente
                 if (stat.isDirectory()) {
@@ -87,15 +102,18 @@ export function readContents<T>({
                     }
                 } else {
                     try {
-                        const ext = filePath.ext
-                            ? filePath.ext.replace(".", "")
-                            : "json";
-                        result.push(
-                            readFile<T>({
-                                filePath: path.resolve(dirPath, file),
-                                ext,
-                            }),
-                        );
+                        if (extensions.includes(ext)) {
+                            result.push(
+                                readFile<T>({
+                                    filePath: path.resolve(dirPath, file),
+                                    ext,
+                                }),
+                            );
+                        } else {
+                            throw new Error(
+                                `File extension ${ext} not supported`,
+                            );
+                        }
                     } catch (err: any) {
                         throw new Error(
                             `Cannot read file at ${path.resolve(

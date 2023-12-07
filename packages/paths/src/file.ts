@@ -24,6 +24,26 @@ export function fileExists(filePath: string): boolean {
 }
 
 /**
+ *  Read JSON file
+ * @param filePath | path to file
+ * @param enc | encoding
+ * @returns | json file contents
+ */
+export function readJSON(filePath: string, enc: BufferEncoding) {
+    return JSON.parse(fs.readFileSync(path.resolve(filePath), enc).toString());
+}
+
+/**
+ *  Read text file
+ * @param filePath | path to file
+ * @param enc | encoding
+ * @returns | text file contents
+ */
+export function readText(filePath: string, enc: BufferEncoding) {
+    return fs.readFileSync(path.resolve(filePath), enc).toString();
+}
+
+/**
  * Read file contents
  *
  * @returns | file contents
@@ -62,17 +82,15 @@ export function readFile<T>(file: string | ReadFileProps): File<T> {
     try {
         switch (ext) {
             case "json":
-                read.content = JSON.parse(
-                    fs.readFileSync(path.resolve(filePath), enc).toString(),
-                ) as T;
+                read.content = readJSON(path.resolve(filePath), enc) as T;
                 break;
 
             case "md":
             case "txt":
             case "html":
-                read.content = fs
-                    .readFileSync(path.resolve(filePath), enc)
-                    .toString() as T;
+            case "xml":
+            case "csl":
+                read.content = readText(filePath, enc) as T;
                 break;
         }
 
@@ -81,6 +99,8 @@ export function readFile<T>(file: string | ReadFileProps): File<T> {
         throw new Error(`Cannot read file at ${filePath}: ${err}`);
     }
 }
+
+export const supportedExtensions = ["json", "md", "txt", "html", "xml", "csl"];
 
 /**
  * Create a file if it doesn't exist, overwriting it if it does.
