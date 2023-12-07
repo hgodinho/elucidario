@@ -7,10 +7,12 @@ export type GetPathsReturn = {
     apps: string;
     publications: string;
     references: string;
+    tools: string;
     monorepo: {
         packages: [string, string][];
         apps: [string, string][];
         publications: [string, string][];
+        tools: [string, string][];
     };
 };
 

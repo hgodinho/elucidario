@@ -13,8 +13,8 @@
         "dev": "pnpm build -w"
     },
     "devDependencies": {
-        "@elucidario/pkg-rollup": "workspace:^",
-        "@elucidario/pkg-tsconfig": "workspace:^",
+        "@elucidario/tool-rollup": "workspace:^",
+        "@elucidario/tool-tsconfig": "workspace:^",
         "@elucidario/pkg-types": "workspace:^",
         "@types/node": "^18.15.11",
         "jest": "^29.5.0",

@@ -2,3 +2,4 @@ packages:
     - "packages/*"
     - "publications/*"
     - "apps/*"
+    - "tools/*"

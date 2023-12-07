@@ -18,8 +18,9 @@
         }
     },
     "scripts": {
-        "build": "pnpm clean && tsc && rollup -c",
-        "build:test": "pnpm build && pnpm test",
+        "build": "tsc && rollup -c",
+        "build:clean": "pnpm clean && pnpm build",
+        "build:test": "pnpm build:clean && pnpm test",
         "dev": "pnpm build -w",
         "clean": "rm -rf dist/*",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
@@ -38,8 +39,8 @@
         "@babel/plugin-syntax-import-attributes": "^7.22.5",
         "@babel/plugin-transform-json-strings": "^7.22.5",
         "@babel/preset-env": "^7.23.3",
-        "@elucidario/pkg-rollup": "workspace:^",
-        "@elucidario/pkg-tsconfig": "workspace:^",
+        "@elucidario/tool-rollup": "workspace:^",
+        "@elucidario/tool-tsconfig": "workspace:^",
         "@elucidario/pkg-types": "workspace:^",
         "@types/lodash-es": "^4.17.7",
         "@types/node": "^20.4.1",

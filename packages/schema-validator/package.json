@@ -18,7 +18,9 @@
     ],
     "scripts": {
         "clean": "rm -r dist/*",
-        "build": "pnpm clean && tsc && rollup -c && pnpm test",
+        "build": "tsc && rollup -c",
+        "build:clean": "pnpm clean && pnpm build",
+        "build:test": "pnpm build:clean && pnpm test",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
         "test:cov": "pnpm test -- --coverage --coverageDirectory=\"tests/coverage\""
     },
@@ -29,8 +31,8 @@
         "@babel/plugin-syntax-import-attributes": "^7.22.5",
         "@babel/plugin-transform-json-strings": "^7.22.5",
         "@babel/preset-env": "^7.23.3",
-        "@elucidario/pkg-rollup": "workspace:^",
-        "@elucidario/pkg-tsconfig": "workspace:^",
+        "@elucidario/tool-rollup": "workspace:^",
+        "@elucidario/tool-tsconfig": "workspace:^",
         "@elucidario/pkg-types": "workspace:^",
         "jest": "^29.7.0",
         "rollup": "^4.6.0",

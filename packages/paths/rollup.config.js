@@ -1,4 +1,4 @@
-import lcdrRollupConfig from "@elucidario/pkg-rollup";
+import lcdrRollupConfig from "@elucidario/tool-rollup";
 
 import pkg from "./package.json" assert { type: "json" };
 

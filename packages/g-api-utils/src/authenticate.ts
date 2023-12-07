@@ -2,19 +2,19 @@ import { Auth, Credentials } from "./classes/Auth";
 import { SCOPES as EnumScopes } from "./enums";
 import type { SCOPES } from "./classes/Auth";
 import fs, { PathOrFileDescriptor } from "fs";
-import { parseArgs } from "@elucidario/pkg-parse-args";
+import { parseArgs } from "@elucidario/tool-parse-args";
 
 export const authenticate = async (
     credentials: Credentials | undefined = undefined,
     scopes: SCOPES | undefined = undefined,
-    path: PathOrFileDescriptor | undefined = undefined
+    path: PathOrFileDescriptor | undefined = undefined,
 ) => {
     try {
         const options = parseArgs();
 
         if (!credentials) {
             credentials = JSON.parse(
-                fs.readFileSync(options.path + "credentials.json", "utf8")
+                fs.readFileSync(options.path + "credentials.json", "utf8"),
             ).installed as Credentials;
         }
         if (!scopes) {

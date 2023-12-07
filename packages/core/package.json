@@ -8,22 +8,25 @@
     "type": "module",
     "main": "index.js",
     "scripts": {
+        "db:reset-test": "rm -r ./wp/src/wp-content/database",
         "index": "node ./.bin/create-index.js",
-        "make-pot": "node ./.bin/make-pot.js",
-        "test": "pnpm .bin/test.sh",
-        "lint": "pnpm .bin/lint.sh",
         "jest": "jest --coverage",
-        "db:reset-test": "rm -r ./wp/src/wp-content/database"
+        "lint": "pnpm .bin/lint.sh",
+        "make-pot": "node ./.bin/make-pot.js",
+        "test": "pnpm .bin/test.sh"
     },
     "dependencies": {
-        "@elucidario/pkg-mdorim": "workspace:^",
-        "@elucidario/pkg-rollup": "workspace:^",
-        "@elucidario/pkg-tsconfig": "workspace:^",
-        "@elucidario/pkg-types": "workspace:^"
+        "@elucidario/pkg-mdorim": "workspace:^"
     },
     "devDependencies": {
+        "@elucidario/tool-rollup": "workspace:^",
+        "@elucidario/tool-tsconfig": "workspace:^",
+        "@elucidario/pkg-types": "workspace:^",
         "@types/node": "^18.15.11",
         "wp-pot": "^1.10.2"
+    },
+    "peerDependencies": {
+        "@elucidario/pkg-mdorim": "workspace:^"
     },
     "wp_plugin": {
         "name": "Elucidário.art",
