@@ -8,7 +8,6 @@ type: erDiagram
 ---
 
 ```mermaid
-   erDiagram
+    erDiagram
         OBJETO ||--|{ CLASSIFICACAO : ""
-
 ```

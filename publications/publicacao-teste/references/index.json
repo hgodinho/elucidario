@@ -1,0 +1,14 @@
+{
+    "items": [
+        {
+            "id": "linked-art2021.1",
+            "slug": "linked-art",
+            "path": "<references>/linked-art2021.1_linked-art.json"
+        },
+        {
+            "id": "linked-art2021.2",
+            "slug": "community-linked-art",
+            "path": "<references>/linked-art2021.2_community-linked-art.json"
+        }
+    ]
+}

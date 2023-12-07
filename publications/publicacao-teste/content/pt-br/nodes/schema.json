@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "https://elucidario.art/mdorim/schemas/mdorim/teste.json",
+    "title": "Teste",
+    "properties": {
+        "entity_id": {
+            "type": "integer",
+            "description": "Unique identifier for the resource."
+        },
+        "name": {
+            "type": "string",
+            "description": "The name for the resource."
+        },
+        "guid": {
+            "type": "string",
+            "description": "Global Unique Identifier for the resource."
+        }
+    },
+    "required": ["entity_id", "name", "guid"],
+    "additionalProperties": false
+}

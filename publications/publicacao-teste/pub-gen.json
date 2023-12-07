@@ -7,27 +7,16 @@
     "type": "book",
     "year": "2023",
     "description": "publicação para testar o pub-gen",
-    "homepage": "",
-    "keywords": [""],
-    "image": "",
     "name": "publicacao-teste",
-    "licenses": [
-        {
-            "name": "",
-            "path": "",
-            "title": ""
-        }
-    ],
     "contributors": [
         {
             "title": "Henrique Godinho",
-            "path": "",
-            "email": "henrique@hgod.in",
-            "organization": "",
-            "role": ""
+            "email": "henrique@hgod.in"
         }
     ],
-    "publications": [
+    "created": "2023-11-26T20:02:56.811Z",
+    "private": false,
+    "documents": [
         {
             "title": "Publicação Teste",
             "language": "pt-br",
@@ -36,6 +25,5 @@
                 "url": "https://github.com/citation-style-language/styles/blob/7febc50b6b4cb22aa5ca063b0d6c6c03e9b311a9/universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl"
             }
         }
-    ],
-    "created": "2023-11-26T20:02:56.811Z"
+    ]
 }

@@ -1,0 +1,1 @@
+{{schema:nodes/schema.json}}
