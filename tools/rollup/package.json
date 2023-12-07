@@ -1,11 +1,11 @@
 {
-    "name": "@elucidario/pkg-rollup",
+    "name": "@elucidario/tool-rollup",
     "version": "1.0.2",
     "main": "rollup.config.js",
     "license": "MIT",
     "type": "module",
     "devDependencies": {
-        "@elucidario/pkg-tsconfig": "workspace:^",
+        "@elucidario/tool-tsconfig": "workspace:^",
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-terser": "^0.4.0",
         "@rollup/plugin-typescript": "^11.1.0",

@@ -1,0 +1,11 @@
+{
+    "name": "@elucidario/tool-tsconfig",
+    "version": "1.0.1",
+    "description": "Configuração typescript compartilhada",
+    "main": "tsconfig.json",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^18.15.11",
+        "typescript": "^5.0.4"
+    }
+}

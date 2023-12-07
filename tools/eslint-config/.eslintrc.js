@@ -31,8 +31,8 @@ export default () => ({
         "@typescript-eslint/camelcase": "off",
         "simple-import-sort/imports": "warn",
         "no-console": "off",
-        "sort-keys": "off",
-        "sort-imports": "off",
+        "sort-keys": "on",
+        "sort-imports": "on",
     },
     env: {
         browser: true,
