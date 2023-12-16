@@ -12,17 +12,17 @@
     "properties": {
         "title": {
             "title": "Title",
-            "description": "Table title",
+            "description": "Table title (supports Markdown)",
             "type": "string"
         },
         "description": {
             "title": "Description",
-            "description": "Table description",
+            "description": "Table description (supports Markdown)",
             "type": "string"
         },
         "note": {
             "title": "Note",
-            "description": "Table footnote",
+            "description": "Table footnote (supports Markdown)",
             "type": "object",
             "properties": {
                 "label": {

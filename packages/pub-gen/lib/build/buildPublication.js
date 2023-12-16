@@ -26,26 +26,21 @@ export async function buildPublication({ publication }) {
                 paths.publications,
                 publication,
                 "dist",
-                language
+                language,
             );
             const staticPath = path.resolve(
                 paths.publications,
                 publication,
                 "files",
-                "static"
+                "static",
             );
 
             const processed = await processDocs({
                 publication,
                 lang: language,
                 style: style.name,
-                version: pkgJson.version,
-                attachmentIndex: {
-                    images: [],
-                    tables: [],
-                    figures: [],
-                    charts: [],
-                },
+                pkg: pkgJson,
+                assets: {},
             });
 
             const { indexFiles, content, assets } = processed;
@@ -55,15 +50,15 @@ export async function buildPublication({ publication }) {
                 ([name, file]) => {
                     return createFile(
                         path.resolve(distPath, `${name}.md`),
-                        file
+                        file,
                     ).slice(distPath.length + 1);
-                }
+                },
             );
 
             // BUILD CONTENT FILES.
             manifest.content = content.map((file) => {
-                return createFile(file.path, file.content).slice(
-                    distPath.length + 1
+                return createFile(file.path, file.processed.value).slice(
+                    distPath.length + 1,
                 );
             });
 
@@ -74,21 +69,18 @@ export async function buildPublication({ publication }) {
                         acc.push(
                             path
                                 .resolve(asset.path)
-                                .replace(staticPath, "..\\..\\files\\static")
+                                .replace(staticPath, "..\\..\\files\\static"),
                         );
                     });
                     return acc;
                 },
-                []
+                [],
             );
 
             manifests[language] = manifest;
 
-            createFile(
-                path.resolve(distPath, "manifest.json"),
-                JSON.stringify(manifest, null, 4)
-            );
-        })
+            createFile(path.resolve(distPath, "manifest.json"), manifest);
+        }),
     );
 
     return manifests;

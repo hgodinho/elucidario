@@ -1,8 +1,8 @@
-import { tableMarkdown } from "../../lib/remark/table";
+import markdownTable from "../../../lib/remark/table/markdownTable.js";
 
-describe("tableMarkdown", () => {
+describe("markdownTable", () => {
     it("should return a table", async () => {
-        const table = await tableMarkdown({
+        const table = await markdownTable({
             title: "Table",
             fields: [
                 {

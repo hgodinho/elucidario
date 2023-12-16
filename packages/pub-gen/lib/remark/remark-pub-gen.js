@@ -7,7 +7,7 @@ import { entityPage } from "@elucidario/pkg-schema-doc";
 import { toMD, bold, codeBlock } from "@elucidario/pkg-docusaurus-md";
 
 import { getPaths, readFile } from "@elucidario/pkg-paths";
-import { tableMarkdown } from "./table.js";
+import markdownTable from "./table/markdownTable.js";
 
 const pkg = readFile(
     path.resolve(getPaths().packages, "pub-gen", "package.json")
@@ -18,24 +18,7 @@ import { Console } from "@elucidario/pkg-console";
 const console = new Console(pkg);
 
 import { engine } from "../reference/csl-engine.js";
-
-/**
- * Replace Regex Handlebars
- *
- * @param {string} text
- * @param {Object} options
- * @returns {string}
- */
-export function replaceRegexHandlebars(text, options) {
-    if (!text) return null;
-    const regex = /{{(.*?)}}/g;
-    const replacedText = text.replace(regex, (match, group) => {
-        const replacement = options[group.trim()] || "";
-        return replacement;
-    });
-
-    return replacedText;
-}
+import { replaceRegexHandlebars } from "../utils.js";
 
 /**
  * Parse Value
@@ -282,7 +265,7 @@ export default function remarkPubGen(options) {
 
         // parse tables
         const promises = tables.map(async ({ node, value, tableData }) => {
-            const tableMd = await tableMarkdown(tableData, "-").then(
+            const tableMd = await markdownTable(tableData, "-").then(
                 (md) => md
             );
             node.value = tableMd;

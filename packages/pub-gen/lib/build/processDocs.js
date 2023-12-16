@@ -1,12 +1,7 @@
 import path from "path";
 
-import { pubGenRemarkProcessor } from "../remark/processor.js";
-import {
-    readContents,
-    getPaths,
-    dirExists,
-    parseFile,
-} from "@elucidario/pkg-paths";
+import { pubGenProcessor } from "../remark/pubGenProcessor.js";
+import { readContents, getPaths, dirExists } from "@elucidario/pkg-paths";
 import { processIndexFiles } from "./processIndexFiles.js";
 
 const paths = getPaths();
@@ -14,26 +9,24 @@ const paths = getPaths();
  * Process Docs
  * @param {Object} args
  * @param {string} args.publication
- * @param {string} args.srcPath
- * @param {string} args.distPath
  * @param {string} args.lang
  * @param {string} args.style
- * @param {string} args.version
- * @param {Object} args.attachmentIndex
+ * @param {string} args.pkg
+ * @param {Object} args.assets
  * @returns {Promise<Array<Object>>}
  */
 export const processDocs = async ({
     publication,
     lang,
     style,
-    version,
-    attachmentIndex,
+    pkg,
+    assets,
 }) => {
     const srcPath = path.resolve(
         paths.publications,
         publication,
         "content",
-        lang
+        lang,
     );
 
     const content = readContents({
@@ -50,9 +43,12 @@ export const processDocs = async ({
 
     const extensions = ["png", "jpg", "jpeg", "gif", "svg", "ico"];
 
+    /**
+     * Assets.
+     */
     if (
         dirExists(
-            path.resolve(paths.publications, publication, "files", "static")
+            path.resolve(paths.publications, publication, "files", "static"),
         )
     ) {
         produced.assets.static = readContents({
@@ -60,17 +56,16 @@ export const processDocs = async ({
                 paths.publications,
                 publication,
                 "files",
-                "static"
+                "static",
             ),
             returnType: "path",
             extensions,
             index: false,
         });
     }
-
     if (
         dirExists(
-            path.resolve(paths.publications, publication, "files", "generated")
+            path.resolve(paths.publications, publication, "files", "generated"),
         )
     ) {
         produced.assets.dynamic = readContents({
@@ -78,7 +73,7 @@ export const processDocs = async ({
                 paths.publications,
                 publication,
                 "files",
-                "generated"
+                "generated",
             ),
             returnType: "path",
             extensions,
@@ -90,49 +85,38 @@ export const processDocs = async ({
      *  Step Processor
      * @param {Object} file
      */
-    const stepProcessor = async ({ content, ...file }) => {
-        switch (typeof content) {
-            case "string":
-                const newFile = await pubGenRemarkProcessor(content, {
-                    pubGen: {
-                        publication,
-                        lang,
-                        style,
-                        path: path.resolve(srcPath),
-                        index: attachmentIndex,
-                        distPath: path.resolve(
-                            paths.publications,
-                            publication,
-                            "files",
-                            "generated",
-                            version
-                        ),
-                    },
-                });
+    const stepProcessor = async (file) => {
+        const newFile = await pubGenProcessor(file.content, {
+            publication,
+            lang,
+            style,
+            assets,
+            pkg,
+        });
 
-                const filePath = file.path.replace("content", "dist");
-                return parseFile({
-                    content: newFile.value,
-                    ...file,
-                    path: filePath,
-                });
-        }
+        const filePath = file.path.replace("content", "dist");
+
+        return {
+            original: file,
+            processed: newFile,
+            path: filePath,
+        };
     };
 
     await Promise.all(
         content.map(async (file) => {
-            const newFile = await stepProcessor(file);
-            produced.content.push(newFile);
+            produced.content.push(await stepProcessor(file));
         }),
-        (produced.indexFiles = await processIndexFiles({
-            index: attachmentIndex,
-            publication,
-            lang,
-            srcPath,
-            style,
-            version,
-        }))
     );
+
+    produced.indexFiles = await processIndexFiles({
+        assets,
+        publication,
+        lang,
+        srcPath,
+        style,
+        pkg,
+    });
 
     return produced;
 };

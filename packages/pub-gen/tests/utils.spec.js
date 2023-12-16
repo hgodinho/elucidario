@@ -7,9 +7,14 @@ import {
     createGitignore,
     createPubGenJson,
     createPackageJson,
+    referenceIndex,
+    referencesFrom,
+    mdToMdast,
 } from "../lib/utils";
+
 import testPubGenConfig from "../../../publications/publicacao-teste/pub-gen.json";
 import testPackageJson from "../../../publications/publicacao-teste/package.json";
+import referenceIndexJson from "../../../publications/publicacao-teste/references/index.json";
 
 describe("pubGenConfig", () => {
     it("should return the default config", () => {
@@ -161,7 +166,7 @@ describe("createREADME", () => {
 
 > Publicação gerada com [pub-gen](https://elucidario.art/pub-gen)
 
-Teste de publicação`
+Teste de publicação`,
         );
     });
 });
@@ -175,7 +180,7 @@ describe("createGitignore", () => {
 credentials.json
 token.json
 dist
-~$*.*`
+~$*.*`,
         );
     });
 });
@@ -240,5 +245,130 @@ describe("createPackageJson", () => {
                 "version-up": "pub-gen version -p publicacao-teste",
             },
         });
+    });
+});
+
+describe("referenceIndex", () => {
+    it("should return the reference index", () => {
+        const index = referenceIndex("publicacao-teste");
+        expect(index).toEqual(referenceIndexJson);
+    });
+
+    it("should throw an error if the publication doesn't exist", () => {
+        expect(() => referenceIndex("banana")).toThrow();
+    });
+});
+
+describe("referencesFrom", () => {
+    it("should return the references", () => {
+        const index = referencesFrom("publicacao-teste");
+        expect(index).toEqual([
+            {
+                id: "linked-art2021.1",
+                "@schema":
+                    "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+                "@type": "Reference",
+                _slug: "linked-art",
+                _create: "2023-05-20T19:04:09.481Z",
+                _update: "2023-05-20T19:04:09.481Z",
+                type: "webpage",
+                title: "Linked Art",
+                author: [
+                    {
+                        family: "Linked Art",
+                    },
+                ],
+                accessed: { raw: "2023-05-20" },
+                issued: { raw: "2021" },
+                language: "en",
+                URL: "https://linked.art/",
+            },
+            {
+                id: "linked-art2021.2",
+                "@schema":
+                    "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+                "@type": "Reference",
+                _slug: "community-linked-art",
+                _create: "2023-05-20T19:06:24.839Z",
+                _update: "2023-05-20T19:06:24.839Z",
+                type: "webpage",
+                title: "Community - Linked Art",
+                author: [
+                    {
+                        family: "Linked Art",
+                    },
+                ],
+                accessed: { raw: "2023-05-20" },
+                issued: { raw: "2021" },
+                language: "en",
+                URL: "https://linked.art/community/",
+            },
+        ]);
+    });
+
+    it("should throw an error if the publication doesn't exist", () => {
+        expect(() => referencesFrom("banana")).toThrow();
+    });
+});
+
+describe("mdToMdast", () => {
+    it("should return a mdast tree", () => {
+        const md = `# Hello World`;
+        const mdast = mdToMdast(md);
+        expect(mdast).toEqual({
+            type: "root",
+            children: [
+                {
+                    type: "heading",
+                    depth: 1,
+                    children: [
+                        {
+                            type: "text",
+                            value: "Hello World",
+                            position: {
+                                start: { line: 1, column: 3, offset: 2 },
+                                end: { line: 1, column: 14, offset: 13 },
+                            },
+                        },
+                    ],
+                    position: {
+                        start: { line: 1, column: 1, offset: 0 },
+                        end: { line: 1, column: 14, offset: 13 },
+                    },
+                },
+            ],
+            position: {
+                start: { line: 1, column: 1, offset: 0 },
+                end: { line: 1, column: 14, offset: 13 },
+            },
+        });
+    });
+
+    it("should return a reduced mdast tree", () => {
+        const md = `**Hello world**`;
+
+        const mdast = mdToMdast(md, {
+            reduce: true,
+        });
+
+        expect(mdast).toEqual([
+            {
+                type: "strong",
+                children: [
+                    {
+                        type: "text",
+                        value: "Hello world",
+                        position: {
+                            start: { line: 1, column: 3, offset: 2 },
+                            end: { line: 1, column: 14, offset: 13 },
+                        },
+                    },
+                ],
+                position: {
+                    start: { line: 1, column: 1, offset: 0 },
+                    end: { line: 1, column: 16, offset: 15 },
+                },
+            },
+        ]);
     });
 });

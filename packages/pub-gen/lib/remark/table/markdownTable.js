@@ -14,7 +14,7 @@ const packageJson = JSON.parse(
 );
 const console = new Console(packageJson);
 
-export const tableMarkdown = async (json, emptyValue = "") => {
+async function markdownTable(json, emptyValue = "") {
     try {
         const schemaValidator = new SchemaValidator();
 
@@ -94,4 +94,6 @@ export const tableMarkdown = async (json, emptyValue = "") => {
             }
         );
     }
-};
+}
+
+export default markdownTable;

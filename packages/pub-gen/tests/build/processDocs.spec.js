@@ -1,5 +1,6 @@
 import { processDocs } from "../../lib/build/processDocs.js";
 import { processIndexFiles } from "../../lib/build/processIndexFiles.js";
+import { packageJson } from "../../lib/utils.js";
 
 const index = {
     images: ["imagem-1", "imagem-2"],
@@ -11,7 +12,7 @@ const index = {
 describe("processIndexFiles", () => {
     it("should return the index files", async () => {
         const processed = await processIndexFiles({
-            index,
+            assets: index,
             publication: "publicacao-teste",
             lang: "pt-BR",
             style: "abnt",
@@ -59,18 +60,146 @@ describe("processIndexFiles", () => {
 });
 
 describe("processDocs", () => {
+    const pkg = packageJson("publicacao-teste");
+
     it("should return the docs", async () => {
         const processed = await processDocs({
             publication: "publicacao-teste",
             lang: "pt-BR",
-            style: "abnt",
+            style: "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
             version: "1.0.0",
-            attachmentIndex: index,
+            assets: index,
+            pkg,
         });
 
-        // console.log(processed);
-
         expect(processed).toMatchObject({
+            content: [
+                {
+                    original: {
+                        name: "first-level",
+                        path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\really\\first-level.md",
+                        ext: "md",
+                        size: 46,
+                    },
+                    processed: {
+                        data: {},
+                        messages: [],
+                        history: [],
+                        cwd: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
+                        value:
+                            "# First level\n" +
+                            "\n" +
+                            "**Quadro 3: Teste Tabela.**\\\n" +
+                            "\\\n" +
+                            "| Name       | ID |\n" +
+                            "| :--------- | -- |\n" +
+                            "| John Doe   | 1  |\n" +
+                            "| John Smith | 3  |\\\n" +
+                            "\\\n" +
+                            "**Fonte**: Elaborado pelo autor.\\\n" +
+                            "\\\n",
+                    },
+                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\really\\first-level.md",
+                },
+                {
+                    original: {
+                        name: "second-level",
+                        path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\really\\deep\\second-level.md",
+                        ext: "md",
+                        size: 17,
+                    },
+                    processed: {
+                        data: {},
+                        messages: [],
+                        history: [],
+                        cwd: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
+                        value: "## Second level\n",
+                    },
+                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\really\\deep\\second-level.md",
+                },
+                {
+                    original: {
+                        name: "third-level",
+                        path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\really\\deep\\nested\\third-level.md",
+                        ext: "md",
+                        size: 17,
+                    },
+                    processed: {
+                        data: {},
+                        messages: [],
+                        history: [],
+                        cwd: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
+                        value: "### Third level\n",
+                    },
+                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\really\\deep\\nested\\third-level.md",
+                },
+                {
+                    original: {
+                        name: "file",
+                        path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\really\\deep\\nested\\file\\file.md",
+                        ext: "md",
+                        size: 14,
+                    },
+                    processed: {
+                        data: {},
+                        messages: [],
+                        history: [],
+                        cwd: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
+                        value: "rock bottom.\n",
+                    },
+                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\really\\deep\\nested\\file\\file.md",
+                },
+                {
+                    original: {
+                        name: "hello-world",
+                        path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\hello-world.md",
+                        ext: "md",
+                        size: 847,
+                    },
+                    processed: {
+                        data: {},
+                        messages: [],
+                        history: [],
+                        cwd: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
+                        value:
+                            "# Hello World\n" +
+                            "\n" +
+                            "## Second level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (LINKED ART, 2021a).\n" +
+                            "\n" +
+                            "**Figura 3: Mermaid**\n" +
+                            "\n" +
+                            '```{.mermaid&#x20;filename=mermaid&#x20;loc="C:\\\\\\Users\\\\\\55119\\\\\\Elucidário.art\\\\\\elucidario\\\\\\publications\\\\\\publicacao-teste\\\\\\files\\\\\\generated"&#x20;width=720&#x20;background=transparent}\n' +
+                            "erDiagram\r\n" +
+                            '        OBJETO ||--|{ CLASSIFICACAO : ""\n' +
+                            "```\n" +
+                            "\n" +
+                            "**Fonte:** Elaborado pelo autor.\n" +
+                            "\n" +
+                            "### Third level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a)\n" +
+                            "\n" +
+                            "#### Fourth level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021b)\n" +
+                            "\n" +
+                            "##### Fifth level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a, 2021b)\n" +
+                            "\n" +
+                            "###### Sixth level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\n" +
+                            "\n" +
+                            "**Figura 4: Lorem ipsum**\n" +
+                            "\n" +
+                            "![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)\n",
+                    },
+                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\hello-world.md",
+                },
+            ],
             indexFiles: {
                 images:
                     "# LISTA DE IMAGENS\n" +
@@ -86,7 +215,8 @@ describe("processDocs", () => {
                     "| --- | --- | --- |\n" +
                     "| 1 | figura-1 |  |\n" +
                     "| 2 | figura-2 |  |\n" +
-                    "| 3 | Mermaid |  |",
+                    "| 3 | **Mermaid** |  |\n" +
+                    "| 4 | **Lorem ipsum** |  |",
                 tables:
                     "# LISTA DE TABELAS\n" +
                     "\n" +
@@ -110,79 +240,6 @@ describe("processDocs", () => {
                     "| 1 | ABNT - Associação Brasileira de Normas Técnicas; |  |\n" +
                     "| 2 | APA - American Psychological Association. |  |",
             },
-            content: [
-                {
-                    name: "hello-world",
-                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\hello-world.md",
-                    ext: "md",
-                    content:
-                        "# Hello World\r\n" +
-                        "\r\n" +
-                        "## Second level heading\r\n" +
-                        "\r\n" +
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n" +
-                        "\r\n" +
-                        "**Figura 3: Mermaid**\r\n" +
-                        "\r\n" +
-                        '```{.mermaid filename="mermaid" loc="C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\generated\\1.0.0" width=720 background=transparent}\r\n' +
-                        "   erDiagram\r\n" +
-                        '        OBJETO ||--|{ CLASSIFICACAO : ""\r\n' +
-                        "\r\n" +
-                        "```\r\n" +
-                        "\r\n" +
-                        "**Fonte:** Elaborado pelo autor.\r\n" +
-                        "\r\n" +
-                        "### Third level heading\r\n" +
-                        "\r\n" +
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n" +
-                        "\r\n" +
-                        "#### Fourth level heading\r\n" +
-                        "\r\n" +
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n" +
-                        "\r\n" +
-                        "##### Fifth level heading\r\n" +
-                        "\r\n" +
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n" +
-                        "\r\n" +
-                        "###### Sixth level heading\r\n" +
-                        "\r\n" +
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n",
-                },
-                {
-                    name: "second-level",
-                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\really\\deep\\second-level.md",
-                    ext: "md",
-                    content: "## Second level\r\n",
-                },
-                {
-                    name: "third-level",
-                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\really\\deep\\nested\\third-level.md",
-                    ext: "md",
-                    content: "### Third level\r\n",
-                },
-                {
-                    name: "file",
-                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\really\\deep\\nested\\file\\file.md",
-                    ext: "md",
-                    content: "rock bottom.\r\n",
-                },
-                {
-                    name: "first-level",
-                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\really\\first-level.md",
-                    ext: "md",
-                    content:
-                        "# First level\r\n" +
-                        "\r\n" +
-                        "**Quadro 3: Teste Tabela.**\r\n" +
-                        "\r\n" +
-                        "| Name       | ID  |\r\n" +
-                        "| ---------- | --- |\r\n" +
-                        "| John Doe   | 1   |\r\n" +
-                        "| John Smith | 3   |\r\n" +
-                        "\r\n" +
-                        "**Fonte**: Elaborado pelo autor.\r\n",
-                },
-            ],
             assets: {
                 static: [
                     {
@@ -191,10 +248,6 @@ describe("processDocs", () => {
                         ext: "jpeg",
                         content: "",
                         size: 316922,
-                        // atime: 2023-11-29T02:13:43.019Z,
-                        // mtime: 2023-11-28T02:28:43.297Z,
-                        // ctime: 2023-11-28T02:29:05.759Z,
-                        // birthtime: 2023-11-28T02:28:59.471Z
                     },
                 ],
             },

@@ -4,12 +4,12 @@ import { readFile, fileExists, getPaths } from "@elucidario/pkg-paths";
 
 const paths = getPaths();
 
-export function generateManifest({ publication, lang, attachmentIndex }) {
+export function generateManifest({ publication, lang, assets }) {
     const srcPath = path.resolve(
         paths.publications,
         publication,
         "content",
-        lang
+        lang,
     );
 
     console.log(srcPath);
@@ -21,20 +21,20 @@ export function generateManifest({ publication, lang, attachmentIndex }) {
         const index = readFile(path.resolve(srcPath, "index.json"));
 
         console.log(index);
-        const attachmentKeys = Object.keys(attachmentIndex)
+        const assetsKeys = Object.keys(assets)
             .map((key) => {
-                if (attachmentIndex[key].length > 0) return key;
+                if (assets[key].length > 0) return key;
             })
             .filter((key) => key !== undefined);
 
         if (fileExists(path.resolve(srcPath, "acronyms.json"))) {
-            attachmentKeys.push("acronyms");
+            assetsKeys.push("acronyms");
         }
 
         let position = 0;
         let offset = 2;
-        if (attachmentKeys.length > 0) {
-            attachmentKeys.forEach((key) => {
+        if (assetsKeys.length > 0) {
+            assetsKeys.forEach((key) => {
                 if (!index.files.includes(key))
                     index.files.splice(position + offset, 0, key);
                 position++;

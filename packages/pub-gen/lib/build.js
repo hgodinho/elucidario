@@ -58,6 +58,10 @@ const buildDocs = async ({
     });
 
     // copia imagens
+    /**
+     * esse nao tem mais necessidade, pois as imagens e outros arquivos estáticos
+     * devem ser postos na pasta files > static da publicação.
+     */
     const images = await writeImages({ publication, srcPath, lang, console });
 
     // se não houver um index.json no srcPath,
@@ -232,6 +236,7 @@ export const buildPublication = async (args) => {
                             console,
                             version: packageJson.version,
                         });
+
                         await buildReferences({
                             distPath,
                             lang: pub.language,

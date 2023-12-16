@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tableParser should return tableParser node 1`] = `
+VFile {
+  "cwd": "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
+  "data": {},
+  "history": [],
+  "messages": [],
+  "value": "# First level
+
+**{{count:charts;legend=Teste Tabela.}}**\\
+\\
+| Name       | ID |
+| :--------- | -- |
+| John Doe   | 1  |
+| John Smith | 3  |\\
+\\
+**Fonte**: Elaborado pelo autor.\\
+\\
+",
+}
+`;

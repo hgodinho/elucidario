@@ -33,22 +33,22 @@ export function indexBodyMD({ title, items, type = "table" }) {
 }
 
 /**
- * Process index files
+ * Process assets files
  * @param {Object} props
- * @param {Object} props.index
+ * @param {Object} props.assets
  * @param {string} props.publication
  * @param {string} props.lang
  * @returns {Object} processed
  */
-export const processIndexFiles = async ({ index, publication, lang }) => {
+export const processIndexFiles = async ({ assets, publication, lang }) => {
     const srcPath = path.resolve(
         paths.publications,
         publication,
         "content",
-        lang
+        lang,
     );
 
-    // attachmentIndex
+    // assets.
     const titles = {
         images: "Lista de imagens",
         tables: "Lista de tabelas",
@@ -59,7 +59,7 @@ export const processIndexFiles = async ({ index, publication, lang }) => {
 
     const processed = {};
 
-    Object.entries(index).map(async ([type, files]) => {
+    Object.entries(assets).map(([type, files]) => {
         if (files.length === 0) return;
         processed[type] = indexBodyMD({
             title: titles[type],
