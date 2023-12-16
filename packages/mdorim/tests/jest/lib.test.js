@@ -1,4 +1,4 @@
-import Mdorim from "../../lib/mjs";
+import Mdorim from "../../lib";
 
 import mdorimCore from "../../static/mdorim/schemas/mdorim/core.json";
 import mdorimConcept from "../../static/mdorim/schemas/mdorim/concept.json";

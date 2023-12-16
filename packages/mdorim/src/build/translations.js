@@ -1,32 +1,30 @@
 import path from "path";
-import { readContents } from "@elucidario/pkg-paths";
+import { readContents, createFile } from "@elucidario/pkg-paths";
 import { Console } from "@elucidario/pkg-console";
-import { writeFile } from "./writeFile.js";
 
 /**
  * Build translations
  */
-export const buildTranslations = async (pkg, __dirname, outStatic) => {
+export const buildTranslations = async (pkg, __dirname, mdorimStatic) => {
     if (!pkg) throw new Error("No package.json provided");
     const console = new Console(pkg);
     let translations = {};
     try {
-        translations = readContents({
+        const translationsFiles = readContents({
             dirPath: path.join(__dirname, "translations"),
             extensions: ["json"],
             index: false,
             package: pkg,
         });
-    } catch (err) {
-        console.log(err, { type: "error", defaultLog: true, title: "Error" });
-        throw new Error(err);
-    }
-    try {
-        writeFile(
-            path.resolve(outStatic),
-            "translations.json",
-            JSON.stringify(translations, null, 4),
-            pkg
+        translationsFiles.forEach((translation) => {
+            translations[translation.name] = translation.content;
+        });
+        createFile(
+            {
+                filePath: path.resolve(mdorimStatic, "translations.json"),
+                ext: "json",
+            },
+            translations,
         );
     } catch (err) {
         console.log(err, { type: "error", defaultLog: true, title: "Error" });

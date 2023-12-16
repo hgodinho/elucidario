@@ -6,11 +6,10 @@ import {
     Entity,
     Schema,
     MdorimProperties,
-    parseId as parsedIdType,
     Definitions,
     DataTypes,
-    isSchema as isSchemaType,
     SchemaType,
+    ParsedId,
 } from "@elucidario/pkg-types";
 
 import { mdorim, translation, translations, linkedArt } from "./json-imports";
@@ -20,19 +19,19 @@ import { mdorim, translation, translations, linkedArt } from "./json-imports";
  * @param json | Record<string, any>
  * @returns boolean
  */
-export const isSchema: isSchemaType = (json): json is Schema<DataTypes> => {
+export function isSchema(json: Record<string, any>): boolean {
     if (json.hasOwnProperty("$schema")) {
         return true;
     }
     return false;
-};
+}
 
 /**
  * Realiza o parse de um id
  * @param id | string
  * @returns ParsedId
  */
-export const parseId: parsedIdType = (id) => {
+export function parseId(id: string): ParsedId | false {
     let url;
     try {
         url = new URL(id);
@@ -46,14 +45,14 @@ export const parseId: parsedIdType = (id) => {
     } catch {
         return false;
     }
-};
+}
 
 /**
  * Gera o index de um schema
  * @param schemas | Record<string, any>
  * @returns | Record<string, string>
  */
-export const generateIndex = (schemas: Record<string, any>) => {
+export function generateIndex(schemas: Record<string, any>) {
     return Object.entries(schemas).reduce(
         (acc, [name, schema]) => {
             if (isSchema(schema)) {
@@ -63,7 +62,7 @@ export const generateIndex = (schemas: Record<string, any>) => {
         },
         {} as Record<string, string>,
     );
-};
+}
 
 export const index: Index = {
     mdorim: generateIndex(mdorim),
