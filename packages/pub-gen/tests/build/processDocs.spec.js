@@ -76,6 +76,56 @@ describe("processDocs", () => {
             content: [
                 {
                     original: {
+                        name: "hello-world",
+                        path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\hello-world.md",
+                        ext: "md",
+                        size: 847,
+                    },
+                    processed: {
+                        data: {},
+                        messages: [],
+                        history: [],
+                        cwd: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
+                        value:
+                            "# Hello World\n" +
+                            "\n" +
+                            "## Second level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (LINKED ART, 2021a).\n" +
+                            "\n" +
+                            "**Figura 3: Mermaid**\n" +
+                            "\n" +
+                            '```{.mermaid&#x20;filename=mermaid&#x20;loc="C:\\\\\\Users\\\\\\55119\\\\\\Elucidário.art\\\\\\elucidario\\\\\\publications\\\\\\publicacao-teste\\\\\\files\\\\\\generated"&#x20;width=720&#x20;background=transparent}\n' +
+                            "erDiagram\r\n" +
+                            '        OBJETO ||--|{ CLASSIFICACAO : ""\n' +
+                            "```\n" +
+                            "\n" +
+                            "**Fonte:** Elaborado pelo autor.\n" +
+                            "\n" +
+                            "### Third level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a)\n" +
+                            "\n" +
+                            "#### Fourth level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021b)\n" +
+                            "\n" +
+                            "##### Fifth level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a, 2021b)\n" +
+                            "\n" +
+                            "###### Sixth level heading\n" +
+                            "\n" +
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\n" +
+                            "\n" +
+                            "**Figura 4: Lorem ipsum**\n" +
+                            "\n" +
+                            "![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)\n",
+                    },
+                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\hello-world.md",
+                },
+                {
+                    original: {
                         name: "first-level",
                         path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\really\\first-level.md",
                         ext: "md",
@@ -148,56 +198,6 @@ describe("processDocs", () => {
                         value: "rock bottom.\n",
                     },
                     path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\really\\deep\\nested\\file\\file.md",
-                },
-                {
-                    original: {
-                        name: "hello-world",
-                        path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\hello-world.md",
-                        ext: "md",
-                        size: 847,
-                    },
-                    processed: {
-                        data: {},
-                        messages: [],
-                        history: [],
-                        cwd: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
-                        value:
-                            "# Hello World\n" +
-                            "\n" +
-                            "## Second level heading\n" +
-                            "\n" +
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (LINKED ART, 2021a).\n" +
-                            "\n" +
-                            "**Figura 3: Mermaid**\n" +
-                            "\n" +
-                            '```{.mermaid&#x20;filename=mermaid&#x20;loc="C:\\\\\\Users\\\\\\55119\\\\\\Elucidário.art\\\\\\elucidario\\\\\\publications\\\\\\publicacao-teste\\\\\\files\\\\\\generated"&#x20;width=720&#x20;background=transparent}\n' +
-                            "erDiagram\r\n" +
-                            '        OBJETO ||--|{ CLASSIFICACAO : ""\n' +
-                            "```\n" +
-                            "\n" +
-                            "**Fonte:** Elaborado pelo autor.\n" +
-                            "\n" +
-                            "### Third level heading\n" +
-                            "\n" +
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a)\n" +
-                            "\n" +
-                            "#### Fourth level heading\n" +
-                            "\n" +
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021b)\n" +
-                            "\n" +
-                            "##### Fifth level heading\n" +
-                            "\n" +
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a, 2021b)\n" +
-                            "\n" +
-                            "###### Sixth level heading\n" +
-                            "\n" +
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\n" +
-                            "\n" +
-                            "**Figura 4: Lorem ipsum**\n" +
-                            "\n" +
-                            "![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)\n",
-                    },
-                    path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\hello-world.md",
                 },
             ],
             indexFiles: {

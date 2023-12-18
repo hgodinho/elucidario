@@ -105,9 +105,11 @@ export const processDocs = async ({
 
     await Promise.all(
         content.map(async (file) => {
-            produced.content.push(await stepProcessor(file));
+            return await stepProcessor(file);
         }),
-    );
+    ).then((files) => {
+        produced.content = files;
+    });
 
     produced.indexFiles = await processIndexFiles({
         assets,
