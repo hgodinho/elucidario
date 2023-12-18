@@ -1,6 +1,6 @@
 import path from "path";
 import * as unist from "@elucidario/pkg-unist";
-import { parseNodeValue, isPubGenNodeValue, mdToMdast } from "../../utils";
+import { parseNodeValue, isPubGenNodeValue, mdToMdast } from "../../utils.js";
 import { getPaths, readFile } from "@elucidario/pkg-paths";
 import { visit } from "unist-util-visit";
 import { Console } from "@elucidario/pkg-console";
@@ -44,6 +44,7 @@ const countParser = (treeOptions) => {
             } else {
                 paragraph[0].children.unshift(prefix);
             }
+
             node.type = "paragraph";
             node.children = paragraph;
         });

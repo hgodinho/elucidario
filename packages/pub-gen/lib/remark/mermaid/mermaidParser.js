@@ -1,6 +1,6 @@
 import path from "path";
 import * as unist from "@elucidario/pkg-unist";
-import { parseNodeValue, isPubGenNodeValue, mdToMdast } from "../../utils";
+import { parseNodeValue, isPubGenNodeValue, mdToMdast } from "../../utils.js";
 import { getPaths, readFile } from "@elucidario/pkg-paths";
 import parser from "parser-front-matter";
 import { visit } from "unist-util-visit";

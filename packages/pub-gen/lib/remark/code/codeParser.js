@@ -1,6 +1,6 @@
 import path from "path";
 import * as unist from "@elucidario/pkg-unist";
-import { parseNodeValue, isPubGenNodeValue } from "../../utils";
+import { parseNodeValue, isPubGenNodeValue } from "../../utils.js";
 import { getPaths, readFile } from "@elucidario/pkg-paths";
 import { visit } from "unist-util-visit";
 import { Console } from "@elucidario/pkg-console";
@@ -37,16 +37,12 @@ const codeParser = (treeOptions) => {
 
             const { ext } = path.parse(filePath);
 
-            node.type = "paragraph";
+            const codeAst = unist.code(codeData, ext.replace(".", ""));
 
-            const content = codeData.replace(/\r\n|\r|\n/, "");
-
-            const codeAst = [unist.code(content, ext.replace(".", ""))].filter(
-                Boolean,
-            );
-
-            node.children = codeAst;
-            delete node.value;
+            node.type = "code";
+            node.value = codeAst.value;
+            node.lang = codeAst.lang;
+            node.meta = codeAst.meta;
         });
     };
 };

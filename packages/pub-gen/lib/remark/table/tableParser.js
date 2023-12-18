@@ -1,6 +1,6 @@
 import path from "path";
 import { visit } from "unist-util-visit";
-import { parseNodeValue, isPubGenNodeValue } from "../../utils";
+import { parseNodeValue, isPubGenNodeValue } from "../../utils.js";
 import { getPaths, readFile } from "@elucidario/pkg-paths";
 import * as unist from "@elucidario/pkg-unist";
 import * as tableschema from "tableschema";

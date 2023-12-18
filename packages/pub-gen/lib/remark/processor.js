@@ -1,7 +1,6 @@
 import { unified } from "unified";
 import markdown from "remark-parse";
 import remarkGfm from "remark-gfm";
-import remarkPrettier from "remark-prettier";
 import remarkFrontmatter from "remark-frontmatter";
 import { citePlugin } from "@benrbray/remark-cite";
 
@@ -27,8 +26,6 @@ export const pubGenRemarkProcessor = async (content, options, plugins) => {
     }
 
     processor.Compiler = remarkPubGen;
-
-    processor.use(remarkPrettier, options?.prettier);
 
     try {
         const result = await processor.process(content);

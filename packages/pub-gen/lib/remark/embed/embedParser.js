@@ -1,5 +1,5 @@
 import path from "path";
-import { parseNodeValue, isPubGenNodeValue } from "../../utils";
+import { parseNodeValue, isPubGenNodeValue } from "../../utils.js";
 import { getPaths, readFile } from "@elucidario/pkg-paths";
 import { visit } from "unist-util-visit";
 import { Console } from "@elucidario/pkg-console";
