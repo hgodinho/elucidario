@@ -1,13 +1,12 @@
 import { Command } from "commander";
 import path from "path";
-import fs from "fs";
 
 import { Console } from "@elucidario/pkg-console";
-import { getPaths } from "@elucidario/pkg-paths";
+import { getPaths, readFile } from "@elucidario/pkg-paths";
 
 import { init } from "./init.js";
 import { createPublication } from "./create.js";
-import { buildPublication } from "./build.js";
+import { buildPublication } from "./build/buildPublication.js";
 import { addAuthor } from "./addAuthor.js";
 import { commentsToIssues } from "./commentsToIssues.js";
 import { reference } from "./reference/reference.js";
@@ -19,17 +18,24 @@ import { listTemplates } from "./pandoc/listTemplates.js";
 import { validateReferences } from "./reference/validateReferences.js";
 import { migrate } from "./migration/migration-helper.js";
 
-const paths = getPaths();
-
-const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(paths.packages, "pub-gen", "package.json"))
+const pkg = readFile(
+    path.resolve(getPaths().packages, "pub-gen", "package.json"),
 );
-const console = new Console(packageJson);
+
+const console = new Console(pkg);
 
 const PubGen = () => {
     const program = new Command();
-    program.version(packageJson.version);
+    program.version(pkg.version);
 
+    /**
+     * ██╗███╗   ██╗██╗████████╗
+     * ██║████╗  ██║██║╚══██╔══╝
+     * ██║██╔██╗ ██║██║   ██║
+     * ██║██║╚██╗██║██║   ██║
+     * ██║██║ ╚████║██║   ██║
+     * ╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝
+     */
     /**
      * @command <init> - Inicializa pub-gen-config.json
      *
@@ -47,6 +53,14 @@ const PubGen = () => {
         });
 
     /**
+     * ███╗   ███╗██╗ ██████╗ ██████╗  █████╗ ████████╗███████╗
+     * ████╗ ████║██║██╔════╝ ██╔══██╗██╔══██╗╚══██╔══╝██╔════╝
+     * ██╔████╔██║██║██║  ███╗██████╔╝███████║   ██║   █████╗
+     * ██║╚██╔╝██║██║██║   ██║██╔══██╗██╔══██║   ██║   ██╔══╝
+     * ██║ ╚═╝ ██║██║╚██████╔╝██║  ██║██║  ██║   ██║   ███████╗
+     * ╚═╝     ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
+     */
+    /**
      * @command <migrate> - Migrar versão da publicação
      *
      * @param {string} publication - Nome da publicação
@@ -62,6 +76,14 @@ const PubGen = () => {
         });
 
     /**
+     *  ██████╗██████╗ ███████╗ █████╗ ████████╗███████╗
+     * ██╔════╝██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝
+     * ██║     ██████╔╝█████╗  ███████║   ██║   █████╗
+     * ██║     ██╔══██╗██╔══╝  ██╔══██║   ██║   ██╔══╝
+     * ╚██████╗██║  ██║███████╗██║  ██║   ██║   ███████╗
+     * ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝
+     */
+    /**
      * @command <create> - Cria nova publicação
      */
     program
@@ -74,6 +96,14 @@ const PubGen = () => {
             createPublication(argv);
         });
 
+    /**
+     * ██╗   ██╗███████╗██████╗ ███████╗██╗ ██████╗ ███╗   ██╗
+     * ██║   ██║██╔════╝██╔══██╗██╔════╝██║██╔═══██╗████╗  ██║
+     * ██║   ██║█████╗  ██████╔╝███████╗██║██║   ██║██╔██╗ ██║
+     * ╚██╗ ██╔╝██╔══╝  ██╔══██╗╚════██║██║██║   ██║██║╚██╗██║
+     *  ╚████╔╝ ███████╗██║  ██║███████║██║╚██████╔╝██║ ╚████║
+     *   ╚═══╝  ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+     */
     /**
      * @command <version> - Faz o update da versão da publicação
      *
@@ -89,6 +119,14 @@ const PubGen = () => {
         });
 
     /**
+     *  █████╗ ██████╗ ██████╗        █████╗ ██╗   ██╗████████╗██╗  ██╗ ██████╗ ██████╗
+     * ██╔══██╗██╔══██╗██╔══██╗      ██╔══██╗██║   ██║╚══██╔══╝██║  ██║██╔═══██╗██╔══██╗
+     * ███████║██║  ██║██║  ██║█████╗███████║██║   ██║   ██║   ███████║██║   ██║██████╔╝
+     * ██╔══██║██║  ██║██║  ██║╚════╝██╔══██║██║   ██║   ██║   ██╔══██║██║   ██║██╔══██╗
+     * ██║  ██║██████╔╝██████╔╝      ██║  ██║╚██████╔╝   ██║   ██║  ██║╚██████╔╝██║  ██║
+     * ╚═╝  ╚═╝╚═════╝ ╚═════╝       ╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+     */
+    /**
      * @command <add-author> - Adiciona novo autor
      *
      * @param {string} publication - Nome da publicação
@@ -102,6 +140,14 @@ const PubGen = () => {
         });
 
     /**
+     * ██████╗ ███████╗███████╗███████╗██████╗ ███████╗███╗   ██╗ ██████╗███████╗
+     * ██╔══██╗██╔════╝██╔════╝██╔════╝██╔══██╗██╔════╝████╗  ██║██╔════╝██╔════╝
+     * ██████╔╝█████╗  █████╗  █████╗  ██████╔╝█████╗  ██╔██╗ ██║██║     █████╗
+     * ██╔══██╗██╔══╝  ██╔══╝  ██╔══╝  ██╔══██╗██╔══╝  ██║╚██╗██║██║     ██╔══╝
+     * ██║  ██║███████╗██║     ███████╗██║  ██║███████╗██║ ╚████║╚██████╗███████╗
+     * ╚═╝  ╚═╝╚══════╝╚═╝     ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝╚══════╝
+     */
+    /**
      * @command <reference> Referência
      *
      * @command <index> - Gera índice de busca
@@ -112,6 +158,18 @@ const PubGen = () => {
     const ref = program.command("reference").description("Reference");
 
     /**
+     *  REFERENCE
+     *
+     *   ███                 █████
+     *  ░░░                 ░░███
+     *  ████  ████████    ███████   ██████  █████ █████
+     * ░░███ ░░███░░███  ███░░███  ███░░███░░███ ░░███
+     *  ░███  ░███ ░███ ░███ ░███ ░███████  ░░░█████░
+     *  ░███  ░███ ░███ ░███ ░███ ░███░░░    ███░░░███
+     *  █████ ████ █████░░████████░░██████  █████ █████
+     * ░░░░░ ░░░░ ░░░░░  ░░░░░░░░  ░░░░░░  ░░░░░ ░░░░░
+     */
+    /**
      * @command <reference> <index> - Gera índice de busca
      */
     ref.command("index")
@@ -120,6 +178,18 @@ const PubGen = () => {
             generateSearchIndex();
         });
 
+    /**
+     * REFERENCE
+     *
+     *                █████     █████
+     *               ░░███     ░░███
+     *   ██████    ███████   ███████
+     *  ░░░░░███  ███░░███  ███░░███
+     *   ███████ ░███ ░███ ░███ ░███
+     *  ███░░███ ░███ ░███ ░███ ░███
+     * ░░████████░░████████░░████████
+     *  ░░░░░░░░  ░░░░░░░░  ░░░░░░░░
+     */
     /**
      * @command <reference> <add> - Adiciona nova referência
      *
@@ -132,11 +202,23 @@ const PubGen = () => {
             console.log(
                 `Adding new reference to: ${
                     argv.publication ? argv.publication : "monorepo"
-                }`
+                }`,
             );
             reference(argv);
         });
 
+    /**
+     * REFERENCE
+     *
+     *                                                █████
+     *                                               ░░███
+     *   █████   ██████   ██████   ████████   ██████  ░███████
+     *  ███░░   ███░░███ ░░░░░███ ░░███░░███ ███░░███ ░███░░███
+     * ░░█████ ░███████   ███████  ░███ ░░░ ░███ ░░░  ░███ ░███
+     *  ░░░░███░███░░░   ███░░███  ░███     ░███  ███ ░███ ░███
+     *  ██████ ░░██████ ░░████████ █████    ░░██████  ████ █████
+     * ░░░░░░   ░░░░░░   ░░░░░░░░ ░░░░░      ░░░░░░  ░░░░ ░░░░░
+     */
     /**
      * @command <reference> <search> - Busca referência
      *
@@ -151,11 +233,23 @@ const PubGen = () => {
             console.log(
                 `Searching reference in: ${
                     argv.publication ? argv.publication : "monorepo"
-                }`
+                }`,
             );
             search(argv);
         });
 
+    /**
+     * REFERENCE
+     *
+     *                        ████   ███      █████            █████
+     *                       ░░███  ░░░      ░░███            ░░███
+     *  █████ █████  ██████   ░███  ████   ███████   ██████   ███████    ██████
+     * ░░███ ░░███  ░░░░░███  ░███ ░░███  ███░░███  ░░░░░███ ░░░███░    ███░░███
+     *  ░███  ░███   ███████  ░███  ░███ ░███ ░███   ███████   ░███    ░███████
+     *  ░░███ ███   ███░░███  ░███  ░███ ░███ ░███  ███░░███   ░███ ███░███░░░
+     *   ░░█████   ░░████████ █████ █████░░████████░░████████  ░░█████ ░░██████
+     *    ░░░░░     ░░░░░░░░ ░░░░░ ░░░░░  ░░░░░░░░  ░░░░░░░░    ░░░░░   ░░░░░░
+     */
     /**
      * @command <reference> <validate> - Valida referências
      * @param {string} publication - Nome da publicação
@@ -167,11 +261,19 @@ const PubGen = () => {
             console.log(
                 `Validating references in: ${
                     argv.publication ? argv.publication : "monorepo"
-                }`
+                }`,
             );
             await validateReferences(argv);
         });
 
+    /**
+     * ██████╗ ██╗   ██╗██╗██╗     ██████╗
+     * ██╔══██╗██║   ██║██║██║     ██╔══██╗
+     * ██████╔╝██║   ██║██║██║     ██║  ██║
+     * ██╔══██╗██║   ██║██║██║     ██║  ██║
+     * ██████╔╝╚██████╔╝██║███████╗██████╔╝
+     * ╚═════╝  ╚═════╝ ╚═╝╚══════╝╚═════╝
+     */
     /**
      * @command <build> - Build
      *
@@ -190,6 +292,14 @@ const PubGen = () => {
         });
 
     /**
+     * ██████╗  █████╗ ███╗   ██╗██████╗  ██████╗  ██████╗
+     * ██╔══██╗██╔══██╗████╗  ██║██╔══██╗██╔═══██╗██╔════╝
+     * ██████╔╝███████║██╔██╗ ██║██║  ██║██║   ██║██║
+     * ██╔═══╝ ██╔══██║██║╚██╗██║██║  ██║██║   ██║██║
+     * ██║     ██║  ██║██║ ╚████║██████╔╝╚██████╔╝╚██████╗
+     * ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝  ╚═════╝  ╚═════╝
+     */
+    /**
      * @command <pandoc> Pandoc
      *
      * @command <convert> - Converte a publicação
@@ -197,6 +307,18 @@ const PubGen = () => {
      */
     const pandoc = program.command("pandoc").description("Pandoc publication");
 
+    /**
+     *  PANDOC
+     *
+     *                                                              █████
+     *                                                              ░░███
+     *   ██████   ██████  ████████   █████ █████  ██████  ████████  ███████
+     *  ███░░███ ███░░███░░███░░███ ░░███ ░░███  ███░░███░░███░░███░░░███░
+     * ░███ ░░░ ░███ ░███ ░███ ░███  ░███  ░███ ░███████  ░███ ░░░   ░███
+     * ░███  ███░███ ░███ ░███ ░███  ░░███ ███  ░███░░░   ░███       ░███ ███
+     * ░░██████ ░░██████  ████ █████  ░░█████   ░░██████  █████      ░░█████
+     *  ░░░░░░   ░░░░░░  ░░░░ ░░░░░    ░░░░░     ░░░░░░  ░░░░░        ░░░░░
+     */
     /**
      * @command <pandoc> <convert> - Convert
      *
@@ -218,6 +340,20 @@ const PubGen = () => {
         });
 
     /**
+     * PANDOC
+     *
+     *   █████                                       ████             █████
+     *  ░░███                                       ░░███            ░░███
+     *  ███████    ██████  █████████████   ████████  ░███   ██████   ███████    ██████   █████
+     * ░░░███░    ███░░███░░███░░███░░███ ░░███░░███ ░███  ░░░░░███ ░░░███░    ███░░███ ███░░
+     *   ░███    ░███████  ░███ ░███ ░███  ░███ ░███ ░███   ███████   ░███    ░███████ ░░█████
+     *   ░███ ███░███░░░   ░███ ░███ ░███  ░███ ░███ ░███  ███░░███   ░███ ███░███░░░   ░░░░███
+     *   ░░█████ ░░██████  █████░███ █████ ░███████  █████░░████████  ░░█████ ░░██████  ██████
+     *    ░░░░░   ░░░░░░  ░░░░░ ░░░ ░░░░░  ░███░░░  ░░░░░  ░░░░░░░░    ░░░░░   ░░░░░░  ░░░░░░
+     *                                     ░███
+     *                                     █████
+     */
+    /**
      * @command <pandoc> <templates> - Lista templates do pandoc
      */
     pandoc
@@ -228,6 +364,9 @@ const PubGen = () => {
             listTemplates();
         });
 
+    /**
+     * @todo arrumar
+     */
     program
         .command("comments-to-issues")
         .description("Convert comments to issues")

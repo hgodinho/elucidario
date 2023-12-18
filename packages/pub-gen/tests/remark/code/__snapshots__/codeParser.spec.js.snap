@@ -8,6 +8,7 @@ VFile {
   "messages": [],
   "value": "\`\`\`js
 console.log("code-node.js");
+
 \`\`\`
 ",
 }

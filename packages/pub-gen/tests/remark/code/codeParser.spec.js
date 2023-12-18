@@ -13,8 +13,16 @@ describe("codeParser", () => {
             "content",
             "pt-br",
             "nodes",
-            "code.md"
-        )
+            "code.md",
+        ),
+    ).content;
+
+    const pkg = readFile(
+        path.resolve(
+            getPaths().publications,
+            "publicacao-teste",
+            "package.json",
+        ),
     ).content;
 
     it("should return codeParser node", async () => {
@@ -23,6 +31,7 @@ describe("codeParser", () => {
             pluginOptions: {
                 publication: "publicacao-teste",
                 lang: "pt-BR",
+                pkg,
             },
             stringifyOptions: {},
             publication: "publicacao-teste",
