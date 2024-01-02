@@ -42,13 +42,13 @@ class Persons extends \LCDR\Rest\Routes\Abstracts\Entities {
 					'schema' => 'mdorim/person',
 				),
 				'edit' => array(
-					'schema' => 'mdorim/person',
+					'schema'  => 'mdorim/person',
 					'options' => array(
 						'definitions' => 'PersonPost',
 					),
 				),
 			),
-			'la' => array(
+			'la'     => array(
 				'view' => array(
 					'schema' => 'linked-art/person',
 				),

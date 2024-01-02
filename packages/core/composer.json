@@ -5,6 +5,7 @@
             "name": "hgodinho"
         }
     ],
+    "type": "wordpress-plugin",
     "autoload": {
         "psr-4": {
             "LCDR\\": "./src/php",
@@ -25,7 +26,10 @@
         },
         {
             "type": "path",
-            "url": "../mdorim"
+            "url": "../mdorim",
+            "options": {
+                "symlink": false
+            }
         }
     ],
     "name": "elucidario/pkg-core",

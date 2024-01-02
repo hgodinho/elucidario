@@ -1,7 +1,4 @@
-@localhost = http://localhost:8080/wp-json
-@namespace = lcdr/v1
-
 # Mapping
-GET {{localhost}}/{{namespace}}/mappings/ HTTP/1.1
+GET {{base}}/wp-json/{{namespace}}/{{version}}/mapping HTTP/1.1
 content-type: application/json
 

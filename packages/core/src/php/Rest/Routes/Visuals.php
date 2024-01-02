@@ -42,13 +42,13 @@ class Visuals extends \LCDR\Rest\Routes\Abstracts\Entities {
 					'schema' => 'mdorim/visual',
 				),
 				'edit' => array(
-					'schema' => 'mdorim/visual',
+					'schema'  => 'mdorim/visual',
 					'options' => array(
 						'definitions' => 'VisualPost',
 					),
 				),
 			),
-			'la' => array(
+			'la'     => array(
 				'view' => array(
 					'schema' => 'linked-art/visual',
 				),

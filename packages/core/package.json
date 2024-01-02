@@ -19,10 +19,10 @@
         "@elucidario/pkg-mdorim": "workspace:^"
     },
     "devDependencies": {
+        "@elucidario/pkg-types": "workspace:^",
         "@elucidario/tool-rollup": "workspace:^",
         "@elucidario/tool-tsconfig": "workspace:^",
-        "@elucidario/pkg-types": "workspace:^",
-        "@types/node": "^18.15.11",
+        "@types/node": "^18.19.3",
         "wp-pot": "^1.10.2"
     },
     "peerDependencies": {

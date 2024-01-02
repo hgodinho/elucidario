@@ -42,13 +42,13 @@ class Groups extends \LCDR\Rest\Routes\Abstracts\Entities {
 					'schema' => 'mdorim/group',
 				),
 				'edit' => array(
-					'schema' => 'mdorim/group',
+					'schema'  => 'mdorim/group',
 					'options' => array(
 						'definitions' => 'GroupPost',
 					),
 				),
 			),
-			'la' => array(
+			'la'     => array(
 				'view' => array(
 					'schema' => 'linked-art/group',
 				),

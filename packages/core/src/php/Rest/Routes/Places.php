@@ -42,13 +42,13 @@ class Places extends \LCDR\Rest\Routes\Abstracts\Entities {
 					'schema' => 'mdorim/place',
 				),
 				'edit' => array(
-					'schema' => 'mdorim/place',
+					'schema'  => 'mdorim/place',
 					'options' => array(
 						'definitions' => 'PlacePost',
 					),
 				),
 			),
-			'la' => array(
+			'la'     => array(
 				'view' => array(
 					'schema' => 'linked-art/place',
 				),

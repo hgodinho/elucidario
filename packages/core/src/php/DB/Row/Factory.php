@@ -40,12 +40,12 @@ final class Factory {
 		}
 		if ( is_int( $item ) && $item > 0 ) {
 			$entities = new \LCDR\DB\Query\Entities();
-			$entity = $entities->get_entity( $item );
+			$entity   = $entities->get_entity( $item );
 		}
 		$error = new \LCDR\Error\Factory(
 			'unknown_type',
 			array(
-				'item' => $item,
+				'item'   => $item,
 				'entity' => $entity,
 			)
 		);

@@ -42,13 +42,13 @@ class Events extends \LCDR\Rest\Routes\Abstracts\Entities {
 					'schema' => 'mdorim/event',
 				),
 				'edit' => array(
-					'schema' => 'mdorim/event',
+					'schema'  => 'mdorim/event',
 					'options' => array(
 						'definitions' => 'EventPost',
 					),
 				),
 			),
-			'la' => array(
+			'la'     => array(
 				'view' => array(
 					'schema' => 'linked-art/event',
 				),

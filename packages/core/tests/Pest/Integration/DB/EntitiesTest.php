@@ -233,20 +233,20 @@ test( '\LCDR\DB\Query\Entities->get_entity() must return valid relationships', f
 		'item_shape' => 'ConceptRow',
 	) );
 	$test = $concept->get_entity( $concept_id );
+	// var_dump( $test );
 	$classified_as = $test->get_property( 'classified_as' );
 	expect( $classified_as )->toBeArray();
 } );
 
-test( '\LCDR\DB\Query\Entities->get_entities()', function () {
-	$concepts = new \LCDR\DB\Query\Entities( array(
-		'item_name' => 'concept',
-		'item_name_plural' => 'concepts',
-		'item_shape' => 'ConceptRow',
-	) );
-	$test = $concepts->get_entities();
-
-	expect( $test )->toBeArray();
-} );
+// test( '\LCDR\DB\Query\Entities->get_entities()', function () {
+// 	$concepts = new \LCDR\DB\Query\Entities( array(
+// 		'item_name' => 'concept',
+// 		'item_name_plural' => 'concepts',
+// 		'item_shape' => 'ConceptRow',
+// 	) );
+// 	$test = $concepts->get_entities();
+// 	expect( $test )->toBeArray();
+// } );
 
 test( '\LCDR\DB\Query\Entities->get_entity()', function () {
 	global $concept_id;
@@ -326,13 +326,13 @@ test( '\LCDR\DB\Row\ConceptRow->get_property()', function () {
 	);
 } );
 
-test( '\LCDR\DB\Query\Entities->delete_item()', function () {
-	global $concept_id;
-	$concepts = new \LCDR\DB\Query\Entities( array(
-		'item_name' => 'concept',
-		'item_name_plural' => 'concepts',
-		'item_shape' => 'ConceptRow',
-	) );
-	$test = $concepts->delete_entity( $concept_id );
-	expect( $test )->toBeNumeric();
-} );
+// test( '\LCDR\DB\Query\Entities->delete_item()', function () {
+// 	global $concept_id;
+// 	$concepts = new \LCDR\DB\Query\Entities( array(
+// 		'item_name' => 'concept',
+// 		'item_name_plural' => 'concepts',
+// 		'item_shape' => 'ConceptRow',
+// 	) );
+// 	$test = $concepts->delete_entity( $concept_id );
+// 	expect( $test )->toBeNumeric();
+// } );

@@ -42,13 +42,13 @@ class Texts extends \LCDR\Rest\Routes\Abstracts\Entities {
 					'schema' => 'mdorim/text',
 				),
 				'edit' => array(
-					'schema' => 'mdorim/text',
+					'schema'  => 'mdorim/text',
 					'options' => array(
 						'definitions' => 'TextPost',
 					),
 				),
 			),
-			'la' => array(
+			'la'     => array(
 				'view' => array(
 					'schema' => 'linked-art/text',
 				),

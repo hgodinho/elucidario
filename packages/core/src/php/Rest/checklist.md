@@ -10,8 +10,8 @@
 - [x] Person
 - [x] Place
 - [x] Set
-- [ ] Text
-- [ ] Visual
+- [x] Text
+- [x] Visual
 - [ ] Provenance
 - [x] Mapping
 - [ ] PropMap

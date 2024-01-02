@@ -42,13 +42,13 @@ class Sets extends \LCDR\Rest\Routes\Abstracts\Entities {
 					'schema' => 'mdorim/set',
 				),
 				'edit' => array(
-					'schema' => 'mdorim/set',
+					'schema'  => 'mdorim/set',
 					'options' => array(
 						'definitions' => 'SetPost',
 					),
 				),
 			),
-			'la' => array(
+			'la'     => array(
 				'view' => array(
 					'schema' => 'linked-art/set',
 				),

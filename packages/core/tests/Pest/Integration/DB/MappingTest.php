@@ -213,7 +213,7 @@ test( '\LCDR\DB\Query\Mappings->update_mapping() return false wrong ID', functio
 	$mapping_query = new \LCDR\DB\Query\Mappings();
 
 	$mapping = $mapping_query->update_mapping(
-		999,
+		999999999,
 		array(
 			'title' => 'mapeamento atualizado',
 			'description' => 'Mapeamento atualizado',

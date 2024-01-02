@@ -95,17 +95,16 @@ class Entities extends Query {
 	 * @param array $options Options.
 	 */
 	public function __construct( $options = array() ) {
-		parent::__construct( array_key_exists( 'query', $options ) ? $options['query'] : array() );
-
 		foreach ( $options as $key => $value ) {
 			if ( property_exists( $this, $key ) ) {
 				$this->$key = $value;
 				if ( 'item_shape' === $key ) {
-					$namespace  = '\\LCDR\\DB\\Row\\';
-					$this->$key = $namespace . $value;
+					$namespace        = '\\LCDR\\DB\\Row\\';
+					$this->item_shape = $namespace . $value;
 				}
 			}
 		}
+		parent::__construct( array_key_exists( 'query', $options ) ? $options['query'] : array() );
 	}
 
 	/**
