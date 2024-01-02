@@ -4,7 +4,7 @@
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var [@linked-art2021.1].
 
-{{mermaid:mermaid.md}}
+{{mermaid:internal/body/mermaid.md}}
 
 ### Third level heading
 
@@ -21,3 +21,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget ris
 ###### Sixth level heading
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.
+
+{{count:figuras;legend=\*\*Lorem ipsum\*\*}}
+
+![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)

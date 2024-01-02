@@ -1,1 +1,0 @@
-{{schema:nodes/schema.json}}

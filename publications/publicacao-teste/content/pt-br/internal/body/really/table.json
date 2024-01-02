@@ -1,5 +1,5 @@
 {
-    "title": "{{count:charts;legend=Teste Tabela.}}",
+    "title": "{{count:quadros;legend=Teste Tabela.}}",
     "fields": [
         {
             "type": "string",

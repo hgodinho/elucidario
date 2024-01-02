@@ -1,6 +1,6 @@
 ---
 filename: "mermaid"
-title: "{{count:figures;legend=Mermaid}}"
+title: "{{count:figuras;legend=\\*\\*Mermaid\\*\\*}}"
 source: "**Fonte:** Elaborado pelo autor."
 width: 720
 background: transparent
