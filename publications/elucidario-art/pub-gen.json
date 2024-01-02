@@ -1,0 +1,30 @@
+{
+    "$schema": "node_modules/@elucidario/pkg-pub-gen/static/pub-gen/schemas/pub-gen-schema.json",
+    "version": "1.0.0",
+    "profile": "data-package",
+    "id": "https://elucidario.art/publicacoes/elucidario-art",
+    "title": "Elucidário.art",
+    "type": "article",
+    "year": "2022",
+    "description": "O app Elucidário.art precisa ser atualizado para ser considerado um Collection Management System. Os objetivos são: definição de um modelo conceitual de organização e representação da informação museológica baseado em padrões do Conselho Internacional de Museus; e, definição do modelo de Governança da Informação para delimitar os níveis de acesso dos usuários no sistema, infraestrutura, políticas e segurança da informação. As metodologias são: revisão bibliográfica nas disciplinas de Ciência da Informação, Museologia e Tecnologia da Informação; método descritivo para definição dos modelos; e, o estudo de caso do app na Casa Museu Ema Klabin.",
+    "name": "elucidario-art",
+    "contributors": [
+        {
+            "title": "Henrique Godinho",
+            "email": "henrique@hgod.in",
+            "organization": "PPGCI-ECA-USP",
+            "role": "author"
+        }
+    ],
+    "documents": [
+        {
+            "title": "Elucidário.art",
+            "language": "pt-br",
+            "style": {
+                "name": "universidade-do-estado-do-rio-de-janeiro-abnt.csl",
+                "url": "https://github.com/citation-style-language/styles/blob/42f54b22d8058c957404945b7dca5cc59c1fc68d/universidade-do-estado-do-rio-de-janeiro-abnt.csl"
+            }
+        }
+    ],
+    "created": "2023-12-01T05:26:58.983Z"
+}

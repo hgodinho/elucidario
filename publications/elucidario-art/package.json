@@ -1,0 +1,20 @@
+{
+    "name": "@elucidario/pub-elucidario-art",
+    "version": "0.1.0",
+    "main": "README.md",
+    "private": true,
+    "scripts": {
+        "add-author": "pub-gen add-author -p elucidario-art",
+        "authenticate": "pub-gen authenticate -p elucidario-art",
+        "build": "pnpm clean && pub-gen build -p elucidario-art",
+        "clean": "rm -rf dist/*",
+        "convert": "pub-gen convert -p elucidario-art",
+        "ref-add": "pub-gen reference add -p elucidario-art",
+        "ref-search": "pub-gen reference search -p elucidario-art",
+        "version-up": "pub-gen version -p elucidario-art"
+    },
+    "devDependencies": {
+        "@elucidario/pkg-pub-gen": "workspace:^",
+        "jest": "^29.7.0"
+    }
+}
