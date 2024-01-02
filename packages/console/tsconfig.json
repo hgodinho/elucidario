@@ -1,18 +1,18 @@
 {
-	"extends": "@elucidario/tool-tsconfig",
-	"compilerOptions": {
-		"baseUrl": ".",
-		"outDir": "dist",
-		"target": "ES2020",
-		"moduleResolution": "Bundler",
-		"declarationDir": "dist/types",
-		"emitDeclarationOnly": true,
-		"paths": {
-			"@elucidario/pkg-types": [
-				"node_modules/@elucidario/pkg-types/dist/index.d.ts"
-			]
-		},
-		"types": ["@elucidario/pkg-types"]
-	},
-	"include": ["src/index.ts"]
+    "extends": "@elucidario/tool-tsconfig",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "dist",
+        "target": "ES2020",
+        "moduleResolution": "Bundler",
+        "declarationDir": "dist/types",
+        "emitDeclarationOnly": true,
+        "paths": {
+            "@elucidario/pkg-types": [
+                "node_modules/@elucidario/pkg-types/dist/index.d.ts"
+            ]
+        },
+        "types": ["@elucidario/pkg-types"]
+    },
+    "include": ["src/index.ts"]
 }
