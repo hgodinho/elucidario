@@ -9,6 +9,23 @@ import type {
 } from "@elucidario/pkg-types";
 
 /**
+ * Supported file extensions
+ */
+export const supportedExtensions = [
+    "json",
+    "md",
+    "txt",
+    "html",
+    "xml",
+    "csl",
+    "js",
+    "ts",
+    "php",
+    "css",
+    "scss",
+];
+
+/**
  * Check if a file exists.
  *
  * @param filePath The path to the file.
@@ -21,6 +38,17 @@ export function fileExists(filePath: string): boolean {
     } catch (err) {
         return false;
     }
+}
+
+/**
+ * Check if a directory has an index.json file.
+ *
+ * @param dirPath The path to the directory.
+ * @returns True if the directory has index.json, false otherwise.
+ */
+export function hasIndex(dirPath: string): boolean {
+    const index = path.resolve(dirPath, "index.json");
+    return fileExists(index);
 }
 
 /**
@@ -48,18 +76,21 @@ export function readText(filePath: string, enc: BufferEncoding) {
  *
  * @returns | file contents
  */
-export function readFile<T>(file: string | ReadFileProps): File<T> {
-    let enc: BufferEncoding | undefined;
+export function readFile(file: string | ReadFileProps): File {
+    let enc: BufferEncoding | undefined = "utf-8";
     let ext: string | undefined;
     let filePath: string;
+    let returnType: string | undefined = "content";
+
     if (typeof file === "string") {
         filePath = file;
     } else {
         filePath = file.filePath;
-        enc = file.enc;
+        enc = file.enc ? file.enc : enc;
         ext = file.ext;
+        returnType = file.returnType ? file.returnType : returnType;
     }
-    if (typeof enc === "undefined") enc = "utf-8";
+
     const parsed = path.parse(filePath);
     if (typeof ext === "undefined") ext = parsed.ext.replace(".", "");
 
@@ -67,11 +98,11 @@ export function readFile<T>(file: string | ReadFileProps): File<T> {
         path.resolve(filePath),
     );
 
-    const read: File<T> = {
+    const read: File = {
         name: parsed.name,
         path: filePath,
         ext,
-        content: "" as T,
+        content: "",
         size,
         atime,
         mtime,
@@ -80,9 +111,14 @@ export function readFile<T>(file: string | ReadFileProps): File<T> {
     };
 
     try {
+        if (returnType === "path") return read;
+
+        if (!supportedExtensions.includes(ext))
+            throw new Error(`Unsupported file extension: ${ext}`);
+
         switch (ext) {
             case "json":
-                read.content = readJSON(path.resolve(filePath), enc) as T;
+                read.content = readJSON(path.resolve(filePath), enc);
                 break;
 
             case "md":
@@ -90,20 +126,20 @@ export function readFile<T>(file: string | ReadFileProps): File<T> {
             case "html":
             case "xml":
             case "csl":
-                read.content = readText(filePath, enc) as T;
+            default:
+                read.content = readText(filePath, enc);
                 break;
         }
 
         return read;
     } catch (err: any) {
+        console.error(err);
         throw new Error(`Cannot read file at ${filePath}: ${err}`);
     }
 }
 
-export const supportedExtensions = ["json", "md", "txt", "html", "xml", "csl"];
-
 /**
- * Create a file if it doesn't exist, overwriting it if it does.
+ * Create a file if it doesn't exist, overwrite it if it does.
  *
  * @param file The path to the file.
  * @param contents The contents of the file.
@@ -126,8 +162,8 @@ export function createFile(
     const extension = ext
         ? ext.replace(".", "")
         : typeof file === "string"
-        ? "md"
-        : file.ext;
+          ? "md"
+          : file.ext;
 
     try {
         createDir(dir);
@@ -151,7 +187,40 @@ export function createFile(
         fs.writeFileSync(resolvedPath, contents, options);
         return resolvedPath;
     } catch (err) {
-        throw new Error(`Cannot create file at ${file}: ${err}`);
+        throw new Error(`Cannot create file at ${resolvedPath}: ${err}`);
+    }
+}
+
+export function writeFile(file: File, options?: WriteFileOptions): File {
+    const resolvedPath = path.resolve(file.path);
+    const { dir, ext } = path.parse(resolvedPath);
+    const extension = ext
+        ? ext.replace(".", "")
+        : typeof file === "string"
+          ? "md"
+          : file.ext;
+
+    try {
+        createDir(dir);
+        switch (extension) {
+            case "json":
+                if (typeof file.content === "object") {
+                    file.content = JSON.stringify(file.content, null, 4);
+                }
+                break;
+
+            case "md":
+            case "txt":
+            case "html":
+            default:
+                file.content = file.content ? file.content.toString() : "";
+                break;
+        }
+        fs.writeFileSync(resolvedPath, file.content, options);
+
+        return readFile(resolvedPath);
+    } catch (err) {
+        throw new Error(`Cannot create file at ${resolvedPath}: ${err}`);
     }
 }
 
@@ -161,11 +230,12 @@ export function createFile(
  * @param props | file contents
  * @returns | file contents
  */
-export function parseFile(props: ParseFileProps): File<string> {
+export function parseFile(props: ParseFileProps): File {
     const ext = props.ext
         ? props.ext
         : path.parse(props.path).ext.replace(".", "");
-    const file: File<string> = {
+
+    const file: File = {
         name: props.name,
         path: props.path,
         ext,

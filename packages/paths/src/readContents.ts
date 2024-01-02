@@ -8,7 +8,7 @@ import type {
 } from "@elucidario/pkg-types";
 
 import { getPaths } from "./getPaths";
-import { readFile } from "./file";
+import { readFile, hasIndex } from "./file";
 
 import { Console } from "@elucidario/pkg-console";
 
@@ -23,8 +23,7 @@ import { supportedExtensions } from "./file";
  * @param {string[]} [props.extensions=["json", "md"]] - Extensões dos arquivos a serem lidos
  * @param {string} [props.returnType="content"] - Tipo de retorno: "content" ou "path"
  * @param {string[]} [props.exclude] - Arquivos a serem excluídos
- * @param {boolean} [props.log=false] - Se deve logar no console ou não
- * @param {PackageProps} [props.package] - Objeto package.json
+ * @param {PackageProps} [props.pkg] - Objeto package.json
  *
  * @returns {Object} - Objeto com o conteúdo de cada arquivo ou path
  */
@@ -34,8 +33,7 @@ export function readContents<T>({
     extensions = [],
     returnType = "content",
     exclude,
-    log,
-    package: pkg,
+    pkg,
 }: ReadContentsProps): ReadContentsReturn<T> {
     const result: ReadContentsReturn<T> = [];
 
@@ -44,17 +42,26 @@ export function readContents<T>({
     }
 
     // Selecionar o package.json do projeto, caso não seja recebido como parâmetro
-    if (!pkg) {
+    if (typeof pkg === "undefined") {
         pkg = readFile<PackageProps>({
             filePath: path.resolve(
                 getPaths().packages,
                 "paths",
                 "package.json",
             ),
-        }).content;
+        }).content as PackageProps;
     }
 
     const console = new Console(pkg);
+
+    if (index === true && !hasIndex(dirPath)) {
+        console.warn(
+            new Error(
+                `Directory ${dirPath} does not have an index.json file. Reading directory recursively.`,
+            ),
+        );
+        index = false;
+    }
 
     // caso index seja false lê o diretório
     if (!index) {
@@ -69,22 +76,16 @@ export function readContents<T>({
                     ? filePath.ext.replace(".", "")
                     : "json";
 
-                // se for um arquivo e não estiver na lista de extensões, retorna.
-                if (!extensions.includes(ext)) {
-                    return;
-                }
-
                 // se for um diretório, chama a função recursivamente
                 if (stat.isDirectory()) {
                     try {
                         const folder = readContents<T>({
                             dirPath: path.resolve(dirPath, file),
-                            index,
+                            index: hasIndex(path.resolve(dirPath, file)),
                             extensions,
                             returnType,
                             exclude,
-                            log,
-                            package: pkg,
+                            pkg,
                         });
 
                         result.push(...folder);
@@ -102,16 +103,17 @@ export function readContents<T>({
                     }
                 } else {
                     try {
-                        if (extensions.includes(ext)) {
+                        // se for um arquivo e não estiver na lista de extensões, retorna.
+                        // se a lista de extensões estiver vazia, retorna todos os tipos de arquivos.
+                        if (!extensions.includes(ext)) {
+                            return;
+                        } else {
                             result.push(
                                 readFile<T>({
                                     filePath: path.resolve(dirPath, file),
                                     ext,
+                                    returnType,
                                 }),
-                            );
-                        } else {
-                            throw new Error(
-                                `File extension ${ext} not supported`,
                             );
                         }
                     } catch (err: any) {
@@ -144,12 +146,11 @@ export function readContents<T>({
                     result.push(
                         ...readContents<T>({
                             dirPath: path.resolve(dirPath, file),
-                            index,
+                            index: hasIndex(path.resolve(dirPath, file)),
                             extensions,
                             returnType,
                             exclude,
-                            log,
-                            package: pkg,
+                            pkg,
                         }),
                     );
                 } else {
