@@ -10,9 +10,11 @@ describe("tableParser", () => {
             "publicacao-teste",
             "content",
             "pt-br",
+            "internal",
+            "body",
             "really",
-            "first-level.md"
-        )
+            "first-level.md",
+        ),
     ).content;
 
     it("should return tableParser node", async () => {
@@ -26,6 +28,7 @@ describe("tableParser", () => {
             publication: "publicacao-teste",
             lang: "pt-BR",
         });
+
         expect(tableParserNode).toMatchSnapshot();
     });
 });

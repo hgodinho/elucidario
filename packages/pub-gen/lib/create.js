@@ -1,4 +1,3 @@
-import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
 import { kebabCase } from "lodash-es";
@@ -9,6 +8,7 @@ import {
     readFile,
     createDir,
     createFile,
+    dirExists,
 } from "@elucidario/pkg-paths";
 
 import { fetchLocales } from "./reference/fetchLocales.js";
@@ -22,12 +22,13 @@ import {
     createGitignore,
     createPubGenJson,
     createPackageJson,
+    flattenStyleStructureFiles,
 } from "./utils.js";
 
-const packageJson = readFile(
-    path.resolve(getPaths().packages, "pub-gen", "package.json")
+const pkg = readFile(
+    path.resolve(getPaths().packages, "pub-gen", "package.json"),
 ).content;
-const console = new Console(packageJson);
+const console = new Console(pkg);
 
 /**
  *  Add license inquirer
@@ -63,21 +64,24 @@ const addDocumentInquirer = async (defaults) => {
         prompt: pubGenPrompt("document", defaults),
         callback: async (answers) => {
             const { document, addMoreDocument } = cleanFalsy(answers);
-            const { title, language, style } = document;
+            const { title, language, style, index, assets_titles } = document;
+
+            console.log({ title, language, style, index, assets_titles });
 
             await fetchLocales([language]);
 
             try {
-                const response = await fetchSearchStyles([style]);
+                const styleName = style.split("-")[0];
+                const response = await fetchSearchStyles([styleName]);
 
                 if (response.total_count > 0) {
-                    const style = await makeInquirer({
-                        title: `Found ${response.total_count} styles. Select one of them:`,
+                    const csl = await makeInquirer({
+                        title: `Found ${response.total_count} csl-styles. Select one of them:`,
                         prompt: [
                             {
                                 type: "list",
                                 name: "style",
-                                message: `Found ${response.total_count} styles. Select one of them:`,
+                                message: `Found ${response.total_count} csl-styles. Select one of them:`,
                                 choices: response.items.map((item) => {
                                     return item.name;
                                 }),
@@ -85,20 +89,19 @@ const addDocumentInquirer = async (defaults) => {
                         ],
                         callback: async (answers) => {
                             await fetchStyles([answers.style]);
-                            return {
-                                name: answers.style,
-                                url: response.items.find(
-                                    (item) => item.name === answers.style
-                                ).html_url,
-                            };
+                            return answers.style;
                         },
+                        type: "warning",
                     });
 
                     return {
                         document: {
                             title,
                             language,
-                            style,
+                            style: {
+                                name: style,
+                                csl,
+                            },
                         },
                         addMoreDocument,
                     };
@@ -146,7 +149,7 @@ export const createPublication = async (args) => {
 
             const dirName = path.resolve(getPaths().publications, name);
 
-            if (fs.existsSync(dirName)) {
+            if (dirExists(dirName)) {
                 throw new Error(`A publicação ${name} já existe`);
             }
 
@@ -191,11 +194,10 @@ export const createPublication = async (args) => {
                     "README.md": createREADME(name, PubGen),
                     ".gitignore": createGitignore(),
                 };
-                const directories = ["content", "dist", "files", "references"];
+                const directories = ["dist", "files", "references"];
 
                 if (debug) {
                     console.warning({
-                        defaultLog: true,
                         message: {
                             files,
                             directories,
@@ -210,8 +212,35 @@ export const createPublication = async (args) => {
                     });
 
                     Object.entries(files).forEach(([key, value]) => {
-                        console.log(key, value);
                         createFile(path.resolve(dirName, key), value);
+                    });
+
+                    PubGen.documents.forEach((document) => {
+                        const { title, language, style } = document;
+                        const documentName = kebabCase(title);
+                        const documentDir = path.resolve(
+                            dirName,
+                            "content",
+                            language,
+                        );
+                        createDir(documentDir);
+
+                        const pageStyle = readFile(
+                            path.resolve(
+                                getPaths().packages,
+                                "pub-gen",
+                                "lib",
+                                "styles",
+                                `${style.name}.json`,
+                            ),
+                        ).content;
+                        if (pageStyle.hasOwnProperty("structure")) {
+                            const structure = flattenStyleStructureFiles(
+                                pageStyle.structure,
+                                ["body"],
+                            );
+                            console.log({ structure });
+                        }
                     });
 
                     console.success({
@@ -231,11 +260,11 @@ export const createPublication = async (args) => {
                         console.log("Instalando dependências...");
                         execSync(
                             `cd ${dirName} && pnpm install -D ${devDependencies.join(
-                                " "
+                                " ",
                             )}`,
                             {
                                 stdio: "inherit",
-                            }
+                            },
                         );
                         console.log("Dependências instaladas com sucesso.", {
                             type: "success",

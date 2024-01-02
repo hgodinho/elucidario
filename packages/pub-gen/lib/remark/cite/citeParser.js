@@ -10,7 +10,7 @@ function citeParser(options) {
     const console = new Console(pkg);
 
     const references = referencesFrom(publication);
-    const citeproc = engine(references, options.lang, options.style);
+    const citeproc = engine(references, options.lang, options.style.csl);
 
     return async function transformer(tree) {
         const citeItems = [];

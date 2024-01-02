@@ -1,34 +1,33 @@
 import { describe, it, expect } from "@jest/globals";
-import fs from "fs";
 import path from "path";
 
-import { getPaths } from "../lib/getPaths";
+import { getPaths, readFile } from "@elucidario/pkg-paths";
+import { SchemaValidator } from "@elucidario/pkg-schema-validator";
 
 const paths = getPaths();
-const pubGenJson = JSON.parse(
-    fs.readFileSync(
-        path.resolve(
-            paths.pubGen,
-            "static",
-            "pub-gen",
-            "schemas",
-            "pub-gen-schema.json"
-        )
-    )
-);
+const pubGenJson = readFile(
+    path.resolve(
+        paths.packages,
+        "pub-gen",
+        "static",
+        "pub-gen",
+        "schemas",
+        "pub-gen-schema.json",
+    ),
+).content;
 
-// ("../static/pub-gen/schema/pub-gen-schema.json");
+const validator = new SchemaValidator();
 
 describe("pub-gen-schema", () => {
     it("should have a valid draft04 $schema", () => {
         expect(pubGenJson.$schema).toBe(
-            "https://json-schema.org/draft-04/schema#"
+            "https://json-schema.org/draft-04/schema#",
         );
     });
 
     it("should have a valid $id", () => {
         expect(pubGenJson.$id).toBe(
-            "https://elucidario.art/pub-gen/schema/pub-gen-schema.json"
+            "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
         );
     });
 
@@ -76,5 +75,27 @@ describe("pub-gen-schema", () => {
             type: "string",
             description: "Publication year.",
         });
+    });
+
+    it("pub-gen schema should validate against data", () => {
+        const teste = readFile(
+            path.resolve(
+                getPaths().packages,
+                "pub-gen",
+                "tests",
+                "schema",
+                "data",
+                "teste-1.json",
+            ),
+        ).content;
+
+        const validate = validator.validate({
+            schema: pubGenJson,
+            data: teste,
+        });
+
+        if (!validate) console.log(validator.getErrors());
+
+        expect(validate).toBeTruthy();
     });
 });

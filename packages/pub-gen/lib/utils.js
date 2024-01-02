@@ -185,7 +185,13 @@ export const publicationPkgName = (publication) =>
  *    prompt: pubGenPrompt("addLicense"),
  * });
  */
-export async function makeInquirer({ title, prompt, callback, publication }) {
+export async function makeInquirer({
+    title,
+    prompt,
+    callback,
+    publication,
+    type = "info",
+}) {
     let packageJSON = {};
     try {
         packageJSON = packageJson(publication);
@@ -193,7 +199,7 @@ export async function makeInquirer({ title, prompt, callback, publication }) {
         packageJSON = pkg;
     }
     const console = new Console(packageJSON);
-    console.log(title);
+    console.log(title, { type });
     if (typeof callback === "undefined") {
         callback = async (answers) => {
             return cleanFalsy(answers);
@@ -377,4 +383,90 @@ export function mdToMdast(md, options = undefined) {
         }
         return acc;
     }, []);
+}
+
+/**
+ * Flatten style structure files
+ * @param {object} data
+ * @param {array} exclude
+ * @param {array} paths
+ * @returns {array}
+ */
+export function flattenStyleStructureFiles(data, exclude = [], paths = []) {
+    for (const [key, value] of Object.entries(data)) {
+        if (typeof value === "string" && value.endsWith(".md")) {
+            paths.push(value);
+        } else if (Array.isArray(value)) {
+            for (const [name, include] of value) {
+                if (
+                    include &&
+                    !exclude.includes(name) &&
+                    !exclude.includes(key)
+                ) {
+                    paths.push(`${key}/${name}.md`);
+                }
+            }
+        } else if (typeof value === "object") {
+            flattenStyleStructureFiles(value, exclude, paths); // Recursively traverse
+        }
+    }
+    return paths;
+}
+
+/**
+ * Loop through style structure
+ * @param {object} structure
+ * @param {function} callback
+ * @param {string} prefix
+ * @returns {array}
+ */
+export async function loopStylesStructure(structure, callback, prefix = "") {
+    for (const [key, value, title] of Object.entries(structure)) {
+        if (typeof value === "string") {
+            await callback({
+                key: prefix ? prefix : key,
+                value,
+                title,
+            });
+        } else if (Array.isArray(value)) {
+            for (const [name, required, title] of value) {
+                await callback({
+                    key: prefix ? prefix : key,
+                    value: `${prefix ? `${prefix}/` : ""}${key}/${name}`,
+                    required,
+                    title,
+                });
+            }
+        } else if (typeof value === "object") {
+            await loopStylesStructure(value, callback, key); // Recursively traverse
+        }
+    }
+}
+
+/**
+ * Process files
+ * @param {object} obj
+ * @param {function} callback
+ * @returns {object}
+ */
+export function processFiles(obj, callback) {
+    if (Array.isArray(obj)) {
+        return obj.map((item) => processFiles(item, callback));
+    } else if (typeof obj === "object") {
+        if (
+            obj.hasOwnProperty("file") &&
+            obj.hasOwnProperty("path") &&
+            obj.hasOwnProperty("processed")
+        ) {
+            return callback(obj);
+        } else {
+            return Object.fromEntries(
+                Object.entries(obj).map(([key, value]) => {
+                    return [key, processFiles(value, callback)];
+                }),
+            );
+        }
+    } else {
+        return obj;
+    }
 }

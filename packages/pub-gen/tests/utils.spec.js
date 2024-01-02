@@ -1,3 +1,4 @@
+import path from "path";
 import {
     pubGenConfig,
     packageJson,
@@ -10,11 +11,14 @@ import {
     referenceIndex,
     referencesFrom,
     mdToMdast,
+    loopStylesStructure,
 } from "../lib/utils";
 
 import testPubGenConfig from "../../../publications/publicacao-teste/pub-gen.json";
 import testPackageJson from "../../../publications/publicacao-teste/package.json";
 import referenceIndexJson from "../../../publications/publicacao-teste/references/index.json";
+
+import { readFile, getPaths } from "@elucidario/pkg-paths";
 
 describe("pubGenConfig", () => {
     it("should return the default config", () => {
@@ -371,4 +375,22 @@ describe("mdToMdast", () => {
             },
         ]);
     });
+});
+
+describe.skip("loopStylesStructure", () => {
+    const structure = readFile(
+        path.resolve(
+            getPaths().packages,
+            "pub-gen",
+            "lib",
+            "styles",
+            "abnt-dissertation.json",
+        ),
+    ).content.structure;
+
+    // loopStylesStructure(structure, (node) => {
+    //     // console.log(node);
+    // });
+
+    // console.log(structure);
 });

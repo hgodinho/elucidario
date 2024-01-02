@@ -1,0 +1,194 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema#",
+    "$id": "https://elucidario.art/pub-gen/schema/styles-schema.json",
+    "version": "1.0.0",
+    "type": "object",
+    "properties": {
+        "$schema": {
+            "$ref": "<core>#/definitions/$schema"
+        },
+        "type": {
+            "$ref": "<core>#/definitions/type"
+        },
+        "name": {
+            "$ref": "<core>#/definitions/name"
+        },
+        "structure": {
+            "type": "object",
+            "additionalProperties": {
+                "anyOf": [
+                    {
+                        "$ref": "#/definitions/structure_tuples"
+                    },
+                    {
+                        "$ref": "#/definitions/structure_item"
+                    }
+                ]
+            }
+        },
+        "document": {
+            "type": "object",
+            "properties": {
+                "page": {
+                    "$ref": "#/definitions/page"
+                },
+                "font": {
+                    "$ref": "#/definitions/font"
+                }
+            },
+            "required": ["page", "font"]
+        },
+        "assets_titles": {
+            "$ref": "<core>#/definitions/assets_titles"
+        }
+    },
+    "required": [
+        "$schema",
+        "type",
+        "name",
+        "structure",
+        "document",
+        "assets_titles"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+        "page_title": {
+            "title": "Page title",
+            "type": "string"
+        },
+        "page_name": {
+            "title": "Page name",
+            "type": "string"
+        },
+        "page_titles": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": [
+                    {
+                        "$ref": "#/definitions/page_name"
+                    },
+                    {
+                        "$ref": "#/definitions/page_title"
+                    }
+                ],
+                "minItems": 2,
+                "maxItems": 2
+            }
+        },
+        "page_required": {
+            "title": "Page required",
+            "oneOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "string",
+                    "enum": ["auto"]
+                },
+                {
+                    "type": "string",
+                    "enum": [
+                        "summary",
+                        "bibliography",
+                        "acronyms",
+                        "assets",
+                        "tables",
+                        "glossary",
+                        "symbols"
+                    ]
+                }
+            ]
+        },
+        "structure_tuple": {
+            "type": "array",
+            "items": [
+                {
+                    "$ref": "#/definitions/page_name"
+                },
+                {
+                    "$ref": "#/definitions/page_required"
+                },
+                {
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/page_title"
+                        },
+                        {
+                            "$ref": "#/definitions/page_titles"
+                        }
+                    ]
+                }
+            ],
+            "minItems": 2,
+            "maxItems": 3
+        },
+        "structure_tuples": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/structure_tuple"
+            }
+        },
+        "structure_item": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/structure_tuples"
+            }
+        },
+        "page": {
+            "type": "object",
+            "properties": {
+                "size": {
+                    "type": "string"
+                },
+                "margin": {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "additionalProperties": {
+                                "$ref": "#/definitions/margin"
+                            }
+                        },
+                        {
+                            "$ref": "#/definitions/margin"
+                        }
+                    ]
+                }
+            }
+        },
+        "font": {
+            "type": "object",
+            "properties": {
+                "family": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "number"
+                },
+                "spacing": {
+                    "type": "number"
+                },
+                "color": {
+                    "type": "string"
+                }
+            }
+        },
+        "margin": {
+            "type": "object",
+            "properties": {
+                "top": {
+                    "type": "number"
+                },
+                "bottom": {
+                    "type": "number"
+                },
+                "left": {
+                    "type": "number"
+                },
+                "right": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

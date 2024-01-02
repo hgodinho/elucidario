@@ -13,6 +13,8 @@ describe("mermaidParser", () => {
             "publicacao-teste",
             "content",
             "pt-br",
+            "internal",
+            "body",
             "hello-world.md",
         ),
     ).content;

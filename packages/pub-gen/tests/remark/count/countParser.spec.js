@@ -13,6 +13,8 @@ describe("countParser", () => {
             "publicacao-teste",
             "content",
             "pt-br",
+            "internal",
+            "body",
             "hello-world.md",
         ),
     ).content;
@@ -27,6 +29,12 @@ describe("countParser", () => {
                 lang: "pt-BR",
                 pkg,
                 assets: {},
+                assetsTitles: [
+                    ["imagens", "Lista de imagens"],
+                    ["figuras", "Lista de figuras"],
+                    ["quadros", "Lista de quadros"],
+                    ["tabelas", "Lista de tabelas"],
+                ],
             },
             stringifyOptions: {},
             publication: "publicacao-teste",

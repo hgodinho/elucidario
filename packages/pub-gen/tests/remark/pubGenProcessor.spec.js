@@ -16,6 +16,8 @@ describe("pubGenProcessor", () => {
             "publicacao-teste",
             "content",
             "pt-br",
+            "internal",
+            "body",
             "hello-world.md",
         ),
         ext: "md",
@@ -27,6 +29,8 @@ describe("pubGenProcessor", () => {
             "publicacao-teste",
             "content",
             "pt-br",
+            "internal",
+            "body",
             "nodes",
             "mermaid-node.md",
         ),
@@ -81,9 +85,27 @@ describe("pubGenProcessor", () => {
             pubGenProcessor(content, {
                 publication: "publicacao-teste",
                 lang: "pt-br",
-                style: "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+                style: {
+                    name: "abnt",
+                    csl: "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+                },
             }),
         ).rejects.toThrow("No assets provided.");
+    });
+
+    it("should rejects promise without options.assetsTitles", async () => {
+        expect.assertions(1);
+        await expect(() =>
+            pubGenProcessor(content, {
+                publication: "publicacao-teste",
+                lang: "pt-br",
+                style: {
+                    name: "abnt",
+                    csl: "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+                },
+                assets: {},
+            }),
+        ).rejects.toThrow("No assetsTitles provided.");
     });
 
     it("should rejects promise without options.pkg", async () => {
@@ -92,8 +114,14 @@ describe("pubGenProcessor", () => {
             pubGenProcessor(content, {
                 publication: "publicacao-teste",
                 lang: "pt-br",
-                style: "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+                style: {
+                    name: "abnt",
+                    csl: "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+                },
                 assets: {},
+                assetsTitles: {
+                    mermaid: "Diagrama",
+                },
             }),
         ).rejects.toThrow("No package.json provided.");
     });
@@ -102,8 +130,14 @@ describe("pubGenProcessor", () => {
         const processed = await pubGenProcessor(content, {
             publication: "publicacao-teste",
             lang: "pt-br",
-            style: "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+            style: {
+                name: "abnt",
+                csl: "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+            },
             assets: {},
+            assetsTitles: {
+                mermaid: "Diagrama",
+            },
             pkg,
         });
 

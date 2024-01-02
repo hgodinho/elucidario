@@ -96,22 +96,37 @@ describe("prompt", () => {
             },
             {
                 type: "string",
-                name: "document.style",
-                message: "Style (Use CSL style.)",
-                validate: expect.any(Function),
-            },
-            {
-                type: "string",
                 name: "document.language",
                 message:
                     "Language (The language of the document. Use RFC 5646.)",
                 validate: expect.any(Function),
             },
             {
+                type: "list",
+                name: "document.style",
+                choices: ["abnt-dissertation"],
+                message: "Style (Define format style.)",
+                validate: expect.any(Function),
+            },
+            {
+                default: true,
+                type: "confirm",
+                name: "document.index",
+                message:
+                    "Index titles. (Add default index titles to the document based on the selected style?)",
+            },
+            {
+                default: true,
+                type: "confirm",
+                name: "document.assets_titles",
+                message:
+                    "document.assets_titles (Add default assets titles to the document based on the selected style?)",
+            },
+            {
+                type: "confirm",
+                name: "addMoreDocument",
                 default: false,
                 message: "Do you want to add another document?",
-                name: "addMoreDocument",
-                type: "confirm",
             },
         ]);
     });

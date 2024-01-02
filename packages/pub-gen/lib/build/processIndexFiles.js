@@ -11,8 +11,9 @@ import { heading, list, table, toMD } from "@elucidario/pkg-docusaurus-md";
 const paths = getPaths();
 
 export function indexBodyMD({ title, items, type = "table" }) {
-    const header = heading(1, title.toUpperCase());
+    const header = title ? heading(1, title.toUpperCase()) : "";
     let body = "";
+
     switch (type) {
         case "list":
             body = list(items, true);
@@ -29,6 +30,7 @@ export function indexBodyMD({ title, items, type = "table" }) {
             });
             break;
     }
+
     return toMD([header, body]);
 }
 
@@ -51,9 +53,10 @@ export const processIndexFiles = async ({ assets, publication, lang }) => {
     // assets.
     const titles = {
         images: "Lista de imagens",
-        tables: "Lista de tabelas",
         figures: "Lista de figuras",
         charts: "Lista de quadros",
+
+        tables: "Lista de tabelas",
         acronyms: "Lista de siglas e abreviaturas",
     };
 

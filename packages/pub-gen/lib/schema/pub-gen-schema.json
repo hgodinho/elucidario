@@ -13,89 +13,23 @@
     "required": ["name", "version", "type", "year"],
     "properties": {
         "version": {
-            "title": "Version",
-            "description": "Version of the configuration file.",
-            "type": "string"
+            "$ref": "<core>#/definitions/version"
         },
         "private": {
-            "title": "Private",
-            "description": "If true, the publication will not be published.",
-            "type": "boolean"
+            "$ref": "<core>#/definitions/private"
         },
         "type": {
-            "title": "Type",
-            "description": "Type of the publication.",
-            "type": "string",
-            "enum": [
-                "book",
-                "article",
-                "chapter",
-                "conference",
-                "dissertation",
-                "thesis",
-                "manual",
-                "misc"
-            ]
+            "$ref": "<core>#/definitions/type"
         },
         "year": {
-            "title": "Year",
-            "description": "Publication year.",
-            "type": "string"
+            "$ref": "<core>#/definitions/year"
         },
+
         "documents": {
-            "type": "array",
-            "title": "Documents",
-            "description": "List of documents.",
-            "items": {
-                "title": "Document",
-                "type": "object",
-                "properties": {
-                    "title": {
-                        "title": "Title",
-                        "description": "Title of the document.",
-                        "type": "string"
-                    },
-                    "style": {
-                        "title": "Style",
-                        "description": "Use CSL style.",
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "title": "Name",
-                                "description": "Name of the style.",
-                                "type": "string"
-                            },
-                            "url": {
-                                "title": "URL",
-                                "description": "URL of the style.",
-                                "type": "string"
-                            }
-                        },
-                        "required": ["name", "url"]
-                    },
-                    "language": {
-                        "title": "Language",
-                        "description": "The language of the document. Use RFC 5646.",
-                        "type": "string"
-                    }
-                },
-                "required": ["title", "style", "language"]
-            }
+            "$ref": "<core>#/definitions/documents"
         },
         "drive": {
-            "title": "Google Drive folder",
-            "description": "Folder where the files will be synced.",
-            "type": "object",
-            "properties": {
-                "url": {
-                    "description": "URL da pasta",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "ID da pasta",
-                    "type": "string"
-                }
-            }
+            "$ref": "<core>#/definitions/drive"
         }
     }
 }

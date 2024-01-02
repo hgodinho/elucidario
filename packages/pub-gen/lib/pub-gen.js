@@ -20,7 +20,7 @@ import { migrate } from "./migration/migration-helper.js";
 
 const pkg = readFile(
     path.resolve(getPaths().packages, "pub-gen", "package.json"),
-);
+).content;
 
 const console = new Console(pkg);
 
@@ -278,9 +278,7 @@ const PubGen = () => {
      * @command <build> - Build
      *
      * @param {string} publication - Nome da publicação
-     * @param {boolean} md - Build only markdown files
-     * @param {boolean} gdoc - Build only to Google Docs
-     * @param {boolean} clean-dist - Clean dist folder before building
+     * @param {boolean} watch - Build only markdown files
      */
     program
         .command("build")

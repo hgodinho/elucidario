@@ -12,6 +12,8 @@ describe("codeParser", () => {
             "publicacao-teste",
             "content",
             "pt-br",
+            "internal",
+            "body",
             "nodes",
             "code.md",
         ),

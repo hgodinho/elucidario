@@ -16,114 +16,119 @@ const mermaidParser = (treeOptions) => {
 
     const console = new Console(pkg);
 
-    return (tree, file) => {
-        const parsed = [];
+    try {
+        return (tree, file) => {
+            const parsed = [];
 
-        visit(tree, "text", async (node, index, parent) => {
-            if (!isPubGenNodeValue(node.value)) return;
+            visit(tree, "text", async (node, index, parent) => {
+                if (!isPubGenNodeValue(node.value)) return;
 
-            const { action, filePath, fileOptions } = parseNodeValue(
-                node.value,
-            );
+                const { action, filePath, fileOptions } = parseNodeValue(
+                    node.value,
+                );
 
-            if (action !== "mermaid") return;
+                if (action !== "mermaid") return;
 
-            const mermaidData = readFile({
-                filePath: path.resolve(
-                    getPaths().publications,
-                    publication,
-                    "content",
-                    lang,
-                    filePath,
-                ),
-                ext: "md",
-            }).content;
-
-            let { data, content } = parser.parseSync(mermaidData);
-
-            let {
-                filename,
-                source,
-                title,
-                width,
-                theme,
-                background,
-                format,
-                type,
-            } = data;
-
-            const mermaidOptions = {
-                filename,
-                loc: JSON.stringify(
-                    path.resolve(
+                const mermaidData = readFile({
+                    filePath: path.resolve(
                         getPaths().publications,
                         publication,
-                        "files",
-                        "generated",
+                        "content",
+                        lang,
+                        filePath,
                     ),
-                ),
-                width,
-                theme,
-                background,
-                format,
-            };
+                    ext: "md",
+                }).content;
 
-            let pandocOptions = "{.mermaid ";
-            pandocOptions += Object.keys(mermaidOptions)
-                .map((key) =>
-                    typeof mermaidOptions[key] !== "undefined"
-                        ? `${key}=${mermaidOptions[key]}`
-                        : false,
-                )
-                .filter(Boolean)
-                .join(" ");
-            pandocOptions += "}";
+                let { data, content } = parser.parseSync(mermaidData);
 
-            content = content
-                .replace(/```mermaid\r\n/, "")
-                .replace(/```\r\n/, "")
-                .trim();
+                let {
+                    filename,
+                    source,
+                    title,
+                    width,
+                    theme,
+                    background,
+                    format,
+                    type,
+                } = data;
 
-            const codeAst = unist.code(
-                content,
-                docxProcessor === "pandoc" ? pandocOptions : "mermaid",
-            );
+                const mermaidOptions = {
+                    filename,
+                    loc: JSON.stringify(
+                        path.resolve(
+                            getPaths().publications,
+                            publication,
+                            "files",
+                            "generated",
+                        ),
+                    ),
+                    width,
+                    theme,
+                    background,
+                    format,
+                };
 
-            node.type = "code";
-            node.value = codeAst.value;
-            node.lang = codeAst.lang;
+                let pandocOptions = "{.mermaid ";
+                pandocOptions += Object.keys(mermaidOptions)
+                    .map((key) =>
+                        typeof mermaidOptions[key] !== "undefined"
+                            ? `${key}=${mermaidOptions[key]}`
+                            : false,
+                    )
+                    .filter(Boolean)
+                    .join(" ");
+                pandocOptions += "}";
 
-            parsed.push({
-                node,
-                parent,
-                index,
-                title,
-                source,
+                content = content
+                    .replace(/```mermaid\r\n/, "")
+                    .replace(/```\r\n/, "")
+                    .trim();
+
+                const codeAst = unist.code(
+                    content,
+                    docxProcessor === "pandoc" ? pandocOptions : "mermaid",
+                );
+
+                node.type = "code";
+                node.value = codeAst.value;
+                node.lang = codeAst.lang;
+
+                parsed.push({
+                    node,
+                    parent,
+                    index,
+                    title,
+                    source,
+                });
             });
-        });
 
-        parsed.forEach((el) => {
-            // find index of el.parent in tree
-            const parentIndex = tree.children.findIndex(
-                (child) =>
-                    child.position.start.line === el.parent.position.start.line,
-            );
+            parsed.forEach((el) => {
+                // find index of el.parent in tree
+                const parentIndex = tree.children.findIndex(
+                    (child) =>
+                        child.position.start.line ===
+                        el.parent.position.start.line,
+                );
 
-            // insert title node before el.node in tree.
-            tree.children.splice(
-                parentIndex,
-                0,
-                unist.paragraph(mdToMdast(el.title, { reduce: true })),
-            );
+                // insert title node before el.node in tree.
+                tree.children.splice(
+                    parentIndex,
+                    0,
+                    unist.paragraph(mdToMdast(el.title, { reduce: true })),
+                );
 
-            // insert source node after el.node in tree.
-            tree.children.splice(
-                parentIndex + 2,
-                0,
-                unist.paragraph(mdToMdast(el.source, { reduce: true })),
-            );
-        });
-    };
+                // insert source node after el.node in tree.
+                tree.children.splice(
+                    parentIndex + 2,
+                    0,
+                    unist.paragraph(mdToMdast(el.source, { reduce: true })),
+                );
+            });
+        };
+    } catch (error) {
+        console.error(new Error(error));
+    }
 };
 
 export default mermaidParser;

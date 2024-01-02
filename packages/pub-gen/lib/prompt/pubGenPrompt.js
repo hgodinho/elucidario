@@ -1,22 +1,29 @@
-import fs from "fs";
 import path from "path";
+import { readContents, readFile, getPaths } from "@elucidario/pkg-paths";
 
 import { createInput } from "./createInput.js";
-import { getPaths } from "../getPaths.js";
 
-const paths = getPaths();
-const schema = JSON.parse(
-    fs.readFileSync(
-        path.resolve(
-            paths.pubGen,
-            "static",
-            "pub-gen",
-            "schemas",
-            "pub-gen-schema.json"
-        )
-    )
-);
+const schema = readFile(
+    path.resolve(
+        getPaths().packages,
+        "pub-gen",
+        "static",
+        "pub-gen",
+        "schemas",
+        "pub-gen-schema.json",
+    ),
+).content;
 
+const pkg = readFile(
+    path.resolve(getPaths().packages, "pub-gen", "package.json"),
+).content;
+
+/**
+ * Check if the key is required
+ * @param {string} key | key of the schema
+ * @param {Object} schema | schema
+ * @returns {boolean} true if the key is required
+ */
 export const isRequired = (key, schema) => {
     if (schema.required) {
         return schema.required.includes(key);
@@ -30,7 +37,16 @@ export const isRequired = (key, schema) => {
     return false;
 };
 
+/**
+ *
+ * @param {Function} callback | callback function
+ * @param {Object} defaults | defaults values
+ * @returns | prompt
+ */
 export const pubGenPrompt = (callback, defaults = undefined) => {
+    /**
+     * Create prompt
+     */
     const createPromptType = [
         "title",
         "type",
@@ -66,12 +82,72 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
             name: "addAuthor",
             message: "Do you want to add an author?",
             default: true,
-        }
+        },
     );
 
+    /**
+     * Document prompt
+     */
     const documentsSchema = schema.properties.documents.items;
     const documentPrompt = Object.entries(documentsSchema.properties).map(
         ([key, value]) => {
+            if ("style" === key) {
+                const styles = readContents({
+                    dirPath: path.resolve(
+                        getPaths().packages,
+                        "pub-gen",
+                        "lib",
+                        "styles",
+                    ),
+                    index: false,
+                    extensions: ["json"],
+                    pkg,
+                }).map(
+                    (style) => `${style.content.name}-${style.content.type}`,
+                );
+
+                return createInput({
+                    name: `document.${key}`,
+                    schema: {
+                        ...value,
+                        type: "string",
+                        enum: styles,
+                        required: isRequired(key, documentsSchema),
+                    },
+                    defaultValue: defaults
+                        ? defaults[key]
+                            ? defaults[key]
+                            : undefined
+                        : undefined,
+                });
+            }
+            if ("index" === key) {
+                return createInput({
+                    name: `document.${key}`,
+                    schema: {
+                        type: "boolean",
+                        title: value.title,
+                        description:
+                            "Add default index titles to the document based on the selected style?",
+                        required: isRequired(key, documentsSchema),
+                    },
+                    defaultValue: true,
+                });
+            }
+            if ("assets_titles" === key) {
+                return createInput({
+                    name: `document.${key}`,
+                    schema: {
+                        type: "boolean",
+                        title: value.title,
+                        description:
+                            "Add default assets titles to the document based on the selected style?",
+                        required: isRequired(key, documentsSchema),
+                    },
+                    defaultValue: true,
+                });
+            }
+
             return createInput({
                 name: `document.${key}`,
                 schema: {
@@ -84,7 +160,7 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
                         : undefined
                     : undefined,
             });
-        }
+        },
     );
     documentPrompt.push({
         type: "confirm",
@@ -93,6 +169,9 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         default: false,
     });
 
+    /**
+     * License prompt
+     */
     const licenseSchema = schema.properties.licenses.items;
     const licensePrompt = Object.entries(licenseSchema.properties).map(
         ([key, value]) => {
@@ -105,7 +184,7 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
                         : undefined
                     : undefined,
             });
-        }
+        },
     );
     licensePrompt.push({
         type: "confirm",
@@ -114,6 +193,9 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
         default: false,
     });
 
+    /**
+     * Author prompt
+     */
     const authorSchema = schema.properties.contributors.items;
     const authorPrompt = Object.entries(authorSchema.properties).map(
         ([key, value]) => {
@@ -126,7 +208,7 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
                         : undefined
                     : undefined,
             });
-        }
+        },
     );
     authorPrompt.push({
         type: "confirm",

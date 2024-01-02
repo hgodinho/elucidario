@@ -1,16 +1,12 @@
 import path from "path";
 import { visit } from "unist-util-visit";
-import { parseNodeValue, isPubGenNodeValue } from "../../utils.js";
+import { parseNodeValue, isPubGenNodeValue, mdToMdast } from "../../utils.js";
 import { getPaths, readFile } from "@elucidario/pkg-paths";
 import * as unist from "@elucidario/pkg-unist";
-import * as tableschema from "tableschema";
 import { SchemaValidator } from "@elucidario/pkg-schema-validator";
-import { Console } from "@elucidario/pkg-console";
 
 function tableParser(treeOptions) {
-    const { publication, lang, assets, version, pkg, ...extra } = treeOptions;
-
-    const console = new Console(pkg);
+    const { publication, lang, assets, version, ...extra } = treeOptions;
 
     // default docxProcessor to pandoc while we don't implement remark-docx
     let docxProcessor = "pandoc";
@@ -31,7 +27,9 @@ function tableParser(treeOptions) {
     ).content;
 
     return (tree, file) => {
-        visit(tree, "text", async (node) => {
+        const parsed = [];
+
+        visit(tree, "text", async (node, index, parent) => {
             if (!isPubGenNodeValue(node.value)) return;
 
             const { action, filePath, fileOptions, options, type } =
@@ -61,37 +59,56 @@ function tableParser(treeOptions) {
 
             const { data, title, note, fields } = tableFile;
 
-            const tableAst = [
-                title ? unist.bold([unist.text(title)]) : false,
-                title ? unist.breakNode() : false,
-                title ? unist.breakNode() : false,
-                unist.table(
-                    "left",
-                    data.map((row) => {
-                        return unist.tableRow(
-                            row.map((cell) => {
-                                return unist.tableCell([unist.text(cell)]);
-                            }),
-                        );
-                    }),
-                ),
-                note ? unist.breakNode() : false,
-                note ? unist.breakNode() : false,
-                note
-                    ? unist.paragraph([
-                          unist.bold([unist.text(note.label)]),
-                          unist.text(": "),
-                          unist.text(note.content),
-                      ])
-                    : false,
-                unist.breakNode(),
-                unist.breakNode(),
-            ].filter(Boolean);
+            const tableAst = unist.table(
+                "left",
+                data.map((row) => {
+                    return unist.tableRow(
+                        row.map((cell) => {
+                            return unist.tableCell([unist.text(cell)]);
+                        }),
+                    );
+                }),
+            );
 
-            node.type = "paragraph";
-            node.children = tableAst;
+            node.type = tableAst.type;
+            node.children = tableAst.children;
+            node.align = tableAst.align;
 
-            delete node.value;
+            parsed.push({
+                node,
+                parent,
+                index,
+                title,
+                note,
+                fields,
+            });
+        });
+
+        parsed.map(({ node, parent, index, title, note, fields }) => {
+            const parentIndex = tree.children.findIndex(
+                (child) =>
+                    child.position.start.line === parent.position.start.line,
+            );
+
+            if (typeof title !== "undefined") {
+                tree.children.splice(
+                    parentIndex,
+                    0,
+                    unist.paragraph(mdToMdast(title, { reduce: true })),
+                );
+            }
+
+            if (typeof note !== "undefined") {
+                tree.children.splice(
+                    parentIndex + 2,
+                    0,
+                    unist.paragraph([
+                        unist.text(note.label),
+                        unist.text(": "),
+                        unist.text(note.content),
+                    ]),
+                );
+            }
         });
     };
 }

@@ -4,19 +4,24 @@ import path from "path";
 import fs from "fs";
 import chokidar from "chokidar";
 import { pubGenRemarkProcessor } from "../lib/remark/processor.js";
-import { readContents, mergeSubSchema } from "@elucidario/pkg-schema-doc";
+import { mergeSubSchema, replaceRef } from "@elucidario/pkg-schema-doc";
 import { Command } from "commander";
 
 import { Console } from "@elucidario/pkg-console";
-import { getPaths } from "@elucidario/pkg-paths";
+import {
+    getPaths,
+    readContents,
+    readFile,
+    createFile,
+} from "@elucidario/pkg-paths";
 import { debounce } from "../lib/utils.js";
 
 const paths = getPaths();
 const packageJson = JSON.parse(
     fs.readFileSync(
         path.resolve(paths.packages, "pub-gen", "package.json"),
-        "utf-8"
-    )
+        "utf-8",
+    ),
 );
 const console = new Console(packageJson);
 
@@ -28,12 +33,20 @@ const distPath = path.resolve(
     "pub-gen",
     "static",
     "pub-gen",
-    "schemas"
+    "schemas",
 );
 
-const docs = readContents(srcPath, ["md"], false);
+const docs = readContents({
+    dirPath: srcPath,
+    extensions: ["md"],
+    index: false,
+});
 
-const schemas = readContents(path.resolve(libPath, "schema"), ["json"]);
+const schemas = readContents({
+    dirPath: path.resolve(libPath, "schema"),
+    extensions: ["json"],
+    index: false,
+});
 
 if (!fs.existsSync(docsPath)) {
     fs.mkdirSync(docsPath);
@@ -51,37 +64,42 @@ const baseDocs = [
 ];
 
 export const build = async (language, exclude) => {
-    const jsonExclude = exclude?.filter((item) => item.endsWith(".json"));
-    const mdExclude = exclude?.filter((item) => item.endsWith(".md"));
-
     const buildSchemas = async () =>
         await Promise.all(
-            Object.entries(schemas).map(async ([name, schema]) => {
-                const excluded = Object.keys(schema.properties).filter(
-                    (key) => key
-                );
+            schemas.map(async (file) => {
                 const options = {
-                    dereference: {
-                        excludedPathMatcher: (path) => {
-                            let isExcluded = false;
-                            excluded.forEach((item) => {
-                                if (path.includes(item)) {
-                                    isExcluded = true;
+                    resolve: {
+                        file: {
+                            async read(file, callback, $refs) {
+                                if (file.url.includes("node_modules")) {
+                                    return readFile(
+                                        path.resolve(
+                                            distPath,
+                                            file.url.split("/").pop(),
+                                        ),
+                                    ).content;
                                 }
-                            });
-                            return isExcluded;
+                            },
                         },
                     },
                 };
-                let newSchema = await mergeSubSchema(schema, options);
-
-                fs.writeFileSync(
-                    path.resolve(distPath, name),
-                    JSON.stringify(newSchema, null, 4)
+                const newSchema = await mergeSubSchema(
+                    replaceRef(file.content, [["core", "./core.json"]]),
+                    options,
                 );
-
-                return Promise.resolve(`${name}.json`);
-            })
+                return Promise.resolve(
+                    createFile(
+                        {
+                            filePath: path.resolve(
+                                distPath,
+                                `${file.name}.json`,
+                            ),
+                            ext: "json",
+                        },
+                        newSchema,
+                    ),
+                );
+            }),
         );
 
     const buildDocs = async () =>
@@ -99,7 +117,7 @@ export const build = async (language, exclude) => {
                 if (baseDocs.includes(name)) {
                     fs.writeFileSync(
                         path.resolve(docsPath, `${name}.md`),
-                        newFile.toString()
+                        newFile.toString(),
                     );
                 } else {
                     if (!fs.existsSync(path.resolve(docsPath, "schemas"))) {
@@ -107,12 +125,12 @@ export const build = async (language, exclude) => {
                     }
                     fs.writeFileSync(
                         path.resolve(docsPath, "schemas", `${name}.md`),
-                        newFile.toString()
+                        newFile.toString(),
                     );
                 }
 
                 return Promise.resolve(`${name}.md`);
-            })
+            }),
         );
 
     console.log("Building schemas...");

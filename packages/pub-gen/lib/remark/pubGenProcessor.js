@@ -25,6 +25,8 @@ export const pubGenProcessor = async (content, options) => {
         return Promise.reject(new Error("No style provided."));
     if (typeof options.assets === "undefined")
         return Promise.reject(new Error("No assets provided."));
+    if (typeof options.assetsTitles === "undefined")
+        return Promise.reject(new Error("No assetsTitles provided."));
     if (typeof options.pkg === "undefined")
         return Promise.reject(new Error("No package.json provided."));
 

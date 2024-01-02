@@ -9,32 +9,30 @@ import { getPaths } from "../getPaths.js";
 const paths = getPaths();
 
 const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
+    fs.readFileSync(path.resolve(paths.pubGen, "package.json")),
 );
 const console = new Console(packageJson);
 const token = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, ".gh-token"))
+    fs.readFileSync(path.resolve(paths.pubGen, ".gh-token")),
 ).token;
 
 export const fetchLocales = async (lang) => {
-    console.warning({
-        message: `Fetching locales for ${lang.join(", ")}`,
-    });
+    console.warning(`Fetching locales for ${lang.join(", ")}`);
 
     const locales = lang.filter((locale) => {
         const localePath = path.resolve(
             paths.pubGen,
             "cache",
             "locales",
-            `locales-${locale}.xml`
+            `locales-${locale}.xml`,
         );
         if (!fs.existsSync(localePath)) {
-            console.warning({
-                message: `Locale ${locale} not found in cache. Fetching from GitHub...`,
-            });
+            console.warning(
+                `Locale ${locale} not found in cache. Fetching from GitHub...`,
+            );
             return true;
         }
-        console.warning({ message: `Locale ${locale} found in cache.` });
+        console.success(`Locale ${locale} found in cache.`);
         return false;
     });
 
@@ -57,7 +55,7 @@ export const fetchLocales = async (lang) => {
                                     owner: "citation-style-language",
                                     repo: "locales",
                                     path: searchResponse.name,
-                                }
+                                },
                             )
                             .then(async (response) => {
                                 const xmlFile = response.data;
@@ -82,9 +80,9 @@ export const fetchLocales = async (lang) => {
                         throw error;
                     });
             } catch (error) {
-                console.error({ defaultLog: true, message: error });
+                console.error(error);
             }
-        })
+        }),
     );
 
     const xmlFiles = xmlLocales.reduce((acc, locale) => {
@@ -98,7 +96,7 @@ export const fetchLocales = async (lang) => {
             });
         fs.writeFileSync(
             path.resolve(paths.pubGen, "cache", "locales", key),
-            value
+            value,
         );
     });
 };

@@ -7,7 +7,7 @@ import { Console } from "@elucidario/pkg-console";
 import { getPaths, readFile } from "@elucidario/pkg-paths";
 
 const packageJson = readFile(
-    path.resolve(getPaths().packages, "pub-gen", "package.json")
+    path.resolve(getPaths().packages, "pub-gen", "package.json"),
 ).content;
 
 const console = new Console(packageJson);
@@ -18,9 +18,7 @@ const token = readFile({
 }).content;
 
 export const fetchSearchStyles = async (styles) => {
-    console.warning({
-        message: `Searching for '${styles.join(", ")}' styles...`,
-    });
+    console.warning(`Searching for '${styles.join(", ")}' styles...`);
 
     const octokit = new Octokit({ auth: token.token });
 

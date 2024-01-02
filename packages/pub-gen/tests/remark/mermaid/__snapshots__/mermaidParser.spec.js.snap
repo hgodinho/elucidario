@@ -12,7 +12,7 @@ VFile {
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var \\[@linked-art2021.1].
 
-{{count:figures;legend=\\*\\*Mermaid\\*\\*}}
+{{count:figuras;legend=\\*\\*Mermaid\\*\\*}}
 
 \`\`\`{.mermaid&#x20;filename=mermaid&#x20;loc="C:\\\\\\Users\\\\\\55119\\\\\\Elucidário.art\\\\\\elucidario\\\\\\publications\\\\\\publicacao-teste\\\\\\files\\\\\\generated"&#x20;width=720&#x20;background=transparent}
 erDiagram
@@ -37,7 +37,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget ris
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.
 
-{{count:figures;legend=\\*\\*Lorem ipsum\\*\\*}}
+{{count:figuras;legend=\\*\\*Lorem ipsum\\*\\*}}
 
 ![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)
 ",

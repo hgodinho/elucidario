@@ -12,9 +12,11 @@ describe("embedParser", () => {
             "publicacao-teste",
             "content",
             "pt-br",
+            "internal",
+            "body",
             "nodes",
-            "embed.md"
-        )
+            "embed.md",
+        ),
     ).content;
 
     it("should return embedParser node", async () => {

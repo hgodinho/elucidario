@@ -1,0 +1,87 @@
+{
+    "$schema": "../../static/pub-gen/schemas/style-schema.json",
+    "name": "abnt",
+    "type": "dissertation",
+    "structure": {
+        "external": [
+            ["capa", "auto"],
+            ["lombada", "auto"]
+        ],
+        "internal": {
+            "pre": [
+                ["folha-rosto", true],
+                ["ficha-catalografica", true],
+                ["errata", false],
+                ["folha-avaliacao", true],
+                ["dedicatoria", false],
+                ["agradecimentos", false],
+                ["epigrafe", false],
+                ["resumo-lingua-vernacula", true],
+                ["resumo-lingua-estrangeira", true],
+                [
+                    "lista-{*}",
+                    "assets",
+                    [
+                        ["quadros", "Lista de quadros"],
+                        ["graficos", "Lista de gráficos"],
+                        ["figuras", "Lista de figuras"],
+                        ["imagens", "Lista de imagens"],
+                        ["tabelas", "Lista de tabelas"]
+                    ]
+                ],
+                [
+                    "lista-abreviaturas-siglas",
+                    "acronyms",
+                    "Lista de abreviaturas e siglas"
+                ],
+                ["lista-simbolos", "symbols", "Lista de símbolos"],
+                ["sumario", "summary", "Sumário"]
+            ],
+            "body": [
+                ["introducao", true],
+                ["desenvolvimento", true],
+                ["conclusao", true]
+            ],
+            "pos": [
+                ["referencias", "bibliography", "Bibliografia"],
+                ["glossario", "glossary", "Glossário"],
+                ["apendice", false],
+                ["anexos", false],
+                ["indice", false]
+            ]
+        }
+    },
+    "document": {
+        "page": {
+            "size": "A4",
+            "orientation": "portrait",
+            "margin": {
+                "verse": {
+                    "top": 3,
+                    "right": 3,
+                    "bottom": 2,
+                    "left": 2
+                },
+                "obverse": {
+                    "top": 3,
+                    "left": 3,
+                    "bottom": 2,
+                    "right": 2
+                }
+            }
+        },
+        "font": {
+            "family": "Arial",
+            "size": 12,
+            "spacing": 1.5,
+            "color": "#000000"
+        }
+    },
+    "assets_titles": {
+        "imagens": "Imagem",
+        "tabelas": "Tabela",
+        "figuras": "Figura",
+        "quadros": "Quadro",
+        "graficos": "Gráfico"
+    }
+}
