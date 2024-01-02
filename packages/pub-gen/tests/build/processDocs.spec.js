@@ -99,17 +99,17 @@ describe("processDocs", () => {
             pkg,
         });
 
-        createFile(
-            path.resolve(
-                getPaths().packages,
-                "pub-gen",
-                "tests",
-                "build",
-                "data",
-                "processDocs.processed.json",
-            ),
-            processed,
-        );
+        // createFile(
+        //     path.resolve(
+        //         getPaths().packages,
+        //         "pub-gen",
+        //         "tests",
+        //         "build",
+        //         "data",
+        //         "processDocs.processed.json",
+        //     ),
+        //     processed,
+        // );
 
         expect(processed).toMatchObject(expected);
     });
