@@ -1,15 +1,26 @@
 {
-    "extends": "@elucidario/pkg-tsconfig",
+    "extends": "@elucidario/tool-tsconfig",
     "compilerOptions": {
+        "baseUrl": ".",
         "outDir": "dist",
         "target": "ESNext",
         "module": "ESNext",
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "declarationDir": "dist/types",
         "paths": {
-            "@elucidario/pkg-types": ["../types/dist"],
-            "@elucidario/pkg-docusaurus-md": ["../docusaurus-md/dist"],
-            "@elucidario/pkg-schema-doc": ["../schema-doc/dist"],
-            "@elucidario/pkg-console": ["../console/dist"],
-            "@elucidario/pkg-paths": ["../paths/dist"]
+            "@elucidario/pkg-types": [
+                "node_modules/@elucidario/pkg-types/dist"
+            ],
+            "@elucidario/pkg-docusaurus-md": [
+                "node_modules/@elucidario/pkg-docusaurus-md/dist"
+            ],
+            "@elucidario/pkg-console": [
+                "node_modules/@elucidario/pkg-console/dist/types"
+            ],
+            "@elucidario/pkg-paths": [
+                "node_modules/@elucidario/pkg-paths/dist/types"
+            ]
         }
     },
     "include": ["src/index.ts"],

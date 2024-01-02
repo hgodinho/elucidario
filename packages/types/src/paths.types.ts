@@ -38,13 +38,14 @@ export interface ReadContentsProps {
     returnType?: "path" | "content";
     exclude?: string[];
     log?: boolean;
-    package?: PackageProps;
+    pkg?: PackageProps;
 }
 
 export interface ReadFileProps {
     filePath: string;
     ext?: string;
     enc?: BufferEncoding;
+    returnType?: "path" | "content";
 }
 
 export interface CreateFileProps {
@@ -55,11 +56,11 @@ export interface CreateFileProps {
     space?: string | number;
 }
 // JSON.stringify(pubGenJson, null, 4)
-export interface File<T extends unknown> {
+export interface File {
     name: string;
     path: string;
-    content: T;
-    ext?: string;
+    ext: string;
+    content?: any;
     size?: number;
     atime?: Date;
     mtime?: Date;
@@ -70,8 +71,8 @@ export interface File<T extends unknown> {
 export type ParseFileProps = {
     name: string;
     path: string;
-    content: string;
     ext?: string;
+    content?: string;
 };
 
-export type ReadContentsReturn<T> = File<T>[];
+export type ReadContentsReturn<T> = File[];
