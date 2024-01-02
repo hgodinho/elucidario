@@ -1,5 +1,5 @@
 {
-    "$schema": "https://elucidario.art/pub-gen/schemas/pub-gen-schema.json",
+    "$schema": "node_modules/@elucidario/pkg-pub-gen/static/pub-gen/schemas/pub-gen-schema.json",
     "name": "interseccoes-entre-linked-art-e-spectrum",
     "version": "1.0.0",
     "profile": "data-package",
@@ -9,9 +9,28 @@
     "year": "2023",
     "description": "Adicionar descrição",
     "homepage": "https://elucidario.art",
-    "keywords": ["adicionar", "palavras", "chaves"],
-    "image": "",
-    "publications": [
+    "keywords": [
+        "adicionar",
+        "palavras",
+        "chaves"
+    ],
+    "contributors": [
+        {
+            "title": "Henrique Godinho Lopes Costa",
+            "email": "henrique@hgod.in",
+            "organization": "Programa de Pós-graduação em Ciência da Informação da Escola de Comunicação e Artes da Universidade de São Paulo",
+            "role": "author"
+        },
+        {
+            "title": "Vânia Mara Alves Lima",
+            "email": "vamal@usp.br",
+            "organization": "Programa de Pós-graduação em Ciência da Informação da Escola de Comunicação e Artes da Universidade de São Paulo",
+            "role": "author"
+        }
+    ],
+    "created": "2023-05-05T01:51:25.830Z",
+    "private": false,
+    "documents": [
         {
             "title": "Intersecções entre Linked-art e SPECTRUM",
             "language": "pt-br",
@@ -28,25 +47,5 @@
                 "url": "https://github.com/citation-style-language/styles/blob/6b7fdff8cb0fb45b342e8ac319634bf18168c73d/apa.csl"
             }
         }
-    ],
-    "licenses": [
-        {
-            "name": "owner"
-        }
-    ],
-    "contributors": [
-        {
-            "title": "Henrique Godinho Lopes Costa",
-            "email": "henrique@hgod.in",
-            "organization": "Programa de Pós-graduação em Ciência da Informação da Escola de Comunicação e Artes da Universidade de São Paulo",
-            "role": "author"
-        },
-        {
-            "title": "Vânia Mara Alves Lima",
-            "email": "vamal@usp.br",
-            "organization": "Programa de Pós-graduação em Ciência da Informação da Escola de Comunicação e Artes da Universidade de São Paulo",
-            "role": "author"
-        }
-    ],
-    "created": "2023-05-05T01:51:25.830Z"
+    ]
 }
