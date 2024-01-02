@@ -28,14 +28,14 @@
         "jsonschema": "^1.4.1"
     },
     "devDependencies": {
-        "@babel/plugin-syntax-import-attributes": "^7.22.5",
-        "@babel/plugin-transform-json-strings": "^7.22.5",
-        "@babel/preset-env": "^7.23.3",
+        "@babel/plugin-syntax-import-attributes": "^7.23.3",
+        "@babel/plugin-transform-json-strings": "^7.23.4",
+        "@babel/preset-env": "^7.23.6",
+        "@elucidario/pkg-types": "workspace:^",
         "@elucidario/tool-rollup": "workspace:^",
         "@elucidario/tool-tsconfig": "workspace:^",
-        "@elucidario/pkg-types": "workspace:^",
         "jest": "^29.7.0",
-        "rollup": "^4.6.0",
-        "typescript": "^5.3.2"
+        "rollup": "^4.9.0",
+        "typescript": "^5.3.3"
     }
 }
