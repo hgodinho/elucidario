@@ -1,0 +1,110 @@
+{
+    "title": "{{count:quadros;legend=Descrição da tabela MySQL _wp_lcdr_prop_map_ do sistema.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Chave"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
+        [
+            "map_id",
+            "bigint(20) unsigned",
+            "auto_increment",
+            "PRI",
+            "Identificador único do registro"
+        ],
+        [
+            "mapping_id",
+            "bigint(20) unsigned",
+            "NOT NULL",
+            "KEY",
+            "ID de uma entidade _Mapping_ do sistema"
+        ],
+        ["description", "longtext", "", "", "Descrição do mapeamento"],
+        [
+            "prop_name",
+            "varchar(50)",
+            "NOT NULL",
+            "KEY",
+            "Nome da propriedade sendo mapeada"
+        ],
+        [
+            "entity_type",
+            "varchar(50)",
+            "NOT NULL",
+            "KEY",
+            "Tipo de entidade mapeada"
+        ],
+        [
+            "external_prop_name",
+            "varchar(100)",
+            "NOT NULL",
+            "KEY",
+            "Nome da propriedade externa sendo mapeada"
+        ],
+        [
+            "external_prop_description",
+            "longtext",
+            "",
+            "",
+            "Descrição da propriedade externa"
+        ],
+        [
+            "external_prop_uri",
+            "varchar(255)",
+            "NOT NULL",
+            "",
+            "URI da propriedade externa"
+        ],
+        [
+            "external_prop_type",
+            "varchar(20)",
+            "NOT NULL",
+            "",
+            "Tipo de dados da propriedade externa"
+        ],
+        [
+            "map_value",
+            "JSON",
+            "NOT NULL",
+            "",
+            "Valores padrão do mapeamento, em formato JSON"
+        ],
+        [
+            "editable",
+            "tinyint(1)",
+            "NOT NULL, default: 1",
+            "",
+            "Como um boolean, registra se o mapeamento pode ou não ser editado no contexto de edição das entidades"
+        ],
+        [
+            "status",
+            "varchar(20)",
+            "NOT NULL",
+            "",
+            "Status do mapeamento, podendo ser _active_ ou _inactive_"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

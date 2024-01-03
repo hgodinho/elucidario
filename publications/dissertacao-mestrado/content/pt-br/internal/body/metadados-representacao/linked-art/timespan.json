@@ -1,0 +1,55 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _TimeSpan_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        ["type", "obrigatório", "DEVE ser _TimeSpan_"],
+        ["_label", "recomendado", ""],
+        ["value", "obrigatório", "O valor numérico"],
+        ["classified_as", "recomendado", ""],
+        ["identified_by", "recomendado", "Somente _Name_"],
+        [
+            "begin_of_the_begin",
+            "recomendado",
+            "Uma data e hora ISO 8601 representando a data mais antiga que este intervalo de tempo pode ter começado"
+        ],
+        [
+            "end_of_the_end",
+            "recomendado",
+            "Uma data e hora ISO 8601 representando a data mais recente que este intervalo de tempo pode ter terminado"
+        ],
+        [
+            "end_of_the_begin",
+            "opcional",
+            "Uma data e hora ISO 8601 representando a data mais recente que este intervalo de tempo pode ter começado"
+        ],
+        [
+            "begin_of_the_end",
+            "opcional",
+            "Uma data e hora ISO 8601 representando a data mais antiga que este intervalo de tempo pode ter terminado"
+        ],
+        [
+            "duration",
+            "opcional",
+            "Um objeto _Dimension_ que representa a duração do intervalo de tempo"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _TimeSpan_ do Linked Art (2021)."
+    }
+}

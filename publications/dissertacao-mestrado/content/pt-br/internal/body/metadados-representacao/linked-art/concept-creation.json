@@ -1,0 +1,36 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _Creation_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        [
+            "type",
+            "string",
+            "obrigatório",
+            "O tipo da classe que deve ser _Creation_"
+        ],
+        ["timespan", "array", "opcional", ""],
+        ["influenced_by", "array", "opcional", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Concept Creation_ do Linked Art (2021)."
+    }
+}

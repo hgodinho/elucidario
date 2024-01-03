@@ -1,0 +1,36 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _Identifiers Assignments_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        ["type", "obrigatório", "DEVE ser _AttributeAssignment_"],
+        ["_label", "recomendado", ""],
+        ["classified_as", "recomendado", ""],
+        ["carried_out_by", "recomendado", ""],
+        ["timespan", "opcional", ""],
+        ["referred_to_by", "opcional", ""],
+        [
+            "used_specific_object",
+            "opcional",
+            "Um _array_ de objetos JSON, cada um dos quais é uma referência para outro _Endpoint_ que foi instrumental na atribuição do identificador"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Identifiers Assignments_ do Linked Art (2021)."
+    }
+}

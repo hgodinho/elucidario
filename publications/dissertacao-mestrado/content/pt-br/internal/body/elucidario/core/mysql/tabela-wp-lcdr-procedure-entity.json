@@ -1,0 +1,54 @@
+{
+    "title": "{{count:quadros;legend=Descrição da tabela MySQL _wp_lcdr_procedure_entity_ do sistema.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Chave"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
+        [
+            "rel_id",
+            "bigint(20) unsigned",
+            "auto_increment",
+            "PRI",
+            "Identificador único da relação"
+        ],
+        [
+            "entity_id",
+            "bigint(20) unsigned",
+            "NOT NULL",
+            "KEY",
+            "ID da entidade"
+        ],
+        [
+            "procedure_id",
+            "bigint(20) unsigned",
+            "NOT NULL",
+            "KEY",
+            "ID do procedimento"
+        ],
+        ["rel_order", "int(11)", "NOT NULL", "KEY", "Ordem da relação"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

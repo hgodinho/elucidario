@@ -1,0 +1,172 @@
+{
+    "title": "{{count:quadros;legend=Itens selecionados da base de dados Museológica da Casa Museu Ema Klabin}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "NúmeroTombo"
+        },
+        {
+            "type": "string",
+            "name": "NomeTítulo"
+        },
+        {
+            "type": "string",
+            "name": "Classificação"
+        },
+        {
+            "type": "string",
+            "name": "Núcleo"
+        },
+        {
+            "type": "string",
+            "name": "Autor"
+        }
+    ],
+    "data": [
+        ["NúmeroTombo", "NomeTítulo", "Classificação", "Núcleo", "Autor"],
+        [
+            "M-0006",
+            "Recipiente de pintura",
+            "Objetos de Atividades Artísticas",
+            "Arte Asiática",
+            "Autoria desconhecida"
+        ],
+        [
+            "M-0011",
+            "Imagem de Nossa Senhora Divina Pastora",
+            "Artes Visuais - Escultura Religiosa",
+            "Arte Brasileira até 1900",
+            "Escola Pernambucana"
+        ],
+        [
+            "M-0117",
+            "Caixa decorativa",
+            "Objetos Domésticos - Acessórios de Interiores",
+            "Artes Decorativas",
+            "Autoria desconhecida"
+        ],
+        [
+            "M-0139",
+            "Relógio de parede",
+            "Equipamentos de Atividades Científicas e Tecnológicas",
+            "Artes Decorativas",
+            "Jacob Boucheret (ativo entre 1680-1722), maquinário; André-Charles Boulle (1642-1732), caixa."
+        ],
+        [
+            "M-0166",
+            "Sacra de parede",
+            "Objetos de Ritos, Cultos e Crenças",
+            "Artes Decorativas",
+            "Autoria desconhecida"
+        ],
+        [
+            "M-0303",
+            "Figura de Bom Pastor",
+            "Artes Visuais - Escultura Religiosa",
+            "Arte Brasileira até 1900",
+            "Autoria desconhecida"
+        ],
+        [
+            "M-0337",
+            "Cão de lareira",
+            "Objetos Domésticos - Controle de Temperatura",
+            "Artes Decorativas",
+            "Autoria desconhecida"
+        ],
+        [
+            "M-0512",
+            "Porta-cinzas",
+            "Objetos de Uso Pessoal - Objetos de Fumantes",
+            "Prataria",
+            "Apollo Studios of New York"
+        ],
+        [
+            "M-0612",
+            "Prato com cena do julgamento de Salomão",
+            "Objetos Domésticos - Serviço de Alimentos",
+            "Artes Decorativas",
+            "Oficina de Lodovico e Angelo Picchi"
+        ],
+        [
+            "M-0614",
+            "Tinteiro ou saleiro com três sátiros e figura de querubim",
+            "Equipamentos de Comunicação",
+            "Artes Decorativas",
+            "Desconhecido"
+        ],
+        [
+            "M-0646",
+            "Espelho em relevo com cena de Eos raptando Titono",
+            "Objetos de Uso Pessoal - Objetos de Toalete",
+            "Antiguidade Clássica",
+            "Autoria desconhecida"
+        ],
+        [
+            "M-0693",
+            "Mesa de jogos com toucador",
+            "Objetos Domésticos - Mobiliário",
+            "Mobiliário Europeu",
+            "Autoria desconhecida"
+        ],
+        [
+            "M-0734",
+            "Fuste de coluna",
+            "Estruturas Edificadas e Elementos de Construção",
+            "Arte Brasileira até 1900",
+            "Mestre Valentim da Fonseca e Silva (Serro, MG, c.1750 - Rio de Janeiro, RJ, 1813)"
+        ],
+        [
+            "M-0821",
+            "Rio de Janeiro",
+            "Artes Visuais - Pintura",
+            "Arte Brasileira - Século XX",
+            "Tarsila do Amaral (Capivari, SP, 1886 - São Paulo, SP, 1973)"
+        ],
+        [
+            "M-0902",
+            "Capitão General Minamoto Yoritomo e a princesa Tamaori",
+            "Artes Visuais - Gravura",
+            "Arte Asiática",
+            "Utagawa Kunisada (1788-1865)"
+        ],
+        [
+            "M-0910",
+            "Retrato de Tarsila do Amaral",
+            "Artes Visuais - Desenho",
+            "Arte Brasileira - Século XX",
+            "Lasar Segall (Vilna, Lituânia, 1889 - São Paulo, SP, 1957)"
+        ],
+        [
+            "M-0999",
+            "Lustre",
+            "Objetos Domésticos - Iluminação",
+            "Artes Decorativas",
+            "Cristallerie de Portieux."
+        ],
+        [
+            "M-1111",
+            "Penca de balangandãs",
+            "Objetos de Uso Pessoal - Adornos Corporais",
+            "Prataria",
+            "Autoria desconhecida"
+        ],
+        [
+            "M-1562",
+            "Bolsa",
+            "Objetos de Uso Pessoal - Auxílio, Cuidado e Conforto Pessoais",
+            "Moda",
+            "Autoria desconhecida"
+        ],
+        [
+            "M-1568",
+            "Traje feminino (Cheongsam)",
+            "Objetos de Uso Pessoal - Vestuário",
+            "Moda",
+            "Autoria desconhecida"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor, extraído da BD Museológica da Casa Museu Ema Klabin."
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _Event_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        [
+            "type",
+            "string",
+            "obrigatório",
+            "O tipo deve ser _Period_, _Event_ ou _Activity_."
+        ],
+        ["representation", "array", "opcional", ""],
+        ["member_of", "array", "opcional", ""],
+        ["subject_of", "array", "opcional", ""],
+        ["attributed_by", "array", "opcional", ""],
+        ["part_of", "array", "opcional", ""],
+        ["timespan", "array", "opcional", ""],
+        ["took_place_at", "array", "opcional", ""],
+        ["caused_by", "array", "opcional", ""],
+        ["influenced_by", "array", "opcional", ""],
+        ["carried_out_by", "array", "opcional", ""],
+        ["used_specific_object", "array", "opcional", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados na entidade _Event_ do Linked Art (2021)."
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "title": "{{count:quadros;legend=Descrição da tabela MySQL _wp_lcdr_procedures_ do sistema.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Coluna"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Extra"
+        },
+        {
+            "type": "string",
+            "name": "Chave"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Coluna", "Tipo", "Extra", "Chave", "Descrição"],
+        [
+            "procedure_id",
+            "bigint(20) unsigned",
+            "auto_increment",
+            "PRI",
+            "ID do procedimento"
+        ],
+        ["type", "varchar(64)", "", "KEY", "Tipo de procedimento"],
+        [
+            "guid",
+            "varchar(255)",
+            "",
+            "UNIQUE",
+            "Identificador Único Global do procedimento no sistema"
+        ],
+        ["description", "longtext", "", "", "Descrição do procedimento"],
+        [
+            "author",
+            "bigint(20) unsigned",
+            "",
+            "",
+            "Usuário que criou o registro"
+        ],
+        ["created", "timestamp", "", "", "Data e hora da criação do registro"],
+        [
+            "modified",
+            "timestamp",
+            "",
+            "",
+            "Data e hora da última atualização do registro"
+        ],
+        [
+            "status",
+            "varchar(30)",
+            "KEY",
+            "",
+            "Status do registro (`draft`, `active`, `inactive`, `deleted`, `pending`, `scheduled`)"
+        ],
+        [
+            "schedule",
+            "JSON",
+            "",
+            "",
+            "Um objeto `Schedule` que configura o agendamento de uma ação"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _Dimension_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        ["type", "obrigatório", "DEVE ser _Dimension_"],
+        ["_label", "recomendado", ""],
+        ["value", "obrigatório", "O valor numérico da dimensão"],
+        [
+            "unit",
+            "obrigatório",
+            "A unidade para a dimensão, que DEVE seguir os requisitos de _MeasurementUnit_, que é uma extensão de _Type_"
+        ],
+        ["classified_as", "recomendado", ""],
+        ["identified_by", "recomendado", "Somente _Name_"],
+        [
+            "upper_value_limit",
+            "opcional",
+            "Um número que representa o valor máximo da dimensão"
+        ],
+        [
+            "lower_value_limit",
+            "opcional",
+            "Um número que representa o valor mínimo da dimensão"
+        ],
+        ["referred_to_by", "opcional", ""],
+        [
+            "assigned_by",
+            "opcional",
+            "Um array de objetos _Measurement_ descrito a seguir"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Dimensions_ do Linked Art (2021)."
+    }
+}
