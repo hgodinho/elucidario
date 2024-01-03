@@ -140,6 +140,11 @@ final class Procedure extends Row implements \LCDR\DB\Interfaces\Entity {
 		$this->entities     = $this->init_entities();
 	}
 
+	/**
+	 * Set allowed properties.
+	 *
+	 * @return string[]
+	 */
 	public function set_allowed_properties() {
 		return array(
 			'procedure_id',

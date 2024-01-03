@@ -1,5 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft-04/schema#",
     "$id": "https://elucidario.art/pub-gen/schema/pub-gen-schema.json",
     "version": "1.0.0",
     "allOf": [
@@ -12,88 +12,24 @@
     "type": "object",
     "required": ["name", "version", "type", "year"],
     "properties": {
-        "name": {
-            "description": "An identifier for the publication. It will be automatically generated."
-        },
         "version": {
-            "title": "Version",
-            "description": "Version of the configuration file.",
-            "type": "string"
+            "$ref": "<core>#/definitions/version"
+        },
+        "private": {
+            "$ref": "<core>#/definitions/private"
         },
         "type": {
-            "title": "Type",
-            "description": "Type of the publication.",
-            "type": "string",
-            "enum": [
-                "book",
-                "article",
-                "chapter",
-                "conference",
-                "dissertation",
-                "thesis",
-                "manual",
-                "misc"
-            ]
+            "$ref": "<core>#/definitions/type"
         },
         "year": {
-            "title": "Year",
-            "description": "Publication year.",
-            "type": "string"
+            "$ref": "<core>#/definitions/year"
         },
-        "publications": {
-            "type": "array",
-            "title": "Publications",
-            "description": "List of publications.",
-            "items": {
-                "title": "Publication",
-                "type": "object",
-                "properties": {
-                    "title": {
-                        "title": "Title",
-                        "description": "Title of the publication.",
-                        "type": "string"
-                    },
-                    "style": {
-                        "title": "Style",
-                        "description": "Use CSL style.",
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "title": "Name",
-                                "description": "Name of the style.",
-                                "type": "string"
-                            },
-                            "url": {
-                                "title": "URL",
-                                "description": "URL of the style.",
-                                "type": "string"
-                            }
-                        },
-                        "required": ["name", "short_name", "url"]
-                    },
-                    "language": {
-                        "title": "Language",
-                        "description": "The language of the publication. Use RFC 5646.",
-                        "type": "string"
-                    }
-                },
-                "required": ["title", "style", "Language"]
-            }
+
+        "documents": {
+            "$ref": "<core>#/definitions/documents"
         },
         "drive": {
-            "title": "Google Drive folder",
-            "description": "Folder where the files will be synced.",
-            "type": "object",
-            "properties": {
-                "url": {
-                    "description": "URL da pasta",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "ID da pasta",
-                    "type": "string"
-                }
-            }
+            "$ref": "<core>#/definitions/drive"
         }
     }
 }

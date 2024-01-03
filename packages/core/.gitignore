@@ -11,3 +11,4 @@ debug.log
 .phpunit.result.cache
 wp
 wp-content
+inc/mdorim

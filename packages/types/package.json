@@ -8,22 +8,24 @@
     "main": "",
     "types": "dist/index.d.ts",
     "scripts": {
-        "build": "pnpm clear && tsc",
+        "build": "tsc",
+        "build:clear": "pnpm clear && pnpm build",
         "clear": "rm -rf dist/*",
-        "dev": "pnpm clear && tsc -w"
+        "dev": "pnpm build:clear -w"
     },
     "devDependencies": {
-        "@elucidario/pkg-tsconfig": "workspace:^",
-        "@types/node": "^20.9.0",
-        "@types/react": "^18.2.37",
-        "@types/react-dom": "^18.2.15",
-        "typescript": "^5.2.2"
+        "@elucidario/tool-tsconfig": "workspace:^",
+        "@types/node": "^20.10.4",
+        "@types/react": "^18.2.45",
+        "@types/react-dom": "^18.2.17",
+        "jsonschema": "^1.4.1",
+        "typescript": "^5.3.3"
     },
     "peerDependencies": {
         "@types/react": "^18.2.37",
         "@types/react-dom": "^18.2.15",
+        "jsonschema": "^1.4.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     }
 }
-

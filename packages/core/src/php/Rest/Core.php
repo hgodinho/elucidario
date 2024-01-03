@@ -37,7 +37,16 @@ class Core {
 	 * @var array
 	 */
 	public static $routes = array(
-		'\\LCDR\\Rest\\Routes\\Concept',
+		'\\LCDR\\Rest\\Routes\\Concepts',
+		'\\LCDR\\Rest\\Routes\\Objects',
+		'\\LCDR\\Rest\\Routes\\Digitals',
+		'\\LCDR\\Rest\\Routes\\Groups',
+		'\\LCDR\\Rest\\Routes\\Persons',
+		'\\LCDR\\Rest\\Routes\\Events',
+		'\\LCDR\\Rest\\Routes\\Places',
+		'\\LCDR\\Rest\\Routes\\Sets',
+		'\\LCDR\\Rest\\Routes\\Visuals',
+		'\\LCDR\\Rest\\Routes\\Texts',
 		'\\LCDR\\Rest\\Routes\\Mapping',
 	);
 
@@ -54,6 +63,7 @@ class Core {
 	public function register_routes() {
 		foreach ( self::$routes as $route ) {
 			$endpoint = new $route();
+			$endpoint->register_routes();
 		}
 	}
 

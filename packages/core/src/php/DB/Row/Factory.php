@@ -53,8 +53,37 @@ final class Factory {
 			switch ( $entity->type ) {
 				case 'Concept':
 				case 'Type':
-					$concept = new \LCDR\DB\Row\Concept( (array) $entity );
-					return $concept;
+					return new \LCDR\DB\Row\ConceptRow( (array) $entity );
+
+				case 'HumanMadeObject':
+					return new \LCDR\DB\Row\ObjectRow( (array) $entity );
+
+				case 'DigitalObject':
+					return new \LCDR\DB\Row\DigitalRow( (array) $entity );
+
+				case 'Group':
+					return new \LCDR\DB\Row\GroupRow( (array) $entity );
+
+				case 'Person':
+					return new \LCDR\DB\Row\PersonRow( (array) $entity );
+
+				case 'Activity':
+				case 'Event':
+				case 'Provenance':
+					return new \LCDR\DB\Row\EventRow( (array) $entity );
+
+				case 'Place':
+					return new \LCDR\DB\Row\PlaceRow( (array) $entity );
+
+				case 'Set':
+					return new \LCDR\DB\Row\SetRow( (array) $entity );
+
+				case 'VisualItem':
+					return new \LCDR\DB\Row\VisualRow( (array) $entity );
+
+				case 'LinguisticObject':
+					return new \LCDR\DB\Row\TextualRow( (array) $entity );
+
 				default:
 					return $error;
 			}

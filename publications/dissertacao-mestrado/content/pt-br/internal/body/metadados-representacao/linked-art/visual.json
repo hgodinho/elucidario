@@ -1,0 +1,46 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _Visual_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        [
+            "type",
+            "string",
+            "obrigatório",
+            "O tipo deve ser _Event_ ou _Activity_."
+        ],
+        ["member_of", "array", "opcional", ""],
+        ["subject_of", "array", "opcional", ""],
+        ["attributed_by", "array", "opcional", ""],
+        ["dimension", "array", "opcional", ""],
+        ["part_of", "array", "opcional", ""],
+        ["digitally_shown_by", "array", "opcional", ""],
+        ["shown_by", "array", "opcional", ""],
+        ["about", "array", "opcional", ""],
+        ["represents", "array", "opcional", ""],
+        ["represents_entity_of_type", "array", "opcional", ""],
+        ["created_by", "array", "opcional", ""],
+        ["used_for", "array", "opcional", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados na entidade _Visual_ do Linked Art (2021)."
+    }
+}

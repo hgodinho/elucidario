@@ -101,7 +101,7 @@ class Entity extends Row implements \LCDR\DB\Interfaces\Entity {
 	 *
 	 * @var string
 	 */
-	public string $_label = '';
+	public string $_label = ''; // phpcs:ignore
 
 	/**
 	 * Entity identifiers.

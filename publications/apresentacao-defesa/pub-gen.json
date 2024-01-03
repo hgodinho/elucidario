@@ -1,0 +1,30 @@
+{
+    "$schema": "node_modules/@elucidario/pkg-pub-gen/static/pub-gen/schemas/pub-gen-schema.json",
+    "version": "1.0.0",
+    "profile": "data-package",
+    "id": "https://elucidario.art/publicacoes/apresentacao-defesa",
+    "title": "anotações defesa",
+    "type": "misc",
+    "year": "2023",
+    "name": "apresentacao-defesa",
+    "contributors": [
+        {
+            "title": "Henrique Godinho",
+            "email": "henrique@hgod.in",
+            "organization": "PPGCI-ECA-USP",
+            "role": "author"
+        }
+    ],
+    "created": "2023-11-21T23:28:31.316Z",
+    "private": false,
+    "documents": [
+        {
+            "title": "anotações defesa",
+            "language": "pt-br",
+            "style": {
+                "name": "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl",
+                "url": "https://github.com/citation-style-language/styles/blob/4b0e4490587e3365c0dc498a2fc28ea3e432d8f6/universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl"
+            }
+        }
+    ]
+}

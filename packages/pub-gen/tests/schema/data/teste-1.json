@@ -1,0 +1,57 @@
+{
+    "$schema": "../../../static/pub-gen/schemas/pub-gen-schema.json",
+    "version": "1.0.0",
+    "profile": "data-package",
+    "id": "https://elucidario.art/publicacoes/publicacao-teste",
+    "title": "Publicação Teste",
+    "type": "book",
+    "year": "2023",
+    "description": "publicação para testar o pub-gen",
+    "name": "publicacao-teste",
+    "contributors": [
+        {
+            "title": "Henrique Godinho",
+            "email": "henrique@hgod.in"
+        }
+    ],
+    "created": "2023-11-26T20:02:56.811Z",
+    "private": false,
+    "documents": [
+        {
+            "title": "Publicação Teste",
+            "language": "pt-br",
+            "style": {
+                "name": "abnt",
+                "csl": "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl"
+            },
+            "index": {
+                "illustrations": {
+                    "images": "Lista de imagens",
+                    "figures": "Lista de figuras",
+                    "charts": "Lista de quadros"
+                },
+                "tables": "Lista de tabelas",
+                "acronyms": "Lista de siglas e abreviaturas",
+                "bibliography": "Referências"
+            }
+        },
+        {
+            "title": "Publicação Teste",
+            "language": "pt-br",
+            "style": {
+                "path": "abnt/banana.json",
+                "csl": "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl"
+            },
+            "index": {
+                "illustrations": {
+                    "images": "Lista de imagens",
+                    "figures": "Lista de figuras",
+                    "charts": "Lista de quadros"
+                },
+                "tables": "Lista de tabelas",
+                "acronyms": "Lista de siglas e abreviaturas",
+                "bibliography": "Referências"
+            }
+        }
+    ]
+}

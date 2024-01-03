@@ -4,7 +4,7 @@
     },
     "markdownlint.run": "onSave",
     "markdown.occurrencesHighlight.enabled": true,
-    "markdownlint.ignore": ["./publications/**/content/**/*"],
+    "markdownlint.ignore": ["./publications/**/dist/**/*"],
     "[json]": {
         "editor.quickSuggestions": {
             "strings": true
@@ -18,12 +18,15 @@
     "cSpell.words": [
         "ABSPATH",
         "Albrechtsen",
+        "apendice",
+        "apresentacao",
         "Athanasios",
         "Auguste",
         "autodocs",
         "AUTOINCREMENT",
         "autoload",
         "automattic",
+        "avaliacao",
         "Baciccio",
         "Bardi",
         "Battista",
@@ -35,6 +38,7 @@
         "botallo",
         "buckland",
         "catalogacao",
+        "catalografica",
         "Cavalcanti",
         "CDWA",
         "cetic",
@@ -48,6 +52,7 @@
         "colspan",
         "comite",
         "comunicacao",
+        "conclusao",
         "consideracoes",
         "dashicons",
         "datetime",
@@ -80,7 +85,11 @@
         "Gaulli",
         "gdocid",
         "github",
+        "glossario",
+        "grafico",
+        "graficos",
         "Guanyin",
+        "henrique",
         "Hessel",
         "Hillhouse",
         "historicas",
@@ -130,6 +139,7 @@
         "phpdocumentor",
         "phpdox",
         "phpunit",
+        "PPGCI",
         "principios",
         "profesionales",
         "retrocycle",
@@ -139,12 +149,14 @@
         "saracevic",
         "Segall",
         "semantica",
+        "simbolos",
         "sistematizacion",
         "somewordpress",
         "Sotheby’s",
         "sparql",
         "sporny",
         "squizlabs",
+        "stringfy",
         "Tagliaferro",
         "tailwindcss",
         "tarsila",
@@ -158,11 +170,13 @@
         "titulos",
         "torvalds",
         "traducoes",
+        "trashable",
         "typicode",
         "Uncategorized",
         "varchar",
         "vega",
         "Velios",
+        "vernacula",
         "vipwpcs",
         "vocabularios",
         "WALDROP",
@@ -174,5 +188,14 @@
     ],
     "npm.packageManager": "pnpm",
     "prettier.tabWidth": 4,
-    "eslint.format.enable": true
+    "eslint.format.enable": true,
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "namespace": "lcdr",
+            "version": "v1"
+        },
+        "local": {
+            "base": "http://localhost:8080"
+        }
+    }
 }

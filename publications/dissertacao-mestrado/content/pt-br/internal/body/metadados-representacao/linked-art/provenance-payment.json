@@ -1,0 +1,47 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _Payment_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        ["type", "string", "obrigatório", "O tipo deve ser _Payment_."],
+        [
+            "paid_amount",
+            "array",
+            "opcional",
+            "Um objeto _MonetaryAmount_ que descreve a quantia do pagamento."
+        ],
+        [
+            "paid_from",
+            "array",
+            "opcional",
+            "Um array de referências a uma entidade _Person_ ou _Group_."
+        ],
+        [
+            "paid_to",
+            "array",
+            "opcional",
+            "Um array de referências a uma entidade _Person_ ou _Group_."
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Payment_ do Linked Art (2021)."
+    }
+}

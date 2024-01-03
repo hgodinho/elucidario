@@ -8,10 +8,14 @@
     "type": "module",
     "main": "index.js",
     "scripts": {
-        "build": "lerna run build",
-        "build:pkg-app": "lerna run build --stream --ignore '@elucidario/pub-*'",
+        "build": "lerna run build:clean --stream",
+        "build:app": "pnpm build -- --scope '@elucidario/app-*'",
+        "build:pkg": "pnpm build -- --scope '@elucidario/pkg-*'",
+        "build:pub": "pnpm build -- --scope '@elucidario/pub-*'",
+        "build:tool": "pnpm build -- --scope '@elucidario/tool-*'",
         "clean": "lerna clean",
         "commit": "cz",
+        "commit:no-verify": "pnpm commit --no-verify",
         "deploy": "lerna run deploy",
         "docusaurus": "lerna run docusaurus",
         "graph": "pnpm nx graph",
@@ -37,20 +41,20 @@
         }
     },
     "dependencies": {
-        "nx": "^17.0.3"
+        "nx": "^17.2.3"
     },
     "devDependencies": {
-        "@elucidario/pkg-eslint-config": "workspace:^",
         "@elucidario/pkg-pub-gen": "workspace:^",
-        "@nx/storybook": "^17.0.3",
+        "@elucidario/tool-eslint-config": "workspace:^",
+        "@nx/storybook": "^17.2.3",
         "commitizen": "^4.3.0",
         "conventional-changelog": "^5.1.0",
-        "eslint": "^8.53.0",
+        "eslint": "^8.55.0",
         "husky": "^8.0.3",
         "lerna": "^7.4.2",
-        "lint-staged": "^15.0.2",
-        "prettier": "^3.0.3",
-        "typescript": "^5.2.2"
+        "lint-staged": "^15.2.0",
+        "prettier": "^3.1.1",
+        "typescript": "^5.3.3"
     },
     "engines": {
         "node": ">=14.15.0",

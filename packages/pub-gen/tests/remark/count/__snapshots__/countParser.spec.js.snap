@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`countParser should return countParser node 1`] = `
+VFile {
+  "cwd": "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
+  "data": {},
+  "history": [],
+  "messages": [],
+  "value": "# Hello World
+
+## Second level heading
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var \\[@linked-art2021.1].
+
+{{mermaid:internal/body/mermaid.md}}
+
+### Third level heading
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. \\[@linked-art2021.1, p. 2]
+
+#### Fourth level heading
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. \\[@linked-art2021.2]
+
+##### Fifth level heading
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. \\[@linked-art2021.2; @linked-art2021.1]
+
+###### Sixth level heading
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.
+
+**undefined 1: Lorem ipsum**
+
+![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)
+",
+}
+`;

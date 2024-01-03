@@ -7,7 +7,7 @@ export type PackageContributor = {
 export type PackageProps = {
     name: string;
     version: string;
-    license: string;
+    license?: string;
     description?: string;
     homepage?: string;
     author?: PackageContributor;

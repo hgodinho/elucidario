@@ -97,6 +97,15 @@
             "$ref": "<local>/core.json#/definitions/_embed"
         }
     },
+    "required": [
+        "entity_id",
+        "name",
+        "guid",
+        "author",
+        "type",
+        "identified_by"
+    ],
+    "additionalProperties": false,
     "definitions": {
         "Creation": {
             "title": "crm:E65_Creation",
@@ -155,15 +164,103 @@
                     "$ref": "<linked-art>/core.json#/definitions/EventRefOrActivityRef"
                 }
             }
+        },
+        "SetPost": {
+            "title": "CollectionPost",
+            "description": "A Collection to be created",
+            "type": "object",
+            "properties": {
+               
+                "author": {
+                    "$ref": "<local>/core.json#/definitions/author"
+                },
+                "status": {
+                    "$ref": "<local>/core.json#/definitions/status"
+                },
+                "password": {
+                    "$ref": "<local>/core.json#/definitions/password"
+                },
+                "created": {
+                    "$ref": "<local>/core.json#/definitions/created"
+                },
+                "modified": {
+                    "$ref": "<local>/core.json#/definitions/updated"
+                },
+
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "const": "Set"
+                        }
+                    ]
+                },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
+                "identified_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+                },
+                "classified_as": {
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+                },
+                "referred_to_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+                },
+                "equivalent": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/equivalentProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "description": "List of equivalent `Set` entities",
+                            "type": "array",
+                            "items": {
+                                "$ref": "<linked-art>/core.json#/definitions/SetRef"
+                            }
+                        }
+                    ]
+                },
+                "representation": {
+                    "$ref": "<linked-art>/core.json#/definitions/representationProp"
+                },
+                "member_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/member_ofSetProp"
+                },
+                "subject_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/subject_ofProp"
+                },
+                "attributed_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/attributed_byRelProp"
+                },
+                "dimension": {
+                    "$ref": "<linked-art>/core.json#/definitions/dimensionProp"
+                },
+
+                "created_by": {
+                    "title": "crm:P94i_was_created_by",
+                    "$ref": "#/definitions/Creation"
+                },
+
+                "history": {
+                    "$ref": "<local>/history.json"
+                },
+
+                "_fields": {
+                    "$ref": "<local>/core.json#/definitions/_fields"
+                },
+                "_embed": {
+                    "$ref": "<local>/core.json#/definitions/_embed"
+                }
+            },
+            "additionalProperties": false
         }
-    },
-    "required": [
-        "entity_id",
-        "name",
-        "guid",
-        "author",
-        "type",
-        "identified_by"
-    ],
-    "additionalProperties": false
+    }
 }

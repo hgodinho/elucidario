@@ -11,12 +11,12 @@
     "type": "module",
     "exports": {
         ".": {
-            "types": "./lib/types/src/lib/index.d.ts",
-            "import": "./lib/mjs/index.min.mjs",
-            "require": "./lib/cjs/index.min.cjs"
+            "types": "./lib/types/index.d.ts",
+            "import": "./lib/index.min.mjs",
+            "require": "./lib/index.min.cjs"
         }
     },
-    "main": "./lib/mjs/index.min.mjs",
+    "main": "./lib/index.min.mjs",
     "files": [
         "dist",
         "mapping",
@@ -25,10 +25,10 @@
         "translations"
     ],
     "scripts": {
-        "build": "pnpm clean:lib && pnpm build:types && pnpm build:script -c -s -e -t -d -l && pnpm test",
+        "build": "pnpm clean:lib && pnpm build:types && pnpm build:script && pnpm test",
         "build:rollup": "rollup -c",
-        "build:script": "node src/build/build.js",
-        "build:types": "tsc --emitDeclarationOnly --declarationDir \"lib/types\"",
+        "build:script": "node src/build/build.js -c -s -e -t -l",
+        "build:types": "tsc",
         "clean:docs": "rm -rf docs/*",
         "clean:lib": "rm -rf lib/*",
         "clean:static": "rm -rf static/*",
@@ -38,29 +38,29 @@
         "watch:rollup": "rollup -c -w"
     },
     "dependencies": {
-        "@babel/plugin-syntax-import-attributes": "^7.22.5",
+        "@babel/plugin-syntax-import-attributes": "^7.23.3",
         "@elucidario/pkg-paths": "workspace:^",
-        "ajv": "6"
+        "ajv": "^6.12.6"
     },
     "devDependencies": {
-        "@babel/plugin-transform-json-strings": "^7.22.5",
-        "@babel/preset-env": "^7.22.7",
+        "@babel/plugin-transform-json-strings": "^7.23.4",
+        "@babel/preset-env": "^7.23.6",
         "@elucidario/pkg-console": "workspace:^",
         "@elucidario/pkg-docusaurus-md": "workspace:^",
         "@elucidario/pkg-pub-gen": "workspace:^",
-        "@elucidario/pkg-rollup": "workspace:^",
         "@elucidario/pkg-schema-doc": "workspace:^",
-        "@elucidario/pkg-tsconfig": "workspace:^",
         "@elucidario/pkg-types": "workspace:^",
-        "@types/node": "^20.9.0",
+        "@elucidario/tool-rollup": "workspace:^",
+        "@elucidario/tool-tsconfig": "workspace:^",
+        "@types/node": "^20.10.4",
         "child_process": "^1.0.2",
         "commander": "^10.0.1",
-        "jest": "^29.5.0",
+        "jest": "^29.7.0",
         "jest-json-schema": "^6.1.0",
-        "json-schema-to-typescript": "^13.0.1",
+        "json-schema-to-typescript": "^13.1.1",
         "lodash-es": "^4.17.21",
-        "rollup": "^4.2.0",
-        "tslib": "^2.5.0",
-        "typescript": "^5.2.2"
+        "rollup": "^4.9.0",
+        "tslib": "^2.6.2",
+        "typescript": "^5.3.3"
     }
 }

@@ -1,9 +1,0 @@
-{
-    "extends": ["@elucidario/pkg-tsconfig"],
-    "compilerOptions": {
-        "outDir": "dist",
-        "rootDir": "src",
-        "declaration": true
-    },
-    "include": ["src/index.ts"]
-}

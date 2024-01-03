@@ -8,38 +8,11 @@ import type {
 } from "@elucidario/pkg-types";
 
 import { getPaths } from "./getPaths";
+import { readFile, hasIndex } from "./file";
 
-const imagesExtensions = [
-    "jpg",
-    "jpeg",
-    "png",
-    "gif",
-    "svg",
-    "webp",
-    "bmp",
-    "ico",
-];
+import { Console } from "@elucidario/pkg-console";
 
-export const readFile = (
-    filePath: string,
-    ext: string,
-): ReadContentsReturn | string => {
-    try {
-        switch (ext) {
-            case "json":
-                return JSON.parse(
-                    fs.readFileSync(path.resolve(filePath), "utf-8").toString(),
-                );
-
-            default:
-                return fs
-                    .readFileSync(path.resolve(filePath), "utf-8")
-                    .toString();
-        }
-    } catch (err: any) {
-        throw new Error(`Cannot read file at ${filePath}: ${err}`);
-    }
-};
+import { supportedExtensions } from "./file";
 
 /**
  * Lê o conteúdo de um diretório recursivamente, retornando um objeto com o conteúdo de cada arquivo ou path
@@ -50,51 +23,72 @@ export const readFile = (
  * @param {string[]} [props.extensions=["json", "md"]] - Extensões dos arquivos a serem lidos
  * @param {string} [props.returnType="content"] - Tipo de retorno: "content" ou "path"
  * @param {string[]} [props.exclude] - Arquivos a serem excluídos
- * @param {boolean} [props.log=false] - Se deve logar no console ou não
- * @param {PackageProps} [props.package] - Objeto package.json
+ * @param {PackageProps} [props.pkg] - Objeto package.json
  *
  * @returns {Object} - Objeto com o conteúdo de cada arquivo ou path
  */
-export const readContents = ({
+export function readContents({
     dirPath,
     index = true,
-    extensions = ["json", "md"],
+    extensions = [],
     returnType = "content",
     exclude,
-    log,
-    package: pkg,
-}: ReadContentsProps): ReadContentsReturn => {
-    const result: ReadContentsReturn = {};
+    pkg,
+}: ReadContentsProps): ReadContentsReturn {
+    const result: ReadContentsReturn = [];
+
+    if (extensions.length === 0) {
+        extensions = supportedExtensions;
+    }
 
     // Selecionar o package.json do projeto, caso não seja recebido como parâmetro
-    if (!pkg) {
-        pkg = JSON.parse(
-            fs.readFileSync(
-                path.resolve(getPaths().packages, "paths", "package.json"),
-                "utf-8",
+    if (typeof pkg === "undefined") {
+        pkg = readFile({
+            filePath: path.resolve(
+                getPaths().packages,
+                "paths",
+                "package.json",
+            ),
+        }).value as PackageProps;
+    }
+
+    const console = new Console(pkg);
+
+    if (index === true && !hasIndex(dirPath)) {
+        console.warn(
+            new Error(
+                `Directory ${dirPath} does not have an index.json file. Reading directory recursively.`,
             ),
         );
+        index = false;
     }
 
     // caso index seja false lê o diretório
     if (!index) {
         try {
             const files = fs.readdirSync(dirPath);
+
             files.forEach((file: string) => {
                 const filePath = path.parse(file);
+                const stat = fs.statSync(path.resolve(dirPath, file));
+
+                const ext = filePath.ext
+                    ? filePath.ext.replace(".", "")
+                    : "json";
 
                 // se for um diretório, chama a função recursivamente
-                if (filePath.ext === "") {
+                if (stat.isDirectory()) {
                     try {
-                        result[filePath.name] = readContents({
+                        const folder = readContents({
                             dirPath: path.resolve(dirPath, file),
-                            index,
+                            index: hasIndex(path.resolve(dirPath, file)),
                             extensions,
                             returnType,
                             exclude,
-                            log,
-                            package: pkg,
+                            pkg,
                         });
+
+                        result.push(...folder);
                     } catch (err: any) {
                         console.log(
                             { err },
@@ -107,33 +101,29 @@ export const readContents = ({
                             )}`,
                         );
                     }
-                }
-
-                try {
-                    // se for um arquivo, lê o conteúdo
-                    const ext = filePath.ext.replace(".", "");
-                    if (extensions.includes(ext)) {
-                        switch (returnType) {
-                            case "path":
-                                result[filePath.name] = path.resolve(
-                                    dirPath,
-                                    file,
-                                );
-                                break;
-                            case "content":
-                                result[filePath.name] = readFile(
-                                    path.resolve(dirPath, file),
+                } else {
+                    try {
+                        // se for um arquivo e não estiver na lista de extensões, retorna.
+                        // se a lista de extensões estiver vazia, retorna todos os tipos de arquivos.
+                        if (!extensions.includes(ext)) {
+                            return;
+                        } else {
+                            result.push(
+                                readFile({
+                                    filePath: path.resolve(dirPath, file),
                                     ext,
-                                );
+                                    returnType,
+                                }),
+                            );
                         }
+                    } catch (err: any) {
+                        throw new Error(
+                            `Cannot read file at ${path.resolve(
+                                dirPath,
+                                file,
+                            )}: ${err}`,
+                        );
                     }
-                } catch (err: any) {
-                    throw new Error(
-                        `Cannot read file at ${path.resolve(
-                            dirPath,
-                            file,
-                        )}: ${err}`,
-                    );
                 }
             });
         } catch (err: any) {
@@ -153,34 +143,25 @@ export const readContents = ({
 
                 // se for um diretório, chama a função recursivamente
                 if (filePath.ext === "") {
-                    const content = readContents({
-                        dirPath: path.resolve(dirPath, file),
-                        index,
-                        extensions,
-                        returnType,
-                        exclude,
-                        log,
-                        package: pkg,
-                    });
-                    result[filePath.name] = content;
+                    result.push(
+                        ...readContents({
+                            dirPath: path.resolve(dirPath, file),
+                            index: hasIndex(path.resolve(dirPath, file)),
+                            extensions,
+                            returnType,
+                            exclude,
+                            pkg,
+                        }),
+                    );
                 } else {
                     // se for um arquivo, lê o conteúdo
                     const ext = filePath.ext.replace(".", "");
-                    if (extensions.includes(ext)) {
-                        switch (returnType) {
-                            case "path":
-                                result[filePath.name] = path.resolve(
-                                    dirPath,
-                                    file,
-                                );
-                                break;
-                            case "content":
-                                result[filePath.name] = readFile(
-                                    path.resolve(dirPath, file),
-                                    ext,
-                                );
-                        }
-                    }
+                    result.push(
+                        readFile({
+                            filePath: path.resolve(dirPath, file),
+                            ext,
+                        }),
+                    );
                 }
             });
         } catch {
@@ -191,9 +172,13 @@ export const readContents = ({
     // caso seja passado um array de arquivos a serem ignorados, remove-os do resultado
     if (exclude) {
         exclude.forEach((file: string) => {
-            delete result[file];
+            result.forEach((item: any, index: number) => {
+                if (item.name === file) {
+                    result.splice(index, 1);
+                }
+            });
         });
     }
 
     return result;
-};
+}

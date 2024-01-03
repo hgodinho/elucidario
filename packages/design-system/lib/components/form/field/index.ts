@@ -6,7 +6,7 @@ import type { FieldType } from "@elucidario/pkg-types";
 
 // hooks
 export * from "./useFieldComponent";
-export * from "./useFieldProvider";
+import useFieldContext from "./useFieldContext";
 
 const Field: FieldType = {
     Provider: FieldProvider,
@@ -15,4 +15,4 @@ const Field: FieldType = {
     Description: FieldDescription,
 };
 
-export default Field;
+export { Field, useFieldContext };

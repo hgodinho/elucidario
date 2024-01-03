@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft-04/schema#",
     "$id": "https://elucidario.art/pub-gen/schema/table-schema.json",
     "title": "Tabela",
     "description": "Table schema",
@@ -12,17 +12,17 @@
     "properties": {
         "title": {
             "title": "Title",
-            "description": "Table title",
+            "description": "Table title (supports Markdown)",
             "type": "string"
         },
         "description": {
             "title": "Description",
-            "description": "Table description",
+            "description": "Table description (supports Markdown)",
             "type": "string"
         },
         "note": {
             "title": "Note",
-            "description": "Table footnote",
+            "description": "Table footnote (supports Markdown)",
             "type": "object",
             "properties": {
                 "label": {

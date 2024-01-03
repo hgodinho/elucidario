@@ -1,4 +1,4 @@
-import lcdrRollupConfig from "@elucidario/pkg-rollup";
+import lcdrRollupConfig from "@elucidario/tool-rollup";
 
 const config = lcdrRollupConfig({
     external: ["googleapis", "readline", "http"],

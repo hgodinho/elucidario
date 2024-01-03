@@ -8,13 +8,14 @@ const pubGen = require("../../packages/pub-gen/lib/sidebars/sidebars.cjs");
 const sidebars = {
     sidebar: [
         "doc",
+        // "glossario/glossario",
         {
             type: "category",
             label: "Pacotes",
             items: [
                 {
                     type: "category",
-                    label: "MDORIM",
+                    label: "Mdorim",
                     items: mdorim.sidebar,
                 },
                 {

@@ -1,7 +1,6 @@
 import path from "path";
-import { readContents } from "@elucidario/pkg-paths";
+import { readContents, createFile } from "@elucidario/pkg-paths";
 import { Console } from "@elucidario/pkg-console";
-import { writeFile } from "./writeFile.js";
 import { replaceRef } from "./replaceRef.js";
 
 /**
@@ -23,25 +22,15 @@ export const buildSchemas = async (pkg, __dirname, outStatic) => {
         throw new Error(err);
     }
     try {
-        const toCopy = ["translation", "linked-art", "mdorim"];
-        for (let [name, schema] of Object.entries(schemas)) {
-            if (toCopy.includes(name)) {
-                Object.entries(schema).map(([schemaName, schemaValue]) => {
-                    const fileName = `${schemaName}.json`;
-                    // replace ref to external schemas
-                    const external = replaceRef(
-                        schemaValue,
-                        true,
-                        pkg.homepage,
-                    );
-                    writeFile(
-                        path.resolve(outStatic, "schemas", name),
-                        fileName,
-                        JSON.stringify(external, null, 4),
-                        pkg,
-                    );
-                });
-            }
+        for (const schema of schemas) {
+            const parsedSchema = replaceRef(schema.value, true, pkg.homepage);
+            createFile(
+                {
+                    filePath: schema.path.replace("src", "static/mdorim"),
+                    ext: "json",
+                },
+                parsedSchema,
+            );
         }
     } catch (err) {
         console.log(err, { type: "error", defaultLog: true, title: "Error" });

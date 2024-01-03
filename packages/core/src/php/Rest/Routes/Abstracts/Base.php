@@ -97,7 +97,6 @@ abstract class Base extends \WP_REST_Controller {
 		$this->rest_base           = $this->set_base();
 		$this->primary_property    = $this->set_primary_property();
 		$this->required_properties = $this->set_required_properties();
-		$this->register_routes();
 	}
 
 	/**
@@ -133,7 +132,7 @@ abstract class Base extends \WP_REST_Controller {
 					'permission_callback' => array( $this, 'create_item_permissions_check' ),
 					'args'                => array(),
 				),
-				// 'schema' => array( $this, 'get_public_item_schema' ), // @todo do we need this?
+				// 'schema' => array( $this, 'get_public_item_schema' ), @todo do we need this? phpcs:ignore
 			),
 			'/(?P<id>[\d]+)' => array(
 				array(
@@ -151,7 +150,7 @@ abstract class Base extends \WP_REST_Controller {
 					'callback'            => array( $this, 'delete_item' ),
 					'permission_callback' => array( $this, 'delete_item_permissions_check' ),
 				),
-				// 'schema' => array( $this, 'get_public_item_schema' ), // @todo do we need this?
+				// 'schema' => array( $this, 'get_public_item_schema' ), @todo do we need this? phpcs:ignore
 			),
 		);
 	}
@@ -614,12 +613,18 @@ abstract class Base extends \WP_REST_Controller {
 	 */
 	protected function get_id_from_request( $request ) {
 		$id = $request->get_param( $this->primary_property );
+
+		if ( empty( $id ) ) {
+			$id = $request->get_param( 'id' );
+		}
+
 		if ( empty( $id ) ) {
 			$route   = $request->get_route();
 			$pattern = '/\/(?P<id>\d+)$/';
 			preg_match( $pattern, $route, $matches );
 			$id = isset( $matches['id'] ) ? $matches['id'] : 0;
 		}
+
 		if ( empty( $id ) ) {
 			$id = new \LCDR\Error\Rest(
 				'empty_id',
@@ -848,8 +853,8 @@ abstract class Base extends \WP_REST_Controller {
 	/**
 	 * Prepare item.
 	 *
-	 * @param array            $args
-	 * @param \WP_REST_Request $request
+	 * @param array            $args   Array of arguments for Query.
+	 * @param \WP_REST_Request $request Request object.
 	 * @return object|\LCDR\Error\Error
 	 */
 	abstract public function prepare_for_db( $args, $request );

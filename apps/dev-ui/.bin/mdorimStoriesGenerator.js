@@ -3,7 +3,7 @@ import MdorimInstance from "@elucidario/pkg-mdorim";
 import path from "path";
 import fs from "fs";
 
-const storiesBuilder = (group, schema, translations, dest) => {
+const storiesBuilder = (group, context, schema, translations, dest) => {
     Object.entries(schema).forEach(([propertyName, propertySchema]) => {
         const languages = translations[propertyName]
             ? translations[propertyName]
@@ -13,6 +13,7 @@ const storiesBuilder = (group, schema, translations, dest) => {
 
         const body = storyBody(
             title,
+            context,
             {
                 schema: propertySchema,
                 languages,
@@ -59,6 +60,7 @@ const generateStories = () => {
     // Mdorim Core
     storiesBuilder(
         "@elucidario/pkg-mdorim/Mdorim/Core",
+        "mdorim/core",
         mdorim.core.definitions,
         translations,
         "src/stories/mdorim/mdorim",
@@ -67,6 +69,7 @@ const generateStories = () => {
     // Linked Art Core
     storiesBuilder(
         "@elucidario/pkg-mdorim/Linked Art/Core",
+        "linkedArt/core",
         linkedArt.core.definitions,
         translations,
         "src/stories/mdorim/linked-art",
@@ -83,17 +86,17 @@ import { MdorimProvider } from "@elucidario/pkg-mdorim-react";
 import { FieldProps } from "@elucidario/pkg-types";`;
 };
 
-const storyBody = (title, args, argTypes) => {
+const storyBody = (title, context, args, argTypes) => {
     return `const schema = ${JSON.stringify(JSON.stringify(args.schema))};
 const argTypes = ${JSON.stringify(JSON.stringify(argTypes))};
 const meta = {
     title: "${title}",
     component: (args: FieldProps) => (
-        <MdorimProvider>
-            <ComponentTemplate>
+        <ComponentTemplate form={true}>
+            <MdorimProvider context="${context}">
                 <Field.Root {...args} />
-            </ComponentTemplate>
-        </MdorimProvider>
+            </MdorimProvider>
+        </ComponentTemplate>
     ),
     tags: ["autodocs"],
     args: {

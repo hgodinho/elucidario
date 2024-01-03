@@ -1,0 +1,46 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _Right_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        ["type", "string", "obrigatório", "O tipo deve ser _Right_"],
+        ["identified_by", "array", "recomendado", ""],
+        ["classified_as", "array", "recomendado", ""],
+        ["referred_to_by", "array", "recomendado", ""],
+        ["dimension", "array", "opcional", ""],
+        [
+            "possessed_by",
+            "array",
+            "opcional",
+            "Um array de referência a uma _Person_ ou um _Group_"
+        ],
+        [
+            "amplies_to",
+            "array",
+            "opcional",
+            "Um array de referência a um _PhysicalObject_"
+        ],
+        ["part", "array", "opcional", "Um array de objetos _Right_"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Right_ do Linked Art (2021)."
+    }
+}

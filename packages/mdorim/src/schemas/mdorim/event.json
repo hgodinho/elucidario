@@ -129,5 +129,119 @@
         "type",
         "identified_by"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "definitions": {
+        "EventPost": {
+            "title": "EventPost",
+            "description": "A event to be created",
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/author"
+                },
+                "status": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/status"
+                },
+                "password": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/password"
+                },
+                "created": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/created"
+                },
+                "modified": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/updated"
+                },
+
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "enum": ["Event", "Activity"]
+                        }
+                    ]
+                },
+                "_label": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/labelProp"
+                },
+                "identified_by": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/identified_byProp"
+                },
+                "classified_as": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/classified_asProp"
+                },
+                "referred_to_by": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/referred_to_byProp"
+                },
+                "equivalent": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/equivalentProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "description": "List of equivalent `Activity` entities",
+                            "type": "array",
+                            "items": {
+                                "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/ActivityRef"
+                            }
+                        }
+                    ]
+                },
+                "representation": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/representationProp"
+                },
+                "member_of": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/member_ofSetProp"
+                },
+                "subject_of": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/subject_ofProp"
+                },
+                "attributed_by": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/attributed_byRelProp"
+                },
+                "took_place_at": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/took_place_atProp"
+                },
+                "timespan": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/timespanProp"
+                },
+                "caused_by": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/caused_byProp"
+                },
+                "carried_out_by": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/carried_out_byProp"
+                },
+                "used_specific_object": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/used_specific_objectProp"
+                },
+                "influenced_by": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/influenced_byProp"
+                },
+                "technique": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/techniqueProp"
+                },
+                "part_of": {
+                    "title": "crm:P9i_forms_part_of",
+                    "description": "An identified event or activity which this one is part of",
+                    "$ref": "https://elucidario.art/mdorim/schemas/linked-art/core.json#/definitions/EventRefOrActivityRef"
+                },
+                "history": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/mdorim/history.json"
+                },
+                "_fields": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/_fields"
+                },
+                "_embed": {
+                    "$ref": "https://elucidario.art/mdorim/schemas/mdorim/core.json#/definitions/_embed"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
 }

@@ -4,24 +4,23 @@ import { Octokit } from "octokit";
 
 import { Console } from "@elucidario/pkg-console";
 
-import { getPaths } from "../getPaths.js";
-const paths = getPaths();
-const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
-);
+import { getPaths, readFile } from "@elucidario/pkg-paths";
+
+const packageJson = readFile(
+    path.resolve(getPaths().packages, "pub-gen", "package.json"),
+).value;
+
 const console = new Console(packageJson);
-const token = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, ".gh-token"))
-).token;
+
+const token = readFile({
+    filePath: path.resolve(getPaths().packages, "pub-gen", ".gh-token"),
+    ext: "json",
+}).value;
 
 export const fetchSearchStyles = async (styles) => {
-    console.log(styles, {
-        defaultLog: true,
-        type: "info",
-        title: "Searching Styles...",
-    });
+    console.warning(`Searching for '${styles.join(", ")}' styles...`);
 
-    const octokit = new Octokit({ auth: token });
+    const octokit = new Octokit({ auth: token.token });
 
     try {
         return octokit.rest.search

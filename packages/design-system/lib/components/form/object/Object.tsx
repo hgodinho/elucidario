@@ -1,19 +1,39 @@
 import React, { useEffect } from "react"
 import { Object as ObjectType } from "@elucidario/pkg-types"
-import { useMdorimContext } from "@elucidario/pkg-mdorim-react"
+import { Box, Field } from "@/components"
+import useFieldContext from "../field/useFieldContext"
 
-export const Object: ObjectType = (props) => {
-    const { mdorim, loading } = useMdorimContext();
+const ObjectComponent: ObjectType = (props) => {
 
-    useEffect(() => {
-        console.warn({
-            mdorim, loading
-        })
-    }, [mdorim, loading])
+    const { schema } = useFieldContext();
+
+    const { properties } = schema;
+
+    const className = [
+        "object",
+        "pl-3",
+        "mb-3",
+        "border-l-2",
+        "border-blue",
+    ];
 
     return (
-        <div className="object pl-3 border-l-2 border-gray-500">
-            <p>aleleluiaaaaasdasd asd asd</p>
-        </div>
+        <Box className={className.join(' ')}>
+            <>
+                {Object.entries(properties).map(([name, schema], index) => {
+                    return (
+                        <Field.Root
+                            key={index}
+                            name={name}
+                            schema={schema}
+                        >
+                            {name}
+                        </Field.Root>
+                    )
+                })}
+            </>
+        </Box>
     )
 }
+
+export { ObjectComponent as Object };

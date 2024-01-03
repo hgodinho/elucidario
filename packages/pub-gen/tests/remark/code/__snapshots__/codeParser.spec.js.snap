@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`codeParser should return codeParser node 1`] = `
+VFile {
+  "cwd": "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
+  "data": {},
+  "history": [],
+  "messages": [],
+  "value": "\`\`\`js
+console.log("code-node.js");
+
+\`\`\`
+",
+}
+`;

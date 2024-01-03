@@ -6,10 +6,10 @@ import {
     Entity,
     Schema,
     MdorimProperties,
-    parseId as parsedIdType,
     Definitions,
     DataTypes,
-    isSchema as isSchemaType,
+    SchemaType,
+    ParsedId,
 } from "@elucidario/pkg-types";
 
 import { mdorim, translation, translations, linkedArt } from "./json-imports";
@@ -19,35 +19,40 @@ import { mdorim, translation, translations, linkedArt } from "./json-imports";
  * @param json | Record<string, any>
  * @returns boolean
  */
-export const isSchema: isSchemaType = (json): json is Schema<DataTypes> => {
+export function isSchema(json: Record<string, any>): boolean {
     if (json.hasOwnProperty("$schema")) {
         return true;
     }
     return false;
-};
+}
 
 /**
  * Realiza o parse de um id
  * @param id | string
  * @returns ParsedId
  */
-export const parseId: parsedIdType = (id) => {
-    const url = new URL(id);
-    const { origin, pathname, hash } = url;
-    return {
-        origin,
-        pathname,
-        hash,
-        entityId: origin + pathname,
-    };
-};
+export function parseId(id: string): ParsedId | false {
+    let url;
+    try {
+        url = new URL(id);
+        const { origin, pathname, hash } = url;
+        return {
+            origin,
+            pathname,
+            hash,
+            entityId: origin + pathname,
+        };
+    } catch {
+        return false;
+    }
+}
 
 /**
  * Gera o index de um schema
  * @param schemas | Record<string, any>
  * @returns | Record<string, string>
  */
-export const generateIndex = (schemas: Record<string, any>) => {
+export function generateIndex(schemas: Record<string, any>) {
     return Object.entries(schemas).reduce(
         (acc, [name, schema]) => {
             if (isSchema(schema)) {
@@ -57,7 +62,7 @@ export const generateIndex = (schemas: Record<string, any>) => {
         },
         {} as Record<string, string>,
     );
-};
+}
 
 export const index: Index = {
     mdorim: generateIndex(mdorim),
@@ -75,6 +80,12 @@ export const mdorimInstance: MdorimInstance = {
     },
     index,
 };
+
+const kebabize = (str: string) =>
+    str.replace(
+        /[A-Z]+(?![a-z])|[A-Z]/g,
+        ($, ofs) => (ofs ? "-" : "") + $.toLowerCase(),
+    );
 
 /**
  * GlobalMdorim
@@ -99,30 +110,63 @@ export const GlobalMdorim: MdorimType = {
     },
 
     /**
+     * Retorna um schema do Mdorim a partir de um contexto
+     * @param context | string
+     * @returns Entity
+     */
+    getContext: (context) => {
+        const [type, name] = context.split("/") as [SchemaType, string];
+        return mdorimInstance.schemas[type][name];
+    },
+
+    /**
      * Retorna um schema a partir de um id
      * @param id | string
+     * @param context | (string | undefined)
      * @returns Entity | Schema | null
      */
-    getFromId: (id) => {
-        const { entityId, pathname, hash } = parseId(id);
+    getFromId: (id, context) => {
+        const url = parseId(id);
+
         let entity: Entity | Schema<DataTypes> | null = null;
-        if (pathname.includes("schemas/mdorim")) {
-            entity = GlobalMdorim.getEntityFromIndex(entityId);
-        }
-        if (pathname.includes("schemas/linked-art")) {
-            entity = GlobalMdorim.getEntityFromIndex(entityId, "linkedArt");
-        }
-        if (hash.startsWith("#/") && entity) {
-            const [type, id] = hash.split("/").slice(1);
-            if (
-                entity.hasOwnProperty("definitions") &&
-                type === "definitions"
-            ) {
-                entity = (entity.definitions as Definitions)[
-                    id as MdorimProperties
-                ] as Schema<DataTypes>;
+
+        if (url === false) {
+            // id is not a url
+            if (!context) {
+                throw new Error(
+                    "You must provide a context when id is not a url",
+                );
+            }
+            const [type, name] = context.split("/") as [SchemaType, string];
+            const uri = `https://elucidario.art/mdorim/schemas/${kebabize(
+                type,
+            )}/${name}.json${id}`;
+
+            entity = GlobalMdorim.getFromId(uri);
+        } else {
+            // id is a url
+            if (url.pathname.includes("schemas/mdorim")) {
+                entity = GlobalMdorim.getEntityFromIndex(url.entityId);
+            }
+            if (url.pathname.includes("schemas/linked-art")) {
+                entity = GlobalMdorim.getEntityFromIndex(
+                    url.entityId,
+                    "linkedArt",
+                );
+            }
+            if (url.hash.startsWith("#/") && entity) {
+                const [type, id] = url.hash.split("/").slice(1);
+                if (
+                    entity.hasOwnProperty("definitions") &&
+                    type === "definitions"
+                ) {
+                    entity = (entity.definitions as Definitions)[
+                        id as MdorimProperties
+                    ] as Schema<DataTypes>;
+                }
             }
         }
+
         return entity;
     },
 

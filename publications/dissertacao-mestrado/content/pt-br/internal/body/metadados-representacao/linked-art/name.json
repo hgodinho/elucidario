@@ -1,0 +1,36 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _Name_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        ["type", "obrigatório", "DEVE ser _Name_"],
+        ["_label", "recomendado", ""],
+        ["content", "obrigatório", "O conteúdo _string_ do nome"],
+        ["classified_as", "recomendado", ""],
+        ["language", "recomendado", "Um array de objetos _Language_"],
+        [
+            "part",
+            "opcional",
+            "Um array de objetos _Name_ que são partes deste nome."
+        ],
+        ["referred_to_by", "opcional", ""]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Name_ do Linked Art (2021)."
+    }
+}

@@ -1,17 +1,24 @@
 import { FC, HTMLAttributes, TableHTMLAttributes, ReactNode } from "react";
 import type { BoxProps, Component } from "@/design-system";
-import type { DataTypes, MappingProps, Schema } from "@/mdorim";
+import type {
+    DataTypes,
+    MappingProps,
+    MdorimProperties,
+    Schema,
+} from "@/mdorim";
 import type { LabelProps, LegendProps, InputType } from "./form";
 
 export type UseFieldComponent = (schema: Schema<DataTypes>) => FieldSchema;
 
 export type FieldSchema = Omit<Schema<DataTypes>, "required"> & {
+    name: string;
     required?: boolean;
     type?: InputType;
 };
 
 export interface FieldContextProps {
     schema: Schema<DataTypes>;
+    name: MdorimProperties;
     translations?: Record<string, any>;
     map?: MappingProps;
     language?: string;

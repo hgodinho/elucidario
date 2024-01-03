@@ -1,0 +1,22 @@
+{
+    "title": "{{count:quadros;legend=Teste Tabela.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Name"
+        },
+        {
+            "type": "string",
+            "name": "ID"
+        }
+    ],
+    "data": [
+        ["Name", "ID"],
+        ["John Doe", "1"],
+        ["John Smith", "3"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _Identifier_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Exigência", "Descrição"],
+        ["id", "opcional", ""],
+        ["type", "obrigatório", "DEVE ser _Identifier_"],
+        ["_label", "recomendado", ""],
+        ["content", "obrigatório", "O conteúdo _string_ do identificador"],
+        ["classified_as", "recomendado", ""],
+        ["referred_to_by", "opcional", ""],
+        [
+            "assigned_by",
+            "opcional",
+            "Um _array_ de objetos JSON, cada um dos quais DEVEM seguir os requisitos para _IdentifierAssignment_"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _Identifier_ do Linked Art (2021)."
+    }
+}

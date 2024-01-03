@@ -8,5 +8,6 @@ module.exports = {
             },
         ],
     },
-    moduleDirectories: ["node_modules", "lib"],
+    moduleDirectories: ["node_modules"],
+    modulePathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/src/"],
 };

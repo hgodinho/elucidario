@@ -1,0 +1,23 @@
+{
+    "title": "{{count:quadros;legend=Tabela teste}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Descrição"],
+        ["Imagem", "Campo de imagem"],
+        ["NomeTítulo", "Denominação"],
+        ["Autor", "Entidade: pessoa ou organização"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor."
+    }
+}

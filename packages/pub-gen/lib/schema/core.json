@@ -1,0 +1,163 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$id": "https://elucidario.art/pub-gen/schema/core.json",
+    "definitions": {
+        "$schema": {
+            "type": "string"
+        },
+        "name": {
+            "title": "Name",
+            "type": "string"
+        },
+        "version": {
+            "title": "Version",
+            "description": "Version of the configuration file.",
+            "type": "string"
+        },
+        "private": {
+            "title": "Private",
+            "description": "If true, the publication will not be published.",
+            "type": "boolean"
+        },
+        "type": {
+            "$ref": "#/definitions/pub_type"
+        },
+        "year": {
+            "title": "Year",
+            "description": "Publication year.",
+            "type": "string"
+        },
+        "documents": {
+            "type": "array",
+            "title": "Documents",
+            "description": "List of documents.",
+            "items": {
+                "title": "Document",
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "title": "Title",
+                        "description": "Title of the document.",
+                        "type": "string"
+                    },
+                    "language": {
+                        "title": "Language",
+                        "description": "The language of the document. Use RFC 5646.",
+                        "type": "string",
+                        "pattern": "^[A-Za-z]{2,4}([_-][A-Za-z]{4})?([_-]([A-Za-z]{2}|[0-9]{3}))?$"
+                    },
+                    "style": {
+                        "$ref": "#/definitions/style"
+                    },
+                    "index": {
+                        "$ref": "#/definitions/index"
+                    },
+                    "assets_titles": {
+                        "$ref": "#/definitions/assets_titles"
+                    }
+                },
+                "required": ["title", "style", "language"],
+                "additionalProperties": false
+            }
+        },
+        "assets_titles": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "minItems": 1
+        },
+        "index": {
+            "type": "object",
+            "title": "Index titles.",
+            "description": "Use default index titles or define your own.",
+            "additionalProperties": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "object",
+                        "title": "Index",
+                        "description": "Index titles.",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "drive": {
+            "title": "Google Drive folder",
+            "description": "Folder where the files will be synced.",
+            "type": "object",
+            "properties": {
+                "url": {
+                    "description": "URL da pasta",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "ID da pasta",
+                    "type": "string"
+                }
+            }
+        },
+        "pub_type": {
+            "title": "Type",
+            "description": "Type of the publication.",
+            "type": "string",
+            "enum": [
+                "book",
+                "article",
+                "chapter",
+                "conference",
+                "dissertation",
+                "thesis",
+                "manual",
+                "misc"
+            ]
+        },
+        "style": {
+            "title": "Style",
+            "description": "Define format style.",
+            "properties": {
+                "csl": {
+                    "$ref": "#/definitions/csl_style"
+                }
+            },
+            "oneOf": [
+                {
+                    "properties": {
+                        "name": {
+                            "$ref": "#/definitions/style_name"
+                        }
+                    },
+                    "required": ["name", "csl"]
+                },
+                {
+                    "properties": {
+                        "path": {
+                            "$ref": "#/definitions/style_path"
+                        }
+                    },
+                    "required": ["path", "csl"]
+                }
+            ]
+        },
+        "style_name": {
+            "title": "Style name",
+            "description": "Name of the style. Chose one from the available styles at `lib/styles`.",
+            "type": "string"
+        },
+        "style_path": {
+            "title": "Style path",
+            "description": "Path of the style. When you want to provide your own style.",
+            "type": "string"
+        },
+        "csl_style": {
+            "title": "CSL file",
+            "description": "CSL file of the style located at `cache/styles`.",
+            "type": "string"
+        }
+    }
+}

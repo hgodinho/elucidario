@@ -59,6 +59,7 @@ class Core {
 	public $users;
 
 	/**
+	 * Rest.
 	 *
 	 * @var \LCDR\Rest\Core
 	 */
@@ -80,7 +81,7 @@ class Core {
 		$this->users  = \LCDR\Users\Core::get_instance();
 		$this->db     = \LCDR\DB\Core::get_instance();
 		$this->rest   = \LCDR\Rest\Core::get_instance();
-		// $this->options = new \LCDR\Options\Core();
+		// $this->options = new \LCDR\Options\Core(); phpcs:ignore
 
 		add_action( 'init', array( $this, 'textdomain' ) );
 	}
@@ -95,13 +96,4 @@ class Core {
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 		\load_textdomain( $domain, LCDR_PATH . "languages/php-{$domain}-{$locale}.mo" );
 	}
-
-	/**
-	 *                 _             __
-	 *     ____  _____(_)   ______ _/ /____
-	 *    / __ \/ ___/ / | / / __ `/ __/ _ \
-	 *   / /_/ / /  / /| |/ / /_/ / /_/  __/
-	 *  / .___/_/  /_/ |___/\__,_/\__/\___/
-	 * /_/
-	 */
 }

@@ -25,6 +25,7 @@ export type InputType =
 export type InputProps = InputHTMLAttributes<
     Omit<HTMLInputElement, "children">
 > & {
+    name: string;
     type?: InputType;
 };
 

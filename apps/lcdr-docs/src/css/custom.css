@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Baskervville&family=Inter&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;400;900&display=swap');
 
 :root {
     --lcdr-base-font: 'Inter', sans-serif;
-    --lcdr-heading-font: 'Baskervville', serif;
+    --lcdr-heading-font: var(--lcdr-base-font);
 
     --ifm-font-family-base: var(--lcdr-base-font);
     --ifm-heading-font-family: var(--lcdr-heading-font);
 
     --lcdr-color-black: #000000;
-    --lcdr-color-primary: #3c9aee;
+    --lcdr-color-primary: #007acc;
     --lcdr-color-primary-dark: #0771a4;
     --lcdr-color-primary-darker: #0771a4;
     --lcdr-color-primary-darkest: #002433;
@@ -54,10 +54,13 @@ html[data-theme="light"] {
 }
 
 .footer--dark {
-    background-color: var(--lcdr-color-primary-dark);
+    background-color: var(--lcdr-color-primary);
 }
 
-.navbar__title {
-    font-family: var(--lcdr-heading-font);
-    font-size: xx-large;
+.navbar {
+    height: fit-content;
+}
+
+.navbar__logo {
+    height: 3.5rem;
 }

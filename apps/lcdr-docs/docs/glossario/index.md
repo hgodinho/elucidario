@@ -45,9 +45,9 @@ Lista de termos utilizados no MDORIM e suas definições.
 ## WEB
 
 - `http` - *Hyper Text Transfer Protocol* - Protocolo para transferências de informação hipermídia entre sistemas
-  - `https` - Versão com criptografia de ponta a ponta, o `s` representa `security`
+- `https` - Versão com criptografia de ponta a ponta, o `s` representa `security`
 - `URI` - *Uniform Resource Identifer* - Identificador único de um recurso utilizado por sistemas web
-  - `URL` - *Uniform Resource Locator* - Extensão da URI que além de identificador única também representa um endereço acessível na web
+- `URL` - *Uniform Resource Locator* - Extensão da URI que além de identificador única também representa um endereço acessível na web
 
 ---
 
@@ -67,9 +67,11 @@ Note que a força destas palavras é modificada pelo nível de exigência do doc
 
 :::info
 
-Fonte<br/>
-Tradução retirada de: <http://rfc.pt.webiwg.org/rfc2119><br/>
-Documento oficial em inglês: <https://www.ietf.org/rfc/rfc2119.txt>
+Fonte
+
+Tradução retirada de: [http://rfc.pt.webiwg.org/rfc2119](http://rfc.pt.webiwg.org/rfc2119)
+
+Documento oficial em inglês: [https://www.ietf.org/rfc/rfc2119.txt](https://www.ietf.org/rfc/rfc2119.txt)
 
 :::
 

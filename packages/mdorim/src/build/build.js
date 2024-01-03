@@ -1,7 +1,6 @@
 import path from "path";
-import fs from "fs";
 import { program } from "commander";
-import { build, getPaths } from "@elucidario/pkg-paths";
+import { build, getPaths, readFile } from "@elucidario/pkg-paths";
 
 import { buildDocs } from "./docs.js";
 import { buildSchemas } from "./schemas.js";
@@ -10,15 +9,18 @@ import { buildExamples } from "./examples.js";
 import { clean } from "./clean.js";
 import { cli } from "./cli.js";
 
-const { packages } = getPaths();
-
-const __dirname = path.resolve(packages, "mdorim", "src");
-
-const outStatic = path.resolve(packages, "mdorim", "static", "mdorim");
-
-const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(packages, "mdorim", "package.json")),
+const mdorimSrc = path.resolve(getPaths().packages, "mdorim", "src");
+const mdorimTests = path.resolve(getPaths().packages, "mdorim", "tests");
+const mdorimStatic = path.resolve(
+    getPaths().packages,
+    "mdorim",
+    "static",
+    "mdorim",
 );
+
+const pkg = readFile(
+    path.resolve(getPaths().packages, "mdorim", "package.json"),
+).value;
 
 /**
  * Build mdorim
@@ -37,39 +39,54 @@ export const buildMdorim = async () => {
         .action(async (options) => {
             await build(
                 {
-                    package: packageJson,
+                    package: pkg,
                     watch: options.watch,
-                    watchSrc: [
-                        __dirname,
-                        path.resolve(__dirname, "..", "tests"),
-                    ],
+                    watchSrc: [mdorimSrc, mdorimTests],
                 },
                 async () => {
-                    if (options.clean) await clean(packageJson, outStatic);
-                    if (options.schema) {
-                        await buildSchemas(packageJson, __dirname, outStatic);
-                    }
-                    if (options.examples)
-                        await buildExamples(packageJson, __dirname, outStatic);
-                    // if (options.mapping)
-                    //     await buildMapping(packageJson, __dirname, outStatic);
-                    if (options.translations)
-                        await buildTranslations(
-                            packageJson,
-                            __dirname,
-                            outStatic,
-                        );
+                    /**
+                     * Clean static folder.
+                     */
+                    if (options.clean) await clean(pkg, mdorimStatic);
 
+                    /**
+                     * Build schemas.
+                     */
+                    if (options.schema)
+                        await buildSchemas(pkg, mdorimSrc, mdorimStatic);
+
+                    /**
+                     * Build examples.
+                     */
+                    if (options.examples)
+                        await buildExamples(pkg, mdorimSrc, mdorimStatic);
+
+                    /**
+                     * Build translations.
+                     */
+                    if (options.translations)
+                        await buildTranslations(pkg, mdorimSrc, mdorimStatic);
+
+                    /**
+                     * Build lib.
+                     */
                     if (options.lib)
                         await cli(
                             "pnpm build:rollup",
                             "Building lib with rollup...",
-                            packageJson,
+                            pkg,
                         );
 
-                    if (options.docs) await buildDocs(packageJson, __dirname);
+                    /**
+                     * Build docs.
+                     */
+                    if (options.docs) await buildDocs(pkg, mdorimSrc);
+
+                    /**
+                     * Test.
+                     */
                     if (options.test)
-                        await cli("pnpm test", "Testando...", packageJson);
+                        await cli("pnpm test", "Testando...", pkg);
                 },
             );
         });

@@ -200,6 +200,148 @@
                     "$ref": "<linked-art>/core.json#/definitions/EventRefOrActivityRef"
                 }
             }
+        },
+        "DigitalPost": {
+            "title": "DigitalPost",
+            "description": "A Digital Object to be created",
+            "type": "object",
+            "properties": {
+                "author": {
+                    "$ref": "<local>/core.json#/definitions/author"
+                },
+                "password": {
+                    "$ref": "<local>/core.json#/definitions/password"
+                },
+                "status": {
+                    "$ref": "<local>/core.json#/definitions/entity_status"
+                },
+
+                "created": {
+                    "$ref": "<local>/core.json#/definitions/created"
+                },
+                "modified": {
+                    "$ref": "<local>/core.json#/definitions/updated"
+                },
+
+                "type": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/typeProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "type": "string",
+                            "const": "DigitalObject"
+                        }
+                    ]
+                },
+                "_label": {
+                    "$ref": "<linked-art>/core.json#/definitions/labelProp"
+                },
+
+                "identified_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/identified_byProp"
+                },
+                "classified_as": {
+                    "$ref": "<linked-art>/core.json#/definitions/classified_asProp"
+                },
+                "referred_to_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/referred_to_byProp"
+                },
+                "equivalent": {
+                    "allOf": [
+                        {
+                            "title": "General",
+                            "$ref": "<linked-art>/core.json#/definitions/equivalentProp"
+                        },
+                        {
+                            "title": "Specific",
+                            "description": "List of equivalent `DigitalObject` entities",
+                            "type": "array",
+                            "items": {
+                                "$ref": "<linked-art>/core.json#/definitions/DigitalObjectRef"
+                            }
+                        }
+                    ]
+                },
+
+                "representation": {
+                    "$ref": "<linked-art>/core.json#/definitions/representationProp"
+                },
+                "member_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/member_ofSetProp"
+                },
+                "subject_of": {
+                    "$ref": "<linked-art>/core.json#/definitions/subject_ofProp"
+                },
+                "attributed_by": {
+                    "$ref": "<linked-art>/core.json#/definitions/attributed_byRelProp"
+                },
+
+                "dimension": {
+                    "$ref": "<linked-art>/core.json#/definitions/dimensionProp"
+                },
+
+                "part_of": {
+                    "title": "crm:P106i_forms_part_of",
+                    "description": "Reference to another Digital Object of which this is part",
+                    "$ref": "<linked-art>/core.json#/definitions/DigitalObjectRef"
+                },
+                "format": {
+                    "$ref": "<linked-art>/core.json#/definitions/formatProp"
+                },
+                "conforms_to": {
+                    "$ref": "<linked-art>/core.json#/definitions/conforms_toProp"
+                },
+                "access_point": {
+                    "$ref": "<linked-art>/core.json#/definitions/access_pointProp"
+                },
+                "digitally_available_via": {
+                    "$ref": "<linked-art>/core.json#/definitions/digitally_available_viaProp"
+                },
+
+                "digitally_carries": {
+                    "title": "la:digitally_carries",
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "$ref": "<linked-art>/core.json#/definitions/LinguisticObjectRef"
+                    }
+                },
+                "digitally_shows": {
+                    "title": "la:digitally_shows",
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "$ref": "<linked-art>/core.json#/definitions/VisualItemRef"
+                    }
+                },
+                "used_for": {
+                    "title": "crm:P16i_was_used_for",
+                    "description": "",
+                    "type": "array",
+                    "items": {
+                        "$ref": "<linked-art>/core.json#/definitions/Activity"
+                    }
+                },
+                "created_by": {
+                    "title": "crm:P94i_was_created_by",
+                    "$ref": "#/definitions/Creation"
+                },
+
+                "history": {
+                    "$ref": "<local>/history.json"
+                },
+
+                "_fields": {
+                    "$ref": "<local>/core.json#/definitions/_fields"
+                },
+                "_embed": {
+                    "$ref": "<local>/core.json#/definitions/_embed"
+                }
+            },
+            "additionalProperties": false
         }
     },
     "required": [

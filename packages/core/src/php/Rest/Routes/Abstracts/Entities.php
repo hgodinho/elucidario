@@ -17,6 +17,9 @@ if ( ! defined( 'LCDR_PATH' ) ) {
 }
 // @codeCoverageIgnoreEnd
 
+/**
+ * Entities abstract class.
+ */
 abstract class Entities extends Base {
 	/**
 	 * Set permission group.
@@ -52,8 +55,8 @@ abstract class Entities extends Base {
 	/**
 	 * Prepare item.
 	 *
-	 * @param array            $args
-	 * @param \WP_REST_Request $request
+	 * @param array            $args   Array of arguments for Query.
+	 * @param \WP_REST_Request $request The REST API request.
 	 * @return object|\LCDR\Error\Error
 	 */
 	public function prepare_for_db( $args, $request ) {
@@ -265,8 +268,8 @@ abstract class Entities extends Base {
 				array( 'status' => 400 )
 			);
 		}
+		// content-type is wp —> continue.
 
-		// content-type is wp — continue.
 		if ( ! empty( $request[ $this->primary_property ] ) ) {
 			return new \LCDR\Error\Rest(
 				'already_exists',
@@ -287,15 +290,12 @@ abstract class Entities extends Base {
 		}
 
 		$entity_id = lcdr_insert_entity( (array) $prepared_entity );
-
 		if ( is_lcdr_error( $entity_id ) ) {
-
 			if ( 'db__insert' === $entity_id->get_error_code() ) {
 				$entity_id->add_data( array( 'status' => 500 ) );
 			} else {
 				$entity_id->add_data( array( 'status' => 400 ) );
 			}
-
 			return $entity_id;
 		}
 
@@ -404,9 +404,7 @@ abstract class Entities extends Base {
 	}
 
 	/**
-	 * Deletes a single post.
-	 *
-	 * @since 4.7.0
+	 * Deletes a single entity.
 	 *
 	 * @param \WP_REST_Request $request Full details about the request.
 	 * @return \WP_REST_Response|\LCDR\Error\Error Response object on success, or WP_Error object on failure.
@@ -420,7 +418,7 @@ abstract class Entities extends Base {
 
 		$id = $entity->{$this->primary_property};
 
-		// $force = (bool) $request['force'];
+		// $force = (bool) $request['force']; // @todo dev the part of trash
 		$supports_trash = ( EMPTY_TRASH_DAYS > 0 );
 
 		/**
@@ -508,7 +506,7 @@ abstract class Entities extends Base {
 	/**
 	 * Get entity.
 	 *
-	 * @param int $id Entity ID.
+	 * @param mixed $id Entity ID.
 	 * @return \LCDR\Error\Rest|\LCDR\DB\Row\Entity
 	 *
 	 * @todo transform to abstract method in Base class
@@ -519,11 +517,18 @@ abstract class Entities extends Base {
 			array( 'status' => 404 )
 		);
 
+		if ( is_lcdr_error( $id ) ) {
+			return $id;
+		}
+
 		if ( (int) $id <= 0 ) {
 			return $error;
 		}
 
 		$entity = lcdr_get_entity( (int) $id );
+
+		$this->log( $entity, 'get_entity', __METHOD__, __LINE__ );
+
 		if ( empty( $entity ) || empty( $entity->{$this->primary_property} ) ) {
 			return $error;
 		}

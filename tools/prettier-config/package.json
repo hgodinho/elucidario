@@ -1,0 +1,8 @@
+{
+    "name": "@elucidario/tool-prettier-config",
+    "version": "1.0.1",
+    "description": "Configurações do prettier",
+    "main": "./.prettierrc.json",
+    "author": "Henrique Godinho <henrique@hgod.in>",
+    "license": "MIT"
+}

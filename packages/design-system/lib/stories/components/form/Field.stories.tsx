@@ -3,13 +3,19 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Field } from '@/components';
 import { ComponentTemplate } from '../../ComponentTemplate';
-import { FieldType, FieldRootProps } from '@elucidario/pkg-types';
+import { FieldRootProps } from '@elucidario/pkg-types';
 
-// const { Root } = Field;
+const Template = (args: FieldRootProps) => {
+    return (
+        <ComponentTemplate form={true}>
+            <Field.Root {...args} />
+        </ComponentTemplate>
+    )
+}
 
 const meta = {
     title: '@elucidario/pkg-design-system/components/Form/Field',
-    component: Field.Root,
+    component: Template,
     tags: ['autodocs'],
     args: {
         schema: {

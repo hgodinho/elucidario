@@ -21,6 +21,12 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  * Schema Error Class
  */
 class Schema extends Base {
+	/**
+	 * Constructor.
+	 *
+	 * @param string $message Error message.
+	 * @param mixed  $data Error data.
+	 */
 	public function __construct( $message, $data ) {
 		parent::__construct( 'invalid', $data, $message );
 	}

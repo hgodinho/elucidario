@@ -1,0 +1,74 @@
+{
+    "title": "{{count:quadros;legend=Colunas e predicados (relacionamentos) de cada Entidade do Mdorim.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Entidade"
+        },
+        {
+            "type": "string",
+            "name": "Colunas usadas"
+        },
+        {
+            "type": "string",
+            "name": "Predicados permitidos"
+        }
+    ],
+    "data": [
+        ["Entidade", "Colunas usadas", "Predicados permitidos"],
+        [
+            "_Concept_",
+            "identified_by, referred_to_by, equivalent, attributed_by, created_by",
+            "classified_as, referred_to_by, representation, member_of, subject_of, broader"
+        ],
+        [
+            "_Digital_",
+            "identified_by, referred_to_by, equivalent, attributed_by, dimension, digitally_available_via, created_by",
+            "classified_as, referred_to_by, representation, member_of, subject_of, part_of, conforms_to, access_point, digitally_carries, digitally_shows, used_for"
+        ],
+        [
+            "_Event_",
+            "identified_by, referred_to_by, equivalent, attributed_by, timespan",
+            "classified_as, referred_to_by, representation, member_of, subject_of, part_of, took_place_at, caused_by, carried_out_by, used_specific_object, influenced_by, technique"
+        ],
+        [
+            "_Provenance_",
+            "identified_by, referred_to_by, equivalent, attributed_by, timespan, part",
+            "classified_as, referred_to_by, representation, member_of, subject_of, part_of, took_place_at, caused_by, carried_out_by, used_specific_object, influenced_by, technique"
+        ],
+        [
+            "_Actor_",
+            "identified_by, referred_to_by, equivalent, attributed_by, contact_point, begin_of_existence, end_of_existence",
+            "classified_as, referred_to_by, representation, member_of, subject_of, carried_out, residence"
+        ],
+        [
+            "_Object_",
+            "identified_by, referred_to_by, equivalent, attributed_by, dimension, produced_by, destroyed_by, removed_by",
+            "classified_as, referred_to_by, representation, member_of, subject_of, part_of, used_for, took_place_at, caused_by, carried_out_by, used_specific_object, influenced_by, technique, made_of, current_owner, current_custodian, current_permanent_custodian, current_location, shows, carries"
+        ],
+        [
+            "_Place_",
+            "identified_by, referred_to_by, equivalent, attributed_by",
+            "classified_as, referred_to_by, representation, member_of, subject_of, part_of, approximated_by"
+        ],
+        [
+            "_Set_",
+            "identified_by, referred_to_by, equivalent, attributed_by, dimension, created_by, timespan",
+            "classified_as, referred_to_by, representation, member_of, subject_of, took_place_at, caused_by, carried_out_by, used_specific_object, influenced_by, technique"
+        ],
+        [
+            "_Textual_",
+            "identified_by, referred_to_by, equivalent, attributed_by, dimension, created_by, timespan",
+            "classified_as, referred_to_by, representation, member_of, subject_of, part_of, used_for, took_place_at, caused_by, carried_out_by, used_specific_object, influenced_by, technique, about, language, digitally_carried_y, carried_by, refers_to"
+        ],
+        [
+            "_Visual_",
+            "identified_by, referred_to_by, equivalent, attributed_by, dimension, created_by, timespan",
+            "classified_as, referred_to_by, member_of, subject_of, part_of, used_for, took_place_at, caused_by, carried_out_by, used_specific_object, influenced_by, technique, digitally_shown_by, shown_by, about, represents, represents_instance_of_type"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor, com base em Linked Art (2020)."
+    }
+}

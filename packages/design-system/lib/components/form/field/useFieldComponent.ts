@@ -15,6 +15,10 @@ export const useFieldComponent: UseFieldComponent = (schema) => {
         ): FieldSchema => {
             let newSchema = {} as FieldSchema;
             newSchema = {
+                name:
+                    typeof schema.title !== "undefined"
+                        ? (schema.title as string)
+                        : "",
                 ...schema,
                 type,
             };

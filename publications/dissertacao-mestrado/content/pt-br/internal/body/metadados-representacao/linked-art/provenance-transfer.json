@@ -1,0 +1,52 @@
+{
+    "title": "{{count:quadros;legend=Propriedades de _TransferOfCustody_.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Nome"
+        },
+        {
+            "type": "string",
+            "name": "Tipo"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        },
+        {
+            "type": "string",
+            "name": "Descrição"
+        }
+    ],
+    "data": [
+        ["Nome", "Tipo", "Exigência", "Descrição"],
+        [
+            "type",
+            "string",
+            "obrigatório",
+            "O tipo deve ser _TransferOfCustody_."
+        ],
+        [
+            "transfer_custody_of",
+            "array",
+            "obrigatório",
+            "Um array de referências a entidade _PhysicalObject__."
+        ],
+        [
+            "transfer_custody_from",
+            "array",
+            "opcional",
+            "Um array de referências a uma entidade _Person_ ou _Group_."
+        ],
+        [
+            "transfer_custody_to",
+            "array",
+            "opcional",
+            "Um array de referências a uma entidade _Person_ ou _Group_."
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Metadados utilizados no objeto _TransferOfCustody_ do Linked Art (2021)."
+    }
+}

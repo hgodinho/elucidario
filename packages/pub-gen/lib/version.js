@@ -4,8 +4,8 @@ import inquirer from "inquirer";
 import { simpleGit } from "simple-git";
 
 import { Console } from "@elucidario/pkg-console";
+import { getPaths } from "@elucidario/pkg-paths";
 
-import { getPaths } from "./getPaths.js";
 const paths = getPaths();
 
 export const version = async (args) => {

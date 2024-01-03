@@ -54,6 +54,13 @@ class Entities extends Query {
 	protected $item_name = 'entity';
 
 	/**
+	 * Item name plural
+	 *
+	 * @var string
+	 */
+	protected $item_name_plural = 'entities';
+
+	/**
 	 * Database version key
 	 *
 	 * @var string
@@ -82,6 +89,24 @@ class Entities extends Query {
 	 *  / .___/\__,_/_.___/_/_/\___/
 	 * /_/
 	 */
+	/**
+	 * Constructor
+	 *
+	 * @param array $options Options.
+	 */
+	public function __construct( $options = array() ) {
+		foreach ( $options as $key => $value ) {
+			if ( property_exists( $this, $key ) ) {
+				$this->$key = $value;
+				if ( 'item_shape' === $key ) {
+					$namespace        = '\\LCDR\\DB\\Row\\';
+					$this->item_shape = $namespace . $value;
+				}
+			}
+		}
+		parent::__construct( array_key_exists( 'query', $options ) ? $options['query'] : array() );
+	}
+
 	/**
 	 * Get entities
 	 *
@@ -114,7 +139,7 @@ class Entities extends Query {
 			$item = $this->get_item_by( 'entity_id', (int) $entity_id );
 		} catch ( \Exception $e ) {
 			$this->dump(
-				'cli',
+				'browser',
 				array(
 					'code'    => $e->getCode(),
 					'message' => $e->getMessage(),
@@ -123,9 +148,8 @@ class Entities extends Query {
 				__CLASS__,
 				__METHOD__,
 				__LINE__,
-				false
+				true
 			);
-			// $this->log( $e->getTrace(), 'error', __METHOD__, __LINE__ );
 		}
 		if ( ! $item ) {
 			return new \LCDR\Error\DB( 'get' );
@@ -290,8 +314,8 @@ class Entities extends Query {
 	/**
 	 * Get unique slug
 	 *
-	 * @param string $slug
-	 * @param int    $entity_id
+	 * @param string $slug Slug.
+	 * @param int    $entity_id Entity ID.
 	 * @return string
 	 */
 	public function unique_slug( $slug, $entity_id ) {
@@ -390,7 +414,6 @@ class Entities extends Query {
 		}
 
 		// Column Status.
-		// $columns['status'] = isset( $columns['status'] ) ? $columns['status'] : 'draft';
 		if ( ! isset( $columns['status'] ) && $entity ) {
 			$columns['status'] = $entity->status;
 		} elseif ( ! isset( $columns['status'] ) && ! $entity ) {

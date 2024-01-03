@@ -6,30 +6,26 @@ import parser from "parser-front-matter";
 import { entityPage } from "@elucidario/pkg-schema-doc";
 import { toMD, bold, codeBlock } from "@elucidario/pkg-docusaurus-md";
 
-import { getPaths } from "../getPaths.js";
-import { tableMarkdown } from "./table.js";
+import { getPaths, readFile } from "@elucidario/pkg-paths";
+import markdownTable from "./table/markdownTable.js";
 
-import packageJson from "../../package.json" assert { type: "json" };
+const pkg = readFile(
+    path.resolve(getPaths().packages, "pub-gen", "package.json"),
+).value;
 
 import { Console } from "@elucidario/pkg-console";
 
-const console = new Console(packageJson);
-
-const paths = getPaths();
+const console = new Console(pkg);
 
 import { engine } from "../reference/csl-engine.js";
+import { replaceRegexHandlebars } from "../utils.js";
 
-export function replaceRegexHandlebars(text, options) {
-    if (!text) return null;
-    const regex = /{{(.*?)}}/g;
-    const replacedText = text.replace(regex, (match, group) => {
-        const replacement = options[group.trim()] || "";
-        return replacement;
-    });
-
-    return replacedText;
-}
-
+/**
+ * Parse Value
+ *
+ * @param {string} value
+ * @returns {Object}
+ */
 export const parseValue = (value) => {
     const [action, optionsString] = value.split(":");
     const [filePath, ...fileOptions] = optionsString.split(";");
@@ -63,6 +59,7 @@ export default function remarkPubGen(options) {
             index[type].push(value);
             return index[type].length;
         };
+
         const counter = (index, path, options) => {
             const length = pushToIndex(index, path, options.legend);
             return `${labels[path]} ${length}: ${options.legend}`;
@@ -71,8 +68,7 @@ export default function remarkPubGen(options) {
         visit(tree, "text", (node) => {
             if (node.value.startsWith("{{") && node.value.endsWith("}}")) {
                 const value = node.value.replace("{{", "").replace("}}", "");
-                const { action, optionsString, filePath, fileOptions } =
-                    parseValue(value);
+                const { action, filePath, fileOptions } = parseValue(value);
 
                 /**
                  * Table
@@ -81,7 +77,7 @@ export default function remarkPubGen(options) {
                     const { filePath } = parseValue(value);
 
                     const tableData = JSON.parse(
-                        fs.readFileSync(path.resolve(options.path, filePath))
+                        fs.readFileSync(path.resolve(options.path, filePath)),
                     );
 
                     if (tableData.title.startsWith("{{")) {
@@ -89,11 +85,12 @@ export default function remarkPubGen(options) {
                             .replace("{{", "")
                             .replace("}}", "");
                         const parsed = parseValue(value);
+
                         if ("count" === parsed.action) {
                             tableData.title = counter(
                                 options.index,
                                 parsed.filePath,
-                                parsed.fileOptions
+                                parsed.fileOptions,
                             );
                         }
                     }
@@ -109,12 +106,12 @@ export default function remarkPubGen(options) {
                         try {
                             schemaData = JSON.parse(
                                 fs.readFileSync(
-                                    path.resolve(options.path, filePath)
-                                )
+                                    path.resolve(options.path, filePath),
+                                ),
                             );
                         } catch (error) {
                             throw new Error(
-                                `Error reading schema in ${filePath} ${error.message}`
+                                `Error reading schema in ${filePath} ${error.message}`,
                             );
                         }
 
@@ -123,7 +120,7 @@ export default function remarkPubGen(options) {
                             schemaTable = entityPage(schemaData, "pt-BR");
                         } catch (error) {
                             throw new Error(
-                                `Error generation entityPage in ${filePath} ${error.message}`
+                                `Error generation entityPage in ${filePath} ${error.message}`,
                             );
                         }
 
@@ -145,7 +142,7 @@ export default function remarkPubGen(options) {
 
                     const statusTable = toMD(
                         [`:::${status[0]} ${status[1]}`, status[2], ":::"],
-                        "\n\n"
+                        "\n\n",
                     );
                     node.value = statusTable;
                     node.type = "html";
@@ -193,7 +190,7 @@ export default function remarkPubGen(options) {
                             label = counter(
                                 options.index,
                                 parsed.filePath,
-                                parsed.fileOptions
+                                parsed.fileOptions,
                             );
                         }
                     } else {
@@ -203,14 +200,20 @@ export default function remarkPubGen(options) {
                         type !== "mindmap"
                             ? toMD([
                                   bold(
-                                      replaceRegexHandlebars(label, fileOptions)
+                                      replaceRegexHandlebars(
+                                          label,
+                                          fileOptions,
+                                      ),
                                   ),
                                   content.replace("mermaid", mermaidOptions),
                                   source || "",
                               ])
                             : toMD([
                                   bold(
-                                      replaceRegexHandlebars(label, fileOptions)
+                                      replaceRegexHandlebars(
+                                          label,
+                                          fileOptions,
+                                      ),
                                   ),
                                   content,
                                   source || "",
@@ -268,8 +271,8 @@ export default function remarkPubGen(options) {
 
         // parse tables
         const promises = tables.map(async ({ node, value, tableData }) => {
-            const tableMd = await tableMarkdown(tableData, "-").then(
-                (md) => md
+            const tableMd = await markdownTable(tableData, "-").then(
+                (md) => md,
             );
             node.value = tableMd;
             node.type = "html";
@@ -283,16 +286,16 @@ export default function remarkPubGen(options) {
             const references = JSON.parse(
                 fs.readFileSync(
                     path.resolve(
-                        paths.publications,
+                        getPaths().publications,
                         options.publication,
                         "references",
-                        "index.json"
-                    )
-                )
+                        "index.json",
+                    ),
+                ),
             )
                 .items.map((item) => {
                     let refPath = item.path.replace("<references>/", "");
-                    refPath = path.resolve(paths.references, refPath);
+                    refPath = path.resolve(getPaths().references, refPath);
                     return JSON.parse(fs.readFileSync(refPath));
                 })
                 .filter((item) => item);
@@ -321,7 +324,7 @@ export default function remarkPubGen(options) {
                     },
                     [],
                     [],
-                    "html"
+                    "html",
                 );
 
                 node.type = "text";

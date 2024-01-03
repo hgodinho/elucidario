@@ -11,7 +11,7 @@ const url =
 
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+// const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -66,6 +66,7 @@ const config = {
             },
         ],
     ],
+
     plugins: [
         [
             "@docusaurus/plugin-content-docs",
@@ -76,7 +77,7 @@ const config = {
                 editUrl:
                     "https://github.com/hgodinho/elucidario/tree/main/packages/mdorim",
                 sidebarPath: require.resolve(
-                    "../../packages/mdorim/docs/localSidebars.cjs"
+                    "../../packages/mdorim/docs/localSidebars.cjs",
                 ),
                 showLastUpdateTime: true,
                 showLastUpdateAuthor: true,
@@ -91,7 +92,7 @@ const config = {
                 editUrl:
                     "https://github.com/hgodinho/elucidario/tree/main/packages/pub-gen",
                 sidebarPath: require.resolve(
-                    "../../packages/pub-gen/lib/sidebars/local.cjs"
+                    "../../packages/pub-gen/lib/sidebars/local.cjs",
                 ),
                 showLastUpdateTime: true,
                 showLastUpdateAuthor: true,
@@ -108,7 +109,11 @@ const config = {
         // Replace with your project's social card
         image: "img/docusaurus-social-card.jpg",
         navbar: {
-            title: "Elucidário.art",
+            logo: {
+                alt: "Elucidário.art",
+                src: "img/elucidário.art-v-light.svg",
+                srcDark: "img/elucidário.art-v-dark.svg",
+            },
             items: [
                 {
                     href: "https://github.com/hgodinho/elucidario",

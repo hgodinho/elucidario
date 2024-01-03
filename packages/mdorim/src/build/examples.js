@@ -1,7 +1,6 @@
 import path from "path";
-import { readContents } from "@elucidario/pkg-paths";
+import { readContents, createFile } from "@elucidario/pkg-paths";
 import { Console } from "@elucidario/pkg-console";
-import { writeFile } from "./writeFile.js";
 
 /**
  * Build examples
@@ -9,7 +8,7 @@ import { writeFile } from "./writeFile.js";
 export const buildExamples = async (pkg, __dirname, outStatic) => {
     if (!pkg) throw new Error("No package.json provided");
     const console = new Console(pkg);
-    let examples = {};
+    let examples = [];
     try {
         examples = readContents({
             dirPath: path.join(__dirname, "examples"),
@@ -18,22 +17,20 @@ export const buildExamples = async (pkg, __dirname, outStatic) => {
             package: pkg,
         });
     } catch (err) {
-        console.log(err, { type: "error", defaultLog: true, title: "Error" });
         throw new Error(err);
     }
     try {
-        Object.entries(examples).map(([folderName, files]) => {
-            Object.entries(files).map(([fileName, file]) => {
-                writeFile(
-                    path.resolve(outStatic, "examples", folderName),
-                    `${fileName}.json`,
-                    JSON.stringify(file, null, 4),
-                    pkg
-                );
-            });
+        examples.map((example) => {
+            createFile(
+                {
+                    filePath: example.path.replace("src", "static/mdorim"),
+                    ext: "json",
+                },
+                example.value,
+            );
         });
     } catch (err) {
-        console.log(err, { type: "error", defaultLog: true, title: "Error" });
+        console.error({ message: err, defaultLog: true, title: "Error" });
         throw new Error(err);
     }
 };
