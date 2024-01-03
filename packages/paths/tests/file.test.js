@@ -8,7 +8,7 @@ describe("readFile", () => {
             name: "hello-world",
             path: "tests/data/hello-world.md",
             ext: "md",
-            content: "hello world\r\n",
+            value: "hello world\r\n",
             size: 13,
             // atime: new Date("2023-11-28T20:19:03.371Z"),
             // mtime: new Date("2023-11-26T21:30:03.977Z"),
@@ -26,7 +26,7 @@ describe("readFile", () => {
             name: ".gh-token",
             path: "tests/data/.gh-token",
             ext: "json",
-            content: {
+            value: {
                 token: "some-fake-token",
             },
             size: 38,
@@ -43,7 +43,7 @@ describe("readFile", () => {
             name: "hello-world",
             path: "tests/data/hello-world.md",
             ext: "md",
-            content: "hello world\r\n",
+            value: "hello world\r\n",
             size: 13,
             // atime: new Date("2023-11-28T20:19:03.371Z"),
             // mtime: new Date("2023-11-26T21:30:03.977Z"),
@@ -58,7 +58,7 @@ describe("readFile", () => {
             name: "hello-world",
             path: "tests/data/hello-world.json",
             ext: "json",
-            content: {
+            value: {
                 hello: "world",
             },
             size: 28,

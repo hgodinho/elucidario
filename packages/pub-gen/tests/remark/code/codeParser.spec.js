@@ -17,7 +17,7 @@ describe("codeParser", () => {
             "nodes",
             "code.md",
         ),
-    ).content;
+    ).value;
 
     const pkg = readFile(
         path.resolve(
@@ -25,7 +25,7 @@ describe("codeParser", () => {
             "publicacao-teste",
             "package.json",
         ),
-    ).content;
+    ).value;
 
     it("should return codeParser node", async () => {
         const codeParserNode = await testProcessor(codeContent, {

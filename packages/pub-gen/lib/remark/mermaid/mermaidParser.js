@@ -38,7 +38,7 @@ const mermaidParser = (treeOptions) => {
                         filePath,
                     ),
                     ext: "md",
-                }).content;
+                }).value;
 
                 let { data, content } = parser.parseSync(mermaidData);
 

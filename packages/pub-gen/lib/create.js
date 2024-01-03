@@ -27,7 +27,7 @@ import {
 
 const pkg = readFile(
     path.resolve(getPaths().packages, "pub-gen", "package.json"),
-).content;
+).value;
 const console = new Console(pkg);
 
 /**
@@ -233,7 +233,7 @@ export const createPublication = async (args) => {
                                 "styles",
                                 `${style.name}.json`,
                             ),
-                        ).content;
+                        ).value;
                         if (pageStyle.hasOwnProperty("structure")) {
                             const structure = flattenStyleStructureFiles(
                                 pageStyle.structure,

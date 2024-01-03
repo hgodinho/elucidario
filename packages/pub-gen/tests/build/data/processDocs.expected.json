@@ -7,7 +7,7 @@
                         "name": "hello-world",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\hello-world.md",
                         "ext": "md",
-                        "content": "# Hello World\r\n\r\n## Second level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var [@linked-art2021.1].\r\n\r\n{{mermaid:internal/body/mermaid.md}}\r\n\r\n### Third level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.1, p. 2]\r\n\r\n#### Fourth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2]\r\n\r\n##### Fifth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2; @linked-art2021.1]\r\n\r\n###### Sixth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n\r\n{{count:figuras;legend=\\*\\*Lorem ipsum\\*\\*}}\r\n\r\n![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)\r\n",
+                        "value": "# Hello World\r\n\r\n## Second level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var [@linked-art2021.1].\r\n\r\n{{mermaid:internal/body/mermaid.md}}\r\n\r\n### Third level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.1, p. 2]\r\n\r\n#### Fourth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2]\r\n\r\n##### Fifth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2; @linked-art2021.1]\r\n\r\n###### Sixth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n\r\n{{count:figuras;legend=\\*\\*Lorem ipsum\\*\\*}}\r\n\r\n![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)\r\n",
                         "size": 861
                     },
                     "processed": {
@@ -24,7 +24,7 @@
                         "name": "first-level",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\really\\first-level.md",
                         "ext": "md",
-                        "content": "# First level\r\n\r\n{{table:internal/body/really/table.json}}\r\n",
+                        "value": "# First level\r\n\r\n{{table:internal/body/really/table.json}}\r\n",
                         "size": 60
                     },
                     "processed": {
@@ -41,7 +41,7 @@
                         "name": "second-level",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\really\\deep\\second-level.md",
                         "ext": "md",
-                        "content": "## Second level\r\n",
+                        "value": "## Second level\r\n",
                         "size": 17
                     },
                     "processed": {
@@ -58,7 +58,7 @@
                         "name": "third-level",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\really\\deep\\nested\\third-level.md",
                         "ext": "md",
-                        "content": "### Third level\r\n",
+                        "value": "### Third level\r\n",
                         "size": 17
                     },
                     "processed": {
@@ -75,7 +75,7 @@
                         "name": "file",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\really\\deep\\nested\\file\\file.md",
                         "ext": "md",
-                        "content": "rock bottom.\r\n",
+                        "value": "rock bottom.\r\n",
                         "size": 14
                     },
                     "processed": {
@@ -94,14 +94,14 @@
                         "name": "folha-rosto",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\folha-rosto.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "processed": {
                         "name": "folha-rosto",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-rosto.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-rosto.md"
@@ -111,14 +111,14 @@
                         "name": "ficha-catalografica",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\ficha-catalografica.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "processed": {
                         "name": "ficha-catalografica",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\ficha-catalografica.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\ficha-catalografica.md"
@@ -128,14 +128,14 @@
                         "name": "folha-avaliacao",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\folha-avaliacao.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "processed": {
                         "name": "folha-avaliacao",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-avaliacao.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-avaliacao.md"
@@ -145,14 +145,14 @@
                         "name": "resumo-lingua-vernacula",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\resumo-lingua-vernacula.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "processed": {
                         "name": "resumo-lingua-vernacula",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-vernacula.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-vernacula.md"
@@ -162,14 +162,14 @@
                         "name": "resumo-lingua-estrangeira",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\resumo-lingua-estrangeira.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "processed": {
                         "name": "resumo-lingua-estrangeira",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-estrangeira.md",
                         "ext": "md",
-                        "content": "",
+                        "value": "",
                         "size": 0
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-estrangeira.md"
@@ -180,7 +180,7 @@
                         "name": "lista-imagens",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-imagens.md",
                         "ext": "md",
-                        "content": "# LISTA DE IMAGENS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | imagem-1 |  |\n| 2 | imagem-2 |  |"
+                        "value": "# LISTA DE IMAGENS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | imagem-1 |  |\n| 2 | imagem-2 |  |"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-imagens.md"
                 },
@@ -190,7 +190,7 @@
                         "name": "lista-figuras",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-figuras.md",
                         "ext": "md",
-                        "content": "# LISTA DE FIGURAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | figura-1 |  |\n| 2 | figura-2 |  |\n| 3 | **Mermaid** |  |\n| 4 | **Lorem ipsum** |  |"
+                        "value": "# LISTA DE FIGURAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | figura-1 |  |\n| 2 | figura-2 |  |\n| 3 | **Mermaid** |  |\n| 4 | **Lorem ipsum** |  |"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-figuras.md"
                 },
@@ -200,7 +200,7 @@
                         "name": "lista-tabelas",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-tabelas.md",
                         "ext": "md",
-                        "content": "# LISTA DE TABELAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | tabela-1 |  |\n| 2 | tabela-2 |  |"
+                        "value": "# LISTA DE TABELAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | tabela-1 |  |\n| 2 | tabela-2 |  |"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-tabelas.md"
                 },
@@ -210,7 +210,7 @@
                         "name": "lista-quadros",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-quadros.md",
                         "ext": "md",
-                        "content": "# LISTA DE QUADROS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | grafico-1 |  |\n| 2 | grafico-2 |  |\n| 3 | Teste Tabela. |  |"
+                        "value": "# LISTA DE QUADROS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | grafico-1 |  |\n| 2 | grafico-2 |  |\n| 3 | Teste Tabela. |  |"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-quadros.md"
                 },
@@ -220,7 +220,7 @@
                         "name": "lista-abreviaturas-siglas",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-abreviaturas-siglas.md",
                         "ext": "md",
-                        "content": "# LISTA DE ABREVIATURAS E SIGLAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | ABNT - Associação Brasileira de Normas Técnicas; |  |\n| 2 | APA - American Psychological Association; |  |"
+                        "value": "# LISTA DE ABREVIATURAS E SIGLAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | ABNT - Associação Brasileira de Normas Técnicas; |  |\n| 2 | APA - American Psychological Association; |  |"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-abreviaturas-siglas.md"
                 }
@@ -232,7 +232,7 @@
                         "name": "referencias",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pos\\referencias.md",
                         "ext": "md",
-                        "content": "# Bibliografia\n\nLINKED ART. **Linked Art**. 2021a. Disponível em: https://linked.art/. Acesso em: 20 maio. 2023\\. \n\nLINKED ART. **Community - Linked Art**. 2021b. Disponível em: https://linked.art/community/. Acesso em: 20 maio. 2023\\."
+                        "value": "# Bibliografia\n\nLINKED ART. **Linked Art**. 2021a. Disponível em: https://linked.art/. Acesso em: 20 maio. 2023\\. \n\nLINKED ART. **Community - Linked Art**. 2021b. Disponível em: https://linked.art/community/. Acesso em: 20 maio. 2023\\."
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pos\\referencias.md"
                 }
@@ -246,7 +246,7 @@
                 "name": "lorem-ipsum",
                 "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\static\\lorem-ipsum.jpeg",
                 "ext": "jpeg",
-                "content": "",
+                "value": "",
                 "size": 316922
             }
         ]

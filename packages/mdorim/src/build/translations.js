@@ -17,7 +17,7 @@ export const buildTranslations = async (pkg, __dirname, mdorimStatic) => {
             package: pkg,
         });
         translationsFiles.forEach((translation) => {
-            translations[translation.name] = translation.content;
+            translations[translation.name] = translation.value;
         });
         createFile(
             {

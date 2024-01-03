@@ -84,7 +84,7 @@ export async function processAssets(args) {
                         const file = parseFile({
                             name: filePath.split("/").pop(),
                             path: path.resolve(distPath, `${filePath}.md`),
-                            content: indexBodyMD({
+                            value: indexBodyMD({
                                 title: index[required],
                                 items: assets[required],
                             }),
@@ -107,7 +107,7 @@ export async function processAssets(args) {
                                 const file = parseFile({
                                     name: name.split("/").pop(),
                                     path: path.resolve(distPath, `${name}.md`),
-                                    content: indexBodyMD({
+                                    value: indexBodyMD({
                                         title: index[required].hasOwnProperty(
                                             type,
                                         )

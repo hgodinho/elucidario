@@ -17,7 +17,7 @@ describe("countParser", () => {
             "body",
             "hello-world.md",
         ),
-    ).content;
+    ).value;
 
     const pkg = packageJson("publicacao-teste");
 

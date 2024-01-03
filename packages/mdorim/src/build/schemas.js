@@ -23,7 +23,7 @@ export const buildSchemas = async (pkg, __dirname, outStatic) => {
     }
     try {
         for (const schema of schemas) {
-            const parsedSchema = replaceRef(schema.content, true, pkg.homepage);
+            const parsedSchema = replaceRef(schema.value, true, pkg.homepage);
             createFile(
                 {
                     filePath: schema.path.replace("src", "static/mdorim"),

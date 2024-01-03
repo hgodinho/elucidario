@@ -20,7 +20,7 @@ import { migrate } from "./migration/migration-helper.js";
 
 const pkg = readFile(
     path.resolve(getPaths().packages, "pub-gen", "package.json"),
-).content;
+).value;
 
 const console = new Console(pkg);
 

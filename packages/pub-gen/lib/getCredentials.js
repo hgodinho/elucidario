@@ -9,7 +9,7 @@ export const getCredentials = (publication = undefined) => {
     let rootPath = paths.root;
     const pkg = readFile(
         path.resolve(paths.publications, publication, "package.json"),
-    );
+    ).value;
     const console = new Console(pkg);
 
     if (publication) {
@@ -23,7 +23,7 @@ export const getCredentials = (publication = undefined) => {
         // );
         const credentials = readFile(
             path.resolve(rootPath, "credentials.json"),
-        ).content;
+        ).value;
         console.success("Credentials found!");
         return credentials.installed;
     } catch (error) {

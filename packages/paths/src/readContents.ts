@@ -27,15 +27,15 @@ import { supportedExtensions } from "./file";
  *
  * @returns {Object} - Objeto com o conteúdo de cada arquivo ou path
  */
-export function readContents<T>({
+export function readContents({
     dirPath,
     index = true,
     extensions = [],
     returnType = "content",
     exclude,
     pkg,
-}: ReadContentsProps): ReadContentsReturn<T> {
-    const result: ReadContentsReturn<T> = [];
+}: ReadContentsProps): ReadContentsReturn {
+    const result: ReadContentsReturn = [];
 
     if (extensions.length === 0) {
         extensions = supportedExtensions;
@@ -43,13 +43,13 @@ export function readContents<T>({
 
     // Selecionar o package.json do projeto, caso não seja recebido como parâmetro
     if (typeof pkg === "undefined") {
-        pkg = readFile<PackageProps>({
+        pkg = readFile({
             filePath: path.resolve(
                 getPaths().packages,
                 "paths",
                 "package.json",
             ),
-        }).content as PackageProps;
+        }).value as PackageProps;
     }
 
     const console = new Console(pkg);
@@ -79,7 +79,7 @@ export function readContents<T>({
                 // se for um diretório, chama a função recursivamente
                 if (stat.isDirectory()) {
                     try {
-                        const folder = readContents<T>({
+                        const folder = readContents({
                             dirPath: path.resolve(dirPath, file),
                             index: hasIndex(path.resolve(dirPath, file)),
                             extensions,
@@ -109,7 +109,7 @@ export function readContents<T>({
                             return;
                         } else {
                             result.push(
-                                readFile<T>({
+                                readFile({
                                     filePath: path.resolve(dirPath, file),
                                     ext,
                                     returnType,
@@ -144,7 +144,7 @@ export function readContents<T>({
                 // se for um diretório, chama a função recursivamente
                 if (filePath.ext === "") {
                     result.push(
-                        ...readContents<T>({
+                        ...readContents({
                             dirPath: path.resolve(dirPath, file),
                             index: hasIndex(path.resolve(dirPath, file)),
                             extensions,
@@ -157,7 +157,7 @@ export function readContents<T>({
                     // se for um arquivo, lê o conteúdo
                     const ext = filePath.ext.replace(".", "");
                     result.push(
-                        readFile<T>({
+                        readFile({
                             filePath: path.resolve(dirPath, file),
                             ext,
                         }),

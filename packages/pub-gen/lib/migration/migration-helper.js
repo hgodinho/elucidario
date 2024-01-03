@@ -6,7 +6,7 @@ import { pubGenConfig, cleanFalsy } from "../utils.js";
 
 const pkg = readFile({
     filePath: path.resolve(getPaths().packages, "pub-gen", "package.json"),
-}).content;
+}).value;
 const currentVersion = pkg.config["schema-version"];
 
 export const migrate = async (args) => {
@@ -15,7 +15,7 @@ export const migrate = async (args) => {
     const migrateToCurrent = await import(`./${currentVersion}.js`).then(
         (module) => {
             return module.default;
-        }
+        },
     );
 
     const { publication, force } = args;
@@ -33,7 +33,7 @@ export const migrate = async (args) => {
     for (let [publication, config] of publications) {
         if (config.version !== currentVersion || force === true) {
             const newConfig = await migrateToCurrent(cleanFalsy(config)).then(
-                (c) => cleanFalsy(c)
+                (c) => cleanFalsy(c),
             );
 
             createFile(
@@ -41,11 +41,11 @@ export const migrate = async (args) => {
                     filePath: path.resolve(
                         getPaths().publications,
                         publication,
-                        "pub-gen.json"
+                        "pub-gen.json",
                     ),
                     ext: "json",
                 },
-                newConfig.config
+                newConfig.config,
             );
 
             console.warning({

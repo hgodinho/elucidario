@@ -96,13 +96,12 @@ export const processDocs = async (args) => {
 
             styleConfig = styles.find(
                 (item) =>
-                    item.content.name === style.name &&
-                    item.content.type === type,
-            ).content;
+                    item.value.name === style.name && item.value.type === type,
+            ).value;
         } else if (style.path) {
             styleConfig = readFile(
                 path.resolve(paths.publications, publication, style.path),
-            ).content;
+            ).value;
         }
 
         const content = readContents({
@@ -178,7 +177,7 @@ export const processDocs = async (args) => {
                 path: filePath,
             };
             try {
-                processed.processed = await pubGenProcessor(file.content, {
+                processed.processed = await pubGenProcessor(file.value, {
                     publication,
                     lang,
                     style,

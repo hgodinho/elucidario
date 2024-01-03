@@ -14,7 +14,7 @@ import { Console } from "@elucidario/pkg-console";
 const paths = getPaths();
 const pkg = readFile(
     path.resolve(getPaths().packages, "pub-gen", "package.json"),
-).content;
+).value;
 
 export async function buildPublication({ publication, watch }) {
     const console = new Console(pkg);
@@ -72,14 +72,18 @@ export async function buildPublication({ publication, watch }) {
 
                         const { content, assets } = processed;
 
-                        // BUILD CONTENT FILES.
-                        manifest.content = processFiles(content, (file) => {
-                            const created = createFile(
-                                file.path,
-                                file.processed,
-                            );
-                            return created.replace(distPath, "");
-                        });
+                        try {
+                            // BUILD CONTENT FILES.
+                            manifest.content = processFiles(content, (file) => {
+                                const created = createFile(
+                                    file.path,
+                                    file.processed.value,
+                                );
+                                return created.replace(distPath, "");
+                            });
+                        } catch (error) {
+                            console.error(new Error(error));
+                        }
 
                         // PARSE ASSETS.
                         manifest.assets = Object.entries(assets).reduce(

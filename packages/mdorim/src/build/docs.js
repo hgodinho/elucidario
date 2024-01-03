@@ -20,7 +20,7 @@ export const buildDocs = async (pkg, __dirname) => {
     return Promise.all(
         // write pages
         Object.entries(pages).map(async ([name, page]) => {
-            const newFile = await pubGenRemarkProcessor(page, {
+            const newFile = await pubGenRemarkProcessor(page.value, {
                 pubGen: {
                     path: __dirname,
                 },

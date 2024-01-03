@@ -5,8 +5,8 @@ import { Console } from "@elucidario/pkg-console";
 import { readFile, getPaths, fileExists } from "@elucidario/pkg-paths";
 
 const pkg = readFile(
-    path.resolve(getPaths().packages, "pub-gen", "package.json")
-).content;
+    path.resolve(getPaths().packages, "pub-gen", "package.json"),
+).value;
 const console = new Console(pkg);
 
 export const init = async (options) => {
@@ -53,8 +53,8 @@ export const buildInit = async (configPath, def) => {
                     publications: "publications",
                 },
                 null,
-                4
-            )
+                4,
+            ),
         );
         console.log(`Config file created at ${path}`);
         return;

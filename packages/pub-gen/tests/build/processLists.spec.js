@@ -20,8 +20,7 @@ describe("processLists", () => {
             name: "lista-abreviaturas-siglas",
             path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-br\\internal\\pre\\lista-abreviaturas-siglas.md",
             ext: "md",
-            content:
-                "# LISTA DE ABREVIATURAS E SIGLAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | ABNT - Associação Brasileira de Normas Técnicas; |  |\n| 2 | APA - American Psychological Association; |  |",
+            value: "# LISTA DE ABREVIATURAS E SIGLAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | ABNT - Associação Brasileira de Normas Técnicas; |  |\n| 2 | APA - American Psychological Association; |  |",
         };
     });
 

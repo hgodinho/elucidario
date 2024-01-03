@@ -20,8 +20,7 @@ describe("processBibliography", () => {
             name: "referencias",
             path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pos\\referencias.md",
             ext: "md",
-            content:
-                "# Bibliografia\n\nLINKED ART. **Linked Art**. 2021a. Disponível em: https://linked.art/. Acesso em: 20 maio. 2023\\. \n\nLINKED ART. **Community - Linked Art**. 2021b. Disponível em: https://linked.art/community/. Acesso em: 20 maio. 2023\\.",
+            value: "# Bibliografia\n\nLINKED ART. **Linked Art**. 2021a. Disponível em: https://linked.art/. Acesso em: 20 maio. 2023\\. \n\nLINKED ART. **Community - Linked Art**. 2021b. Disponível em: https://linked.art/community/. Acesso em: 20 maio. 2023\\.",
         };
     });
 

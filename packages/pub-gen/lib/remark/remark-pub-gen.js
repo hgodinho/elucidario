@@ -10,8 +10,8 @@ import { getPaths, readFile } from "@elucidario/pkg-paths";
 import markdownTable from "./table/markdownTable.js";
 
 const pkg = readFile(
-    path.resolve(getPaths().packages, "pub-gen", "package.json")
-);
+    path.resolve(getPaths().packages, "pub-gen", "package.json"),
+).value;
 
 import { Console } from "@elucidario/pkg-console";
 
@@ -77,7 +77,7 @@ export default function remarkPubGen(options) {
                     const { filePath } = parseValue(value);
 
                     const tableData = JSON.parse(
-                        fs.readFileSync(path.resolve(options.path, filePath))
+                        fs.readFileSync(path.resolve(options.path, filePath)),
                     );
 
                     if (tableData.title.startsWith("{{")) {
@@ -90,7 +90,7 @@ export default function remarkPubGen(options) {
                             tableData.title = counter(
                                 options.index,
                                 parsed.filePath,
-                                parsed.fileOptions
+                                parsed.fileOptions,
                             );
                         }
                     }
@@ -106,12 +106,12 @@ export default function remarkPubGen(options) {
                         try {
                             schemaData = JSON.parse(
                                 fs.readFileSync(
-                                    path.resolve(options.path, filePath)
-                                )
+                                    path.resolve(options.path, filePath),
+                                ),
                             );
                         } catch (error) {
                             throw new Error(
-                                `Error reading schema in ${filePath} ${error.message}`
+                                `Error reading schema in ${filePath} ${error.message}`,
                             );
                         }
 
@@ -120,7 +120,7 @@ export default function remarkPubGen(options) {
                             schemaTable = entityPage(schemaData, "pt-BR");
                         } catch (error) {
                             throw new Error(
-                                `Error generation entityPage in ${filePath} ${error.message}`
+                                `Error generation entityPage in ${filePath} ${error.message}`,
                             );
                         }
 
@@ -142,7 +142,7 @@ export default function remarkPubGen(options) {
 
                     const statusTable = toMD(
                         [`:::${status[0]} ${status[1]}`, status[2], ":::"],
-                        "\n\n"
+                        "\n\n",
                     );
                     node.value = statusTable;
                     node.type = "html";
@@ -190,7 +190,7 @@ export default function remarkPubGen(options) {
                             label = counter(
                                 options.index,
                                 parsed.filePath,
-                                parsed.fileOptions
+                                parsed.fileOptions,
                             );
                         }
                     } else {
@@ -200,14 +200,20 @@ export default function remarkPubGen(options) {
                         type !== "mindmap"
                             ? toMD([
                                   bold(
-                                      replaceRegexHandlebars(label, fileOptions)
+                                      replaceRegexHandlebars(
+                                          label,
+                                          fileOptions,
+                                      ),
                                   ),
                                   content.replace("mermaid", mermaidOptions),
                                   source || "",
                               ])
                             : toMD([
                                   bold(
-                                      replaceRegexHandlebars(label, fileOptions)
+                                      replaceRegexHandlebars(
+                                          label,
+                                          fileOptions,
+                                      ),
                                   ),
                                   content,
                                   source || "",
@@ -266,7 +272,7 @@ export default function remarkPubGen(options) {
         // parse tables
         const promises = tables.map(async ({ node, value, tableData }) => {
             const tableMd = await markdownTable(tableData, "-").then(
-                (md) => md
+                (md) => md,
             );
             node.value = tableMd;
             node.type = "html";
@@ -283,9 +289,9 @@ export default function remarkPubGen(options) {
                         getPaths().publications,
                         options.publication,
                         "references",
-                        "index.json"
-                    )
-                )
+                        "index.json",
+                    ),
+                ),
             )
                 .items.map((item) => {
                     let refPath = item.path.replace("<references>/", "");
@@ -318,7 +324,7 @@ export default function remarkPubGen(options) {
                     },
                     [],
                     [],
-                    "html"
+                    "html",
                 );
 
                 node.type = "text";

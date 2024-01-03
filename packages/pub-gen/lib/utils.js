@@ -8,7 +8,7 @@ import { fromMarkdown } from "mdast-util-from-markdown";
 
 const pkg = readFile({
     filePath: path.resolve(getPaths().packages, "pub-gen", "package.json"),
-}).content;
+}).value;
 
 /**
  * Get publication config
@@ -25,7 +25,7 @@ export function pubGenConfig(publication) {
                 "pub-gen.json",
             ),
             ext: "json",
-        }).content;
+        }).value;
     } catch (error) {
         throw new Error(
             `Não foi possível encontrar o pub-gen.json da publicação ${publication}: ${error}`,
@@ -48,7 +48,7 @@ export function packageJson(publication) {
                 "package.json",
             ),
             ext: "json",
-        }).content;
+        }).value;
     } catch (error) {
         throw new Error(
             `Não foi possível encontrar o package.json da publicação ${publication}: ${error}`,
@@ -73,7 +73,7 @@ export function referenceIndex(publication) {
                 "index.json",
             ),
             ext: "json",
-        }).content;
+        }).value;
     } catch (error) {
         throw new Error(
             `Não foi possível encontrar o index das referências da publicação ${publication}: ${error}`,
@@ -97,7 +97,7 @@ export function referencesFrom(publication) {
                     item.path.replace("<references>/", ""),
                 ),
                 ext: "json",
-            }).content;
+            }).value;
         });
     } catch (error) {
         throw new Error(

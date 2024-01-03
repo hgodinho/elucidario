@@ -102,7 +102,7 @@ export function readFile(file: string | ReadFileProps): File {
         name: parsed.name,
         path: filePath,
         ext,
-        content: "",
+        value: "",
         size,
         atime,
         mtime,
@@ -118,7 +118,7 @@ export function readFile(file: string | ReadFileProps): File {
 
         switch (ext) {
             case "json":
-                read.content = readJSON(path.resolve(filePath), enc);
+                read.value = readJSON(path.resolve(filePath), enc);
                 break;
 
             case "md":
@@ -127,7 +127,7 @@ export function readFile(file: string | ReadFileProps): File {
             case "xml":
             case "csl":
             default:
-                read.content = readText(filePath, enc);
+                read.value = readText(filePath, enc);
                 break;
         }
 
@@ -204,8 +204,8 @@ export function writeFile(file: File, options?: WriteFileOptions): File {
         createDir(dir);
         switch (extension) {
             case "json":
-                if (typeof file.content === "object") {
-                    file.content = JSON.stringify(file.content, null, 4);
+                if (typeof file.value === "object") {
+                    file.value = JSON.stringify(file.value, null, 4);
                 }
                 break;
 
@@ -213,10 +213,10 @@ export function writeFile(file: File, options?: WriteFileOptions): File {
             case "txt":
             case "html":
             default:
-                file.content = file.content ? file.content.toString() : "";
+                file.value = file.value ? file.value.toString() : "";
                 break;
         }
-        fs.writeFileSync(resolvedPath, file.content, options);
+        fs.writeFileSync(resolvedPath, file.value, options);
 
         return readFile(resolvedPath);
     } catch (err) {
@@ -239,7 +239,7 @@ export function parseFile(props: ParseFileProps): File {
         name: props.name,
         path: props.path,
         ext,
-        content: props.content,
+        value: props.value,
     };
     return file;
 }

@@ -74,7 +74,7 @@ export const processIndexFiles = async ({ assets, publication, lang }) => {
     if (fileExists(path.resolve(srcPath, "acronyms.json"))) {
         const acronyms = readFile({
             filePath: path.resolve(srcPath, "acronyms.json"),
-        }).content;
+        }).value;
 
         const sortedAcronyms = Object.entries(acronyms).sort((a, b) => {
             if (a[0] < b[0]) return -1;

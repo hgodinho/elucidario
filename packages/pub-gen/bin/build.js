@@ -77,7 +77,7 @@ export const build = async (language, exclude) => {
                                             distPath,
                                             file.url.split("/").pop(),
                                         ),
-                                    ).content;
+                                    ).value;
                                 }
                             },
                         },

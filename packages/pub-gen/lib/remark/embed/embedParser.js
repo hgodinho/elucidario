@@ -32,7 +32,7 @@ const embedParser = (treeOptions) => {
                     lang,
                     filePath,
                 ),
-            ).content;
+            ).value;
 
             node.type = "html";
             node.value = embedData;

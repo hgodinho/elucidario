@@ -10,7 +10,7 @@ describe("readContents", () => {
             name: "hello-world",
             path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\paths\\tests\\data\\hello-world.md",
             ext: "md",
-            content: "hello world\r\n",
+            value: "hello world\r\n",
             size: 13,
             //   atime: 2023-11-28T20:50:57.399Z,
             //   mtime: 2023-11-26T21:30:03.977Z,
@@ -32,7 +32,7 @@ describe("readContents", () => {
                 name: ".gh-token",
                 path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\paths\\tests\\data\\.gh-token",
                 ext: "json",
-                content: {
+                value: {
                     token: "some-fake-token",
                 },
                 size: 38,
@@ -45,7 +45,7 @@ describe("readContents", () => {
                 name: "file",
                 path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\paths\\tests\\data\\deep\\nested\\file.md",
                 ext: "md",
-                content: "end.\r\n",
+                value: "end.\r\n",
                 size: 6,
                 // atime: 2023-11-28T22:23:09.806Z,
                 // mtime: 2023-11-28T21:20:40.745Z,
@@ -56,7 +56,7 @@ describe("readContents", () => {
                 name: "hello-world",
                 path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\paths\\tests\\data\\hello-world.json",
                 ext: "json",
-                content: {
+                value: {
                     hello: "world",
                 },
                 size: 28,
@@ -69,7 +69,7 @@ describe("readContents", () => {
                 name: "hello-world",
                 path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\paths\\tests\\data\\hello-world.md",
                 ext: "md",
-                content: "hello world\r\n",
+                value: "hello world\r\n",
                 size: 13,
                 //   atime: 2023-11-28T20:57:33.234Z,
                 //   mtime: 2023-11-26T21:30:03.977Z,
@@ -80,7 +80,7 @@ describe("readContents", () => {
                 name: "index",
                 path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\paths\\tests\\data\\index.json",
                 ext: "json",
-                content: {
+                value: {
                     files: ["hello-world.md"],
                 },
                 size: 39,

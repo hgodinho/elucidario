@@ -15,7 +15,7 @@ describe("tableParser", () => {
             "really",
             "first-level.md",
         ),
-    ).content;
+    ).value;
 
     it("should return tableParser node", async () => {
         const tableParserNode = await testProcessor(tableContent, {

@@ -11,7 +11,7 @@ const styleSchema = readFile(
         "schemas",
         "style-schema.json",
     ),
-).content;
+).value;
 
 const validator = new SchemaValidator();
 
@@ -24,7 +24,7 @@ describe("style-schema abnt", () => {
             "styles",
             "abnt-dissertation.json",
         ),
-    ).content;
+    ).value;
 
     it("should validate data against schema", () => {
         const validate = validator.validate({

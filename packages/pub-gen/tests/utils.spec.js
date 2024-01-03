@@ -386,7 +386,7 @@ describe.skip("loopStylesStructure", () => {
             "styles",
             "abnt-dissertation.json",
         ),
-    ).content.structure;
+    ).value.structure;
 
     // loopStylesStructure(structure, (node) => {
     //     // console.log(node);

@@ -45,7 +45,7 @@ export async function processLists(args) {
             const items = Object.entries(
                 readFile({
                     filePath: path.resolve(srcPath, fileName),
-                }).content,
+                }).value,
             ).sort((a, b) => {
                 if (a[0] < b[0]) return -1;
                 if (a[0] > b[0]) return 1;
@@ -59,7 +59,7 @@ export async function processLists(args) {
                 file = parseFile({
                     name: filePath.split("/").pop(),
                     path: path.resolve(distPath, `${filePath}.md`),
-                    content: indexBodyMD({
+                    value: indexBodyMD({
                         title,
                         items: items.map(([item, description]) => {
                             return `${item} - ${description};`;
@@ -73,7 +73,7 @@ export async function processLists(args) {
                 file = parseFile({
                     name: filePath.split("/").pop(),
                     path: path.resolve(distPath, `${filePath}.md`),
-                    content: indexBodyMD({
+                    value: indexBodyMD({
                         title:
                             typeof index !== "undefined"
                                 ? index[required]

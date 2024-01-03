@@ -10,13 +10,13 @@ const schemaParser = async (options) => {
             publication,
             "content",
             lang,
-            filePath
+            filePath,
         ),
         ext: "json",
-    }).content;
+    }).value;
 
     return await Promise.resolve(
-        markdownTable(schemaData, fileOptions.emptyValue || "-")
+        markdownTable(schemaData, fileOptions.emptyValue || "-"),
     );
 };
 

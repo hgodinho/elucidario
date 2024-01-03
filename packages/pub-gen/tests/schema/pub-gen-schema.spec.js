@@ -14,7 +14,7 @@ const pubGenJson = readFile(
         "schemas",
         "pub-gen-schema.json",
     ),
-).content;
+).value;
 
 const validator = new SchemaValidator();
 
@@ -87,7 +87,7 @@ describe("pub-gen-schema", () => {
                 "data",
                 "teste-1.json",
             ),
-        ).content;
+        ).value;
 
         const validate = validator.validate({
             schema: pubGenJson,

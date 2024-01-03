@@ -18,7 +18,7 @@ describe("processDocs", () => {
                 "data",
                 "processDocs.expected.json",
             ),
-        ).content;
+        ).value;
 
         assets = readFile(
             path.resolve(
@@ -29,7 +29,7 @@ describe("processDocs", () => {
                 "data",
                 "assets.json",
             ),
-        ).content;
+        ).value;
     });
 
     afterEach(() => {

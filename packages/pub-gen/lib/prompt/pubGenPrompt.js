@@ -12,11 +12,11 @@ const schema = readFile(
         "schemas",
         "pub-gen-schema.json",
     ),
-).content;
+).value;
 
 const pkg = readFile(
     path.resolve(getPaths().packages, "pub-gen", "package.json"),
-).content;
+).value;
 
 /**
  * Check if the key is required
@@ -102,9 +102,7 @@ export const pubGenPrompt = (callback, defaults = undefined) => {
                     index: false,
                     extensions: ["json"],
                     pkg,
-                }).map(
-                    (style) => `${style.content.name}-${style.content.type}`,
-                );
+                }).map((style) => `${style.value.name}-${style.value.type}`);
 
                 return createInput({
                     name: `document.${key}`,

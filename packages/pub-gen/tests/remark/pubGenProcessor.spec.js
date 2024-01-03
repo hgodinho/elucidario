@@ -21,7 +21,7 @@ describe("pubGenProcessor", () => {
             "hello-world.md",
         ),
         ext: "md",
-    }).content;
+    }).value;
 
     const mermaidNode = readFile({
         filePath: path.resolve(
@@ -35,7 +35,7 @@ describe("pubGenProcessor", () => {
             "mermaid-node.md",
         ),
         ext: "md",
-    }).content;
+    }).value;
 
     const pkg = packageJson("publicacao-teste");
 

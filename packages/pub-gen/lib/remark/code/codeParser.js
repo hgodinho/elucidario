@@ -33,7 +33,7 @@ const codeParser = (treeOptions) => {
                     lang,
                     filePath,
                 ),
-            ).content;
+            ).value;
 
             const { ext } = path.parse(filePath);
 

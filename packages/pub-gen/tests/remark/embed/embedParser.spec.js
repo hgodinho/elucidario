@@ -17,7 +17,7 @@ describe("embedParser", () => {
             "nodes",
             "embed.md",
         ),
-    ).content;
+    ).value;
 
     it("should return embedParser node", async () => {
         const embedParserNode = await testProcessor(embedContent, {

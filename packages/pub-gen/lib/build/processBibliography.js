@@ -64,10 +64,10 @@ export async function processBibliography(args) {
                 "references",
                 "index.json",
             ),
-        ).content.items.map((item) => {
+        ).value.items.map((item) => {
             let refPath = item.path.replace("<references>/", "");
             refPath = path.resolve(getPaths().references, refPath);
-            return readFile(refPath).content;
+            return readFile(refPath).value;
         });
 
         const citeproc = await engine(references, lang, style.csl);
@@ -97,7 +97,7 @@ export async function processBibliography(args) {
                 lang,
                 `${filePath}.md`,
             ),
-            content: toMD([heading(1, pageTitle), bibliographyMD]),
+            value: toMD([heading(1, pageTitle), bibliographyMD]),
         });
         return file;
     } catch (error) {

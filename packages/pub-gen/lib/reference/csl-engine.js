@@ -5,8 +5,8 @@ import { getPaths, readFile } from "@elucidario/pkg-paths";
 
 const paths = getPaths();
 const packageJson = readFile(
-    path.resolve(paths.packages, "pub-gen", "package.json")
-).content;
+    path.resolve(paths.packages, "pub-gen", "package.json"),
+).value;
 const console = new Console(packageJson);
 
 export const engine = (references, lang, style) => {
@@ -21,7 +21,7 @@ export const engine = (references, lang, style) => {
                     `lang: ${lang}`,
                     `style: ${style}`,
                     `references: ${references}`,
-                ].join(", ")}]`
+                ].join(", ")}]`,
             );
         }
         const localeXml = readFile({
@@ -30,10 +30,10 @@ export const engine = (references, lang, style) => {
                 "pub-gen",
                 "cache",
                 "locales",
-                `locales-${lang}.xml`
+                `locales-${lang}.xml`,
             ),
             ext: "xml",
-        }).content;
+        }).value;
 
         const styleXml = readFile({
             filePath: path.resolve(
@@ -41,10 +41,10 @@ export const engine = (references, lang, style) => {
                 "pub-gen",
                 "cache",
                 "styles",
-                style
+                style,
             ),
             ext: "csl",
-        }).content;
+        }).value;
 
         const sys = {
             retrieveLocale: function () {

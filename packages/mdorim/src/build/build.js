@@ -20,7 +20,7 @@ const mdorimStatic = path.resolve(
 
 const pkg = readFile(
     path.resolve(getPaths().packages, "mdorim", "package.json"),
-).content;
+).value;
 
 /**
  * Build mdorim

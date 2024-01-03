@@ -26,7 +26,7 @@ export const buildExamples = async (pkg, __dirname, outStatic) => {
                     filePath: example.path.replace("src", "static/mdorim"),
                     ext: "json",
                 },
-                example.content,
+                example.value,
             );
         });
     } catch (err) {

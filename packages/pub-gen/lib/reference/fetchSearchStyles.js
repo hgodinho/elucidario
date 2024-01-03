@@ -8,14 +8,14 @@ import { getPaths, readFile } from "@elucidario/pkg-paths";
 
 const packageJson = readFile(
     path.resolve(getPaths().packages, "pub-gen", "package.json"),
-).content;
+).value;
 
 const console = new Console(packageJson);
 
 const token = readFile({
     filePath: path.resolve(getPaths().packages, "pub-gen", ".gh-token"),
     ext: "json",
-}).content;
+}).value;
 
 export const fetchSearchStyles = async (styles) => {
     console.warning(`Searching for '${styles.join(", ")}' styles...`);

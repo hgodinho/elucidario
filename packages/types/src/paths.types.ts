@@ -55,12 +55,12 @@ export interface CreateFileProps {
     replacer?: any;
     space?: string | number;
 }
-// JSON.stringify(pubGenJson, null, 4)
+
 export interface File {
     name: string;
     path: string;
     ext: string;
-    content?: any;
+    value?: any;
     size?: number;
     atime?: Date;
     mtime?: Date;
@@ -72,7 +72,7 @@ export type ParseFileProps = {
     name: string;
     path: string;
     ext?: string;
-    content?: string;
+    value?: string;
 };
 
-export type ReadContentsReturn<T> = File[];
+export type ReadContentsReturn = File[];

@@ -24,7 +24,7 @@ function tableParser(treeOptions) {
             "schemas",
             "table-schema.json",
         ),
-    ).content;
+    ).value;
 
     return (tree, file) => {
         const parsed = [];
@@ -45,7 +45,7 @@ function tableParser(treeOptions) {
                     lang,
                     filePath,
                 ),
-            ).content;
+            ).value;
 
             const valid = schemaValidator.validate({
                 schema: tableSchema,

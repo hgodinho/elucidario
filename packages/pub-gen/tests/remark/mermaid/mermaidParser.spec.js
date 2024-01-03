@@ -17,7 +17,7 @@ describe("mermaidParser", () => {
             "body",
             "hello-world.md",
         ),
-    ).content;
+    ).value;
 
     const pkg = packageJson("publicacao-teste");
 

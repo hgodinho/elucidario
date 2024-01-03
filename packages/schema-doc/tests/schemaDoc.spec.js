@@ -1,7 +1,7 @@
 import { schemaDoc } from "../dist/mjs";
 import { readFile } from "@elucidario/pkg-paths";
 
-const schema = readFile("tests/data/schema.json");
+const schema = readFile("tests/data/schema.json").value;
 
 describe("schemaDoc", () => {
     it("should return a markdown string", () => {
