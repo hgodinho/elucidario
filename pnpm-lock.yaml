@@ -602,6 +602,12 @@ importers:
       '@babel/core':
         specifier: ^7.23.6
         version: 7.23.6
+      '@benrbray/mdast-util-cite':
+        specifier: ^1.1.0
+        version: 1.1.0
+      '@benrbray/micromark-extension-cite':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@benrbray/remark-cite':
         specifier: ^1.1.0
         version: 1.1.0
@@ -659,6 +665,9 @@ importers:
       mdast-util-from-markdown:
         specifier: ^2.0.0
         version: 2.0.0
+      mdast-util-to-markdown:
+        specifier: ^2.1.0
+        version: 2.1.0
       node-html-markdown:
         specifier: ^1.3.0
         version: 1.3.0

@@ -18,9 +18,9 @@ A fonte utilizada para todos os textos, inclusive do logo, foi a Inter [@anderss
 
 A paleta de cores apresenta duas cores primárias no sistema e uma escala de cinza. O tema do aplicativo pode ser trocado de escuro para claro, o que significa que o sistema se adapta de acordo com a preferência do usuário ou do sistema operacional (Windows, OS, Android, etc).
 
-**{{count:figuras;legend=Cartela de demonstração da tipografia e paleta do design-system.}}**
+**{{count:figure;legend=Cartela de demonstração da tipografia e paleta do design-system.}}**
 
-![**Fonte:** Elaborado pelo autor.](./cartela-tipografia.png)
+![**Fonte:** Elaborado pelo autor.]({{static}}/cartela-tipografia.png)
 
 **Moléculas**: elementos compostos por átomos, como botões, campos de formulário, etc;
 
@@ -36,11 +36,11 @@ Para a definição das principais moléculas da UI que compõem o formulário de
 
 Foi definido um mapeamento entre estes tipos de dados e tags HTML com seus atributos. Para tipos mais complexos, como `array` desenvolvemos um componente React exclusivo que permite a adição, remoção e reordenação de itens (ver a seguir em _Organismos_). O quadro a seguir apresenta o mapeamento entre os tipos de dados JSON-Schema e as tags HTML:
 
-{{tabela:internal/body/elucidario/design-system/json-schema-html.json}}
+{{table:internal/body/elucidario/design-system/json-schema-html.json}}
 
 Podemos definir que os seguintes JSON-Schema e código HTML são equivalentes:
 
-**{{count:figuras;legend=Exemplo de JSON-Schema e HTML equivalentes.}}**
+**{{count:figure;legend=Exemplo de JSON-Schema e HTML equivalentes.}}**
 
 **json-schema:**
 
@@ -81,23 +81,23 @@ Um dos principais componentes para a construção do formulário de metadados é
 
 Podemos representar a anatomia do componente `Field` da seguinte forma:
 
-**{{count:figuras;legend=Anatomia do componente "Field".}}**
+**{{count:figure;legend=Anatomia do componente "Field".}}**
 
-![**Fonte:** Elaborado pelo autor.](./anatomia-Field.png)
+![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field.png)
 
 Para a validação de dados, além do feedback visual é necessário que o `Field` informe ao usuário a mensagem da validação, seja sucesso ou erro:
 
-**{{count:figuras;legend=Feedback de erro do componente "Field".}}**
+**{{count:figure;legend=Feedback de erro do componente "Field".}}**
 
-![**Fonte:** Elaborado pelo autor.](./anatomia-Field-error.png)
+![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field-error.png)
 
-**{{count:figuras;legend=Feedback de sucesso do componente "Field".}}**
+**{{count:figure;legend=Feedback de sucesso do componente "Field".}}**
 
-![**Fonte:** Elaborado pelo autor.](./anatomia-Field-success.png)
+![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field-success.png)
 
 Quando recebemos um `object` no componente `Field` ele é capaz de aninhar outros _Fields_:
 
-{{count:figuras;legend=Exemplo de JSON-Schema representando um object.}}
+{{count:figure;legend=Exemplo de JSON-Schema representando um object.}}
 
 ```json
 {
@@ -114,13 +114,13 @@ Quando recebemos um `object` no componente `Field` ele é capaz de aninhar outro
 
 **Fonte:** Extraído de Linked Art [@linked-art2021.1].
 
-**{{count:figuras;legend=Anatomia do componente "Field" com "object".}}**
+**{{count:figure;legend=Anatomia do componente "Field" com "object".}}**
 
-![**Fonte:** Elaborado pelo autor.](./anatomia-Field-object.png)
+![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field-object.png)
 
 Assim como o `array` é capaz de adicionar, remover e reordenar _Fields_:
 
-**{{count:figuras;legend=Exemplo de JSON-Schema representando um array.}}**
+**{{count:figure;legend=Exemplo de JSON-Schema representando um array.}}**
 
 ```json
 {
@@ -142,9 +142,9 @@ Assim como o `array` é capaz de adicionar, remover e reordenar _Fields_:
 
 **Fonte:** Extraído de Linked Art [@linked-art2021.1].
 
-**{{count:figuras;legend=Anatomia do componente "Field" com "array".}}**
+**{{count:figure;legend=Anatomia do componente "Field" com "array".}}**
 
-![**Fonte:** Elaborado pelo autor.](./anatomia-Field-array.png)
+![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field-array.png)
 
 **Templates**: elementos compostos por organismos, como layouts, páginas, etc;
 

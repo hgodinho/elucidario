@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Grupos de informação para saída de empréstimos de objetos.}}",
+    "title": "{{count:chart;legend=Grupos de informação para saída de empréstimos de objetos.}}",
     "fields": [
         {
             "type": "string",

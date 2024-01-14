@@ -1,6 +1,6 @@
 ---
 filename: "silva2020-modelo"
-title: "{{count:figuras;legend=Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta (SILVA, 2020).}}"
+title: "{{count:figure;legend=Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta (SILVA, 2020).}}"
 source: "**Fonte:** Elaborado pelo autor, com base em SILVA, Camila Aparecida. **Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta. 2020**. Programa de Pós-Graduação em Ciência da Informação - Escola de Comunicações e Artes / Universidade de São Paulo, São Paulo, 2020."
 width: 1920
 background: transparent

@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Entidade `History` do modelo.}}",
+    "title": "{{count:chart;legend=Entidade `History` do modelo.}}",
     "fields": [
         {
             "type": "string",

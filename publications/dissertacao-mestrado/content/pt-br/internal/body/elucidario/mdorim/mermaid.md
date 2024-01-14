@@ -1,6 +1,6 @@
 ---
 filename: "mapa-mental"
-title: "{{count:figuras;legend=Mapa mental do Mdorim}}"
+title: "{{count:figure;legend=Mapa mental do Mdorim}}"
 source: "**Fonte:** Elaborado pelo autor."
 width: 1920
 background: transparent

@@ -9,6 +9,11 @@
             "id": "linked-art2021.2",
             "slug": "community-linked-art",
             "path": "<references>/linked-art2021.2_community-linked-art.json"
+        },
+        {
+            "id": "caro-castro2011",
+            "slug": "vocabularios-estructurados-web-semantica-y-linked-data-oportunidades-y-retos-para-los-profesionales-de-la-documentacion",
+            "path": "<references>/caro-castro2011_vocabularios-estructurados-web-semantica-y-linked-data-oportunidades-y-retos-para-los-profesionales-de-la-documentacion.json"
         }
     ]
 }

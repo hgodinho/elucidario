@@ -1,6 +1,6 @@
 O Mdorim também é utilizado pelo plugin para gerar a UI administrativa para edição das entidades no WordPress, portanto utilizaremos os esquemas definidos em JSON-Schema para gerar automaticamente os componentes da UI. Como o JSON-Schema não foi criado para ser utilizado por usuários finais, mas sim por desenvolvedores e máquinas, não possui suporte para localização (i10n) dos valores definidos nas propriedades `title` e `description`, portanto esses valores foram definidos em inglês. Fato que impôs um desafio ao seu uso na UI, uma vez que devemos dar suporte à outros idiomas como português e espanhol. Para resolver esse problema, criamos arquivos JSON paralelos que mapeiam cada propriedade do Linked Art à um objeto JSON que permite a internacionalização (i18n) dos textos para a UI:
 
-**{{count:quadros;legend=JSON-UI: Esquema declarativo para mapeamento de modelos de dados definidos em JSON-Schema e Interfaces de Usuário.}}**
+**{{count:chart;legend=JSON-UI: Esquema declarativo para mapeamento de modelos de dados definidos em JSON-Schema e Interfaces de Usuário.}}**
 
 {{code:../../../../packages/mdorim/static/mdorim/schemas/translation/schema.json}}
 

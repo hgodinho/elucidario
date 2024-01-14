@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Entidade `Option` do modelo.}}",
+    "title": "{{count:chart;legend=Entidade `Option` do modelo.}}",
     "fields": [
         {
             "type": "string",

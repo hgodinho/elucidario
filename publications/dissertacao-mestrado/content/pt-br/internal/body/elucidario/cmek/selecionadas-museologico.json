@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Itens selecionados da base de dados Museológica da Casa Museu Ema Klabin}}",
+    "title": "{{count:chart;legend=Itens selecionados da base de dados Museológica da Casa Museu Ema Klabin}}",
     "fields": [
         {
             "type": "string",

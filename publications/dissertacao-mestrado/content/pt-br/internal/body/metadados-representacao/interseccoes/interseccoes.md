@@ -2,7 +2,7 @@ Nesta seção apresentamos quatro modelos de dados para representação e descri
 
 O quadro a seguir compila, em resumo, as principais características dos modelos apresentados.
 
-{{tabela:internal/body/metadados-representacao/interseccoes/comparativo.json}}
+{{table:internal/body/metadados-representacao/interseccoes/comparativo.json}}
 
 Para a elaboração do modelo utilizado no Elucidário.art, optamos por utilizar o Linked Art como base principal, por sua característica de ser um modelo de dados para a Web Semântica e focado na interoperabilidade dos dados. Seu formato em JSON permite a inserção de diferentes tipos de informações estruturadas e contextualizadas com o uso de vocabulários controlados externos, e a sua arquitetura REST permite a criação de uma API hipermídia que pode ser utilizada por diferentes aplicações. Embora o Spectrum, dos quatro, seja o modelo mais preciso e abrangente, ele não possui uma estrutura de dados definida, e exigiria um maior esforço na manutenção deste conjunto de dados. Os outros dois modelos, Object ID e Esquema de metadados para descrição de obras de arte em museus brasileiros, não abordam facetas da informação museológicas importantes para o Elucidário.art, como a proveniência, conservação, restauros, procedimentos realizados, direitos, entre outras.
 

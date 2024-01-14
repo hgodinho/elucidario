@@ -22,6 +22,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget ris
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.
 
-{{count:figuras;legend=\*\*Lorem ipsum\*\*}}
+{{count:figure;legend=\*\*Lorem ipsum\*\*}}
 
-![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)
+![Lorem ipsum]({{static}}/lorem-ipsum.jpeg)

@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Propriedades de _DigitalService_.}}",
+    "title": "{{count:chart;legend=Propriedades de _DigitalService_.}}",
     "fields": [
         {
             "type": "string",

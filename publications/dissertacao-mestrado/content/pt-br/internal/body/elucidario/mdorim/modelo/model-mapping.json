@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Entidade `Mapping` do modelo.}}",
+    "title": "{{count:chart;legend=Entidade `Mapping` do modelo.}}",
     "fields": [
         {
             "type": "string",

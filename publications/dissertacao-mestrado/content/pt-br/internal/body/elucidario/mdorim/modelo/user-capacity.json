@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Tipos de usuário e capacidades por tipo de usuário.}}",
+    "title": "{{count:chart;legend=Tipos de usuário e capacidades por tipo de usuário.}}",
     "fields": [
         {
             "type": "string",

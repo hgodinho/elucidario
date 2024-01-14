@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Grupos de informações procedimentais (_Procedural information groups_)}}",
+    "title": "{{count:chart;legend=Grupos de informações procedimentais (_Procedural information groups_)}}",
     "fields": [
         {
             "type": "string",

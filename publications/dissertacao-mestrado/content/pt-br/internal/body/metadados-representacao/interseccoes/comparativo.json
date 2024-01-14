@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Comparação entre os modelos de dados Object ID (1997), Esquema de metadados para descrição de obras de arte em museus brasileiros (EMDOAMB) (2020), Spectrum (2022) e Linked Art (2021).}}",
+    "title": "{{count:chart;legend=Comparação entre os modelos de dados Object ID (1997), Esquema de metadados para descrição de obras de arte em museus brasileiros (EMDOAMB) (2020), Spectrum (2022) e Linked Art (2021).}}",
     "fields": [
         {
             "type": "string",

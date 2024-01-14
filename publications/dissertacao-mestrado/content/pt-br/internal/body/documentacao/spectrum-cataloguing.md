@@ -56,4 +56,4 @@
 
         - Relacionado com _Audit_.
 
-{{tabela:internal/body/documentacao/spectrum/cataloguing.json}}
+{{table:internal/body/documentacao/spectrum/cataloguing.json}}

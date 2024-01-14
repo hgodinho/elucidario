@@ -6,7 +6,7 @@ Como o objetivo da pesquisa é o desenvolvimento do aplicativo Elucidário.art e
 
 Utilizamos livros, artigos, teses, dissertações, legislações, manuais, normas e padrões, nos temas de documentação museológica; interoperabilidade da informação; representação, visualização e recuperação da informação e desenvolvimento de aplicativos, para delimitar o tema da pesquisa e embasar o desenvolvimento do aplicativo Elucidário.art. Buscamos em sites de organizações internacionais como International Council of Museums (ICOM), Collections Trusts, Canada Heritage Information Network CHIN, entre outras e nacionais como Instituto Brasileiro de Museus (IBRAM), Sistema Estadual de Museus (SISEM-SP), Fundação Catarinense de Cultura (FCC), entre outras. Também buscamos em anais de conferências como International Committee for Documentaion (CIDOC) e Encontro Nacional de Pesquisa em Ciência da Informação (ENANCIB).
 
-Realizamos uma análise detalhada de padrões de metadados para objetos de arte como o Esquema de Metadados para Descrição de Obras de Arte em Museus Brasileiros [@silva2020], Object ID [@conselho-internacional-de-museus-icom1999], Linked Art [[@linked-art2021.1] e Grupos de Informações do Spectrum 5.1 [@collections-trust2017.1], para identificar os elementos de metadados que serão utilizados no aplicativo Elucidário.art. Utilizamos também como base os procedimentos do Spectrum [@collections-trust2022.1] para definir os fluxos de trabalho do aplicativo.
+Realizamos uma análise detalhada de padrões de metadados para objetos de arte como o Esquema de Metadados para Descrição de Obras de Arte em Museus Brasileiros [@silva2020], Object ID [@conselho-internacional-de-museus-icom1999], Linked Art [@linked-art2021.1] e Grupos de Informações do Spectrum 5.1 [@collections-trust2017.1], para identificar os elementos de metadados que serão utilizados no aplicativo Elucidário.art. Utilizamos também como base os procedimentos do Spectrum [@collections-trust2022.1] para definir os fluxos de trabalho do aplicativo.
 
 **Desenvolvimento do aplicativo Elucidário.art**
 
@@ -28,9 +28,9 @@ Uma outra metodologia Ágil bastante utilizada é a Extreme Programming (XP) (19
 
 Além da XP, que é uma metodologia que foi aplicada no desenvolvimento de todos os pacotes do Elucidário.art, também utilizamos a metodologia criada por Brad Frost em 2013 chamada _Atomic Design_ [@frost2013], que consiste em dividir a Interface de Usuário (UI) em componentes menores e mais simples, chamados de átomos, que são combinados para formar moléculas, organismos, templates e páginas. A figura a seguir representa a metodologia _Atomic Design_:
 
-**{{count:figuras;legend=Metodologia Atomic Design.}}**
+**{{count:figure;legend=Metodologia Atomic Design.}}**
 
-![**Fonte:** Metodologia _Atomic Design_ (FROST, 2013).](atomic-design-process.png)
+![**Fonte:** Metodologia _Atomic Design_ (FROST, 2013).]({{static}}/atomic-design-process.png)
 
 Os átomos consistem nas menores unidades de design, como cores, fontes, ícones, botões, campos de formulário, etc. As moléculas são combinações de átomos, como um campo de formulário com um botão. Os organismos são combinações de moléculas, como um formulário de login. Os templates são combinações de organismos, como um template de página de edição. E as páginas são combinações de templates, como a página de configurações do plugin. Descrevemos no capítulo 7 como utilizamos a metodologia _Atomic Design_ para desenvolver o pacote `@elucidario/pkg-design-system` e como utilizamos o pacote para desenvolver a UI do plugin.
 

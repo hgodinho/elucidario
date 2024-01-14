@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Propriedades de _Payment_.}}",
+    "title": "{{count:chart;legend=Propriedades de _Payment_.}}",
     "fields": [
         {
             "type": "string",
