@@ -1,10 +1,12 @@
 import path from "path";
-import { getPaths, readFile } from "@elucidario/pkg-paths";
+import { getPaths, readFile, readContents } from "@elucidario/pkg-paths";
 import { toMD } from "@elucidario/pkg-docusaurus-md";
 import inquirer from "inquirer";
 import { Console } from "@elucidario/pkg-console";
 import { kebabCase } from "lodash-es";
 import { fromMarkdown } from "mdast-util-from-markdown";
+import * as unist from "@elucidario/pkg-unist";
+import { merge } from "lodash-es";
 
 const pkg = readFile({
     filePath: path.resolve(getPaths().packages, "pub-gen", "package.json"),
@@ -337,12 +339,30 @@ export function parseNodeValue(value) {
 }
 
 /**
- *  Check if node value is a pub-gen node value ({{...}})
+ *  Check if node value is a pub-gen node value ({{...:...}})
  * @param {string} value | node value
- * @returns | true if node value is a pub-gen node value ({{...}}), false otherwise
+ * @returns | true if node value is a pub-gen node value ({{...:...}}), false otherwise
  */
 export function isPubGenNodeValue(value) {
-    return value.startsWith("{{") && value.endsWith("}}");
+    return value.startsWith("{{") && value.includes(":");
+}
+
+/**
+ * Check if value has handlebars ({{...}})
+ * @param {string} value | value
+ * @returns boolean
+ */
+export function hasHandlebars(value) {
+    return value.includes("{{") && value.includes("}}");
+}
+
+/**
+ * Check if value has citation ([@...])
+ * @param {string} value | value
+ * @returns boolean
+ */
+export function hasCitation(value) {
+    return value.includes("[@") && value.includes("]");
 }
 
 /**
@@ -371,18 +391,28 @@ export function replaceRegexHandlebars(text, options) {
  * @returns
  */
 export function mdToMdast(md, options = undefined) {
-    if (typeof options === "undefined" || !options.reduce)
-        return fromMarkdown(md);
+    const syntaxOptions = merge({ reduce: true }, options, {
+        // extensions: [citeSyntax()],
+        // mdastExtensions: [citeFromMarkdown],
+        // @see https://github.com/benrbray/remark-cite/pull/7#issuecomment-1858373356
+    });
 
-    return fromMarkdown(md).children.reduce((acc, node) => {
-        switch (node.type) {
-            case "root":
-            case "paragraph":
-                acc = node.children;
-                break;
-        }
-        return acc;
-    }, []);
+    if (syntaxOptions.reduce) {
+        return fromMarkdown(md, "utf-8", syntaxOptions).children.reduce(
+            (acc, node) => {
+                switch (node.type) {
+                    case "root":
+                    case "paragraph":
+                        acc = node.children;
+                        break;
+                }
+                return acc;
+            },
+            [],
+        );
+    } else {
+        return fromMarkdown(md, "utf-8", syntaxOptions);
+    }
 }
 
 /**
@@ -468,5 +498,101 @@ export function processFiles(obj, callback) {
         }
     } else {
         return obj;
+    }
+}
+
+/**
+ * Get files from publication manifest
+ *
+ * @param {string} publication
+ * @param {string} language
+ * @returns {array}
+ */
+export function filesFromManifest(publication, language) {
+    const manifest = readFile(
+        path.resolve(
+            getPaths().publications,
+            publication,
+            "dist",
+            language,
+            "manifest.json",
+        ),
+    ).value;
+    const { pre, body, pos } = manifest.content.internal;
+    const callback = (file) =>
+        readFile(
+            path.resolve(
+                getPaths().publications,
+                publication,
+                "dist",
+                language,
+                file,
+            ),
+        );
+    return [...pre.map(callback), ...body.map(callback), ...pos.map(callback)];
+}
+
+/**
+ * Get style config
+ *
+ * @param {string} publication
+ * @param {object} style
+ * @returns {object}
+ */
+export function getStyleConfig({ publication, style, type }) {
+    try {
+        if (style.name) {
+            const styles = readContents({
+                dirPath: path.resolve(
+                    getPaths().packages,
+                    "pub-gen",
+                    "lib",
+                    "styles",
+                ),
+                extensions: ["json"],
+                index: false,
+            });
+            return styles.find(
+                (item) =>
+                    item.value.name === style.name && item.value.type === type,
+            ).value;
+        } else if (style.path) {
+            return readFile(
+                path.resolve(getPaths().publications, publication, style.path),
+            ).value;
+        }
+    } catch (error) {
+        throw new Error(error);
+    }
+}
+
+/**
+ * Transform legend into mdast tree
+ * @param {string} content
+ * @returns | mdast tree
+ */
+export function legendAst(content) {
+    if (hasCitation(content)) {
+        const citation = content.match(/\[@.*\]/)[0];
+
+        const textBefore = content.split(citation)[0];
+        const textAfter = content.split(citation)[1];
+        const beforeAst = mdToMdast(textBefore, {
+            reduce: true,
+        });
+        const afterAst = mdToMdast(textAfter, {
+            reduce: true,
+        });
+
+        const citeAst = unist.html(citation);
+        return [
+            ...(textBefore ? beforeAst : [false]),
+            textBefore ? unist.text(" ") : false,
+            citeAst,
+            textAfter ? unist.text(" ") : false,
+            ...(textAfter ? afterAst : [false]),
+        ].filter(Boolean);
+    } else {
+        return mdToMdast(content);
     }
 }

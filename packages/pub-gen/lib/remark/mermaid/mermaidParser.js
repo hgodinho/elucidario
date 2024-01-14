@@ -1,6 +1,11 @@
 import path from "path";
 import * as unist from "@elucidario/pkg-unist";
-import { parseNodeValue, isPubGenNodeValue, mdToMdast } from "../../utils.js";
+import {
+    parseNodeValue,
+    isPubGenNodeValue,
+    mdToMdast,
+    legendAst,
+} from "../../utils.js";
 import { getPaths, readFile } from "@elucidario/pkg-paths";
 import parser from "parser-front-matter";
 import { visit } from "unist-util-visit";
@@ -107,8 +112,10 @@ const mermaidParser = (treeOptions) => {
                 // find index of el.parent in tree
                 const parentIndex = tree.children.findIndex(
                     (child) =>
+                        child.hasOwnProperty("position") &&
+                        el.parent.hasOwnProperty("position") &&
                         child.position.start.line ===
-                        el.parent.position.start.line,
+                            el.parent.position.start.line,
                 );
 
                 // insert title node before el.node in tree.
@@ -119,10 +126,11 @@ const mermaidParser = (treeOptions) => {
                 );
 
                 // insert source node after el.node in tree.
+                const legend = el.source ? legendAst(el.source) : [];
                 tree.children.splice(
                     parentIndex + 2,
                     0,
-                    unist.paragraph(mdToMdast(el.source, { reduce: true })),
+                    unist.paragraph(legend),
                 );
             });
         };

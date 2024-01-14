@@ -79,7 +79,7 @@ export async function buildPublication({ publication, watch }) {
                                     file.path,
                                     file.processed.value,
                                 );
-                                return created.replace(distPath, "");
+                                return created.replace(`${distPath}\\`, "");
                             });
                         } catch (error) {
                             console.error(new Error(error));
@@ -114,8 +114,9 @@ export async function buildPublication({ publication, watch }) {
             },
         );
 
-        return manifests;
+        return Promise.resolve(manifests);
     } catch (error) {
         console.error(new Error(error));
+        Promise.reject(error);
     }
 }

@@ -1,11 +1,11 @@
 import { unified } from "unified";
 import markdown from "remark-parse";
 import remarkGfm from "remark-gfm";
-import unifiedPrettier from "unified-prettier";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkStringify from "remark-stringify";
 import { citePlugin } from "@benrbray/remark-cite";
 import { Console } from "@elucidario/pkg-console";
+import { toMarkdown } from "mdast-util-to-markdown";
 
 import tableParser from "./table/tableParser.js";
 import codeParser from "./code/codeParser.js";
@@ -13,6 +13,10 @@ import embedParser from "./embed/embedParser.js";
 import citeParser from "./cite/citeParser.js";
 import countParser from "./count/countParser.js";
 import mermaidParser from "./mermaid/mermaidParser.js";
+import imageParser from "./image/imageParser.js";
+
+import { toMD, codeBlock } from "@elucidario/pkg-docusaurus-md";
+import { hasHandlebars } from "../utils.js";
 
 export const pubGenProcessor = async (content, options) => {
     if (!content) return Promise.reject(new Error("No content provided."));
@@ -47,8 +51,17 @@ export const pubGenProcessor = async (content, options) => {
             pubGen: {
                 ...options,
             },
-            stringfy: {},
-            prettier: {},
+            stringify: {
+                handlers: {
+                    code: (h, node) => {
+                        if (h.lang.includes(".mermaid")) {
+                            return codeBlock(h.value, h.lang);
+                        } else {
+                            return toMarkdown(h);
+                        }
+                    },
+                },
+            },
         };
 
         const usedPlugins = [
@@ -61,13 +74,13 @@ export const pubGenProcessor = async (content, options) => {
             [embedParser, plugins.pubGen], // pub-gen embed parser.
             [mermaidParser, plugins.pubGen], // pub-gen mermaid parser.
 
+            [imageParser, plugins.pubGen], // image parser, must be the last pub-gen parser/compiler.
+            [countParser, plugins.pubGen], // pub-gen count parser.
+
             [citePlugin, plugins.cite], // @see remark-cite.
             [citeParser, plugins.pubGen], // pub-gen citation parser, must be after citePlugin.
 
-            [countParser, plugins.pubGen], // pub-gen count parser, must be the last pub-gen parser/compiler.
-
-            [remarkStringify, plugins.stringfy],
-            // [unifiedPrettier, plugins.prettier], // must be the last one.
+            [remarkStringify, plugins.stringify],
         ].filter((plugin) => plugin !== null);
 
         const processor = unified();

@@ -1,35 +1,16 @@
-import path from "path";
 import { processDocs } from "../../lib/build/processDocs.js";
 import { packageJson } from "../../lib/utils.js";
-import { createFile, getPaths, readFile } from "@elucidario/pkg-paths";
+import { getFixture } from "../__fixtures__/index.js";
 
 describe("processDocs", () => {
     const pkg = packageJson("publicacao-teste");
 
     let expected = {};
     let assets = {};
-    beforeEach(() => {
-        expected = readFile(
-            path.resolve(
-                getPaths().packages,
-                "pub-gen",
-                "tests",
-                "build",
-                "data",
-                "processDocs.expected.json",
-            ),
-        ).value;
 
-        assets = readFile(
-            path.resolve(
-                getPaths().packages,
-                "pub-gen",
-                "tests",
-                "build",
-                "data",
-                "assets.json",
-            ),
-        ).value;
+    beforeEach(() => {
+        expected = getFixture("processDocs.expected.json");
+        assets = getFixture("assets.json");
     });
 
     afterEach(() => {
@@ -86,10 +67,10 @@ describe("processDocs", () => {
             },
             index: {
                 assets: {
-                    imagens: "Lista de imagens",
-                    figuras: "Lista de figuras",
-                    quadros: "Lista de quadros",
-                    tabelas: "Lista de tabelas",
+                    image: "Lista de imagens",
+                    figure: "Lista de figuras",
+                    chart: "Lista de quadros",
+                    table: "Lista de tabelas",
                 },
                 acronyms: "Lista de abreviaturas e siglas",
                 bibliography: "Bibliografia",
@@ -98,18 +79,6 @@ describe("processDocs", () => {
             assets,
             pkg,
         });
-
-        // createFile(
-        //     path.resolve(
-        //         getPaths().packages,
-        //         "pub-gen",
-        //         "tests",
-        //         "build",
-        //         "data",
-        //         "processDocs.processed.json",
-        //     ),
-        //     processed,
-        // );
 
         expect(processed).toMatchObject(expected);
     });

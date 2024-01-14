@@ -22,11 +22,11 @@
                     "lista-{*}",
                     "assets",
                     [
-                        ["quadros", "Lista de quadros"],
-                        ["graficos", "Lista de gráficos"],
-                        ["figuras", "Lista de figuras"],
-                        ["imagens", "Lista de imagens"],
-                        ["tabelas", "Lista de tabelas"]
+                        ["chart", "Lista de quadros"],
+                        ["graph", "Lista de gráficos"],
+                        ["figure", "Lista de figuras"],
+                        ["image", "Lista de imagens"],
+                        ["table", "Lista de tabelas"]
                     ]
                 ],
                 [
@@ -78,10 +78,12 @@
         }
     },
     "assets_titles": {
-        "imagens": "Imagem",
-        "tabelas": "Tabela",
-        "figuras": "Figura",
-        "quadros": "Quadro",
-        "graficos": "Gráfico"
+        "image": "Imagem",
+        "table": "Tabela",
+        "figure": "Figura",
+        "mermaid": "Figura",
+        "code": "Figura",
+        "chart": "Quadro",
+        "graph": "Gráfico"
     }
 }

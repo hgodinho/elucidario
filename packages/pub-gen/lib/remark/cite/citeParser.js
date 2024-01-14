@@ -19,6 +19,7 @@ function citeParser(options) {
             const ID = [...Array(6)]
                 .map(() => Math.random().toString(36)[2])
                 .join("");
+
             citeItems.push({ node, ID });
         });
 
@@ -36,9 +37,11 @@ function citeParser(options) {
                         locator: item.suffix,
                     };
                 });
+
                 const Items = references.filter((ref) =>
                     itemsIDs.includes(ref.id),
                 );
+
                 const pre = citeItems
                     .slice(0, index)
                     .map((citeItem) => [citeItem.ID, 0]);
@@ -59,14 +62,11 @@ function citeParser(options) {
                     [],
                 );
 
-                // check if we are at the last item, if so, set processed to the parsedCitations.
-                if (index === citeItems.length - 1) {
-                    preProcessed = processedCitation[1];
-                }
+                preProcessed.push(...processedCitation[1]);
             }),
         );
 
-        preProcessed.forEach((citation) => {
+        preProcessed.map((citation) => {
             const { ID, node } = citeItems.find(
                 (item) => item.ID === citation[2],
             );

@@ -1,6 +1,7 @@
 import path from "path";
 import { processAssets } from "../../lib/build/processAssets.js";
-import { getPaths, createFile, readFile } from "@elucidario/pkg-paths";
+import { getPaths } from "@elucidario/pkg-paths";
+import { createFixture, getFixture } from "../__fixtures__/index.js";
 
 describe("processAssets", () => {
     let assets = {};
@@ -18,43 +19,8 @@ describe("processAssets", () => {
     };
 
     beforeEach(() => {
-        assets = readFile(
-            path.resolve(
-                getPaths().packages,
-                "pub-gen",
-                "tests",
-                "build",
-                "data",
-                "assets.json",
-            ),
-        ).value;
-
-        expected = [
-            {
-                name: "lista-imagens",
-                path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-br\\internal\\pos\\lista-imagens.md",
-                ext: "md",
-                value: "# LISTA DE IMAGENS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | imagem-1 |  |\n| 2 | imagem-2 |  |",
-            },
-            {
-                name: "lista-figuras",
-                path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-br\\internal\\pos\\lista-figuras.md",
-                ext: "md",
-                value: "# LISTA DE FIGURAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | figura-1 |  |\n| 2 | figura-2 |  |",
-            },
-            {
-                name: "lista-tabelas",
-                path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-br\\internal\\pos\\lista-tabelas.md",
-                ext: "md",
-                value: "# LISTA DE TABELAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | tabela-1 |  |\n| 2 | tabela-2 |  |",
-            },
-            {
-                name: "lista-quadros",
-                path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-br\\internal\\pos\\lista-quadros.md",
-                ext: "md",
-                value: "# LISTA DE QUADROS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | grafico-1 |  |\n| 2 | grafico-2 |  |",
-            },
-        ];
+        assets = getFixture("assets.json");
+        expected = getFixture("processAssets.expected.json");
     });
 
     afterEach(() => {

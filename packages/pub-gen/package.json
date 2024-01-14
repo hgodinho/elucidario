@@ -39,6 +39,8 @@
     "dependencies": {
         "@apidevtools/json-schema-ref-parser": "^11.1.0",
         "@babel/core": "^7.23.6",
+        "@benrbray/mdast-util-cite": "^1.1.0",
+        "@benrbray/micromark-extension-cite": "^1.0.0",
         "@benrbray/remark-cite": "^1.1.0",
         "@elucidario/pkg-console": "workspace:^",
         "@elucidario/pkg-docusaurus-md": "workspace:^",
@@ -58,6 +60,7 @@
         "js-search": "^2.0.1",
         "lodash-es": "^4.17.21",
         "mdast-util-from-markdown": "^2.0.0",
+        "mdast-util-to-markdown": "^2.1.0",
         "node-html-markdown": "^1.3.0",
         "octokit": "^3.1.2",
         "parser-front-matter": "^1.6.4",

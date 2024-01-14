@@ -1,27 +1,23 @@
 import path from "path";
 import { processLists } from "../../lib/build/processLists.js";
-import { getPaths, createFile, writeFile } from "@elucidario/pkg-paths";
+import { getPaths } from "@elucidario/pkg-paths";
+import { createFixture, getFixture } from "../__fixtures__/index.js";
 
 describe("processLists", () => {
     let expected = {};
     const index = {
         assets: {
-            imagens: "Lista de imagens",
-            figuras: "Lista de figuras",
-            quadros: "Lista de quadros",
-            tabelas: "Lista de tabelas",
+            image: "Lista de imagens",
+            figure: "Lista de figuras",
+            chart: "Lista de quadros",
+            table: "Lista de tabelas",
         },
         acronyms: "Lista de abreviaturas e siglas",
         bibliography: "Bibliografia",
     };
 
     beforeEach(() => {
-        expected = {
-            name: "lista-abreviaturas-siglas",
-            path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-br\\internal\\pre\\lista-abreviaturas-siglas.md",
-            ext: "md",
-            value: "# LISTA DE ABREVIATURAS E SIGLAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | ABNT - Associação Brasileira de Normas Técnicas; |  |\n| 2 | APA - American Psychological Association; |  |",
-        };
+        expected = getFixture("processLists.expected.json");
     });
 
     afterEach(() => {
@@ -95,19 +91,7 @@ describe("processLists", () => {
             index,
         });
 
-        createFile(
-            {
-                filePath: path.resolve(
-                    getPaths().packages,
-                    "pub-gen",
-                    "tests",
-                    "build",
-                    "data",
-                    "processLists.processed.json",
-                ),
-            },
-            file,
-        );
+        createFixture("processLists.expected.json", file);
 
         expect(file).toMatchObject(expected);
     });

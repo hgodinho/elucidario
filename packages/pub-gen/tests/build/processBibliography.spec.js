@@ -1,27 +1,22 @@
 import path from "path";
 import { processBibliography } from "../../lib/build/processBibliography.js";
-import { getPaths, createFile } from "@elucidario/pkg-paths";
+import { createFixture, getFixture } from "../__fixtures__/index.js";
 
 describe("processBibliography", () => {
     let expected = {};
     const index = {
         assets: {
-            imagens: "Lista de imagens",
-            figuras: "Lista de figuras",
-            quadros: "Lista de quadros",
-            tabelas: "Lista de tabelas",
+            image: "Lista de imagens",
+            figure: "Lista de figuras",
+            chart: "Lista de quadros",
+            table: "Lista de tabelas",
         },
         acronyms: "Lista de abreviaturas e siglas",
         bibliography: "Bibliografia",
     };
 
     beforeEach(() => {
-        expected = {
-            name: "referencias",
-            path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pos\\referencias.md",
-            ext: "md",
-            value: "# Bibliografia\n\nLINKED ART. **Linked Art**. 2021a. Disponível em: https://linked.art/. Acesso em: 20 maio. 2023\\. \n\nLINKED ART. **Community - Linked Art**. 2021b. Disponível em: https://linked.art/community/. Acesso em: 20 maio. 2023\\.",
-        };
+        expected = getFixture("processBibliography.expected.json");
     });
 
     afterEach(() => {

@@ -9,12 +9,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget ris
 
 **undefined 1: Mermaid**
 
-\`\`\`{.mermaid&#x20;filename=mermaid&#x20;loc="C:\\\\\\Users\\\\\\55119\\\\\\Elucidário.art\\\\\\elucidario\\\\\\publications\\\\\\publicacao-teste\\\\\\files\\\\\\generated"&#x20;width=720&#x20;background=transparent}
+\`\`\`{.mermaid filename=mermaid loc="C:\\\\Users\\\\55119\\\\Elucidário.art\\\\elucidario\\\\publications\\\\publicacao-teste\\\\files\\\\generated" width=720 background=transparent}
 erDiagram
         OBJETO ||--|{ CLASSIFICACAO : ""
 \`\`\`
 
-**Fonte:** Elaborado pelo autor.
+**Fonte:** Elaborado pelo autor, com base em [@caro-castro2011]
 
 ### Third level heading
 
@@ -34,6 +34,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget ris
 
 **undefined 2: Lorem ipsum**
 
-![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)
+![Lorem ipsum](C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\static\\lorem-ipsum.jpeg)
 "
 `;

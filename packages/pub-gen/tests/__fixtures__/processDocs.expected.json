@@ -7,15 +7,15 @@
                         "name": "hello-world",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\hello-world.md",
                         "ext": "md",
-                        "value": "# Hello World\r\n\r\n## Second level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var [@linked-art2021.1].\r\n\r\n{{mermaid:internal/body/mermaid.md}}\r\n\r\n### Third level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.1, p. 2]\r\n\r\n#### Fourth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2]\r\n\r\n##### Fifth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2; @linked-art2021.1]\r\n\r\n###### Sixth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n\r\n{{count:figuras;legend=\\*\\*Lorem ipsum\\*\\*}}\r\n\r\n![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)\r\n",
-                        "size": 861
+                        "value": "# Hello World\r\n\r\n## Second level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var [@linked-art2021.1].\r\n\r\n{{mermaid:internal/body/mermaid.md}}\r\n\r\n### Third level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.1, p. 2]\r\n\r\n#### Fourth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2]\r\n\r\n##### Fifth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2; @linked-art2021.1]\r\n\r\n###### Sixth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n\r\n{{count:figure;legend=\\*\\*Lorem ipsum\\*\\*}}\r\n\r\n![Lorem ipsum]({{static}}/lorem-ipsum.jpeg)\r\n",
+                        "size": 851
                     },
                     "processed": {
                         "data": {},
                         "messages": [],
                         "history": [],
                         "cwd": "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
-                        "value": "# Hello World\n\n## Second level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (LINKED ART, 2021a).\n\n**Figura 3: Mermaid**\n\n```{.mermaid&#x20;filename=mermaid&#x20;loc=\"C:\\\\\\Users\\\\\\55119\\\\\\Elucidário.art\\\\\\elucidario\\\\\\publications\\\\\\publicacao-teste\\\\\\files\\\\\\generated\"&#x20;width=720&#x20;background=transparent}\nerDiagram\r\n        OBJETO ||--|{ CLASSIFICACAO : \"\"\n```\n\n**Fonte:** Elaborado pelo autor.\n\n### Third level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a)\n\n#### Fourth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021b)\n\n##### Fifth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a, 2021b)\n\n###### Sixth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\n\n**Figura 4: Lorem ipsum**\n\n![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)\n"
+                        "value": "# Hello World\n\n## Second level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (LINKED ART, 2021a).\n\n**Figura 1: Mermaid**\n\n```{.mermaid filename=mermaid loc=\"C:\\\\Users\\\\55119\\\\Elucidário.art\\\\elucidario\\\\publications\\\\publicacao-teste\\\\files\\\\generated\" width=720 background=transparent}\nerDiagram\r\n        OBJETO ||--|{ CLASSIFICACAO : \"\"\n```\n\n**Fonte:** Elaborado pelo autor, com base em [@caro-castro2011]\n\n### Third level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a)\n\n#### Fourth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021b)\n\n##### Fifth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a, 2021b)\n\n###### Sixth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\n\n**Figura 2: Lorem ipsum**\n\n![Lorem ipsum](C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\static\\lorem-ipsum.jpeg)\n"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\hello-world.md"
                 },
@@ -32,7 +32,7 @@
                         "messages": [],
                         "history": [],
                         "cwd": "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
-                        "value": "# First level\n\nQuadro 3: Teste Tabela.\n\n| Name       | ID |\n| :--------- | -- |\n| John Doe   | 1  |\n| John Smith | 3  |\n\nFonte: Elaborado pelo autor.\n"
+                        "value": "# First level\n\nQuadro 1: Teste Tabela.\n\n| Name       | ID |\n| :--------- | -- |\n| John Doe   | 1  |\n| John Smith | 3  |\n\nFonte: Elaborado pelo autor, com base em [@caro-castro2011]\n"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\really\\first-level.md"
                 },
@@ -180,7 +180,7 @@
                         "name": "lista-imagens",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-imagens.md",
                         "ext": "md",
-                        "value": "# LISTA DE IMAGENS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | imagem-1 |  |\n| 2 | imagem-2 |  |"
+                        "value": "|  |  |  |\n| --- | --- | --- |\n| 1 | imagem-1 |  |\n| 2 | imagem-2 |  |"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-imagens.md"
                 },
@@ -190,7 +190,7 @@
                         "name": "lista-figuras",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-figuras.md",
                         "ext": "md",
-                        "value": "# LISTA DE FIGURAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | figura-1 |  |\n| 2 | figura-2 |  |\n| 3 | **Mermaid** |  |\n| 4 | **Lorem ipsum** |  |"
+                        "value": "|  |  |  |\n| --- | --- | --- |\n| 1 | figura-1 |  |\n| 2 | figura-2 |  |"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-figuras.md"
                 },
@@ -200,7 +200,7 @@
                         "name": "lista-tabelas",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-tabelas.md",
                         "ext": "md",
-                        "value": "# LISTA DE TABELAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | tabela-1 |  |\n| 2 | tabela-2 |  |"
+                        "value": "|  |  |  |\n| --- | --- | --- |\n| 1 | tabela-1 |  |\n| 2 | tabela-2 |  |"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-tabelas.md"
                 },
@@ -210,9 +210,29 @@
                         "name": "lista-quadros",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-quadros.md",
                         "ext": "md",
-                        "value": "# LISTA DE QUADROS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | grafico-1 |  |\n| 2 | grafico-2 |  |\n| 3 | Teste Tabela. |  |"
+                        "value": "|  |  |  |\n| --- | --- | --- |\n| 1 | grafico-1 |  |\n| 2 | grafico-2 |  |"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-quadros.md"
+                },
+                {
+                    "file": null,
+                    "processed": {
+                        "name": "lista-figure",
+                        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-figure.md",
+                        "ext": "md",
+                        "value": "# LISTA DE FIGURAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | **Mermaid** |  |\n| 2 | **Lorem ipsum** |  |"
+                    },
+                    "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-figure.md"
+                },
+                {
+                    "file": null,
+                    "processed": {
+                        "name": "lista-chart",
+                        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-chart.md",
+                        "ext": "md",
+                        "value": "# LISTA DE QUADROS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | Teste Tabela. |  |"
+                    },
+                    "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-chart.md"
                 },
                 {
                     "file": null,
@@ -232,7 +252,7 @@
                         "name": "referencias",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pos\\referencias.md",
                         "ext": "md",
-                        "value": "# Bibliografia\n\nLINKED ART. **Linked Art**. 2021a. Disponível em: https://linked.art/. Acesso em: 20 maio. 2023\\. \n\nLINKED ART. **Community - Linked Art**. 2021b. Disponível em: https://linked.art/community/. Acesso em: 20 maio. 2023\\."
+                        "value": "# Bibliografia\n\nCARO-CASTRO, Carmem. Vocabularios estructurados, Web Semántica y Linked Data: oportunidades y retos para los profesionales de la documentación. **II Seminário de Estudos da Informação: Arquivologia, Biblioteconomia e Ciência de Informação: Identidades, Contrastes e Perspectivas de Interlocução**, Niterói, 2011\\. \n\nLINKED ART. **Linked Art**. 2021a. Disponível em: https://linked.art/. Acesso em: 20 maio. 2023\\. \n\nLINKED ART. **Community - Linked Art**. 2021b. Disponível em: https://linked.art/community/. Acesso em: 20 maio. 2023\\."
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pos\\referencias.md"
                 }
@@ -248,6 +268,15 @@
                 "ext": "jpeg",
                 "value": "",
                 "size": 316922
+            }
+        ],
+        "dynamic": [
+            {
+                "name": "mermaid",
+                "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\generated\\mermaid.png",
+                "ext": "png",
+                "value": "",
+                "size": 3761
             }
         ]
     }

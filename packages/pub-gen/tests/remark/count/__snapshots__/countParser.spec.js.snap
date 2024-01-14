@@ -32,7 +32,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget ris
 
 **undefined 1: Lorem ipsum**
 
-![Lorem ipsum](/../../files/static/lorem-ipsum.jpeg)
+![Lorem ipsum]({{static}}/lorem-ipsum.jpeg)
 ",
 }
 `;
