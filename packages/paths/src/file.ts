@@ -23,6 +23,10 @@ export const supportedExtensions = [
     "php",
     "css",
     "scss",
+    "jpeg",
+    "jpg",
+    "png",
+    "gif",
 ];
 
 /**
@@ -72,12 +76,21 @@ export function readText(filePath: string, enc: BufferEncoding) {
 }
 
 /**
+ *  Read image file
+ * @param filePath | path to file
+ * @returns | image file contents
+ */
+export function readImage(filePath: string) {
+    return fs.readFileSync(path.resolve(filePath));
+}
+
+/**
  * Read file contents
  *
  * @returns | file contents
  */
 export function readFile(file: string | ReadFileProps): File {
-    let enc: BufferEncoding | undefined = "utf-8";
+    let enc: BufferEncoding | undefined = "utf8";
     let ext: string | undefined;
     let filePath: string;
     let returnType: string | undefined = "content";
@@ -121,6 +134,13 @@ export function readFile(file: string | ReadFileProps): File {
                 read.value = readJSON(path.resolve(filePath), enc);
                 break;
 
+            case "jpeg":
+            case "jpg":
+            case "png":
+            case "gif":
+                read.value = readImage(filePath);
+                break;
+
             case "md":
             case "txt":
             case "html":
@@ -149,6 +169,7 @@ export function createFile(
     file: string | CreateFileProps,
     contents: any,
     options?: WriteFileOptions,
+    chmod?: number,
 ): string {
     let filePath: string;
     if (typeof file === "string") {
@@ -156,6 +177,9 @@ export function createFile(
     } else {
         filePath = file.filePath;
     }
+
+    if (typeof chmod === "undefined") chmod = 0o666; // default to 666 that is readable and writable by everyone
+
     const resolvedPath = path.resolve(filePath);
     const { dir, ext } = path.parse(resolvedPath);
 
@@ -177,6 +201,17 @@ export function createFile(
                 );
                 break;
 
+            case "jpeg":
+            case "jpg":
+            case "png":
+            case "gif":
+            case "docx":
+            case "pdf":
+            case "epub":
+                // contents = new Uint8Array(contents;
+                console.log({ contents });
+                break;
+
             case "md":
             case "txt":
             case "html":
@@ -185,6 +220,7 @@ export function createFile(
                 break;
         }
         fs.writeFileSync(resolvedPath, contents, options);
+        fs.chmodSync(resolvedPath, chmod);
         return resolvedPath;
     } catch (err) {
         throw new Error(`Cannot create file at ${resolvedPath}: ${err}`);
