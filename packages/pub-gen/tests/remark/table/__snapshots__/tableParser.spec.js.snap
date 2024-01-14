@@ -8,14 +8,14 @@ VFile {
   "messages": [],
   "value": "# First level
 
-{{count:quadros;legend=Teste Tabela.}}
+{{count:chart;legend=Teste Tabela.}}
 
 | Name       | ID |
 | :--------- | -- |
 | John Doe   | 1  |
 | John Smith | 3  |
 
-Fonte: Elaborado pelo autor.
+Fonte: Elaborado pelo autor, com base em [@caro-castro2011]
 ",
 }
 `;

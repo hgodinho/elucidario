@@ -2,8 +2,9 @@ import { exec } from "child_process";
 import path from "path";
 import lodash from "lodash-es";
 import fs from "fs";
-import { readContents } from "@elucidario/pkg-paths";
+import { createDir } from "@elucidario/pkg-paths";
 const { kebabCase } = lodash;
+import { filesFromManifest, packageJson, pubGenConfig } from "../utils.js";
 
 import { getPaths } from "../getPaths.js";
 
@@ -18,46 +19,31 @@ export const convert = async (args) => {
     try {
         if (!publication) {
             throw new Error(
-                "Publication not specified, pass --publication or -p argument"
+                "Publication not specified, pass --publication or -p argument",
             );
         }
-        const packageJson = JSON.parse(
-            fs.readFileSync(
-                path.resolve(paths.publications, publication, "package.json")
-            )
-        );
+        const pkg = packageJson(publication);
 
-        const console = new Console(packageJson);
+        const console = new Console(pkg);
 
         console.log(
             { args },
             {
                 defaultLog: true,
                 title: "Running pandoc",
-            }
+            },
         );
 
         const pubPath = path.resolve(paths.publications, publication);
 
-        const pubGenJson = JSON.parse(
-            fs.readFileSync(path.resolve(pubPath, "pub-gen.json"))
-        );
+        const pubGenJson = pubGenConfig(publication);
 
-        const pandocs = pubGenJson.publications.map((publication) => {
-            const name = kebabCase(publication.title);
+        const pandocs = pubGenJson.documents.map(({ language, title }) => {
+            const name = kebabCase(title);
 
             let files = [];
             try {
-                files = readContents({
-                    dirPath: path.resolve(
-                        pubPath,
-                        "dist",
-                        publication.language
-                    ),
-                    returnType: "path",
-                    extensions: "md",
-                    names: true,
-                });
+                files = filesFromManifest(publication, language);
             } catch (error) {
                 console.log({ error }, { type: "error", defaultLog: true });
                 return error;
@@ -65,7 +51,7 @@ export const convert = async (args) => {
 
             const docTitle = title
                 ? kebabCase(title)
-                : `${packageJson.version}-${publication.language}-${name}`;
+                : `${pkg.version}-${language}-${name}`;
 
             ext = ext ?? "docx";
 
@@ -75,12 +61,11 @@ export const convert = async (args) => {
                     pubPath,
                     "files",
                     "generated",
-                    packageJson.version
+                    pkg.version,
+                    language,
                 );
 
-            if (!fs.existsSync(outputDir))
-                fs.mkdirSync(outputDir, { recursive: true });
-
+            createDir(outputDir);
             const outputFile = path.resolve(outputDir, `${docTitle}.${ext}`);
 
             if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
@@ -94,10 +79,15 @@ export const convert = async (args) => {
                     paths.pubGen,
                     "template",
                     "docx",
-                    "abnt.docx"
+                    "abnt.docx",
                 )}"`,
-                ...Object.values(files).map((file) => file),
+                ...files.map((file) => file.path).filter((file) => file !== ""),
             ];
+
+            console.log({
+                outputFile,
+                pandocArgs,
+            });
 
             const isPandocInstalled = exec("pandoc --version");
 
@@ -121,7 +111,7 @@ export const convert = async (args) => {
                     });
                 });
                 pandoc.stderr.on("data", (data) => {
-                    console.log(data, {
+                    console.log(new Error(data), {
                         defaultLog: true,
                         type: "error",
                         title: "Error",
@@ -137,6 +127,6 @@ export const convert = async (args) => {
             });
         });
     } catch (error) {
-        console.log({ error }, { defaultLog: true, type: "error" });
+        console.log(error, { defaultLog: true, type: "error" });
     }
 };

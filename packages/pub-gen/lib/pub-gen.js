@@ -17,6 +17,7 @@ import { convert } from "./pandoc/convert.js";
 import { listTemplates } from "./pandoc/listTemplates.js";
 import { validateReferences } from "./reference/validateReferences.js";
 import { migrate } from "./migration/migration-helper.js";
+import { toDocx } from "./toDocx.js";
 
 const pkg = readFile(
     path.resolve(getPaths().packages, "pub-gen", "package.json"),
@@ -332,9 +333,14 @@ const PubGen = () => {
         .option("-o, --output <output>")
         .option("-e, --ext <ext>")
         .option("-t, --title <title>")
-        .action((argv) => {
+        .action(async (argv) => {
             console.log("Converting publication:", argv.publication);
-            convert(argv);
+            await buildPublication({ publication: argv.publication }).then(
+                (manifest) => {
+                    console.log(manifest);
+                    convert(argv);
+                },
+            );
         });
 
     /**
@@ -360,6 +366,54 @@ const PubGen = () => {
         .action((argv) => {
             console.log("Listing pandoc docx templates");
             listTemplates();
+        });
+
+    /**
+     * ██████╗  ██████╗  ██████╗██╗  ██╗
+     * ██╔══██╗██╔═══██╗██╔════╝╚██╗██╔╝
+     * ██║  ██║██║   ██║██║      ╚███╔╝
+     * ██║  ██║██║   ██║██║      ██╔██╗
+     * ██████╔╝╚██████╔╝╚██████╗██╔╝ ██╗
+     * ╚═════╝  ╚═════╝  ╚═════╝╚═╝  ╚═╝
+     */
+    /**
+     * @command <docx> Pandoc
+     *
+     * @command <convert> - Converte a publicação
+     * @command <templates> - Lista templates docx do pandoc
+     */
+    const docx = program.command("docx").description("Docx options");
+
+    /**
+     *  DOCX
+     *
+     *                                                              █████
+     *                                                              ░░███
+     *   ██████   ██████  ████████   █████ █████  ██████  ████████  ███████
+     *  ███░░███ ███░░███░░███░░███ ░░███ ░░███  ███░░███░░███░░███░░░███░
+     * ░███ ░░░ ░███ ░███ ░███ ░███  ░███  ░███ ░███████  ░███ ░░░   ░███
+     * ░███  ███░███ ░███ ░███ ░███  ░░███ ███  ░███░░░   ░███       ░███ ███
+     * ░░██████ ░░██████  ████ █████  ░░█████   ░░██████  █████      ░░█████
+     *  ░░░░░░   ░░░░░░  ░░░░ ░░░░░    ░░░░░     ░░░░░░  ░░░░░        ░░░░░
+     */
+    /**
+     * @command <docx> <convert> - Convert
+     *
+     * @param {string} publication - Nome da publicação
+     * @param {string} output - Diretório de saída do arquivo convertido
+     * @param {string} ext - Extensão do arquivo de saída
+     * @param {string} title - Título do documento
+     */
+    docx.command("convert")
+        .description("Convert publication")
+        .option("-p, --publication <publication>")
+        .option("-o, --output <output>")
+        .option("-t, --title <title>")
+        .option("-s, --style <style>")
+        .option("-l, --lang <lang>")
+        .action(async (argv) => {
+            console.log("Converting publication to docx:", argv.publication);
+            await toDocx(argv);
         });
 
     /**

@@ -55,4 +55,4 @@
         - _Breve descrição_ (_Brief description_);
         - _Outras informações_ (_Any other information_).
 
-{{tabela:internal/body/documentacao/spectrum/acquisition.json}}
+{{table:internal/body/documentacao/spectrum/acquisition.json}}

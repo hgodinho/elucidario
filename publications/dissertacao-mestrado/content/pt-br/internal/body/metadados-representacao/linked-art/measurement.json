@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Propriedades de _Measurement_.}}",
+    "title": "{{count:chart;legend=Propriedades de _Measurement_.}}",
     "fields": [
         {
             "type": "string",

@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Teste Tabela.}}",
+    "title": "{{count:chart;legend=Teste Tabela.}}",
     "fields": [
         {
             "type": "string",
@@ -17,6 +17,6 @@
     ],
     "note": {
         "label": "Fonte",
-        "content": "Elaborado pelo autor."
+        "content": "Elaborado pelo autor, com base em [@caro-castro2011]"
     }
 }

@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Propriedades de _Type/Currency/Language/Material/MeasurementUnit_.}}",
+    "title": "{{count:chart;legend=Propriedades de _Type/Currency/Language/Material/MeasurementUnit_.}}",
     "fields": [
         {
             "type": "string",

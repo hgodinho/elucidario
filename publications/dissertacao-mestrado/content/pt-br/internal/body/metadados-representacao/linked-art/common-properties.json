@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Propriedades comuns e obrigatórias do Linked Art.}}",
+    "title": "{{count:chart;legend=Propriedades comuns e obrigatórias do Linked Art.}}",
     "fields": [
         {
             "type": "string",

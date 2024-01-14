@@ -40,7 +40,10 @@ const codeParser = (treeOptions) => {
             const codeAst = unist.code(codeData, ext.replace(".", ""));
 
             node.type = "code";
-            node.value = codeAst.value;
+            node.value =
+                ext === ".json"
+                    ? JSON.stringify(codeAst.value, null, 4)
+                    : codeAst.value;
             node.lang = codeAst.lang;
             node.meta = codeAst.meta;
         });

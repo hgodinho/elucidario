@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Mapeamento entre JSON-Schema e HTML para a definição do SD do Elucidário.art}}",
+    "title": "{{count:chart;legend=Mapeamento entre JSON-Schema e HTML para a definição do SD do Elucidário.art}}",
     "fields": [
         {
             "type": "string",

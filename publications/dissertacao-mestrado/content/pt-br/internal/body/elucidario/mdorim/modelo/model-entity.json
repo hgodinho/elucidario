@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Propriedades básicas de uma entidade Linked Art no Mdorim}}",
+    "title": "{{count:chart;legend=Propriedades básicas de uma entidade Linked Art no Mdorim}}",
     "fields": [
         {
             "type": "string",

@@ -1,0 +1,33 @@
+{
+    "pt-br": {
+        "content": {
+            "internal": {
+                "body": [
+                    "internal\\body\\hello-world.md",
+                    "internal\\body\\really\\first-level.md",
+                    "internal\\body\\really\\deep\\second-level.md",
+                    "internal\\body\\really\\deep\\nested\\third-level.md",
+                    "internal\\body\\really\\deep\\nested\\file\\file.md"
+                ],
+                "pre": [
+                    "internal\\pre\\folha-rosto.md",
+                    "internal\\pre\\ficha-catalografica.md",
+                    "internal\\pre\\folha-avaliacao.md",
+                    "internal\\pre\\resumo-lingua-vernacula.md",
+                    "internal\\pre\\resumo-lingua-estrangeira.md",
+                    "internal\\pre\\lista-figure.md",
+                    "internal\\pre\\lista-chart.md",
+                    "internal\\pre\\lista-abreviaturas-siglas.md"
+                ],
+                "pos": [
+                    "internal\\pos\\referencias.md"
+                ]
+            },
+            "external": {}
+        },
+        "assets": [
+            "..\\..\\files\\static\\lorem-ipsum.jpeg",
+            "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\generated\\mermaid.png"
+        ]
+    }
+}

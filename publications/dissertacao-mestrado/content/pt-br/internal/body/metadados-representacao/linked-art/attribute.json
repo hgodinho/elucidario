@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Propriedades de _AttributeAssignment_.}}",
+    "title": "{{count:chart;legend=Propriedades de _AttributeAssignment_.}}",
     "fields": [
         {
             "type": "string",

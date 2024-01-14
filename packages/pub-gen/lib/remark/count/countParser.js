@@ -20,12 +20,13 @@ const countParser = (treeOptions) => {
             if (assets.hasOwnProperty(type) === false) assets[type] = [];
             assets[type].push(options.legend);
 
-            const paragraph = mdToMdast(options.legend, { reduce: true });
+            const paragraph = mdToMdast(options.legend);
 
             // insert prefix on first position of children.
             const prefix = unist.text(
                 `${assetsTitles[type]} ${assets[type].length}: `,
             );
+
             if (!paragraph[0].hasOwnProperty("children")) {
                 paragraph.unshift(prefix);
             } else {

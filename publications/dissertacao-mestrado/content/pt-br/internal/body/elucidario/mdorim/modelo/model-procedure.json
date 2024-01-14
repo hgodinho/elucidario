@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Entidade `Procedure` do modelo.}}",
+    "title": "{{count:chart;legend=Entidade `Procedure` do modelo.}}",
     "fields": [
         {
             "type": "string",

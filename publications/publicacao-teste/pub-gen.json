@@ -23,16 +23,6 @@
             "style": {
                 "name": "abnt",
                 "csl": "universidade-de-sao-paulo-escola-de-comunicacoes-e-artes-abnt.csl"
-            },
-            "index": {
-                "assets": {
-                    "imagens": "Lista de imagens",
-                    "figuras": "Lista de figuras",
-                    "quadros": "Lista de quadros",
-                    "tabelas": "Lista de tabelas"
-                },
-                "acronyms": "Lista de siglas e abreviaturas",
-                "bibliography": "Referências"
             }
         }
     ]

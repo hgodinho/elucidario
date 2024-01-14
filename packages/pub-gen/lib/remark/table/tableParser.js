@@ -1,6 +1,12 @@
 import path from "path";
 import { visit } from "unist-util-visit";
-import { parseNodeValue, isPubGenNodeValue, mdToMdast } from "../../utils.js";
+import {
+    parseNodeValue,
+    isPubGenNodeValue,
+    mdToMdast,
+    hasCitation,
+    legendAst,
+} from "../../utils.js";
 import { getPaths, readFile } from "@elucidario/pkg-paths";
 import * as unist from "@elucidario/pkg-unist";
 import { SchemaValidator } from "@elucidario/pkg-schema-validator";
@@ -64,7 +70,7 @@ function tableParser(treeOptions) {
                 data.map((row) => {
                     return unist.tableRow(
                         row.map((cell) => {
-                            return unist.tableCell([unist.text(cell)]);
+                            return unist.tableCell(mdToMdast(cell));
                         }),
                     );
                 }),
@@ -73,6 +79,7 @@ function tableParser(treeOptions) {
             node.type = tableAst.type;
             node.children = tableAst.children;
             node.align = tableAst.align;
+            delete node.value;
 
             parsed.push({
                 node,
@@ -84,32 +91,39 @@ function tableParser(treeOptions) {
             });
         });
 
-        parsed.map(({ node, parent, index, title, note, fields }) => {
-            const parentIndex = tree.children.findIndex(
-                (child) =>
-                    child.position.start.line === parent.position.start.line,
-            );
-
-            if (typeof title !== "undefined") {
-                tree.children.splice(
-                    parentIndex,
-                    0,
-                    unist.paragraph(mdToMdast(title, { reduce: true })),
+        try {
+            parsed.map(({ node, parent, index, title, note, fields }) => {
+                const parentIndex = tree.children.findIndex(
+                    (child) =>
+                        child.hasOwnProperty("position") &&
+                        parent.hasOwnProperty("position") &&
+                        child.position.start.line ===
+                            parent.position.start.line,
                 );
-            }
 
-            if (typeof note !== "undefined") {
-                tree.children.splice(
-                    parentIndex + 2,
-                    0,
-                    unist.paragraph([
-                        unist.text(note.label),
-                        unist.text(": "),
-                        unist.text(note.content),
-                    ]),
-                );
-            }
-        });
+                if (typeof title !== "undefined") {
+                    tree.children.splice(
+                        parentIndex,
+                        0,
+                        unist.paragraph([unist.text(title)]),
+                    );
+                }
+
+                if (typeof note !== "undefined") {
+                    tree.children.splice(
+                        parentIndex + 2,
+                        0,
+                        unist.paragraph([
+                            unist.text(note.label),
+                            unist.text(": "),
+                            ...legendAst(note.content),
+                        ]),
+                    );
+                }
+            });
+        } catch (e) {
+            console.error(e);
+        }
     };
 }
 

@@ -1,0 +1,100 @@
+[
+    {
+        "name": "folha-rosto",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-rosto.md",
+        "ext": "md",
+        "value": "",
+        "size": 0
+    },
+    {
+        "name": "ficha-catalografica",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\ficha-catalografica.md",
+        "ext": "md",
+        "value": "",
+        "size": 0
+    },
+    {
+        "name": "folha-avaliacao",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-avaliacao.md",
+        "ext": "md",
+        "value": "",
+        "size": 0
+    },
+    {
+        "name": "resumo-lingua-vernacula",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-vernacula.md",
+        "ext": "md",
+        "value": "",
+        "size": 0
+    },
+    {
+        "name": "resumo-lingua-estrangeira",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-estrangeira.md",
+        "ext": "md",
+        "value": "",
+        "size": 0
+    },
+    {
+        "name": "lista-figure",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-figure.md",
+        "ext": "md",
+        "value": "# LISTA DE FIGURAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | **Mermaid** |  |\n| 2 | **Lorem ipsum** |  |",
+        "size": 100
+    },
+    {
+        "name": "lista-chart",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-chart.md",
+        "ext": "md",
+        "value": "# LISTA DE QUADROS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | Teste Tabela. |  |",
+        "size": 75
+    },
+    {
+        "name": "lista-abreviaturas-siglas",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\lista-abreviaturas-siglas.md",
+        "ext": "md",
+        "value": "# LISTA DE ABREVIATURAS E SIGLAS\n\n|  |  |  |\n| --- | --- | --- |\n| 1 | ABNT - Associação Brasileira de Normas Técnicas; |  |\n| 2 | APA - American Psychological Association; |  |",
+        "size": 180
+    },
+    {
+        "name": "hello-world",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\hello-world.md",
+        "ext": "md",
+        "value": "# Hello World\n\n## Second level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (LINKED ART, 2021a).\n\n**Figura 1: Mermaid**\n\n```{.mermaid filename=mermaid loc=\"C:\\\\Users\\\\55119\\\\Elucidário.art\\\\elucidario\\\\publications\\\\publicacao-teste\\\\files\\\\generated\" width=720 background=transparent}\nerDiagram\r\n        OBJETO ||--|{ CLASSIFICACAO : \"\"\n```\n\n**Fonte:** Elaborado pelo autor, com base em [@caro-castro2011]\n\n### Third level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a)\n\n#### Fourth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021b)\n\n##### Fifth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a, 2021b)\n\n###### Sixth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\n\n**Figura 2: Lorem ipsum**\n\n![Lorem ipsum](C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\static\\lorem-ipsum.jpeg)\n",
+        "size": 1135
+    },
+    {
+        "name": "first-level",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\really\\first-level.md",
+        "ext": "md",
+        "value": "# First level\n\nQuadro 1: Teste Tabela.\n\n| Name       | ID |\n| :--------- | -- |\n| John Doe   | 1  |\n| John Smith | 3  |\n\nFonte: Elaborado pelo autor, com base em [@caro-castro2011]\n",
+        "size": 181
+    },
+    {
+        "name": "second-level",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\really\\deep\\second-level.md",
+        "ext": "md",
+        "value": "## Second level\n",
+        "size": 16
+    },
+    {
+        "name": "third-level",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\really\\deep\\nested\\third-level.md",
+        "ext": "md",
+        "value": "### Third level\n",
+        "size": 16
+    },
+    {
+        "name": "file",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\really\\deep\\nested\\file\\file.md",
+        "ext": "md",
+        "value": "rock bottom.\n",
+        "size": 13
+    },
+    {
+        "name": "referencias",
+        "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pos\\referencias.md",
+        "ext": "md",
+        "value": "# Bibliografia\n\nCARO-CASTRO, Carmem. Vocabularios estructurados, Web Semántica y Linked Data: oportunidades y retos para los profesionales de la documentación. **II Seminário de Estudos da Informação: Arquivologia, Biblioteconomia e Ciência de Informação: Identidades, Contrastes e Perspectivas de Interlocução**, Niterói, 2011\\. \n\nLINKED ART. **Linked Art**. 2021a. Disponível em: https://linked.art/. Acesso em: 20 maio. 2023\\. \n\nLINKED ART. **Community - Linked Art**. 2021b. Disponível em: https://linked.art/community/. Acesso em: 20 maio. 2023\\.",
+        "size": 564
+    }
+]

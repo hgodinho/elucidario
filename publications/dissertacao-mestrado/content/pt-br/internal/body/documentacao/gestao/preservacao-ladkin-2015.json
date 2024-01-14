@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Preservação de Acervo - Gestão de Acervos (LADKIN, 2015)}}",
+    "title": "{{count:chart;legend=Preservação de Acervo - Gestão de Acervos (LADKIN, 2015)}}",
     "fields": [
         {
             "type": "string",

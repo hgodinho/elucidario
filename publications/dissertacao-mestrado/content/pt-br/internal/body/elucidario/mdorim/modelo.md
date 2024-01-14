@@ -2,7 +2,7 @@ O modelo de dados é composto por um conjunto de metadados que definem as entida
 
 Um esquema em JSON-Schema pode ser definido da seguinte forma:
 
-**{{count:figuras;legend=Exemplo de JSON-Schema descrevendo os metadados para validação da representação de uma pessoa}}**
+**{{count:figure;legend=Exemplo de JSON-Schema descrevendo os metadados para validação da representação de uma pessoa}}**
 
 {{code:internal/body/elucidario/mdorim/modelo/json-schema-example.json}}
 
@@ -12,7 +12,7 @@ Tudo que está posicionado à esquerda dos dois pontos (:), é uma propriedade d
 
 Uma pessoa pode ter sua representação validada utilizando este esquema da seguinte forma:
 
-**{{count:figuras;legend=Exemplo de JSON representando uma pessoa}}**
+**{{count:figure;legend=Exemplo de JSON representando uma pessoa}}**
 
 {{code:internal/body/elucidario/mdorim/modelo/json-schema-example-person.json}}
 
@@ -20,13 +20,13 @@ Uma pessoa pode ter sua representação validada utilizando este esquema da segu
 
 O JSON-Schema também apresenta propriedades que permitem a reutilização de definições. A chave `definitions` pode ser utilizada para descrever diversos metadados diferentes, enquanto a chave `$ref` permite a referência por meio de uma URI à um metadado definido previamente. No exemplo abaixo, definimos um esquema primário que contém as definições dos metadados utilizados no sistema, e em seguida definimos um tipo `Person` que utiliza a propriedade `$ref` para referenciar suas propriedades `name` e `age`:
 
-**{{count:figuras;legend=Exemplo de JSON-Schema contendo a propriedade "definitions"}}**
+**{{count:figure;legend=Exemplo de JSON-Schema contendo a propriedade "definitions"}}**
 
 {{code:internal/body/elucidario/mdorim/modelo/json-schema-example-definitions.json}}
 
 **Fonte**: Elaborado pelo autor.
 
-**{{count:figuras;legend=Exemplo de JSON-Schema contendo a propriedade "$ref" se referenciando ao exemplo anterior}}**
+**{{count:figure;legend=Exemplo de JSON-Schema contendo a propriedade "$ref" se referenciando ao exemplo anterior}}**
 
 {{code:internal/body/elucidario/mdorim/modelo/json-schema-example-ref.json}}
 
@@ -53,7 +53,7 @@ As nomenclaturas do modelo, como nome de entidades, objetos e propriedades foram
 
 O Mdorim estende o sistema de criação de usuários do WordPress e apresenta quatro novos tipos de usuários: Curadoria (`curator`), Museologia (`museologist`), Assistência (`assistant`) e Pesquisa (`researcher`), o modelo também introduz quatro novos grupos de capacidades de usuários, sendo eles: `entities`, `procedures`, `mapping` e `options`. Cada grupo é composto por uma lista de capacidades para operações CRUD (_Create, Read, Update and Delete_) de cada entidade, procedimento, mapeamento e configuração do sistema, respectivamente. O quadro a seguir apresenta os tipos de usuário e os grupos de capacidades de cada um:
 
-{{tabela:internal/body/elucidario/mdorim/modelo/user-capacity.json}}
+{{table:internal/body/elucidario/mdorim/modelo/user-capacity.json}}
 
 As capacidades no modelo são definidas concatenando o tipo de capacidade com o grupo a que pertence, por exemplo: `create_entities` para criar uma entidade, `see_mapping` para ler um mapeamento, `edit_own_procedures` para editar um procedimento e `delete_option` para deletar uma configuração do sistema.
 
@@ -61,15 +61,15 @@ O usuário `admin` tem acesso total ao sistema e tem todas as capacidades de adm
 
 As entidades principais do modelo seguem as mesmas do Linked Art (Ver capítulo 6), portanto possuem todas suas propriedades e mais as descritas a seguir. São elas: `Concept`, `Digital`, `Event`, `Provenance`, `Group`, `Person`, `Object`, `Place`, `Set`, `Textual` e `Visual`.
 
-{{tabela:internal/body/elucidario/mdorim/modelo/model-entity.json}}
+{{table:internal/body/elucidario/mdorim/modelo/model-entity.json}}
 
 Também introduzimos uma entidade chamada `Option`, que representa uma opção do sistema. Esta entidade possui uma ID, um nome, um valor e um esquema em JSON-Schema para validação. As opções são utilizadas para definir as configurações do sistema, como por exemplo, o idioma padrão, o número de itens por página, etc. Cada opção tem seu esquema definido no código-fonte e vai variar de acordo com o tipo de dado que ela representa.
 
-{{tabela:internal/body/elucidario/mdorim/modelo/model-option.json}}
+{{table:internal/body/elucidario/mdorim/modelo/model-option.json}}
 
 Já os procedimentos possíveis entre as entidades são baseados no padrão Spectrum, em que cada procedimento é definido por uma série de etapas para documentar determinado evento a um objeto.
 
-{{tabela:internal/body/elucidario/mdorim/modelo/model-procedure.json}}
+{{table:internal/body/elucidario/mdorim/modelo/model-procedure.json}}
 
 O histórico de edições do modelo consiste em uma entidade chamada `History` que intercepta as ações de criação, edição e remoção de entidades e registra informações que permitem a auditoria e recuperação de informações adicionadas anteriormente no caso de edições erradas. Uma entidade sempre conterá um objeto `History` descrevendo seu histórico de edições.
 
@@ -77,15 +77,15 @@ Diferentemente das outras entidades, `History` somente expõe o método `GET` pa
 
 O `History` é composto por uma série de objetos `HistoryEvent` que representam cada uma das ações realizadas na entidade. Cada `HistoryEvent` contém a data e hora da ação, o tipo de ação, o usuário que realizou a ação, o ID da entidade e o conteúdo da propriedade antes e depois da ação. O conteúdo é armazenado em formato JSON e é utilizado para recuperar o estado anterior da entidade.
 
-{{tabela:internal/body/elucidario/mdorim/modelo/model-history.json}}
+{{table:internal/body/elucidario/mdorim/modelo/model-history.json}}
 
-{{tabela:internal/body/elucidario/mdorim/modelo/model-history-event.json}}
+{{table:internal/body/elucidario/mdorim/modelo/model-history-event.json}}
 
 A entidade `Mapping` tem o intuito de oferecer ao usuário uma maneira de criar seus próprios mapeamentos entre modelos de dados dentro do Elucidário.art. A entidade também é utilizada para as funções de importação e exportação de dado, e oferece mais contexto à UI dando uma referência ao usuário de possíveis mapeamentos pertencentes ao campo que está preenchendo.
 
-{{tabela:internal/body/elucidario/mdorim/modelo/model-mapping.json}}
+{{table:internal/body/elucidario/mdorim/modelo/model-mapping.json}}
 
-{{tabela:internal/body/elucidario/mdorim/modelo/model-prop-map.json}}
+{{table:internal/body/elucidario/mdorim/modelo/model-prop-map.json}}
 
 A propriedade `map_value` do objeto `PropMap` registra um valor padrão que pode ser utilizado para preencher automaticamente os campos de informação no momento da criação de uma entidade, por exemplo, se estamos tentando representar o metadado `title` do Dublin Core utilizando a propriedade `identified_by` do Linked Art, podemos definir um valor padrão para `classified_as` no objeto `Identifier` com a URI `http://purl.org/dc/elements/1.1/title` do Dublin Core e `aat:300417209` (_full titles_) no AAT:
 

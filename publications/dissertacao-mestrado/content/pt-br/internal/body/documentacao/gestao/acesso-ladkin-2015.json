@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Acesso do público ao Acervo - Gestão de Acervos (LADKIN, 2015)}}",
+    "title": "{{count:chart;legend=Acesso do público ao Acervo - Gestão de Acervos (LADKIN, 2015)}}",
     "fields": [
         {
             "type": "string",

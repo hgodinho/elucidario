@@ -11,14 +11,14 @@ import {
     referenceIndex,
     referencesFrom,
     mdToMdast,
-    loopStylesStructure,
+    filesFromManifest,
 } from "../lib/utils";
 
 import testPubGenConfig from "../../../publications/publicacao-teste/pub-gen.json";
 import testPackageJson from "../../../publications/publicacao-teste/package.json";
 import referenceIndexJson from "../../../publications/publicacao-teste/references/index.json";
 
-import { readFile, getPaths } from "@elucidario/pkg-paths";
+import { getFixture, createFixture } from "./__fixtures__";
 
 describe("pubGenConfig", () => {
     it("should return the default config", () => {
@@ -307,6 +307,29 @@ describe("referencesFrom", () => {
                 language: "en",
                 URL: "https://linked.art/community/",
             },
+            {
+                id: "caro-castro2011",
+                "@schema":
+                    "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+                "@type": "Reference",
+                _slug: "vocabularios-estructurados-web-semantica-y-linked-data-oportunidades-y-retos-para-los-profesionales-de-la-documentacion",
+                _create: "2023-05-20T00:13:02.512Z",
+                _update: "2023-05-20T00:13:02.513Z",
+                type: "article-magazine",
+                title: "Vocabularios estructurados, Web Semántica y Linked Data: oportunidades y retos para los profesionales de la documentación",
+                "container-title":
+                    "II Seminário de Estudos da Informação: Arquivologia, Biblioteconomia e Ciência de Informação: Identidades, Contrastes e Perspectivas de Interlocução",
+                "publisher-place": "Niterói",
+                author: [
+                    {
+                        family: "Caro-Castro",
+                        given: "Carmem",
+                    },
+                ],
+                issued: {
+                    raw: "2011-09-26",
+                },
+            },
         ]);
     });
 
@@ -318,7 +341,7 @@ describe("referencesFrom", () => {
 describe("mdToMdast", () => {
     it("should return a mdast tree", () => {
         const md = `# Hello World`;
-        const mdast = mdToMdast(md);
+        const mdast = mdToMdast(md, { reduce: false });
         expect(mdast).toEqual({
             type: "root",
             children: [
@@ -351,9 +374,7 @@ describe("mdToMdast", () => {
     it("should return a reduced mdast tree", () => {
         const md = `**Hello world**`;
 
-        const mdast = mdToMdast(md, {
-            reduce: true,
-        });
+        const mdast = mdToMdast(md);
 
         expect(mdast).toEqual([
             {
@@ -375,22 +396,30 @@ describe("mdToMdast", () => {
             },
         ]);
     });
+
+    it("should return a reduced mdast tree with citation", () => {
+        const md = "Olá mundo [@banana2021]";
+        const mdast = mdToMdast(md);
+
+        expect(mdast).toEqual([
+            {
+                type: "text",
+                value: "Olá mundo [@banana2021]",
+                position: {
+                    start: { line: 1, column: 1, offset: 0 },
+                    end: { line: 1, column: 24, offset: 23 },
+                },
+            },
+        ]);
+    });
 });
 
-describe.skip("loopStylesStructure", () => {
-    const structure = readFile(
-        path.resolve(
-            getPaths().packages,
-            "pub-gen",
-            "lib",
-            "styles",
-            "abnt-dissertation.json",
-        ),
-    ).value.structure;
+describe("filesFromManifest", () => {
+    it("filesFromManifest files array", () => {
+        const files = filesFromManifest("publicacao-teste", "pt-BR");
 
-    // loopStylesStructure(structure, (node) => {
-    //     // console.log(node);
-    // });
+        const manifest = getFixture("filesFromManifest.expected.json");
 
-    // console.log(structure);
+        expect(files).toMatchObject(manifest);
+    });
 });

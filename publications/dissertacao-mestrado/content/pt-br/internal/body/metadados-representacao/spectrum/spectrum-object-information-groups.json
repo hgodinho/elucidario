@@ -1,5 +1,5 @@
 {
-    "title": "{{count:quadros;legend=Grupos de informação de objeto (_Object information groups_)}}",
+    "title": "{{count:chart;legend=Grupos de informação de objeto (_Object information groups_)}}",
     "fields": [
         {
             "type": "string",

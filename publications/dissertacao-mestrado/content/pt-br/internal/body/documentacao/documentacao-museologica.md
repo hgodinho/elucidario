@@ -12,14 +12,14 @@ Já no decreto nº 8.124 de 17 de outubro de 2013 assinado pela então president
 
 A publicação "Como gerir um museu: Manual Prático" organizada pelo ICOM em parceria com a UNESCO (2014), e traduzida para o português pela ACAM Portinari - Secretaria de Cultura do Estado de São Paulo (2015) apresenta diversos textos de autores diferentes abordando aspectos da gestão de um museu, passando pela gestão do acervo, atendimento aos visitantes, comunicação, segurança e entre outros assuntos. O texto "Gestão de Acervo" de Nicola Ladkin foca nas políticas, procedimentos, preservação, acesso e pesquisa do acervo. Apresentamos a seguir quadros que compilam os principais pontos de gestão de acervo apresentados por Ladkin.
 
-{{tabela:internal/body/documentacao/gestao/politica-ladkin-2015.json}}
+{{table:internal/body/documentacao/gestao/politica-ladkin-2015.json}}
 
-{{tabela:internal/body/documentacao/gestao/procedimentos-ladkin-2015.json}}
+{{table:internal/body/documentacao/gestao/procedimentos-ladkin-2015.json}}
 
-{{tabela:internal/body/documentacao/gestao/preservacao-ladkin-2015.json}}
+{{table:internal/body/documentacao/gestao/preservacao-ladkin-2015.json}}
 
-{{tabela:internal/body/documentacao/gestao/acesso-ladkin-2015.json}}
+{{table:internal/body/documentacao/gestao/acesso-ladkin-2015.json}}
 
-{{tabela:internal/body/documentacao/gestao/pesquisa-ladkin-2015.json}}
+{{table:internal/body/documentacao/gestao/pesquisa-ladkin-2015.json}}
 
 Ainda, como esclarecido por Padilha (2014, p.36), a documentação museológica pode ser de dois vieses: documentação do objeto e a documentação das práticas administrativas. "O primeiro trata da compilação dos dados e do tratamento informacional extraídos de cada objeto adquirido pelo museu, enquanto que o segundo considera toda a documentação produzida pela instituição para legitimar suas práticas desenvolvidas" [@padilha2014 p.36]. Seguimos aqui o primeiro viés, o da documentação do objeto.

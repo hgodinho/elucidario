@@ -56,6 +56,6 @@
         -  Ver Quadro 4 a seguir;
         -  Retorne ao procedimento que iniciou a movimentação.
 
-{{tabela:internal/body/documentacao/spectrum/location.json}}
+{{table:internal/body/documentacao/spectrum/location.json}}
 
-{{tabela:internal/body/documentacao/spectrum/movement.json}}
+{{table:internal/body/documentacao/spectrum/movement.json}}
