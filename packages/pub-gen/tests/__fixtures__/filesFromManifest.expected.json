@@ -66,29 +66,29 @@
         "name": "first-level",
         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\really\\first-level.md",
         "ext": "md",
-        "value": "# First level\n\nQuadro 1: Teste Tabela.\n\n| Name       | ID |\n| :--------- | -- |\n| John Doe   | 1  |\n| John Smith | 3  |\n\nFonte: Elaborado pelo autor, com base em [@caro-castro2011]\n",
-        "size": 181
+        "value": "# First level\n\nQuadro 1: Teste Tabela.\n\n| Name       | ID |\n| :--------- | -- |\n| John Doe   | 1  |\n| John Smith | 3  |\n\nFonte: Elaborado pelo autor, com base em [@caro-castro2011]",
+        "size": 180
     },
     {
         "name": "second-level",
         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\really\\deep\\second-level.md",
         "ext": "md",
-        "value": "## Second level\n",
-        "size": 16
+        "value": "## Second level",
+        "size": 15
     },
     {
         "name": "third-level",
         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\really\\deep\\nested\\third-level.md",
         "ext": "md",
-        "value": "### Third level\n",
-        "size": 16
+        "value": "### Third level",
+        "size": 15
     },
     {
         "name": "file",
         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\really\\deep\\nested\\file\\file.md",
         "ext": "md",
-        "value": "rock bottom.\n",
-        "size": 13
+        "value": "rock bottom.",
+        "size": 12
     },
     {
         "name": "referencias",
