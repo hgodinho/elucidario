@@ -1,8 +1,8 @@
-import { readContents } from "../dist/mjs";
+import { asyncReadContents } from "../dist/mjs";
 
-describe("readContents", () => {
-    it("should return an Array of File object from index (default)", () => {
-        const contents = readContents({
+describe("asyncReadContents", () => {
+    it("should return an Array of File object from index (default)", async () => {
+        const contents = await asyncReadContents({
             dirPath: "tests/data",
         });
         expect(contents).toHaveLength(1);
@@ -15,12 +15,11 @@ describe("readContents", () => {
         });
     });
 
-    it("should return an Array of File object without index", () => {
-        const contents = readContents({
+    it("should return an Array of File object without index", async () => {
+        const contents = await asyncReadContents({
             dirPath: "tests/data",
             index: false,
         });
-
         expect(contents).toHaveLength(6);
     });
 });

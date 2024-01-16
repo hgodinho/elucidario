@@ -1,12 +1,19 @@
 {
-    "JSON": "_JavaScript Object Notation_",
     "API": "_Application Programming Interface_",
+    "CHIN": "_Canada Heritage Information Network_",
     "CI": "Ciência da Informação ou _Continuous Integration_ dependendo do contexto",
-    "Spectrum": "_Standard ProCedures for Collections Recording Used in Museums_",
-    "CRM": "_Conceptual Reference Model_",
     "CIDOC": "_International Committee for Documentation of the International Council of Museums_",
-    "ICOM": "_International Council of Museums_",
-    "LOD": "_Linked Open Data_",
     "CMS": "_Collection Management System_ ou _Content Management System_, mas damos preferência para o primeiro",
-    "LOUD": "_Linked Open Usable Data_"
+    "CRM": "_Conceptual Reference Model_",
+    "ENANCIB": "Encontro Nacional de Pesquisa em Ciência da Informação",
+    "FCC": "Fundação Catarinense de Cultura",
+    "IBRAM": "Instituto Brasileiro de Museus",
+    "ICOM": "_International Council of Museums_",
+    "JSON": "_JavaScript Object Notation_",
+    "LOD": "_Linked Open Data_",
+    "LOUD": "_Linked Open Usable Data_",
+    "SISEM": "Sistema Estadual de Museus",
+    "Spectrum": "_Standard ProCedures for Collections Recording Used in Museums_",
+    "TIC": "Tecnologias de Informação e Comunicação",
+    "UI": "_User Interface_"
 }
