@@ -93,8 +93,6 @@ describe("processAssets", () => {
             filePath: "internal/pos/lista-{*}",
         });
 
-        // createFixture("processAssets.expected.json", files);
-
         expect(files).toMatchObject(expected);
     });
 

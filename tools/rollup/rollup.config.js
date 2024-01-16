@@ -11,7 +11,6 @@ const external = [
     "child_process",
     "commander",
     "fs",
-    "fs/promises",
     "i18n",
     "inquirer",
     "json-schema-to-typescript",

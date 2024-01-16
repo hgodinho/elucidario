@@ -19,13 +19,15 @@
                     "internal\\pre\\lista-chart.md",
                     "internal\\pre\\lista-abreviaturas-siglas.md"
                 ],
-                "pos": ["internal\\pos\\referencias.md"]
+                "pos": [
+                    "internal\\pos\\referencias.md"
+                ]
             },
             "external": {}
         },
         "assets": [
-            "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\generated\\mermaid.png",
-            "..\\..\\files\\static\\lorem-ipsum.jpeg"
+            "..\\..\\files\\static\\lorem-ipsum.jpeg",
+            "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\generated\\mermaid.png"
         ]
     }
 }

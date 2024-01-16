@@ -1,8 +1,6 @@
 # 2. Procedimentos metodológicos
 
-Esta é uma pesquisa aplicada mista e exploratória, que utiliza revisão bibliográfica e estudo de caso.
-
-Como o objetivo da pesquisa é desenvolver o aplicativo Elucidário.art, utilizamos diferentes métodos para obtenção dos resultados:
+Como o objetivo da pesquisa é o desenvolvimento do aplicativo Elucidário.art e a realização de seus testes, utilizamos diferentes métodos para obtenção dos resultados:
 
 **Revisão bibliográfica**
 
