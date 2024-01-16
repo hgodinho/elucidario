@@ -1,6 +1,6 @@
 {
-    "image": ["imagem-1", "imagem-2"],
-    "figure": ["figura-1", "figura-2"],
-    "table": ["tabela-1", "tabela-2"],
-    "chart": ["grafico-1", "grafico-2"]
+    "imagens": ["imagem-1", "imagem-2"],
+    "figuras": ["figura-1", "figura-2"],
+    "tabelas": ["tabela-1", "tabela-2"],
+    "quadros": ["grafico-1", "grafico-2"]
 }

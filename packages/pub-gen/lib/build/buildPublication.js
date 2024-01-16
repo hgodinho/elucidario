@@ -1,5 +1,6 @@
 import path from "path";
 
+import { processDocs } from "./processDocs.js";
 import { pubGenConfig, packageJson, processFiles } from "../utils.js";
 import {
     build,
@@ -9,7 +10,6 @@ import {
     writeFile,
 } from "@elucidario/pkg-paths";
 import { Console } from "@elucidario/pkg-console";
-import { asyncProcessDocs } from "./asyncProcessDocs.js";
 
 const paths = getPaths();
 const pkg = readFile(
@@ -60,7 +60,7 @@ export async function buildPublication({ publication, watch }) {
                             "static",
                         );
 
-                        const processed = await asyncProcessDocs({
+                        const processed = await processDocs({
                             publication,
                             lang: language,
                             index: pub.index || true,
