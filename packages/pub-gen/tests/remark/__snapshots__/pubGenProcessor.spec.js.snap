@@ -5,7 +5,7 @@ exports[`pubGenProcessor should return processed value 1`] = `
 
 ## Second level heading
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (LINKED ART, 2021a).
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (Linked Art, 2021a).
 
 **undefined 1: Mermaid**
 
@@ -18,15 +18,15 @@ erDiagram
 
 ### Third level heading
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (Linked Art, 2021a)
 
 #### Fourth level heading
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021b)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (Linked Art, 2021b)
 
 ##### Fifth level heading
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (LINKED ART, 2021a, 2021b)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (Linked Art, 2021a, 2021b)
 
 ###### Sixth level heading
 
