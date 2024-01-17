@@ -47,8 +47,6 @@ A seguir apresentamos uma visão geral do modelo com todas as entidades, procedi
 
 {{mermaid:internal/body/elucidario/mdorim/mermaid.md}}
 
-A figura 10 demonstra o Mdorim como um todo, em cinza vemos as entidades principais do modelo que foram importadas do Linked Art; na cor vinho e com formato circular vemos os procedimentos que também tem sua rota no modelo; em preto vemos a entidade `Option` e suas possibilidades de uso; em vermelho os tipos de usuários; em roxo a entidade `History` e, por fim, em marrom o mapeamentos e suas propriedades.
-
 As nomenclaturas do modelo, como nome de entidades, objetos e propriedades foram mantidas em inglês para manter a consistência entre o idioma usado nas linguagens de programação e a API do modelo.
 
 O Mdorim estende o sistema de criação de usuários do WordPress e apresenta quatro novos tipos de usuários: Curadoria (`curator`), Museologia (`museologist`), Assistência (`assistant`) e Pesquisa (`researcher`), o modelo também introduz quatro novos grupos de capacidades de usuários, sendo eles: `entities`, `procedures`, `mapping` e `options`. Cada grupo é composto por uma lista de capacidades para operações CRUD (_Create, Read, Update and Delete_) de cada entidade, procedimento, mapeamento e configuração do sistema, respectivamente. O quadro a seguir apresenta os tipos de usuário e os grupos de capacidades de cada um:

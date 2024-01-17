@@ -4,7 +4,7 @@ A Casa Museu Ema Klabin é uma casa museu de colecionadora localizada na Rua Por
 
 **{{count:image;legend=Fachada da Casa Museu Ema Klabin vista do Jardim.}}**
 
-![Foto de Nelson Kon, 2022.]({{static}}/fachada-nelson-kon-2022.jpg)
+![Fachada da Casa Museu Ema Klabin (Kon, 2022a)]({{static}}/fachada-nelson-kon-2022.jpg)
 
 Ema Klabin (1907 - 1994) foi uma mecenas e colecionadora de arte, filha de Hessel Klabin, um dos sócios-fundadores da empresa hoje conhecida como Klabin S.A., de papel e celulose. Em 1946, antes de seu falecimento, Hessel doou todos seus bens para as duas filhas (Ema e Eva Klabin), inclusive sua parte da empresa [@costa2007, p.81-82]. Paulo de Freitas Costa, curador da Casa Museu Ema Klabin, descreve Ema em seu livro "Sinfonia de Objetos" [@costa2007, p. 84] como uma "grande apreciadora de música e de arte, leitora voraz e frequentadora assídua de concertos e apresentações de teatro, ópera e balé, bem como de exposições em museus e galerias", Paulo também menciona a atuação ativa de Ema no setor cultural paulistano:
 
@@ -20,15 +20,15 @@ Costa (2007) define quatro movimentos da coleção de Ema, sendo o primeiro "A t
 
 **{{count:image;legend=Salão da Casa Museu Ema Klabin.}}**
 
-![Foto de Nelson Kon, 2022.]({{static}}/salao-nelson-kon-2022.jpg)
+![Salão da Casa Museu Ema Klabin (Kon, 2022b).]({{static}}/salao-nelson-kon-2022.jpg)
 
 Na Imagem 2, em primeiro plano vemos a coleção de bronzes chineses, com peças do século XIV a.c. como o Recipiente para aquecimento de vinho ritual (_jue_) da Dinastia Shang (o segundo da direita para esquerda). No centro do salão, em cima da mesa uma cópia de estudo de uma ânfora, provavelmente realizada em Roma no século XIX. Ao fundo o quadro Triunfo de Baco e Ariadne de Giovanni Battista Gaulli (_Il Baciccio_) de 1675.
 
 Conforme Costa (2007), o segundo movimento "Raízes brasileiras" apresenta temas totalmente novos, relacionados ao nosso passado imperial e colonial, explorando os elementos artísticos brasileiros. As primeiras peças brasileiras a entrar na coleção de Ema são as imagens do Bom Jesus da Lapa, da Santa Luzia, da Nossa Senhora Divina Pastora e da Nossa Senhora da Assunção, que foram expostas inicialmente na exposição "Imagens Religiosas Brasileiras", realizada em comemoração ao "IV Centenário da Cidade de São Paulo", junto com mais outras exposições que buscavam entender a formação da nação brasileira a partir de referências paulistas [@costa2007, p.106]. Costa destaca que a formação da coleção brasileira de Ema se caracteriza por um olhar estrangeiro, embora Ema tenha nascido no Rio de Janeiro, é filha de imigrantes e teve sua educação realizada na Europa "para Ema, talvez, uma Virgem Maria de nosso barroco fosse tão distante quanto uma Guanyin chinesa do século XVII" [@costa2007, p. 108];
 
-**{{count:image;legend=Detalhe da Sala de Jantar da Casa Museu Ema Klabin. Foto de Nelson Kon.}}**
+**{{count:image;legend=Detalhe da Sala de Jantar da Casa Museu Ema Klabin.}}**
 
-![Foto de Nelson Kon, 2022.]({{static}}/sala-jantar-nelson-kon-2022.jpg)
+![Detalhe da Sala de Jantar de Casa Museu Ema Klabin (Kon, 2022c)]({{static}}/sala-jantar-nelson-kon-2022.jpg)
 
 Na Imagem 3 ao centro vemos um armário-vitrine do século XX construído com fragmentos de talhas do Mestre Valentim da Fonseca, dentro dela vemos diversas imagens sacras. Ao lado, a direta, vemos uma placa misular do século XIX também do Mestre Valentim da Fonseca, logo abaixo vemos a Imagem de Santana Mestra do século XVIII. À esquerda do armário vitrine, "Vaso com Flores" de Maurice de Vlaminck e "Natureza morta com limões e xícara" de Pierre-Auguste Renoir.
 
@@ -36,7 +36,7 @@ O terceiro movimento "Aproximações com o Modernismo" tem seu início no ano de
 
 **{{count:image;legend=Detalhe do quarto principal da Casa Museu Ema Klabin.}}**
 
-![Foto de Nelson Kon, 2022.]({{static}}/quarto-nelson-kon-2022.jpg)
+![Detalhe do quarto principal da Casa Museu Ema Klabin (Kon, 2022d)]({{static}}/quarto-nelson-kon-2022.jpg)
 
 Na Imagem 4 vemos o "Retrato Feminino" de Emiliano Di Cavalcanti de 1955 à esquerda, "Rebanho em Repouso" de 1944 de Lasar Segall à direita do espelho, e mais à direita a tela "Galos" de Cândido Portinari de 1940.
 
@@ -44,7 +44,7 @@ Em 1972, Ema e sua irmã Eva, preocupadas com o destino de suas coleções, conv
 
 **{{count:image;legend=Detalhe da sala de música da Casa Museu Ema Klabin}}**
 
-![Foto de Nelson Kon, 2022.]({{static}}/sala-musica-nelson-kon-2022.jpg)
+![Detalhe da Sala de Música da Casa Museu Ema Klabin (Kon, 2022e)]({{static}}/sala-musica-nelson-kon-2022.jpg)
 
 Na Imagem 5 vemos em destaque a tela "_À la Campagne_" de Marc Chagall de 1925, à sua esquerda o relógio de piso francês do século XVIII.
 
@@ -74,7 +74,7 @@ Em alguns casos, a numeração de itens múltiplos na documentação da coleçã
 
 ![**Fonte**: Tela do Filemaker demonstrando numeração com sistema alfanumérico.]({{static}}/filemaker-m0003.png)
 
-Esta sintaxe de numeração dos itens não corresponde às práticas recomendadas por modelos e guias como Cataloguing Cultural Objects: A Guide to Describing Cultural Works and Their Images (CCO) e Categories for the Description of Works of Art (CDWA) mantido pelo Getty Vocabulary Program (GVP). O CCO recomenda o registro separado das partes do todo e um registro para o todo em si [@baca2006.1, p. 14], e que o catalogador faça o registro dessas relações entre os objetos. Para isso, o guia define três tipos diferentes de relações intrínsecas, ou relações hierárquicas parte-todo: grupos ou coleções, séries, componentes ou obras arquitetônicas. Já a diretriz CDWA apresenta uma lista de possibilidades recomendadas que definem o nível de catalogação de um trabalho artístico: item, volume, álbum, grupo, subgrupo, coleção, série, conjunto, múltiplos, componentes, caixa, fundo, portfólio, suíte, complexo, agrupamento de objetos, performance e itens [@harpring2022]. O CDWA, assim como o CCO, define essa informação como obrigatória, e é desejável que as partes sejam registradas separadamente do todo, com a indicação de suas relações intrínsecas.
+Esta sintaxe de numeração dos itens não corresponde às práticas recomendadas por modelos e guias como Cataloguing Cultural Objects: A Guide to Describing Cultural Works and Their Images (CCO) [@baca2006] e CDWA [@harpring2022] mantido pelo Getty Vocabulary Program (GVP). O CCO recomenda o registro separado das partes do todo e um registro para o todo em si [@baca2006.1, p. 14], e que o catalogador faça o registro dessas relações entre os objetos. Para isso, o guia define três tipos diferentes de relações intrínsecas, ou relações hierárquicas parte-todo: grupos ou coleções, séries, componentes ou obras arquitetônicas. Já a diretriz CDWA apresenta uma lista de possibilidades recomendadas que definem o nível de catalogação de um trabalho artístico: item, volume, álbum, grupo, subgrupo, coleção, série, conjunto, múltiplos, componentes, caixa, fundo, portfólio, suíte, complexo, agrupamento de objetos, performance e itens [@harpring2022]. O CDWA, assim como o CCO, define essa informação como obrigatória, e é desejável que as partes sejam registradas separadamente do todo, com a indicação de suas relações intrínsecas.
 
 Um outro problema é a representação dos itens nas BDs Filemaker, que estão incompletas e não estruturadas. Informações como Material e Técnica do item estão em um único campo chamado MaterialTécnica, e as informações armazenadas neste campo não aderem a nenhum vocabulário controlado, o que torna difícil a recuperação da informação. O metadado sobre as dimensões da peça são armazenados todos no mesmo campo "Dimensões" sem um padrão definido em relação a ordem de escrita da altura, largura e profundidade e não há padrão para unidade de medida utilizada, temos registros em milímetros e em centímetros. Todos os metadados são dos tipos "text" ou "number", ou seja, aceitam valores textuais (string) ou numéricos, o que torna difícil a inclusão de informações com estruturas mais complexas como "arrays" ou "objects", como por exemplo as informações sobre o estado de conservação e intervenções dos itens, que são armazenadas nos campo Descrição e Intervenções na aba Conservação da BD Museológica, e que são escritas em linguagem natural, como no exemplo a seguir:
 
@@ -86,7 +86,7 @@ Este metadado poderia ser facilmente representado por uma matriz de objetos, em 
 
 Na imagem anterior também podemos ver os campos de "Criador" e "Modificador" no rodapé da tela, o campo de Modificador também apresenta problemas, pois registra somente o último modificador, ou seja, não existe no sistema uma forma de armazenar todo o histórico de atualizações nas BDs, o que torna impossível uma auditoria dos dados.
 
-Somente os metadados Classificação e Núcleo utilizam vocabulários controlados para a indexação. Em Classificação foi utilizado o Tesauro de Objetos do Patrimônio Cultural nos Museus Brasileiros, de Helena Dodd Ferrez (2016), e Núcleo utiliza uma taxonomia estabelecida internamente pela equipe da casa museu: "Os núcleos foram estabelecidos pela equipe da Fundação e se baseiam no papel que os objetos representam dentro da coleção, independentemente de sua função original, visando facilitar a compreensão do público" (EXPLORE, 2019). A não utilização de vocabulários controlados em outros metadados como material, técnica ou local de criação torna difícil a recuperação da informação por meio de filtros baseados nesses campos.
+Somente os metadados Classificação e Núcleo utilizam vocabulários controlados para a indexação. Em Classificação foi utilizado o Tesauro de Objetos do Patrimônio Cultural nos Museus Brasileiros, de Helena Dodd Ferrez (2016), e Núcleo utiliza uma taxonomia estabelecida internamente pela equipe da casa museu: "Os núcleos foram estabelecidos pela equipe da Fundação e se baseiam no papel que os objetos representam dentro da coleção, independentemente de sua função original, visando facilitar a compreensão do público" [@godinho2019.2]. A não utilização de vocabulários controlados em outros metadados como material, técnica ou local de criação torna difícil a recuperação da informação por meio de filtros baseados nesses campos.
 
 Um outro problema nas BDs é que não há uma conexão direta entre elas, quando muito, há a indicação do número de tombo do Arquivístico referente ao documento de compra da obra no campo Doc. Aquisição da BD Museológica, ou indicação em linguagem natural do número de tombo de uma referência. Informações que poderiam ser compartilhadas entre as bases em forma de linguagens documentárias como a localização interna dos itens na casa, a localização geográfica de origem do objeto e a autoria, operam de maneira isolada entre as BDs o que torna difícil a sua manutenção.
 
@@ -98,17 +98,17 @@ O quadro a seguir demonstra todos os metadados definidos na BD Museológica:
 
 {{table:internal/body/casa-museu-ema-klabin/museologico.json}}
 
-Em 2019, com o lançamento do EXPLORE (<https://emaklabin.org.br/explore>), a Casa Museu Ema Klabin passa a disponibilizar a coleção para consulta online. O EXPLORE é resultado do Trabalho de Conclusão de Curso da Pós-Graduação em Comunicação e Design Digital pela Escola Superior de Propaganda e Marketing (2018) e consiste em duas partes principais: plugin e tema para WordPress. O plugin é responsável por delimitar a arquitetura da Informação no sistema, o _back-end_, já o tema é responsável pela apresentação desta informação, o _front-end_. No _back-end_ foi estabelecido dois tipos principais de conteúdos a serem inseridos: Autores e Obras. Também foi estabelecido três taxonomias para organizar as obras: Ambientes, Núcleos e Classificações. Em “Autores” foi inserido todos os metadados relacionados aos agentes criadores dos objetos da coleção. “Obras” armazena os metadados relacionados aos itens da coleção: número de tombo, título, autor, data, material, técnica, medidas, classificação, ambiente e núcleo. Em “ambientes” foi criado um termo para cada ambiente da casa: sala de jantar, galeria, biblioteca, salão, quarto principal, quarto azul, sala de música, hall, vestíbulo, jardim principal e jardim interno, e relacionado à localização das obras na casa. Em “núcleos” estão os termos utilizados pela curadoria para organizar os itens da coleção: artes decorativas, prataria, arte asiática, arte europeia até 1900, arte brasileira - século XX, mobiliário europeu, arte brasileira até 1900, moda, mobiliário brasileiro, arte europeia - século XX, antiguidade clássica, arte pré-colombiana, arte africana e arte das Américas. Em “classificações” foi utilizado o Tesauro de Objetos do Patrimônio Cultural nos Museus Brasileiros (FERREZ, 2016).
+Em 2019, com o lançamento do EXPLORE (<https://emaklabin.org.br/explore>), a Casa Museu Ema Klabin passa a disponibilizar a coleção para consulta online. O EXPLORE é resultado do Trabalho de Conclusão de Curso da Pós-Graduação em Comunicação e Design Digital pela Escola Superior de Propaganda e Marketing (2018) e consiste em duas partes principais: plugin e tema para WordPress. O plugin é responsável por delimitar a arquitetura da Informação no sistema, o _back-end_, já o tema é responsável pela apresentação desta informação, o _front-end_. No _back-end_ foi estabelecido dois tipos principais de conteúdos a serem inseridos: Autores e Obras. Também foi estabelecido três taxonomias para organizar as obras: Ambientes, Núcleos e Classificações. Em “Autores” foi inserido todos os metadados relacionados aos agentes criadores dos objetos da coleção. “Obras” armazena os metadados relacionados aos itens da coleção: número de tombo, título, autor, data, material, técnica, medidas, classificação, ambiente e núcleo. Em “ambientes” foi criado um termo para cada ambiente da casa: sala de jantar, galeria, biblioteca, salão, quarto principal, quarto azul, sala de música, hall, vestíbulo, jardim principal e jardim interno, e relacionado à localização das obras na casa. Em “núcleos” estão os termos utilizados pela curadoria para organizar os itens da coleção: artes decorativas, prataria, arte asiática, arte europeia até 1900, arte brasileira - século XX, mobiliário europeu, arte brasileira até 1900, moda, mobiliário brasileiro, arte europeia - século XX, antiguidade clássica, arte pré-colombiana, arte africana e arte das Américas. Em “classificações” foi utilizado o Tesauro de Objetos do Patrimônio Cultural nos Museus Brasileiros [@ferrez2016].
 
 {{count:image;legend=Página principal do Explore.}}
 
-![**Fonte**: Página inicial do site https://emaklabin.org.br/explore]({{static}}/explore-home.png)
+![**Fonte**: Página inicial do site https://emaklabin.org.br/explore (Costa, 2019a)]({{static}}/explore-home.png)
 
 {{count:image;legend=Página de detalhe de um item do Explore.}}
 
-![**Fonte**: Página de detalhe de um item do site https://emaklabin.org.br/explore]({{static}}/explore-single.png)
+![**Fonte**: Página de detalhe de um item do site https://emaklabin.org.br/explore (Costa, 2019b)]({{static}}/explore-single.png)
 
-Após o lançamento do site foi diagnosticada a necessidade de atualizar as bases de dados para que as informações estejam em padrões internacionais de descrição e representação de itens museológicos, como Object ID, e Linked-art criados pelos Grupos de Trabalhos do Comitê Internacional de Documentação do Conselho Internacional de Museus (CIDOC-ICOM), e que os processos museológicos passassem a aderir metodologias como _Standard Procedures for Collections Recording Used in Museums_ (Spectrum) criada pela _Collections Trust_, recomendada pelo ICOM e utilizada por todas as instituições museológicas do Reino Unido e diversas outras ao redor do mundo (COLLECTIONS TRUST, 2017).
+Após o lançamento do site foi diagnosticada a necessidade de atualizar as bases de dados para que as informações estejam em padrões internacionais de descrição e representação de itens museológicos, como Object ID, e Linked-art criados pelos Grupos de Trabalhos do CIDOC-ICOM, e que os processos museológicos passassem a aderir metodologias como Spectrum criada pela _Collections Trust_, recomendada pelo ICOM e utilizada por todas as instituições museológicas do Reino Unido e diversas outras ao redor do mundo [@collections-trust2017.1].
 
 Tanto o EXPLORE quanto o Filemaker, não são soluções adequadas para a gestão de uma coleção complexa como a Coleção Ema Klabin. Embora o EXPLORE seja uma solução mais recente e desenvolvida internamente, será necessário passar por novos ciclos de desenvolvimento para que possa ser utilizado efetivamente como um _Collection Management System_ (CMS).
 

@@ -1,5 +1,5 @@
 {
-    "title": "{{count:chart;legend=Política de Gestão de Acervo - Gestão de Acervos (LADKIN, 2015)}}",
+    "title": "{{count:chart;legend=Política de Gestão de Acervo - Gestão de Acervos (Ladkin, 2015)}}",
     "fields": [
         {
             "type": "string",

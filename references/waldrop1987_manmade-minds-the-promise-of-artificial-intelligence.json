@@ -1,0 +1,21 @@
+{
+    "id": "waldrop1987",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "manmade-minds-the-promise-of-artificial-intelligence",
+    "_create": "2024-01-17T12:16:16.274Z",
+    "_update": "2024-01-17T12:16:16.274Z",
+    "type": "book",
+    "title": "Manmade minds: the promise of artificial intelligence",
+    "publisher": "Walker",
+    "publisher-place": "New York",
+    "author": [
+        {
+            "family": "Waldrop",
+            "given": "Mitchell"
+        }
+    ],
+    "issued": {
+        "raw": "1987"
+    }
+}

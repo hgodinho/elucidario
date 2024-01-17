@@ -1,0 +1,22 @@
+{
+    "id": "hjorland2003",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "principia-informatica-foundational-theory-of-information-and-principles-of-information-services",
+    "_create": "2024-01-17T14:17:35.283Z",
+    "_update": "2024-01-17T14:17:35.283Z",
+    "type": "book",
+    "title": "Principia Informatica: Foundational Theory of Information and Principles of Information Services.",
+    "container-title": "Emeerging Frameworks and Methods. Proceedings of the Fourth Conference on Conceptions of Library and Information Science (CoLIS4)",
+    "publisher": "Libraries Unlimited",
+    "publisher-place": "Greenwood Village, Colorado",
+    "author": [
+        {
+            "family": "Hjorland",
+            "given": "Birger"
+        }
+    ],
+    "issued": {
+        "raw": "2003"
+    }
+}
