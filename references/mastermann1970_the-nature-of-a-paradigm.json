@@ -1,0 +1,22 @@
+{
+    "id": "mastermann1970",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "the-nature-of-a-paradigm",
+    "_create": "2024-01-17T12:24:56.410Z",
+    "_update": "2024-01-17T12:24:56.410Z",
+    "type": "chapter",
+    "title": "The nature of a paradigm",
+    "container-title": "Criticism and the growth of knowledge",
+    "publisher": "Cambridge University Press.",
+    "publisher-place": "Cambridge",
+    "author": [
+        {
+            "family": "Mastermann",
+            "given": "Margaret"
+        }
+    ],
+    "issued": {
+        "raw": "1970"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "id": "ferrez2016",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "tesauro-de-objetos-do-patrimonio-cultural-nos-museus-brasileiros",
+    "_create": "2024-01-17T17:11:00.331Z",
+    "_update": "2024-01-17T17:11:00.331Z",
+    "type": "book",
+    "title": "Tesauro de Objetos do Patrimônio Cultural nos Museus Brasileiros",
+    "publisher": "Prefeitura da Cidade do Rio de Janeiro",
+    "publisher-place": "Rio de Janeiro",
+    "author": [
+        {
+            "family": "Ferrez",
+            "given": "Helena Dodd"
+        }
+    ],
+    "issued": {
+        "raw": "2016"
+    }
+}

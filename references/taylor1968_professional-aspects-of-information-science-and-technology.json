@@ -1,0 +1,20 @@
+{
+    "id": "taylor1968",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "professional-aspects-of-information-science-and-technology",
+    "_create": "2024-01-17T12:58:35.658Z",
+    "_update": "2024-01-17T12:58:35.658Z",
+    "type": "article",
+    "title": "Professional aspects of information science and technology",
+    "container-title": "Annual Review of Information Science and Technology",
+    "author": [
+        {
+            "family": "Taylor",
+            "given": "R.S."
+        }
+    ],
+    "issued": {
+        "raw": "1968"
+    }
+}

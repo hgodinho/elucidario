@@ -1,0 +1,21 @@
+{
+    "id": "belkin1980",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "anomalous-states-of-knowledge-as-basis-for-information-retrieval",
+    "_create": "2024-01-17T13:16:12.632Z",
+    "_update": "2024-01-17T13:16:12.632Z",
+    "type": "article",
+    "title": "Anomalous States of Knowledge as Basis for Information Retrieval",
+    "container-title": "The Canadian Journal of Information Science",
+    "volume": "5",
+    "author": [
+        {
+            "family": "Belkin",
+            "given": "Nicholas J."
+        }
+    ],
+    "issued": {
+        "raw": "1980"
+    }
+}

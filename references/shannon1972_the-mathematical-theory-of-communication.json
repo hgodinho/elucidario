@@ -1,0 +1,25 @@
+{
+    "id": "shannon1972",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "the-mathematical-theory-of-communication",
+    "_create": "2024-01-17T04:45:37.066Z",
+    "_update": "2024-01-17T04:45:37.066Z",
+    "type": "book",
+    "title": "The mathematical theory of communication",
+    "publisher": "University of Illinois Press",
+    "publisher-place": "Urbana, IL",
+    "author": [
+        {
+            "family": "Shannon",
+            "given": "Claude"
+        },
+        {
+            "family": "Weaver",
+            "given": "Warren"
+        }
+    ],
+    "issued": {
+        "raw": "1972"
+    }
+}

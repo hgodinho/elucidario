@@ -644,6 +644,121 @@
             "id": "spec9999",
             "slug": "the-8-point-grid",
             "path": "<references>/spec9999_the-8-point-grid.json"
+        },
+        {
+            "id": "shannon1972",
+            "slug": "the-mathematical-theory-of-communication",
+            "path": "<references>/shannon1972_the-mathematical-theory-of-communication.json"
+        },
+        {
+            "id": "wiener1961",
+            "slug": "cybernetics-or-control-and-communication-in-the-anima-and-the-machine",
+            "path": "<references>/wiener1961_cybernetics-or-control-and-communication-in-the-anima-and-the-machine.json"
+        },
+        {
+            "id": "waldrop1987",
+            "slug": "manmade-minds-the-promise-of-artificial-intelligence",
+            "path": "<references>/waldrop1987_manmade-minds-the-promise-of-artificial-intelligence.json"
+        },
+        {
+            "id": "kuhn1962",
+            "slug": "the-structure-of-scientific-revoltions",
+            "path": "<references>/kuhn1962_the-structure-of-scientific-revoltions.json"
+        },
+        {
+            "id": "mastermann1970",
+            "slug": "the-nature-of-a-paradigm",
+            "path": "<references>/mastermann1970_the-nature-of-a-paradigm.json"
+        },
+        {
+            "id": "borko1968",
+            "slug": "information-science-what-is-it",
+            "path": "<references>/borko1968_information-science-what-is-it.json"
+        },
+        {
+            "id": "taylor1968",
+            "slug": "professional-aspects-of-information-science-and-technology",
+            "path": "<references>/taylor1968_professional-aspects-of-information-science-and-technology.json"
+        },
+        {
+            "id": "machlup1983",
+            "slug": "semantic-quirks-in-stuies-of-information",
+            "path": "<references>/machlup1983_semantic-quirks-in-stuies-of-information.json"
+        },
+        {
+            "id": "belkin1980",
+            "slug": "anomalous-states-of-knowledge-as-basis-for-information-retrieval",
+            "path": "<references>/belkin1980_anomalous-states-of-knowledge-as-basis-for-information-retrieval.json"
+        },
+        {
+            "id": "belkin1982",
+            "slug": "ask-for-information-retrieval-part-i-background-and-theory",
+            "path": "<references>/belkin1982_ask-for-information-retrieval-part-i-background-and-theory.json"
+        },
+        {
+            "id": "hjorland2003",
+            "slug": "principia-informatica-foundational-theory-of-information-and-principles-of-information-services",
+            "path": "<references>/hjorland2003_principia-informatica-foundational-theory-of-information-and-principles-of-information-services.json"
+        },
+        {
+            "id": "cury2020",
+            "slug": "metamuseologia-reflexividade-sobre-a-triade-musealia-musealidade-e-musealizacao-museus-etnograficos-e-participacao-indigena",
+            "path": "<references>/cury2020_metamuseologia-reflexividade-sobre-a-triade-musealia-musealidade-e-musealizacao-museus-etnograficos-e-participacao-indigena.json"
+        },
+        {
+            "id": "desvallees2013",
+            "slug": "concetos-chave-de-museologia",
+            "path": "<references>/desvallees2013_concetos-chave-de-museologia.json"
+        },
+        {
+            "id": "boylan2015",
+            "slug": "como-gerir-um-museu-manual-pratico",
+            "path": "<references>/boylan2015_como-gerir-um-museu-manual-pratico.json"
+        },
+        {
+            "id": "ladkin2014",
+            "slug": "gestao-de-acervo",
+            "path": "<references>/ladkin2014_gestao-de-acervo.json"
+        },
+        {
+            "id": "kon2022",
+            "slug": "fachada-da-casa-museu-ema-klabin",
+            "path": "<references>/kon2022_fachada-da-casa-museu-ema-klabin.json"
+        },
+        {
+            "id": "kon2022.1",
+            "slug": "salao-principal-da-casa-museu-ema-klabin",
+            "path": "<references>/kon2022.1_salao-principal-da-casa-museu-ema-klabin.json"
+        },
+        {
+            "id": "kon2022.2",
+            "slug": "detalha-da-sala-de-jantar-da-casa-museu-ema-klabin",
+            "path": "<references>/kon2022.2_detalha-da-sala-de-jantar-da-casa-museu-ema-klabin.json"
+        },
+        {
+            "id": "kon2022.3",
+            "slug": "detalhe-do-quarto-principal-da-casa-museu-ema-klabin",
+            "path": "<references>/kon2022.3_detalhe-do-quarto-principal-da-casa-museu-ema-klabin.json"
+        },
+        {
+            "id": "kon2022.4",
+            "slug": "detalhe-da-sala-de-musica-da-casa-museu-ema-klabin",
+            "path": "<references>/kon2022.4_detalhe-da-sala-de-musica-da-casa-museu-ema-klabin.json"
+        },
+        {
+            "id": "ferrez2016",
+            "slug": "tesauro-de-objetos-do-patrimonio-cultural-nos-museus-brasileiros",
+            "path": "<references>/ferrez2016_tesauro-de-objetos-do-patrimonio-cultural-nos-museus-brasileiros.json"
+        },
+        {
+            "id": "costa2019",
+            "slug": "pagina-principal-do-explore",
+            "path": "<references>/costa2019_pagina-principal-do-explore.json"
+        },
+        {
+            "id": "costa2019.1",
+            "slug": "pagina-de-detalhe-de-um-item-do-explore",
+            "path": "<references>/costa2019.1_pagina-de-detalhe-de-um-item-do-explore.json"
         }
     ]
 }

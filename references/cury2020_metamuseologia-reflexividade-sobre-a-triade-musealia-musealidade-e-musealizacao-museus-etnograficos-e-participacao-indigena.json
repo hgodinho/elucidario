@@ -1,0 +1,22 @@
+{
+    "id": "cury2020",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "metamuseologia-reflexividade-sobre-a-triade-musealia-musealidade-e-musealizacao-museus-etnograficos-e-participacao-indigena",
+    "_create": "2024-01-17T14:29:49.231Z",
+    "_update": "2024-01-17T14:29:49.231Z",
+    "type": "article",
+    "title": " Metamuseologia: Reflexividade sobre a tríade musealia, musealidade e musealização, museus etnográficos e participação indígena.",
+    "container-title": "Museologia & Interdisciplinaridade",
+    "volume": "9",
+    "number": "17",
+    "author": [
+        {
+            "family": "Cury",
+            "given": "Marília X."
+        }
+    ],
+    "issued": {
+        "raw": "2020"
+    }
+}

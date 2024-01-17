@@ -1,0 +1,25 @@
+{
+    "id": "desvallees2013",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "concetos-chave-de-museologia",
+    "_create": "2024-01-17T14:39:18.019Z",
+    "_update": "2024-01-17T14:39:18.019Z",
+    "type": "book",
+    "title": "Concetos-chave de museologia",
+    "publisher": "Comitê Brasileiro do Conselho Internacional de Museus",
+    "publisher-place": "São Paulo",
+    "author": [
+        {
+            "family": "Desvallées",
+            "given": "André"
+        },
+        {
+            "family": "Mairesse",
+            "given": "François"
+        }
+    ],
+    "issued": {
+        "raw": "2013"
+    }
+}

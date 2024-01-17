@@ -1,0 +1,20 @@
+{
+    "id": "borko1968",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "information-science-what-is-it",
+    "_create": "2024-01-17T12:53:37.410Z",
+    "_update": "2024-01-17T12:53:37.410Z",
+    "type": "article",
+    "title": "Information science: what is it?",
+    "container-title": "American Documentation",
+    "author": [
+        {
+            "family": "Borko",
+            "given": "Harold"
+        }
+    ],
+    "issued": {
+        "raw": "1968"
+    }
+}

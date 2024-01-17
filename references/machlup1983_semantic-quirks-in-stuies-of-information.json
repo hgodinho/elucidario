@@ -1,0 +1,22 @@
+{
+    "id": "machlup1983",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "semantic-quirks-in-stuies-of-information",
+    "_create": "2024-01-17T13:10:05.071Z",
+    "_update": "2024-01-17T13:10:05.071Z",
+    "type": "article",
+    "title": "Semantic quirks in stuies of information",
+    "container-title": "The study of information: interdisciplinary messages",
+    "publisher": "Wiley",
+    "publisher-place": "New York",
+    "author": [
+        {
+            "family": "Machlup",
+            "given": "Fritz"
+        }
+    ],
+    "issued": {
+        "raw": "1983"
+    }
+}
