@@ -1,4 +1,4 @@
-## 7.3. O Elucidário.art na Casa Museu Ema Klabin
+## 7.3 O Elucidário.art na Casa Museu Ema Klabin
 
 A implementação do Elucidário.art na Casa Museu Ema Klabin se deu, em um primeiro momento, em caráter de teste. Foram selecionados 20 itens da base de dados Museológica do museu com o critério de terem passado por processo de digitalização recentemente e que representasse diferentes tipos de objetos e níveis de documentação na coleção. Apresentamos a seguir um recorte da BD para demonstração dos itens selecionados:
 

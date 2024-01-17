@@ -1,4 +1,4 @@
-# 6. A Casa Museu Ema Klabin
+# 6 A Casa Museu Ema Klabin
 
 A Casa Museu Ema Klabin é uma casa museu de colecionadora localizada na Rua Portugal, 43 do bairro Jardim Europa em São Paulo, SP - Brasil.
 
@@ -10,7 +10,7 @@ Ema Klabin (1907 - 1994) foi uma mecenas e colecionadora de arte, filha de Hesse
 
 > Participou dos conselhos da Fundação Bienal de São Paulo, do Museu de Arte de São Paulo Assis Chateaubriand—MASP— e do Museu de Arte Moderna de São Paulo, e colaborou na criação do Museu Lasar Segall e da Fundação Magda Tagliaferro, entre outros. Foi sócia da Sociedade de Cultura Artística, da Orquestra Filarmônica de São Paulo e da Sociedade dos Cem Bibliófilos do Brasil, criada por Raymundo Ottoni de Castro Maya. [@costa2007, p. 84]
 
-## 6.1. A Coleção Ema Klabin
+## 6.1 A Coleção Ema Klabin
 
 A Coleção Ema Klabin é formada por mais de 1700 itens e "contém exemplares das mais variadas procedências e técnicas, e seu denominador comum —seu fio condutor— é o período de vida de Ema Klabin e o julgamento estético e histórico que norteou suas escolhas" [@costa2007, p. 17]. Uma das grandes características da coleção é justamente sua heterogeneidade, sendo composta por pinturas, gravuras, esculturas, artes decorativas, arte-sacra, roupas, e outros. Os itens são de diversos períodos e culturas e abrangem um arco histórico de 35 séculos (COSTA, 2021). Ema adquiriu a primeira peça da coleção "Ariadne" de Jean Baptiste Greuze em 1948, e as outras aquisições aconteceram ao longo de sua vida.
 
@@ -48,7 +48,7 @@ Em 1972, Ema e sua irmã Eva, preocupadas com o destino de suas coleções, conv
 
 Na Imagem 5 vemos em destaque a tela "_À la Campagne_" de Marc Chagall de 1925, à sua esquerda o relógio de piso francês do século XVIII.
 
-## 6.2. A documentação da Coleção Ema Klabin
+## 6.2 A documentação da Coleção Ema Klabin
 
 O primeiro inventário da coleção foi realizado por Marcelo Mattos Araújo por insistência dos parentes de Ema Klabin, entre os anos de 1989 e 1991 [@costa2007 p.86], resultando em uma lista dos itens da coleção separadas por ambientes. Em 1997, 3 anos após o falecimento de Ema (1994), Paulo de Freitas Costa inicia os trabalhos de catalogação e pesquisa da coleção que deu origem a sua dissertação de mestrado e posteriormente ao livro "Sinfonia de Objetos" publicado em 2007 pela editora Iluminuras, que se apresenta como um estudo sobre o colecionismo brasileiro e sobre a coleção de Ema Klabin.
 

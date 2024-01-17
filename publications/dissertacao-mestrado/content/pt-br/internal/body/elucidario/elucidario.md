@@ -1,4 +1,4 @@
-# 7. Elucidario.art
+# 7 Elucidario.art
 
 Em linhas gerais o Elucidário.art é um _Collection Management System_. A abreviação CMS é majoritariamente conhecida com um outro significado: _Content Management System_, devido a popularidade de plataformas como WordPress, Joomla, Drupal, etc. O Elucidário.art é um CMS para coleções de arte, ou seja, é um sistema de gerenciamento de coleções de arte, ou um _Content Management System_ especializado. Portanto utilizaremos a abreviação CMS para nos referirmos ao Elucidário como um _Collection Management System_. Este termo também é utilizado por instituições como _Collections Trust_ e ICOM para referir-se a esta modalidade de software.
 
@@ -46,7 +46,7 @@ Para o entendimento das seções a seguir, é importante primeiro definirmos alg
 
 **WAI-ARIA**: é um conjunto de atributos que podem ser adicionados a tags HTML para melhorar a acessibilidade de um sistema. O termo WAI-ARIA é uma abreviação de "_Web Accessibility Initiative - Accessible Rich Internet Applications_" [@w-3-c2022].
 
-## 7.1. O Repositório
+## 7.1 O Repositório
 
 As principais linguagens de programação utilizadas no código-fonte do Elucidário.art são PHP 8.2 [@php2022], TypeScript [@microsoft2023], JavaScript [@mdn2022] e JSON [@ietf2017], e, estão estruturadas em um repositório utilizando a arquitetura _monorepo_, ou seja, um repositório que contém múltiplos projetos [@narwhal-technologies-inc2022]. Optamos por utilizar esta arquitetura para facilitar o desenvolvimento e a manutenção do código-fonte, pois desta forma podemos reutilizar pacotes em diferentes projetos, como em bibliotecas, plugins, temas, etc. Esta arquitetura também pode ser chamada de micro-serviços (_microservices_), onde cada pacote é um serviço que pode ser desenvolvido, testado e publicado de maneira independente, o que facilita a manutenção e estimula a evolução independente de cada pacote.
 
@@ -111,7 +111,7 @@ expect('banana')->toBe('banana');
 
 Em que `expect` é uma função que espera um valor qualquer como parâmetro, nela definimos o valor que esperamos receber, e em seguida utilizamos o _matcher_ `toBe` para validar se o valor recebido é igual ao valor esperado.
 
-### 7.1.1. Clonando o repositório
+### 7.1.1 Clonando o repositório
 
 Para executar o Elucidário.art localmente, bem com seus testes, dependências e pacotes, é necessário clonar o repositório do Elucidário.art, mas para isso é necessário ter algumas dependências instaladas previamente:
 
@@ -130,7 +130,7 @@ git clone https://github.com/hgodinho/elucidario.git
 
 Ao concluir o download será possível navegar pelo repositório e executar os comandos de instalação e execução do Elucidário.art.
 
-### 7.1.2. Instalando as dependências
+### 7.1.2 Instalando as dependências
 
 Para instalar as dependências do Elucidário.art, execute o comando `pnpm install` na raiz do repositório. Como utilizamos a biblioteca Lerna [@lerna2023] para gerenciar o _monorepo_, este comando irá ser executado recursivamente em todos os pacotes disponibilizados no diretório `packages` e `apps`, e irá instalar as dependências de cada pacote.
 
@@ -143,7 +143,7 @@ composer install
 
 Cada pacote possui uma série de comandos para sua execução, testes e publicação, abordaremos alguns deles nas seções que descrevem os testes dos pacotes a seguir.
 
-## 7.2. Os pacotes
+## 7.2 Os pacotes
 
 A seguir apresentamos os principais pacotes do diretório `packages`:
 

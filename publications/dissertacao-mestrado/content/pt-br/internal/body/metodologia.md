@@ -1,4 +1,4 @@
-# 2. Procedimentos metodológicos
+# 2 Procedimentos metodológicos
 
 Esta é uma pesquisa aplicada mista e exploratória, que utiliza revisão bibliográfica e estudo de caso.
 

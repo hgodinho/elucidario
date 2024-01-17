@@ -1,4 +1,4 @@
-# 1. Introdução
+# 1 Introdução
 
 A Sociedade da Informação impõe novos desafios para as organizações e um desafio maior ainda para as que têm como responsabilidade a organização, preservação e disseminação do conhecimento e patrimônio, como arquivos, bibliotecas e museus. Esses desafios ficaram mais evidentes quando fomos assolados pela pandemia da covid-19 em 2020, que fez com que museus do mundo inteiro fechassem suas portas para preservar a vida dos funcionários e visitantes, e tornou o remoto praticamente a única realidade de trabalho, estudo, entretenimento e interação social. Embora os museus já estivessem fazendo uso de Tecnologias da Informação e Comunicação (TICs), vimos uma aceleração deste movimento nestes dois anos de isolamento, com os museus buscando novas formas de interação com o público, como afirma Ana Magalhães: “a pandemia acelerou um processo que já vinha sendo explorado lentamente pelos museus, que é a sua mediação com o público através da dimensão digital” [@derviche2021].
 
