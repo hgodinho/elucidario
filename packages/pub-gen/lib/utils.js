@@ -596,3 +596,47 @@ export function legendAst(content) {
         return mdToMdast(content);
     }
 }
+
+export function listAssets(publication, returnType = "content") {
+    const extensions = ["png", "jpg", "jpeg", "gif", "svg", "ico"];
+    const assets = readContents({
+        dirPath: path.resolve(getPaths().publications, publication, "files"),
+        extensions,
+        returnType,
+        index: false,
+    }).reduce((acc, item) => {
+        if (item.path.includes("generated")) {
+            if (acc.hasOwnProperty("generated")) {
+                acc.generated.push(item);
+            } else {
+                acc.generated = [item];
+            }
+        } else if (item.path.includes("static")) {
+            if (acc.hasOwnProperty("static")) {
+                acc.static.push(item);
+            } else {
+                acc.static = [item];
+            }
+        }
+        return acc;
+    }, {});
+    return assets;
+}
+
+/**
+ * Reduce files into a single string.
+ *
+ * @param {string} acc - Accumulator
+ * @param {Record<string, any>} item - File
+ * @returns {Promise<string>}
+ */
+export function reduceFiles(files) {
+    return files.reduce((acc, item) => {
+        return toMD([
+            acc,
+            `<!-- START_PUBGEN_FILE: ${item.path} -->`,
+            item.value,
+            `<!-- END_PUBGEN_FILE: ${item.path} -->`,
+        ]);
+    }, "");
+}

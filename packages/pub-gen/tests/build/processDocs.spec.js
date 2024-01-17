@@ -1,6 +1,6 @@
 import { processDocs } from "../../lib/build/processDocs.js";
 import { packageJson } from "../../lib/utils.js";
-import { getFixture } from "../__fixtures__/index.js";
+import { createFixture, getFixture } from "../__fixtures__/index.js";
 
 describe("processDocs", () => {
     const pkg = packageJson("publicacao-teste");
@@ -96,21 +96,6 @@ describe("processDocs", () => {
             assets,
             pkg,
         });
-
-        // createFile(
-        //     {
-        //         filePath: path.resolve(
-        //             getPaths().packages,
-        //             "pub-gen",
-        //             "tests",
-        //             "build",
-        //             "data",
-        //             "processDocs.processed.json",
-        //         ),
-        //         ext: "json",
-        //     },
-        //     processed,
-        // );
 
         expect(processed).toMatchObject(expected);
     });

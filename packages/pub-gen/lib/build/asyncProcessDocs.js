@@ -2,16 +2,16 @@ import path from "path";
 
 import { pubGenProcessor } from "../remark/pubGenProcessor.js";
 import {
-    readContents,
+    asyncReadContents,
     getPaths,
-    dirExists,
     readFile,
+    parseFile,
 } from "@elucidario/pkg-paths";
-import { loopStylesStructure } from "../utils.js";
-import { merge } from "lodash-es";
+import { listAssets, loopStylesStructure, reduceFiles } from "../utils.js";
 import { processBibliography } from "./processBibliography.js";
 import { processAssets } from "./processAssets.js";
 import { processLists } from "./processLists.js";
+import { toMD } from "@elucidario/pkg-docusaurus-md";
 
 const paths = getPaths();
 
@@ -28,7 +28,7 @@ const paths = getPaths();
  * @returns {Promise<Array<Record<string, any>>>}
  *
  * @example
- * const processed = await processDocs({
+ * const processed = await asyncProcessDocs({
  *    publication,
  *    lang,
  *    type,
@@ -38,9 +38,10 @@ const paths = getPaths();
  *    index,
  * });
  */
-export const processDocs = async (args) => {
+export async function asyncProcessDocs(args) {
     try {
-        if (typeof args === "undefined") throw new Error("`args` is undefined");
+        if (typeof args === "undefined")
+            Promise.reject(new Error("`args` is undefined"));
 
         const {
             publication,
@@ -71,6 +72,7 @@ export const processDocs = async (args) => {
             "content",
             lang,
         );
+
         const distPath = path.resolve(
             paths.publications,
             publication,
@@ -83,7 +85,7 @@ export const processDocs = async (args) => {
         // if style.name is defined, use that name, and get the styleConfig from default path.
         let styleConfig;
         if (style.name) {
-            const styles = readContents({
+            const styles = await asyncReadContents({
                 dirPath: path.resolve(
                     paths.packages,
                     "pub-gen",
@@ -104,165 +106,109 @@ export const processDocs = async (args) => {
             ).value;
         }
 
-        const content = readContents({
+        /**
+         * Read all markdown files from srcPath.
+         */
+        const content = await asyncReadContents({
             dirPath: srcPath,
             extensions: ["md"],
             index: false,
         });
 
-        const produced = {
-            content: {},
-            assets: {},
+        /**
+         * Prepare object to nest files.
+         */
+        const prepared = {
+            external: {},
+            internal: {
+                pre: content.filter((item) =>
+                    item.path.includes("internal\\pre"),
+                ),
+                body: content.filter((item) =>
+                    item.path.includes("internal\\body"),
+                ),
+                pos: content.filter((item) =>
+                    item.path.includes("internal\\pos"),
+                ),
+            },
         };
 
         /**
-         * Assets.
+         * Merge external files with internal files.
          */
-        const assetsExtensions = ["png", "jpg", "jpeg", "gif", "svg", "ico"];
-        if (
-            dirExists(
-                path.resolve(
-                    paths.publications,
-                    publication,
-                    "files",
-                    "static",
-                ),
-            )
-        ) {
-            produced.assets.static = readContents({
-                dirPath: path.resolve(
-                    paths.publications,
-                    publication,
-                    "files",
-                    "static",
-                ),
-                returnType: "path",
-                extensions: assetsExtensions,
-                index: false,
-            });
-        }
-        if (
-            dirExists(
-                path.resolve(
-                    paths.publications,
-                    publication,
-                    "files",
-                    "generated",
-                ),
-            )
-        ) {
-            produced.assets.dynamic = readContents({
-                dirPath: path.resolve(
-                    paths.publications,
-                    publication,
-                    "files",
-                    "generated",
-                ),
-                returnType: "path",
-                extensions: assetsExtensions,
-                index: false,
-            });
-        }
+        const toProcess = toMD([
+            reduceFiles(prepared.internal.pre),
+            reduceFiles(prepared.internal.body),
+            reduceFiles(prepared.internal.pos),
+        ]);
 
         /**
-         *  Step Processor Function
-         *
-         * @param {Object} file
+         * Process files with pubGenProcessor.
          */
-        const stepProcessor = async (file) => {
-            const filePath = file.path.replace("content", "dist");
-            const processed = {
-                file,
-                processed: {},
-                path: filePath,
-            };
-            try {
-                processed.processed = await pubGenProcessor(file.value, {
-                    publication,
-                    lang,
-                    style,
-                    assets,
-                    assetsTitles: styleConfig.assets_titles,
-                    pkg,
-                });
-            } catch (error) {
-                if (error.message === "No content provided.") {
-                    processed.processed = merge({}, file, {
-                        path: filePath,
-                    });
-                } else {
-                    throw new Error(error);
-                }
-            }
-            return processed;
-        };
-
-        /**
-         * Process Content Files.
-         */
-        const processed = await Promise.all(
-            content.map(async (file) => {
-                return await stepProcessor(file);
-            }),
-        ).then((files) => files);
-
-        const bodyFiles = processed
-            .map((file) => {
-                if (file.path.includes("body")) {
-                    return [
-                        file.path
-                            // replace distPath
-                            .replace(`${distPath}\\`, "")
-                            // transform in array
-                            .split("\\")
-                            // remove .md extension from last item
-                            .map((item, index, array) => {
-                                if (index === array.length - 1) {
-                                    return item.replace(".md", "");
-                                }
-                                return item;
-                            })
-                            // join back to string
-                            .join("/"),
-                        true,
-                    ];
-                }
-                return false;
-            })
-            .filter(Boolean);
-
-        if (produced.content.hasOwnProperty("internal") === false) {
-            produced.content.internal = {};
-        }
-        produced.content.internal.body = bodyFiles.map((bodyFile) => {
-            try {
-                /**
-                 * Check if file exists in content array.
-                 */
-                return processed.find((processFile) => {
-                    return processFile.path.includes(
-                        path.resolve(
-                            paths.publications,
-                            publication,
-                            "dist",
-                            lang,
-                            bodyFile[0],
-                        ),
-                    );
-                });
-            } catch (error) {
-                throw new Error(error);
-            }
+        const processed = await pubGenProcessor(toProcess, {
+            publication,
+            lang,
+            type,
+            style,
+            pkg,
+            assets,
+            assetsTitles: styleConfig.assets_titles,
+            index,
         });
 
         /**
-         * Process Index and Required Files.
-         *
-         * Loop through styleConfig.structure and process each file.
-         *
-         * @see lib/utils.js loopStylesStructure
+         * Split processed string into an array of files.
          */
+        const regex = RegExp(
+            /<!-- START_PUBGEN_FILE: (.*?) -->(.*?)<!-- END_PUBGEN_FILE: (.*?) -->/gs,
+        );
+        const files = [];
+        let match;
+        while ((match = regex.exec(processed)) !== null) {
+            const filePath = match[1].trim().replace("content", "dist");
+            const fileContent = match[2].trim();
+            const { name, ext } = path.parse(filePath);
+            files.push(
+                parseFile({
+                    name,
+                    ext: ext.replace(".", ""),
+                    path: filePath,
+                    value: fileContent,
+                }),
+            );
+        }
+
+        const mapCallback = (items, key) => {
+            return items
+                .map((processed) => {
+                    if (processed.path.includes(key)) {
+                        return {
+                            path: processed.path,
+                            file: prepared.internal[key].find((item) => {
+                                return item.path.includes(
+                                    processed.path.replace("dist", "content"),
+                                );
+                            }),
+                            processed,
+                        };
+                    }
+                    return false;
+                })
+                .filter(Boolean);
+        };
+
+        const produced = {
+            content: {
+                external: {},
+                internal: {
+                    body: mapCallback(files, "body"),
+                },
+            },
+            assets: listAssets(publication, "path"),
+        };
+
         const errors = [];
+
         await loopStylesStructure(
             styleConfig.structure,
             async ({ key, value, required, title }) => {
@@ -270,7 +216,7 @@ export const processDocs = async (args) => {
                     /**
                      * Check if file exists in content array.
                      */
-                    const found = processed.find((file) => {
+                    const found = files.find((file) => {
                         return file.path.includes(
                             path.resolve(
                                 paths.publications,
@@ -308,12 +254,8 @@ export const processDocs = async (args) => {
                         return;
                     }
 
-                    if (produced.content.hasOwnProperty(key) === false) {
-                        produced.content[key] = {};
-                    }
-
                     /**
-                     * If search.length is 1, it means that the file is not nested, so we can just add it to the produced.content[key].,
+                     * If search.length is 1, it means that the file is not nested, so we can just add it to the prepared[key].,
                      * else we need to create an array to nest the file.
                      */
                     search.reduce((acc, item, index) => {
@@ -326,7 +268,23 @@ export const processDocs = async (args) => {
                             index === search.length - 1 &&
                             search.length !== 1
                         ) {
-                            acc[search[0]].push(found);
+                            if (found) {
+                                acc[search[0]].push({
+                                    file: content.find((file) => {
+                                        return file.path.includes(
+                                            path.resolve(
+                                                paths.publications,
+                                                publication,
+                                                "content",
+                                                lang,
+                                                value,
+                                            ),
+                                        );
+                                    }),
+                                    path: found.path,
+                                    processed: found,
+                                });
+                            }
                         } else {
                             if (!acc.hasOwnProperty(item)) {
                                 acc[item] = [];
@@ -338,7 +296,6 @@ export const processDocs = async (args) => {
                     /**
                      * Check if required is one of the possible types defined at
                      * lib/schema/style-schema.json#/definitions/page_required/oneOf/[2]/enum
-                     * and if typeof index is different than boolean.
                      */
                     if (typeof required === "string" && "auto" !== required) {
                         switch (required) {
@@ -355,12 +312,13 @@ export const processDocs = async (args) => {
                                         filePath: value,
                                         distPath,
                                     });
+
                                     produced.content[key][search[0]].push(
                                         ...assetsFiles.map((file) => {
                                             return {
                                                 file: null,
-                                                processed: file,
                                                 path: file.path,
+                                                processed: file,
                                             };
                                         }),
                                     );
@@ -385,8 +343,8 @@ export const processDocs = async (args) => {
                                 if (listFile) {
                                     produced.content[key][search[0]].push({
                                         file: null,
-                                        processed: listFile,
                                         path: listFile.path,
+                                        processed: listFile,
                                     });
                                 }
                                 break;
@@ -403,8 +361,8 @@ export const processDocs = async (args) => {
 
                                 produced.content[key][search[0]].push({
                                     file: null,
-                                    processed: bibliography,
                                     path: bibliography.path,
+                                    processed: bibliography,
                                 });
 
                                 break;
@@ -418,6 +376,7 @@ export const processDocs = async (args) => {
                                 );
                         }
                     }
+
                     /**
                      * remove empty values from produced.content[key][search[0]]
                      */
@@ -431,12 +390,14 @@ export const processDocs = async (args) => {
             },
         );
 
-        if (errors.length) {
-            throw new Error(errors.join("\n"));
+        if (errors.length > 0) {
+            const er = new Error(errors.join("\n\n"));
+            console.error(er);
+            Promise.reject(er);
         }
 
         return produced;
     } catch (error) {
-        throw new Error(error);
+        Promise.reject(error);
     }
-};
+}
