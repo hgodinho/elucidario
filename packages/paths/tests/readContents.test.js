@@ -5,13 +5,12 @@ describe("readContents", () => {
         const contents = readContents({
             dirPath: "tests/data",
         });
-        expect(contents).toHaveLength(1);
+        expect(contents).toHaveLength(2);
         expect(contents[0]).toMatchObject({
             name: "hello-world",
             path: "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\paths\\tests\\data\\hello-world.md",
             ext: "md",
             value: "hello world\r\n",
-            size: 13,
         });
     });
 

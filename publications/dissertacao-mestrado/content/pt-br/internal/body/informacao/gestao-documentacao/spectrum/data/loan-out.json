@@ -1,0 +1,22 @@
+{
+    "title": "{{count:chart;legend=Grupos de informação para saída de empréstimos de objetos.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Grupo de informação"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        }
+    ],
+    "data": [
+        ["Grupo de informação", "Exigência"],
+        ["Object identification information", "requerido"],
+        ["Loan out information", "requerido"]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Grupos de informação para o procedimento _Loan out (lending objects)_ do Spectrum 5."
+    }
+}

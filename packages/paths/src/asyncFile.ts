@@ -63,6 +63,7 @@ export async function asyncReadFile(
     let ext: string | undefined;
     let filePath: string;
     let returnType: string | undefined = "content";
+    let stats: boolean = false;
 
     if (typeof file === "string") {
         filePath = file;
@@ -71,32 +72,30 @@ export async function asyncReadFile(
         enc = file.enc ? file.enc : enc;
         ext = file.ext;
         returnType = file.returnType ? file.returnType : returnType;
+        stats = file.stats ? file.stats : stats;
     }
 
     const parsed = path.parse(filePath);
-    if (typeof ext === "undefined") ext = parsed.ext.replace(".", "");
-
-    const { size, atime, mtime, ctime, birthtime } = statSync(
-        path.resolve(filePath),
-    );
+    if (typeof ext === "undefined") {
+        ext = parsed.ext.replace(".", "");
+        if (".gh-token" === parsed.name) {
+            ext = "json";
+        }
+    }
 
     const read: File = {
         name: parsed.name,
         path: filePath,
         ext,
         value: "",
-        size,
-        atime,
-        mtime,
-        ctime,
-        birthtime,
+        ...(stats ? statSync(path.resolve(filePath)) : {}),
     };
 
     try {
         if (returnType === "path") return read;
 
         if (!supportedExtensions.includes(ext))
-            throw new Error(`Unsupported file extension: ${ext}`);
+            throw new Error(`Unsupported file extension: ${ext} (${filePath})`);
 
         switch (ext) {
             case "json":

@@ -72,6 +72,8 @@ export async function buildPublication({ publication, watch }) {
 
                         const { content, assets } = processed;
 
+                        // console.log(content.internal.body);
+
                         try {
                             // BUILD CONTENT FILES.
                             manifest.content = processFiles(content, (file) => {

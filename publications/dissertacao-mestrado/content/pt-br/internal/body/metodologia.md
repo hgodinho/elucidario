@@ -1,4 +1,4 @@
-# 2. Procedimentos metodológicos
+# 2 Procedimentos metodológicos
 
 Esta é uma pesquisa aplicada mista e exploratória, que utiliza revisão bibliográfica e estudo de caso.
 
@@ -32,9 +32,9 @@ Além da XP, que é uma metodologia que foi aplicada no desenvolvimento de todos
 
 **{{count:figure;legend=Metodologia Atomic Design.}}**
 
-![**Fonte:** Metodologia _Atomic Design_ (FROST, 2013).]({{static}}/atomic-design-process.png)
+![**Fonte:** Metodologia _Atomic Design_ (Frost, 2013).]({{static;internal/body}}/atomic-design-process.png)
 
-Os átomos consistem nas menores unidades de design, como cores, fontes, ícones, botões, campos de formulário, etc. As moléculas são combinações de átomos, como um campo de formulário com um botão. Os organismos são combinações de moléculas, como um formulário de login. Os templates são combinações de organismos, como um template de página de edição. E as páginas são combinações de templates, como a página de configurações do plugin. Descrevemos no capítulo 7 como utilizamos a metodologia _Atomic Design_ para desenvolver o pacote `@elucidario/pkg-design-system` e como utilizamos o pacote para desenvolver a UI do plugin.
+Os átomos consistem nas menores unidades de design, como cores, fontes, ícones, botões, campos de formulário, etc. As moléculas são combinações de átomos, como um campo de formulário com um botão. Os organismos são combinações de moléculas, como um formulário de login. Os templates são combinações de organismos, como um template de página de edição. E as páginas são combinações de templates, como a página de configurações do plugin. Descrevemos na seção 6 como utilizamos a metodologia _Atomic Design_ para desenvolver o pacote `@elucidario/pkg-design-system` e como utilizamos o pacote para desenvolver a UI do plugin.
 
 <!-- Nesta pesquisa estabelecemos as seguintes etapas de desenvolvimento:
 

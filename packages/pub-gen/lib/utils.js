@@ -482,7 +482,7 @@ export async function loopStylesStructure(structure, callback, prefix = "") {
 export function processFiles(obj, callback) {
     if (Array.isArray(obj)) {
         return obj.map((item) => processFiles(item, callback));
-    } else if (typeof obj === "object") {
+    } else if (typeof obj === "object" && !Array.isArray(obj)) {
         if (
             obj.hasOwnProperty("file") &&
             obj.hasOwnProperty("path") &&

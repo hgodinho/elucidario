@@ -9,11 +9,6 @@ describe("readFile", () => {
             path: "tests/data/hello-world.md",
             ext: "md",
             value: "hello world\r\n",
-            size: 13,
-            // atime: new Date("2023-11-28T20:19:03.371Z"),
-            // mtime: new Date("2023-11-26T21:30:03.977Z"),
-            // ctime: new Date("2023-11-26T21:40:16.360Z"),
-            // birthtime: new Date("2023-11-26T21:29:58.582Z"),
         });
     });
 
@@ -29,11 +24,6 @@ describe("readFile", () => {
             value: {
                 token: "some-fake-token",
             },
-            size: 38,
-            // atime: new Date("2023-11-28T20:19:03.371Z"),
-            // mtime: new Date("2023-11-26T21:30:03.977Z"),
-            // ctime: new Date("2023-11-26T21:40:16.360Z"),
-            // birthtime: new Date("2023-11-26T21:29:58.582Z"),
         });
     });
 
@@ -44,11 +34,6 @@ describe("readFile", () => {
             path: "tests/data/hello-world.md",
             ext: "md",
             value: "hello world\r\n",
-            size: 13,
-            // atime: new Date("2023-11-28T20:19:03.371Z"),
-            // mtime: new Date("2023-11-26T21:30:03.977Z"),
-            // ctime: new Date("2023-11-26T21:40:16.360Z"),
-            // birthtime: new Date("2023-11-26T21:29:58.582Z"),
         });
     });
 
@@ -61,11 +46,6 @@ describe("readFile", () => {
             value: {
                 hello: "world",
             },
-            size: 28,
-            // atime: new Date("2023-11-28T20:19:03.371Z"),
-            // mtime: new Date("2023-11-26T21:30:03.977Z"),
-            // ctime: new Date("2023-11-26T21:40:16.360Z"),
-            // birthtime: new Date("2023-11-26T21:29:58.582Z"),
         });
     });
 });

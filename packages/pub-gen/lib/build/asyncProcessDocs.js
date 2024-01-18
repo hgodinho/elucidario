@@ -115,6 +115,8 @@ export async function asyncProcessDocs(args) {
             index: false,
         });
 
+        // console.log({ content });
+
         /**
          * Prepare object to nest files.
          */

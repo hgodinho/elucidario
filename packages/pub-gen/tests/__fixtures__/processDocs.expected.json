@@ -7,15 +7,14 @@
                         "name": "hello-world",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\hello-world.md",
                         "ext": "md",
-                        "value": "# Hello World\r\n\r\n## Second level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var [@linked-art2021.1].\r\n\r\n{{mermaid:internal/body/mermaid.md}}\r\n\r\n### Third level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.1, p. 2]\r\n\r\n#### Fourth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2]\r\n\r\n##### Fifth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2; @linked-art2021.1]\r\n\r\n###### Sixth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n\r\n{{count:figure;legend=\\*\\*Lorem ipsum\\*\\*}}\r\n\r\n![Lorem ipsum]({{static}}/lorem-ipsum.jpeg)\r\n",
-                        "size": 851
+                        "value": "# Hello World\r\n\r\n## Second level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var [@linked-art2021.1].\r\n\r\n{{mermaid:internal/body/mermaid.md}}\r\n\r\n### Third level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.1, p. 2]\r\n\r\n#### Fourth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2]\r\n\r\n##### Fifth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. [@linked-art2021.2; @linked-art2021.1]\r\n\r\n###### Sixth level heading\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\r\n\r\n{{count:figure;legend=\\*\\*Lorem ipsum\\*\\*}}\r\n\r\n![Lorem ipsum]({{static;internal/body}}/lorem-ipsum.jpeg)\r\n"
                     },
                     "processed": {
                         "data": {},
                         "messages": [],
                         "history": [],
                         "cwd": "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
-                        "value": "# Hello World\n\n## Second level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (Linked Art, 2021a).\n\n**Figura 3: Mermaid**\n\n```{.mermaid filename=mermaid loc=\"C:\\\\Users\\\\55119\\\\Elucidário.art\\\\elucidario\\\\publications\\\\publicacao-teste\\\\files\\\\generated\" width=720 background=transparent}\nerDiagram\r\n        OBJETO ||--|{ CLASSIFICACAO : \"\"\n```\n\n**Fonte:** Elaborado pelo autor, com base em [@caro-castro2011]\n\n### Third level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (Linked Art, 2021a, p. 2)\n\n#### Fourth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (Linked Art, 2021b)\n\n##### Fifth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (Linked Art, 2021b,  a)\n\n###### Sixth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\n\n**Figura 4: Lorem ipsum**\n\n![Lorem ipsum](C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\static\\lorem-ipsum.jpeg)\n"
+                        "value": "# Hello World\n\n## Second level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var (Linked Art, 2021a).\n\n**Figura 3: Mermaid**\n\n```{.mermaid filename=mermaid loc=\"C:\\\\Users\\\\55119\\\\Elucidário.art\\\\elucidario\\\\publications\\\\publicacao-teste\\\\files\\\\generated\" width=720 background=transparent}\nerDiagram\r\n        OBJETO ||--|{ CLASSIFICACAO : \"\"\n```\n\n**Fonte:** Elaborado pelo autor, com base em [@caro-castro2011]\n\n### Third level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (Linked Art, 2021a, p. 2)\n\n#### Fourth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (Linked Art, 2021b)\n\n##### Fifth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var. (Linked Art, 2021b,  a)\n\n###### Sixth level heading\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.\n\n**Figura 4: Lorem ipsum**\n\n![Lorem ipsum](..\\\\..\\\\..\\\\..\\files\\static\\lorem-ipsum.jpeg)\n"
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\body\\hello-world.md"
                 },
@@ -24,8 +23,7 @@
                         "name": "first-level",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\really\\first-level.md",
                         "ext": "md",
-                        "value": "# First level\r\n\r\n{{table:internal/body/really/table.json}}\r\n",
-                        "size": 60
+                        "value": "# First level\r\n\r\n{{table:internal/body/really/table.json}}\r\n"
                     },
                     "processed": {
                         "data": {},
@@ -41,8 +39,7 @@
                         "name": "second-level",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\really\\deep\\second-level.md",
                         "ext": "md",
-                        "value": "## Second level\r\n",
-                        "size": 17
+                        "value": "## Second level\r\n"
                     },
                     "processed": {
                         "data": {},
@@ -58,8 +55,7 @@
                         "name": "third-level",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\really\\deep\\nested\\third-level.md",
                         "ext": "md",
-                        "value": "### Third level\r\n",
-                        "size": 17
+                        "value": "### Third level\r\n"
                     },
                     "processed": {
                         "data": {},
@@ -75,8 +71,7 @@
                         "name": "file",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\body\\really\\deep\\nested\\file\\file.md",
                         "ext": "md",
-                        "value": "rock bottom.\r\n",
-                        "size": 14
+                        "value": "rock bottom.\r\n"
                     },
                     "processed": {
                         "data": {},
@@ -94,15 +89,13 @@
                         "name": "folha-rosto",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\folha-rosto.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "processed": {
                         "name": "folha-rosto",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-rosto.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-rosto.md"
                 },
@@ -111,15 +104,13 @@
                         "name": "ficha-catalografica",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\ficha-catalografica.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "processed": {
                         "name": "ficha-catalografica",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\ficha-catalografica.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\ficha-catalografica.md"
                 },
@@ -128,15 +119,13 @@
                         "name": "folha-avaliacao",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\folha-avaliacao.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "processed": {
                         "name": "folha-avaliacao",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-avaliacao.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\folha-avaliacao.md"
                 },
@@ -145,15 +134,13 @@
                         "name": "resumo-lingua-vernacula",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\resumo-lingua-vernacula.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "processed": {
                         "name": "resumo-lingua-vernacula",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-vernacula.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-vernacula.md"
                 },
@@ -162,15 +149,13 @@
                         "name": "resumo-lingua-estrangeira",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\content\\pt-BR\\internal\\pre\\resumo-lingua-estrangeira.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "processed": {
                         "name": "resumo-lingua-estrangeira",
                         "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-estrangeira.md",
                         "ext": "md",
-                        "value": "",
-                        "size": 0
+                        "value": ""
                     },
                     "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\dist\\pt-BR\\internal\\pre\\resumo-lingua-estrangeira.md"
                 },
@@ -246,8 +231,7 @@
                 "name": "lorem-ipsum",
                 "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\static\\lorem-ipsum.jpeg",
                 "ext": "jpeg",
-                "value": "",
-                "size": 316922
+                "value": ""
             }
         ],
         "dynamic": [
@@ -255,8 +239,7 @@
                 "name": "mermaid",
                 "path": "C:\\Users\\55119\\Elucidário.art\\elucidario\\publications\\publicacao-teste\\files\\generated\\mermaid.png",
                 "ext": "png",
-                "value": "",
-                "size": 3761
+                "value": ""
             }
         ]
     }
