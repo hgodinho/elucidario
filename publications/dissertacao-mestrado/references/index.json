@@ -72,8 +72,8 @@
         },
         {
             "id": "botallo2014",
-            "slug": "declaracao-de-principios-de-documentacao-em-museus-e-diretrizes-internacionais-de-informacao-sobre-objetos-de-museus-categorias-de-informacao-do-comite-internacional-de-documentacao",
-            "path": "<references>/botallo2014_declaracao-de-principios-de-documentacao-em-museus-e-diretrizes-internacionais-de-informacao-sobre-objetos-de-museus-categorias-de-informacao-do-comite-internacional-de-documentacao.json"
+            "slug": "declaracao-de-principios-de-documentacao-em-museus",
+            "path": "<references>/botallo2014_declaracao-de-principios-de-documentacao-em-museus.json"
         },
         {
             "id": "collections-trust2017.1",
@@ -759,6 +759,11 @@
             "id": "costa2019.1",
             "slug": "pagina-de-detalhe-de-um-item-do-explore",
             "path": "<references>/costa2019.1_pagina-de-detalhe-de-um-item-do-explore.json"
+        },
+        {
+            "id": "costa2018",
+            "slug": "projeto-de-design-digital-wiki-ema-para-fundacao-ema-klabin",
+            "path": "<references>/costa2018_projeto-de-design-digital-wiki-ema-para-fundacao-ema-klabin.json"
         }
     ]
 }

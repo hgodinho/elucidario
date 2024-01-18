@@ -774,6 +774,11 @@
             "id": "costa2019.1",
             "slug": "pagina-de-detalhe-de-um-item-do-explore",
             "path": "<references>/costa2019.1_pagina-de-detalhe-de-um-item-do-explore.json"
+        },
+        {
+            "id": "costa2018",
+            "slug": "projeto-de-design-digital-wiki-ema-para-fundacao-ema-klabin",
+            "path": "<references>/costa2018_projeto-de-design-digital-wiki-ema-para-fundacao-ema-klabin.json"
         }
     ]
 }

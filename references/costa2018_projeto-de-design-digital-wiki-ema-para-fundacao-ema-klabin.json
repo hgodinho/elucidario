@@ -1,0 +1,19 @@
+{
+    "id": "costa2018",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "projeto-de-design-digital-wiki-ema-para-fundacao-ema-klabin",
+    "_create": "2024-01-18T02:10:17.636Z",
+    "_update": "2024-01-18T02:10:17.636Z",
+    "type": "thesis",
+    "title": "Projeto de design digital “Wiki-Ema” para Fundação Ema Klabin",
+    "author": [
+        {
+            "family": "Costa",
+            "given": "Henrique G.L. "
+        }
+    ],
+    "issued": {
+        "raw": "2018"
+    }
+}
