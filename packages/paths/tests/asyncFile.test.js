@@ -39,7 +39,6 @@ describe("asyncFile", () => {
                 path: "tests/data/hello-world.md",
                 ext: "md",
                 value: "hello world\r\n",
-                size: 13,
             });
         });
     });

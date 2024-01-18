@@ -47,6 +47,7 @@ export interface ReadFileProps {
     enc?: BufferEncoding;
     returnType?: "path" | "content";
     stringify?: boolean;
+    stats?: boolean;
 }
 
 export interface CreateFileProps {

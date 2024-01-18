@@ -18,16 +18,28 @@ const imageParser = (treeOptions) => {
         visit(tree, "image", (node) => {
             if (hasHandlebars(node.url)) {
                 const handle = node.url.match(/{{(.*)}}/)[1];
-                const url = path.resolve(
-                    getPaths().publications,
-                    publication,
-                    "files",
-                    handle,
-                    node.url
-                        .split("/")
-                        .filter((part) => !part.includes(handle))
-                        .join("/"),
+
+                const [dir, origin] = handle.split(";");
+
+                const fileName = path.basename(node.url);
+
+                const url = path.relative(
+                    path.resolve(
+                        getPaths().publications,
+                        publication,
+                        "content",
+                        lang,
+                        origin,
+                    ),
+                    path.resolve(
+                        getPaths().publications,
+                        publication,
+                        "files",
+                        dir,
+                        fileName,
+                    ),
                 );
+
                 node.url = url;
             }
         });

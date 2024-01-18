@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`countParser should return countParser node 1`] = `
+exports[`imageParser should return imageParser node 1`] = `
 VFile {
   "cwd": "C:\\Users\\55119\\Elucidário.art\\elucidario\\packages\\pub-gen",
   "data": {},
@@ -30,9 +30,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget ris
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget risus var.
 
-**undefined 1: Lorem ipsum**
+{{count:figure;legend=\\*\\*Lorem ipsum\\*\\*}}
 
-![Lorem ipsum]({{static;internal/body}}/lorem-ipsum.jpeg)
+![Lorem ipsum](..\\\\..\\\\..\\\\..\\files\\static\\lorem-ipsum.jpeg)
 ",
 }
 `;
