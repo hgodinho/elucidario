@@ -60,7 +60,7 @@ O mapeamento utiliza as entidades Mapping e PropMap definidas no Mdorim da segui
 
 Fonte: Elaborado pelo autor.
 
-A partir deste mapeamento montamos os 20 itens no Elucidário.art, para os campos que aparecem utilizando mais de uma coluna no quadro anterior utilizamos as Estruturas Compartilhadas (EC) e Endpoints de Entidades (EE) descritas no capítulo 4, por exemplo: os metadados no museológico DescriçãoTécnicos, NomeTítulo e NúmeroTombo do item "M-0693 - Mesa de jogos com toucador" podem ser descritos utilizando o Mdorim/Linked Art da seguinte forma:
+A partir deste mapeamento montamos os 20 itens no Elucidário.art, para os campos que aparecem utilizando mais de uma coluna no quadro anterior utilizamos as Estruturas Compartilhadas (EC) e Endpoints de Entidades (EE) descritas na seção 4, por exemplo: os metadados no museológico DescriçãoTécnicos, NomeTítulo e NúmeroTombo do item "M-0693 - Mesa de jogos com toucador" podem ser descritos utilizando o Mdorim/Linked Art da seguinte forma:
 
 **{{count:chart;legend=Exemplo do item M-0693 mapeado para o Mdorim/Linked Art.}}**
 

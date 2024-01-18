@@ -10,7 +10,7 @@ Conjuntos de regras e definições delimitam o design em padrões consistentes p
 
 Uma regra principal utilizada em todo o design é a denominada _8pt Grid_ [@spec9999] que estipula múltiplos de 8 nas definições de tamanhos, espaçamentos, margens, preenchimentos dos elementos. Esta regra leva em conta a dimensão de telas mais utilizadas no mercado, que são múltiplas de 8, como 320px, 360px, 768px, 1024px, 1280px, 1440px, 1920px, etc.
 
-Utilizamos o _Atomic Design_ [@frost2013], descrita no capítulo da metodologia e apresentamos a seguir os elementos definidos e desenvolvidos para o Elucidário.art:
+Utilizamos o _Atomic Design_ [@frost2013], descrita na seção da metodologia e apresentamos a seguir os elementos definidos e desenvolvidos para o Elucidário.art:
 
 **Átomos**: elementos básicos, como cores, fontes, espaçamentos, tamanhos, alinhamentos, etc;
 
@@ -20,7 +20,7 @@ A paleta de cores apresenta duas cores primárias no sistema e uma escala de cin
 
 **{{count:figure;legend=Cartela de demonstração da tipografia e paleta do design-system.}}**
 
-![**Fonte:** Elaborado pelo autor.]({{static}}/cartela-tipografia.png)
+![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/cartela-tipografia.png)
 
 **Moléculas**: elementos compostos por átomos, como botões, campos de formulário, etc;
 
@@ -83,17 +83,17 @@ Podemos representar a anatomia do componente `Field` da seguinte forma:
 
 **{{count:figure;legend=Anatomia do componente "Field".}}**
 
-![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field.png)
+![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field.png)
 
 Para a validação de dados, além do feedback visual é necessário que o `Field` informe ao usuário a mensagem da validação, seja sucesso ou erro:
 
 **{{count:figure;legend=Feedback de erro do componente "Field".}}**
 
-![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field-error.png)
+![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-error.png)
 
 **{{count:figure;legend=Feedback de sucesso do componente "Field".}}**
 
-![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field-success.png)
+![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-success.png)
 
 Quando recebemos um `object` no componente `Field` ele é capaz de aninhar outros _Fields_:
 
@@ -116,7 +116,7 @@ Quando recebemos um `object` no componente `Field` ele é capaz de aninhar outro
 
 **{{count:figure;legend=Anatomia do componente "Field" com "object".}}**
 
-![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field-object.png)
+![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-object.png)
 
 Assim como o `array` é capaz de adicionar, remover e reordenar _Fields_:
 
@@ -144,7 +144,7 @@ Assim como o `array` é capaz de adicionar, remover e reordenar _Fields_:
 
 **{{count:figure;legend=Anatomia do componente "Field" com "array".}}**
 
-![**Fonte:** Elaborado pelo autor.]({{static}}/anatomia-Field-array.png)
+![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-array.png)
 
 **Templates**: elementos compostos por organismos, como layouts, páginas, etc;
 

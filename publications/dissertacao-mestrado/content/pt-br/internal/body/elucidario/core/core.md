@@ -10,4 +10,4 @@ O `@elucidario/pkg-core` integra os demais pacotes em um único para distribuiç
 
 **{{count:figure;legend=@elucidario/pkg-core: Estrutura do pacote principal do Elucidário.art.}}**
 
-![**Fonte**: Elaborado pelo autor.]({{static}}/elucidario-pkg.png)
+![**Fonte**: Elaborado pelo autor.]({{static;internal/body/elucidario/core}}/elucidario-pkg.png)

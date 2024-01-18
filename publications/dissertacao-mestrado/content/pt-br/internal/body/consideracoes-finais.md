@@ -1,4 +1,4 @@
-# 8 Considerações finais
+# 7 Considerações finais
 
 Ao longo desta dissertação, como objetivo proposto, desenvolvemos o aplicativo Elucidário.art para gestão de documentação museológica com foco em museus mistos, de modo a atender as especificações internacionais de interoperabilidade da informação e possibilitar a sua representação, visualização e recuperação.
 

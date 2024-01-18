@@ -1,0 +1,40 @@
+{
+    "title": "{{count:chart;legend=Grupos de informação para aquisição de objetos}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Grupo de informação"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        }
+    ],
+    "data": [
+        ["Grupo de informação", "Exigência"],
+        [
+            "_Informação de identificação do objeto_ (_Object identification information_)",
+            "obrigatório"
+        ],
+        [
+            "_Informação de aquisição_ (_Acquisition information_)",
+            "obrigatório"
+        ],
+        [
+            "_Histórico do objeto e informações de associação_ (_Object history and association information_)",
+            "obrigatório"
+        ],
+        [
+            "_Informações de uso do objeto_ (_Object use information",
+            "obrigatório"
+        ],
+        [
+            "_Informações de contribuição dos proprietário do objeto_ (_Object owners contribution information_)",
+            "obrigatório"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Grupos de informação para o procedimento _Aquisição e adesão_ do Spectrum 5."
+    }
+}

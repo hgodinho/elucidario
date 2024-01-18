@@ -1,6 +1,6 @@
 # 4 Metadados de representação e descrição da informação museológica
 
-Neste capítulo analisaremos os padrões de metadados desenvolvidos por Silva (2020) em sua tese de doutorado: "Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta", Object ID (1997) desenvolvido pelo Getty Research Institute, Linked Art (2021) padrão de metadados desenvolvido pelo Grupo de Trabalho do CIDOC-ICOM Linked Art, formado por Robert Sanderson, Athanasios Velios e Emmanuelle Delmas-Glass, e os Grupos de Informações do Spectrum 5.1 (2022) criados e mantidos pela Collections Trust no Reino Unido.
+Nesta seção analisamos os padrões de metadados desenvolvidos por Silva (2020) em sua tese de doutorado: "Esquema de metadados para descrição de obras de arte em museus brasileiros: uma proposta", Object ID (1997) desenvolvido pelo Getty Research Institute, Linked Art (2021) padrão de metadados desenvolvido pelo Grupo de Trabalho do CIDOC-ICOM Linked Art, formado por Robert Sanderson, Athanasios Velios e Emmanuelle Delmas-Glass, e os Grupos de Informações do Spectrum 5.1 (2022) criados e mantidos pela Collections Trust no Reino Unido.
 
 <!-- Object ID (1997) -->
 

@@ -1,0 +1,33 @@
+{
+    "title": "{{count:chart;legend=Grupos de informação para entrada de objetos.}}",
+    "fields": [
+        {
+            "type": "string",
+            "name": "Grupo de informação"
+        },
+        {
+            "type": "string",
+            "name": "Exigência"
+        }
+    ],
+    "data": [
+        ["Grupo de informação", "Exigência"],
+        ["_Informação de entrada de empréstimos_ (_Loan in_)", "opcional"],
+        [
+            "_Informações de identificação do objeto_ (_Object identification information_)",
+            "obrigatório"
+        ],
+        [
+            "_Informações de descrição do objeto_ (_Object description information_)",
+            "obrigatório"
+        ],
+        [
+            "_Informações de entrada do objeto_ (_Object entry information_)",
+            "obrigatório"
+        ]
+    ],
+    "note": {
+        "label": "Fonte",
+        "content": "Elaborado pelo autor. Grupos de informação para o procedimento _Object Entry_ do Spectrum 5."
+    }
+}
