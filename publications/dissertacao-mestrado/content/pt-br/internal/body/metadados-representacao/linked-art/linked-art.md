@@ -1,6 +1,6 @@
-Já o Linked Art é uma comunidade formada por representantes de instituições ao redor do mundo como The Canadian Heritage Information Network (CHIN), J. Paul Getty Trust, The Frick Collection, Europeana, Louvre, Rijksmuseum, The Victoria and Albert Museum, entre outras, com o objetivo de criar um modelo compartilhado baseado em _Linked Open Data_ para descrever Arte [@linked-art2021.1; @linked-art2021.2]. O projeto é coordenado por um quadro editorial em que Robert Sanderson (Yale University) e Emmanuelle Delmas-Glass (Yale Center for British Art) compartilham o posto de co-presidentes.
+Já o Linked Art é um padrão de metadados para aplicações criado por uma comunidade formada por representantes de instituições ao redor do mundo como The Canadian Heritage Information Network (CHIN), J. Paul Getty Trust, The Frick Collection, Europeana, Louvre, Rijksmuseum, The Victoria and Albert Museum, entre outras, com o objetivo de criar um modelo compartilhado baseado em Linked Open Data para descrever Arte (Linked Art, 2021a, b). O projeto é coordenado por um quadro editorial em que Robert Sanderson (Yale University) e Emmanuelle Delmas-Glass (Yale Center for British Art) compartilham o posto de co-presidentes.
 
-A comunidade Linked Art parte do conceito da usabilidade para a audiência correta, em que o maior público interessado em "dados" seriam os desenvolvedores que poderiam criar interfaces para o público final. Desdobrando esta ideia em cinco princípios de design, temos:
+A comunidade do Linked Art parte do conceito da usabilidade para a audiência correta, em que o maior público interessado em dados seriam os desenvolvedores que poderiam criar interfaces para o público final. Desdobrando esta ideia em cinco princípios de design, temos:
 
 1. **Abstração para a audiência correta**: desenvolvedores não precisam do mesmo acesso aos dados como os ontologistas;
 2. **Poucas barreiras de entrada**: deve ser fácil começar a trabalhar com dados e construir algo: _“If it takes a long time to understand the model, ontology, sparql query syntax and so forth, then developers will look for easier targets”_ [@sanderson2018];
@@ -16,6 +16,8 @@ _JavaScript Object Notation_ (JSON) é um formato aberto de arquivo para interc�
 
 Um arquivo JSON pode ser expressado da seguinte forma:
 
+{{count:figure;legend=Demonstração de um arquivo JSON}}
+
 ```json
 {
     "title": "One and three chairs",
@@ -23,9 +25,13 @@ Um arquivo JSON pode ser expressado da seguinte forma:
 }
 ```
 
+Fonte: Elaborado pelo autor.
+
 Mas o que este JSON representa para alguém que não conhece o contexto artístico? O que é _"title"_ e _"author"_ para uma máquina, e quais tipos de valores eles podem receber?
 
 _JSON for Linked Data_ (JSON-LD) busca solucionar este problema adicionando uma camada de contexto ao JSON, ao fazer um link com a definição do vocabulário utilizado [@sporny2012]. Além disso é possível adicionar um identificador ao objeto, desta forma, o mesmo arquivo, porém agora com a definição do vocabulário e utilizando o contexto do Linked Art, pode ser expresso da seguinte forma:
+
+{{count:figure;legend=Demonstração de um arquivo JSON-LD}}
 
 ```json
 {
@@ -59,6 +65,8 @@ _JSON for Linked Data_ (JSON-LD) busca solucionar este problema adicionando uma 
     }
 }
 ```
+
+Fonte: Elaborado pelo autor, com base em [@linked-art2021.21].
 
 Parece mais complexo que o exemplo anterior, e de fato é, mas agora temos um arquivo JSON que pode ser lido por humanos e máquinas, e que pode ser utilizado para conectar dados, trazendo muito mais contexto para a informação, em que: _"@context"_ é a URI do vocabulário utilizado, no caso Linked Art; "_id_" é o identificador do objeto, a URI para o registro no MoMA; "_\_label_" é um rótulo para leitura pelo desenvolvedor; "_type_" é o tipo de entidade; "_identified_by_" é a propriedade para identificar a obra, recebe um array de objetos que podem ser tanto "_Name_" quanto "_Identifier_", no caso é um "_Identifier_"com o valor "_One and three chairs_" classificado como "_Title_" e referenciado à definição de "_title_" no vocabulário AAT do Getty. Por fim,"_produced_by_" é a propriedade que recebe um objeto "_Production_" que tem como propriedade "_carried_out_by_" que recebe um array de objetos "_Person_" com a propriedade "_id_" e a URI para o registro do artista no MoMA e "_\_label_" com o nome do artista.
 

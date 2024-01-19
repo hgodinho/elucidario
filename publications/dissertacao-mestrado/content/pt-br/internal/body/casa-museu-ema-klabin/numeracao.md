@@ -1,7 +1,7 @@
 ---
 filename: "numeracao"
 title: "{{count:figure;legend=Estrutura de numeração da Casa-Museu Ema Klabin.}}"
-source: "**Fonte:** Elaborado pelo autor."
+source: "Fonte: Elaborado pelo autor."
 width: 1920
 background: transparent
 ---

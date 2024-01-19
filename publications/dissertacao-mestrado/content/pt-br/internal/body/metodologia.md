@@ -1,6 +1,6 @@
 # 2 Procedimentos metodológicos
 
-Esta é uma pesquisa aplicada mista e exploratória, que utiliza revisão bibliográfica e estudo de caso.
+Esta é uma pesquisa aplicada, mista e exploratória, que utiliza revisão bibliográfica e estudo de caso.
 
 Como o objetivo da pesquisa é desenvolver o aplicativo Elucidário.art, utilizamos diferentes métodos para obtenção dos resultados:
 
@@ -30,9 +30,9 @@ Uma outra metodologia Ágil bastante utilizada é a Extreme Programming (XP) (19
 
 Além da XP, que é uma metodologia que foi aplicada no desenvolvimento de todos os pacotes do Elucidário.art, também utilizamos a metodologia criada por Brad Frost em 2013 chamada _Atomic Design_ [@frost2013], que consiste em dividir a Interface de Usuário (UI) em componentes menores e mais simples, chamados de átomos, que são combinados para formar moléculas, organismos, templates e páginas. A figura a seguir representa a metodologia _Atomic Design_:
 
-**{{count:figure;legend=Metodologia Atomic Design.}}**
+{{count:figure;legend=Metodologia Atomic Design.}}
 
-![**Fonte:** Metodologia _Atomic Design_ (Frost, 2013).]({{static;internal/body}}/atomic-design-process.png)
+![Fonte: Metodologia _Atomic Design_ (Frost, 2013).]({{static;internal/body}}/atomic-design-process.png)
 
 Os átomos consistem nas menores unidades de design, como cores, fontes, ícones, botões, campos de formulário, etc. As moléculas são combinações de átomos, como um campo de formulário com um botão. Os organismos são combinações de moléculas, como um formulário de login. Os templates são combinações de organismos, como um template de página de edição. E as páginas são combinações de templates, como a página de configurações do plugin. Descrevemos na seção 6 como utilizamos a metodologia _Atomic Design_ para desenvolver o pacote `@elucidario/pkg-design-system` e como utilizamos o pacote para desenvolver a UI do plugin.
 

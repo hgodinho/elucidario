@@ -6,7 +6,7 @@ Esta pesquisa tem como ponto de partida, o desenvolvimento do aplicativo Elucid�
 
 O site passou a ser desenvolvido e, em 2019, foi lançado oficialmente com o nome Explore a Coleção! (EXPLORE) sob o endereço [https://emaklabin.org.br/explore](https://emaklabin.org.br/explore). Os dados foram migrados diretamente da base de dados museológica da casa museu, passando por poucos procedimentos de padronização da informação, pois o objetivo da ferramenta era a disponibilização para consulta online da base de dados tal como ela estava.
 
-Após o lançamento do site foi diagnosticada a necessidade de atualizar as bases de dados para que os dados estivessem em padrões internacionais de descrição e representação de itens museológicos, como Linked-art, e que os processos museológicos passassem a aderir metodologias como Standard Procedures for Collections Recording Used in Museums (Spectrum).
+Após o lançamento do site foi diagnosticada a necessidade de atualizar as bases de dados para que os dados estivessem em padrões internacionais de descrição e representação de itens museológicos, como Linked-art, e que os processos museológicos passassem a aderir metodologias como *Standard Procedures for Collections Recording Used in Museums* (Spectrum).
 
 Portanto, o problema desta pesquisa é: como o desenvolvimento de um sistema de gestão de documentação museológica pode atender as necessidades de um museu misto como a Casa Museu Ema Klabin e outros museus de pequeno e médio porte que procuram melhorar a gestão de sua documentação e divulgação da coleção utilizando princípios de *Linked Open Data* (LOD) e padrões internacionais de representação e recuperação da informação museológica?
 
