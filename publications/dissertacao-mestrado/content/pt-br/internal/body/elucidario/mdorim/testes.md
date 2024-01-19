@@ -4,7 +4,7 @@ Os testes do Mdorim foram definidos utilizando o método `validate` do objeto `S
 
 Para cada schema definido no pacote foi definido dois testes unitários, um que valida um objeto JSON com o JSON-Schema correspondente, e outro que espera um erro quando o objeto JSON não é válido.
 
-**{{count:figure;legend=Exemplo de testes utilizando o método validate}}**
+{{count:figure;legend=Exemplo de testes utilizando o método validate}}
 
 {{code:internal/body/elucidario/mdorim/teste-exemplo.php}}
 

@@ -52,9 +52,9 @@ As principais linguagens de programação utilizadas no código-fonte do Elucid�
 
 Utilizamos o Git [@torvalds2005] para o controle de versão dos pacotes, o GitHub [@github2008] para hospedagem do repositório e o Versionamento Semântico (_Semantic Versioning_ ou _SemVer_) [@sem-ver2023] para definição das versões públicas dos pacotes. O SemVer define três tipos diferentes de incrementação de versão: _major_, _minor_ e _patch_. O _major_ é incrementado quando há mudanças incompatíveis na API, ou seja, quando a forma de usar as suas funções, métodos, classes, e etc, são alteradas; o _minor_ é incrementado quando há adição de funcionalidades compatíveis com versões anteriores; e o _patch_ é incrementado quando há correção de _bugs_, também compatíveis com versões anteriores.
 
-**{{count:figure;legend=Exemplo do Versionamento Semântico (SemVer)}}**
+{{count:figure;legend=Exemplo do Versionamento Semântico (SemVer)}}
 
-![**Fonte**: Elaborado pelo autor, com base no SemVer.org]({{static;internal/body/elucidario}}/SemVer.png)
+![Fonte: Elaborado pelo autor, com base no SemVer.org]({{static;internal/body/elucidario}}/SemVer.png)
 
 O repositório pode ser acessado no link <https://github.com/hgodinho/elucidario> e, em resumo, é organizado da seguinte forma:
 
@@ -97,7 +97,7 @@ Para assegurarmos a qualidade do código-fonte, e se seus objetivos estão sendo
 
 Utilizamos a biblioteca Jest [@nakazawa2011] para os testes em javascript e a biblioteca Pest [@maduro2021] para os testes em PHP. Estas bibliotecas permitem a criação de testes unitários e de integração. Os testes unitários são utilizados para testar pequenas partes do código-fonte, como funções, métodos, classes, etc. Os testes de integração são utilizados para testar a integração entre diferentes partes do código-fonte, como a integração entre diferentes funções, métodos, classes, etc. Embora utilizadas em linguagens de programação diferentes, as duas bibliotecas apresentam uma API bastante similar, umas das funcionalidades apresentadas por ambas é a possibilidade de definir _matchers_ para validação de valores, como por exemplo, a validação de uma `string`:
 
-**{{count:figure;legend=Exemplo de teste utilizando o Jest para javascript e o Pest para PHP}}**
+{{count:figure;legend=Exemplo de teste utilizando o Jest para javascript e o Pest para PHP}}
 
 ```javascript
 // js
@@ -107,7 +107,7 @@ expect('banana').toBe('banana');
 expect('banana')->toBe('banana');
 ```
 
-**Fonte**: elaborado pelo autor.
+Fonte: elaborado pelo autor.
 
 Em que `expect` é uma função que espera um valor qualquer como parâmetro, nela definimos o valor que esperamos receber, e em seguida utilizamos o _matcher_ `toBe` para validar se o valor recebido é igual ao valor esperado.
 

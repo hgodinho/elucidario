@@ -1,4 +1,4 @@
-### 7.2.3 @elucidario/pkg-core
+### 6.2.3 @elucidario/pkg-core
 
 **Escopo**
 
@@ -8,6 +8,6 @@ O pacote `@elucidario/pkg-core` é o pacote principal do Elucidário.art e é re
 
 O `@elucidario/pkg-core` integra os demais pacotes em um único para distribuição e instalação do Elucidário.art. Ele é dividido em quatro partes principais: _Object-Relational Mapping_ (ORM), _Representational State Transfer_ (REST), _Validator_ (Validação) e _User Interface_ (UI). O ORM é responsável por mapear os objetos do modelo de dados para o banco de dados, o Validator é utilizado para validar os dados utilizados ao longo de diversas funções no sistema, o REST é responsável por criar as rotas e endpoints da API e a UI é responsável por definir o design e criar as páginas administrativas do plugin.
 
-**{{count:figure;legend=@elucidario/pkg-core: Estrutura do pacote principal do Elucidário.art.}}**
+{{count:figure;legend=@elucidario/pkg-core: Estrutura do pacote principal do Elucidário.art.}}
 
-![**Fonte**: Elaborado pelo autor.]({{static;internal/body/elucidario/core}}/elucidario-pkg.png)
+![Fonte: Elaborado pelo autor.]({{static;internal/body/elucidario/core}}/elucidario-pkg.png)
