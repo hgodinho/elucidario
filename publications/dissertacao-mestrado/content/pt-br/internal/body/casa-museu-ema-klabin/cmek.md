@@ -2,9 +2,9 @@
 
 A Casa Museu Ema Klabin é uma casa museu de colecionadora localizada na Rua Portugal, 43 do bairro Jardim Europa em São Paulo, SP - Brasil.
 
-**{{count:image;legend=Fachada da Casa Museu Ema Klabin vista do Jardim.}}**
+{{count:image;legend=Fachada da Casa Museu Ema Klabin vista do Jardim.}}
 
-![**Fonte:** Fachada da Casa Museu Ema Klabin (Kon, 2022a)]({{static;internal/body/casa-museu-ema-klabin}}/fachada-nelson-kon-2022.jpg)
+![Fonte: Fachada da Casa Museu Ema Klabin (Kon, 2022a)]({{static;internal/body/casa-museu-ema-klabin}}/fachada-nelson-kon-2022.jpg)
 
 Ema Klabin (1907 - 1994) foi uma mecenas e colecionadora de arte, filha de Hessel Klabin, um dos sócios-fundadores da empresa hoje conhecida como Klabin S.A., de papel e celulose. Em 1946, antes de seu falecimento, Hessel doou todos seus bens para as duas filhas (Ema e Eva Klabin), inclusive sua parte da empresa [@costa2007, p.81-82]. Paulo de Freitas Costa, curador da Casa Museu Ema Klabin, descreve Ema em seu livro "Sinfonia de Objetos" [@costa2007, p. 84] como uma "grande apreciadora de música e de arte, leitora voraz e frequentadora assídua de concertos e apresentações de teatro, ópera e balé, bem como de exposições em museus e galerias", Paulo também menciona a atuação ativa de Ema no setor cultural paulistano:
 
@@ -18,33 +18,33 @@ Costa (2007) define quatro movimentos da coleção de Ema, sendo o primeiro "A t
 
 "Ainda dentro da tradição europeia, mas em contraponto à cultura ocidental, está o conjunto de peças orientais reunidas por Ema Klabin" [@costa2007, p.101]. Este movimento da coleção ainda pode ser subdividido pela intenção pela qual foram colecionados em três conjuntos: "objetos decorativos feitos no oriente para o mercado europeu, os souvenirs de viagem e as peças arqueológicas";
 
-**{{count:image;legend=Salão da Casa Museu Ema Klabin.}}**
+{{count:image;legend=Salão da Casa Museu Ema Klabin.}}
 
-![**Fonte:** Salão da Casa Museu Ema Klabin (Kon, 2022b).]({{static;internal/body/casa-museu-ema-klabin}}/salao-nelson-kon-2022.jpg)
+![Fonte: Salão da Casa Museu Ema Klabin (Kon, 2022b).]({{static;internal/body/casa-museu-ema-klabin}}/salao-nelson-kon-2022.jpg)
 
 Na Imagem 2, em primeiro plano vemos a coleção de bronzes chineses, com peças do século XIV a.c. como o Recipiente para aquecimento de vinho ritual (_jue_) da Dinastia Shang (o segundo da direita para esquerda). No centro do salão, em cima da mesa uma cópia de estudo de uma ânfora, provavelmente realizada em Roma no século XIX. Ao fundo o quadro Triunfo de Baco e Ariadne de Giovanni Battista Gaulli (_Il Baciccio_) de 1675.
 
 Conforme Costa (2007), o segundo movimento "Raízes brasileiras" apresenta temas totalmente novos, relacionados ao nosso passado imperial e colonial, explorando os elementos artísticos brasileiros. As primeiras peças brasileiras a entrar na coleção de Ema são as imagens do Bom Jesus da Lapa, da Santa Luzia, da Nossa Senhora Divina Pastora e da Nossa Senhora da Assunção, que foram expostas inicialmente na exposição "Imagens Religiosas Brasileiras", realizada em comemoração ao "IV Centenário da Cidade de São Paulo", junto com mais outras exposições que buscavam entender a formação da nação brasileira a partir de referências paulistas [@costa2007, p.106]. Costa destaca que a formação da coleção brasileira de Ema se caracteriza por um olhar estrangeiro, embora Ema tenha nascido no Rio de Janeiro, é filha de imigrantes e teve sua educação realizada na Europa "para Ema, talvez, uma Virgem Maria de nosso barroco fosse tão distante quanto uma Guanyin chinesa do século XVII" [@costa2007, p. 108];
 
-**{{count:image;legend=Detalhe da Sala de Jantar da Casa Museu Ema Klabin.}}**
+{{count:image;legend=Detalhe da Sala de Jantar da Casa Museu Ema Klabin.}}
 
-![**Fonte:** Detalhe da Sala de Jantar de Casa Museu Ema Klabin (Kon, 2022c)]({{static;internal/body/casa-museu-ema-klabin}}/sala-jantar-nelson-kon-2022.jpg)
+![Fonte: Detalhe da Sala de Jantar de Casa Museu Ema Klabin (Kon, 2022c)]({{static;internal/body/casa-museu-ema-klabin}}/sala-jantar-nelson-kon-2022.jpg)
 
 Na Imagem 3 ao centro vemos um armário-vitrine do século XX construído com fragmentos de talhas do Mestre Valentim da Fonseca, dentro dela vemos diversas imagens sacras. Ao lado, a direta, vemos uma placa misular do século XIX também do Mestre Valentim da Fonseca, logo abaixo vemos a Imagem de Santana Mestra do século XVIII. À esquerda do armário vitrine, "Vaso com Flores" de Maurice de Vlaminck e "Natureza morta com limões e xícara" de Pierre-Auguste Renoir.
 
 O terceiro movimento "Aproximações com o Modernismo" tem seu início no ano de 1961, "quando Ema, recém-instalada em sua nova casa no Jardim Europa, assume um papel mais significativo no cenário cultural da cidade" [@costa2007, p.113]. Este movimento se caracteriza pela entrada de obras representativas do modernismo brasileiro. Neste período Ema se empenhou na organização de leilões em prol da construção do Hospital Israelita Albert Einstein, "que tiveram papel importante na consolidação do mercado de arte moderna brasileira" [@costa2007, p.113]. As aquisições realmente significativas deste movimento ocorreram no final da década de 1960, quando Ema se envolveu na criação do Museu Lasar Segall, e adquiriu três telas do artista: "Retrato Feminino" (1927), "Retrato de Lucy" (1937) e "Natureza-morta com frutas" (1938).
 
-**{{count:image;legend=Detalhe do quarto principal da Casa Museu Ema Klabin.}}**
+{{count:image;legend=Detalhe do quarto principal da Casa Museu Ema Klabin.}}
 
-![**Fonte:** Detalhe do quarto principal da Casa Museu Ema Klabin (Kon, 2022d)]({{static;internal/body/casa-museu-ema-klabin}}/quarto-nelson-kon-2022.jpg)
+![Fonte: Detalhe do quarto principal da Casa Museu Ema Klabin (Kon, 2022d)]({{static;internal/body/casa-museu-ema-klabin}}/quarto-nelson-kon-2022.jpg)
 
 Na Imagem 4 vemos o "Retrato Feminino" de Emiliano Di Cavalcanti de 1955 à esquerda, "Rebanho em Repouso" de 1944 de Lasar Segall à direita do espelho, e mais à direita a tela "Galos" de Cândido Portinari de 1940.
 
 Em 1972, Ema e sua irmã Eva, preocupadas com o destino de suas coleções, convidam Karl Katz, especialista em arte e arqueologia e membro do conselho do Metropolitan Museum de Nova Iorque, para contribuir com um projeto para as coleções, inciando assim o quarto movimento da coleção "Últimas aquisições - novas direções". Após a visita, Katz apresentou uma proposta de catalogação das duas coleções e sugeriu a criação de um ‘Centro de Altos Estudos em Museologia’ no Brasil" [@costa2007, p.121], mas somente a ideia de transformar as casas em museu prevaleceu. A partir deste momento, Ema volta seus olhares para obras que "‘coroassem’ a coleção ou, melhor dizendo, seu ‘museu’" [@costa2007, p.121 aspas do autor], momento que adquiriu sua primeira obra de Marc Chagall, "_À la Campagne_", em 1972, obra que se tornaria a mais valiosa da coleção. Seguindo a mesma lógica, Ema passa a buscar obras de altíssimo valor em leilões da casa Sotheby’s de Londres: "de uma só vez, adquiriu telas de Chaim Soutine, Pierre-Auguste Renoir e Maurice de Vlaminck. Essas obras entraram para a coleção justamente no final de 1978, quando ela acabara de registrar oficialmente sua Fundação" [@costa2007, p. 122].
 
-**{{count:image;legend=Detalhe da sala de música da Casa Museu Ema Klabin}}**
+{{count:image;legend=Detalhe da sala de música da Casa Museu Ema Klabin}}
 
-![**Fonte:** Detalhe da Sala de Música da Casa Museu Ema Klabin (Kon, 2022e)]({{static;internal/body/casa-museu-ema-klabin}}/sala-musica-nelson-kon-2022.jpg)
+![Fonte: Detalhe da Sala de Música da Casa Museu Ema Klabin (Kon, 2022e)]({{static;internal/body/casa-museu-ema-klabin}}/sala-musica-nelson-kon-2022.jpg)
 
 Na Imagem 5 vemos em destaque a tela "_À la Campagne_" de Marc Chagall de 1925, à sua esquerda o relógio de piso francês do século XVIII.
 
@@ -60,9 +60,7 @@ Essas cinco bases se organizam em três grupos: "Coleção", "Biblioteca" e "Arq
 
 {{count:image;legend=Grupos e bases de dados da Casa Museu Ema Klabin.}}
 
-![**Fonte:** Grupos e bases de dados da Casa Museu Ema Klabin.]({{static;internal/body/casa-museu-ema-klabin}}/grupos-bd.png)
-
-**Fonte**: Elaborado pelo autor.
+![Fonte: Grupos e bases de dados da Casa Museu Ema Klabin.]({{static;internal/body/casa-museu-ema-klabin}}/grupos-bd.png)
 
 Devido a heterogeneidade da Coleção alguns itens são simples, como uma peça esculpida em pedra ou um desenho em uma folha de papel, enquanto outros são grupos compostos por diversos outros itens, como os faqueiros e os jogos para chá. Ou até mesmo objetos compostos por duas ou mais peças de materiais diferentes, como no caso dos frascos para rapé que possuem o corpo e a tampa —alguns ainda possuem uma terceira peça que seria a base. Ou ainda, as sopeiras, que possuem corpo e tampa e fazem parte dos conjuntos de porcelanas chinesas de exportações, ou seja, duas peças distintas que constituem um único item pertencendo a um conjunto de itens. Com exceção do primeiro caso (item simples), a sintaxe de numeração não dá conta da real característica física da coleção. O esquema abaixo ilustra a estrutura atual de numeração:
 
@@ -72,7 +70,7 @@ Em alguns casos, a numeração de itens múltiplos na documentação da coleçã
 
 {{count:image;legend=Tela do FileMaker, software utilizado atualmente para gestão das BDs da Casa Museu Ema Klabin, demostra a numeração de um item múltiplo utilizando sistema alfanumérico.}}
 
-![**Fonte**: Tela do Filemaker demonstrando numeração com sistema alfanumérico.]({{static;internal/body/casa-museu-ema-klabin}}/filemaker-m0003.png)
+![Fonte: Tela do Filemaker demonstrando numeração com sistema alfanumérico.]({{static;internal/body/casa-museu-ema-klabin}}/filemaker-m0003.png)
 
 Esta sintaxe de numeração dos itens não corresponde às práticas recomendadas por modelos e guias como Cataloguing Cultural Objects: A Guide to Describing Cultural Works and Their Images (CCO) [@baca2006] e CDWA [@harpring2022] mantido pelo Getty Vocabulary Program (GVP). O CCO recomenda o registro separado das partes do todo e um registro para o todo em si [@baca2006.1, p. 14], e que o catalogador faça o registro dessas relações entre os objetos. Para isso, o guia define três tipos diferentes de relações intrínsecas, ou relações hierárquicas parte-todo: grupos ou coleções, séries, componentes ou obras arquitetônicas. Já a diretriz CDWA apresenta uma lista de possibilidades recomendadas que definem o nível de catalogação de um trabalho artístico: item, volume, álbum, grupo, subgrupo, coleção, série, conjunto, múltiplos, componentes, caixa, fundo, portfólio, suíte, complexo, agrupamento de objetos, performance e itens [@harpring2022]. O CDWA, assim como o CCO, define essa informação como obrigatória, e é desejável que as partes sejam registradas separadamente do todo, com a indicação de suas relações intrínsecas.
 
@@ -80,7 +78,7 @@ Um outro problema é a representação dos itens nas BDs Filemaker, que estão i
 
 {{count:image;legend=Exemplo de descrição do estado de conservação de um item da Coleção Ema Klabin.}}
 
-![**Fonte**: Aba do estado de conservação de uma peça no Filemaker]({{static;internal/body/casa-museu-ema-klabin}}/filemaker-m0021.png)
+![Fonte: Aba do estado de conservação de uma peça no Filemaker]({{static;internal/body/casa-museu-ema-klabin}}/filemaker-m0021.png)
 
 Este metadado poderia ser facilmente representado por uma matriz de objetos, em que o objeto contém as propriedades data, observação, e usuário, em uma arquitetura da informação baseada em eventos, em que o usuário adiciona novos estados de conservação sempre com a mesma estrutura.
 
@@ -92,7 +90,7 @@ Um outro problema nas BDs é que não há uma conexão direta entre elas, quando
 
 {{count:image;legend=Histórico de uma peça da Coleção Ema Klabin.}}
 
-![**Fonte**: Aba do histórico de uma peça no Filemaker]({{static;internal/body/casa-museu-ema-klabin}}/filemaker-m0023.png)
+![Fonte: Aba do histórico de uma peça no Filemaker]({{static;internal/body/casa-museu-ema-klabin}}/filemaker-m0023.png)
 
 O quadro a seguir demonstra todos os metadados definidos na BD Museológica:
 
@@ -102,11 +100,11 @@ Em 2019, com o lançamento do EXPLORE (<https://emaklabin.org.br/explore>), a Ca
 
 {{count:image;legend=Página principal do Explore.}}
 
-![**Fonte**: Página inicial do site https://emaklabin.org.br/explore (Costa, 2019a)]({{static;internal/body/casa-museu-ema-klabin}}/explore-home.png)
+![Fonte: Página inicial do site https://emaklabin.org.br/explore (Costa, 2019a)]({{static;internal/body/casa-museu-ema-klabin}}/explore-home.png)
 
 {{count:image;legend=Página de detalhe de um item do Explore.}}
 
-![**Fonte**: Página de detalhe de um item do site https://emaklabin.org.br/explore (Costa, 2019b)]({{static;internal/body/casa-museu-ema-klabin}}/explore-single.png)
+![Fonte: Página de detalhe de um item do site https://emaklabin.org.br/explore (Costa, 2019b)]({{static;internal/body/casa-museu-ema-klabin}}/explore-single.png)
 
 Após o lançamento do site foi diagnosticada a necessidade de atualizar as bases de dados para que as informações estejam em padrões internacionais de descrição e representação de itens museológicos, como Object ID, e Linked-art criados pelos Grupos de Trabalhos do CIDOC-ICOM, e que os processos museológicos passassem a aderir metodologias como Spectrum criada pela _Collections Trust_, recomendada pelo ICOM e utilizada por todas as instituições museológicas do Reino Unido e diversas outras ao redor do mundo [@collections-trust2017.1].
 

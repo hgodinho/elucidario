@@ -7,6 +7,8 @@ import { kebabCase } from "lodash-es";
 import { fromMarkdown } from "mdast-util-from-markdown";
 import * as unist from "@elucidario/pkg-unist";
 import { merge } from "lodash-es";
+import semver from "semver";
+import simpleGit from "simple-git";
 
 const pkg = readFile({
     filePath: path.resolve(getPaths().packages, "pub-gen", "package.json"),
@@ -639,4 +641,68 @@ export function reduceFiles(files) {
             `<!-- END_PUBGEN_FILE: ${item.path} -->`,
         ]);
     }, "");
+}
+
+/**
+ * VersionUp
+ */
+export function versionUp(version, release, ...extra) {
+    return semver.inc(version, release, ...extra);
+}
+
+/**
+ * Verify if git is ready to push
+ * @param {string} publication
+ */
+export async function gitReady(publication) {
+    const git = simpleGit();
+
+    // verifica repositório git
+    try {
+        const gitStatus = await git.status();
+
+        const status = {
+            not: gitStatus.not_added.filter((file) =>
+                file.includes(publication),
+            ),
+            modified: gitStatus.modified.filter((file) =>
+                file.includes(publication),
+            ),
+            created: gitStatus.created.filter((file) =>
+                file.includes(publication),
+            ),
+            deleted: gitStatus.deleted.filter((file) =>
+                file.includes(publication),
+            ),
+            staged: gitStatus.staged.filter((file) =>
+                file.includes(publication),
+            ),
+        };
+
+        /**
+         * If any of the status is not empty, ready is false
+         */
+        const ready = Object.values(status).every((item) => item.length === 0);
+
+        if (ready) {
+            return ready;
+        } else {
+            const errorMessage = Object.entries(status).reduce(
+                (acc, [key, value]) => {
+                    if (value.length > 0) {
+                        acc = `${acc ? `${acc}\n\n` : ""}${key}: ${value.join(
+                            ", ",
+                        )}`;
+                    }
+                    return acc;
+                },
+                "",
+            );
+            throw new Error(
+                `Please commit your changes before versioning:\n\n${errorMessage}`,
+            );
+        }
+    } catch (error) {
+        throw new Error(error.message);
+    }
 }

@@ -1,7 +1,7 @@
 ---
 filename: "classes-mdorim"
 title: "{{count:figure;legend=Modelo de Dados para Organização e Representação da Informação Museológica}}"
-source: "**Fonte:** Elaborado pelo autor."
+source: "Fonte: Elaborado pelo autor."
 width: 1920
 background: transparent
 ---

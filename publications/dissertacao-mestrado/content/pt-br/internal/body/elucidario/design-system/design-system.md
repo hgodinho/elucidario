@@ -1,4 +1,4 @@
-### 7.2.2 @elucidario/pkg-design-system
+### 6.2.2 @elucidario/pkg-design-system
 
 **Escopo**
 
@@ -18,9 +18,9 @@ A fonte utilizada para todos os textos, inclusive do logo, foi a Inter [@anderss
 
 A paleta de cores apresenta duas cores primárias no sistema e uma escala de cinza. O tema do aplicativo pode ser trocado de escuro para claro, o que significa que o sistema se adapta de acordo com a preferência do usuário ou do sistema operacional (Windows, OS, Android, etc).
 
-**{{count:figure;legend=Cartela de demonstração da tipografia e paleta do design-system.}}**
+{{count:figure;legend=Cartela de demonstração da tipografia e paleta do design-system.}}
 
-![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/cartela-tipografia.png)
+![Fonte: Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/cartela-tipografia.png)
 
 **Moléculas**: elementos compostos por átomos, como botões, campos de formulário, etc;
 
@@ -40,7 +40,7 @@ Foi definido um mapeamento entre estes tipos de dados e tags HTML com seus atrib
 
 Podemos definir que os seguintes JSON-Schema e código HTML são equivalentes:
 
-**{{count:figure;legend=Exemplo de JSON-Schema e HTML equivalentes.}}**
+{{count:figure;legend=Exemplo de JSON-Schema e HTML equivalentes.}}
 
 **json-schema:**
 
@@ -61,7 +61,7 @@ Podemos definir que os seguintes JSON-Schema e código HTML são equivalentes:
 <span>Descrição</span>
 ```
 
-**Fonte:** Elaborado pelo autor.
+Fonte: Elaborado pelo autor.
 
 **Organismos**: elementos compostos por moléculas, como cabeçalhos, rodapés, etc;
 
@@ -81,19 +81,19 @@ Um dos principais componentes para a construção do formulário de metadados é
 
 Podemos representar a anatomia do componente `Field` da seguinte forma:
 
-**{{count:figure;legend=Anatomia do componente "Field".}}**
+{{count:figure;legend=Anatomia do componente "Field".}}
 
-![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field.png)
+![Fonte: Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field.png)
 
 Para a validação de dados, além do feedback visual é necessário que o `Field` informe ao usuário a mensagem da validação, seja sucesso ou erro:
 
-**{{count:figure;legend=Feedback de erro do componente "Field".}}**
+{{count:figure;legend=Feedback de erro do componente "Field".}}
 
-![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-error.png)
+![Fonte: Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-error.png)
 
-**{{count:figure;legend=Feedback de sucesso do componente "Field".}}**
+{{count:figure;legend=Feedback de sucesso do componente "Field".}}
 
-![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-success.png)
+![Fonte: Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-success.png)
 
 Quando recebemos um `object` no componente `Field` ele é capaz de aninhar outros _Fields_:
 
@@ -112,15 +112,15 @@ Quando recebemos um `object` no componente `Field` ele é capaz de aninhar outro
 }
 ```
 
-**Fonte:** Extraído de Linked Art [@linked-art2021.1].
+Fonte: Extraído de Linked Art [@linked-art2021.1].
 
-**{{count:figure;legend=Anatomia do componente "Field" com "object".}}**
+{{count:figure;legend=Anatomia do componente "Field" com "object".}}
 
-![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-object.png)
+![Fonte: Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-object.png)
 
 Assim como o `array` é capaz de adicionar, remover e reordenar _Fields_:
 
-**{{count:figure;legend=Exemplo de JSON-Schema representando um array.}}**
+{{count:figure;legend=Exemplo de JSON-Schema representando um array.}}
 
 ```json
 {
@@ -140,11 +140,11 @@ Assim como o `array` é capaz de adicionar, remover e reordenar _Fields_:
 }
 ```
 
-**Fonte:** Extraído de Linked Art [@linked-art2021.1].
+Fonte: Extraído de Linked Art [@linked-art2021.1].
 
-**{{count:figure;legend=Anatomia do componente "Field" com "array".}}**
+{{count:figure;legend=Anatomia do componente "Field" com "array".}}
 
-![**Fonte:** Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-array.png)
+![Fonte: Elaborado pelo autor.]({{static;internal/body/elucidario/design-system}}/anatomia-Field-array.png)
 
 **Templates**: elementos compostos por organismos, como layouts, páginas, etc;
 

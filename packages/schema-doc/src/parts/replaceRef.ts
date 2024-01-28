@@ -38,31 +38,36 @@ export function replaceRef(
 ) {
     return Object.fromEntries(
         Object.entries(schema).map(([key, value]) => {
-            if ("$ref" === key) {
-                const found = paths.find(([needle, replace]) => {
-                    return (value as string).includes(`<${needle}>`);
-                });
-                if (found) {
-                    value = (value as string).replace(
-                        `<${found[0]}>`,
-                        found[1],
+            try {
+                if ("$ref" === key) {
+                    const found = paths.find(([needle, replace]) => {
+                        return (value as string).includes(`<${needle}>`);
+                    });
+                    if (found) {
+                        value = (value as string).replace(
+                            `<${found[0]}>`,
+                            found[1],
+                        );
+                    }
+                } else if (
+                    typeof value === "object" &&
+                    value !== null &&
+                    !Array.isArray(value)
+                ) {
+                    value = replaceRef(value as Schema<DataTypes>, paths);
+                } else if (Array.isArray(value)) {
+                    value = value.map((v) =>
+                        typeof v === "object" && v !== null
+                            ? replaceRef(v as Schema<DataTypes>, paths)
+                            : v,
                     );
                 }
-            } else if (
-                typeof value === "object" &&
-                value !== null &&
-                !Array.isArray(value)
-            ) {
-                value = replaceRef(value as Schema<DataTypes>, paths);
-            } else if (Array.isArray(value)) {
-                value = value.map((v) =>
-                    typeof v === "object" && v !== null
-                        ? replaceRef(v as Schema<DataTypes>, paths)
-                        : v,
-                );
-            }
 
-            return [key, value];
+                return [key, value];
+            } catch (error) {
+                console.error(error);
+                throw error;
+            }
         }),
     );
 }

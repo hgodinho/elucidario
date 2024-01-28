@@ -6,27 +6,27 @@ O modelo apresenta duas formas de interação com seus dados: leitura e escrita,
 
 No contexto de leitura os dados podem ser retornados em dois formatos diferentes, o primeiro segue o formato do Mdorim, em que as entidades relacionadas são definidas por meio de IDs e uma propriedade `_links` contendo um `array` com a URI da entidades relacionadas e/ou uma propriedade `_embedded` que contém todos dados de uma entidade relacionada [@word-press9999]. O formato do WordPress é o padrão da REST-API do Mdorim, portanto não é necessário adicionar o cabeçalho `Accept` na requisição. O segundo segue o formato JSON-LD utilizando o perfil do Linked Art como modelo de interoperabilidade, isso significa que as relações com outras entidades estão definidas por meio de um objeto `Ref` que contém a URI, um rótulo e o tipo da entidade relacionada. A requisição feita ao _endpoint_ deve conter um cabeçalho `Accept` com o valor `application/ld+json;profile="https://linked.art/ns/v1/linked-art.json"` [@linked-art2021.27].
 
-**{{count:figure;legend=Resposta a uma requisição contendo o metadado classified_as da entidade Object no contexto de leitura do WordPress utilizando somente a propriedade _links}}**
+{{count:figure;legend=Resposta a uma requisição contendo o metadado classified_as da entidade Object no contexto de leitura do WordPress utilizando somente a propriedade_links}}
 
 {{code:internal/body/elucidario/core/rest/json-schema-example-object-read-wp.json}}
 
-**Fonte**: Elaborado pelo autor.
+Fonte: Elaborado pelo autor.
 
 Neste contexto, o Elucidário.art retorna uma lista de ID das entidades `Concepts` registradas. Para cada ID é possível acessar a URI da entidade relacionada por meio da propriedade `_links`.
 
-**{{count:figure;legend=Resposta a uma requisição contendo o metadado classified_as da entidade Object no contexto de leitura do content-type WordPress utilizando as propriedades \`_links\` e \`_embedded\`}}**
+{{count:figure;legend=Resposta a uma requisição contendo o metadado classified_as da entidade Object no contexto de leitura do content-type WordPress utilizando as propriedades \`_links\` e \`_embedded\`}}
 
 {{code:internal/body/elucidario/core/rest/json-schema-example-object-read-wp-embedded.json}}
 
-**Fonte**: Elaborado pelo autor.
+Fonte: Elaborado pelo autor.
 
 Quando um objeto da propriedade link for marcado como `embeddable: true`, o Elucidário.art retorna os dados da entidade relacionada na mesma resposta da requisição, na propriedade `_embedded`.
 
-**{{count:figure;legend=Resposta a uma requisição contendo o metadado classified_as da entidade Object no contexto de leitura do content-type Linked Art}}**
+{{count:figure;legend=Resposta a uma requisição contendo o metadado classified_as da entidade Object no contexto de leitura do content-type Linked Art}}
 
 {{code:internal/body/elucidario/core/rest/json-schema-example-object-read-la.json}}
 
-**Fonte**: Elaborado pelo autor.
+Fonte: Elaborado pelo autor.
 
 A resposta da requisição no formato Linked Art retorna um `array` do objeto `Ref` que contém, cada um dos elementos, a URI, a label e o tipo da entidade relacionada.
 
@@ -34,11 +34,11 @@ A resposta da requisição no formato Linked Art retorna um `array` do objeto `R
 
 Já no contexto de escrita a definição das relações são definidas pelas IDs das entidades:
 
-**{{count:figure;legend=Requisição de escrita contendo o metadado classified_as da entidade Object no content-type WordPress}}**
+{{count:figure;legend=Requisição de escrita contendo o metadado classified_as da entidade Object no content-type WordPress}}
 
 {{code:internal/body/elucidario/core/rest/json-schema-example-object-write-wp.json}}
 
-**Fonte**: Elaborado pelo autor.
+Fonte: Elaborado pelo autor.
 
 Neste exemplo, a requisição de escrita para o metadado `classified_as` contem apenas um `array` de IDs numéricas que representam as ID de cada `Concept` sendo referenciado.
 
