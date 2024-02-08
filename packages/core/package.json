@@ -6,10 +6,12 @@
     "license": "MIT",
     "author": "Henrique Godinho <henrique@hgod.in>",
     "type": "module",
-    "main": "index.js",
+    "main": "lib/index.min.mjs",
     "scripts": {
         "db:reset-test": "rm -r ./wp/src/wp-content/database",
         "index": "node ./.bin/create-index.js",
+        "build": "rollup -c",
+        "watch": "pnpm build -w",
         "jest": "jest --coverage",
         "lint": "pnpm .bin/lint.sh",
         "make-pot": "node ./.bin/make-pot.js",
@@ -23,6 +25,8 @@
         "@elucidario/tool-rollup": "workspace:^",
         "@elucidario/tool-tsconfig": "workspace:^",
         "@types/node": "^18.19.3",
+        "rollup": "^4.9.6",
+        "typescript": "^5.3.3",
         "wp-pot": "^1.10.2"
     },
     "peerDependencies": {
