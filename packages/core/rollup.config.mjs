@@ -10,8 +10,11 @@ const external = [
 const minified = [
     {
         file: pkg.main,
-        format: "esm",
+        format: "iife",
         sourcemap: true,
+        globals: {
+            "react-dom/client": "ReactDOM",
+        },
     },
 ];
 
@@ -21,8 +24,8 @@ const unMinified = minified.map(({ file, ...rest }) => ({
 }));
 
 const config = lcdrRollupConfig({
-    external,
-    input: "src/ts/index.ts",
+    external: [...external, "react-dom/client"],
+    input: "src/ts/index.tsx",
     output: [...unMinified, ...minified],
     plugins: {
         typescript: {
