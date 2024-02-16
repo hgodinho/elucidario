@@ -46,6 +46,7 @@ const lcdrRollupConfig = (config = null) => {
             sourcemap: true,
         },
         plugins: [
+            wpResolve(),
             typescript({
                 tsconfig: "tsconfig.json",
                 ...typescriptConfig,
@@ -59,7 +60,6 @@ const lcdrRollupConfig = (config = null) => {
                 },
             }),
             json(),
-            wpResolve(),
         ],
         external,
     };
