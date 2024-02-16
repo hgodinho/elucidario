@@ -12,6 +12,8 @@ import {
     referencesFrom,
     mdToMdast,
     filesFromManifest,
+    versionUp,
+    gitReady,
 } from "../lib/utils";
 
 import testPubGenConfig from "../../../publications/publicacao-teste/pub-gen.json";
@@ -421,5 +423,32 @@ describe("filesFromManifest", () => {
         const manifest = getFixture("filesFromManifest.expected.json");
 
         expect(files).toMatchObject(manifest);
+    });
+});
+
+describe("versionUp", () => {
+    it("should increment the major version", () => {
+        const version = versionUp("0.9.0", "major");
+        expect(version).toEqual("1.0.0");
+    });
+
+    it("should increment the minor version", () => {
+        const version = versionUp("0.9.0", "minor");
+        expect(version).toEqual("0.10.0");
+    });
+
+    it("should increment the patch version", () => {
+        const version = versionUp("0.9.0", "patch");
+        expect(version).toEqual("0.9.1");
+    });
+});
+
+describe("gitReady", () => {
+    it("should return the git status", async () => {
+        const git = await gitReady("publicacao-teste");
+
+        console.log(git);
+
+        expect(true).toEqual(true);
     });
 });

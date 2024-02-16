@@ -8,7 +8,7 @@ import { getPaths } from "../getPaths.js";
 const paths = getPaths();
 
 const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(paths.pubGen, "package.json"))
+    fs.readFileSync(path.resolve(paths.pubGen, "package.json")),
 );
 
 const console = new Console(packageJson);
@@ -18,7 +18,7 @@ export const prepareData = async (referencesPath) => {
     try {
         if (fs.existsSync(path.resolve(referencesPath, "index.json"))) {
             indexJson = JSON.parse(
-                fs.readFileSync(path.resolve(referencesPath, "index.json"))
+                fs.readFileSync(path.resolve(referencesPath, "index.json")),
             );
             if (
                 typeof indexJson.items === "undefined" ||
@@ -38,11 +38,11 @@ export const prepareData = async (referencesPath) => {
                         if (item.path.includes("<references>")) {
                             itemPath = item.path.replace(
                                 "<references>",
-                                paths.references
+                                paths.references,
                             );
                         }
                         return JSON.parse(
-                            fs.readFileSync(path.resolve(itemPath), "utf8")
+                            fs.readFileSync(path.resolve(itemPath), "utf8"),
                         );
                     } catch (err) {
                         return new Error(err.message);
@@ -61,10 +61,12 @@ export const prepareData = async (referencesPath) => {
                 .map((err) => err.message);
             if (errors.length > 0) {
                 throw new Error(
-                    `There are ${errors.length} errors in the references.`,
+                    `There are ${
+                        errors.length
+                    } errors in the references. ${errors.join("\n\n")}`,
                     {
                         cause: errors,
-                    }
+                    },
                 );
             }
 

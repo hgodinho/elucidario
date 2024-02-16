@@ -1,5 +1,5 @@
 import { visit } from "unist-util-visit";
-import { referencesFrom } from "../../utils.js";
+import { mdToMdast, referencesFrom } from "../../utils.js";
 
 import { engine } from "../../reference/csl-engine.js";
 import { Console } from "@elucidario/pkg-console";
@@ -13,28 +13,26 @@ function citeParser(options) {
     const citeproc = engine(references, options.lang, options.style.csl);
 
     return async function transformer(tree) {
-        const citeItems = [];
+        const items = [];
 
         visit(tree, "cite", (node) => {
             const ID = [...Array(6)]
                 .map(() => Math.random().toString(36)[2])
                 .join("");
-
-            citeItems.push({ node, ID });
+            items.push({ node, ID });
         });
 
         let preProcessed = [];
 
         await Promise.all(
-            citeItems.map(async ({ ID, node }, index) => {
+            items.map(async ({ ID, node }, index) => {
                 const itemsIDs = [];
 
                 const cites = node.data.citeItems.map(({ key, ...item }) => {
                     itemsIDs.push(key);
                     return {
                         id: key,
-                        prefix: item.prefix,
-                        locator: item.suffix,
+                        ...item,
                     };
                 });
 
@@ -42,7 +40,7 @@ function citeParser(options) {
                     itemsIDs.includes(ref.id),
                 );
 
-                const pre = citeItems
+                const pre = items
                     .slice(0, index)
                     .map((citeItem) => [citeItem.ID, 0]);
 
@@ -53,8 +51,8 @@ function citeParser(options) {
                         properties: {
                             noteIndex: 0,
                         },
-                        citationItems: Items,
-                        citeItems: cites,
+                        citationItems: cites,
+                        citeItems: Items,
                     },
                     // citationsPre.
                     pre,
@@ -67,11 +65,9 @@ function citeParser(options) {
         );
 
         preProcessed.map((citation) => {
-            const { ID, node } = citeItems.find(
-                (item) => item.ID === citation[2],
-            );
-            node.type = "text";
-            node.value = citation[1];
+            const { ID, node } = items.find((item) => item.ID === citation[2]);
+            node.type = "paragraph";
+            node.children = mdToMdast(citation[1]);
         });
     };
 }

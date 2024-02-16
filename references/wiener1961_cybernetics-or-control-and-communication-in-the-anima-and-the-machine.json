@@ -1,0 +1,22 @@
+{
+    "id": "wiener1961",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "cybernetics-or-control-and-communication-in-the-anima-and-the-machine",
+    "_create": "2024-01-17T12:10:50.534Z",
+    "_update": "2024-01-17T12:10:50.535Z",
+    "type": "book",
+    "title": "Cybernetics or control and communication in the anima and the machine",
+    "publisher": "MIT",
+    "publisher-place": "New York, NY",
+    "volume": "2",
+    "author": [
+        {
+            "family": "Wiener",
+            "given": "Norbert"
+        }
+    ],
+    "issued": {
+        "raw": "1961"
+    }
+}

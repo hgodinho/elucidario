@@ -22,6 +22,15 @@ if ( ! defined( 'LCDR_PATH' ) ) {
  */
 class Core {
 	/**
+	 *     __             _ __
+	 *    / /__________ _(_) /______
+	 *   / __/ ___/ __ `/ / __/ ___/
+	 *  / /_/ /  / /_/ / / /_(__  )
+	 *  \__/_/   \__,_/_/\__/____/
+	 */
+	use \LCDR\Utils\singleton, \LCDR\Utils\debug;
+
+	/**
 	 * Painéis de opções.
 	 *
 	 * @var array
@@ -46,8 +55,7 @@ class Core {
 		 */
 		do_action( lcdr_hook( array( 'options', 'before', 'construct' ) ), $this );
 		add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
-
-		$config = new \LCDR\Options\Config();
+		add_filter( lcdr_hook( array( 'script', 'data' ) ), array( $this, 'script_data' ) );
 
 		/**
 		 * Ação executada após a construção do objeto de opções.
@@ -80,6 +88,20 @@ class Core {
 	 * @return void
 	 */
 	public function display_admin_page() {
+		lcdr_enqueue_script();
 		echo '<div id="lcdr"></div>';
+	}
+
+	/**
+	 * Script data
+	 *
+	 * @param object $data
+	 * @return object
+	 */
+	public function script_data( $data ) {
+		if ( str_contains( $data->hook, 'lcdr-options' ) ) {
+			$data->type = 'options';
+		}
+		return $data;
 	}
 }

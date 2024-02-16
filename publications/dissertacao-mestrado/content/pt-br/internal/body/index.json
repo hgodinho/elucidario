@@ -2,9 +2,8 @@
     "files": [
         "introducao.md",
         "metodologia.md",
-        "informacao.md",
+        "informacao",
         "metadados-representacao",
-        "documentacao",
         "casa-museu-ema-klabin",
         "elucidario",
         "consideracoes-finais.md"

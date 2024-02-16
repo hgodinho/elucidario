@@ -7,25 +7,25 @@
     ],
     "settings": {
         "workbench.colorCustomizations": {
-            "activityBar.activeBackground": "#6bb2f2",
-            "activityBar.background": "#6bb2f2",
-            "activityBar.foreground": "#15202b",
-            "activityBar.inactiveForeground": "#15202b99",
-            "activityBarBadge.background": "#cd1274",
-            "activityBarBadge.foreground": "#e7e7e7",
-            "commandCenter.border": "#15202b99",
-            "sash.hoverBorder": "#6bb2f2",
-            "statusBar.background": "#3c9aee",
-            "statusBar.foreground": "#15202b",
-            "statusBarItem.hoverBackground": "#1481e3",
-            "statusBarItem.remoteBackground": "#3c9aee",
-            "statusBarItem.remoteForeground": "#15202b",
-            "titleBar.activeBackground": "#3c9aee",
-            "titleBar.activeForeground": "#15202b",
-            "titleBar.inactiveBackground": "#3c9aee99",
-            "titleBar.inactiveForeground": "#15202b99"
+            "activityBar.activeBackground": "#0097fb",
+            "activityBar.background": "#0097fb",
+            "activityBar.foreground": "#e7e7e7",
+            "activityBar.inactiveForeground": "#e7e7e799",
+            "activityBarBadge.background": "#ffbfe6",
+            "activityBarBadge.foreground": "#15202b",
+            "commandCenter.border": "#e7e7e799",
+            "sash.hoverBorder": "#0097fb",
+            "statusBar.background": "#0078c8",
+            "statusBar.foreground": "#e7e7e7",
+            "statusBarItem.hoverBackground": "#0097fb",
+            "statusBarItem.remoteBackground": "#0078c8",
+            "statusBarItem.remoteForeground": "#e7e7e7",
+            "titleBar.activeBackground": "#0078c8",
+            "titleBar.activeForeground": "#e7e7e7",
+            "titleBar.inactiveBackground": "#0078c899",
+            "titleBar.inactiveForeground": "#e7e7e799"
         },
-        "peacock.color": "#3c9aee",
+        "peacock.color": "#0078c8",
         "files.exclude": {
             "**/.git": false
         },
@@ -125,6 +125,9 @@
         "typescript.tsdk": "node_modules\\typescript\\lib",
         "php.format.codeStyle": "WordPress",
         "phpfmt.yoda": true,
-        "php.format.rules.alignConsecutiveAssignments": false
+        "php.format.rules.alignConsecutiveAssignments": false,
+        "phpfmt.wp": true,
+        "phpfmt.psr2": false,
+        "phpfmt.indent_with_space": 4
     }
 }

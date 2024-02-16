@@ -1,0 +1,21 @@
+{
+    "id": "kuhn1962",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "the-structure-of-scientific-revoltions",
+    "_create": "2024-01-17T12:21:53.216Z",
+    "_update": "2024-01-17T12:21:53.216Z",
+    "type": "article",
+    "title": "The Structure of Scientific Revoltions",
+    "publisher": "The University of Chicago Press.",
+    "publisher-place": "Chicago",
+    "author": [
+        {
+            "family": "Kuhn",
+            "given": "Thomas S."
+        }
+    ],
+    "issued": {
+        "raw": "1962/1970"
+    }
+}

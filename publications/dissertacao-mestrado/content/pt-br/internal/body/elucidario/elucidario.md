@@ -1,4 +1,4 @@
-# 7. Elucidario.art
+# 6 Elucidario.art
 
 Em linhas gerais o Elucidário.art é um _Collection Management System_. A abreviação CMS é majoritariamente conhecida com um outro significado: _Content Management System_, devido a popularidade de plataformas como WordPress, Joomla, Drupal, etc. O Elucidário.art é um CMS para coleções de arte, ou seja, é um sistema de gerenciamento de coleções de arte, ou um _Content Management System_ especializado. Portanto utilizaremos a abreviação CMS para nos referirmos ao Elucidário como um _Collection Management System_. Este termo também é utilizado por instituições como _Collections Trust_ e ICOM para referir-se a esta modalidade de software.
 
@@ -46,15 +46,15 @@ Para o entendimento das seções a seguir, é importante primeiro definirmos alg
 
 **WAI-ARIA**: é um conjunto de atributos que podem ser adicionados a tags HTML para melhorar a acessibilidade de um sistema. O termo WAI-ARIA é uma abreviação de "_Web Accessibility Initiative - Accessible Rich Internet Applications_" [@w-3-c2022].
 
-## 7.1. O Repositório
+## 6.1 O Repositório
 
 As principais linguagens de programação utilizadas no código-fonte do Elucidário.art são PHP 8.2 [@php2022], TypeScript [@microsoft2023], JavaScript [@mdn2022] e JSON [@ietf2017], e, estão estruturadas em um repositório utilizando a arquitetura _monorepo_, ou seja, um repositório que contém múltiplos projetos [@narwhal-technologies-inc2022]. Optamos por utilizar esta arquitetura para facilitar o desenvolvimento e a manutenção do código-fonte, pois desta forma podemos reutilizar pacotes em diferentes projetos, como em bibliotecas, plugins, temas, etc. Esta arquitetura também pode ser chamada de micro-serviços (_microservices_), onde cada pacote é um serviço que pode ser desenvolvido, testado e publicado de maneira independente, o que facilita a manutenção e estimula a evolução independente de cada pacote.
 
 Utilizamos o Git [@torvalds2005] para o controle de versão dos pacotes, o GitHub [@github2008] para hospedagem do repositório e o Versionamento Semântico (_Semantic Versioning_ ou _SemVer_) [@sem-ver2023] para definição das versões públicas dos pacotes. O SemVer define três tipos diferentes de incrementação de versão: _major_, _minor_ e _patch_. O _major_ é incrementado quando há mudanças incompatíveis na API, ou seja, quando a forma de usar as suas funções, métodos, classes, e etc, são alteradas; o _minor_ é incrementado quando há adição de funcionalidades compatíveis com versões anteriores; e o _patch_ é incrementado quando há correção de _bugs_, também compatíveis com versões anteriores.
 
-**{{count:figure;legend=Exemplo do Versionamento Semântico (SemVer)}}**
+{{count:figure;legend=Exemplo do Versionamento Semântico (SemVer)}}
 
-![**Fonte**: Elaborado pelo autor, com base no SemVer.org]({{static}}/SemVer.png)
+![Fonte: Elaborado pelo autor, com base no SemVer.org]({{static;internal/body/elucidario}}/SemVer.png)
 
 O repositório pode ser acessado no link <https://github.com/hgodinho/elucidario> e, em resumo, é organizado da seguinte forma:
 
@@ -97,7 +97,7 @@ Para assegurarmos a qualidade do código-fonte, e se seus objetivos estão sendo
 
 Utilizamos a biblioteca Jest [@nakazawa2011] para os testes em javascript e a biblioteca Pest [@maduro2021] para os testes em PHP. Estas bibliotecas permitem a criação de testes unitários e de integração. Os testes unitários são utilizados para testar pequenas partes do código-fonte, como funções, métodos, classes, etc. Os testes de integração são utilizados para testar a integração entre diferentes partes do código-fonte, como a integração entre diferentes funções, métodos, classes, etc. Embora utilizadas em linguagens de programação diferentes, as duas bibliotecas apresentam uma API bastante similar, umas das funcionalidades apresentadas por ambas é a possibilidade de definir _matchers_ para validação de valores, como por exemplo, a validação de uma `string`:
 
-**{{count:figure;legend=Exemplo de teste utilizando o Jest para javascript e o Pest para PHP}}**
+{{count:figure;legend=Exemplo de teste utilizando o Jest para javascript e o Pest para PHP}}
 
 ```javascript
 // js
@@ -107,11 +107,11 @@ expect('banana').toBe('banana');
 expect('banana')->toBe('banana');
 ```
 
-**Fonte**: elaborado pelo autor.
+Fonte: elaborado pelo autor.
 
 Em que `expect` é uma função que espera um valor qualquer como parâmetro, nela definimos o valor que esperamos receber, e em seguida utilizamos o _matcher_ `toBe` para validar se o valor recebido é igual ao valor esperado.
 
-### 7.1.1. Clonando o repositório
+### 6.1.1 Clonando o repositório
 
 Para executar o Elucidário.art localmente, bem com seus testes, dependências e pacotes, é necessário clonar o repositório do Elucidário.art, mas para isso é necessário ter algumas dependências instaladas previamente:
 
@@ -130,7 +130,7 @@ git clone https://github.com/hgodinho/elucidario.git
 
 Ao concluir o download será possível navegar pelo repositório e executar os comandos de instalação e execução do Elucidário.art.
 
-### 7.1.2. Instalando as dependências
+### 6.1.2 Instalando as dependências
 
 Para instalar as dependências do Elucidário.art, execute o comando `pnpm install` na raiz do repositório. Como utilizamos a biblioteca Lerna [@lerna2023] para gerenciar o _monorepo_, este comando irá ser executado recursivamente em todos os pacotes disponibilizados no diretório `packages` e `apps`, e irá instalar as dependências de cada pacote.
 
@@ -143,7 +143,7 @@ composer install
 
 Cada pacote possui uma série de comandos para sua execução, testes e publicação, abordaremos alguns deles nas seções que descrevem os testes dos pacotes a seguir.
 
-## 7.2. Os pacotes
+## 6.2 Os pacotes
 
 A seguir apresentamos os principais pacotes do diretório `packages`:
 

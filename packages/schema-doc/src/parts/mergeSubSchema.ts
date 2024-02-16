@@ -60,11 +60,7 @@ export const mergeSubSchema = async (
 
         return newSchema;
     } catch (e: unknown) {
-        console.log(e, {
-            type: "error",
-            defaultLog: true,
-            title: "Error (mergeSubSchema)",
-        });
+        console.error(new Error(e as string));
         throw new Error(e as string, {
             cause: {
                 schema,

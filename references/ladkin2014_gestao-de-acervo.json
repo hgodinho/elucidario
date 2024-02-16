@@ -1,0 +1,22 @@
+{
+    "id": "ladkin2014",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "gestao-de-acervo",
+    "_create": "2024-01-17T15:05:25.529Z",
+    "_update": "2024-01-17T15:05:25.529Z",
+    "type": "article",
+    "title": "Gestão de Acervo",
+    "container-title": "Como gerir um museu: manual prático",
+    "publisher": "Associação Cultural de Apoio ao Museu Casa de Portinari e Secretaria da Cultura do Estado de São Paulo",
+    "publisher-place": "São Paulo",
+    "author": [
+        {
+            "family": "Ladkin",
+            "given": "Nicola"
+        }
+    ],
+    "issued": {
+        "raw": "2015"
+    }
+}

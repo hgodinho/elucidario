@@ -4,34 +4,32 @@ import inquirer from "inquirer";
 import { simpleGit } from "simple-git";
 
 import { Console } from "@elucidario/pkg-console";
-import { getPaths } from "@elucidario/pkg-paths";
+import { getPaths, readFile } from "@elucidario/pkg-paths";
 
 const paths = getPaths();
 
 export const version = async (args) => {
     const { publication } = args;
 
-    const packageJson = JSON.parse(
-        fs.readFileSync(
-            path.resolve(paths.publications, publication, "package.json")
-        )
-    );
+    const pkg = readFile(
+        path.resolve(paths.publications, publication, "package.json"),
+    ).value;
 
-    const console = new Console(packageJson);
+    const console = new Console(pkg);
 
     try {
         if (!publication) {
             throw new Error(
-                "Please provide a publication name with --publication or -p"
+                "Please provide a publication name with --publication or -p",
             );
         }
 
         const publicationPath = path.resolve(paths.publications, publication);
-        let publicationPackageJson = JSON.parse(
-            fs.readFileSync(path.resolve(publicationPath, "package.json"))
-        );
+        let pubPkg = readFile(
+            path.resolve(publicationPath, "package.json"),
+        ).value;
 
-        let { version } = publicationPackageJson;
+        let { version } = pubPkg;
 
         console.log(
             { version },
@@ -39,7 +37,7 @@ export const version = async (args) => {
                 type: "info",
                 defaultLog: true,
                 title: `${publication}`,
-            }
+            },
         );
 
         const git = simpleGit();
@@ -47,19 +45,19 @@ export const version = async (args) => {
         try {
             const status = await git.status();
             const notAdded = status.not_added.filter((file) =>
-                file.includes(publication)
+                file.includes(publication),
             );
             const created = status.created.filter((file) =>
-                file.includes(publication)
+                file.includes(publication),
             );
             const modified = status.modified.filter((file) =>
-                file.includes(publication)
+                file.includes(publication),
             );
             const deleted = status.deleted.filter((file) =>
-                file.includes(publication)
+                file.includes(publication),
             );
             const staged = status.staged.filter((file) =>
-                file.includes(publication)
+                file.includes(publication),
             );
 
             // compare staged with notAdded, created, modified and deleted, if notAdded, created, modified or deleted are not in staged, throw error
@@ -81,7 +79,7 @@ export const version = async (args) => {
                     {
                         defaultLog: true,
                         type: "error",
-                    }
+                    },
                 );
                 throw new Error("Please stage your changes before versioning");
             } else if (staged.length > 0) {
@@ -92,7 +90,7 @@ export const version = async (args) => {
                     {
                         defaultLog: true,
                         type: "error",
-                    }
+                    },
                 );
                 throw new Error("Please commit your changes before versioning");
             }
@@ -117,20 +115,36 @@ export const version = async (args) => {
         let message = "";
         let push = false;
 
+        const releaseTypes = ["major", "minor", "patch"];
+        const preReleaseTypes = [
+            "premajor",
+            "preminor",
+            "prepatch",
+            "prerelease",
+        ];
+
         await inquirer
             .prompt([
                 {
                     type: "list",
                     name: "version",
                     message: "Select version type from semver:",
-                    choices: ["major", "minor", "patch", "prerelease"],
+                    choices: [...releaseTypes, ...preReleaseTypes],
                 },
                 {
                     type: "list",
                     name: "release",
                     message: "Select pre-release type:",
                     choices: ["alpha", "beta", "rc"],
-                    when: (answers) => answers.version === "prerelease",
+                    when: (answers) =>
+                        preReleaseTypes.includes(answers.version),
+                },
+                {
+                    type: "number",
+                    name: "preVersion",
+                    message: "Define prerelease version",
+                    when: (answers) =>
+                        preReleaseTypes.includes(answers.version),
                 },
                 {
                     type: "string",
@@ -188,10 +202,10 @@ export const version = async (args) => {
             newVersion = parsedVersion.filter((v) => v).join(".");
         }
 
-        publicationPackageJson.version = newVersion;
+        pubPkg.version = newVersion;
         fs.writeFileSync(
             path.resolve(publicationPath, "package.json"),
-            JSON.stringify(publicationPackageJson, null, 4)
+            JSON.stringify(pubPkg, null, 4),
         );
 
         console.log("Adding changes to git...");
@@ -211,7 +225,7 @@ export const version = async (args) => {
                 type: "success",
                 defaultLog: true,
                 title: `Updated version of ${publication}`,
-            }
+            },
         );
     } catch (error) {
         console.log(error.message, { type: "error" });

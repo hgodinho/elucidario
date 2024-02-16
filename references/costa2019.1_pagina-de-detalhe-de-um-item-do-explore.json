@@ -1,0 +1,19 @@
+{
+    "id": "costa2019.1",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "pagina-de-detalhe-de-um-item-do-explore",
+    "_create": "2024-01-17T17:16:19.059Z",
+    "_update": "2024-01-17T17:16:19.059Z",
+    "type": "figure",
+    "title": "Página de detalhe de um item do Explore",
+    "author": [
+        {
+            "family": "Costa",
+            "given": "Henrique"
+        }
+    ],
+    "issued": {
+        "raw": "2019"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "id": "belkin1982",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "ask-for-information-retrieval-part-i-background-and-theory",
+    "_create": "2024-01-17T13:17:43.381Z",
+    "_update": "2024-01-17T13:17:43.381Z",
+    "type": "article",
+    "title": "ASK for Information Retrieval: Part I. Background and Theory",
+    "container-title": "Journal of Documentation",
+    "volume": "38",
+    "number": "2",
+    "author": [
+        {
+            "family": "Belkin",
+            "given": "Nicholas"
+        },
+        {
+            "family": "Oddy",
+            "given": "R.N."
+        },
+        {
+            "family": "Brooks",
+            "given": "H.M."
+        }
+    ],
+    "issued": {
+        "raw": "1982"
+    }
+}

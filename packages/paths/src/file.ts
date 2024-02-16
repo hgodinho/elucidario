@@ -90,10 +90,11 @@ export function readImage(filePath: string) {
  * @returns | file contents
  */
 export function readFile(file: string | ReadFileProps): File {
-    let enc: BufferEncoding | undefined = "utf8";
+    let enc: BufferEncoding = "utf8";
     let ext: string | undefined;
     let filePath: string;
     let returnType: string | undefined = "content";
+    let stats: boolean = false;
 
     if (typeof file === "string") {
         filePath = file;
@@ -102,25 +103,18 @@ export function readFile(file: string | ReadFileProps): File {
         enc = file.enc ? file.enc : enc;
         ext = file.ext;
         returnType = file.returnType ? file.returnType : returnType;
+        stats = file.stats ? file.stats : stats;
     }
 
     const parsed = path.parse(filePath);
     if (typeof ext === "undefined") ext = parsed.ext.replace(".", "");
-
-    const { size, atime, mtime, ctime, birthtime } = fs.statSync(
-        path.resolve(filePath),
-    );
 
     const read: File = {
         name: parsed.name,
         path: filePath,
         ext,
         value: "",
-        size,
-        atime,
-        mtime,
-        ctime,
-        birthtime,
+        ...(stats ? fs.statSync(path.resolve(filePath)) : {}),
     };
 
     try {
@@ -153,7 +147,6 @@ export function readFile(file: string | ReadFileProps): File {
 
         return read;
     } catch (err: any) {
-        console.error(err);
         throw new Error(`Cannot read file at ${filePath}: ${err}`);
     }
 }

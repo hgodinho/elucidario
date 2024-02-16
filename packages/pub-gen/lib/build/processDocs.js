@@ -312,6 +312,10 @@ export const processDocs = async (args) => {
                         produced.content[key] = {};
                     }
 
+                    /**
+                     * If search.length is 1, it means that the file is not nested, so we can just add it to the produced.content[key].,
+                     * else we need to create an array to nest the file.
+                     */
                     search.reduce((acc, item, index) => {
                         if (
                             index === search.length - 1 &&

@@ -1,4 +1,4 @@
-## 7.3. O Elucidário.art na Casa Museu Ema Klabin
+## 6.3 O Elucidário.art na Casa Museu Ema Klabin
 
 A implementação do Elucidário.art na Casa Museu Ema Klabin se deu, em um primeiro momento, em caráter de teste. Foram selecionados 20 itens da base de dados Museológica do museu com o critério de terem passado por processo de digitalização recentemente e que representasse diferentes tipos de objetos e níveis de documentação na coleção. Apresentamos a seguir um recorte da BD para demonstração dos itens selecionados:
 
@@ -46,7 +46,7 @@ Ou no caso do item M-0166 - Sacra de Parede, que possui registrado as inscriçõ
 
 Para estabelecer uma base para os testes e futuramente realizar a migração da BD Museológica para o Elucidário.art, estabelecemos um mapeamento entre os campos da BD Museológica e Mdorim, que pode ser visto no quadro a seguir:
 
-**{{count:chart;legend=Mapeamento entre a BD Museológica da Casa Museu Ema Klabin para o Mdorim.}}**
+{{count:chart;legend=Mapeamento entre a BD Museológica da Casa Museu Ema Klabin para o Mdorim.}}
 
 {{embed:internal/body/elucidario/cmek/mapeamento.html}}
 
@@ -54,15 +54,15 @@ Fonte: Elaborado pelo autor.
 
 O mapeamento utiliza as entidades Mapping e PropMap definidas no Mdorim da seguinte forma:
 
-**{{count:chart;legend=Exemplo de mapeamento dos campos NomeTítulo e LocalizaçãoOriginal para o Mdorim utilizando as entidades Mapping e PropMap.}}**
+{{count:figure;legend=Exemplo de mapeamento dos campos NomeTítulo e LocalizaçãoOriginal para o Mdorim utilizando as entidades Mapping e PropMap.}}
 
 {{code:internal/body/elucidario/cmek/mapping.json}}
 
 Fonte: Elaborado pelo autor.
 
-A partir deste mapeamento montamos os 20 itens no Elucidário.art, para os campos que aparecem utilizando mais de uma coluna no quadro anterior utilizamos as Estruturas Compartilhadas (EC) e Endpoints de Entidades (EE) descritas no capítulo 4, por exemplo: os metadados no museológico DescriçãoTécnicos, NomeTítulo e NúmeroTombo do item "M-0693 - Mesa de jogos com toucador" podem ser descritos utilizando o Mdorim/Linked Art da seguinte forma:
+A partir deste mapeamento montamos os 20 itens no Elucidário.art, para os campos que aparecem utilizando mais de uma coluna no quadro anterior utilizamos as Estruturas Compartilhadas (EC) e Endpoints de Entidades (EE) descritas na seção 4, por exemplo: os metadados no museológico DescriçãoTécnicos, NomeTítulo e NúmeroTombo do item "M-0693 - Mesa de jogos com toucador" podem ser descritos utilizando o Mdorim/Linked Art da seguinte forma:
 
-**{{count:chart;legend=Exemplo do item M-0693 mapeado para o Mdorim/Linked Art.}}**
+{{count:figure;legend=Exemplo do item M-0693 mapeado para o Mdorim/Linked Art.}}
 
 {{code:internal/body/elucidario/cmek/m0693.json}}
 

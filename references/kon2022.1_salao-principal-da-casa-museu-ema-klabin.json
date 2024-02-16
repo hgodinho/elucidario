@@ -1,0 +1,20 @@
+{
+    "id": "kon2022.1",
+    "@schema": "https://elucidario.art/pub-gen/schemas/reference-schema.json",
+    "@type": "Reference",
+    "_slug": "salao-principal-da-casa-museu-ema-klabin",
+    "_create": "2024-01-17T15:23:51.662Z",
+    "_update": "2024-01-17T15:23:51.662Z",
+    "type": "figure",
+    "title": "Salão principal da Casa Museu Ema Klabin",
+    "publisher-place": "São Paulo",
+    "author": [
+        {
+            "family": "Kon",
+            "given": "Nelson"
+        }
+    ],
+    "issued": {
+        "raw": "2022"
+    }
+}

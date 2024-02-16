@@ -39,7 +39,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam eget ris
 
 {{count:figure;legend=\\*\\*Lorem ipsum\\*\\*}}
 
-![Lorem ipsum]({{static}}/lorem-ipsum.jpeg)
+![Lorem ipsum]({{static;internal/body}}/lorem-ipsum.jpeg)
 ",
 }
 `;

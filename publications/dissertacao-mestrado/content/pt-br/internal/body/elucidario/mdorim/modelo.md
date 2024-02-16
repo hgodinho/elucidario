@@ -2,35 +2,35 @@ O modelo de dados é composto por um conjunto de metadados que definem as entida
 
 Um esquema em JSON-Schema pode ser definido da seguinte forma:
 
-**{{count:figure;legend=Exemplo de JSON-Schema descrevendo os metadados para validação da representação de uma pessoa}}**
+{{count:figure;legend=Exemplo de JSON-Schema descrevendo os metadados para validação da representação de uma pessoa}}
 
 {{code:internal/body/elucidario/mdorim/modelo/json-schema-example.json}}
 
-**Fonte**: Elaborado pelo autor.
+Fonte: Elaborado pelo autor.
 
 Tudo que está posicionado à esquerda dos dois pontos (:), é uma propriedade do objeto, também chamada de chave (_key_); e, tudo que está posicionado à direita é o valor da propriedade. No exemplo acima, a chave `$schema` define a versão do JSON-Schema utilizado, em nosso modelo utilizamos a versão `draft-4` por ser a versão utilizada pelo WordPress. As propriedades `title` e `type` define o título e o tipo de dado definido no esquema, como no exemplo estamos definindo um tipo `Person`, o valor de `type` é `object`. Em `properties` definimos as propriedades, em que cada uma é definida por um outro tipo de dado: `name` é uma `string` e `age` é uma `integer`. A chave `required` define as que são obrigatórias, em que `name` é obrigatório e `age`, como não está definido, é opcional. `additionalProperties` define se o objeto pode ter propriedades adicionais que não foram definidas previamente no esquema, neste caso definimos como `false`, ou seja, não pode ter propriedades adicionais.
 
 Uma pessoa pode ter sua representação validada utilizando este esquema da seguinte forma:
 
-**{{count:figure;legend=Exemplo de JSON representando uma pessoa}}**
+{{count:figure;legend=Exemplo de JSON representando uma pessoa}}
 
 {{code:internal/body/elucidario/mdorim/modelo/json-schema-example-person.json}}
 
-**Fonte**: Elaborado pelo autor.
+Fonte: Elaborado pelo autor.
 
 O JSON-Schema também apresenta propriedades que permitem a reutilização de definições. A chave `definitions` pode ser utilizada para descrever diversos metadados diferentes, enquanto a chave `$ref` permite a referência por meio de uma URI à um metadado definido previamente. No exemplo abaixo, definimos um esquema primário que contém as definições dos metadados utilizados no sistema, e em seguida definimos um tipo `Person` que utiliza a propriedade `$ref` para referenciar suas propriedades `name` e `age`:
 
-**{{count:figure;legend=Exemplo de JSON-Schema contendo a propriedade "definitions"}}**
+{{count:figure;legend=Exemplo de JSON-Schema contendo a propriedade "definitions"}}
 
 {{code:internal/body/elucidario/mdorim/modelo/json-schema-example-definitions.json}}
 
-**Fonte**: Elaborado pelo autor.
+Fonte: Elaborado pelo autor.
 
-**{{count:figure;legend=Exemplo de JSON-Schema contendo a propriedade "$ref" se referenciando ao exemplo anterior}}**
+{{count:figure;legend=Exemplo de JSON-Schema contendo a propriedade "$ref" se referenciando ao exemplo anterior}}
 
 {{code:internal/body/elucidario/mdorim/modelo/json-schema-example-ref.json}}
 
-**Fonte**: Elaborado pelo autor.
+Fonte: Elaborado pelo autor.
 
 Perceba que agora em cada JSON também utilizamos a propriedade `$id` como uma URI que identifica o esquema definido. Dessa forma conseguimos realizar a referência entre os esquemas por meio de suas URIs o que garante uma maior consistência das estruturas dos dados e evita a duplicação de definições.
 
@@ -47,8 +47,6 @@ A seguir apresentamos uma visão geral do modelo com todas as entidades, procedi
 
 {{mermaid:internal/body/elucidario/mdorim/mermaid.md}}
 
-A figura 10 demonstra o Mdorim como um todo, em cinza vemos as entidades principais do modelo que foram importadas do Linked Art; na cor vinho e com formato circular vemos os procedimentos que também tem sua rota no modelo; em preto vemos a entidade `Option` e suas possibilidades de uso; em vermelho os tipos de usuários; em roxo a entidade `History` e, por fim, em marrom o mapeamentos e suas propriedades.
-
 As nomenclaturas do modelo, como nome de entidades, objetos e propriedades foram mantidas em inglês para manter a consistência entre o idioma usado nas linguagens de programação e a API do modelo.
 
 O Mdorim estende o sistema de criação de usuários do WordPress e apresenta quatro novos tipos de usuários: Curadoria (`curator`), Museologia (`museologist`), Assistência (`assistant`) e Pesquisa (`researcher`), o modelo também introduz quatro novos grupos de capacidades de usuários, sendo eles: `entities`, `procedures`, `mapping` e `options`. Cada grupo é composto por uma lista de capacidades para operações CRUD (_Create, Read, Update and Delete_) de cada entidade, procedimento, mapeamento e configuração do sistema, respectivamente. O quadro a seguir apresenta os tipos de usuário e os grupos de capacidades de cada um:
@@ -59,7 +57,7 @@ As capacidades no modelo são definidas concatenando o tipo de capacidade com o 
 
 O usuário `admin` tem acesso total ao sistema e tem todas as capacidades de administrador do WordPress, como adicionar e remover plugins—inclusive o Elucidário.art, portanto somente este usuário tem este nível de acesso—, modificar configurações de domínio, estrutura de links e entre outras. Os usuários `curator` e `museologist` têm acesso total ao modelo, mas somente a capacidade de criar, deletar e listar usuários é herdada do WordPress. Já `assistant` pode ver, criar, editar a própria, editar o de outro usuário, editar publicado e deletar o próprio, enquanto o `researcher` pode somente ver, criar, editar o próprio e editar o de outros. O último tipo de usuário é o `public` e tem somente acesso de leitura aos dados, portanto os usuários que tem algum tipo de permissão superior a `public` precisam estar autenticados e ter a devida autorização para realizar qualquer ação além de ler os dados que tem acesso. Como utilizamos as Entidades do Linked Art em nosso modelo e o Linked Art apresenta somente o método HTTP `GET` para leitura [@linked-art2021.27], o Elucidário.art adiciona os outros métodos para obtermos uma interação completa com o modelo.
 
-As entidades principais do modelo seguem as mesmas do Linked Art (Ver capítulo 6), portanto possuem todas suas propriedades e mais as descritas a seguir. São elas: `Concept`, `Digital`, `Event`, `Provenance`, `Group`, `Person`, `Object`, `Place`, `Set`, `Textual` e `Visual`.
+As entidades principais do modelo seguem as mesmas do Linked Art (Ver seção 4), portanto possuem todas suas propriedades e mais as descritas a seguir. São elas: `Concept`, `Digital`, `Event`, `Provenance`, `Group`, `Person`, `Object`, `Place`, `Set`, `Textual` e `Visual`.
 
 {{table:internal/body/elucidario/mdorim/modelo/model-entity.json}}
 
@@ -87,8 +85,12 @@ A entidade `Mapping` tem o intuito de oferecer ao usuário uma maneira de criar 
 
 {{table:internal/body/elucidario/mdorim/modelo/model-prop-map.json}}
 
-A propriedade `map_value` do objeto `PropMap` registra um valor padrão que pode ser utilizado para preencher automaticamente os campos de informação no momento da criação de uma entidade, por exemplo, se estamos tentando representar o metadado `title` do Dublin Core utilizando a propriedade `identified_by` do Linked Art, podemos definir um valor padrão para `classified_as` no objeto `Identifier` com a URI `http://purl.org/dc/elements/1.1/title` do Dublin Core e `aat:300417209` (_full titles_) no AAT:
+A propriedade `map_value` do objeto `PropMap` registra um valor padrão que pode ser utilizado para preencher automaticamente os campos de informação no momento da criação de uma entidade, por exemplo, se estamos tentando representar o metadado `title` do Dublin Core utilizando a propriedade `identified_by` do Linked Art, podemos definir um valor padrão para `classified_as` no objeto `Identifier` com a URI do termo `aat:300417209` (_full titles_) no AAT:
+
+{{count:figure;legend=Demonstração do metadado "identified_by" do Linked Art pré-preenchido com o valor "classified_as" como "Full titles" do AAT.}}
 
 {{code:internal/body/elucidario/mdorim/modelo/mdorim-prop-map.json}}
+
+Fonte: Elaborado pelo autor.
 
 No Linked Art, a propriedade `identified_by` deve receber obrigatoriamente um valor para `content`, mas como no nosso mapeamento estamos criando valores pré-preenchidos, deixamos que o usuário preencha o restante das informações e usamos os valores preenchidos previamente para popular a UI.

@@ -1,6 +1,6 @@
 {
     "name": "@elucidario/pub-dissertacao-mestrado",
-    "version": "0.7.1-alpha.0",
+    "version": "0.8.1",
     "main": "README.md",
     "private": true,
     "scripts": {

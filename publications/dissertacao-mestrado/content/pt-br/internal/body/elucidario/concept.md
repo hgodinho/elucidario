@@ -1,7 +1,7 @@
 ---
 filename: "concept"
 title: "Fig.x - Diagrama ER da tabela _wp_lcdr_concept_"
-source: "**Fonte:** Elaborado pelo autor."
+source: "Fonte: Elaborado pelo autor."
 width: 1920
 background: transparent
 ---

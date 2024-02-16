@@ -1,4 +1,4 @@
-### 7.2.1 @elucidario/pkg-mdorim
+### 6.2.1 @elucidario/pkg-mdorim
 
 **Escopo**
 
