@@ -158,6 +158,15 @@ function lcdr_validate_value_from_schema( mixed $value, string $schema_name, ?ar
 }
 
 /**
+ * Enqueue script
+ *
+ * @return void
+ */
+function lcdr_enqueue_script() {
+	\wp_enqueue_script( 'lcdr' );
+}
+
+/**
  *    ______               __
  *   / ____/______  ______/ /
  *  / /   / ___/ / / / __  /

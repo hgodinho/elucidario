@@ -6,23 +6,31 @@
     "license": "MIT",
     "author": "Henrique Godinho <henrique@hgod.in>",
     "type": "module",
-    "main": "index.js",
+    "main": "lib/index.min.js",
     "scripts": {
         "db:reset-test": "rm -r ./wp/src/wp-content/database",
         "index": "node ./.bin/create-index.js",
+        "build": "rollup -c",
+        "watch": "pnpm build -w",
         "jest": "jest --coverage",
         "lint": "pnpm .bin/lint.sh",
         "make-pot": "node ./.bin/make-pot.js",
         "test": "pnpm .bin/test.sh"
     },
     "dependencies": {
-        "@elucidario/pkg-mdorim": "workspace:^"
+        "@elucidario/pkg-mdorim": "workspace:^",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@elucidario/pkg-types": "workspace:^",
         "@elucidario/tool-rollup": "workspace:^",
         "@elucidario/tool-tsconfig": "workspace:^",
-        "@types/node": "^18.19.3",
+        "@types/node": "^18.19.17",
+        "@types/react": "^18.2.55",
+        "@types/react-dom": "^18.2.19",
+        "rollup": "^4.12.0",
+        "typescript": "^5.3.3",
         "wp-pot": "^1.10.2"
     },
     "peerDependencies": {
@@ -33,6 +41,11 @@
         "wp_at_least": "6.0.0",
         "min_php": "7.4",
         "text_domain": "lcdr",
-        "domain_path": "/languages"
+        "domain_path": "/languages",
+        "dependencies": [
+            "react",
+            "react-dom",
+            "wp-i18n"
+        ]
     }
 }

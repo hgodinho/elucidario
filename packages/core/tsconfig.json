@@ -2,7 +2,21 @@
     "extends": "@elucidario/tool-tsconfig",
     "compilerOptions": {
         "resolveJsonModule": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "jsx": "react",
+        "baseUrl": ".",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "module": "ES2015",
+        "target": "ES2015",
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
+        "allowJs": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true
     },
-    "include": ["src/ts/index.ts"]
+    "include": ["src/ts/index.tsx"],
+    "paths": {
+        "@/*": ["./src/ts/*"]
+    }
 }
