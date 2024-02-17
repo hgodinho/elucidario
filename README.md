@@ -1,6 +1,6 @@
 <picture>
-    <source media="(preferes-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hgodinho/elucidario/main/packages/design-system/assets/svg/type%3Dvertical%2C%20color%3Dpink%2C%20theme%3Ddark.svg">
-    <source media="(preferes-color-scheme: light)" srcset="https://raw.githubusercontent.com/hgodinho/elucidario/main/packages/design-system/assets/svg/type%3Dvertical%2C%20color%3Dpink%2C%20theme%3Dlight.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hgodinho/elucidario/main/packages/design-system/assets/svg/type%3Dvertical%2C%20color%3Dpink%2C%20theme%3Ddark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/hgodinho/elucidario/main/packages/design-system/assets/svg/type%3Dvertical%2C%20color%3Dpink%2C%20theme%3Dlight.svg">
     <img src="https://raw.githubusercontent.com/hgodinho/elucidario/main/packages/design-system/assets/svg/type%3Dvertical%2C%20color%3Dpink%2C%20theme%3Ddark.svg" alt="Logo Elucidário.art" width="300">
 </picture>
 
