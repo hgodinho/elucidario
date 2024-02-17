@@ -9,5 +9,8 @@
         "ol_single": 1
     },
     "MD036": false,
-    "MD041": false
+    "MD041": false,
+    "MD033": {
+        "allowed_elements": ["sup", "sub", "h1", "img", "style", "p"]
+    }
 }
