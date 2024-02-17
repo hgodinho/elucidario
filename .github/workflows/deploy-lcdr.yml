@@ -8,10 +8,7 @@ on:
     paths:
       - ".github/workflows/deploy-lcdr.yml"
       - "apps/lcdr-docs/**"
-      - "packages/mdorim/**"
-      - "packages/pub-gen/**"
-      - "packages/schema-doc/**"
-      - "packages/docusaurus-md/**"
+      - "packages/**"
 
 jobs:
   deploy:
@@ -24,11 +21,11 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 6.14.1
+          version: latest
       - name: Install monorepo dependencies
         run: pnpm install
       - name: Build monorepo packages and apps
-        run: pnpm build:pkg-app
+        run: pnpm build
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
