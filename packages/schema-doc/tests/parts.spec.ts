@@ -1,8 +1,46 @@
-import { mappingTable, metaType, resolveRef } from "../dist/mjs/index.mjs";
+// import { mappingTable, metaType, resolveRef } from "../dist/mjs/index.mjs";
+import * as parts from "../src/parts";
+const { mappingTable, metaType, entityPage, entityTable, resolveRef } = parts;
+
+import { describe, expect, it } from "@jest/globals";
+
+import { createFixture } from "@elucidario/pkg-paths";
+
+import type {
+    BaseSchema,
+    ObjectSchema,
+    ArraySchema,
+    AnyOfSchema,
+    OneOfSchema,
+    Entity,
+} from "@elucidario/pkg-types";
+
+describe("entityTable function", () => {
+    it("should create a entity table", () => {
+        const schema: Entity = {
+            $schema: "http://json-schema.org/draft-07/schema#",
+            $id: "https://example.com/schemas/metadata.json",
+            type: "object",
+            description: "description",
+            properties: {
+                first: {
+                    type: "string",
+                },
+                second: {
+                    type: "string",
+                },
+            },
+        };
+
+        const output = entityTable(schema, "en");
+        createFixture("entityTable.md", output, "schema-doc");
+        expect(output).toMatchSnapshot();
+    });
+});
 
 describe("metaType function", () => {
     it("should be a object type", () => {
-        const schema = {
+        const schema: ObjectSchema = {
             type: "object",
             description: "description",
             properties: {
@@ -16,11 +54,12 @@ describe("metaType function", () => {
         };
         const expectedOutput = `> type \`${schema.type}\` with properties`;
         const output = metaType(schema);
-        expect(output).toEqual(expectedOutput);
+        createFixture("metaType-object.md", output, "schema-doc");
+        expect(output).toMatchSnapshot();
     });
 
     it("should be a array type", () => {
-        const schema = {
+        const schema: ArraySchema = {
             type: "array",
             description: "description",
             items: {
@@ -29,11 +68,12 @@ describe("metaType function", () => {
         };
         const expectedOutput = `> type array<\`${schema.items.type}\`>`;
         const output = metaType(schema);
-        expect(output).toEqual(expectedOutput);
+        createFixture("metaType-array.md", output, "schema-doc");
+        expect(output).toMatchSnapshot();
     });
 
     it("should be a array type with anyOf property", () => {
-        const schema = {
+        const schema: AnyOfSchema = {
             type: "array",
             items: {
                 anyOf: [
@@ -48,11 +88,12 @@ describe("metaType function", () => {
         };
         const expectedOutput = `> type ${schema.type}<anyOf\<[\`schemas\`](#schemas) | [\`schemas\`](#schemas)\>>`;
         const output = metaType(schema);
-        expect(output).toEqual(expectedOutput);
+        createFixture("metaType-array-anyOf.md", output, "schema-doc");
+        expect(output).toMatchSnapshot();
     });
 
     it("should be a array type with oneOf property", () => {
-        const schema = {
+        const schema: OneOfSchema = {
             type: "array",
             items: {
                 oneOf: [
@@ -67,11 +108,12 @@ describe("metaType function", () => {
         };
         const expectedOutput = `> type \`${schema.type}\` oneOf\<[\`schemas\`](#schemas) | [\`schemas\`](#schemas)\>`;
         const output = metaType(schema);
-        expect(output).toEqual(expectedOutput);
+        createFixture("metaType-array-oneOf.md", output, "schema-doc");
+        expect(output).toMatchSnapshot();
     });
 
     it("should be a array with title property", () => {
-        const schema = {
+        const schema: ArraySchema = {
             type: "array",
             description: "description",
             items: {
@@ -81,17 +123,19 @@ describe("metaType function", () => {
         };
         const expectedOutput = `> type array<[\`${schema.items.title}\`](#${schema.items.title})>`;
         const output = metaType(schema);
-        expect(output).toEqual(expectedOutput);
+        createFixture("metaType-array-title.md", output, "schema-doc");
+        expect(output).toMatchSnapshot();
     });
 
     it("should be a string type", () => {
-        const schema = {
+        const schema: BaseSchema<"string"> = {
             type: "string",
             description: "description",
         };
         const expectedOutput = `> type \`${schema.type}\``;
         const output = metaType(schema);
-        expect(output).toEqual(expectedOutput);
+        createFixture("metaType-string.md", output, "schema-doc");
+        expect(output).toMatchSnapshot();
     });
 
     it("should be a null type", () => {
@@ -101,7 +145,8 @@ describe("metaType function", () => {
         };
         const expectedOutput = `> type \`${schema.type}\``;
         const output = metaType(schema);
-        expect(output).toEqual(expectedOutput);
+        createFixture("metaType-null.md", output, "schema-doc");
+        expect(output).toMatchSnapshot();
     });
 });
 

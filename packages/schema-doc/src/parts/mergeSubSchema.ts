@@ -61,13 +61,6 @@ export const mergeSubSchema = async (
         return newSchema;
     } catch (e: unknown) {
         console.error(new Error(e as string));
-        throw new Error(e as string, {
-            cause: {
-                schema,
-                properties: schema.properties,
-                options,
-                method,
-            },
-        });
+        throw new Error(e as string);
     }
 };

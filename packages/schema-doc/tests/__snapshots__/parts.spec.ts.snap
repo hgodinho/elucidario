@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`entityTable function should create a entity table 1`] = `"## Definitions"`;
+
+exports[`metaType function should be a array type 1`] = `"> type array<\`string\`>"`;
+
+exports[`metaType function should be a array type with anyOf property 1`] = `"> type array<anyOf<[\`schemas\`](#schemas) | [\`schemas\`](#schemas)>>"`;
+
+exports[`metaType function should be a array type with oneOf property 1`] = `"> type \`array\` oneOf<[\`schemas\`](#schemas) | [\`schemas\`](#schemas)>"`;
+
+exports[`metaType function should be a array with title property 1`] = `"> type array<[\`title\`](#title)>"`;
+
+exports[`metaType function should be a null type 1`] = `"> type \`null\`"`;
+
+exports[`metaType function should be a object type 1`] = `"> type \`object\` with properties"`;
+
+exports[`metaType function should be a string type 1`] = `"> type \`string\`"`;

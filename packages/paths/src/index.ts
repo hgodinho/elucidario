@@ -5,3 +5,4 @@ export * from "./build";
 export * from "./file";
 export * from "./asyncFile";
 export * from "./folder";
+export * from "./testUtilities";
