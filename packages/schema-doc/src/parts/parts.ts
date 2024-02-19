@@ -205,7 +205,7 @@ export const description = (
 };
 
 /**
- * Cria linha que descreve a descrição do metadado
+ * Cria linha que representa a descrição do metadado
  * @param metadata | Schema
  * @param headingLevel | number
  * @param lang | SupportedLanguages
@@ -229,7 +229,7 @@ export const baseMetadata = (
 };
 
 /**
- * Cria linha que descreve a descrição do metadado do tipo array
+ * Cria linha que representa a descrição do metadado do tipo array
  * @param metadata | ArraySchema
  * @param headingLevel | number
  * @param lang | SupportedLanguages
@@ -268,7 +268,7 @@ export const examples = (
 };
 
 /**
- * Cria linha que descreve um metadado do tipo object
+ * Cria linha que representa um metadado do tipo object
  * @param schema | ObjectSchema
  * @returns | string
  */
@@ -388,8 +388,8 @@ export const objectMetadata = (
                             ? i18n.__("Yes")
                             : i18n.__("No")
                         : schema.required === true
-                        ? i18n.__("Yes")
-                        : i18n.__("No"));
+                          ? i18n.__("Yes")
+                          : i18n.__("No"));
 
                 if ("$ref" in value) {
                     const link = resolveRef(value.$ref as string, true, base);
@@ -634,7 +634,9 @@ export const metadata = (
 
 /**
  * Cria tabela de entidades
- * @param entity | Entity
+ * @param entity | Entity & { definitions?: Record<string, BaseSchema<DataTypes>> }
+ * @param lang | SupportedLanguages
+ * @param base | string
  * @returns | string
  */
 export const entityTable = (
@@ -644,9 +646,11 @@ export const entityTable = (
 ): string => {
     return toMD([
         heading(2, i18n.__("Definitions")),
-        ...Object.entries(entity.definitions || []).map(([key, value]) => {
-            return metadata(value, 3, lang, base);
-        }),
+        ...(entity.definitions
+            ? Object.entries(entity.definitions || []).map(([key, value]) => {
+                  return metadata(value, 3, lang, base);
+              })
+            : ""),
     ]);
 };
 

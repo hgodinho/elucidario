@@ -1,0 +1,3 @@
+# exclude __fixtures__ from the package because we prefer to use snapshot tests,
+# but we use fixtures to better visualize the output
+__fixtures__
